@@ -1,0 +1,411 @@
+<!-- Converted by db4-upgrade version 1.0 -->
+<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="apend"><info><title>Apêndice</title></info>
+<para>
+Este capítulo contém considerações sobre o guia Foca GNU/Linux.
+</para>
+
+<section xml:id="apend-sobre"><info><title>Sobre este guia</title></info>
+<para>
+O guia Foca foi criado em 12 de Novembro de 1999.  A versão que está lendo tem
+o objetivo de servir como referência a usuários 
+<!-- [ %INICIANTE [ --> <emphasis>Iniciantes</emphasis> e que estão tendo o primeiro contato com o sistema operacional
+<command>GNU/Linux</command>, <!-- ]]> --> 
+<!-- [ %INTERMEDIARIO [ --> <emphasis>Intermediários</emphasis> que já
+conhecem o básico sobre o funcionamento deste sistema operacional e já estão
+acostumados com os comandos, execução de programas e diretórios, <!-- ]]> -->
+<!-- [ %AVANCADO [ --> <emphasis>Avançados</emphasis> que já dominam grande parte do sistema
+operacional e procuram aprender mais sobre os seus detalhes e configurações
+especiais <!-- ]]> --> ou com referência de consulta rápida.  Uma versão que abrange um
+diferente nível de aprendizado ou mais completa pode ser baixada de <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.guiafoca.org">Página Oficial do guia Foca GNU/Linux</link>.
+</para>
+<para>
+A versão que esta lendo agora foi gerada com as seguintes opções:
+</para>
+<itemizedlist>
+ <!-- [ %DESCRICAOD [ --> <listitem><para>Descrição detalhada de comandos</para></listitem> <!-- ]]> -->
+ <!-- [ %OPCOES [ --> <listitem><para>Opções usadas em comandos e programas</para></listitem> <!-- ]]> -->
+ <!-- [ %OBS [ --> <listitem><para>Observações sobre comandos e configurações</para></listitem> <!-- ]]> -->
+ <!-- [ %EXEMPLO [ --> <listitem><para>Exemplos para a melhor compreensão do assunto discutido.</para></listitem> <!-- ]]> -->
+ <!-- [ %CONSTRUCAO [ --> <listitem><para>Partes em contruçao.</para></listitem>  <!-- ]]> -->
+</itemizedlist>
+<para>
+e contém o(s) nível(is) de aprendizado (Iniciante, Intermediário e Avançado):
+</para>
+<itemizedlist>
+ <!-- [ %INICIANTE [ --> <listitem><para>Iniciante</para></listitem> <!-- ]]> -->
+ <!-- [ %INTERMEDIARIO [ --> <listitem><para>Intermediário</para></listitem> <!-- ]]> -->
+ <!-- [ %AVANCADO [ --> <listitem><para>Avançado</para></listitem> <!-- ]]> -->
+</itemizedlist>
+<para>
+O <emphasis>Foca GNU/Linux</emphasis> é atualizado frequentemente, por este
+motivo recomendo que assine um dos canais de comunicação para ser informado de
+novas versões:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+Assinar o Twitter do focalinux <email>@focalinux</email>
+</para>
+</listitem>
+<listitem>
+<para>
+Assinar o RSS presente na página do guia e atualizações.
+</para>
+</listitem>
+<listitem>
+<para>
+A ficha do aviso de atualizações na página web em <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.guiafoca.org">Página Oficial do guia Foca GNU/Linux</link> no
+fim da página principal.  Após preencher a ficha do aviso de atualizações, eu
+te enviarei um e-mail sobre o lançamento de novas versões do guia e o que foi
+modificado, desta forma você poderá decidir em copia-la caso a nova versão
+contém modificações que considera importantes.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Versões diferentes deste guia podem ser geradas a partir do código fonte SGML
+ou obtidas através da home page principal (para detalhes veja <xref linkend="apend-homepage"/>).
+</para>
+</section>
+
+
+<section xml:id="apend-gdl"><info><title>Guia do Linux</title></info>
+<para>
+O <emphasis>Guia do Linux</emphasis> é uma versão hospedada na <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://pt.wikibooks.org/wiki/Guia_do_Linux/Capa">WikiLivros</link> e
+totalmente baseado no Guia Foca GNU/Linux versão 6.40, contendo os níveis
+<emphasis>Iniciante</emphasis>, <emphasis>Intermediário</emphasis> e
+<emphasis>Avançado</emphasis>.  Ele foi portado para WikiLivros graças ao
+dedicado trabalho de Raylton P.  Souza e outros colaboradores.
+</para>
+<para>
+A motivação principal para o lançamento de uma versão derivada do guia Foca
+GNU/Linux com o nome <emphasis>Guia do Linux</emphasis>, foram as duas fontes
+de desenvolvimento, que com o tempo gera conteúdo diferente do guia oficial
+(natural em ambientes de desenvolvimentos com múltiplos autores), causando
+confusão dos leitores.
+</para>
+<para>
+Acesse e confira mais este excelente lançamento: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://pt.wikibooks.org/wiki/Guia_do_Linux/Capa">Wikibook do Guia do
+Linux</link>.
+</para>
+</section>
+
+
+<section xml:id="apend-autor"><info><title>Sobre o Autor</title></info>
+<para>
+Gleydson Mazioli da Silva é Capixaba, nascido em Vila Velha.  Amante de
+eletrônica desde criança, foi atraido para a informática através da curiosidade
+em funcionamento e reparo de hardware.
+</para>
+<para>
+Se dedica ao sistema <command>Linux</command> desde 1997.  determinado na
+realização de testes de ferramentas e sistemas avaliando pontos fortes e fracos
+de cada uma.  Logo que iniciou em <command>Linux</command> passou a estudar
+exaustivamente aspectos técnicos de distribuições e rede em
+<command>Linux</command>/<command>BSD</command>.
+</para>
+<para>
+Entre coisas que gosta de fazer/implementar em <command>Linux</command>:
+possibilidade de pesquisa e atualização de conhecimento constante,
+automatização e tomada inteligente de decisões, níveis de segurança da
+informação (tanto físico e lógico), firewalls, virtualização, redes virtuais,
+integração de sistemas, forense computacional, documentação de processos,
+desenvolvimento de ferramentas GPL para a comunidade, depuração,
+desenvolvimento de documentações, etc.
+</para>
+<para>
+Um dos desenvolvedores da distribuição <emphasis>Liberdade</emphasis>,
+<emphasis>CAETECT</emphasis>, <emphasis>Debian-BR</emphasis> e desenvolvedor
+oficial da distribuição <emphasis>Debian</emphasis>.  Atuou como tradutor do
+LDP-BR, traduzindo vários HOW-TOs importantes para a comunidade Linux
+Brasileira. Também é um tdos administradores do projeto CIPSGA, cuidando de uma 
+infinidade de serviços que o projeto oferece a comunidade que deseja estrutura
+para hospedar, fortalecer e manter projetos em software livre.
+</para>
+<para>
+Trabalhou para algumas empresas do Espírito Santo, no Governo Federal e de
+estados na implantação de sistemas em software livre.  Atualmente atua como
+gerente de tecnologia da Spirit Linux, uma empresa focada na inovação,
+avaliação e integração de ferramentas de código aberto junto a seus clientes.
+</para>
+<para>
+Concorda com certificações, mas destaca que o mais importante é aproveitar a
+oportunidade dada pela certificação para estudo e auto avaliação de seus pontos
+fracos e assim procurar melhora-los.  Possui certificação LPI nível 3 e um
+ISO9001 internacional em Administração Linux, como primeiro no ranking
+Brasileiro.
+</para>
+<para>
+E-mail: E-mail: <email>gleydson@guiafoca.org</email>, Twitter:
+<email>@gleydsonmazioli</email>.
+</para>
+</section>
+
+
+<section xml:id="apend-ref"><info><title>Referências de auxílio ao desenvolvimento do guia</title></info>
+<itemizedlist>
+<listitem>
+<para>
+As seções sobre comandos/programas foram construídas após uso, teste e
+observação do comportamento das opções dos comandos/programas, help on line,
+páginas de manual, info pages e documentação técnica do sistema.
+</para>
+</listitem>
+<listitem>
+<para>
+How-tos do Linux (principalmente o <emphasis>Networking Howto</emphasis>,
+<emphasis>Security-Howto</emphasis>) ajudaram a formar a base de
+desenvolvimento do guia e desenvolver algumas seções (versões
+<emphasis>Intermediário</emphasis> e <emphasis>Avançado</emphasis> somente).
+</para>
+</listitem>
+<listitem>
+<para>
+Todos os exemplos de comandos e seções descritivas do guia são de minha autoria.  
+<!-- [ %AVANCADO [ --> Quanto a
+exemplos de configurações e utilização de programas, será citada a origem que
+foram baseados em cada capítulo, valorizando trabalho de seus respectivos autores. 
+</para>
+</listitem>
+<listitem>
+<para>
+Uso de programas e macetes aprendidos no dia a dia para gerenciar máquinas,
+controlar redes e automatizar sistemas.
+</para>
+</listitem>
+<listitem>
+<para>
+As seções do nível avançado foram construídas com base em testes e usando
+metodologia própria com o objetivo de oferecer uma documentação objetiva e
+clara ao administrador de rede, auxiliando-o na tomada de decisões para solução
+de problemas.  Partes extraidas de outras documentações no nível Avançado terão
+as referências explicitamente citadas em seus respectivos capítulos.
+</para>
+<!-- ]]> -->
+</listitem>
+<listitem>
+<para>
+Manual de Instalação da <emphasis>Debian GNU/Linux</emphasis> - Os capítulos
+contendo materiais extraídos do manual de instalação da Debian são muito úteis
+e explicativos, seria desnecessário reescrever um material como este.  O texto
+é claro e didaticamente organizado, o documento aborda detalhes técnicos úteis
+sobre hardwares em geral e o Linux ausentes nos manuais de outras distribuições
+Linux.
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="apend-homepage"><info><title>Onde encontrar a versão mais nova do guia?</title></info>
+<para>
+Novas versões deste guia, avisos de lançamento, outros níveis de aprendizado
+(Iniciante, Intermediário e Avançado), versões para outras distribuições Linux
+podem ser encontradas em: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.guiafoca.org">Página Oficial
+do guia Foca GNU/Linux</link>.
+</para>
+<para>
+Se quiser receber notificações de novas versões, use uma das formas a seguir:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+por E-Mail: envie uma mensagem para <email>gleydson@guiafoca.org</email>
+pedindo para ser incluído na lista de atualizações do guia ou preencha o
+formulário encontrado no final da Home Page do guia.
+</para>
+</listitem>
+<listitem>
+<para>
+Twitter: Assine o Twitter do guia Foca: @focalinux
+</para>
+</listitem>
+<listitem>
+<para>
+RSS: Assine o RSS na página oficial do guia (citado acima) para receber
+atualizações e novidades.
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+
+<section xml:id="apend-colaboradores"><info><title>Colaboradores do Guia</title></info>
+<para>
+Entre as principais colaborações até a versão atual, posso citar as seguintes:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>Djalma Valois <email>djalma@cipsga.org.br</email></literal> - Pela
+atual hospedagem do Foca GNU/Linux.  Estou muito feliz vendo o Foca GNU/Linux
+fazendo parte de um projeto tão positivo como o CIPSGA é para o crescimento e
+desenvolvimento do software livre nacional.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>Bakurih <email>bakurih@yahoo.com</email></literal> - Revisão inicial
+do guia, após suas primeiras versões.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>Eduardo Marcel Maçan <email>macan@debian.org</email></literal> - Pela
+antiga hospedagem, na época do site metainfo.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>Michelle Ribeiro <email>michelle@cipsga.org.br</email></literal> - Por
+dispensar parte de seu atencioso tempo enviando revisões e sugestões que estão
+melhorando bastante a qualidade do guia.  Entre eles detalhes que passaram
+despercebidos durante muito tempo no guia e página principal.
+</para>
+<para>
+E também por cuidar do fonte do guia ;-)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>Augusto Campos <email>brain@matrix.com.br</email></literal> -
+Descrição sobre a distribuição <command>Suse</command> 
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>Paulo Henrique Baptista de Oliveira
+<email>baptista@linuxsolutions.com.br</email></literal> - Pelo apoio moral
+oferecido durante os freqüentes lançamentos do guia, acompanhamento e
+divulgação.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>Diego Abadan <email>diego@hipernet.ufsc.br</email></literal> - Envio
+de correções significativas, novos endereços de listas de discussão.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>Alexandre Costa <email>alebyte@bol.com.br</email></literal> - Envio de
+centenas de patches ortográficos nas versões Iniciante e Intermediário do guia
+que passaram desapercebidas durante várias versões do guia...
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>Christoph Simon <email>ciccio@prestonet.com.br</email></literal> -
+Pela pesquisa e a gigantesca coletânea de textos sobre o Linux enviada.  Eles
+estão sendo muito úteis tanto para mim quanto no desenvolvimento do guia.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>Gustavo Noronha <email>dockov@zaz.com.br</email></literal> - Vem
+enviando freqüentes correções, contribuições construtivas ao desenvolvimento
+além de apoio ao desenvolvimento do guia .  Vale a pena destaca-lo por sua
+atual dedicação junto a distribuição Debian/GNU, sua tradução e a comunidade
+Open Source.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>Pedro Zorzenon Neto <email>pzn@debian.org</email></literal> - Envio de
+diversas atualizações para o nível Avançado, principalmente sobre o firewall
+iptables.
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+
+<section xml:id="apend-mr"><info><title>Marcas Registradas</title></info>
+<para>
+Todas as marcas registradas citadas neste guia são propriedades de seus
+respectivos autores.
+</para>
+</section>
+
+
+<section xml:id="apend-new"><info><title>Futuras versões</title></info>
+<para>
+Estes são os materiais que pretendo adicionar em futuras versões do guia:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+Acrescentar mais detalhes sobre o sistema gráfico X-Window.
+</para>
+</listitem>
+<listitem>
+<para>
+Entre outros ítens que venho estudando para verificar se encaixam no perfil do
+guia.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Esta é uma futura implementação que venho estudando para acompanhar o
+crescimento do guia.  Sugestões são bem vindas e podem ser enviadas para
+<email>gleydson@guiafoca.org</email>.
+</para>
+</section>
+
+
+<section xml:id="apend-pgp"><info><title>Chave Pública PGP</title></info>
+<para>
+Chaves PGP são usadas para criptografar arquivos, e-mails ou qualquer outra
+coisa que desejamos que somente uma pessoa tenha acesso.  O PGP segue o padrão
+de chave pública/privada; a chave pública é distribuída a todos e a chave
+privada permanece na posse do criador para que ele seja o único a ter acesso
+aos dados criptografados após digitar a "frase de acesso" correta.
+</para>
+<para>
+Minha chave PGP segue abaixo, ela também pode ser encontrada em <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://pgp.ai.mit.edu">http://pgp.ai.mit.edu</link>.  Se você deseja
+saber mais sobre o PGP, recomendo um excelente documento encontrado na seção
+<literal>Apostilas</literal> em <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.cipsga.org.br/">http://www.cipsga.org.br/</link>
+</para>
+<screen>
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v1.0.6 (GNU/Linux)
+Comment: For info see http://www.gnupg.org
+
+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
+=bvnT
+-----END PGP PUBLIC KEY BLOCK-----
+</screen>
+</section>
+
+</chapter>

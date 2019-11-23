@@ -1,0 +1,1012 @@
+<!-- Converted by db4-upgrade version 1.0 -->
+<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="cmdc"><info><title>Comandos para manipulação de contas</title></info>
+<para>
+Este capítulo traz comandos usados para manipulação de conta de usuários e
+grupos em sistemas <command>GNU/Linux</command>.  Entre os assuntos descritos
+aqui estão adicionar usuários ao sistema, adicionar grupos, incluir usuários em
+grupos existentes, etc.
+</para>
+
+
+<section xml:id="cmdc-adduser"><info><title>adduser</title></info>
+<para>
+Adiciona um usuário ou grupo no sistema.  Por padrão, quando um novo usuário é
+adicionado, é criado um grupo com o mesmo nome do usuário.  Opcionalmente o
+<command>adduser</command> também pode ser usado para adicionar um usuário a um
+grupo (veja <xref linkend="cmdc-incluirgrupo"/>).  
+<!-- [ %DESCRICAOD [ --> Será criado um diretório
+home com o nome do usuário (a não ser que o novo usuário criado seja um usuário
+do sistema) e este receberá uma identificação.  A identificação do usuário
+(UID) escolhida será a primeira disponível no sistema especificada de acordo
+com a faixa de UIDS de usuários permitidas no arquivo de configuração
+<filename>/etc/adduser.conf</filename>.  Este é o arquivo que contém os padrões
+para a criação de novos usuários no sistema. <!-- ]]> -->
+</para>
+<para>
+<command>adduser</command> [<emphasis>opções</emphasis>]
+[<emphasis>usuário/grupo</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>usuário/grupo</emphasis></term>
+<listitem>
+<para>
+Nome do novo usuário que será adicionado ao sistema.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-disable-passwd</term>
+<listitem>
+<para>
+Não executa o programa <command>passwd</command> para escolher a senha e
+somente permite o uso da conta após o usuário escolher uma senha.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>--force-badname</term>
+<listitem>
+<para>
+Desativa a checagem de senhas ruins durante a adição do novo usuário.  Por
+padrão o <command>adduser</command> checa se a senha pode ser facilmente
+adivinhada.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>--group</term>
+<listitem>
+<para>
+Cria um novo grupo ao invés de um novo usuário.  A criação de grupos também
+pode ser feita pelo comando <command>addgroup</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-uid [num]</term>
+<listitem>
+<para>
+Cria um novo usuário com a identificação [num] ao invés de procurar o próximo
+UID disponível.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-gid [num]</term>
+<listitem>
+<para>
+Faz com que o usuário seja parte do grupo [gid] ao invés de pertencer a um novo
+grupo que será criado com seu nome.  Isto é útil caso deseje permitir que
+grupos de usuários possam ter acesso a arquivos comuns.
+</para>
+<para>
+Caso estiver criando um novo grupo com <command>adduser</command>, a
+identificação do novo grupo será [num].
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>--home [dir]</term>
+<listitem>
+<para>
+Usa o diretório [dir] para a criação do diretório home do usuário ao invés de
+usar o especificado no arquivo de configuração
+<filename>/etc/adduser.conf</filename>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>--ingroup [nome]</term>
+<listitem>
+<para>
+Quando adicionar um novo usuário no sistema, coloca o usuário no grupo [nome]
+ao invés de criar um novo grupo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>--quiet</term>
+<listitem>
+<para>
+Não mostra mensagens durante a operação.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>--system</term>
+<listitem>
+<para>
+Cria um usuário de sistema ao invés de um usuário normal.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<para>
+Os dados do usuário são colocados no arquivo <filename>/etc/passwd</filename>
+após sua criação e os dados do grupo são colocados no arquivo
+<filename>/etc/group</filename>.
+</para>
+<!-- [ %OBS [ -->
+<para>
+OBSERVAÇÃO: Caso esteja usando senhas ocultas (shadow passwords), as senhas dos
+usuários serão colocadas no arquivo <filename>/etc/shadow</filename> e as
+senhas dos grupos no arquivo <filename>/etc/gshadow</filename>.  Isto aumenta
+mais a segurança do sistema porque somente o usuário <literal>root</literal>
+pode ter acesso a estes arquivos, ao contrário do arquivo
+<filename>/etc/passwd</filename> que possui os dados de usuários e devem ser
+lidos por todos.
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdc-addgroup"><info><title>addgroup</title></info>
+<para>
+Adiciona um novo grupo de usuários no sistema.  As opções usadas são as mesmas
+do <xref linkend="cmdc-adduser"/>.
+</para>
+<para>
+<command>addgroup</command> [<emphasis>usuário/grupo</emphasis>]
+[<emphasis>opções</emphasis>]
+</para>
+</section>
+
+
+<section xml:id="cmdc-passwd"><info><title>passwd</title></info>
+<para>
+Modifica a parametros e senha de usuário.  
+<!-- [ %DESCRICAOD [ --> Um usuário somente pode alterar a
+senha de sua conta, mas o superusuário (<literal>root</literal>) pode alterar a
+senha de qualquer conta de usuário, inclusive a data de validade da conta, etc.
+Os donos de grupos também podem alterar a senha do grupo com este comando.
+</para>
+<para>
+Os dados da conta do usuário como nome, endereço, telefone, também podem ser
+alterados com este comando.
+</para>
+<!-- ]]> -->
+<para>
+<command>passwd</command> [<emphasis>usuário</emphasis>]
+[<emphasis>opções</emphasis>]
+</para>
+<!-- [ %OPCOES [ --> 
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>usuário</emphasis></term>
+<listitem>
+<para>
+Nome do usuário que terá sua senha alterada.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-e</term>
+<listitem>
+<para>
+Força a expiração de senha para a conta especificada.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-k</term>
+<listitem>
+<para>
+Somente altera a senha se a conta estiver expirada.
+</para>
+</listitem>
+</varlistentry>
+<!-- [ %INTER-AVANC [ --> 
+<varlistentry>
+<term>-x [dias]</term>
+<listitem>
+<para>
+Especifica o número máximo de dias que a senha poderá ser usada.  Após terminar
+o prazo, a senha deverá ser modificada.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-i</term>
+<listitem>
+<para>
+Desativa a conta caso o usuário não tenha alterado sua senha após o tempo
+especificado por -x.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-n [dias]</term>
+<listitem>
+<para>
+Especifica o número mínimo de dias para a senha ser alterada.  O usuário não
+poderá mudar sua senha até que [dias] sejam atingidos desde a última alteração
+de senha.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-w [num]</term>
+<listitem>
+<para>
+Número de dias antecedentes que o usuário receberá o alerta para mudar sua
+senha.  O alerta ocorre [num] dias antes do limite da opção -x, avisando ao
+usuários quantos dias restam para a troca de sua senha.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-l [nome]</term>
+<listitem>
+<para>
+Bloqueia a conta do usuário [nome].  Deve ser usada pelo root.  O bloqueio da
+conta é feito acrescentando um caracter a senha para que não confira com a
+senha original.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-u [nome]</term>
+<listitem>
+<para>
+Desbloqueia a conta de um usuário bloqueada com a opção -l.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-S [nome]</term>
+<listitem>
+<para>
+Mostra o status da conta do usuário [nome].  A primeira parte é o nome do
+usuário seguido de L(conta bloqueada), NP(sem senha), ou P (com senha), a
+terceira parte é a data da última modificação da senha, a quarta parte é a
+período mínimo, máximo, alerta e o período de inatividade para a senha.
+</para>
+</listitem>
+</varlistentry>
+<!-- ]]> -->
+</variablelist>
+<!-- ]]> -->
+<para>
+Procure sempre combinar letras maiúsculas, minúsculas, e números ao escolher
+suas senhas.  Não é recomendado escolher palavras normais como sua senha pois
+podem ser vulneráveis a ataques de dicionários cracker.  Outra recomendação é
+utilizar <emphasis>senhas ocultas</emphasis> em seu sistema (<emphasis>shadow
+password</emphasis>).
+</para>
+<!-- [ %OBS [ --> 
+<para>
+Você deve ser o dono da conta para poder modificar a senhas.  O usuário root
+pode modificar/apagar a senha de qualquer usuário.
+</para>
+<!-- ]]> -->
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplo: <literal>passwd root</literal>.
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdc-gpasswd"><info><title>gpasswd</title></info>
+<para>
+Modifica parametros e senha de grupo.  
+<!-- [ %DESCRICAOD [ --> Um usuário somente pode alterar a senha
+de seu grupo, mas o superusuário (<literal>root</literal>) pode alterar a senha
+de qualquer grupo de usuário, inclusive definir o administrador do grupo. <!-- ]]> -->
+</para>
+<para>
+<command>gpasswd</command> [<emphasis>opções</emphasis>] [<emphasis>usuario</emphasis>]
+[<emphasis>grupo</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>usuário</emphasis></term>
+<listitem>
+<para>
+Nome do usuário/grupo que terá sua senha alterada.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-r <emphasis>usuario</emphasis> <emphasis>grupo</emphasis></term>
+<listitem>
+<para>
+Remove a senha de grupo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-R <emphasis>usuario</emphasis> <emphasis>grupo</emphasis></term>
+<listitem>
+<para>
+Desativa o acesso do grupo usando o comando <command>newgrp</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-a <emphasis>usuario</emphasis> <emphasis>grupo</emphasis></term>
+<listitem>
+<para>
+Adiciona o usuário no grupo especificado.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-d <emphasis>usuario</emphasis> <emphasis>grupo</emphasis></term>
+<listitem>
+<para>
+Apaga o usuário do gurpo especificado.
+</para>
+</listitem>
+</varlistentry>
+<!-- [ %INTER-AVANC [ -->
+<varlistentry>
+<term>-A [usuario] [grupo]</term>
+<listitem>
+<para>
+Define que o <emphasis>[usuario]</emphasis> será o administrador do
+<emphasis>[grupo]</emphasis>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-M [usuario] [grupo]</term>
+<listitem>
+<para>
+Define os usuários que fazem parte do <emphasis>grupo</emphasis> e suas
+permissões.
+</para>
+</listitem>
+</varlistentry>
+<!-- ]]> -->
+</variablelist>
+<!-- ]]> -->
+<para>
+Quando o grupo não possui senha, somente quem faz parte do grupo pode utilizar
+o comando new-grp.
+</para>
+<!-- [ %OBS [ -->
+<para>
+Você deve ser o dono da conta para poder modificar a senhas.  O usuário root
+pode modificar/apagar a senha de qualquer usuário.
+</para>
+<!-- ]]> -->
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplo: <literal>gpasswd grupo</literal>, <literal>gpasswd -a gleydson
+grupo</literal>.
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdc-newgrp"><info><title>newgrp</title></info>
+<para>
+Altera a identificação de grupo do usuário.  
+<!-- [ %DESCRICAOD [ --> Para retornar a identificação
+anterior, digite <literal>exit</literal> e tecle <literal>Enter</literal>.
+Para executar um comando com outra identificação de grupo de usuário, use o
+comando <xref linkend="cmdc-sg"/>. <!-- ]]> -->
+</para>
+<para>
+<command>newgrp</command> <emphasis>-</emphasis> [<emphasis>grupo</emphasis>]
+</para>
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>-</emphasis></term>
+<listitem>
+<para>
+Se usado, inicia um novo ambiente após o uso do comando
+<command>newgrp</command> (semelhante a um novo login no sistema), caso
+contrário, o ambiente atual do usuário é mantido.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>grupo</emphasis></term>
+<listitem>
+<para>
+Nome do grupo ou número do grupo que será incluído.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+Quando este comando é usado, é pedida a senha do grupo que deseja acessar.
+Caso a senha do grupo esteja incorreta ou não exista senha definida, a execução
+do comando é negada.  A listagem dos grupos que pertence atualmente pode ser
+feita usando o comando <xref linkend="cmdc-id"/>.
+</para>
+</section>
+
+
+<section xml:id="cmdc-userdel"><info><title>userdel</title></info>
+<para>
+Apaga um usuário do sistema.  
+<!-- [ %DESCRICAOD [ --> Quando é usado, este comando apaga todos os dados
+da conta especificado dos arquivos de contas do sistema. <!-- ]]> -->
+</para>
+<para>
+<command>userdel</command> [<emphasis>-r</emphasis>] [<emphasis>usuário</emphasis>]
+</para>
+<!-- [ %OPCOES [ --> 
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term>-r</term>
+<listitem>
+<para>
+Apaga também o diretório HOME do usuário.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<!-- [ %OBS [ --> 
+<para>
+OBS: Note que uma conta de usuário não poderá ser removida caso ele estiver no
+sistema, pois os programas podem precisar ter acesso aos dados dele (como UID,
+GID) no <filename>/etc/passwd</filename>.
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdc-groupdel"><info><title>groupdel</title></info>
+<para>
+Apaga um grupo do sistema.  
+<!-- [ %DESCRICAOD [ --> Quando é usado, este comando apaga todos os dados
+do grupo especificado dos arquivos de contas do sistema. <!-- ]]> -->
+</para>
+<para>
+<command>groupdel</command> [<emphasis>grupo</emphasis>]
+</para>
+<para>
+Tenha certeza que não existem arquivos/diretórios criados com o grupo apagado
+através do comando <command>find</command>.
+</para>
+<!-- [ %OBS [ -->
+<para>
+OBS: Você não pode remover o grupo primário de um usuário.  Remova o usuário
+primeiro.
+</para>
+<!-- ]]> -->
+</section>
+
+    <!-- [ %INTER-AVANC [ -->
+<section xml:id="cmdc-lastlog"><info><title>lastlog</title></info>
+<para>
+Mostra o último login dos usuários cadastrados no sistema.  
+<!-- [ %DESCRICAOD [ --> É mostrado o nome usado no login, o terminal onde 
+ocorreu a conexão e a hora da última conexão.
+Estes dados são obtidos através da pesquisa e formatação do arquivo
+<filename>/var/log/lastlog</filename>.  Caso o usuário não tenha feito login, é
+mostrada a mensagem <literal>** Never logged in **</literal>. <!-- ]]> -->
+</para>
+<para>
+<command>lastlog</command> [<emphasis>opções</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-t [dias]</term>
+<listitem>
+<para>
+Mostra somente os usuários que se conectaram ao sistema nos últimos [dias].
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-b [dias]</term>
+<listitem>
+<para>
+Mostra somente os usuários que se conectaram antes de [dias].
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-u [nome]</term>
+<listitem>
+<para>
+Mostra somente detalhes sobre o usuário [nome].
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<para>
+A opção -t substitui a opção -u caso sejam usadas.
+</para>
+</section>
+
+
+<section xml:id="cmdc-last"><info><title>last</title></info>
+<para>
+Mostra uma listagem de entrada e saída de usuários no sistema.  
+<!-- [ %DESCRICAOD [ --> São mostrados os seguintes campos na listagem:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+Nome do usuário
+</para>
+</listitem>
+<listitem>
+<para>
+Terminal onde ocorreu a conexão/desconexão
+</para>
+</listitem>
+<listitem>
+<para>
+O hostname (caso a conexão tenha ocorrido remotamente) ou console (caso tenha
+ocorrido localmente).
+</para>
+</listitem>
+<listitem>
+<para>
+A data do login/logout, a hora do login/down se estiver fora do sistema/ still
+logged in se ainda estiver usando o sistema
+</para>
+</listitem>
+<listitem>
+<para>
+Tempo (em Horas:Minutos) que esteve conectado ao sistema.
+</para>
+</listitem>
+</itemizedlist>
+<!-- ]]> -->
+<para>
+A listagem é mostrada em ordem inversa, ou seja, da data mais atual para a mais
+antiga.  A listagem feita pelo <command>last</command> é obtida de
+<filename>/var/log/wtmp</filename>.
+</para>
+<para>
+<command>last</command> [<emphasis>opções</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-n [num]</term>
+<listitem>
+<para>
+Mostra [num] linhas.  Caso não seja usada, todas as linhas são mostradas.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-R</term>
+<listitem>
+<para>
+Não mostra o campo HostName.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-a</term>
+<listitem>
+<para>
+Mostra o hostname na última coluna.  Será muito útil se combinada com a opção
+-d.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-d</term>
+<listitem>
+<para>
+Usa o DNS para resolver o IP de sistemas remotos para nomes DNS.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-x</term>
+<listitem>
+<para>
+Mostra as entradas de desligamento do sistema e alterações do nível de execução
+do sistema.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<para>
+O comando <command>last</command> pode ser seguido de um argumento que será
+pesquisado como uma expressão regular durante a listagem.
+</para>
+<!-- [ %OBS [ -->
+<para>
+O comando <command>last</command> usa o arquivo
+<filename>/var/log/wtmp</filename> para gerar sua listagem, mas alguns sistemas
+podem não possuir este arquivo.  O arquivo <filename>/var/log/wtmp</filename>
+somente é usado caso existir.  Você pode cria-lo com o comando <literal>"echo
+-n &gt;/var/log/wtmp"</literal> ou <literal>touch /var/log/wtmp</literal>. 
+</para>
+<!-- ]]> -->
+<!-- [ %EXEMPLO [ -->
+<itemizedlist>
+<listitem>
+<para>
+<literal>last</literal> - Mostra a listagem geral
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>last -a</literal> - Mostra a listagem geral incluindo o nome da
+máquina
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>last gleydson</literal> - Mostra somente atividades do usuário
+gleydson
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>last reboot</literal> - Mostra as reinicializações do sistema
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>last tty1</literal> - Mostra todas as atividades no tty1
+</para>
+</listitem>
+</itemizedlist>
+<!-- ]]> -->
+</section>
+    <!-- ]]> -->
+
+
+<section xml:id="cmdc-sg"><info><title>sg</title></info>
+<para>
+Executa um comando com outra identificação de grupo.  
+<!-- [ %DESCRICAOD [ --> A identificação do grupo
+de usuário é modificada somente durante a execução do comando.  Para alterar a
+identificação de grupo durante sua seção shell, use o comando <xref linkend="cmdc-newgrp"/>. <!-- ]]> -->
+</para>
+<para>
+<command>sg</command> [<emphasis>-</emphasis>] [<emphasis>grupo</emphasis>] [<emphasis>comando</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><literal>-</literal></term>
+<listitem>
+<para>
+Se usado, inicia um novo ambiente durante o uso do comando (semelhante a um
+novo login e execução do comando), caso contrário, o ambiente atual do usuário
+é mantido.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>grupo</literal></term>
+<listitem>
+<para>
+Nome do grupo que o comando será executado.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>comando</literal></term>
+<listitem>
+<para>
+Comando que será executado.  O comando será executado pelo bash.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<para>
+Quando este comando é usado, é pedida a senha do grupo que deseja acessar.
+Caso a senha do grupo esteja incorreta ou não exista senha definida, a execução
+do comando é negada.
+</para>
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplo: <literal>sg root ls /root</literal>
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdc-incluirgrupo"><info><title>Adicionando o usuário a um grupo extra</title></info>
+<para>
+Para adicionar um usuário em um novo grupo e assim permitir que ele acesse os
+arquivos/diretórios que pertencem àquele grupo, você deve estar como root e
+editar o arquivo <filename>/etc/group</filename> com o comando
+<command>vigr</command>.  Este arquivo possui o seguinte formato:
+</para>
+<para>
+NomedoGrupo:senha:GID:usuários
+</para>
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term>NomedoGrupo</term>
+<listitem>
+<para>
+É o nome daquele grupo de usuários.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>senha</term>
+<listitem>
+<para>
+Senha para ter acesso ao grupo.  Caso esteja utilizando senhas ocultas para
+grupos, as senhas estarão em <filename>/etc/gshadow</filename>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>GID</term>
+<listitem>
+<para>
+Identificação numérica do grupo de usuário.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>usuarios</term>
+<listitem>
+<para>
+Lista de usuários que também fazem parte daquele grupo.  Caso exista mais de um
+nome de usuário, eles devem estar separados por vírgula.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+Deste modo para acrescentar o usuário "joao" ao grupo <literal>audio</literal>
+para ter acesso aos dispositivos de som do Linux, acrescente o nome no final da
+linha: "audio:x:100:joao".  Pronto, basta digitar <literal>logout</literal> e
+entrar novamente com seu nome e senha, você estará fazendo parte do grupo
+<literal>audio</literal> (confira digitando <literal>groups</literal> ou
+<literal>id</literal>).
+</para>
+<para>
+Outros nomes de usuários podem ser acrescentados ao grupo
+<literal>audio</literal> bastando separar os nomes com vírgula.  Você também
+pode usar o comando <command>adduser</command> da seguinte forma para adicionar
+automaticamente um usuário a um grupo:
+</para>
+<screen>
+adduser joao audio
+</screen>
+<para>
+Isto adicionaria o usuário "joao" ao grupo <literal>audio</literal> da mesma
+forma que fazendo-se a edição manualmente.
+</para>
+</section>
+
+
+<section xml:id="cmdc-chfn"><info><title>chfn</title></info>
+<para>
+Muda os dados usados pelo comando <xref linkend="cmdn-finger"/>.
+</para>
+<para>
+<command>chfn</command> [<emphasis>usuário</emphasis>]
+[<emphasis>opções</emphasis>]
+</para>
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>usuário</emphasis></term>
+<listitem>
+<para>
+Nome do usuário.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-f [nome]</term>
+<listitem>
+<para>
+Adiciona/altera o nome completo do usuário.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-r [nome]</term>
+<listitem>
+<para>
+Adiciona/altera o número da sala do usuário.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-w [tel]</term>
+<listitem>
+<para>
+Adiciona/altera o telefone de trabalho do usuário.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-h [tel]</term>
+<listitem>
+<para>
+Adiciona/altera o telefone residencial do usuário.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-o [outros]</term>
+<listitem>
+<para>
+Adiciona/altera outros dados do usuário.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+Caso o nome que acompanha as opções (como o nome completo) contenha espaços,
+use "" para identifica-lo.
+</para>
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplo: <literal>chfn -f "Nome do Usuário root" root</literal>
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdc-id"><info><title>id</title></info>
+<para>
+Mostra a identificação atual do usuário, grupo primário e outros grupos que
+pertence.
+</para>
+<para>
+<command>id</command> [<emphasis>opções</emphasis>]
+[<emphasis>usuário</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>usuário</emphasis></term>
+<listitem>
+<para>
+É o usuário que desejamos ver a identificação, grupos primários e
+complementares.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-g, --group</term>
+<listitem>
+<para>
+Mostra somente a identificação do grupo primário.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-G, --groups</term>
+<listitem>
+<para>
+Mostra a identificação de outros grupos que pertence.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-n, --name</term>
+<listitem>
+<para>
+Mostra o nome do usuário e grupo ao invés da identificação numérica.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-u, --user</term>
+<listitem>
+<para>
+Mostra somente a identificação do usuário (user ID).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-r, --real</term>
+<listitem>
+<para>
+Mostra a identificação real de usuário e grupo, ao invés da efetiva.  Esta
+opção deve ser usada junto com uma das opções: -u, -g, ou -G.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<para>
+Caso não sejam especificadas opções, <command>id</command> mostrará todos os
+dados do usuário.
+</para>
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplo: <literal>id</literal>, <literal>id --user</literal>, <literal>id -r
+-u</literal>.
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdc-logname"><info><title>logname</title></info>
+<para>
+Mostra seu login (username).
+</para>
+<para>
+<literal>logname</literal>
+</para>
+</section>
+
+<section xml:id="cmdc-users"><info><title>users</title></info>
+<para>
+Mostra os nomes de usuários usando atualmente o sistema.  
+<!-- [ %DESCRICAOD [ --> Os nomes de usuários
+são mostrados através de espaços sem detalhes adicionais, para ver maiores
+detalhes sobre os usuários, veja os comandos <xref linkend="cmdc-id"/> e <xref linkend="cmdn-who"/>. <!-- ]]> -->
+</para>
+<para>
+<literal>users</literal>
+</para>
+<para>
+Os nomes de usuários atualmente conectados ao sistema são obtidos do arquivo
+<filename>/var/log/wtmp</filename>.
+</para>
+</section>
+
+
+<section xml:id="cmdc-groups"><info><title>groups</title></info>
+<para>
+Mostra os grupos que o usuário pertence.
+</para>
+<para>
+<command>groups</command> [<emphasis>usuário</emphasis>]
+</para>
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplo: <literal>groups</literal>, <literal>groups root</literal>
+</para>
+<!-- ]]> -->
+</section>
+
+</chapter>

@@ -1,0 +1,155 @@
+<!-- Converted by db4-upgrade version 1.0 -->
+<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="redir"><info><title>Redirecionamentos e Pipe</title></info>
+<para>
+Esta seção explica o funcionamento dos recursos de direcionamento de entrada e
+saída do sistema <command>GNU/Linux</command>.
+</para>
+
+
+<section xml:id="redir-maior"><info><title>&gt;</title></info>
+<para>
+Redireciona a saída padrão de um programa/comando/script para algum dispositivo
+ou arquivo ao invés do dispositivo de saída padrão (tela).  
+<!-- [ %DESCRICAOD [ --> Quando é usado com arquivos, este redirecionamento cria ou 
+substitui o conteúdo do arquivo. <!-- ]]> -->
+</para>
+<para>
+Por exemplo, você pode usar o comando <command>ls</command> para listar
+arquivos e usar <literal>ls &gt;listagem</literal> para enviar a saída do
+comando para o arquivo <filename>listagem</filename>.  Use o comando
+<command>cat</command> para visualizar o conteúdo do arquivo
+<filename>listagem</filename>.
+</para>
+<para>
+O mesmo comando pode ser redirecionado para o segundo console
+<filename>/dev/tty2</filename> usando: <literal>ls &gt;/dev/tty2</literal>, o
+resultado do comando <command>ls</command> será mostrado no segundo console
+(pressione <literal>ALT</literal> e <literal>F2</literal> para mudar para o
+segundo console e <literal>ALT</literal> e <literal>F1</literal> para retornar
+ao primeiro).  O mesmo resultado pode ser obtido com o comando <literal>ls
+1&gt;/dev/tty2</literal>, sendo que o número <literal>1</literal> indica que
+será capturada a saída padrão do comando.
+</para>
+<para>
+Para redirecionar somente a saída de erros do comando <command>ls</command>,
+use a sintaxe: <literal>ls 2&gt;/tmp/erros-do-ls</literal>
+</para>
+</section>
+
+
+<section xml:id="redir-maior2"><info><title>&gt;&gt;</title></info>
+<para>
+Redireciona a saída padrão de um programa/comando/script para algum dispositivo
+ou adiciona as linhas ao final de arquivo ao invés do dispositivo de saída
+padrão (tela).  
+<!-- [ %DESCRICAOD [ --> A diferença entre este redirecionamento duplo e o simples, é se
+caso for usado com arquivos, adiciona a saída do comando ao final do arquivo
+existente ao invés de substituir seu conteúdo. <!-- ]]> -->
+</para>
+<para>
+Por exemplo, você pode acrescentar a saída do comando <command>ls</command> ao
+arquivo <filename>listagem</filename> do capítulo anterior usando <literal>ls /
+&gt;&gt;listagem</literal>.  Use o comando <command>cat</command> para
+visualizar o conteúdo do arquivo <filename>listagem</filename>.
+</para>
+</section>
+
+
+<section xml:id="redir-menor"><info><title>&lt;</title></info>
+<para>
+Direciona a entrada padrão de arquivo/dispositivo para um comando.  Este
+comando faz o contrário do anterior, ele envia dados ao comando.
+</para>
+<para>
+Você pode usar o comando <literal>cat &lt;teste.txt</literal> para enviar o
+conteúdo do arquivo <filename>teste.txt</filename> ao comando
+<command>cat</command> que mostrará seu conteúdo (é claro que o mesmo resultado
+pode ser obtido com <literal>cat teste.txt</literal> mas este exemplo serviu
+para mostrar a funcionalidade do &lt;).
+</para>
+</section>
+
+
+<section xml:id="redir-menor2"><info><title>&lt;&lt;</title></info>
+<para>
+Este redirecionamento serve principalmente para marcar o fim de exibição de um
+bloco.  Este é especialmente usado em conjunto com o comando
+<command>cat</command>, mas também tem outras aplicações.  Por exemplo:
+</para>
+<screen>
+ cat &lt;&lt; final
+este arquivo
+será mostrado
+até que a palavra final seja 
+localizada no inicio da linha
+final
+</screen>
+</section>
+
+
+<section xml:id="redir-pipe"><info><title>| (pipe)</title></info>
+<para>
+Envia a saída de um comando para a entrada do próximo comando para continuidade
+do processamento.  Os dados enviados são processados pelo próximo comando que
+mostrará o resultado do processamento.
+</para>
+<para>
+Por exemplo: <literal>ls -la | more</literal>, este comando faz a listagem
+longa de arquivos que é enviado ao comando <command>more</command> (que tem a
+função de efetuar uma pausa a cada 25 linhas do arquivo).
+</para>
+<para>
+Outro exemplo é o comando <literal>locate find | grep "bin/"</literal>, neste
+comando todos os caminhos/arquivos que contém <emphasis>find</emphasis> na
+listagem serão mostrados (inclusive man pages, bibliotecas, etc.), então
+enviamos a saída deste comando para <literal>grep "bin/"</literal> para mostrar
+somente os diretórios que contém binários.  Mesmo assim a listagem ocupe mais
+de uma tela, podemos acrescentar o <command>more</command>: <literal>locate
+find | grep "bin/" | more</literal>.
+</para>
+<para>
+Podem ser usados mais de um comando de redirecionamento (&lt;, &gt;, |) em um
+mesmo comando.
+</para>
+</section>
+
+
+<section xml:id="s14.6"><info><title>Diferença entre o "|" e o "&gt;"</title></info>
+<para>
+A principal diferença entre o "|" e o "&gt;", é que o Pipe envolve
+processamento entre comandos, ou seja, a saída de um comando é enviado a
+entrada do próximo e o "&gt;" redireciona a saída de um comando para um
+arquivo/dispositivo.
+</para>
+<para>
+Você pode notar pelo exemplo acima (<literal>ls -la | more</literal>) que ambos
+<literal>ls</literal> e <literal>more</literal> são comandos porque estão
+separados por um "|".  Se um deles não existir ou estiver digitado
+incorretamente, será mostrada uma mensagem de erro.
+</para>
+<para>
+Um resultado diferente seria obtido usando um <literal>"&gt;"</literal> no
+lugar do <literal>"|"</literal>; A saída do comando <literal>ls -la &gt;
+more</literal> seria gravada em um arquivo chamado <filename>more</filename>.
+</para>
+</section>
+
+
+<section xml:id="redir-tee"><info><title>tee</title></info>
+<para>
+Envia ao mesmo tempo o resultado do programa para a saída padrão (tela) e para
+um arquivo.  Este comando deve ser usado com o pipe "|".
+</para>
+<para>
+<command>comando</command> | <command>tee</command> [<emphasis>arquivo</emphasis>]
+</para>
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplo: <literal>ls -la | tee listagem.txt</literal>, a saída do comando será
+mostrada normalmente na tela e ao mesmo tempo gravada no arquivo
+<filename>listagem.txt</filename>.
+</para>
+<!-- ]]> -->
+</section>
+
+</chapter>

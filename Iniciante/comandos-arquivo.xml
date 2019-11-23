@@ -1,0 +1,552 @@
+<!-- Converted by db4-upgrade version 1.0 -->
+<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="cmd"><info><title>Comandos para manipulação de Arquivos</title></info>
+<para>
+Abaixo, comandos utilizados para manipulação de arquivos.
+</para>
+<section xml:id="comandos-cat"><info><title>cat</title></info>
+<para>
+Mostra o conteúdo de um arquivo binário ou texto.
+</para>
+<para>
+<command>cat</command> [opções] [<emphasis>diretório/arquivo</emphasis>]
+[<emphasis>diretório1/arquivo1</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<variablelist>
+<varlistentry>
+<term><emphasis>diretório/arquivo</emphasis></term>
+<listitem>
+<para>
+Localização do arquivo que deseja visualizar o conteúdo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-n, --number</term>
+<listitem>
+<para>
+Mostra o número das linhas enquanto o conteúdo do arquivo é mostrado.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-s, --squeeze-blank</term>
+<listitem>
+<para>
+Não mostra mais que uma linha em branco entre um parágrafo e outro.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-</term>
+<listitem>
+<para>
+Lê a entrada padrão.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<para>
+O comando <command>cat</command> trabalha com arquivos texto.  Use o comando
+<command>zcat</command> para ver diretamente arquivos compactados com
+<command>gzip</command>.
+</para>
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplo: <literal>cat /usr/doc/copyright/GPL</literal>
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="comando-tac"><info><title>tac</title></info>
+<para>
+Mostra o conteúdo de um arquivo binário ou texto (como o
+<command>cat</command>) só que em ordem inversa.
+</para>
+<para>
+<command>tac</command> [opções] [<emphasis>diretório/arquivo</emphasis>]
+[<emphasis>diretório1/arquivo1</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<variablelist>
+<varlistentry>
+<term><emphasis>diretório/arquivo</emphasis></term>
+<listitem>
+<para>
+Localização do arquivo que deseja visualizar o conteúdo
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-s [string]</term>
+<listitem>
+<para>
+Usa o [string] como separador de registros.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-</term>
+<listitem>
+<para>
+Lê a entrada padrão.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplo: <literal>tac /usr/doc/copyright/GPL</literal>.
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="comando-rm"><info><title>rm</title></info>
+<para>
+Apaga arquivos.  Também pode ser usado para apagar diretórios e sub-diretórios
+vazios ou que contenham arquivos.
+</para>
+<para>
+<command>rm</command>
+[<emphasis>opções</emphasis>][<emphasis>caminho</emphasis>][<emphasis>arquivo/diretório</emphasis>]
+[<emphasis>caminho1</emphasis>][<emphasis>arquivo1/diretório1</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>caminho</emphasis></term>
+<listitem>
+<para>
+Localização do arquivo que deseja apagar.  Se omitido, assume que o arquivo
+esteja no diretório atual.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>arquivo/diretório</emphasis></term>
+<listitem>
+<para>
+Arquivo que será apagado.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-i, --interactive</term>
+<listitem>
+<para>
+Pergunta antes de remover, esta é ativada por padrão.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-v, --verbose</term>
+<listitem>
+<para>
+Mostra os arquivos na medida que são removidos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-r, --recursive</term>
+<listitem>
+<para>
+Usado para remover arquivos em sub-diretórios.  Esta opção também pode ser
+usada para remover sub-diretórios.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-f, --force</term>
+<listitem>
+<para>
+Remove os arquivos sem perguntar.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-- arquivo</term>
+<listitem>
+<para>
+Remove arquivos/diretórios que contém caracteres especiais.  O separador "--"
+funciona com todos os comandos do shell e permite que os caracteres especiais
+como "*", "?", "-", etc.  sejam interpretados como caracteres comuns.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<para>
+Use com atenção o comando <command>rm</command>, uma vez que os arquivos e
+diretórios forem apagados, eles não poderão ser mais recuperados.
+</para>
+
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplos:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>rm teste.txt</literal> - Apaga o arquivo
+<filename>teste.txt</filename> no diretório atual.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rm *.txt</literal> - Apaga todos os arquivos do diretório atual que
+terminam com <filename>.txt</filename>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rm *.txt teste.novo</literal> - Apaga todos os arquivos do diretório
+atual que terminam com <filename>.txt</filename> e também o arquivo
+<filename>teste.novo</filename>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rm -rf /tmp/teste/*</literal> - Apaga todos os arquivos e
+sub-diretórios do diretório <filename>/tmp/teste</filename> mas mantém o
+sub-diretório <filename>/tmp/teste</filename>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rm -rf /tmp/teste</literal> - Apaga todos os arquivos e sub-diretórios
+do diretório <filename>/tmp/teste</filename>, inclusive
+<filename>/tmp/teste</filename>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rm -f -- --arquivo--</literal> - Remove o arquivo de nome
+<filename>--arquivo--</filename>.
+</para>
+</listitem>
+</itemizedlist>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="comando-cp"><info><title>cp</title></info>
+<para>
+Copia arquivos.
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+<command>cp</command> [<emphasis>opções</emphasis>] [<emphasis>origem</emphasis>]
+[<emphasis>destino</emphasis>]
+</para>
+<para>
+onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>origem</emphasis></term>
+<listitem>
+<para>
+Arquivo que será copiado.  Podem ser especificados mais de um arquivo para ser
+copiado usando "coringas" (veja <xref linkend="basico-coringas"/>).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>destino</emphasis></term>
+<listitem>
+<para>
+O caminho ou nome de arquivo onde será copiado.  Se o destino for um diretório,
+os arquivos de origem serão copiados para dentro do diretório.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>i, --interactive</term>
+<listitem>
+<para>
+Pergunta antes de substituir um arquivo existente.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-f, --force</term>
+<listitem>
+<para>
+Não pergunta, substitui todos os arquivos caso já exista.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-r</term>
+<listitem>
+<para>
+Copia arquivos dos diretórios e subdiretórios da origem para o destino.  É
+recomendável usar -R ao invés de -r.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-R, --recursive</term>
+<listitem>
+<para>
+Copia arquivos e sub-diretórios (como a opção -r) e também os arquivos
+especiais FIFO e dispositivos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-v, --verbose</term>
+<listitem>
+<para>
+Mostra os arquivos enquanto estão sendo copiados.
+</para>
+</listitem>
+</varlistentry>
+<!-- [ %INTERMEDIARIO [ -->
+<varlistentry>
+<term>-s, --simbolic-link</term>
+<listitem>
+<para>
+Cria link simbólico ao invés de copiar.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-l, --link</term>
+<listitem>
+<para>
+Faz o link no destino ao invés de copiar os arquivos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-p, --preserve</term>
+<listitem>
+<para>
+Preserva atributos do arquivo, se for possível.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-u, --update</term>
+<listitem>
+<para>
+Copia somente se o arquivo de origem é mais novo que o arquivo de destino ou
+quando o arquivo de destino não existe.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-x</term>
+<listitem>
+<para>
+Não copia arquivos que estão localizados em um sistema de arquivos diferente de
+onde a cópia iniciou.
+</para>
+</listitem>
+</varlistentry>
+<!-- ]]> -->
+</variablelist>
+<!-- ]]> -->
+<para>
+O comando <command>cp</command> copia arquivos da ORIGEM para o DESTINO.  Ambos
+origem e destino terão o mesmo conteúdo após a cópia.
+</para>
+
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplos:
+</para>
+<variablelist>
+<varlistentry>
+<term><literal>cp teste.txt teste1.txt</literal></term>
+<listitem>
+<para>
+Copia o arquivo <filename>teste.txt</filename> para
+<filename>teste1.txt</filename>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>cp teste.txt /tmp</literal></term>
+<listitem>
+<para>
+Copia o arquivo <filename>teste.txt</filename> para dentro do diretório
+<filename>/tmp</filename>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>cp * /tmp</literal></term>
+<listitem>
+<para>
+Copia todos os arquivos do diretório atual para <filename>/tmp</filename>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>cp /bin/* .</literal></term>
+<listitem>
+<para>
+Copia todos os arquivos do diretório <filename>/bin</filename> para o diretório
+em que nos encontramos no momento.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>cp -R /bin /tmp</literal></term>
+<listitem>
+<para>
+Copia o diretório <filename>/bin</filename> e todos os arquivos/sub-diretórios
+existentes para o diretório <filename>/tmp</filename>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>cp -R /bin/* /tmp</literal></term>
+<listitem>
+<para>
+Copia todos os arquivos do diretório <filename>/bin</filename> (exceto o
+diretório <filename>/bin</filename>) e todos os arquivos/sub-diretórios
+existentes dentro dele para <filename>/tmp</filename>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>cp -R /bin /tmp</literal></term>
+<listitem>
+<para>
+Copia todos os arquivos e o diretório <filename>/bin</filename> para
+<filename>/tmp</filename>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="comando-mv"><info><title>mv</title></info>
+<para>
+Move ou renomeia arquivos e diretórios.  
+<!-- [ %DESCRICAOD [ --> O processo é semelhante ao do comando 
+<command>cp</command> mas o arquivo de origem é apagado após o término da
+cópia. <!-- ]]> -->
+</para>
+<para>
+<command>mv</command> [<emphasis>opções</emphasis>] [<emphasis>origem</emphasis>]
+[<emphasis>destino</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>origem</emphasis></term>
+<listitem>
+<para>
+Arquivo/diretório de origem.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>destino</emphasis></term>
+<listitem>
+<para>
+Local onde será movido ou novo nome do arquivo/diretório.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-f, --force</term>
+<listitem>
+<para>
+Substitui o arquivo de destino sem perguntar.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-i, --interactive</term>
+<listitem>
+<para>
+Pergunta antes de substituir.  É o padrão.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-v, --verbose</term>
+<listitem>
+<para>
+Mostra os arquivos que estão sendo movidos.
+</para>
+</listitem>
+</varlistentry>
+
+<!-- [ %INTERMEDIARIO [ -->
+<varlistentry>
+<term>-u, --update</term>
+<listitem>
+<para>
+Move somente arquivos antigos, ou novos arquivos.
+</para>
+</listitem>
+</varlistentry>
+<!-- ]]> -->
+
+</variablelist>
+<!-- ]]> -->
+<para>
+O comando <command>mv</command> copia um arquivo da <emphasis>ORIGEM</emphasis>
+para o <emphasis>DESTINO</emphasis> (semelhante ao <command>cp</command>), mas
+após a cópia, o arquivo de <emphasis>ORIGEM</emphasis> é apagado.
+</para>
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplos:
+</para>
+<variablelist>
+<varlistentry>
+<term><literal>mv teste.txt teste1.txt</literal></term>
+<listitem>
+<para>
+Muda o nome do arquivo <filename>teste.txt</filename> para
+<filename>teste1.txt</filename>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>mv teste.txt /tmp</literal></term>
+<listitem>
+<para>
+Move o arquivo teste.txt para <filename>/tmp</filename>.  Lembre-se que o
+arquivo de origem é apagado após ser movido.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>mv teste.txt teste.new</literal> (supondo que <filename>teste.new</filename> já exista)</term>
+<listitem>
+<para>
+Copia o arquivo <filename>teste.txt</filename> por cima de
+<filename>teste.new</filename> e apaga <filename>teste.txt</filename> após
+terminar a cópia.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+<!-- ]]> -->
+</chapter>

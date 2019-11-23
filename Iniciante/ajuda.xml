@@ -1,0 +1,5321 @@
+<!-- Converted by db4-upgrade version 1.0 -->
+<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="ajuda"><info><title>Como obter ajuda</title></info>
+<para>
+Dúvidas são comuns durante o aprendizado e uso do <command>Linux</command> e existem
+várias maneiras de se obter ajuda e encontrar a resposta para algum problema.
+O <command>GNU/Linux</command> é um sistema bem documentado, e ter um programa
+bem documentado é o princípio para seu sucesso junto a utilizadores e desenvolvedores,
+pois demonstra a dedicação de seu desenvolvedor em garantir boa usabilidade.
+Abaixo segue algumas formas úteis para encontrar a solução de sua dúvida, vale
+a pena conhece-las.
+</para>
+
+
+<section xml:id="ajuda-man"><info><title>Páginas de Manual</title></info>
+<para>
+As <emphasis>páginas de manual</emphasis> acompanham quase todos os programas
+<command>GNU/Linux</command>. Elas trazem uma descrição básica do
+comando/programa e detalhes sobre o funcionamento de opção.  
+<!-- [ %DESCRICAOD [ --> É mais comum fazer a visualização de uma página de manual
+em modo texto, com rolagem vertical, em geral com a aparência de arquivos
+visualizados com os comandos <command>less</command> e <command>more</command>.  
+Também documenta parâmetros usados em alguns arquivos de configuração. <!-- ]]> -->
+</para>
+<para>
+A utilização da página de manual é simples, digite:
+</para>
+<para>
+<command>man</command> [<emphasis>seção</emphasis>]
+[<emphasis>comando/arquivo</emphasis>]
+</para>
+<!-- [ %OPCOES [ --> 
+<para>
+<emphasis>onde:</emphasis>
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>seção</emphasis></term>
+<listitem>
+<para>
+É a seção de manual que será aberta, se omitido, mostra a
+<emphasis>primeira</emphasis> seção sobre o comando encontrada (em ordem
+crescente).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>comando/arquivo</emphasis></term>
+<listitem>
+<para>
+Comando/arquivo que deseja pesquisar.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<para>
+A navegação dentro das páginas de manual é feita usando-se as teclas abaixo:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+q - Sai da página de manual
+</para>
+</listitem>
+<listitem>
+<para>
+PageDown ou f - Rola uma página abaixo (25 linhas em consoles tradicionais 80x25)
+</para>
+</listitem>
+<listitem>
+<para>
+PageUP ou w - Rola uma página acima (25 linhas em consoles tradicionais 80x25)
+</para>
+</listitem>
+<listitem>
+<para>
+SetaAcima ou k - Rola 1 linha acima
+</para>
+</listitem>
+<listitem>
+<para>
+SetaAbaixo ou e - Rola 1 linha abaixo
+</para>
+</listitem>
+<listitem>
+<para>
+r - Redesenha a tela (refresh)
+</para>
+</listitem>
+<listitem>
+<para>
+p ou g - Inicio da página
+</para>
+</listitem>
+<listitem>
+<para>
+h - Ajuda sobre as teclas e atalhes da página de manual
+</para>
+</listitem>
+<listitem>
+<para>
+s - Salva a página de manual em formato texto no arquivo especificado (por
+exemplo: <filename>/tmp/ls</filename>).
+</para>
+</listitem>
+</itemizedlist>
+<!-- [ %INTER-AVANC [ --> 
+<para>
+Cada seção da página de manual contém explicações sobre uma determinada parte
+do sistema.  As seções são organizadas em diretórios separados e localizadas no
+diretório 
+<!-- [ %DEBIAN [ --> <filename>/usr/man</filename> <!-- ]]> -->.  Os programas/arquivos são
+classificados nas seguintes seções:
+</para>
+<orderedlist numeration="arabic">
+<listitem>
+<para>
+Programas executáveis ou comandos internos
+</para>
+</listitem>
+<listitem>
+<para>
+Chamadas do sistema (funções oferecidas pelo kernel)
+</para>
+</listitem>
+<listitem>
+<para>
+Chamadas de Bibliotecas (funções dentro de bibliotecas do sistema)
+</para>
+</listitem>
+<listitem>
+<para>
+Arquivos especiais (normalmente encontrados no diretório
+<filename>/dev</filename>)
+</para>
+</listitem>
+<listitem>
+<para>
+Formatos de arquivos e convenções (<filename>/etc/inittab</filename> por
+exemplo).
+</para>
+</listitem>
+<listitem>
+<para>
+Jogos
+</para>
+</listitem>
+<listitem>
+<para>
+Pacotes de macros e convenções (por exemplo <command>man</command>)
+</para>
+</listitem>
+<listitem>
+<para>
+Comandos de Administração do sistema (normalmente usados pelo root)
+</para>
+</listitem>
+<listitem>
+<para>
+Rotinas do kernel (não padrões)
+</para>
+</listitem>
+</orderedlist>
+<para>
+A documentação de um programa também pode ser encontrada em 2 ou mais
+categorias, como é o caso do arquivo <filename>host_access</filename> que é
+documentado na seção 3 (bibliotecas) e 5 (formatos de arquivo e convenções).  Por 
+este motivo é necessário digitar <literal>man 5 hosts_access</literal> para ler a
+página sobre o formato do arquivo, porque o comando <command>man</command>
+procura a página de manual nas seções em ordem crescente e a digitação do
+comando <command>man hosts_access</command> abriria a seção 3.
+</para>
+<para>
+As páginas de manual contém algumas regras para facilitar a compreensão do
+comando:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+Texto Negrito - Deve ser digitado exatamente como é mostrado
+</para>
+</listitem>
+<listitem>
+<para>
+[bla bla bla] - Qualquer coisa dentro de <literal>[]</literal> são opcionais
+</para>
+</listitem>
+</itemizedlist>
+<!-- ]]> -->
+<!-- [ %EXEMPLO [ --> 
+<para>
+Exemplo, <literal>man ls</literal>, <literal>man 5 hosts_access</literal>.
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="ajuda-info"><info><title>Info Pages</title></info>
+<para>
+Idêntico as páginas de manual, mas utiliza a ligação (links) em textos
+indicados por um '*', levando diretamente a ítens da infopage, ou para
+outras info pages relacionadas com o tópico estudado.
+Se pressionarmos &lt;Enter&gt; em cima 
+de uma palavra destacada, a <command>infopages</command> nos levará a seção 
+correspondente.  
+<!-- [ %DESCRICAOD [ --> 
+A <emphasis>info
+pages</emphasis> é útil quando sabemos o nome do comando e queremos saber para
+o que ele serve.  Assim como o <command>man</command>, também traz explicações 
+detalhadas sobre uso, opções e comandos. <!-- ]]> -->
+</para>
+<para>
+Para usar a info pages, digite:
+</para>
+<para>
+<command>info</command> [<emphasis>comando/programa</emphasis>]
+</para>
+<para>
+Se o nome do <emphasis>comando/programa</emphasis> não for digitado, a info
+pages mostra a lista de todos os manuais de
+<emphasis>comandos/programas</emphasis> disponíveis.  A <emphasis>info
+pages</emphasis> possui algumas teclas de navegação úteis:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+q - Sai da info pages
+</para>
+</listitem>
+<listitem>
+<para>
+?  - Mostra a tela de ajuda (que contém a lista completa de teclas de navegação
+e muitos outras opções).
+</para>
+</listitem>
+<listitem>
+<para>
+n - Avança para a próxima página
+</para>
+</listitem>
+<listitem>
+<para>
+p - Volta uma página
+</para>
+</listitem>
+<listitem>
+<para>
+u - Sobre um nível do conteúdo (até checar ao índice de documentos)
+</para>
+</listitem>
+<listitem>
+<para>
+m - Permite usar a localização para encontrar uma página do
+<command>info</command>.  Pressione <literal>m</literal>, digite o comando e
+tecle &lt;Enter&gt; que será levado automaticamente a página correspondente. 
+Caso não digite nada e aperte a tecla <literal>TAB</literal>, o <command>info</command>
+lhe mostrará todas as opções disponíveis de busca.
+</para>
+</listitem>
+<listitem>
+<para>
+d - Volta ao índice de documentos.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Existem muitos outras teclas de navegação úteis na info pages, mas estas são as
+mais usadas.  Para mais detalhes, entre no programa <command>info</command> e
+pressione <literal>?</literal>.
+</para>
+<!-- [ %EXEMPLO [ --> 
+<para>
+Exemplo, <literal>info cvs</literal>.
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="ajuda-helponline"><info><title>Ajuda na própria linha de comandos</title></info>
+<para>
+Ajuda rápida, sendo útil para sabermos quais opções podem ser usadas com o
+comando/programa.  
+<!-- [ %DESCRICAOD [ --> Quase todos os comandos/programas
+<command>GNU/Linux</command> oferecem este recurso útil para consultas
+rápidas (e quando não precisamos dos detalhes das páginas de manual).  Deve 
+quando se sabe o nome do programa. <!-- ]]> -->
+ Para acionar a <emphasis>ajuda on line</emphasis>, digite:
+</para>
+<para>
+[<emphasis>comando</emphasis>] --help
+</para>
+<!-- [ %OPCOES [ --> 
+<para>
+<emphasis>comando</emphasis> - é o comando/programa que desejamos ter uma
+explicação rápida.
+</para> <!-- ]]> -->
+<!-- [ %OBS [ --> 
+<para>
+O Help on Line não funciona com comandos internos (embutidos no Bash), devendo 
+ser usado o comando <literal>man builtins</literal> ou o <literal>help comando</literal>
+para obter ajuda.
+</para>
+<!-- ]]> -->
+<!-- [ %EXEMPLO [ --> 
+<para>
+Por exemplo, <literal>ls --help</literal>.
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="ajuda-help"><info><title>help</title></info>
+<para>
+Ajuda rápida, útil para saber que opções podem ser usadas com os
+<emphasis>comandos internos</emphasis> do interpretador de comandos.  
+<!-- [ %DESCRICAOD [ --> O comando <command>help</command> somente mostra a ajuda para 
+comandos internos, para ter uma ajuda similar para comandos externos, veja <xref linkend="ajuda-helponline"/>. <!-- ]]> -->
+Para usar o <command>help</command> digite:
+</para>
+<para>
+<command>help</command> [<emphasis>comando</emphasis>]
+</para>
+<!-- [ %EXEMPLO [ -->
+<para>
+Por exemplo, <literal>help echo</literal>, <literal>help exit</literal>
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="ajuda-apropos"><info><title>apropos</title></info>
+<para>
+Apropos procura por <emphasis>programas/comandos</emphasis> através da
+descrição.  
+<!-- [ %DESCRICAOD [ --> É útil quando precisamos fazer alguma coisa mas não sabemos qual
+comando usar.  Ele faz sua pesquisa nas páginas de manual existentes no sistema
+e lista os comandos/programas que atendem a consulta.  <!-- ]]> --> Para usar o comando
+<command>apropos</command> digite:
+</para>
+<para>
+<command>apropos</command> [<emphasis>descrição</emphasis>]
+</para>
+<!-- [ %EXEMPLO [ --> 
+<para>
+Digitando <literal>apropos copy</literal>, será mostrado todos os comandos que
+tem a palavra <literal>copy</literal> em sua descrição (provavelmente os
+programas que copiam arquivos, mas podem ser mostrados outros também).
+</para>
+<!-- ]]> -->
+</section>
+
+<section xml:id="ajuda-whatis"><info><title>whatis</title></info>
+<para>
+O <command>whatis</command> exibe a função do comando especificado como argumento. 
+<!-- [ %DESCRICAOD [ --> Útil quando estamos na dúvida sobre o que determinado programa faz. <!-- ]]> -->
+Para usar o comando <command>whatis</command> digite:
+</para>
+<para>
+<command>whatis</command> [<emphasis>programa/comando</emphasis>]
+</para>
+<!-- [ %EXEMPLO [ --> 
+<para>
+Digitando <literal>whatis ls</literal>, lhe será mostrada a descrição do comando 
+<command>ls</command>.
+</para>
+<!-- ]]> -->
+</section>
+
+<section xml:id="ajuda-locate"><info><title>locate</title></info>
+<para>
+Localiza uma palavra na estrutura de arquivos/diretórios do sistema.  
+<!-- [ %DESCRICAOD [ --> É útil quando queremos localizar onde um comando ou programa se encontra (para
+copia-lo, curiosidade, etc).  A pesquisa é feita em um banco de dados
+construído com o comando <command>updatedb</command> sendo feita a partir do
+diretório raíz <literal>/</literal> e sub-diretórios. <!-- ]]> --> Para fazer uma consulta
+com o <command>locate</command> usamos:
+</para>
+<para>
+<command>locate</command> [<emphasis>expressão</emphasis>]
+</para>
+<para>
+A <emphasis>expressão</emphasis> deve ser o nome de um arquivo diretório ou
+ambos que serão procurados na estrutura de diretórios do sistema.  Como a
+consulta por um programa costuma localizar também sua página de manual, é
+recomendável usar <emphasis>"pipes"</emphasis> para filtrar a saída do comando
+<!-- [ %INIC-INTER [ --> (para detalhes veja <xref linkend="redir-pipe"/> <!-- ]]> -->.
+</para>
+<!-- [ %EXEMPLO [ -->
+<para>
+Por exemplo, para listar os diretórios que contém o nome
+"<emphasis>cp</emphasis>": <literal>locate cp</literal>.  Agora mostrar somente
+arquivos binários, usamos: <literal>locate cp|grep bin/</literal>
+</para>
+<!-- ]]> -->
+</section>
+
+<section xml:id="ajuda-which"><info><title>which</title></info>
+<para>
+Localiza um programa na estrutura de diretórios do path.  
+<!-- [ %DESCRICAOD [ --> É muito semelhante ao
+<command>locate</command>, mas a busca é feita no <literal>path</literal> do
+sistema e somente são mostrados arquivos executáveis. 
+</para>
+<!-- ]]> -->
+<para>
+<command>which</command> [<emphasis>programa/comando</emphasis>].
+</para>
+</section>
+
+<section xml:id="ajuda-howto"><info><title>Documentos HOWTO's</title></info>
+<para>
+São documentos em formato <emphasis>texto</emphasis>,
+<emphasis>html</emphasis>, etc, que explicam como fazer determinada tarefa ou
+como um programa funciona.  
+<!-- [ %DESCRICAOD [ --> Normalmente são feitos na linguagem <command>SGML</command> e 
+convertidos para outros formatos (como o texto, HTML, Pos Script) depois de prontos.
+</para>
+<para>
+Estes trazem explicações detalhadas desde como usar o <command>bash</command>
+até sobre como funciona o modem ou como montar um <emphasis>servidor internet
+completo</emphasis>. <!-- ]]> --> 
+
+Os HOWTO´s podem ser encontrados no diretório do projeto
+de documentação do <command>GNU/Linux</command> (LDP) em <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="ftp://metalab.unc.edu/pub/Linux/docs/HOWTO/">ftp://metalab.unc.edu/pub/Linux/docs/HOWTO/</link>
+ou traduzidos para o Português pelo LDP-BR em <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.tldp.org/projetos/howto/traduzidos.php">http://www.tldp.org/projetos/howto/traduzidos.php</link>.
+Caso tenha optado por instalar o pacote de HOWTO's de sua distribuição
+<command>GNU/Linux</command>, eles podem ser encontrados em:
+<filename>/usr/doc/how-to</filename>
+</para>
+
+    <!-- [ %INTER-AVANC [ -->
+<section xml:id="ajuda-howto-listagem"><info><title>Listagem de HOWTO's</title></info>
+<para>
+Esta seção tem a intenção de facilitar a localização de um documento que trata
+do assunto desejado ou te despertar a curiosidade sobre alguns assuntos do
+SO-GNU/Linux através da descrição contida nos documentos.  Segue abaixo uma
+listagem de HOWTO's do projeto LDP organizadas por sub-seções com a descrição
+do assunto que cada um deles aborda.
+</para>
+<section xml:id="s43.8.1.1"><info><title>Introdução ao Sistema / Instalação / Configurações / Kernel</title></info>
+<variablelist>
+<varlistentry>
+<term>Access-HOWTO</term>
+<listitem>
+<para>
+O HOWTO de Acesso ao <command>GNU/Linux</command> cobre o uso de tecnologia
+adaptada para tornar o <command>GNU/Linux</command> acessível àqueles que não o
+utilizam.  Ele cobre áreas onde ele pode usar soluções tecnológicas adaptadas.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Bash-Prompt-HOWTO</term>
+<listitem>
+<para>
+Explica como criar e controlar um terminal e aviso de comando xterm, incluindo
+seqüências de escape incorporadas para passar o nome do usuário, diretório
+atual, hora, uso de cores ANSI, etc.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Bootdisk-HOWTO</term>
+<listitem>
+<para>
+Explica como criar seu próprio disco de inicialização/raíz para o
+<command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>BootPrompt-HOWTO</term>
+<listitem>
+<para>
+Este documento reúne a maioria dos parâmetros de inicialização que podem ser
+passados ao kernel do <command>GNU/Linux</command> durante a inicialização do
+sistema.  Também explica como o kernel classifica os argumentos de
+inicialização e também os softwares usados para inicialização do kernel do
+GNU/Linux.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Compaq-Remote-Insight-Board-HOWTO</term>
+<listitem>
+<para>
+Descreve como instalar o Linux no servidor Compaq ProLiant.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Config-HOWTO</term>
+<listitem>
+<para>
+Este documento ensina como fazer um ajuste fino em sua máquina
+<command>GNU/Linux</command> recém instalada rápido e fácil.  Neste documento
+você encontrará um conjunto de configurações para as aplicações e serviços mais
+populares.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Distribution-HOWTO</term>
+<listitem>
+<para>
+Este documento tem a intenção de ajudar novos usuários escolherem uma
+distribuição <command>GNU/Linux</command> e ajudar usuários experientes a
+avaliar o estado do marketing no <command>GNU/Linux</command> Ele não planeja
+ser uma lista completa de distribuições <command>GNU/Linux</command> para todas
+as plataformas, mas ao invés disso se focaliza nas distribuições em Inglês
+baseadas no processador Intel, disponíveis em CD-ROM e acessíveis a usuários
+novatos no sistema.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>From-PowerUp-To-Bash-Prompt-HOWTO</term>
+<listitem>
+<para>
+Contém uma breve descrição sobre o que acontece no sistema
+<command>GNU/Linux</command>, do momento que liga o seu computador até o login
+no aviso do bash.  Ele é organizado por pacotes para torna-lo fácil para
+pessoas que desejam construir um sistema através do código fonte.  Entendendo
+isto será útil quando precisar resolver problemas ou configurar o seu sistema.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Installation-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve como obter e instalar o software
+<command>GNU/Linux</command>.  Ele é o primeiro documento que um novo usuário
+<command>GNU/Linux</command> dev ler para iniciar no sistema.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>INFO-SHEET</term>
+<listitem>
+<para>
+Este documento oferece informações básicas sobre o sistema operacional
+<command>GNU/Linux</command>, incluindo uma explicação sobre o sistema, uma
+lista de características, alguns requerimentos e alguns recursos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Kernel-HOWTO</term>
+<listitem>
+<para>
+Este é um guia detalhado de configuração do kernel, compilação, upgrades e
+problemas para sistemas baseados.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>PLIP-Install-HOWTO</term>
+<listitem>
+<para>
+Descreve como instalar uma distribuição GNU/Linux em um computador sem placa
+Ethernet, ou CD-ROM, mas apenas com uma unidade de disquetes local e um
+servidor NFS remoto conectado via um cabo paralelo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Reading-List-HOWTO</term>
+<listitem>
+<para>
+Lista os livros mais valiosos para uma pessoa que deseja aprender o sistema
+operacional Unix (especialmente o <command>GNU/Linux</command>).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Software-Building-HOWTO</term>
+<listitem>
+<para>
+Guia compreensivo de como construir e instalar distribuições de softwares
+"genéricas" UNIX sob o <command>GNU/Linux</command>.  Adicionalmente existe
+alguma cobertura dos binários pré-empacotados "rpm" e "deb".
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Tips-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve algumas dicas difíceis de encontrar e truques que fazem
+o GNU/Linux um pouco melhor.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Unix-and-Internet-Fundamentals-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve a base de funcionamento dos computadores da classe PC,
+sistemas operacionais Unix e a Internet em linguagem não técnica.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>User-Authentication-HOWTO</term>
+<listitem>
+<para>
+Explica como as informações de usuário e grupo são armazenadas e como os
+usuários são autenticados no sistema <command>GNU/Linux</command> (PAM) e como
+melhorar a autenticação de seu sistema.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s43.8.1.2"><info><title>Adaptação do <command>GNU/Linux</command> para idiomas específicos</title></info>
+<variablelist>
+<varlistentry>
+<term>Belarusian-HOWTO</term>
+<listitem>
+<para>
+Adicionando o suporte ao idioma Belarusian no Linux.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Belgian-HOWTO</term>
+<listitem>
+<para>
+Este documento ensina a configuração do sistema <command>GNU/Linux</command>
+para o idioma Belgo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Chinese-HOWTO</term>
+<listitem>
+<para>
+Este documento explica como configurar o idioma Chinês no
+<command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Cyrillic-HOWTO</term>
+<listitem>
+<para>
+Explica como utilizar o <command>GNU/Linux</command> com o idioma Russo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Danish-HOWTO</term>
+<listitem>
+<para>
+Descreve como configurar o <command>GNU/Linux</command> e vários aplicativos
+<command>GNU/Linux</command> para este idioma.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Esperanto-HOWTO</term>
+<listitem>
+<para>
+Configuração do GNU/Linux para o idioma Esperanto.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Finnish-HOWTO</term>
+<listitem>
+<para>
+Descreve como usar o sistema <command>GNU/Linux</command> no idioma Finlandês.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Francophones-HOWTO</term>
+<listitem>
+<para>
+Descreve como usar o <command>GNU/Linux</command> no idioma Francês.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>German-HOWTO</term>
+<listitem>
+<para>
+Descreve como usar o GNU/Linux com o idioma Alemão.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Hebrew-HOWTO</term>
+<listitem>
+<para>
+Descreve como configurar o GNU/Linux para exibir caracteres Hebreus no X-Window
+e Console.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Hellenic-HOWTO</term>
+<listitem>
+<para>
+Guia para configuração do GNU/Linux.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Italian-HOWTO</term>
+<listitem>
+<para>
+Descreve como configurar o GNU/Linux no idioma Italiano.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Polish-HOWTO</term>
+<listitem>
+<para>
+Configurando seu sistema GNU/Linux para o idioma Polonês.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Portuguese-HOWTO</term>
+<listitem>
+<para>
+Configurando seu sistema GNU/Linux para o idioma Português.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Serbian-HOWTO</term>
+<listitem>
+<para>
+Configurando seu sistema GNU/Linux para o idioma Servio.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Slovenian-HOWTO</term>
+<listitem>
+<para>
+Como configurar os parâmetros do sistema GNU/Linux para este idioma.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Spanish-HOWTO</term>
+<listitem>
+<para>
+Configurando o sistema GNU/Linux para o idioma Espanhol.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Thai-HOWTO</term>
+<listitem>
+<para>
+Descreve como usar o idioma Tailandês com o <command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Turkish-HOWTO</term>
+<listitem>
+<para>
+Configurando o GNU/Linux para o idioma Turco.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s43.8.1.3"><info><title>Discos / Sistemas de Arquivos / Desempenho</title></info>
+<variablelist>
+<varlistentry>
+<term>Filesystems-HOWTO</term>
+<listitem>
+<para>
+Descreve sistemas de arquivos e o acesso aos sistemas de arquivos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Large-Disk-HOWTO</term>
+<listitem>
+<para>
+Tudo sobre a geometria e o limite de 1024 cilindros para os discos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>LVM-HOWTO</term>
+<listitem>
+<para>
+Um HOWTO descritivo sobre o GNU/Linux LVM.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Loopback-Encrypted-Filesystem-HOWTO</term>
+<listitem>
+<para>
+Este documento explica como criar e utilizar um sistema de arquivos que, quando
+montado por um usuários, encripta transparentemente e dinamicamente seu
+conteúdo.  O sistema de arquivos é armazenado em um arquivo regular, que pode
+ser oculto ou nomeado para algo que não chama a atenção, como algo que nunca
+seria procurado.  Isto permite um alto nível de segurança dos dados
+armazenados.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Multi-Disk-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve como utilizar da melhor maneira múltiplos discos e
+partições em um sistema <command>GNU/Linux</command>.  Muitos dos detalhes
+descritos aqui podem também ser aplicados a outros sistemas operacionais
+multi-tarefas.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>MultiOS-HOWTO</term>
+<listitem>
+<para>
+Este documento cobre os procedimentos para utilizar discos rígidos removíveis
+para instalar e gerenciar múltiplos sistemas operacionais alternativos enquanto
+deixa um disco rígido simples fixo para proteger o sistema operacional
+primário.  É muito escalável e oferece uma boa grade de proteção e um ambiente
+de disco estável para o sistema operacional primário.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Optical-Disk-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve a instalação e configuração de unidades de disco óticos
+para <command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Root-RAID-HOWTO</term>
+<listitem>
+<para>
+Este documento somente se aplica a ferramentas RAID ANTIGAS, versão 0.50 e
+inferiores.  Os detalhes contidos neste documento se tornaram obsoletos com a
+vasta melhoria das ferramentas RAID 0.90 e acompanhadas do patch nos kernels
+das séries 2.0.37, 2.2x e 2.3x.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>SCSI-Programming-HOWTO</term>
+<listitem>
+<para>
+Este documento fala sobre a programação da interface SCSI genérica no
+<command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>UMSDOS-HOWTO</term>
+<listitem>
+<para>
+O UMSDOS é um sistema de arquivos <command>GNU/Linux</command>.  Ele oferece
+uma alternativa do sistema de arquivos EXT2.  Sua maior característica é a
+coexistência com os dados DOS existentes, compartilhando a mesma partição.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s43.8.1.4"><info><title>Escrita de Documentação / Editores</title></info>
+<variablelist>
+<varlistentry>
+<term>C-editing-with-VIM-HOWTO</term>
+<listitem>
+<para>
+Oferece dicas para editar arquivos desta linguagem e com sintaxe similar como
+<command>C++</command> e <command>Java</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Emacs-Beginner-HOWTO</term>
+<listitem>
+<para>
+Este documento introduz os usuários <command>GNU/Linux</command> no editor
+Emacs.  Ele assume o mínimo de conhecimento com o editor de texto
+<command>vi</command> ou similar.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Emacspeak-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve como um usuário pode usar o sistema com um sintetizador
+de voz no lugar do monitor de vídeo.  Ele descreve como ter o
+<command>GNU/Linux</command> rodando em seu PC e como configura-lo para falar.
+Ele também sugere como aprender sobre o Unix.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>HOWTO-HOWTO</term>
+<listitem>
+<para>
+Lista de ferramentas, processos e dicas para ajudar os autores de HOWTO's
+aumentarem sua produtividade.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>LinuxDoc+Emacs+Ispell-HOWTO</term>
+<listitem>
+<para>
+Este documento é de interesse de escritores e tradutores dos HOWTO's do
+<command>GNU/Linux</command> ou qualquer outro papel para o Projeto de
+Documentação do GNU/Linux.  Ele oferece dicas sobre o uso de ferramentas
+incluindo o Emacs e Ispell.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>TeTeX-HOWTO</term>
+<listitem>
+<para>
+Este documento cobre a instalação básico e uso das implementações TeTeX, TeX e
+LaTeX sob as maiores distribuições de <command>GNU/Linux</command> Inglesas e
+pacotes auxiliares como o GhostScript.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Vim-HOWTO</term>
+<listitem>
+<para>
+Este documento é uma guia para configurar rapidamente o editor colorido Vim nos
+sistemas Unix e GNU/Linux.  Os detalhes aqui aumentarão a produtividade dos
+programadores porque o editor Vim suporta a colorização de código e fontes
+negrito, aumentando a "legibilidade" do código do programa.  A produtividade do
+programador aumenta de 2 a 3 vezes com um editor colorido como Vim.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s43.8.1.5"><info><title>Hardware</title></info>
+<variablelist>
+<varlistentry>
+<term>3Dfx-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve o suporte do <command>GNU/Linux</command> aos chips
+aceleradores 3Dfx.  Também lista alguns hardwares suportados, descreve como
+configurar os drivers e responde perguntas freqüêntes.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>4mb-Laptops</term>
+<listitem>
+<para>
+Como instalar o Linux em um notebook com 4MB de RAM e com HDs menores que 200
+MB.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Acer Laptop-HOWTO</term>
+<listitem>
+<para>
+Descreve como instalar o Linux em notebooks Acer.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Busmouse-HOWTO</term>
+<listitem>
+<para>
+Descreve como instalar, configurar e usar um barramento de mouse sob o
+<command>GNU/Linux</command>.  Ele contém uma lista de barramentos suportados e
+tenta responder as questões mais freqüêntes relacionadas ao assunto.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>CDServer-HOWTO</term>
+<listitem>
+<para>
+Oferece as dicas e passos para criar um servidor de CD no
+<command>Linux</command> para serem compartilhados via rede com
+<command>Windows</command> e outros sistemas operacionais.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>CPU-Design-HOWTO</term>
+<listitem>
+<para>
+Oferece referências para mostrar como uma CPU é projetada e fabricada.
+Bastante interessante para estudantes de computação e outros profissionais da
+área.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Ftape-HOWTO</term>
+<listitem>
+<para>
+Este HOWTO discute o controlador de unidades tape para
+<command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>HP-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve o uso dos produtos disponíveis no catálogo
+Hewlett-Packard (HP) com o <command>GNU/Linux</command> e alguns programas free
+software.  Ele explica o estado do suporte para hardwares, softwares utilizados
+e respostas para alguns questões freqüêntes.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Hardware-HOWTO</term>
+<listitem>
+<para>
+Este documento lista a maioria dos hardware suportados pelo
+<command>GNU/Linux</command> e lhe ajuda a localizar os controladores
+necessários.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Jaz-Drive-HOWTO</term>
+<listitem>
+<para>
+Este HOWTO cobre a configuração e uso dos drivers Iomega 1Gb e 2Gb sob o
+<command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Kodak-Digitalcam-HOWTO</term>
+<listitem>
+<para>
+Fazendo uma câmera Kodak digital funcionar sob GNU/GNU/Linux.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Laptop-HOWTO</term>
+<listitem>
+<para>
+Os Notebooks são diferentes de computadores desktops/torres.  Eles usam certos
+hardwares como cartões PCMCIA, portas infravermelho, baterias, estações de
+encaixe.  Freqüentemente seus hardwares são mais limitados (i.e.  espaço em
+disco, velocidade da CPU) então sua performance se torna menor.  Em algumas
+instâncias, os notebooks podem se tornar uma substituição ao sistema desktop.
+O suporte de hardware para o <command>GNU/Linux</command> (e outros sistemas
+operacionais) é algumas vezes mais limitado (i.e.  chips gráficos, modens
+internos).  Os Notebooks freqüentemente utilizam hardware especializado, no
+qual a localização de um controlador adequado pode se tornar uma dificuldade.
+Os Notebooks são utilizados em ambientes móveis, assim existe a necessidade de
+múltiplas configurações e estratégias adicionais de segurança.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Modem-HOWTO</term>
+<listitem>
+<para>
+Ajuda com a seleção, conexão, configuração, resolução de problemas e
+compreensão de modens de um PC.  Veja o Serial-HOWTO para detalhes sobre
+múltiplas placas seriais.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>PCI-HOWTO</term>
+<listitem>
+<para>
+Informações sobre o que funciona com o <command>GNU/Linux</command> e placas
+<command>PCI</command> e que o não funciona.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Plug-and-Play-HOWTO</term>
+<listitem>
+<para>
+Este documento ajuda a compreensão e operação do Plug-and-Play e como incluir o
+suporte do seu sistema <command>GNU/Linux</command> ao Plug-and-Play.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Serial-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve características da porta serial ao invés de outros
+detalhes que devem ser cobertos pelos documentos Modem-HOWTO, PPP-HOWTO,
+Serial-Programming-HOWTO, ou Text-Terminal-HOWTO.  Ele lista detalhes sobre
+múltiplas placas seriais contendo informações técnicas detalhadas sobre a
+própria porta serial em mais detalhes do que os encontrados nos HOWTO's acima e
+deve ser o suficiente para correção de problemas quando o problema é a própria
+porta serial.  Se estiver trabalhando com um Modem, PPP (usado para acesso a
+Internet através de uma Linha telefônica), ou um Terminal baseado em modo
+texto, seus respectivos HOWTO's devem ser primeiramente consultados.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Serial-Programming-HOWTO</term>
+<listitem>
+<para>
+Explica como programar comunicações com dispositivos através de uma porta
+serial em um computador com o <command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>UPS-HOWTO</term>
+<listitem>
+<para>
+Este documento te ajudará a conectar um uninterruptable power supply (No Break)
+em seu computador <command>GNU/Linux</command>...  se tiver a sorte de possuir
+um...
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Wacom-Tablet-HOWTO</term>
+<listitem>
+<para>
+Instalação do (não somente) Wacom graphic tablets sob o
+<command>GNU/Linux</command> e / ou xfree86.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Wearable-HOWTO</term>
+<listitem>
+<para>
+Computação móvel com <command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Winmodems-and-Linux-HOWTO</term>
+<listitem>
+<para>
+Este documento contém detalhes sobre a configuração de Winmodems no
+<command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s43.8.1.6"><info><title>Software</title></info>
+<variablelist>
+<varlistentry>
+<term>AI-Alife-HOWTO</term>
+<listitem>
+<para>
+Este howto contém informações primárias sobre, e links para, várias bibliotecas
+relacionadas com o AI, aplicativos, etc.  que funcionam na plataforma
+GNU/Linux.  Todos eles (pelo menos) livres para uso pessoal.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Apache-Overview-HOWTO</term>
+<listitem>
+<para>
+Oferece uma visão do servidor Web Apache e projetos relacionados.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Commercial-HOWTO</term>
+<listitem>
+<para>
+Este documento contém uma listagem de programas comerciais e aplicações que são
+oferecidas para o <command>GNU/Linux</command>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Glibc2-HOWTO</term>
+<listitem>
+<para>
+Este documento cobre a instalação e uso da Biblioteca GNU C versão 2 nos
+sistemas GNU/Linux.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>RPM-HOWTO</term>
+<listitem>
+<para>
+Explica como utilizar o sistema de gerenciamento de pacotes RPM.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Program-Library-HOWTO</term>
+<listitem>
+<para>
+Este documento para programadores discute como criar e usar bibliotecas no
+<command>GNU/Linux</command>.  Estas incluem bibliotecas estáticas, bibliotecas
+compartilhadas e bibliotecas carregadas dinamicamente.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Secure-Programs-HOWTO</term>
+<listitem>
+<para>
+Este documento oferece um conjunto de designs e regras de implementação para
+escrever programas seguros para os sistemas Unix e Linux.  Tais programas
+incluem programas aplicativos usados para visualizadores de dados remotos,
+scripts CGI, servidores de rede, programas setuid/setgid.  Guias específicos
+sobre C, C++, Java, Perl, Python, e Ada95 estão incluídos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Software-RAID-0.4x-HOWTO</term>
+<listitem>
+<para>
+RAID significa "Redundant Array of Inexpensive Disks", e significa ser um
+método de criar um rápido e confiável subsistema de unidades de disco ao invés
+de discos individuais.  O RAID pode se prevenir de falhas de disco e pode
+também aumentar a performance obtida através de uma simples unidade de disco.
+Este documento é um tutorial/HOWTO/FAQ para usuários do kernel do Linux com
+extensões MD, as ferramentas associadas, e seu uso.  A extensão MD implementa o
+RAID-0 (striping), RAID-1 (mirroring), RAID-4 e RAID-5 no software.  O que
+significa que, com MD, nenhum hardware especial ou controladoras de disco são
+requeridas para obter muitos dos benefícios do RAID.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Software-RAID-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve como usar o software RAID sob o GNU/Linux.  Ele
+endereça uma versão específica da camada de software do RAID, nomeada camada
+RAID 0.90, feita por Ingo Molnar e outros.  Esta é a camada RAID que será
+padronizada no Linux-2.4, e também é a versão usada por kernels 2.2 do
+<command>GNU/Linux</command> vendidos por alguns vendedores.  O suporte RAID
+0.90 está disponível com patches para os kernels do 2.0 e 2.2 do
+<command>GNU/Linux</command> e também é considerado ser mais estável que o
+antigo suporte RAID já incluído nestes kernels.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Software-Release-Practice-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve boas práticas de lançamento para o projeto de
+código-aberto <command>GNU/Linux</command>.  Seguindo estas práticas, será
+fácil e possível para os usuários construir seu código e usa-lo, e para outros
+desenvolvedores entender seu código e cooperar com você para melhora-lo.  Este
+documento deve ser lido por desenvolvedores iniciantes.  Desenvolvedores
+experientes devem revisa-lo quando desejarem lançar um novo projeto.  Este
+documento é revisado periodicamente para refletir a evolução das boas práticas
+de lançamento.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s43.8.1.7"><info><title>Plataformas não Intel (x86)</title></info>
+<variablelist>
+<varlistentry>
+<term>Alpha-HOWTO</term>
+<listitem>
+<para>
+Este documento é uma visão rápida das CPUs Alpha, chipsets e sistemas
+existentes.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>MILO-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve o MIniLOader, um programa para sistemas baseados na
+arquitetura Alpha que pode ser usado para inicializar a máquina e carregar o
+<command>GNU/Linux</command>.  O Linux Miniloader do Alpha (seu nome completo)
+é também conhecido como MILO.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>MIPS-HOWTO</term>
+<listitem>
+<para>
+Esta FAQ descreve o porte do MIPS para o sistema operacional Linux, problemas
+comuns e suas soluções, disponibilidade e mais.  Ele também tenta ser um pouco
+útil a outras pessoas que desejam ler esta FAQ em uma tentativa de encontrar
+informações que atualmente seriam cobertas em outro lugar.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>SRM-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve como inicializar no <command>Linux/Alpha</command>
+usando o console SRM, que é a firmware de console também usada para inicializar
+o Unix Compaq Tru64 (também conhecido com Digital Unix e OSF/1) e OpenVMS.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s43.8.1.8"><info><title>Programação / Compiladores / Banco de Dados</title></info>
+<variablelist>
+<varlistentry>
+<term>Assembly-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve como programar em linguagem Assembler usando
+ferramentas de programação livres, focalizando-se no desenvolvimento para ou do
+Sistema Operacional <command>GNU/Linux</command>, mais na plataforma IA-32
+(i386).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Bash-Prog-Intro-HOWTO</term>
+<listitem>
+<para>
+Este documento tem a intenção de te ajudar a iniciar na programação de shell
+scripts.  Ele não tem a intenção de ser uma documento avançado.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>C++Programming-HOWTO</term>
+<listitem>
+<para>
+Discute os métodos para evitar problemas de memória no C++ e também te ajudará
+a programar corretamente na linguagem C++.  As informações contidas neste
+documento se aplicam a todos os sistemas operacionais que são
+<command>GNU/Linux</command>, <command>DOS</command>, <command>BeOS</command>,
+<command>Apple Macintosh OS</command>, <command>Windows
+95/98/NT/2000</command>, <command>OS/2</command>, <command>Sistemas
+IBM</command> (MVS, AS/400, etc...), <command>VAX VMS</command>,
+<command>Novell Netware</command>, todos os tipos de Unix como o Solaris, HPUX,
+AIX, SCO, Sinix, BSD, etc., e todos os outros sistemas operacionais que
+suportam o compilador "C++" (quase todos os sistemas operacionais deste
+planeta!).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>C-C++Beautifier-HOWTO</term>
+<listitem>
+<para>
+Este documento ajudará a formatar (de forma organizada) os programas C/C++
+assim será mais legível e seguirá os padrões de codificação C/C++.  As
+informações deste documento se aplica a quase todos os sistemas operacionais do
+planeta!
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>DB2-HOWTO</term>
+<listitem>
+<para>
+Este documento explica como instalar o DB2 Universal Database versão 7.1 para
+<command>GNU/Linux</command> nas seguintes distribuições baseadas no Intel x86:
+Caldera Caldera OpenLinux 2.4, Debian, Red Hat Linux 6.2, SuSE Linux 6.2 e 6.3,
+e TurboLinux 6.0.  Após instalar o DB2, você pode usar um banco de dados de
+exemplo, conectar-se ao servidor DB2 de uma máquina remota e administrar o DB2
+usando o DB2 Control Center.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Enterprise-Java-for-Linux-HOWTO</term>
+<listitem>
+<para>
+Como configurar um ambiente Java Enterprise no <command>GNU/Linux</command>
+incluindo o Java Development Kit, um servidor Web, suportando Java servlets,
+acessando um banco de dados via JDBC e suportado Enterprise Java Beans (EJBs).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>GCC-HOWTO</term>
+<listitem>
+<para>
+Este documento explica como configurar o compilador GNU C e bibliotecas de
+desenvolvimento sob o <command>GNU/Linux</command> e te dá uma visão de
+compilação, linkagem, execução e programas de depuração.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>IngresII-HOWTO</term>
+<listitem>
+<para>
+Este documento cobre a instalação do Ingres II Relational Database management
+System no <command>GNU/Linux</command>.  Ele cobre a configuração de ambos o
+Kit de desenvolvimento e versão completa do Ingres.  Algumas seções explicam
+como iniciar o uso do Ingres.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Oracle-7-HOWTO</term>
+<listitem>
+<para>
+Um guia para instalar e configurar o Servidor do Banco de Dados Oracle em um
+sistema <command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Oracle-8-HOWTO</term>
+<listitem>
+<para>
+Com este HOWTO, é um pouco de sorte, você será capaz de ter o Oracle 8i
+Enterprise Edition para GNU/Linux instalado, criar um banco de dados e conectar
+a ele através de um computador remoto.  O foco principal deste guia é o RedHat
+6.0, no entanto ele pode funcionar em outros distribuições recentes após
+algumas modificações.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>PHP-HOWTO</term>
+<listitem>
+<para>
+Ensina como desenvolver programas em PHP e também migrar todas as aplicações
+GUI do Windows 95 para o poderoso conjunto PHP + HTML + DHTML + XML + Applets
+Java + Javascript.  As explicações descritas neste documento se aplicam a todo
+os sistemas operacionais para onde o PHP está portado que são: Linux, Windows
+95/98/NT/2000, OS/2, todos os tipos de Unix como o Solaris, HPUX, AIX, SCO,
+Sinix, BSD, etc...
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>PostgreSQL-HOWTO</term>
+<listitem>
+<para>
+Este documento é um "guia prático" para rapidamente colocar para funcionar um
+banco de dados SQL e suas ferramentas de comunicação em um sistema Unix.  Ele
+também discute a linguagem padrão Internacional ANSI/ISO SQL e revisa os
+méritos/vantagens do SQL Database engine desenvolvido pela Internet ao redor do
+mundo em um ambiente de desenvolvimento aberto.  Também como configurar a
+próxima geração do banco de dados relacional a objetos SQL "PostgreSQL" em um
+sistema Unix que pode ser usado como um Servidor de Aplicativos de banco de
+dados ou como um Servidor de banco de dados Web.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>TclTk-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve o uso do Tcl no <command>GNU/Linux</command>, uma
+linguagem de scripting.  Ela é uma linguagem interpretada fácil de aprender que
+usa pouca digitação para obter um alto nível de programação e desenvolvimento
+rápido de aplicativos (RAD).  O Tk toolkit é um ambiente de programação para
+criar interfaces gráficas do usuário (GUI) sob o Sistema X Window.  Suas
+capacidades incluem a possibilidade de estender e incluir em outros
+aplicativos, desenvolvimento rápido e fácil de usar.  Juntos o Tcl e Tk
+oferecem muitos benefícios para o desenvolvedor e usuário.  As interfaces
+baseadas no Tk tendem a ser mais personalizáveis e dinâmicas que aquelas feitas
+de toolkits C ou C++.  O Tk implementa o Visual e Uso do Motif.  Um grande
+número de aplicações X interessantes são implementadas completamente em Tk, com
+nenhum comandos específicos de aplicativo.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s43.8.1.9"><info><title>Computação Paralela / Clusters</title></info>
+<variablelist>
+<varlistentry>
+<term>Beowulf-HOWTO</term>
+<listitem>
+<para>
+Este documento é uma introdução a arquitetura de Supercomputador Beowulf e
+oferece informações sobre programação paralela, incluindo links para documentos
+mais específicos e páginas internet.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Cluster-HOWTO</term>
+<listitem>
+<para>
+Como configurar clusters de computador GNU/Linux de alta performance.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Parallel-Processing-HOWTO</term>
+<listitem>
+<para>
+O Processamento Paralelo é uma forma de acelerar a execução de um programa
+dividindo o programa em múltiplos fragmentos que podem ser executados
+simultaneamente, cada um em seu próprio processador.  Um programa sendo
+executado em N processadores pode ser executado N vezes mais rápido que seria
+usando somente um processador.  Este documento discute os quatro métodos para
+realizar processamento paralelo que estão disponíveis aos usuários do sistema
+operacional GNU/Linux: Sistemas Linux SMP, Sistemas Linux em Clusters de rede,
+execução paralela usando as instruções multimídia do processador (i.e.  MMX) e
+processadores (paralelos) conectados no sistema <command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>SMP-HOWTO</term>
+<listitem>
+<para>
+Este HOWTO revisa principais assuntos (e eu espero que soluções) relacionadas
+com as configurações SMP sob o <command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s43.8.1.10"><info><title>Configuração de Teclado / Vídeo / Console</title></info>
+<variablelist>
+<varlistentry>
+<term>Font-HOWTO</term>
+<listitem>
+<para>
+Como usar e configurar corretamente tipos de fontes no ambiente GNU/Linux.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Framebuffer-HOWTO</term>
+<listitem>
+<para>
+Descreve como utilizar dispositivos framebuffer no <command>GNU/Linux</command>
+com uma variedade de plataformas.  Isto também inclui como ajustar telas
+multi-headed.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Keyboard-and-Console-HOWTO</term>
+<listitem>
+<para>
+Este documento contém algumas informações sobre o teclado e console no
+<command>GNU/Linux</command>, e o uso de caracteres não-ASCII.  Ele descreve o
+<command>GNU/Linux</command> 2.0.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Text-Terminal-HOWTO</term>
+<listitem>
+<para>
+Explica o que são os terminais texto, como funcionam, como instalar e
+configura-los e oferece muitos detalhes de como conserta-los.  Se não tiver um
+manual do terminal, poderá ser de grande ajuda.  Enquanto é escrito para
+terminais reais no sistema <command>GNU/Linux</command> alguns deles também são
+aplicáveis a emulação de terminal e pode ser útil para sistemas não Linux.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Unicode-HOWTO</term>
+<listitem>
+<para>
+Explica como alterar seu sistema <command>GNU/Linux</command> para utilizar a
+codificação de texto baseada no UTF-8.  -
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s43.8.1.11"><info><title>Ambiente Gráfico</title></info>
+<variablelist>
+<varlistentry>
+<term>MGR-HOWTO</term>
+<listitem>
+<para>
+O MGR (ManaGeR) é um sistema de janelas gráfico.  O servidor MGR oferece um
+gerenciador de janelas embutido e emulação de terminal gráfico em janela em
+monitor colorido ou monocromático.  O MGR é controlado por menus pop-up, por
+interação do teclado e por seqüencias de escapa escrita em pseudo-terminais
+pelo software cliente.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>XFree86-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve como obter, instalar e configurar a versão 4.0 do
+XFree86 do X Window System (X11R6) para sistemas <command>GNU/Linux</command>.
+Ele é um guia passo a passo para configurar o XFree86 em seu sistema.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>XFree86-Touch-Screen-HOWTO</term>
+<listitem>
+<para>
+Descreve como configurar um dispositivo de entrada touch screen sob o XFree86.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>XFree86-Video-Timings-HOWTO</term>
+<listitem>
+<para>
+Como configurar os modos de vídeo de sua placa/monitor sob o XFree86.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>XWindow-User-HOWTO</term>
+<listitem>
+<para>
+Este documento contém detalhes sobre a configuração do ambiente X Windows para
+o usuário <command>GNU/Linux</command>, também como o administrador de sistemas
+iniciantes tentando aprender os mais diversos tipos de opções de configuração e
+detalhes do X Window.  É assumido um conhecimento básico de configurações de
+software e instalação.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Xinerama-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve como configurar o XFree86 versão 4.0 com monitores
+multimídia com as extensões Xinerama.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s43.8.1.12"><info><title>Suporte ao Sistema / Grupos de Usuários / Listas de Discussão</title></info>
+<variablelist>
+<varlistentry>
+<term>Consultants-HOWTO</term>
+<listitem>
+<para>
+Contém uma lista de empresas e consultores oferecendo suporte comercial
+relacionado ao sistema <command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Online-Troubleshooting-HOWTO</term>
+<listitem>
+<para>
+Este documento direciona usuários <command>GNU/Linux</command> a lugares
+disponíveis na Internet que oferecem acesso a uma vasta quantidade de
+documentos úteis relacionados ao sistema em situações de problema.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>User-Group-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve como fundar, manter e organizar um grupo de usuários
+<command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s43.8.1.13"><info><title>Migração / Convivência com Outras Plataformas</title></info>
+<variablelist>
+<varlistentry>
+<term>DOS-Win-to-Linux-HOWTO</term>
+<listitem>
+<para>
+Este documento tem a intenção de ajudar o leitor traduzir seu conhecimento do
+DOS e Windows para o ambiente <command>GNU/Linux</command>, também como
+oferecer dicas de manipulação de arquivos e utilização de recursos entre os
+dois sistemas.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>VMS-to-Linux-HOWTO</term>
+<listitem>
+<para>
+Este documento é escrito para todos aqueles que tem usado o VMS e agora
+precisam migrar para o <command>GNU/Linux</command> um clone gratuito do
+<command>UNIX</command>.  A transição é feita (felizmente) através de uma
+comparação passo a passo de comandos e ferramentas existentes.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s43.8.1.14"><info><title>Tarefas Específicas</title></info>
+<variablelist>
+<varlistentry>
+<term>Astronomy-HOWTO</term>
+<listitem>
+<para>
+Este documento compartilha dicas e recursos para utilizar soluções do
+<command>GNU/Linux</command> no mundo da Astronomia.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>CD-Writing-HOWTO</term>
+<listitem>
+<para>
+Este documento explica como gravar CD-ROMs sob o <command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>CDROM-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve como instalar, configurar e usar uma unidade de CD-ROM
+sob o <command>GNU/Linux</command>.  Ele lista hardwares suportados e responde
+a um número de questões freqüêntes.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>CVS-RCS-HOWTO</term>
+<listitem>
+<para>
+Este documento é um <emphasis>guia prático</emphasis> para rapidamente
+configurar o sistema de controle do código fonte CVS/RCS.  Este documento
+também possui shell scripts personalizados que são trocados no topo do CVS.
+Estes scripts oferecem uma interface fácil entre o usuário e o CVS.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>DVD-Playing-HOWTO</term>
+<listitem>
+<para>
+Uma explicação fácil de seguir de como obter seu DVD funcionando no
+<command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Diskless-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve como configurar uma máquina sem disco rígido no
+<command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Java-Decompiler-HOWTO</term>
+<listitem>
+<para>
+Este documento te ajudará a descompilar programas class feitos em Java.  Este
+documento contém uma lista de descompiladores que podem reverter o engineer os
+arquivos Java class e gerar arquivos de código fonte Java.  Isto é muito útil
+se você não tem o arquivo com o código fonte Java.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>JavaStation-HOWTO</term>
+<listitem>
+<para>
+Este HOWTO descreve como ativar o SO GNU/Linux no NC Sun Java Station.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>KickStart-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve como usar o sistema Linux RedHat para instalar
+rapidamente o sistema em um grande número de máquinas
+<command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Kiosk-HOWTO</term>
+<listitem>
+<para>
+Este documento oferece um guia para ajustar um kiosk baseado em WWW usando o
+<command>GNU/Linux</command>, X11R6, FVWM2, Netscape Navigator 4.X e um
+trackball customizado.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Linux-From-Scratch-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve o processo de criar seu próprio sistema
+<command>GNU/Linux</command> do nada através de uma distribuição já instalada,
+usando nada mais que o código fonte dos softwares que precisamos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>MP3-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve o hardware, software e processos necessários, para
+encodificar, tocar, mixar e decodificar arquivos de som MP3 sob o
+<command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Majordomo-MajorCool-HOWTO</term>
+<listitem>
+<para>
+Este documento tem a intenção de guiar o usuário através do software de
+gerenciamento de listas de discussão Majordomo e MajorCool.  O MajorCool é um
+utilitário para gerenciar listas Majordomo via script CGI; muitas pessoas que
+não estão familiar com o Majordomo baseado em modo texto podem preferir uma
+interface mais amigável via web do MajorCool.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Mutt-GnuPG-PGP-HOWTO</term>
+<listitem>
+<para>
+Este documento explica como configurar rapidamente o Mutt-i, PGP e GnuPG em
+suas diferentes versões (2.6.x, 5.x e GnuPG), nada dos problemas que podem
+ocorrer enquanto envia e-mails criptografados e assinados para ser lidos por
+clientes de e-mail que não são compatíveis com PGP/MIME como definido na RFC
+2015 e em outros sistemas operacionais.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>NC-HOWTO</term>
+<listitem>
+<para>
+Este documento tenta descrever como colocar uma Netstation da IBM em sua rede
+local usando um computador <command>GNU/Linux</command> como servidor.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>NCD-HOWTO</term>
+<listitem>
+<para>
+Este documento tenta descreve como colocar uma ThinSTAR NCD em sua rede local
+usando um computador <command>GNU/Linux</command> como servidor.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>PalmOS-HOWTO</term>
+<listitem>
+<para>
+Este documento explica como usar seu dispositivo Palm OS com um sistema
+<command>GNU/Linux</command>.  Este HOWTO não aborda somente o sistema
+operacional <command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Printing-HOWTO</term>
+<listitem>
+<para>
+Este é o Printing HOWTO do <command>GNU/Linux</command>, uma coleção de
+informações sobre como gerar, ver, imprimir e enviar fax de tudo sob o
+<command>GNU/Linux</command> (e outros UNIXes em geral).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Printing-Usage-HOWTO</term>
+<listitem>
+<para>
+Descreve como usar o sistema de spooling oferecido pelo sistema operacional
+<command>GNU/Linux</command>.  Este HOWTO é um documento suplementar ao Linux
+Printing Setup, que discute a instalação e configuração do sistema de impressão
+do <command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Psion-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve como usar Palmtops Psion com o
+<command>GNU/Linux</command>, mas não cobre a execução do Linux no Palmtop
+Psion.  Veja o projeto <emphasis>Linux 7k</emphasis> em <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.calcaria.net">http://www.calcaria.net</link>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Quake-HOWTO</term>
+<listitem>
+<para>
+Este documento explica como instalar, executar e corrigir problemas no Quake,
+QuakeWorld e Quake II em um sistema <command>GNU/Linux</command> Intel.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>RedHat-CD-HOWTO</term>
+<listitem>
+<para>
+Descreve como fazer seus próprios CDs da distribuição Red Hat, a estrutura da
+distribuição e também como incluir RPMs atualizados na distribuição.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Sound-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve o suporte ao som no <command>GNU/Linux</command>,
+arquiteturas de som suportadas e como incluir o suporte ao som no kernel.  Este
+documento também responde algumas questões freqüêntes sobre o suporte ao som no
+<command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Sound-Playing-HOWTO</term>
+<listitem>
+<para>
+Este documento lista aplicativos que podem tocar vários formatos de sons no
+<command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>VME-HOWTO</term>
+<listitem>
+<para>
+Este documento mostra como executar o <command>GNU/Linux</command> em seu
+Pentium VMEbus e outros barramentos PCI baseados no design de processador
+VMEbus.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s43.8.1.15"><info><title>Rede / Administração / Firewall / Proxy / Segurança</title></info>
+<variablelist>
+<varlistentry>
+<term>AX25-HOWTO</term>
+<listitem>
+<para>
+Talvez o <command>GNU/Linux</command> seja o único sistema operacional no mundo
+que possui suporte nativo e padrão ao protocolo de pacotes de rádio AX.25 usado
+por Operadores de Rádio Amador ao redor do mundo.  Este documento explica como
+instalar e configurar este suporte.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Adv-Routing-HOWTO</term>
+<listitem>
+<para>
+Roteamento avançado.  Explicações sobre o <command>iproute2</command>,
+<command>traffic shaper</command> e <command>netfilter</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Bandwidth-Limiting-HOWTO</term>
+<listitem>
+<para>
+Descreve como configurar o servidor Linux para limitar banda.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>BRIDGE-STP-HOWTO</term>
+<listitem>
+<para>
+Este documento explica o que é uma ponte entre redes e como criar uma
+utilizando o Spanning Tree Protocol (STP).  Este é um método de manter os
+dispositivos Ethernet conectados e funcionando em múltiplos caminhos.  Os
+participantes negociam a troca através do caminho mais curto através do STP.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Cable-Modem</term>
+<listitem>
+<para>
+Fornece instruções de como usar o Linux para se conectar a um provedor de Cable
+modem.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Chroot-BIND8-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve a instalação do servidor de nomes BIND 8 para ser
+executado em uma jaula chroot e como um usuário não-root, para oferecer
+segurança adicional e minimizar efeitos potenciais que podem comprometer a
+segurança.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Cyrus-IMAP</term>
+<listitem>
+<para>
+Um guia compreensivo para a instalação, configuração e execução do
+<command>Cyrus Imap</command> e <command>Cyrus SASL</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>DNS-HOWTO</term>
+<listitem>
+<para>
+Como configurar seu servidor DNS em pouco tempo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Diald-HOWTO</term>
+<listitem>
+<para>
+Este documento mostra alguns cenários típicos para iniciar o uso do
+<command>Diald</command> facilmente.  Este cenários incluem uma conexão de um
+computador local a um provedor usando o PPP através de um modem sem usar o
+pon/poff ou ppp-pon/ppp-off para um servidor proxy/firewall com diferentes
+conexões Internet através de vários provedores.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Diskless-root-NFS-HOWTO</term>
+<listitem>
+<para>
+Explica como configurar um servidor e clientes para operação sem disco através
+de uma rede.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>DSL-HOWTO</term>
+<listitem>
+<para>
+Este documento examina a família DSL de serviços Internet de alta velocidade.
+Descreve como instalar, configurar depurar.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Ethernet-HOWTO</term>
+<listitem>
+<para>
+Este documento é uma coleção de dados sobre dispositivos Ethernet que podem ser
+usados no <command>GNU/Linux</command> e como configura-los.  Note que este
+HOWTO está focalizado no hardware e aspectos de baixo nível de controladores
+das placas ethernet e não cobre assuntos de software como os programas
+<command>ifconfig</command> e <command>route</command> (veja o Network-HOWTO se
+procura por estes materiais).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Firewall-HOWTO</term>
+<listitem>
+<para>
+Descreve os sistemas básicos de firewall e alguns detalhes de como ajustar
+firewalls proxy e de filtragem de pacotes em sistemas baseados no
+<command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>IP-Masquerade-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve como ativar a característica IP Masquerade no
+<command>GNU/Linux</command>.  O IP Masquerade é uma forma do Network Address
+Translation ou NAT que permite que computadores conectados internamente que não
+tem um ou mais endereços Internet registrados ter a habilidade de se comunicar
+com a Internet via uma única máquina <command>GNU/Linux</command> com um único
+endereço IP.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>IPCHAINS-HOWTO</term>
+<listitem>
+<para>
+Descreve como obter, instalar e configurar o programa avançado de firewall para
+o <command>GNU/Linux</command> e algumas idéia de como usa-lo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>IPX-HOWTO</term>
+<listitem>
+<para>
+Descreve como obter, instalar e configurar as várias ferramentas disponíveis
+para o sistema operacional <command>GNU/Linux</command> para utilizar o suporte
+do protocolo IPX no kernel do <command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Infrared-HOWTO</term>
+<listitem>
+<para>
+Uma introdução ao <command>GNU/Linux</command> e dispositivos infra-vermelho e
+como usar programas oferecidos pelo projeto Linux/IrDA.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>ISP-Hookup-HOWTO</term>
+<listitem>
+<para>
+Descreve como usar o <command>GNU/Linux</command> para conectar a um Provedor
+Internet via modem dial-up via conexão TCP/IP.  Também como o procedimento de
+discagem inicial e estabelecimento de IP, recebimento de email e news.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>ISP-Setup-RedHat-HOWTO</term>
+<listitem>
+<para>
+Descreve como configurar serviços de ISP no Red Hat.  Domínios, virtual hosts,
+pop3 e emails.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Intranet-Server-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve como configurar uma Intranet usando o
+<command>GNU/Linux</command> como um servidor que se comunica com Unix,
+Netware, NT e Windows.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Java-CGI-HOWTO</term>
+<listitem>
+<para>
+Este documento explica como configurar seu servidor para permitir programas CGI
+escritos em Java e como usar Java para escrever programas CGI.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>LDAP-HOWTO</term>
+<listitem>
+<para>
+Informações sobre a instalação, configuração, execução e manutenção de um
+Servidor LDAP (Lightweight Directory Access Protocol) em uma máquina
+<command>GNU/Linux</command> é descrita neste documento.  Existe também
+detalhes sobre como criar bancos de dados LDAP, como atualizar e apagar
+informações no banco de dados, como implementar roaming access e como usar o
+Livro de Endereços do Netscape.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>LDAP-Implementation-HOWTO</term>
+<listitem>
+<para>
+Descreve aspectos técnicos de armazenamento de dados de aplicações em um
+servidor LDAP.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Mail-Administrator-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve a configuração e uso do Correio Eletrônico (E-mail) sob
+o <command>GNU/Linux</command>.  É primariamente mais indicado para
+administradores do que usuários.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Mail-User-HOWTO</term>
+<listitem>
+<para>
+Este documento é uma introdução ao mundo do Correio Eletrônico sob o
+<command>GNU/Linux</command>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Masquerading-Simple-HOWTO</term>
+<listitem>
+<para>
+Descreve de forma prática como conectar diversas máquinas de sua rede Interna a
+Internet.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>MindTerm-SSH-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve como usar o SSH o programa MindTerm baseado em Java
+para criar de forma rápida, segura e confiável uma VPN sobre redes inseguras.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Multicast-HOWTO</term>
+<listitem>
+<para>
+Este HOWTO tenta cobrir muitos aspectos relacionados com o multicast sobre
+redes TCP/IP.  Assim, muitas informações que não são específicas do sistema
+Linux (apenas no caso de não usar o GNU/Linux...  ainda).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>NFS-HOWTO</term>
+<listitem>
+<para>
+Como configurar servidores e clientes NFS&gt;
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>NetMeeting-HOWTO</term>
+<listitem>
+<para>
+Descreve como fazer o Microsoft NetMeeting se integrar com o Linux.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>NIS-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve como configurar o <command>GNU/Linux</command> como um
+cliente NIS (YS) ou NIS+ e como instala-lo como um servidor NIS.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Network-boot-HOWTO</term>
+<listitem>
+<para>
+Descreve como configurar um servidor Linux para permitir que estações sem disco
+rígido façam boot via rede e iniciem o sistema Linux (é uma regravação parcial
+do Diskless-howto).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Net-HOWTO</term>
+<listitem>
+<para>
+Este documento cobre as área de software e tecnologias de rede no
+<command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Networking-Overview-HOWTO</term>
+<listitem>
+<para>
+O propósito deste documento é lhe oferecer uma visão das capacidades de rede do
+sistema operacional <command>GNU/Linux</command> e oferecer ponteiros para
+outros documentos e detalhes de implementação.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>PPP-HOWTO</term>
+<listitem>
+<para>
+Este documento mostra como conectar seu PC <command>GNU/Linux</command> a um
+servidor PPP (Protocolo Ponto a Ponto), como usar o PPP para ligar duas redes e
+oferece um método de configurar seu computador <command>GNU/Linux</command>
+como um servidor PPP.  Este documento também oferece ajuda na solução de
+problemas relacionados com o PPP.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Qmail-VMailMgr-Courier-imap-HOWTO</term>
+<listitem>
+<para>
+Este documento é sobre a construção de um servidor de e-mail que suportará
+hospedagem de domínios dinâmicos e oferecerá os serviços smtp, pop3 e imap,
+usando uma poderosa alternativa ao sendmail.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Remote-Serial-Console-HOWTO</term>
+<listitem>
+<para>
+A porta RS232 permite que o Linux ser controlado de um terminal ou modem
+conectado a uma porta serial assíncrona.  Este documento descreve como
+configurar o Linux para se conectar ao console serial.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Sat-HOWTO</term>
+<listitem>
+<para>
+Descreve base e referências sober a tecnologia SAP, as características de larga
+banda para download, etc.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Serial-Laplink-HOWTO</term>
+<listitem>
+<para>
+Descreve como criar uma conexão serial entre dois computadores para
+compartilhamento de dados.  Este permite também efetuar conexões seriais entre
+outros tipos de sistemas operacionais como Windows 9X, NT.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>SMB-HOWTO</term>
+<listitem>
+<para>
+Este é o HOWTO SMB.  Ele descreve como usar o protocolo Server Message Block
+(SMB), também chamado de Session Message Block, NetBIOS ou protocolo
+LanManager, com o <command>GNU/Linux</command> e usando o Samba.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Securing-Domain-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve as coisas que provavelmente deve fazer quando desejar
+configurar uma rede de computadores sob seu próprio domínio.  Ele cobre a
+configuração de parâmetros de rede, serviços de rede e configurações de
+segurança.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Security-HOWTO</term>
+<listitem>
+<para>
+Este documento é uma visão geral dos assuntos de segurança que enfrente o
+administrador de sistemas <command>GNU/Linux</command> Ele cobre a filosofia
+geral de segurança e um número de exemplos específicos de como melhorar a
+segurança de seu sistema <command>GNU/Linux</command> Também estão incluídos
+ponteiros para materiais relacionados com programas e segurança.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Shadow-Password-HOWTO</term>
+<listitem>
+<para>
+Este documento tenta descrever como obter, instalar e configurar o Linux
+password Shadow Suite.  Também discute como obter e reinstalar outros softwares
+e daemons de rede que requerem acesso as senhas do usuário.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>SSL-RedHat-HOWTO</term>
+<listitem>
+<para>
+Fornece referências sobre como o PKI e SSL funcionam juntos
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Tango-HOWTO</term>
+<listitem>
+<para>
+Descreve a instalação, configuração e correção de problemas básicos do
+Pervasive Software's Tango Application Server no Sun Solaris e vários sabores
+de <command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Thinclient-HOWTO</term>
+<listitem>
+<para>
+Como converter computadores comuns em rápidos terminais usando o poder de seu
+computador principal, você precisará de: Um computador rápido para atuar como
+servidor, um computador cliente (antigo e não desejado).  Placas de rede
+compatíveis com o <command>GNU/Linux</command>.  Uma conexão entre os
+computadores.  Como centralizar a administração do sistema usando o NFS (i.e.
+colocando todo o sistema de arquivos de um cliente rápido no servidor).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>UUCP-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve a configuração do UUCP sob o
+<command>GNU/Linux</command>.  Você deve ler este documento se planejar
+conectar a sites remotos via UUCP via modem, conexão direta ou via Internet.
+Provavelmente não precisará ler este documento se não souber o que é UUCP ou se
+seu computador não possuir este suporte.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>VMailMgr-HOWTO</term>
+<listitem>
+<para>
+Explica como configurar o suporte ao VMailMgr serviços de domínio virtual pop3
+em conjunto com o Qmail.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>VoIP-HOWTO</term>
+<listitem>
+<para>
+Ensina como configurar o sistema Linux para comunicação via voz usando a
+Internet.  Descreve protocolos e métodos para transmissão de voz aproveitando
+recursos de redes de baixa velocidade.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>VPN-HOWTO</term>
+<listitem>
+<para>
+Descreve como configurar uma Virtual Private Network com o
+<command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>VPN-Masquerade-HOWTO</term>
+<listitem>
+<para>
+Descreve como configurar um Firewall <command>GNU/Linux</command> para o
+masquerade em tráfego baseado no IPsec- e PPTP Virtual Private Network Traffic,
+permitindo estabelecer uma conexão VPN sem perder a segurança e flexibilidade
+de sua conexão Internet com o firewall <command>GNU/Linux</command> e
+permitindo fazer um servidor VPN disponível que não possui um endereço IP
+registrado na Internet.  Também estão incluídos detalhes de como configurar um
+cliente e servidor VPN.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Virtual-Services-HOWTO</term>
+<listitem>
+<para>
+Este documento fala sobre tudo que precisa saber para virtualizar um serviço.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Windows-LAN-Server-HOWTO</term>
+<listitem>
+<para>
+Ajuda na configuração do Linux em ambientes onde existiam primariamente
+máquinas executando o Windows 9x.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Wireless-HOWTO</term>
+<listitem>
+<para>
+Explica como como configurar uma rede sem fio em ambiente Linux, limitações,
+requerimentos, etc.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>WWW-HOWTO</term>
+<listitem>
+<para>
+Explica como configurar serviços WWW sob o <command>GNU/Linux</command> (ambos
+cliente e servidor).  Ele não tenta ser um manual detalhada mas uma visão e um
+bom ponto de referência.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>WWW-mSQL-HOWTO</term>
+<listitem>
+<para>
+Descreve como construir um banco de dados cliente/servidor usando a WWW e HTML
+para a interface com o usuário.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>phhttpd-HOWTO</term>
+<listitem>
+<para>
+O phttpd é um acelerador HTTP.  Ele serve uma rápida requisição estática HTTP
+através de um sistema de arquivos locai e passa as requisições menos dinâmicas
+para um servidor de espera.  Suas características são uma compreensão do I/O e
+um cache de conteúdo agressivo que o ajuda a fazer um trabalho eficiente.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s43.8.1.16"><info><title>Outros</title></info>
+<variablelist>
+<varlistentry>
+<term>Benchmarking-HOWTO</term>
+<listitem>
+<para>
+Este documento discute assuntos relacionados ao desempenho dos sistemas Linux e
+recomenda algumas ferramentas para medida do desempenho do sistema.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>DOSEMU-HOWTO</term>
+<listitem>
+<para>
+Ensina como utilizar, configurar o emulador do ambiente DOS para Linux.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Ecology-HOWTO</term>
+<listitem>
+<para>
+Este documento discute métodos de como os computadores com o
+<command>GNU/Linux</command> podem ser usados para proteger nosso ambiente,
+usando características como economia de energia ou papel.  Como ele não requer
+grandes requerimentos de hardware, o <command>GNU/Linux</command> pode ser
+usado com computadores antigos e tornar seu ciclo de vida longo.  Os jogos
+podem ser usados em ambientes educativos e estão disponíveis programas para
+simular os processos ecológicos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Process-Monitor-HOWTO</term>
+<listitem>
+<para>
+Este documento descreve como monitorar os processos (programas) no
+<command>Linux/Unix</command> e como reinicia-los automaticamente se eles são
+destruídos sem intervenção manual.  Este documento também tem URLs para FAQs
+sobre "Processos no Unix".
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>VAR-HOWTO</term>
+<listitem>
+<para>
+Contém uma lista de empresas de serviço que não fabricam hardwares ou criam
+pacotes de softwares, mas incluem valores ao produtos existentes.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+</section>
+
+<section xml:id="ajuda-howto-listagem-m"><info><title>Listagem de Mini-HOWTO's</title></info>
+<para>
+Segue abaixo uma listagem de Mini-HOWTO's do projeto LDP organizados por
+sub-seções com a descrição do assunto que cada um deles aborda.
+</para>
+<section xml:id="s43.8.2.1"><info><title>Introdução ao Sistema / Instalação / Configuração / Kernel</title></info>
+<variablelist>
+<varlistentry>
+<term>Alsa-sound</term>
+<listitem>
+<para>
+Descreve a instalação dos controladores de som ALSA para Linux.  Estes
+controladores de som podem ser usados em substituição aos controladores de com
+regular, como são totalmente compatíveis.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Install-From-ZIP</term>
+<listitem>
+<para>
+Descreve como instalar o <command>GNU/Linux</command> através de um zip drive
+conectado a porta paralela usando a distribuição Slackware do
+<command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Install-Strategies</term>
+<listitem>
+<para>
+Descreve algumas formas de instalação para aqueles que tem a intenção de fazer
+dual boot entre o Linux e Windows.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Lego</term>
+<listitem>
+<para>
+Mostra soluções em software livre para utilização com os kits de robótica da
+The Lego Group's Mindstorm Robotics Invention System (RIS).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Kerneld</term>
+<listitem>
+<para>
+Explica como configurar e utilizar o daemon kerneld.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Loadlin+Win95</term>
+<listitem>
+<para>
+Este documento descreve como usar o Loadlin com o Windows 95 para inicializar o
+<command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Modules</term>
+<listitem>
+<para>
+Explica como incluir seu suporte no kernel, configurar e utilizar módulos no
+<command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Path</term>
+<listitem>
+<para>
+Descreve truques comuns e problemas com as variáveis de ambiente no
+<command>GNU/Linux</command>/<command>Unix</command>, especialmente a variável
+PATH.  PATH é uma lista de diretórios onde os comandos são pesquisados.  Os
+detalhes se aplicam a distribuição <command>Debian</command> 1.3.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Pre-Installation-Checklist</term>
+<listitem>
+<para>
+Você é um novato no Linux?  Você é um guru no Linux?  Em ambos os casos esta
+checklist será de grande ajuda para você.  Quantas vezes você se encontrou com
+problemas no meio de um processo de instalação do <command>GNU/Linux</command>
+porque algum detalhe vital sobre o hardware alvo não é conhecido?
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Post-Installation-Checklist</term>
+<listitem>
+<para>
+Lembra alguns passos que devem ser verificados logo após a instalação de um
+novo sistema Linux.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>RPM+Slackware</term>
+<listitem>
+<para>
+Este documento descreve como ter o RPM instalado e funcionando corretamente sob
+o Slackware.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Update</term>
+<listitem>
+<para>
+Descreve como se manter atualizado sobre o desenvolvimento no mundo
+<command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Upgrade</term>
+<listitem>
+<para>
+Dicas e truques de como atualizar de uma distribuição
+<command>GNU/Linux</command> para outra.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>VAIO+Linux</term>
+<listitem>
+<para>
+Explica a instalação do <command>GNU/Linux</command> em computadores Sony VAIO.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s43.8.2.2"><info><title>Discos / Sistema de Arquivos / Desempenho</title></info>
+<variablelist>
+<varlistentry>
+<term>Automount</term>
+<listitem>
+<para>
+Descreve a montagem automática de sistemas de arquivos autofs, como
+configura-lo e alguns problemas que devem ser evitados.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Ext2fs-Undeletion</term>
+<listitem>
+<para>
+Imagina isto: Você passou os últimos três dias sem dormir, sem comer.  Sua
+compulsão hacker foi paga: você finalizou aquele programa que lhe dará fama e
+reconhecimento.  Todo o que você precisa fazer é coloca-lo no Metalab.  Oh, e
+apagar aqueles arquivos de backup do Emacs.  Assim você fadigado digita
+<literal>rm * ~.</literal>.  E bem mais tarde você notou o espaço extra naquele
+comando.  Você simplesmente apagou todo o seu trabalho!  Mas a ajuda está na
+mão.  Este documento oferece uma discussão de como recuperar arquivos apagados
+através do Second Extend File System (EXT2).  Talvez, você será capaz de lançar
+aquele programa depois disso...
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Ext2fs-Undeletion-Dir-Struct</term>
+<listitem>
+<para>
+Fornece um complemento ao ext2-undeletion-howto e descreve formas de recuperar
+estrutura de diretórios de forma segura.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Hard-Disk-Upgrade</term>
+<listitem>
+<para>
+Como copiar um sistema <command>GNU/Linux</command> de um disco para outro.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Loopback-Root-FS</term>
+<listitem>
+<para>
+Este documento explica como usar o dispositivo de loopback do Linux para criar
+um formato nativo de sistema de arquivos através de uma partição DOS sem
+reparticionamento.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Partition-Rescue-mini-HOWTO</term>
+<listitem>
+<para>
+Como recuperar uma partição pelo <command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Quota</term>
+<listitem>
+<para>
+Descreve como ativar a quota nos sistemas de arquivos para usuários e grupos de
+uma máquina <command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Swap-Space</term>
+<listitem>
+<para>
+Descreve como compartilhar sua partição swap do <command>GNU/Linux</command>
+com o Windows.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Ultra-DMA</term>
+<listitem>
+<para>
+Explica como usar Ultra-DMA como discos rígidos e interfaces Ultra ATA, Ultra
+33 e Ultra66 com o <command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>ZIP-Drive</term>
+<listitem>
+<para>
+Este documente oferece uma referência rápida para a configuração e uso da
+unidade de ZIP drive Iomega com o <command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s43.8.2.3"><info><title>Escrita de Documentação / Editores</title></info>
+<variablelist>
+<varlistentry>
+<term>DocBook-Install</term>
+<listitem>
+<para>
+Descreve de forma rápida e prática como ajustar novatos a ter de forma rápida o
+DocBook instalado para processamento de arquivos SGML em HTML.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Howtos-with-LinuxDoc</term>
+<listitem>
+<para>
+Descreve como escrever documentos HOWTOs usando o LinuxDoc (referência para
+iniciantes).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Man-Page</term>
+<listitem>
+<para>
+Descreve o que deve ter em mente quando estiver escrevendo documentação on-line
+-- também chamada de página de manual (man page).
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s43.8.2.4"><info><title>Hardware</title></info>
+<variablelist>
+<varlistentry>
+<term>3-Button-Mouse</term>
+<listitem>
+<para>
+Como ter um mouse serial de 3 botões funcionando no
+<command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>ACP-Modem</term>
+<listitem>
+<para>
+Descreve como configurar e utilizar a característica ACP (Mwave) de máquinas
+IBM, como o IBM Thinkpad.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>BTTV-Mini-HOWTO-0.3</term>
+<listitem>
+<para>
+Este documento descreve o hardware, software e procedimentos necessários para
+se usar um chipset baseado no bt8x8 frame grabber ou placa sintonizadora de TV
+sob o <command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Boca</term>
+<listitem>
+<para>
+Instalando uma placa serial Boca 16-portas (Boca 2016) no
+<command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>GTEK-BBS-550</term>
+<listitem>
+<para>
+Ensina como configurar a placa serial de 8 portas GTEK's BBS-550 com 16C550
+UARTS.  Somente uma IRQ pode ser usada para todas 8 portas.  Ele não requer
+qualquer controlador no <command>GNU/Linux</command> no entanto o kernel
+precisa ter o suporte a portas seriais.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Handspring-Visor</term>
+<listitem>
+<para>
+Usando o Visor com o <command>GNU/Linux</command> e sua porta USB.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>IO-Port-Programming</term>
+<listitem>
+<para>
+Este documento descreve a programação de portas I/O de hardware.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s43.8.2.5"><info><title>Software</title></info>
+<variablelist>
+<varlistentry>
+<term>ADSM-Backup</term>
+<listitem>
+<para>
+Descreve como instalar e usar um cliente para o sistema de backup comercial
+ADSM para Linux Intel.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Bzip2</term>
+<listitem>
+<para>
+Explica como usar o programa de compactação <command>bzip2</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>GIS-GRASS</term>
+<listitem>
+<para>
+Este documento descreve como adquirir, instalar e configurar o poderoso sistema
+de informações científicas e geográficas de domínio público (GIS): o Geographic
+Resources Analysis Support System (GRASS).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>LILO</term>
+<listitem>
+<para>
+O <command>LILO</command> é o gerenciador de inicialização mais usado na
+plataforma Intel do Linux.  Este documento descreve alguns tipos de instalações
+do LILO.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s43.8.2.6"><info><title>Plataformas não Intel (x86)</title></info>
+<variablelist>
+<varlistentry>
+<term>Mac-Terminal</term>
+<listitem>
+<para>
+Descreve o 1,002nd uso para um Macintosh (grin) morto: como configurar o Mac
+para uso como um terminal <command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s43.8.2.7"><info><title>Programação / Compiladores / Banco de Dados</title></info>
+<variablelist>
+<varlistentry>
+<term>Programming-Languages</term>
+<listitem>
+<para>
+Uma breve comparação das maiores linguagens de programação para o
+<command>GNU/Linux</command> e maiores bibliotecas para para criação de
+interfaces gráficas com o usuário (GUIs) sob o <command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s43.8.2.8"><info><title>Configuração de Teclado / Video / Console</title></info>
+<variablelist>
+<varlistentry>
+<term>Intkeyb</term>
+<listitem>
+<para>
+Mini-Howto experimental para o <command>GNU/Linux</command> para a configuração
+de teclados.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s43.8.2.9"><info><title>Ambiente Gráfico</title></info>
+<variablelist>
+<varlistentry>
+<term>3D-Modelling</term>
+<listitem>
+<para>
+Oferece detalhes sobre instruções de instalação de um ambiente desktop de
+renderização e modelamento usando o RedHat Linux.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>FDU</term>
+<listitem>
+<para>
+Como corrigir fontes feias e ilegíveis no X.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>LBX</term>
+<listitem>
+<para>
+O LBX (Low Bandwidth X) é uma extensão do servidor X que realiza compressão no
+protocolo X.  Isto significa que pode ser usado em conjunto com aplicativos X e
+um servidor X que estão separados através de uma conexão de rede de baixa
+velocidade, para aumentar o tempo de resposta.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Nvidia-OpenGL-Configuration</term>
+<listitem>
+<para>
+Ensina como instalar os drivers OpenGL para a placa de vídeo Nvidia.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Remote-X-Apps</term>
+<listitem>
+<para>
+Descreve como executar aplicativos X remotos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>TT-XFree86</term>
+<listitem>
+<para>
+Ensina como usar fontes true type com o XFree 4.0.x
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>XDM-Xterm</term>
+<listitem>
+<para>
+Ensina como utilizar o XDM para gerenciar terminais X.  Uma referência completa
+do assunto pode ser encontrada no Thin-client HOWTO.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>XFree86-Second-Mouse</term>
+<listitem>
+<para>
+Instruções de como usar um segundo mouse no X.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>X-Big-Cursor</term>
+<listitem>
+<para>
+Descreve como usar cursores grandes no X.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>XFree86-XInside</term>
+<listitem>
+<para>
+Como converte um modeline XFree86 em um XInside/XiGraphics.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Xterm-Title</term>
+<listitem>
+<para>
+Explica como usar seqüências de escape para alterar dinamicamente os títulos e
+ícones de janelas de um xterm.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s43.8.2.10"><info><title>Migração/Convivência com outras plataformas</title></info>
+<variablelist>
+<varlistentry>
+<term>Linux+DOS+Win95+OS2</term>
+<listitem>
+<para>
+Este documento oferece um procedimento para fazer 4 sistemas operacionais
+coexistirem no mesmo disco rígido.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Linux+FreeBSD</term>
+<listitem>
+<para>
+Descreve como usar o Linux e FreeBSD no mesmo sistema.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Linux+NT-Loader</term>
+<listitem>
+<para>
+Descreve como usar o gerenciador de inicialização do Windows NT para iniciar o
+<command>GNU/Linux</command>.  Este processo foi testado com o Windows NT 4.0
+WorkStation.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Linux+Solaris</term>
+<listitem>
+<para>
+Descreve como usar o Linux (X86) e Solaris (x86) no mesmo computador.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Linux+Win95</term>
+<listitem>
+<para>
+Descreve como usar o Linux e Windows 95-98 na mesma máquina.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Loadlin+Win95-98-ME</term>
+<listitem>
+<para>
+Descreve como usar o Loadlin com o Windows 95/98/ME para inicializar no Linux.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Multiboot-with-GRUB</term>
+<listitem>
+<para>
+Descreve como instalar o Windows 98, 2000, DOS e Linux usando o GRUB.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Multiboot-with-LILO</term>
+<listitem>
+<para>
+Descreve como usar múltipla inicialização entre o Windows 95, Windows NT e
+Linux.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s43.8.2.11"><info><title>Tarefas Específicas</title></info>
+<variablelist>
+<varlistentry>
+<term>Backup-With-MSDOS</term>
+<listitem>
+<para>
+Descreve como usar uma unidade de tape compatível com o
+<command>GNU/Linux</command> instalado em uma máquina DOS para fazer o backup
+do sistema de arquivos de uma máquina <command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Battery-Powered</term>
+<listitem>
+<para>
+Descreve como reduzir o consumo de energia do sistema
+<command>GNU/Linux</command> através de alguns ajustes de configuração.  Isto
+será útil para qualquer um quer executar o <command>GNU/Linux</command> em um
+sistema de computador portátil.  Também contém dicas de uso da bateria.  Se
+estiver usando o <command>GNU/Linux</command> em um sistema desktop, você
+provavelmente não precisará ler todo este documento.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Clock</term>
+<listitem>
+<para>
+Como manter o relógio de seu computador na hora.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Coffee</term>
+<listitem>
+<para>
+Uma dos mais extremos dos documentos.  Eu já pensei se era possível usar o
+<command>GNU/Linux</command> para fazer café...  e descobri que o
+<command>GNU/Linux</command> faz café!
+</para>
+<para>
+Por um longo tempo a humanidade estava se perguntando se um computador podia
+fazer café...  As pessoas precisam de café para não dormirem na frente do
+computador.  Todo mundo sabe que é melhor programar de noite...
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Divert-Sockets-mini-HOWTO</term>
+<listitem>
+<para>
+Descreve como obter, compilar e usar os soquetes divert FreeBSD sob o
+<command>GNU/Linux</command> 2.2.12.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Home-Electrical-Control</term>
+<listitem>
+<para>
+Contém referências para fazer o Linux controlar praticamente qualquer
+dispositivo elétrico.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Leased-Line</term>
+<listitem>
+<para>
+Configurando seu modem e pppd para usar 2 pares de cabos leased line.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Linux-Modem-Sharing</term>
+<listitem>
+<para>
+Descreve como configurar o sistema <command>GNU/Linux</command> para
+compartilhar um modem conectado a este sistema com outros através de uma rede
+TCP/IP.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Mail2News</term>
+<listitem>
+<para>
+Descreve como enviar mensagens de uma lista de discussão para um servidor news.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>MP3-CD-Burning</term>
+<listitem>
+<para>
+Uma referência completa para a criação de CDs de audio e dados de arquivos MP3.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>MSSQL6-Openlink-PHP-ODBC</term>
+<listitem>
+<para>
+Ensina como conectar o servidor de banco de dados MS SQL 6.x ou superior via
+ODBC do PHP3 (e superior) compilado com os drivers Openlink sob o Linux.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>NCD-X-Terminal</term>
+<listitem>
+<para>
+Descreve como conectar um terminal NCD X a um computador UNIX.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>NFS-Root</term>
+<listitem>
+<para>
+Este documento tenta explicar como configurar uma estação de trabalho "sem
+disco" no <command>GNU/Linux</command>, que monta seu sistema de arquivos raíz
+via NFS.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>NFS-Root-Client-mini-HOWTO</term>
+<listitem>
+<para>
+O propósito deste documento é explicar como criar um cliente dos diretórios
+raíz em um servidor que está usando clientes com NFS root montados.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Netscape+Proxy</term>
+<listitem>
+<para>
+Este documento descreve o processo de configurar uma REDE (INTRANET) em casa.
+Então configura o NETSCAPE das máquinas dos clientes para acessarem a internet.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>News-Leafsite</term>
+<listitem>
+<para>
+Este documento ajudará a configuração de um pequeno leafsite para a Usenet News
+usando o Leadnode do pacote free software.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Offline-Mailing</term>
+<listitem>
+<para>
+Explica como usar o sistema de mensagens do <command>GNU/Linux</command>
+off-line, receber emails para múltiplos usuários somente com uma conta de
+e-mail, e sem estar 24-24 horas on-line na Internet.  Se você não pode pagar
+uma linha para estar conectado por 24-24 horas e ainda deseja que seus usuários
+recebem emails em sua máquina Linux; também não pague por uma conta multi-drop
+em seu provedor, você pode usar este sistema usando somente um endereço de
+e-mail para dividir seus endereços de e-mails dos usuários.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Outlook-to-Unix-Mailbox</term>
+<listitem>
+<para>
+Mostra formas de converter mensagens de email do Microsoft Outlook (exceto do
+Outlook Express) para formatos de arquivos típicos do Unix.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Pager</term>
+<listitem>
+<para>
+Ensina como compilar, instalar e configurar um Gateway de emails para Pager.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Partition</term>
+<listitem>
+<para>
+Descreve como criar partições em discos rígidos IDE e SCSI.  Também é coberta a
+recuperação de tabelas de partição perdidas.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Partition-Rescue</term>
+<listitem>
+<para>
+Descreve formas para recuperar uma partição de disco apagada.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Process-Accounting</term>
+<listitem>
+<para>
+Descreve como ativar a conta de processos em uma máquina
+<command>GNU/Linux</command>, o uso de vários comandos de contabilização de
+processos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>RCS</term>
+<listitem>
+<para>
+Este documento cobre a instalação e uso básicos do RCS, o GNU Revision Control
+System sob o <command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Saving-Space</term>
+<listitem>
+<para>
+Este documento mostra maneiras de diminuir sua instalação
+<command>GNU/Linux</command> consumindo o mínimo possível de espaço.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Secure-POP+SSH</term>
+<listitem>
+<para>
+Este documento explica como usar conexões POP seguras via ssh.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Small-Memory</term>
+<listitem>
+<para>
+O propósito deste documento é descrever como executar o
+<command>GNU/Linux</command> em um sistema com pequena quantidade de memória.
+Assumindo que a compra de memória esta fora de questão aqui.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Soundblaster-AWE</term>
+<listitem>
+<para>
+Descreve como instalar e configurar a placa de som Sound Blaster 32 (SB AWE 32,
+SB AWE 64) da Creative Labs em um Sistema Linux usando a extensão do driver de
+som AWE escrito por Takashi Iwai.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>StarOffice</term>
+<listitem>
+<para>
+Instalando o StarOffice 3.1 da StarDivision no <command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>TT-Debian</term>
+<listitem>
+<para>
+Descreve como configurar o suporte das fontes True Type na
+<command>Debian</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>TkRat</term>
+<listitem>
+<para>
+Este documento foi escrito para qualquer um que tem interesse em usar seu
+computador <command>GNU/Linux</command> para enviar e receber E-mails pela
+Internet.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Visual-Bell</term>
+<listitem>
+<para>
+Explica como usar o termcap para configurar um aviso visual no sistema ao invés
+do beep e como desativar o sinal de audio.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Wacom-USB-mini-HOWTO</term>
+<listitem>
+<para>
+Descreve como configurar um Wacom Graphire USB tablet para uso no
+<command>GNU/Linux</command> (console e X), iniciando com a configuração do
+kernel para o nível da aplicação.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>WordPerfect</term>
+<listitem>
+<para>
+Discute a execução do WordPerfect no <command>GNU/Linux</command> incluindo uma
+breve discussão sobre o WordPerfect 7.0.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>ZIP-Install</term>
+<listitem>
+<para>
+Este documento somente é útil para aqueles que possuem a versão em porta
+paralela de um ZIP drive e que deseja fazer o backup do sistema
+<command>GNU/Linux</command> em um disco ZIP.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>call-back-mini-HOWTO</term>
+<listitem>
+<para>
+Descreve como configurar um call-back usando um sistema
+<command>GNU/Linux</command> e um modem.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s43.8.2.12"><info><title>Rede / Administração / Firewall / Segurança</title></info>
+<variablelist>
+<varlistentry>
+<term>ADSL</term>
+<listitem>
+<para>
+Configurando o <command>GNU/Linux</command> para funcionar com Asymmetric
+Digital Subscriber Loop (ADSL), uma nova tecnologia de acesso digital de alta
+velocidade através de linhas disponível através da Telcos.  O ADSL é uma das
+tecnologias disponíveis da família da digital subscriber line (DSL) disponíveis
+para usuários residenciais e comerciais usando copper loops, oferecendo
+velocidades que variam de 384kbps a 1.5Mbps.  Este documento contém uma
+introdução ao ADSL e informações de como instalar, configurar e colocar o ADSL
+para funcionar.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Apache+SSL+PHP+fp</term>
+<listitem>
+<para>
+Este documento explica como construir um servidor web que suportará conteúdo
+web dinâmico via a linguagem de scripting PHP/FI, transmissão de dados segura
+baseado no SSL do Netscape, execução segura de CGI's e extensões do M$
+Frontpage Server.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Apache-mods</term>
+<listitem>
+<para>
+Detalhes sobre a instalação do servidor web baseado no Apache configurado para
+manipular DSO e vários módulos úteis incluindo perl, ssl, e php.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Bridge</term>
+<listitem>
+<para>
+Este documento descreve como ajustar uma ponte ethernet (bridge).  O que é uma
+ponte ethernet?  É um dispositivo que controla os pacotes de dados dentro de
+uma subrede na tentativa de cortar o excesso de tráfego.  Uma ponte é colocada
+normalmente entre dois grupos separados de computadores que falam entre eles,
+mas não muito com computadores no outro grupo.  Um bom exemplo disto é
+considerar um grupo de Macintoshes e um grupo de máquinas Unix.  Ambos destes
+grupos de máquinas tendem falar uma com as outras, e o tráfego que produzem na
+rede causam colisões para as outras máquinas que estão tentando falar uma com a
+outra.  Uma ponte pode ser colocada entre estes dois grupos de computadores.  A
+tarefa da ponte é então examinar o destino dos pacotes de dados um por vez e
+decidir o que passar ou não para o outro lado do segmento ethernet.  O
+resultado é uma rede rápida com menos colisões.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Bridge+Firewall</term>
+<listitem>
+<para>
+Como configurar uma ponte com um firewall.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Bridge+Firewall+DSL</term>
+<listitem>
+<para>
+Configurando um sistema <command>GNU/Linux</command> para funcionar como um
+firewall e ponte com uma conexão de rede DSL.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Cipe+Masq</term>
+<listitem>
+<para>
+Como configurar uma VPN usando o Cipe em um firewall
+<command>GNU/Linux</command> masquerading.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Compressed-TCP</term>
+<listitem>
+<para>
+Seções TCP/IP compactadas usando ferramentas como SSH.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>DHCP</term>
+<listitem>
+<para>
+Este documento tenta responder questões básicas de como configurar seu
+computador <command>GNU/Linux</command> para servir de cliente ou servidor
+DHCP.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>DPT-Hardware-RAID</term>
+<listitem>
+<para>
+Como ajustar o hardware RAID sob o <command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Domain</term>
+<listitem>
+<para>
+Este documento explica as coisas que você provavelmente deve fazer quando
+desejar construir uma rede de computadores sob seu próprio domínio.  Ele cobre
+a configuração dos parâmetros de rede, serviços de rede e segurança.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>FTP</term>
+<listitem>
+<para>
+Como usar clientes e servidores FTP.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Fax-Server</term>
+<listitem>
+<para>
+Descreve os métodos mais simples de configurar um servidor de fax em seu
+sistema <command>GNU/Linux</command>.  O fax está disponível aos usuários do
+seu sistema local e rede de usuários.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Firewall-Piercing</term>
+<listitem>
+<para>
+Métodos de usar PPP através de telnet para tornar os materiais da rede
+transparentes através de um firewall Internet.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Home-Network-mini-HOWTO</term>
+<listitem>
+<para>
+Um tutorial simples de configuração do sistema Red Hat 6 e variantes para
+operar como um gateway na internet para uma pequena rede doméstica ou de
+escritório.  Entre os tópicos cobertos estão incluídos masquerading, DNS, DHCP
+e segurança básica.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>IP-Alias</term>
+<listitem>
+<para>
+Descreve como utilizar vários IPs em uma única interface de rede.  Em adição,
+estão incluídas instruções de como ajustar a máquina para receber e-mais em IPs
+alises.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>IP-Subnetworking</term>
+<listitem>
+<para>
+Descreve porque e como subdividir uma rede IP - que está usando uma simples
+classe de rede A, B ou C para funcionar corretamente em diversas redes
+interconectadas.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>IPMasquerading+Napster</term>
+<listitem>
+<para>
+Descreve como permitir usuários através de um sistema IPMasquerade usar o
+Napster.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>ISP-Connectivity</term>
+<listitem>
+<para>
+Descreve como configurar o PPP, conectar-se ao seu Provedor, configurar o
+E-mail e news, obter um IP permanente (se disponível), obter um nome de
+domínio.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Mail-Queue</term>
+<listitem>
+<para>
+Queue E-mails remotos + Entregar e-mails locais as configurações necessárias
+para fazer o Sendmail enviar mensagens locais ***Agora*** e entregar mensagens
+remotas "quando quiser".
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Netrom-Node</term>
+<listitem>
+<para>
+Este documento descreve como configurar o pacote de utilitários ax25 para Rádio
+Amadores.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>PLIP</term>
+<listitem>
+<para>
+Este documento lhe ajudará a usar sua porta Paralela para conexão entre
+computadores.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>ppp-ssh</term>
+<listitem>
+<para>
+Descreve como configurar uma rede VPN usando ssh sobre ppp.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>PortSlave</term>
+<listitem>
+<para>
+Configurando e usando um roteador Linux para conexão remota, radius, console
+serial.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Proxy-ARP-Subnet</term>
+<listitem>
+<para>
+Este documento discute o uso do Proxy Address Resolution Protocol (ARP) com
+subrede em ordem para fazer uma pequena rede de computadores visível a outra
+sub rede IP (eu chamo isto de sub-subrede).  isto faz todas as máquinas na rede
+local (rede 0 onde estamos agora) aparecer como se estivessem conectadas a rede
+principal (rede 1).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Public-Web-Browser</term>
+<listitem>
+<para>
+A idéia básica é dar acesso web a pessoas que desejam, limitando suas
+habilidades de causar problemas.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Qmail+MH</term>
+<listitem>
+<para>
+Ensina como usar o Qmail em conjunto com o MH.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Remote-Boot</term>
+<listitem>
+<para>
+Este documento descreve como configurar um servidor de inicialização robusto e
+seguro para um grupo de PCS, permitindo cada cliente escolher em tempo de
+inicialização qual sistema operacional executar.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>SLIP-PPP-Emulator</term>
+<listitem>
+<para>
+Descreve como obter seu computador Linux conectado a um site genérico via
+emulador SLIP/PPP, tal como SLiRP ou TIA.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Sendmail+UUCP</term>
+<listitem>
+<para>
+Como utilizar o Sendmail em conjunto com o UUCP.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Sendmail-Address-Rewrite</term>
+<listitem>
+<para>
+Breve descrição de como ajustar o arquivo de configuração do sendmail para o
+usuário doméstico que utiliza o acesso dial-up a
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Sybase-PHP-Apache</term>
+<listitem>
+<para>
+Explica como usar o PHP + Apache para acesso a uma base de dados Sybase-ASE.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Term-Firewall</term>
+<listitem>
+<para>
+Métodos de usar o "term" para tornar os materiais de rede transparentes através
+de um firewall TCP que parece não ser capaz.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Token-Ring</term>
+<listitem>
+<para>
+Fazendo o Token Ring funcionar no <command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>TransparentProxy</term>
+<listitem>
+<para>
+Como configurar um servidor proxy transparente de cache HTTP usando somente o
+<command>GNU/Linux</command> e o Squid.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>VPN</term>
+<listitem>
+<para>
+Ensina como configurar uma Virtual Protected Network no
+<command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s43.8.2.13"><info><title>Outros</title></info>
+<variablelist>
+<varlistentry>
+<term>Advocacy</term>
+<listitem>
+<para>
+Este documento oferece sugestões de como a comunidade Linux pode defender
+efetivamente o uso do Linux.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>BogoMips</term>
+<listitem>
+<para>
+Detalhes sobre BogoMips.  Este texto foi criado a partir de vários arquivos
+<command>GNU/Linux</command> no arquivo
+<filename>HOWTO/mini/BogoMips</filename>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Commercial-Port-Advocacy</term>
+<listitem>
+<para>
+Este documento discute métodos que podem ser usados como aproximação de
+empresas comerciais para convence-las a portar seus programas para o
+<command>GNU/Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+</section>
+
+</section>
+
+    <!-- ]]> -->
+    
+
+<section xml:id="ajuda-docs"><info><title>Documentação de Programas</title></info>
+<para>
+São documentos instalados junto com os programas.  
+<!-- [ %DESCRICAOD [ --> Alguns programas também
+trazem o <emphasis>aviso de copyright, changelogs, modelos, scripts, exemplos e
+FAQs (perguntas freqüêntes)</emphasis> junto com a documentação normal.
+</para> <!-- ]]> -->
+
+<para>
+Seu princípio é o mesmo do How-to; documentar o programa.  Estes arquivos estão
+localizados em:
+</para>
+<para>
+<!-- [ %DEBIAN [ --> <filename>/usr/share/doc/</filename>[<emphasis>programa</emphasis>]. <!-- ]]> -->
+</para>
+<para>
+<emphasis>Programa</emphasis> é o nome do programa ou comando procurado.
+</para>
+</section>
+
+<section xml:id="ajuda-faq"><info><title>FAQ</title></info>
+<para>
+<emphasis>FAQ</emphasis> é um arquivo de perguntas e respostas mais freqüêntes
+sobre o programa.  Normalmente os arquivos de FAQ estão localizados junto com a
+documentação principal do programa em
+<!-- [ %DEBIAN [ --> <filename>/usr/share/doc/</filename>[<emphasis>programa</emphasis>]. <!-- ]]> -->
+</para>
+</section>
+
+    <!-- [ %INTER-AVANC [ -->
+<section xml:id="ajuda-rfcs"><info><title>RFC's</title></info>
+<para>
+São textos que contém normas para a padronização dos serviços e protocolos da
+Internet (como a porta padrão de operação, comandos que devem ser utilizados,
+respostas) e outros detalhes usados para padronizar o uso de serviços Internet
+entre as mais diversas plataformas de computadores, com o objetivo de garantir
+a perfeita comunicação entre ambos.  As RFC's podem ser obtidas de <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://rfc.net">http://rfc.net</link>.
+</para>
+<!-- [ %DESCRICAOD [ -->
+<para>
+O arquivo de uma RFC segue o formato <filename>RFC+Número</filename>, onde
+<literal>RFC</literal> descreve que o documento é uma RFC e
+<literal>Número</literal> é o seu número de identificação, como o documento
+<filename>RFC1939</filename> que documenta o funcionamento e comandos do
+protocolo POP3.  Os arquivos de RFC's podem ser encontrados no pacote
+<!-- [ %DEBIAN [ --> <systemitem role="package">doc-rfc</systemitem> da distribuição
+<command>Debian</command> e baseadas. <!-- ]]> --> 
+<!-- ]]> -->
+</para>
+<para>
+Segue abaixo o índice principal do diretório de RFC's que poderá ser usado para
+localizar RFC's específicas de um determinado serviço/assunto:
+</para>
+<variablelist>
+<varlistentry>
+<term>0001</term>
+<listitem>
+<para>
+PADRÕES OFICIAIS DO PROTOCOLO INTERNET.  J.  Reynolds, R.  Braden.  Março 2000.
+(Formato: TXT=86139 bytes) (Deixa obsoleto RFC2500, RFC2400, RFC2300, RFC2200,
+RFC2000, RFC1920, RFC1880, RFC1800, RFC1780, RFC1720, RFC1610, RFC1600,
+RFC1540, RFC1500, RFC1410, RFC1360, RFC1280, RFC1250, RFC1200, RFC1140,
+RFC1130, RFC1100, RFC1083) (Também RFC2600)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0002</term>
+<listitem>
+<para>
+Números designados.  J.  Reynolds, J.  Postel.  Outubro 1994.  (Formato:
+TXT=458860 bytes) (Também RFC1700)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0003</term>
+<listitem>
+<para>
+Requerimentos do sistema.  R.  Braden.  Outubro 1989.  (Formato: TXT=528939
+bytes) (Também RFC1122, RFC1123)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0004</term>
+<listitem>
+<para>
+Requerimentos do Gateway.  R.  Braden, J.  Postel.  Junho 1987.  (Formato:
+TXT=125039 bytes) (Também RFC1009)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0005</term>
+<listitem>
+<para>
+Protocolo Internet.  J.  Postel.  Setembro 1981.  (Formato: TXT=241903 bytes)
+(Também RFC0791, RFC0950, RFC0919, RFC0922, RFC792, RFC1112)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0006</term>
+<listitem>
+<para>
+User Datagram Protocol.  J.  Postel.  Agosto 1980.  (Formato: TXT=5896 bytes)
+(Também RFC0768)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0007</term>
+<listitem>
+<para>
+Transmission Control Protocol.  J.  Postel.  September 1981.  (Formato:
+TXT=172710 bytes) (Também RFC0793)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0008</term>
+<listitem>
+<para>
+Protocolo Telnet.  J.  Postel, J.  Reynolds.  Maio 1983.  (Formato: TXT=44639
+bytes) (Também RFC0854, RFC0855)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0009</term>
+<listitem>
+<para>
+File Transfer Protocol.  J.  Postel, J.  Reynolds.  Outubro 1985.  (Formato:
+TXT=148316 bytes) (Também RFC0959)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0010</term>
+<listitem>
+<para>
+SMTP Service Extensions.  J.  Klensin, N.  Freed, M.  Rose, E.  Stefferud &amp; D.
+Crocker.  Novembro 1995.  (Formato: TXT=23299 bytes) (Deixa obsoleto RFC1651)
+(Também RFC821, RFC1869)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0011</term>
+<listitem>
+<para>
+Standard for the format of ARPA Internet text messages.  D.  Crocker.
+13-Ago-1982.  (Formato: TXT=109200 bytes) (Deixa obsoleto RFC1653) (Também
+RFC0822)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0012</term>
+<listitem>
+<para>
+Network Time Protocol.  D.  Mills.  Setembro 1989.  (Formato: TXT=193 bytes)
+(Também RFC1119)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0013</term>
+<listitem>
+<para>
+Domain Name System.  P.  Mockapetris.  Novembro 1987.  (Formato: TXT=248726
+bytes) (Também RFC1034, RFC1035)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0014</term>
+<listitem>
+<para>
+Mail Routing and the Domain System.  C.  Partridge.  Janeiro 1986.  (Formato:
+TXT=18182 bytes) (Também RFC0974)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0015</term>
+<listitem>
+<para>
+Simple Network Management Protocol.  J.  Case, M.  Fedor, M.  Schoffstall, J.
+Davin.  Maio 1990.  (Formato: TXT=72876 bytes) (Também RFC1157)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0016</term>
+<listitem>
+<para>
+Structure of Management Information.  M.  Rose, K.  McCloghrie.  Maio 1990.
+(Formato: TXT=82279 bytes) (Deixa obsoleto RFC1065) (Também RFC1155)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0017</term>
+<listitem>
+<para>
+Management Information Base.  K.  McCloghrie, M.  Rose.  March 1991.  (Formato:
+TXT=142158 bytes) (Deixa obsoleto RFC1158) (Também RFC1213)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0018</term>
+<listitem>
+<para>
+Exterior Gateway Protocol.  D.  Mills.  Abril 1984.  (Formato: TXT=63836 bytes)
+(Também RFC0904)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0019</term>
+<listitem>
+<para>
+NetBIOS Service Protocols.  NetBIOS Working Group.  Março 1987.  (Formato:
+TXT=319750 bytes) (Também RFC1001, RFC1002)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0020</term>
+<listitem>
+<para>
+Echo Protocol.  J.  Postel.  Maio 1983.  (Formato: TXT=1237 bytes) (Também
+RFC0862)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0021</term>
+<listitem>
+<para>
+Discard Protocol.  J.  Postel.  Maio 1983.  (Formato: TXT=1239 bytes) (Também
+RFC0863)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0022</term>
+<listitem>
+<para>
+Character Generator Protocol.  J.  Postel.  Maio 1983.  (Formato: TXT=6842
+bytes) (Também RFC0864)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0023</term>
+<listitem>
+<para>
+Quote of the Day Protocol.  J.  Postel.  Maio 1983.  (Formato: TXT=1676 bytes)
+(Também RFC0865)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0024</term>
+<listitem>
+<para>
+Active Users Protocol.  J.  Postel.  Maio 1983.  (Formato: TXT=2029 bytes)
+(Também RFC0866)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0025</term>
+<listitem>
+<para>
+Daytime Protocol.  J.  Postel.  Maio 1983.  (Formato: TXT=2289 bytes) (Também
+RFC0867)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0026</term>
+<listitem>
+<para>
+Time Server Protocol.  J.  Postel.  Maio 1983.  (Formato: TXT=3024 bytes)
+(Também RFC0868)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0027</term>
+<listitem>
+<para>
+Binary Transmission Telnet Option.  J.  Postel, J.  Reynolds.  Maio 1983.
+(Formato: TXT=8965 bytes) (Também RFC0856)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0028</term>
+<listitem>
+<para>
+Echo Telnet Option.  J.  Postel, J.  Reynolds.  Maio 1983.  (Formato: TXT=10859
+bytes) (Também RFC0857)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0029</term>
+<listitem>
+<para>
+Suppress Go Ahead Telnet Option.  J.  Postel, J.  Reynolds.  Maio 1983.
+(Formato: TXT=3712 bytes) (Também RFC0858)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0030</term>
+<listitem>
+<para>
+Status Telnet Option.  J.  Postel, J.  Reynolds.  Maio 1983.  (Formato:
+TXT=4273 bytes) (Também RFC0859)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0031</term>
+<listitem>
+<para>
+Timing Mark Telnet Option.  J.  Postel, J.  Reynolds.  Maio 1983.  (Formato:
+TXT=7881 bytes) (Também RFC0860)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0032</term>
+<listitem>
+<para>
+Extended Options List Telnet Option.  J.  Postel, J.  Reynolds.  Maio 1983.
+(Formato: TXT=3068 bytes) (Também RFC0861)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0033</term>
+<listitem>
+<para>
+Trivial File Transfer Protocol.  K.  Sollins.  Julho 1992.  (Formato: TXT=24599
+bytes) (Também RFC1350)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0034</term>
+<listitem>
+<para>
+Routing Information Protocol.  C.  Hedrick.  Junho 1988.  (Formato: TXT=91435
+bytes) (Também RFC1058)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0035</term>
+<listitem>
+<para>
+ISO Transport Service on top of the TCP (Version: 3).  M.  Rose, D.  Cass.
+Maio 1978.  (Formato: TXT=30662 bytes) (Também RFC1006)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0036</term>
+<listitem>
+<para>
+Transmission of IP and ARP over FDDI Networks.  D.  Katz.  Janeiro 1993.
+(Formato: TXT=22077 bytes) (Também RFC1390)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0037</term>
+<listitem>
+<para>
+An Ethernet Address Resolution Protocol.  David C.  Plummer.  Novembro 1982.
+(Formato: TXT=21556 bytes) (Também RFC0826)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0038</term>
+<listitem>
+<para>
+A Reverse Address Resolution Protocol.  Ross Finlayson, Timothy Mann, Jeffrey
+Mogul, Marvin Theimer.  Junho 1984.  (Formato: TXT=9345 bytes) (Também RFC0903)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0039</term>
+<listitem>
+<para>
+Interface Message Processor: Especificações para a Interconexão de um
+computador e um IMP (Revisado).  BBN.  Dezembro 1981.  (fora de linha)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0040</term>
+<listitem>
+<para>
+Host Access Protocol specification.  Bolt Beranek and Newman.  Agosto 1993.
+(Formato: TXT=152740 bytes) (Deixa obsoleto RFC0907) (Também RFC1221)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0041</term>
+<listitem>
+<para>
+Standard for the transmission of IP datagrams over Ethernet networks.  C.
+Hornig.  Abril 1984.  (Formato: TXT=5697 bytes) (Também RFC0894)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0042</term>
+<listitem>
+<para>
+Standard for the transmission of IP datagrams over experimental
+Ethernetnetworks.  J.  Postel.  Abril 1984.  (Formato: TXT=4985 bytes) (Também
+RFC0895)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0043</term>
+<listitem>
+<para>
+Standard for the transmission of IP datagrams over IEEE 802 networks.  J.
+Postel, J.K.  Reynolds.  Agosto 1993.  (Formato: TXT=34359 bytes) (Deixa
+obsoleto RFC0948) (Também RFC1042)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0044</term>
+<listitem>
+<para>
+DCN Local-Network Protocols.  D.L.  Mills.  Agosto 1993.  (Formato: TXT=65340
+bytes) (Também RFC0891)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0045</term>
+<listitem>
+<para>
+Internet Protocol on Network System's HYPERchannel: Protocol Specification.  K.
+Hardwick, J.  Lekashman.  Augosto 1993.  (Formato: TXT=100836 bytes) (Também
+RFC1044)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0046</term>
+<listitem>
+<para>
+Transmitting IP traffic over ARCNET networks.  D.  Provan.  Agosto 1993.
+(Formato: TXT=16565 bytes) (Deixa obsoleto RFC1051) (Também RFC1201)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0047</term>
+<listitem>
+<para>
+Nonstandard for transmission of IP datagrams over serial lines: SLIP.  J.L.
+Romkey.  Agosto 1993.  (Formato: TXT=12578 bytes) (Também RFC1055)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0048</term>
+<listitem>
+<para>
+Standard for the transmission of IP datagrams over NetBIOS networks.  L.J.
+McLaughlin.  Agosto 1993.  (Formato: TXT=5579 bytes) (Também RFC1088)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0049</term>
+<listitem>
+<para>
+Standard for the transmission of 802.2 packets over IPX networks.  L.J.
+McLaughlin.  Agosto 1993.  (Formato: TXT=7902 bytes) (Também RFC1132)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0050</term>
+<listitem>
+<para>
+Definitions of Managed Objects for the Ethernet-like Interface Types.  F.
+Kastenholz.  Julho 1994.  (Formato: TXT=39008, bytes) (Deixa obsoleto RFC1623,
+RFC1398) (Também RFC1643)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0051</term>
+<listitem>
+<para>
+The Point-to-Point Protocol (PPP).  W.  Simpson, Editor.  Julho 1994.
+(Formato: TXT=151158 bytes) (Deixa obsoleto: RFC1549) (Também RFC1661, RFC1662)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0052</term>
+<listitem>
+<para>
+The Transmission of IP Datagrams over the SMDS Service.  D.  Piscitello, J.
+Lawrence.  Março 1991.  (Formato: TXT=24662 bytes) (Também RFC1209)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0053</term>
+<listitem>
+<para>
+Post Office Protocol - Version 3.  J.  Myers &amp; M.  Rose.  Maio 1996.  (Formato:
+TXT=47018 bytes) (Deixa Obsoleto: RFC1725) (Também RFC1939)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0054</term>
+<listitem>
+<para>
+OSPF Version 2.  J.  Moy.  Abril 1998.  (Formato: TXT=447367 bytes) (Também
+RFC2328)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0055</term>
+<listitem>
+<para>
+Multiprotocol Interconnect over Frame Relay.  C.  Brown, A.  Malis.  Setembro
+1998.  (Formato: TXT=74671 bytes) (Deixa Obsoleto: RFC1490, RFC1294) (Também
+RFC2427)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0056</term>
+<listitem>
+<para>
+RIP Version 2.  G.  Malkin.  Novembro 1998.  (Formato: TXT=98462 bytes)
+(Atualiza RFC1723, RFC1388) (Também RFC2453)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0057</term>
+<listitem>
+<para>
+RIP Version 2 Protocol Applicability Statement.  G.  Malkin.  Novembro 1994.
+(Formato: TXT=10236 bytes) (Também RFC1722)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0058</term>
+<listitem>
+<para>
+Structure of Management Information Version 2 (SMIv2.  K.  McCloghrie, D.
+Perkins, J.  Schoenwaelder.  Abril 1999.  (Formato: TXT=89712 bytes) (Deixa
+Obsoleto RFC1902) (Também RFC2578, RFC2579)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>0059</term>
+<listitem>
+<para>
+Remote Network Monitoring Management Information Base.  S.  Waldbusser.  Maio
+2000.  (Formato: TXT=198676 bytes) (Deixa Obsoleto RFC1757) (Também RFC2819)
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+    <!-- ]]> -->
+
+<section xml:id="ajuda-internet"><info><title>Internet</title></info>
+<para>
+Certamente o melhor suporte ao <command>GNU/Linux</command> é via Internet,
+veja abaixo alguns locais úteis de onde pode obter ajuda ou se atualizar.
+</para>
+<section xml:id="ajuda-paginas"><info><title>Páginas Internet de Referência</title></info>
+<para>
+Existem boas páginas Internet Nacionais e Internacionais sobre o
+<command>GNU/Linux</command> e assuntos relacionados com este sistema.  A
+maioria trazem documentos e explicações sobre configuração, instalação,
+manutenção, documentação, suporte, etc.
+</para>
+<para>
+Estas páginas podem ser encontradas através de ferramentas de busca.  Entre
+outras páginas, posso citar as seguintes:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.debianbrasil.org/">http://www.debianbrasil.org/</link></literal>
+Projeto Debian-Br.  A <command>Debian</command> é uma distribuição de
+<command>Linux</command> conhecida por sua qualidade, grande número de pacotes,
+estabilidade, facilidade de atualização, desenvolvimento aberto, segurança,
+ferramentas de gerenciamento de servidores e comprometimento com o software
+livre.
+</para>
+<para>
+A Debian é feita originalmente em inglês e traduzida por grupos em vários
+lugares do mundo.  O projeto <emphasis role="strong">Debian-br</emphasis>
+destina-se a colaborar na tradução da <command>Debian</command> para o
+Português (nossa língua-mãe).  Através desse projeto, todos poderão, da forma
+colaborativa como na <command>Debian</command>, trazer essa excelente
+distribuição em nosso idioma!
+</para>
+<para>
+Participe:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+Você pode pegar um documento pra traduzir
+</para>
+</listitem>
+<listitem>
+<para>
+Reformular a página do projeto
+</para>
+</listitem>
+<listitem>
+<para>
+Programando para o projeto
+</para>
+</listitem>
+<listitem>
+<para>
+Sendo um desenvolvedor da Debian
+</para>
+</listitem>
+<listitem>
+<para>
+A pagina do projeto é a <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.debianbrasil.org/">http://www.debianbrasil.org/</link>
+</para>
+</listitem>
+<listitem>
+<para>
+Revisar documentação
+</para>
+</listitem>
+<listitem>
+<para>
+Ou participar de outras tarefas do seu interesse!
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Entre em contato com o responsável pelo projeto pelo email
+<email>debian-br@listas.cipsga.org.br</email> para saber como entrar no projeto
+ou visite a página <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.debianbrasil.org/">http://www.debianbrasil.org/</link>.  Todos
+os interessados estão convidados a participar do projeto!
+</para>
+</listitem>
+<listitem>
+<para>
+<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.br-linux.org/">http://www.br-linux.org/</link></literal> -
+Boletim diário com as noticias mais recentes sobre
+<command>GNU/Linux</command>, testes, redes, descrição/configuração/ avaliação
+de programas, entrevistas, downloads, dica do dia, mecanismo de busca no site,
+links, etc.  Em Português.
+</para>
+<para>
+Responsável pela página: Augusto Campos <email>brain@matrix.com.br</email>
+endereço: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.br-linux.org/">http://www.br-linux.org/</link>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.olinux.com.br/">http://www.olinux.com.br/</link></literal> -
+Trata o <command>GNU/Linux</command> com o foco jornalístico e tem a intenção
+de prover informações eficazes e esclarecedoras capazes de instruir, reciclar e
+tornar acessível aos usuários o conhecimento e aprofundamento de temas
+relacionados a plataforma <command>GNU/Linux</command>.
+</para>
+<para>
+Publicação diária de Artigos que são feitos para que o usuário possa resolver
+problemas e tirar dúvidas deste sistema.  Assuntos diversos sobre programas,
+serviços e utilitários.  Também conta com seções de programação, jogos,
+segurança e entrevistas com personalidades do cenário <emphasis>software
+livre/código aberto</emphasis>.  Atualização diária.
+</para>
+<para>
+Responsável pela página: Linux Solutions
+<email>baptista@linuxsolutions.com.br</email> endereço: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.olinux.com.br/">http://www.olinux.com.br/</link>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.linuxsecurity.com.br/">http://www.linuxsecurity.com.br/</link></literal>
+- Boletins de segurança, publicações de textos nacionais, traduções de sites
+especializados em segurança, programas relacionados com criptografia e
+segurança no ambiente <command>Linux</command>.  A página requer um navegador
+com suporte a Java.
+</para>
+<para>
+Endereço: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.linuxsecurity.com.br/">http://www.linuxsecurity.com.br/</link>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.tldp.org/">http://www.tldp.org/</link></literal> - Projeto de
+documentação do <command>GNU/Linux</command> no Brasil.  Toda a documentação
+traduzida para o Português do Brasil pode ser encontrada lá.
+</para>
+<para>
+Responsável pela página: <email>ricardo@conectiva.com.br</email> endereço:
+<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.tldp.org/">http://www.tldp.org/</link>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.noticiaslinux.com.br/">http://www.noticiaslinux.com.br/</link></literal>
+-
+</para>
+<para>
+Notícias diárias sobre GNU/Linux e Software Livre no site, por e-mail ou RSS.
+</para>
+<para>
+Responsável pela página: <email>deivison@noticiaslinux.com.br</email> endereço:
+<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.noticiaslinux.com.br/">http://www.noticiaslinux.com.br/</link>
+</para>
+</listitem>
+<listitem>
+<para>
+<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.linux.org/">http://www.linux.org/</link></literal> - Página
+oficial do <command>GNU/Linux</command> mantida pela
+<emphasis>Transmeta</emphasis> (a empresa que Linus Torvalds vem trabalhando
+atualmente).  Muita referência sobre <command>GNU/Linux</command>,
+distribuições, hardwares, softwares, downloads, etc.
+</para>
+<para>
+Responsável pela página: <email>webmaster@linux.org</email> endereço: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.linux.org/">http://www.linux.org/</link>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://counter.li.org/">http://counter.li.org/</link></literal> - Este é
+um serviço que tem o objetivo de contar os usuários, máquinas, grupos de
+usuários <command>Linux</command> existentes ao redor do mundo.  Te encorajo a
+se registrar neste site e indica-lo aos seus amigos, é de <emphasis role="strong">graça</emphasis>, você estará contribuindo para o aumento das
+estatísticas do número de usuários no mundo, país, sua cidade, etc.
+</para>
+<para>
+O site também conta com um sistema de estatísticas de usuários, máquinas e
+grupos de usuários espalhados ao redor do mundo.  Você pode saber em poucos
+segundos a quantidade de usuários Linux em seu país, cidade, etc.
+</para>
+<para>
+Responsável pela página: Harald T.  Alvestrand
+<email>harald@alvestrand.no</email> endereço: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://counter.li.org/">http://counter.li.org/</link>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://metalab.unc.edu/">http://metalab.unc.edu/</link></literal> - O
+ponto de referência mais tradicional de softwares <command>GNU/Linux</command>
+do mundo.  Você pode encontrar desde dicas, documentação (todos os How-Tos) até
+diversas distribuições <command>GNU/Linux</command>.
+</para>
+<para>
+Responsável pelo site: <email>webmaster@sunsite.unc.edu</email> endereço:
+<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://metalab.unc.edu/">http://metalab.unc.edu/</link>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.themes.org/">http://www.themes.org/</link></literal> - Neste
+site você encontra milhares de temas divididos em categorias para os mais
+diversos gerenciadores de janelas no <command>GNU/Linux</command>.  O site é
+muito pesado, por causa das fotos, é recomendável um bom fax-modem ou muita
+paciência.
+</para>
+<para>
+Responsável pela página: <email>webmaster@themes.org</email> endereço: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.themes.org/">http://www.themes.org/</link>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.oreill.com/safari/">http://www.oreill.com/safari/</link></literal>
+- Neste site você encontra os livros publicados sobre a licença OpenBook da
+Orreil.  Na maioria livros que não atende mais propósitos atualmente e livros
+em que os autores concordaram em licenciar sob os termos OpenBook.
+</para>
+<para>
+Endereço: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.oreill.com/safari/">http://www.oreill.com/safari/</link>.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Caso conhecer uma página de Internet que contenha materiais úteis a comunidade
+<command>GNU/Linux</command> ou desejar incluir a sua, entre em contato para
+sua inclusão na próxima versão do guia junto com uma descrição da página.
+</para>
+</section>
+
+
+<section xml:id="ajuda-listas"><info><title>Listas de discussão</title></info>
+<para>
+São grupos de usuários que trocam mensagens entre si, resolvem dúvidas, ajudam
+na configuração de programas, instalação, etc.  É considerado o melhor suporte
+ao <command>GNU/Linux</command> pois qualquer participante pode ser beneficiar
+das soluções discutidas.  Existem milhares de listas de discussões sobre o
+<command>GNU/Linux</command> espalhadas pelo mundo, em Português existem
+algumas dezenas.
+</para>
+<para>
+Algumas listas são específicas a um determinado assunto do sistema, algumas são
+feitas para usuários iniciantes ou avançados, outras falam praticamente de
+tudo.  Existem desde usuários iniciantes, hackers, consultores, administradores
+de redes experientes e gurus participando de listas e oferecendo suporte de
+graça a quem se aventurar em instalar e usar o sistema
+<command>GNU/Linux</command>.
+</para>
+<!-- [ %DESCRICAOD [ -->
+<para>
+A lista de discussão funciona da seguinte forma: você se inscreve na lista
+enviando uma mensagem ao endereço de inscrição, será enviada um pedido de
+confirmação por e-mail, simplesmente dê um reply na mensagem para ser
+cadastrado.  Pronto!  agora você estará participando do grupo de usuários e
+receberá todas as mensagens dos participantes do grupo.  Assim você poderá
+enviar sua mensagem e ela será vista por todos os participantes da lista.
+</para>
+<para>
+Da mesma forma, você pode responder uma dúvida de outro usuário da lista ou
+discutir algum assunto, tirar alguma dúvida sobre a dúvida de outra pessoa,
+etc.
+</para>
+<!-- ]]> -->
+<para>
+Não tenha vergonha de enviar sua pergunta, participar de listas de discussão é
+uma experiência quase obrigatório de um <literal>Linuxer</literal>.  Abaixo
+segue uma relação de listas de discussão em Português com a descrição, endereço
+de inscrição, e o que você deve fazer para ser cadastrado:
+</para>
+<variablelist>
+<varlistentry>
+<term><email>debian-user-portuguese@lists.debian.org</email></term>
+<listitem>
+<para>
+Lista de discussão para usuários Portugueses da <command>Debian</command>.
+Também são discutidos assuntos relacionados ao Linux em geral.  A inscrição é
+aberta a todos os interessados.
+</para>
+<para>
+Para se inscrever, envie uma mensagem para
+<email>debian-user-portuguese-request@lists.debian.org</email> contendo a
+palavra <literal>subscribe</literal> no assunto da mensagem.  Será enviada uma
+mensagem a você pedindo a confirmação da inscrição na lista de discussão,
+simplesmente dê um reply na mensagem (responder) e você estará cadastrado e
+poderá enviar e receber mensagens dos participantes.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><email>debian-news-portuguese@lists.debian.org</email></term>
+<listitem>
+<para>
+A <command>Debian</command> é extremamente bem estruturada quanto a divulgações
+e notícias, várias listas de email e várias páginas compõe essa base.  A
+<emphasis>Debian Weekly News</emphasis> é especialmente importante pois dá uma
+visão geral do que se passou na <command>Debian</command> durante a semana.  E
+não traz apenas traduções mas também adições dos acontecimentos atuais da
+<command>Debian</command> no Brasil, ou projetos concluídos ou lançados pela
+equipe <emphasis>Debian-br</emphasis> (<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.debianbrasil.org/">http://www.debianbrasil.org/</link>).
+</para>
+<para>
+Essa lista <literal>NÃO</literal> é usada para resolução de dúvidas e
+problemas, apenas para o RECEBIMENTO de notícias relacionadas a Debian.  Não
+poste mensagens nela!
+</para>
+<para>
+Para se inscrever, envie uma mensagem para
+<email>debian-news-portuguese-request@lists.debian.org</email> contendo a
+palavra <literal>subscribe</literal> no assunto da mensagem.  Será enviada uma
+mensagem a você pedindo a confirmação da inscrição na lista de discussão,
+simplesmente dê um reply na mensagem (responder) e você passará a receber as
+notícias sobre a Debian em Português.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><email>linux-br@unicamp.br</email></term>
+<listitem>
+<para>
+Lista de discussão que cobre assuntos diversos.  Esta lista é voltada para
+usuários com bons conhecimentos no <command>GNU/Linux</command>, são abordados
+assuntos como redes, configurações, etc.  Esta é uma lista moderada, o que
+significa que a mensagem que envia passam por uma pessoa que verifica (modera)
+e a libera caso estejam dentro das normas adotada na lista.  É uma lista de
+alto nível e recomendada para quem deseja fugir de mensagens como <literal>não
+consigo instalar o Linux</literal>, <literal>não sei compilar o
+kernel</literal>, <literal>o que eu faço quando vejo uma tela com o nome
+login:?</literal>, etc.
+</para>
+<para>
+Para se inscrever nesta lista, envie uma mensagem para:
+<email>linux-br-request@unicamp.br</email> contendo a palavra
+<literal>subscribe</literal> no assunto da mensagem e aguarde o recebimento da
+confirmação da inscrição.  Apenas responda a mensagem de confirmação para se
+inscrever.  Para se descadastrar envie uma mensagem para o mesmo endereço mas
+use a palavra <literal>unsubscribe</literal>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><email>dicas-l@unicamp.br</email></term>
+<listitem>
+<para>
+Esta lista envia diariamente uma dica de <command>Unix</command>, sistemas da
+Microsoft ou novidades da Internet.
+</para>
+<para>
+Para se inscreve nesta lista de discussão, envie uma mensagem para:
+<email>dicas-l-request@unicamp.br</email> contendo a palavra
+<literal>subscribe</literal> no corpo da mensagem e aguarde o recebimento da
+confirmação da inscrição.  Apenas responda a mensagem de confirmação para
+confirmar sua inscrição na lista.  Para se descadastrar envie uma mensagem para
+o mesmo endereço mas use a palavra <literal>unsubscribe</literal>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+Esta listagem deveria estar mais completa, mas eu não lembro de todas as
+listas!.  Também recomendo dar uma olhada em <xref linkend="ajuda-netiqueta-listas"/> que descreve recomendações de comportamento
+em listas de discussão.
+</para>
+</section>
+
+</section>
+
+
+<section xml:id="ajuda-netiqueta"><info><title>Netiqueta</title></info>
+<para>
+São recomendações que tem como objetivo facilitar a para comunicação através
+dos recursos de uma rede.  O nome <emphasis>Netiqueta</emphasis> vem de
+"Etiqueta de Rede" (<emphasis>Net Etiquete</emphasis>).  O material desta seção
+foi escrito com base nos anos de observação que tive via internet e também com
+referência a rfc 1855.
+</para>
+
+<section xml:id="ajuda-netiqueta-geral"><info><title>Recomendações Gerais sobre a Comunicação Eletrônica</title></info>
+<itemizedlist>
+<listitem>
+<para>
+Como recomendação geral, lembre-se que a conversa via internet é feita sempre
+de uma para outra pessoa ou de uma para várias pessoas, e que a forma de
+comunicação é a mesma que utilizaria se estivesse de frente a frente com a
+pessoa.  Nunca diga algo que não diria se estivesse diante da outra pessoa.
+Existem pessoas que por estar atrás de um monitor, se sentem "maiores" se
+esquecendo disso e causando prejuízos de comunicação (e sem imaginar que a
+pessoa do outro lado da linha existe).
+</para>
+<para>
+Apesar do modo que as frases são escritas expressarem o jeito que a outra
+pessoa está do outro lado da linha e seu tom de comunicação no decorrer da
+conversar, existem algumas coisas que não podem ser totalmente expressadas
+através da Internet, como por exemplo a expressão da "face" das pessoas.  Para
+isto foram criados símbolos chamados <emphasis>smileys</emphasis> que expressam
+a face da outra pessoa em determinado momento, e dependendo do sentido da
+conversa, um smiley pode expressar corretamente a intenção de sua frase.  Os
+mais usados são os seguintes:
+</para>
+<screen>
+:-)   --&gt; Sorriso
+
+:-(   --&gt; Triste
+
+;-)   --&gt; Piscadinha
+
+:-O   --&gt; De boca aberta
+
+:-|   --&gt; Sem graça
+
+8-)   --&gt; De óculos 
+
+|-)   --&gt; Com sono e feliz
+
+&amp;:-)  --&gt; Bobo
+</screen>
+<para>
+Para entender o sentido do smiley, veja ele de lado (45 graus).  Use os smileys
+em suas conversas, mas com cautela.  Não espere que a inclusão de um smiley
+sorridente ":-)" deixe o destinatário da mensagem contente com um comentário
+rude ou insulto.
+</para>
+</listitem>
+<listitem>
+<para>
+ESCREVER EM MAIÚSCULAS significa gritar quando escrever mensagens eletrônicas.
+</para>
+</listitem>
+<listitem>
+<para>
+Use *asteriscos* para destacar uma palavra ou frase.  _Isso_ indica uma
+palavra/frase sublinhada.
+</para>
+</listitem>
+<listitem>
+<para>
+Se você troca mensagens com pessoas do mundo todo, não espere que um japonês
+responda logo seu e-mail que enviou as 15:00 da tarde.  A essa hora no país
+dele, ele está roncando forte na cama e sonhando com a placa 3D que vai ganhar
+para melhorar o desempenho de seus jogos de <command>Linux</command>.
+</para>
+</listitem>
+<listitem>
+<para>
+Durante a comunicação com pessoas de diferentes regiões (ou países), evite a
+utilização de gírias, ou expressões regionais.  Uma interpretação em uma
+determinada região não garante que ela tenha o mesmo significado para seu
+destinatário, as vezes pode ser até ofensiva.
+</para>
+</listitem>
+<listitem>
+<para>
+Assuma que sua mensagem está trafegando sobre uma via não segura, desta forma
+não envie informações pessoais que não enviaria em uma carta comum.  O uso de
+criptografia pode garantir melhor segurança na transmissão de dados.
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+
+<section xml:id="ajuda-netiqueta-email"><info><title>Email</title></info>
+<itemizedlist>
+<listitem>
+<para>
+Tenha o hábito de colocar sempre um assunto na mensagem que envia para
+identificar seu conteúdo.
+</para>
+</listitem>
+<listitem>
+<para>
+Respeite os direitos autorais das mensagens de e-mail.  Se precisar encaminhar
+mensagens, preserve seu conteúdo original.
+</para>
+</listitem>
+<listitem>
+<para>
+Procure limitar o tamanho da linha a 70 caracteres.  Muitos usuários utilizam
+cliente de e-mail em modo texto, e nem todo mundo usa a mesma resolução que
+você.
+</para>
+</listitem>
+<listitem>
+<para>
+Caso o e-mail que responda tenha mais que 100 linhas, é recomendável colocar a
+palavra "LONGA" no assunto da mensagem.  Se possível corte as partes não
+necessárias da mensagens de respostas tendo o cuidado de não "cortar" de forma
+mal educada a mensagem de outra pessoa.
+</para>
+</listitem>
+<listitem>
+<para>
+Caso utiliza um editor programa de e-mails com suporte a HTML, envie o e-mail
+utilizando ambos os formatos TEXTO e HTML, muitos administradores Linux
+utilizam sistemas que não suportam HTML.
+</para>
+</listitem>
+<listitem>
+<para>
+Não espere que o espaçamento ou desenhos ASCII usados em uma mensagem sejam
+mostrados corretamente em todos os sistemas.
+</para>
+</listitem>
+<listitem>
+<para>
+Utilize sempre uma assinatura no final da mensagem para identificar você e
+principalmente seu endereço de e-mail.  Em alguns cliente de e-mail, o campo
+<literal>Reply-to</literal> é bagunçado, e em e-mails redirecionados o endereço
+de resposta é excluído.  A assinatura facilita encontrar o remetente da
+mensagem.  Tente manter a assinatura em um tamanho de no máximo 4 linhas.
+</para>
+</listitem>
+<listitem>
+<para>
+Não repasse mensagens de corrente por e-mail.  Elas tem somente o objetivo de
+espalhar boatos na Internet e se espalhar.  Normalmente elas vem com uma
+história bonita e no final diz se não repassar acontecerá tudo ao contrário com
+você ou algo do tipo.  <emphasis>Não vai acontecer nada!  ignore isso e não
+entre na corrente!</emphasis>
+</para>
+<para>
+Pelas políticas da Internet, você pode ter sua conta de e-mail perdida se fizer
+mal uso dele.
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="ajuda-netiqueta-icq"><info><title>ICQ/MSN/Gtalk/Skype</title></info>
+<para>
+Ferramentas de mensagens instantâneas são eficientes, alertando a presença
+on-line do usuário, auxiliando na redução de custos, etc.  Este documento
+inclui algumas recomendações etiqueta para melhor os usuários aproveitarem
+melhor ferramentas de comunicaçao que seguem o padrão IM:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+De atenção ao status da outra pessoa.  Se ela estiver "on-line" ou "free for
+chat" significa que ela está desocupada e que pode conversar naquele instante.
+Se estiver como não perturbe, envie somente mensagens se for mesmo preciso.
+</para>
+</listitem>
+<listitem>
+<para>
+EVITE colocar nicks chamativos e caracteres exóticos.  Nem todos os usuários
+vêem o nick da mesma forma que a pessoa que os colocou.
+</para>
+</listitem>
+<listitem>
+<para>
+Seja também sensato ao usar ferramentas de mensagem instantanea.  Não entre
+nele caso não possa conversar, ou avise isso mudando seu status para o mais
+adequado para a situação, assim os outros poderão entender que está longe do
+computador, não disponível ou ocupado.
+</para>
+</listitem>
+<listitem>
+<para>
+É recomendável ser prudente quanto ao envio de mensagens, não envie mais do que
+4 mensagens seguidas, pois a outra pessoa terá dificuldades para responder a
+todas elas mais outra que talvez possa estar recebendo de outras (ou nem tenha
+recebido, caso exista algum problema temporário no servidor).
+</para>
+</listitem>
+<listitem>
+<para>
+Guarde seu login e senha em lugar seguro.  Caso ela seja perdida, você terá
+trabalho para avisar a todos de sua lista de contato.
+</para>
+</listitem>
+<listitem>
+<para>
+Sempre que enviar uma URL, procure do que se trata na mensagem.
+</para>
+</listitem>
+<listitem>
+<para>
+No modo de chat, use as recomendações descritas sobre o talk (em <xref linkend="ajuda-netiqueta-talk"/>).
+</para>
+</listitem>
+<listitem>
+<para>
+Como em toda comunicação on-line, seja cauteloso quando a pessoa que conversa.
+Nem sempre quem conversamos do outro lado é a pessoa que esperamos encontrar.
+Lembre-se que um registro falso e uma identidade pode ser criada sem
+dificuldades por qualquer pessoa.
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+
+<section xml:id="ajuda-netiqueta-talk"><info><title>Talk</title></info>
+<itemizedlist>
+<listitem>
+<para>
+Use sempre quebra de linhas ao escrever suas mensagens, use pelo menos 70
+caracteres para escrever suas mensagens de talk.  Evita escrever continuamente
+até a borda para fazer quebra de linha automática, alguns clientes de talk não
+aceitam isso corretamente.
+</para>
+</listitem>
+<listitem>
+<para>
+Sempre que termina uma frase, deixe uma linha em branco (tecle enter 2 vezes)
+para indicar que a outra pessoa pode iniciar a digitação.
+</para>
+</listitem>
+<listitem>
+<para>
+Sempre se despeça da outra pessoa e espere ela responder antes de fechar uma
+seção de conversação.  O respeito mútuo durante um diálogo é essencial :-)
+</para>
+</listitem>
+<listitem>
+<para>
+Lembre-se que o talk normalmente interrompe as pessoas que trabalham
+nativamente no console.  Evite dar talk para estranhos, pois podem fazer uma má
+impressão de você.  Tente antes estabelecer outros meios de comunicação.
+</para>
+</listitem>
+<listitem>
+<para>
+Se a outra pessoa não responder, não assuma de cara que ela está ignorando você
+ou não levando sua conversa muito bem.  Ela pode simplesmente estar ocupada,
+trabalhando, ou com problemas no cliente de talk.  Alguns cliente de talk dão
+problemas durante a comunicação remota, lembre-se também que sua comunicação é
+via UDP :-)
+</para>
+</listitem>
+<listitem>
+<para>
+Se a pessoa não responder seus talks durante certo tempo, não deixe ele
+infinitamente beepando a pessoa.  Tente mais tarde :-)
+</para>
+</listitem>
+<listitem>
+<para>
+Seja atencioso caso utilize mais de uma seção de talk ao mesmo tempo.
+</para>
+</listitem>
+<listitem>
+<para>
+O talk também leva em consideração sua habilidade de digitação.  Muitos erros e
+correções contínuas fazem a outra pessoa ter uma noção de você, suas
+experiências, etc ;-)
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+
+<section xml:id="ajuda-netiqueta-listas"><info><title>Listas de Discussão via Email</title></info>
+<itemizedlist>
+<listitem>
+<para>
+Tente se manter dentro do assunto quando responder mensagens de listas.  Seja
+claro e explicativo ao mesmo tempo :-)
+</para>
+</listitem>
+<listitem>
+<para>
+Sempre coloque um assunto (subject) na mensagem.  O assunto serve como um
+resumo do problema ou dúvida que tem.  Alguns usuários, principalmente os que
+participam de várias listas de discussão, verificam o assunto da mensagem e
+podem simplesmente descartar a mensagem sem lê-la porque as vezes ele não
+conhece sobre aquele assunto.
+</para>
+</listitem>
+<listitem>
+<para>
+Nunca use "Socorro!", "Help!"  ou coisa do gênero como assunto, seja objetivo
+sobre o problema/dúvida que tem: <emphasis>"Falha ao carregar módulo no do
+kernel"</emphasis>, <emphasis>"SMAIL retorna a mensagem Access
+denied"</emphasis>, <emphasis>"Novidades: Nova versão do guia Foca
+Linux"</emphasis> ;-).
+</para>
+</listitem>
+<listitem>
+<para>
+Procure enviar mensagens em formato <literal>texto</literal> ao invés de
+<literal>HTML</literal> para as listas de discussão pois isto faz com que a
+mensagem seja vista por todos os participantes (muitos dos usuários
+<command>GNU/Linux</command> usam leitores de e-mail que não suportam formato
+html) e diminui drásticamente o tamanho da mensagem porque o formato texto não
+usa tags e outros elementos que a linguagem HTML contém (muitos dos usuários
+costumam participar de várias listas de discussão, e mensagens em HTML levam a
+um excesso de tráfego e tempo de conexão).
+</para>
+</listitem>
+<listitem>
+<para>
+Tenha cautela e bom censo em suas mensagens para listas e grupos de discussão,
+considere que cada mensagem que posta é são arquivadas para futura referência.
+</para>
+</listitem>
+<listitem>
+<para>
+Quando o conteúdo das mensagem tomar outro rumo, é ético modificar o assunto do
+e-mail para se adequar ao novo conteúdo da mensagem.  Por exemplo,
+<literal>Correção nas regras de Netiqueta</literal> para <literal>Conversa de
+pessoa para pessoa (Era: Correção das regras de Netiqueta</literal>).
+</para>
+</listitem>
+<listitem>
+<para>
+Quando a conversa em grupo sair do assunto e envolver apenas duas pessoas, é
+conveniente retirar os endereços das pessoas/listas do CC.
+</para>
+</listitem>
+<listitem>
+<para>
+Não mande arquivos grandes para as listas, principalmente se eles tiverem mais
+que 40Kb de tamanho.  Se precisar enviar arquivos maiores que isso, envie
+diretamente para os e-mails dos interessados depois de perguntar.
+</para>
+</listitem>
+<listitem>
+<para>
+Quando enviar mensagens para listas de discussão, seja educado e cordial quanto
+ao conteúdo de sua mensagem.  Envie CC's para as pessoas que dizem respeito ao
+assunto, assim com a lista.
+</para>
+</listitem>
+<listitem>
+<para>
+Tente ignorar ou não responda mensagens de "Guerras" em listas (<emphasis>Flame
+Wars</emphasis>), caso queira reponde-la por algum tipo de agressão de quem
+mandou a mensagem, esperar para responde-la a noite (nunca é garantida uma boa
+resposta no momento que está de cabeça quente).  Lembre-se de quando responde
+uma mensagem de "Flame War" a "altura" de quem mandou seus ataques, está sendo
+igualmente tão baixo quando o "nível" dessa pessoa.
+</para>
+</listitem>
+<listitem>
+<para>
+Caso se desentenda com alguma pessoa em uma lista de discussão, não envie
+mensagens agressivas para a listas, se precisar, faça isso diretamente para a
+pessoa!  Você pode se arrepender disso mais tarde.
+</para>
+</listitem>
+<listitem>
+<para>
+Não culpe o administrador da lista pelos usuários que participam dela.
+Notifique somente usuários que não estejam colaborando com a lista e outras
+coisas que prejudiquem seu funcionamento.  Administradores preservam o
+funcionamento das listas, e não o comportamento dos usuários.
+</para>
+</listitem>
+<listitem>
+<para>
+Não use auto respostas para listas de discussão.  Pelos inconvenientes
+causados, você pode ser descadastrado ou banido de se inscrever na
+lista/newsgroup.
+</para>
+</listitem>
+<listitem>
+<para>
+Salve as mensagens de inscrição que recebe da lista.  Ela contém detalhes sobre
+seus recursos, e a senha usada muitas vezes para se descadastrar dela ou
+modificar suas permissões de usuário.  O administrador pode te ajudar nessa
+tarefa, mas não espere que ele esteja sempre disponível para realizar tarefas
+que podem ser feitas pelo próprio usuário.
+</para>
+</listitem>
+<listitem>
+<para>
+Muitas pessoas reclamam do excesso de mensagens recebidas das listas de
+discussão.  Se você recebe muitas mensagens, procure usar os <emphasis>filtros
+de mensagens</emphasis> para organiza-las.  O que eles fazem é procurar por
+campos na mensagem, como o remetente, e enviar para um local separado.  No
+final da filtragem, todas as mensagens de listas de discussão estarão em locais
+separados e as mensagens enviadas diretamente a você entrarão na caixa de
+correio principal, por exemplo.
+</para>
+<para>
+Um filtro de mensagens muito usado no <command>GNU/Linux</command> é o
+<command>procmail</command>, para maiores detalhes consulte a documentação
+deste programa.
+</para>
+<para>
+O Netscape também tem recursos de filtros de mensagem que podem ser criadas
+facilmente através da opção "Arquivo/Nova SubPasta" ("File/New Subfolder") do
+programa de E-mail.  Então defina as regras através do menu "Editar/Filtros de
+Mensagens" ("Edit/Message filters") clicando no botão "Novo"("New").
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+</section>
+
+</chapter>

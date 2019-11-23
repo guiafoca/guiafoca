@@ -1,0 +1,905 @@
+<!-- Converted by db4-upgrade version 1.0 -->
+<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="cmdn"><info><title>Comandos de rede</title></info>
+<para>
+Este capítulo traz alguns comandos úteis para uso em rede e ambientes
+multiusuário.
+</para>
+
+
+<section xml:id="cmdn-who"><info><title>who</title></info>
+<para>
+Mostra quem está atualmente conectado no computador.  
+<!-- [ %DESCRICAOD [ --> Este comando lista os nomes de usuários que estão 
+conectados em seu computador, o terminal e data da conexão. <!-- ]]> -->
+</para>
+<para>
+<command>who</command> [<emphasis>opções</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-H, --heading</term>
+<listitem>
+<para>
+Mostra o cabeçalho das colunas.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-b, --boot</term>
+<listitem>
+<para>
+Mostra o horário do último boot do sistema.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-d, --dead</term>
+<listitem>
+<para>
+Mostra processos mortos no sistema.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-i, -u, --idle</term>
+<listitem>
+<para>
+Mostra o tempo que o usuário está parado em Horas:Minutos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-m, i am</term>
+<listitem>
+<para>
+Mostra o nome do computador e usuário associado ao nome.  É equivalente a
+digitar <literal>who i am</literal> ou <literal>who am i</literal>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-q, --count</term>
+<listitem>
+<para>
+Mostra o total de usuários conectados aos terminais.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-r, --runlevel</term>
+<listitem>
+<para>
+Mostra o nível de execução atual do sistema e desde quando ele está ativo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-T, -w, --mesg</term>
+<listitem>
+<para>
+Mostra se o usuário pode receber mensagens via <command>talk</command>
+(conversação).
+</para>
+<itemizedlist>
+<listitem>
+<para>
++ O usuário recebe mensagens via talk
+</para>
+</listitem>
+<listitem>
+<para>
+- O usuário não recebe mensagens via talk.
+</para>
+</listitem>
+<listitem>
+<para>
+?  Não foi possível determinar o dispositivo de terminal onde o usuário está
+conectado.
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdn-telnet"><info><title>telnet</title></info>
+<para>
+Permite acesso a um computador remoto.  
+<!-- [ %DESCRICAOD [ --> É mostrada uma tela de acesso
+correspondente ao computador local onde deve ser feita a autenticação do
+usuário para entrar no sistema.  Muito útil, mas deve ser tomado cuidados ao
+disponibilizar este serviço para evitar riscos de segurança e usado o
+<command>ssh</command> sempre que possível por ser um protocolo criptografado e
+com recursos avançados de segurança. <!-- ]]> -->
+</para>
+<para>
+<command>telnet</command> [<emphasis>opções</emphasis>] [<emphasis>ip/dns</emphasis>]
+[<emphasis>porta</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>ip/dns</emphasis></term>
+<listitem>
+<para>
+Endereço IP do computador de destino ou nome DNS.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>porta</emphasis></term>
+<listitem>
+<para>
+Porta onde será feita a conexão.  Por padrão, a conexão é feita na porta
+<emphasis>23</emphasis>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<listitem>
+<variablelist>
+<varlistentry>
+<term>-8</term>
+<listitem>
+<para>
+Requisita uma operação binária de 8 bits.  Isto força a operação em modo
+binário para envio e recebimento.  Por padrão, <command>telnet</command> não
+usa 8 bits.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-a</term>
+<listitem>
+<para>
+Tenta um login automático, enviando o nome do usuário lido da variável de
+ambiente <filename>USER</filename>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-d</term>
+<listitem>
+<para>
+Ativa o modo de debug.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-r</term>
+<listitem>
+<para>
+Ativa a emulação de rlogin.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-l [usuário]</term>
+<listitem>
+<para>
+Faz a conexão usando [usuário] como nome de usuário.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplo: <literal>telnet 192.168.1.1</literal>, <literal>telnet 192.168.1.1
+23</literal>.
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdn-finger"><info><title>finger</title></info>
+<para>
+Mostra detalhes sobre os usuários de um sistema.  
+<!-- [ %DESCRICAOD [ --> Algumas versões do <command>finger</command> possuem 
+bugs e podem significar um risco para a segurança do sistema.  É 
+recomendado desativar este serviço na máquina local. <!-- ]]> -->
+</para>
+<para>
+<command>finger</command> [<emphasis>usuário</emphasis>]
+[<emphasis>usuário@host</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>usuário</emphasis></term>
+<listitem>
+<para>
+Nome do usuário que deseja obter detalhes do sistema.  Se não for digitado o
+nome de usuário, o sistema mostra detalhes de todos os usuários conectados no
+momento.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>usuário@host</emphasis></term>
+<listitem>
+<para>
+Nome do usuário e endereço do computador que deseja obter detalhes.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-l</term>
+<listitem>
+<para>
+Mostra os detalhes de todos os usuários conectados no momento.  Entre os
+detalhes, estão incluídos o <emphasis>nome do interpretador de
+comandos</emphasis> (shell) do usuário, <emphasis>diretório home</emphasis>,
+<emphasis>nome do usuário</emphasis>, <emphasis>endereço</emphasis>, etc.
+Estes dados são lidos de <filename>/etc/passwd</filename>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-p</term>
+<listitem>
+<para>
+Não exibe o conteúdo dos arquivos <filename>.plan</filename> e
+<filename>.project</filename>
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<para>
+Se for usado sem parâmetros, mostra os dados de todos os usuários conectados
+atualmente ao seu sistema.
+</para>
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplo: <literal>finger</literal>, <literal>finger root</literal>.
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdn-ftp"><info><title>ftp</title></info>
+<para>
+Permite a transferência de arquivos do computador remoto/local e vice versa.  
+<!-- [ %DESCRICAOD [ --> O file transfer protocol é o sistema de transmissão de arquivos 
+mais usado na Internet.  É requerida a autenticação do usuário para que seja permitida 
+a conexão.  Muitos servidores ftp disponibilizam acesso anônimo aos usuários, com
+acesso restrito. <!-- ]]> -->
+</para>
+<para>
+Uma vez conectado a um servidor <command>ftp</command>, você pode usar a
+maioria dos comandos do <command>GNU/Linux</command> para operá-lo.
+</para>
+<para>
+<command>ftp</command> [<emphasis>ip/dns</emphasis>]
+</para>
+<para>
+Abaixo alguns dos comandos mais usados no FTP:
+</para>
+<variablelist>
+<varlistentry>
+<term>ls</term>
+<listitem>
+<para>
+Lista arquivos do diretório atual.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>cd [diretório]</term>
+<listitem>
+<para>
+Entra em um diretório.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>get [arquivo]</term>
+<listitem>
+<para>
+Copia um arquivo do servidor ftp para o computador local.  O arquivo é gravado,
+por padrão, no diretório onde o programa ftp foi executado.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>hash [on/off]</term>
+<listitem>
+<para>
+Por padrão esta opção está desligada.  Quando ligada, faz com que o caracter
+"#" seja impresso na tela indicando o progresso do download.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>mget [arquivos]</term>
+<listitem>
+<para>
+Semelhante ao get, mas pode copiar diversos arquivos e permite o uso de
+coringas.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>send [arquivo]</term>
+<listitem>
+<para>
+Envia um arquivo para o diretório atual do servidor FTP (você precisa de uma
+conta com acesso a gravação para fazer isto).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>prompt [on/off]</term>
+<listitem>
+<para>
+Ativa ou desativa a pergunta para a cópia de arquivo.  Se estiver como
+<literal>off</literal> assume sim para qualquer pergunta.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplo: <literal>ftp ftp.debian.org</literal>.
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdn-whoami"><info><title>whoami</title></info>
+<para>
+Mostra o nome que usou para se conectar ao sistema.  É útil quando você usa
+várias contas e não sabe com qual nome entrou no sistema :-)
+</para>
+<para>
+<literal>whoami</literal>
+</para>
+</section>
+
+
+<section xml:id="cmdn-dnsdomainname"><info><title>dnsdomainname</title></info>
+<para>
+Mostra o nome do domínio de seu sistema.
+</para>
+</section>
+
+
+<section xml:id="cmdn-hostname"><info><title>hostname</title></info>
+<para>
+Mostra ou muda o nome de seu computador na rede.
+</para>
+</section>
+
+
+<section xml:id="cmdn-talk"><info><title>talk</title></info>
+<para>
+Inicia conversa com outro usuário de sistema em uma rede local ou Internet.
+<!-- [ %DESCRICAOD [ --> Talk é um programa de conversação em tempo real, caracter por
+caracter. <!-- ]]> -->
+</para>
+<para>
+<command>talk</command> [<emphasis>usuário</emphasis>]
+[<emphasis>tty</emphasis>]
+</para>
+<para>
+ou
+</para>
+<para>
+<command>talk</command> [<emphasis>usuário@host</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>usuário</emphasis></term>
+<listitem>
+<para>
+Nome de login do usuário que deseja iniciar a conversação.  Este nome pode ser
+obtido com o comando <command>who</command> (veja <xref linkend="cmdn-who"/>).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>tty</emphasis></term>
+<listitem>
+<para>
+O nome de terminal onde o usuário está conectado, para iniciar uma conexão
+local.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>usuário@host</emphasis></term>
+<listitem>
+<para>
+Se o usuário que deseja conversar estiver conectado em um computador remoto,
+você deve usar o nome do usuário@hosname do computador.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<para>
+Após o <command>talk</command> ser iniciado, ele verificará se o usuário pode
+receber mensagens, em caso positivo, ele enviará uma mensagem ao usuário
+dizendo como responder ao seu pedido de conversa.  Veja <xref linkend="cmdn-who"/>.
+</para>
+<para>
+Para poder fazer a rolagem para cima e para baixo no <command>talk</command>,
+pressione <literal>CTRL+P</literal>(Previous - Tela anterior) e
+<literal>CTRL+N</literal> (Next - Próxima tela).  
+
+<!-- [ %INTER-AVANC [ --> Você deve ter o daemon do
+<command>talk</command> instalado (<literal>talkd</literal>) para receber
+requisições de conversa. <!-- ]]> -->
+</para>
+<para>
+Você deve autorizar o recebimento de talks de outros usuários para que eles
+possam se comunicar com você. 
+<!-- [ %INIC-INTER [ --> Para detalhes veja o comando <xref linkend="cmdv-mesg"/>. <!-- ]]> -->
+</para>
+</section>
+
+	<!-- [ %INTER-AVANC [ -->
+<section xml:id="cmdn-ping"><info><title>ping</title></info>
+<para>
+Verifica se um computador está disponível na rede.  
+<!-- [ %DESCRICAOD [ --> Este comando é muito
+utilizado por alguns programas de conexão e administradores para verificar se
+uma determinada máquina está conectada na rede e também para verificar o tempo
+de resposta de cada máquina da rede.  O <command>ping</command> envia pacotes
+ICMS ECHO_REQUEST para um computador, este quando recebe o pacote envia uma
+resposta ao endereço de origem avisando que está disponível na rede. <!-- ]]> -->
+</para>
+<para>
+<command>ping</command> [<emphasis>opções</emphasis>] [<emphasis>IP/DNS</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>IP/dns</emphasis></term>
+<listitem>
+<para>
+Endereço IP ou nome DNS do endereço.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-c [num]</term>
+<listitem>
+<para>
+Envia <emphasis>num</emphasis> pacotes ao computador de destino.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-f</term>
+<listitem>
+<para>
+<emphasis>Flood ping</emphasis>.  Envia novos pacotes antes de receber a
+resposta do pacote anterior.  Para cada requisição enviada, um "."  é mostrado
+na tela e para cada resposta recebida, um backspace é mostrado.  Somente o
+usuário root pode utilizar esta opção e pode te auxiliar muito na detecção de
+erros de transmissão de pacotes em interfaces das máquinas em sua rede.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-i [seg]</term>
+<listitem>
+<para>
+Aguarda [seg] segundos antes de enviar cada pacote.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-q</term>
+<listitem>
+<para>
+Não mostra as requisições enquanto são enviadas, somente mostra as linhas de
+sumário no inicio e término do programa.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-s [tamanho]</term>
+<listitem>
+<para>
+Especifica o tamanho do pacote que será enviado.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-v, --verbose</term>
+<listitem>
+<para>
+Saída detalhada, tanto os pacotes enviados como recebidos são listados.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<para>
+Exemplo: <literal>ping 192.168.1.1</literal>, <literal>ping
+www.debian.org</literal>.
+</para>
+</section>
+
+
+<section xml:id="cmdn-rlogin"><info><title>rlogin</title></info>
+<para>
+Executa um login em uma máquina local ou remota.
+</para>
+<para>
+<command>rlogin</command> [<emphasis>opções</emphasis>]
+[<emphasis>IP/DNS</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>IP/DNS</emphasis></term>
+<listitem>
+<para>
+Endereço IP ou DNS do computador que será acessado.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>opções</term>
+<term>-l [nome]</term>
+<listitem>
+<para>
+Entra com o user id [nome] no sistema.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<para>
+<command>rlogin</command> é usado para executar comandos interativamente no
+computador de destino (como se você estivesse sentado diante dele, muito
+semelhante ao telnet).  Para executar comandos não interativamente veja <xref linkend="cmdn-rsh"/>.
+</para>
+</section>
+
+
+<section xml:id="cmdn-rsh"><info><title>rsh</title></info>
+<para>
+Executa um comando em um computador local ou remoto.
+</para>
+<para>
+<command>rsh</command> [<emphasis>opções</emphasis>] [<emphasis>IP/DNS</emphasis>]
+[<emphasis>comando</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>IP/DNS</emphasis></term>
+<listitem>
+<para>
+Endereço IP ou nome DNS do computador.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>comando</emphasis></term>
+<listitem>
+<para>
+Comando que será executado no computador local/remoto.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-l [nome]</term>
+<listitem>
+<para>
+Entra no sistema usando o login [nome].
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<para>
+<command>rsh</command> é usado somente para executar comandos.  Para usar um
+shell interativo veja <xref linkend="cmdn-telnet"/> e <xref linkend="cmdn-rlogin"/>.
+</para>
+</section>
+
+
+<section xml:id="cmdn-w"><info><title>w</title></info>
+<para>
+Mostra quem está conectado no sistema e o que cada um está fazendo.
+</para>
+<para>
+<command>w</command> [<emphasis>opções</emphasis>][<emphasis>usuário</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>usuário</emphasis></term>
+<listitem>
+<para>
+Nome do usuário que deseja ver os detalhes.  Se o usuário não for digitado, o
+comando <command>w</command> mostra detalhes de todos os usuários conectados no
+sistema.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-h</term>
+<listitem>
+<para>
+Não mostra o cabeçalho
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-u</term>
+<listitem>
+<para>
+Ignora os nomes de usuários enquanto verifica os processo atuais e tempos de
+CPU.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-f</term>
+<listitem>
+<para>
+Mostra ou oculta o campo <emphasis>FROM</emphasis> na listagem.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdn-traceroute"><info><title>traceroute</title></info>
+<para>
+Mostra o caminho percorrido por um pacote para chegar ao seu destino.  
+<!-- [ %DESCRICAOD [ --> Este comando mostra na tela o caminho percorrido entre 
+os Gateways da rede e o tempo gasto de retransmissão.  Este comando é útil 
+para encontrar computadores defeituosos na rede caso o pacote não esteja chegando 
+ao seu destino. <!-- ]]> -->
+</para>
+<para>
+<command>traceroute</command> [<emphasis>opções</emphasis>] [<emphasis>host/IP de
+destino</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>host/IP destino</emphasis></term>
+<listitem>
+<para>
+É o endereço para onde o pacote será enviado (por exemplo, www.debian.org).
+Caso o tamanho do pacote não seja especificado, é enviado um pacote de 38
+bytes.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-l</term>
+<listitem>
+<para>
+Mostra o tempo de vida do pacote (ttl)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-m [num]</term>
+<listitem>
+<para>
+Ajusta a quantidade máximas de ttl dos pacotes.  O padrão é 30.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-n</term>
+<listitem>
+<para>
+Mostra os endereços numericamente ao invés de usar resolução DNS.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-p [porta]</term>
+<listitem>
+<para>
+Ajusta a porta que será usada para o teste.  A porta padrão é 33434.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-r</term>
+<listitem>
+<para>
+Pula as tabelas de roteamento e envia o pacote diretamente ao computador
+conectado a rede.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-s [end]</term>
+<listitem>
+<para>
+Usa o endereço IP/DNS [end] como endereço de origem para computadores com
+múltiplos endereços IPs ou nomes.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-v</term>
+<listitem>
+<para>
+Mostra mais detalhes sobre o resultado do <command>traceroute</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-w [num]</term>
+<listitem>
+<para>
+Configura o tempo máximo que aguardará por uma resposta.  O padrão é 3
+segundos.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplos: <literal>traceroute www.debian.org</literal>, <literal>traceroute
+www.guiafoca.org</literal>.
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdn-netstat"><info><title>netstat</title></info>
+<para>
+Mostra conexões de rede, tabela de roteamento, estatísticas de interfaces,
+conexões masquerade, e mensagens.
+</para>
+<para>
+<command>netstat</command> [<emphasis>opções</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-i [interface]</term>
+<listitem>
+<para>
+Mostra estatísticas da interface [interface].
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-M, --masquerade</term>
+<listitem>
+<para>
+Se especificado, também lista conexões masquerade.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-n, --numeric</term>
+<listitem>
+<para>
+Usa endereços numéricos ao invés de tentar resolver nomes de hosts, usuários e
+portas.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-c, --continuous</term>
+<listitem>
+<para>
+Mostra a listagem a cada segundo até que a
+<literal>CTRL</literal>+<literal>C</literal> seja pressionado.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-l</term>
+<listitem>
+<para>
+Lista sockets aguardando por conexão.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-t, --tcp</term>
+<listitem>
+<para>
+Lista conexões TCP.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-u, --udp</term>
+<listitem>
+<para>
+Lista conexões UDP.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<para>
+Se não for especificada nenhuma opção, os detalhes das conexões atuais serão
+mostrados.
+</para>
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplos: <literal>netstat -n</literal>, <literal>netstat -lt</literal>,
+<literal>netstat -M</literal>.
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdv-wall"><info><title>wall</title></info>
+<para>
+Envia uma mensagem a todos os usuários do sistema.  
+<!-- [ %DESCRICAOD [ --> Este comando faz a leitura de um arquivo ou entrada 
+padrão e escreve o resultado em todos os terminais onde existem usuários 
+conectados.  Somente o usuário root pode utilizar este comando. <!-- ]]> -->
+</para>
+<para>
+<command>wall</command> [<emphasis>arquivo</emphasis>]
+</para>
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplos: <literal>wall /tmp/mensagem.txt</literal>, <literal>echo Teste de
+mensagem enviada a todos os usuários conectados ao sistema|wall</literal>.
+</para>
+<!-- ]]> -->
+</section>
+
+</chapter>

@@ -1,0 +1,567 @@
+<!-- Converted by db4-upgrade version 1.0 -->
+<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="cmdd"><info><title>Comandos para manipulação de diretório</title></info>
+<para>
+Abaixo comandos úteis para a manipulação de diretórios.
+</para>
+
+
+<section xml:id="comando-ls"><info><title>ls</title></info>
+<para>
+Lista os arquivos de um diretório.
+</para>
+<para>
+<command>ls</command> [<emphasis>opções</emphasis>]
+[<emphasis>caminho/arquivo</emphasis>] [<emphasis>caminho1/arquivo1</emphasis>]
+...
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>caminho/arquivo</emphasis></term>
+<listitem>
+<para>
+Diretório/arquivo que será listado.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>caminho1/arquivo1</emphasis></term>
+<listitem>
+<para>
+Outro Diretório/arquivo que será listado.  Podem ser feitas várias listagens de
+uma só vez.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-a, --all</term>
+<listitem>
+<para>
+Lista todos os arquivos (inclusive os ocultos) de um diretório.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-A, --almost-all</term>
+<listitem>
+<para>
+Lista todos os arquivos (inclusive os ocultos) de um diretório, exceto o
+diretório atual e o de nível anterior.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-B, --ignore-backups</term>
+<listitem>
+<para>
+Não lista arquivos que terminam com ~ (Backup).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>--color=PARAM</term>
+<listitem>
+<para>
+Mostra os arquivos em cores diferentes, conforme o tipo de arquivo.  PARAM pode
+ser:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<emphasis>never</emphasis> - Nunca lista em cores (mesma coisa de não usar o
+parâmetro --color).
+</para>
+</listitem>
+<listitem>
+<para>
+<emphasis>always</emphasis> - Sempre lista em cores conforme o tipo de arquivo.
+</para>
+</listitem>
+<listitem>
+<para>
+<emphasis>auto</emphasis> - Somente colore a listagem se estiver em um
+terminal.
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-d, --directory</term>
+<listitem>
+<para>
+Lista os nomes dos diretórios ao invés do conteúdo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-f</term>
+<listitem>
+<para>
+Não classifica a listagem.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-F</term>
+<listitem>
+<para>
+Insere um caracter após arquivos executáveis ('*'), diretórios ('/'), soquete
+('='), link simbólico ('@') e pipe ('|').  Seu uso é útil para identificar de
+forma fácil tipos de arquivos nas listagens de diretórios.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-G, --no-group</term>
+<listitem>
+<para>
+Oculta a coluna de grupo do arquivo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-h, --human-readable</term>
+<listitem>
+<para>
+Mostra o tamanho dos arquivos em Kbytes, Mbytes, Gbytes.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-H</term>
+<listitem>
+<para>
+Faz o mesmo que <literal>-h</literal>, mas usa unidades de 1000 ao invés de
+1024 para especificar Kbytes, Mbytes, Gbytes.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-l</term>
+<listitem>
+<para>
+Usa o formato longo para listagem de arquivos.  Lista as permissões, data de
+modificação, donos, grupos, etc.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-n</term>
+<listitem>
+<para>
+Usa a identificação de usuário e grupo numérica ao invés dos nomes.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-L, --dereference</term>
+<listitem>
+<para>
+Lista o arquivo original e não o link referente ao arquivo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-o</term>
+<listitem>
+<para>
+Usa a listagem longa sem os donos dos arquivos (mesma coisa que -lG).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-p</term>
+<listitem>
+<para>
+Mesma coisa que -F, mas não inclui o símbolo '*' em arquivos executáveis.  Esta
+opção é típica de sistemas <command>Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-R</term>
+<listitem>
+<para>
+Lista diretórios e sub-diretórios recursivamente.
+</para>
+</listitem>
+</varlistentry>
+<!-- [ %INTERMEDIARIO [ -->
+<varlistentry>
+<term>--full-time</term>
+<listitem>
+<para>
+Lista data e hora completa.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Classificação da listagem</term>
+<listitem>
+<para>
+A listagem pode ser classificada usando-se as seguintes opções:
+</para>
+<variablelist>
+<varlistentry>
+<term>-f</term>
+<listitem>
+<para>
+Não classifica, e usa -au para listar os arquivos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-r</term>
+<listitem>
+<para>
+Inverte a ordem de classificação.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-c</term>
+<listitem>
+<para>
+Classifica pela data de alteração.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-X</term>
+<listitem>
+<para>
+Classifica pela extensão.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-U</term>
+<listitem>
+<para>
+Não classifica, lista os arquivos na ordem do diretório.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-Z</term>
+<listitem>
+<para>
+Exibe o contexto SELinux de cada arquivo.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</listitem>
+</varlistentry>
+<!-- ]]> -->
+</variablelist>
+<!-- ]]> -->
+<para>
+Uma listagem feita com o comando <literal>ls -la</literal> normalmente é
+mostrada da seguinte maneira:
+</para>
+<screen>
+-rwxr-xr--  1  gleydson user    8192 nov 4 16:00 teste
+</screen>
+<para>
+Abaixo as explicações de cada parte:
+</para>
+<variablelist>
+<varlistentry>
+<term><literal>-rwxr-xr--</literal></term>
+<listitem>
+<para>
+São as permissões de acesso ao arquivo teste.  A primeira letra (da esquerda)
+identifica o tipo do arquivo, se tiver um <literal>d</literal> é um diretório,
+se tiver um "-" é um arquivo normal.
+</para>
+<para>
+As permissões de acesso é explicada em detalhes em <xref linkend="perm"/>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>1</literal></term>
+<listitem>
+<para>
+Se for um diretório, mostra a quantidade de sub-diretórios existentes dentro
+dele.  Caso for um arquivo, será 1.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>gleydson</literal></term>
+<listitem>
+<para>
+Nome do dono do arquivo <filename>teste</filename>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>user</literal></term>
+<listitem>
+<para>
+Nome do grupo que o arquivo <filename>teste</filename> pertence.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>8192</literal></term>
+<listitem>
+<para>
+Tamanho do arquivo (em bytes).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>nov</literal></term>
+<listitem>
+<para>
+Mês da criação/ última modificação do arquivo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>4</literal></term>
+<listitem>
+<para>
+Dia que o arquivo foi criado.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>16:00</literal></term>
+<listitem>
+<para>
+Hora em que o arquivo foi criado/modificado.  Se o arquivo foi criado há mais
+de um ano, em seu lugar é mostrado o ano da criação do arquivo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><filename>teste</filename></term>
+<listitem>
+<para>
+Nome do arquivo.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplos do uso do comando <command>ls</command>:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>ls</literal> - Lista os arquivos do diretório atual.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ls /bin /sbin</literal> - Lista os arquivos do diretório /bin e /sbin
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ls -la /bin</literal> - Listagem completa (vertical) dos arquivos do
+diretório /bin inclusive os ocultos.
+</para>
+</listitem>
+</itemizedlist>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="comando-cd"><info><title>cd</title></info>
+<para>
+Entra em um diretório.  Você precisa ter a permissão de execução para entrar no
+diretório.
+</para>
+<para>
+<command>cd</command> [<emphasis>diretório</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+onde:
+</para>
+<para>
+<emphasis>diretório</emphasis> - diretório que deseja entrar.
+</para>
+<!-- ]]> -->
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplos:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+Usando <literal>cd</literal> sem parâmetros ou <literal>cd ~</literal>, você
+retornará ao seu diretório de usuário (diretório home).
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cd /</literal>, retornará ao diretório raíz.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cd -</literal>, retornará ao diretório anteriormente acessado.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cd ..</literal>, sobe um diretório.
+</para>
+</listitem>
+<listitem>
+<para>
+<command>cd</command> ../[<emphasis>diretório</emphasis>], sobe um diretório e
+entra imediatamente no próximo (por exemplo, quando você está em
+<filename>/usr/sbin</filename>, você digita <literal>cd ../bin</literal>, o
+comando <command>cd</command> retorna um diretório (<filename>/usr</filename>)
+e entra imediatamente no diretório <filename>bin</filename>
+(<filename>/usr/bin</filename>).
+</para>
+</listitem>
+</itemizedlist>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="comando-pwd"><info><title>pwd</title></info>
+<para>
+Mostra o nome e caminho do diretório atual.
+</para>
+<para>
+Você pode usar o comando pwd para verificar em qual diretório se encontra (caso
+seu aviso de comandos não mostre isso).
+</para>
+</section>
+
+<section xml:id="comando-mkdir"><info><title>mkdir</title></info>
+<para>
+Cria um diretório no sistema.  
+<!-- [ %DESCRICAOD [ --> Um diretório é usado para armazenar arquivos de
+um determinado tipo.  O diretório pode ser entendido como uma
+<emphasis>pasta</emphasis> onde você guarda seus papeis (arquivos).  Como uma
+pessoa organizada, você utilizará uma pasta para guardar cada tipo de
+documento, da mesma forma você pode criar um diretório
+<filename>vendas</filename> para guardar seus arquivos relacionados com vendas
+naquele local. <!-- ]]> -->
+</para>
+<para>
+<command>mkdir</command> [<emphasis>opções</emphasis>]
+[<emphasis>caminho/diretório</emphasis>]
+[<emphasis>caminho1/diretório1</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>caminho</emphasis></term>
+<listitem>
+<para>
+Caminho onde o diretório será criado.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>diretório</emphasis></term>
+<listitem>
+<para>
+Nome do diretório que será criado.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções:</emphasis></term>
+<term>-p</term>
+<listitem>
+<para>
+Caso os diretórios dos níveis acima não existam, eles também serão criados.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>--verbose</term>
+<listitem>
+<para>
+Mostra uma mensagem para cada diretório criado.  As mensagens de erro serão
+mostradas mesmo que esta opção não seja usada.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<para>
+Para criar um novo diretório, você deve ter permissão de gravação.  Por
+exemplo, para criar um diretório em /tmp com o nome de
+<filename>teste</filename> que será usado para gravar arquivos de teste, você
+deve usar o comando <filename>"mkdir /tmp/teste"</filename>.
+</para>
+<para>
+Podem ser criados mais de um diretório com um único comando (<literal>mkdir
+/tmp/teste /tmp/teste1 /tmp/teste2</literal>).
+</para>
+</section>
+
+
+<section xml:id="comando-rmdir"><info><title>rmdir</title></info>
+<para>
+Remove um diretório do sistema.  
+<!-- [ %DESCRICAOD [ --> Este comando faz exatamente o contrário do
+<command>mkdir</command>.  O diretório a ser removido deve estar vazio e você
+deve ter permissão de gravação para remove-lo. <!-- ]]> -->
+</para>
+<para>
+<command>rmdir</command> [<emphasis>caminho/diretório</emphasis>]
+[<emphasis>caminho1/diretório1</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>caminho</emphasis></term>
+<listitem>
+<para>
+Caminho do diretório que será removido.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>diretório</emphasis></term>
+<listitem>
+<para>
+Nome do diretório que será removido.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<para>
+É necessário que esteja um nível acima do diretório(s) que será(ão)
+removido(s).  Para remover diretórios que contenham arquivos, use o comando
+<command>rm</command> com a opção <literal>-r</literal> (para maiores detalhes,
+veja <xref linkend="comando-rm"/>).
+</para>
+<!-- [ %EXEMPLO [ -->
+<para>
+Por exemplo, para remover o diretório <filename>/tmp/teste</filename> você deve
+estar no diretório <filename>tmp</filename> e executar o comando <literal>rmdir
+teste</literal>.
+</para>
+<!-- ]]> -->
+</section>
+
+</chapter>

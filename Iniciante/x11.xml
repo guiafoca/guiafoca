@@ -1,0 +1,129 @@
+<!-- Converted by db4-upgrade version 1.0 -->
+<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="x11"><info><title>X Window (ambiente gráfico)</title></info>
+<para>
+Este capítulo do guia traz explicações sobre o ambiente gráfico X Window
+System.
+</para>
+
+
+<section xml:id="x11-descricao"><info><title>O que é X Window?</title></info>
+<para>
+É um sistema gráfico de janelas que roda em uma grande faixa de computadores,
+máquinas gráficas e diferentes tipos de máquinas e plataformas Unix.  Pode
+tanto ser executado em máquinas locais como remotas através de conexão em rede.
+</para>
+</section>
+
+
+<section xml:id="x11-estrutura"><info><title>A organização do ambiente gráfico X Window</title></info>
+<para>
+Em geral o ambiente gráfico X Window é dividido da seguinte forma:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>O Servidor X</literal> - É o programa que controla a exibição dos
+gráficos na tela, mouse e teclado.  Ele se comunica com os programas cliente
+através de diversos métodos de comunicação.
+</para>
+<para>
+O servidor X pode ser executado na mesma máquina que o programa cliente esta
+sendo executado de forma transparente ou através de uma máquina remota na rede.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>O gerenciador de Janelas</literal> - É o programa que controla a
+aparência da aplicação.  Os gerenciadores de janelas (window managers) são
+programas que atuam entre o servidor X e a aplicação.  Você pode alternar de um
+gerenciador para outro sem fechar seus aplicativos.
+</para>
+<para>
+Existem vários tipos de gerenciadores de janelas disponíveis no mercado entre
+os mais conhecidos posso citar o <command>Window Maker (feito por um
+Brasileiro)</command>, o <command>After Step</command>,
+<command>Gnome</command>, <command>KDE</command>, <command>twm</command> (este
+vem por padrão quando o servidor X é instalado),
+<command>Enlightenment</command>, <command>IceWm</command>, etc.
+</para>
+<para>
+A escolha do seu gerenciador de janelas é pessoal, depende muito do gosto de
+cada pessoa e dos recursos que deseja utilizar.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>A aplicação cliente</literal> - É o programa sendo executado.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Esta organização do ambiente gráfico X traz grandes vantagens de gerenciamento
+e recursos no ambiente gráfico UNIX, uma vez que tem estes recursos você pode
+executar seus programas em computadores remotos, mudar totalmente a aparência
+de um programa sem ter que fecha-lo (através da mudança do gerenciador de
+janelas), etc.
+</para>
+</section>
+
+
+<section xml:id="x11-iniciando"><info><title>Iniciando o X</title></info>
+<para>
+O sistema gráfico X pode ser iniciado de duas maneiras:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>Automática</literal> - Usando um gerenciador de seção como
+<command>xdm</command>, <command>gdm</command> ou <command>wdm</command> que
+apresenta uma tela pedindo nome e senha para entrar no sistema (login).  Após
+entrar no sistema, o X executará um dos gerenciadores de janelas configurados.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>Manual</literal> - Através do comando <command>startx</command>, ou
+<command>xinit</command> 
+<!-- [ %INTERMEDIARIO [ --> (note que o <command>startx</command> e
+<command>xstart</command> são scripts que fazem uma configuração completa do
+ambiente e em algumas distribuições também o procedimento de configuração de
+autenticação do ambiente antes de executar o <command>xinit</command>) <!-- ]]> -->. 
+Neste caso o usuário deve entrar com seu nome e senha para entrar no modo texto e
+então executar um dos comandos acima.  Após executar um dos comandos acima, o
+servidor X será iniciado e executará um dos gerenciadores de janelas
+configurados no sistema.
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="x11-servidor"><info><title>Servidor X</title></info>
+<para>
+Como dito acima, o servidor X controla o teclado, mouse e a exibição dos
+gráficos em sua tela.  Para ser executado, precisa ser configurado através do
+arquivo <!-- [ %DEBIAN [ --> <filename>/etc/X11/xorg.conf</filename> <!-- ]]> -->, usando
+<literal>dpkg-reconfigure xserver-xorg</literal>, ou usando o utilitário
+<command>xf86cfg</command> (modo texto).
+</para>
+<para>
+A finalização do servidor X é feita através do pressionamento simultâneo das
+teclas <literal>CTRL</literal>, <literal>ALT</literal>, <literal>Back
+Space</literal>.  O servidor X é imediatamente terminado e todos os
+gerenciadores de janelas e programas clientes são fechados.
+</para>
+<para>
+CUIDADO: Sempre utilize a opção de saída de seu gerenciador de janelas para
+encerrar normalmente uma seção X11 e salve os trabalhos que estiver fazendo
+antes de finalizar uma seção X11.  A finalização do servidor X deve ser feita
+em caso de emergência quando não se sabe o que fazer para sair de um
+gerenciador de janelas ou de um programa mal comportado.
+</para>
+<!-- [ %INIC-INTER [ --> 
+<para>
+Recomendo fazer a leitura de <xref linkend="run-fechando"/> caso estiver em
+dúvidas de como finalizar um programa mal comportado ou que não sabe como sair.
+</para>
+<!-- ]]> -->
+</section>
+
+</chapter>

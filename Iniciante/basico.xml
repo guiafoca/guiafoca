@@ -1,0 +1,1264 @@
+<!-- Converted by db4-upgrade version 1.0 -->
+<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="bas"><info><title>Explicações Básicas</title></info>
+<para>
+Este capítulo traz explicações sobre os principais componentes existentes no
+computador e do sistema operacional <command>Linux</command>.
+</para>
+
+
+	<!-- [ %INICIANTE [ -->
+<section xml:id="basico-hardsoft"><info><title>Hardware e Software</title></info>
+<para>
+<emphasis>Hardware</emphasis> - Significa parte física do computador (disquete,
+pen-drive, impressoras, monitores, placa mãe, placa de fax, discos rígidos,
+etc).
+</para>
+<para>
+<emphasis>Software</emphasis> - São os programas usados no computador (sistema
+operacional, processador de textos, planilha, banco de dados, scripts,
+comandos, etc).
+</para>
+</section>
+
+
+<section xml:id="basico-arquivo"><info><title>Arquivos</title></info>
+<para>
+É onde gravamos nossos dados.  Um arquivo pode conter um texto feito por nós,
+uma música, programa, planilha, etc.
+</para>
+<para>
+Cada arquivo deve ser identificado por um <literal>nome</literal>, assim ele
+pode ser encontrado facilmente quando desejar usa-lo.  Se estiver fazendo um
+trabalho de história, nada melhor que salva-lo com o nome
+<filename>historia</filename>.  Um arquivo pode ser binário ou texto (para
+detalhes veja <xref linkend="basico-arquivo-bintext"/>).
+</para>
+<para>
+O <command>GNU/Linux</command> é <emphasis>Case Sensitive</emphasis> ou seja,
+ele diferencia letras <emphasis>maiúsculas</emphasis> e
+<emphasis>minúsculas</emphasis> nos arquivos.  O arquivo
+<filename>historia</filename> é completamente diferente de
+<filename>Historia</filename>.  Esta regra também é válido para os
+<emphasis>comandos</emphasis> e <emphasis>diretórios</emphasis>.  Prefira,
+sempre que possível, usar letras minúsculas para identificar seus arquivos,
+pois quase todos os comandos do sistema estão em
+<emphasis>minúsculas</emphasis>.
+</para>
+<para>
+Um arquivo oculto no <command>GNU/Linux</command> é identificado por um "."  no
+inicio do nome (por exemplo, <filename>.bashrc</filename>).  Arquivos ocultos
+não aparecem em listagens normais de diretórios, deve ser usado o comando
+<literal>ls -a</literal> para também listar arquivos ocultos.
+</para>
+<section xml:id="basico-arquivo-tipos"><info><title>Extensão de arquivos</title></info>
+<para>
+A extensão serve para identificar o tipo do arquivo.  A extensão são as letras
+após um "."  no nome de um arquivo, explicando melhor:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+relatório<emphasis role="strong">.txt</emphasis> - O
+<literal>.txt</literal> indica que o conteúdo é um arquivo texto.
+</para>
+</listitem>
+<listitem>
+<para>
+script<emphasis role="strong">.sh</emphasis> - Arquivo de
+Script (interpretado por <filename>/bin/sh</filename>).
+</para>
+</listitem>
+<listitem>
+<para>
+system<emphasis role="strong">.log</emphasis> - Registro
+de algum programa no sistema.
+</para>
+</listitem>
+<listitem>
+<para>
+arquivo<emphasis role="strong">.gz</emphasis> - Arquivo
+compactado pelo utilitário <command>gzip</command>.
+</para>
+</listitem>
+<listitem>
+<para>
+index<emphasis role="strong">.html</emphasis> - Página de
+Internet (formato Hypertexto).
+</para>
+</listitem>
+</itemizedlist>
+<para>
+A extensão de um arquivo também ajuda a saber o que precisamos fazer para
+abri-lo.  Por exemplo, o arquivo <filename>relatório.txt</filename> é um texto
+simples e podemos ver seu conteúdo através do comando <xref linkend="comandos-cat"/>, já o arquivo <filename>index.html</filename> contém
+uma página de Internet e precisaremos de um navegador para poder visualiza-lo
+(como o <command>lynx</command>, <command>Firefox</command> ou o
+<command>Konqueror</command>).
+</para>
+<para>
+A extensão (na maioria dos casos) não é requerida pelo sistema operacional
+<command>GNU/Linux</command>, mas é conveniente o seu uso para determinarmos
+facilmente o tipo de arquivo e que programa precisaremos usar para abri-lo.
+</para>
+</section>
+
+
+<section xml:id="basico-arquivo-tamanho"><info><title>Tamanho de arquivos</title></info>
+<para>
+A unidade de medida padrão nos computadores é o <literal>bit</literal>.  A um
+conjunto de 8 bits nós chamamos de <literal>byte</literal>.  Cada
+arquivo/diretório possui um tamanho, que indica o espaço que ele ocupa no disco
+e isto é medido em <literal>bytes</literal>.  O byte representa uma letra.
+Assim, se você criar um arquivo vazio e escrever o nome
+<literal>Linux</literal> e salvar o arquivo, este terá o tamanho de 5 bytes.
+Espaços em branco e novas linhas também ocupam bytes.
+</para>
+<para>
+Além do byte existem as medidas Kbytes, Mbytes, Gbytes.  Os prefixos K (quilo),
+M (mega), G (giga), T (tera) etc.  vêem da matemática.  O "K" significa
+multiplicar por 10^3, o "M" por 10^6, e assim por diante.  Esta letras servem
+para facilitar a leitura em arquivos de grande tamanho.  Um arquivo de 1K é a
+mesma coisa de um arquivo de 1024 bytes.  Uma forma que pode inicialmente lhe
+ajudar a lembrar: K vem de Kilo que é igual a 1000 - 1Kilo é igual a 1000
+gramas certo?.
+</para>
+<para>
+Da mesma forma 1Mb (ou 1M) é igual a um arquivo de 1024K ou 1.048.576 bytes
+</para>
+<para>
+1Gb (ou 1G) é igual a um arquivo de 1024Mb ou 1048576Kb ou 1.073.741.824 bytes
+(1 Gb é igual a 1.073.741.824 bytes, são muitos números!).  Deu pra notar que é
+mais fácil escrever e entender como 1Gb do que 1.073.741.824 bytes :-)
+</para>
+<para>
+A lista completa em ordem progressiva das unidades de medida é a seguinte:
+</para>
+<screen>
+Símbolo	10^	2^	Nome
+
+K	 3	10	Quilo
+M	 6	20	Mega
+G	 9	30	Giga
+T	12	40	Tera
+P	15	50	Peta
+E	18	60	Eta
+Z	21	70	Zetta
+Y	24	80	Yotta
+</screen>
+</section>
+
+
+<section xml:id="basico-arquivo-bintext"><info><title>Arquivo texto e binário</title></info>
+<para>
+Quanto ao tipo, um arquivo pode ser de texto ou binário:
+</para>
+<variablelist>
+<varlistentry>
+<term><literal>texto</literal></term>
+<listitem>
+<para>
+Seu conteúdo é compreendido pelas pessoas.  Um arquivo texto pode ser uma
+carta, um script, um programa de computador escrito pelo programador, arquivo
+de configuração, etc.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>binário</literal></term>
+<listitem>
+<para>
+Seu conteúdo somente pode ser entendido por computadores.  Contém caracteres
+incompreensíveis para pessoas normais.  Um arquivo binário é gerado através de
+um arquivo de programa (digitado pela pessoa que o criou, o programador)
+através de um processo chamado de <literal>compilação</literal>.  Compilação é
+basicamente a conversão de um programa em linguagem humana para a linguagem de
+máquina.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+</section>
+
+
+<section xml:id="basico-diretorio"><info><title>Diretório</title></info>
+<para>
+Diretório é o local utilizado para armazenar conjuntos arquivos para melhor
+organização e localização.  O diretório, como o arquivo, também é
+"<emphasis>Case Sensitive</emphasis>" (diretório <filename>/teste</filename> é
+completamente diferente do diretório <filename>/Teste</filename>).
+</para>
+<!-- [ %OBS [ -->
+<para>
+Não podem existir dois arquivos com o <literal>mesmo</literal> nome em um
+diretório, ou um sub-diretório com um mesmo nome de um arquivo em um mesmo
+diretório.
+</para>
+<!-- ]]> -->
+<para>
+Um diretório nos sistemas <command>Linux/UNIX</command> são especificados por
+uma "<emphasis>/</emphasis>" e não uma "<emphasis>\</emphasis>" como é feito no
+<command>DOS</command>.  Para detalhes sobre como criar um diretório, veja o
+comando <command>mkdir</command> (<xref linkend="comando-mkdir"/>).
+</para>
+
+
+<section xml:id="basico-diretorio-raiz"><info><title>Diretório Raíz</title></info>
+<para>
+Este é o diretório principal do sistema.  Dentro dele estão todos os diretórios
+do sistema.  O diretório Raíz é representado por uma "<emphasis>/</emphasis>",
+assim se você digitar o comando <literal>cd /</literal> você estará acessando
+este diretório.
+</para>
+<para>
+Nele estão localizados outros diretórios como o <filename>/bin, /sbin, /usr,
+/usr/local, /mnt, /tmp, /var, /home,</filename> etc.  Estes são chamados de
+<emphasis>sub-diretórios</emphasis> pois estão dentro do diretório
+"<filename>/</filename>".  A estrutura de <emphasis>diretórios</emphasis> e
+<emphasis>sub-diretórios</emphasis> pode ser identificada da seguinte maneira:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+/
+</para>
+</listitem>
+<listitem>
+<para>
+/bin
+</para>
+</listitem>
+<listitem>
+<para>
+/sbin
+</para>
+</listitem>
+<listitem>
+<para>
+/usr
+</para>
+</listitem>
+<listitem>
+<para>
+/usr/local
+</para>
+</listitem>
+<listitem>
+<para>
+/mnt
+</para>
+</listitem>
+<listitem>
+<para>
+/tmp
+</para>
+</listitem>
+<listitem>
+<para>
+/var
+</para>
+</listitem>
+<listitem>
+<para>
+/home
+</para>
+</listitem>
+</itemizedlist>
+<para>
+A estrutura de diretórios também é chamada de <literal>Árvore de
+Diretórios</literal> porque é parecida com uma <emphasis>árvore</emphasis> de
+cabeça para baixo.  
+
+<!-- [ %OBS [ -->
+Cada diretório do sistema tem seus respectivos arquivos que
+são armazenados conforme regras definidas pela <emphasis>FHS</emphasis>
+(<emphasis>FileSystem Hierarchy Standard - Hierarquia Padrão do Sistema de
+Arquivos</emphasis>) versão 2.0, definindo que tipo de arquivo deve ser
+armazenado em cada diretório.
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="basico-diretorio-atual"><info><title>Diretório atual</title></info>
+<para>
+É o diretório em que nos encontramos no momento.  Você pode digitar
+<literal>pwd</literal> (veja <xref linkend="comando-pwd"/>) para verificar qual
+é seu diretório atual.
+</para>
+<para>
+O diretório atual também é identificado por um "."  (ponto).  O comando comando
+<literal>ls .</literal> pode ser usado para listar seus arquivos (é claro que
+isto é desnecessário porque se não digitar nenhum diretório, o comando
+<command>ls</command> listará o conteúdo do diretório atual).
+</para>
+</section>
+
+
+<section xml:id="basico-diretorio-home"><info><title>Diretório home</title></info>
+<para>
+Também chamado de diretório de usuário.  Em sistemas
+<command>GNU/Linux</command> cada usuário (inclusive o root) possui seu próprio
+diretório onde poderá armazenar seus programas e arquivos pessoais.
+</para>
+<para>
+Este diretório está localizado em <filename>/home/[login]</filename>, neste
+caso se o seu login for "joao" o seu diretório home será
+<filename>/home/joao</filename>.  O diretório home também é identificado por um
+<literal>~</literal>(til), você pode digitar tanto o comando <literal>ls
+/home/joao</literal> como <literal>ls ~</literal> para listar os arquivos de
+seu diretório home.
+</para>
+<para>
+O diretório home do usuário root (na maioria das distribuições
+<command>GNU/Linux</command>) está localizado em <filename>/root</filename>.
+</para>
+<para>
+Dependendo de sua configuração e do número de usuários em seu sistema, o
+diretório de usuário pode ter a seguinte forma:
+<filename>/home/[1letra_do_nome]/[login]</filename>, neste caso se o seu login
+for "joao" o seu diretório home será <filename>/home/j/joao</filename>.
+</para>
+</section>
+
+<section xml:id="basico-diretorio-superior"><info><title>Diretório Superior</title></info>
+<para>
+O diretório superior (Upper Directory) é identificado por <literal>..</literal>
+(2 pontos).
+</para>
+<para>
+Caso estiver no diretório <filename>/usr/local</filename> e quiser listar os
+arquivos do diretório <filename>/usr</filename> você pode digitar, <literal>ls
+..</literal> Este recurso também pode ser usado para copiar, mover
+arquivos/diretórios, etc.
+</para>
+</section>
+
+
+<section xml:id="basico-diretorio-anterior"><info><title>Diretório Anterior</title></info>
+<para>
+O diretório anterior é identificado por "-".  É útil para retornar ao último
+diretório usado.
+</para>
+<para>
+Se estive no diretório <filename>/usr/local</filename> e digitar <literal>cd
+/lib</literal>, você pode retornar facilmente para o diretório
+<filename>/usr/local</filename> usando <literal>cd -</literal>.
+</para>
+</section>
+
+
+<section xml:id="basico-diretorio-caminho"><info><title>Caminho na estrutura de diretórios</title></info>
+<para>
+São os diretórios que teremos que percorrer até chegar no arquivo ou diretório
+que que procuramos.  Se desejar ver o arquivo <filename>/etc/hosts</filename>
+você tem duas opções:
+</para>
+<orderedlist numeration="arabic">
+<listitem>
+<para>
+Mudar o diretório padrão para <filename>/etc</filename> com o comando
+<literal>cd /etc</literal> e usar o comando <literal>cat hosts</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Usar o comando <command>"cat"</command> especificando o caminho completo na
+estrutura de diretórios e o nome de arquivo: <literal>cat /etc/hosts</literal>.
+</para>
+</listitem>
+</orderedlist>
+<para>
+As duas soluções acima permitem que você veja o arquivo
+<filename>GPL</filename>.  A diferença entre as duas é a seguinte:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+Na primeira, você muda o diretório padrão para
+<filename>/usr/doc/copyright</filename> (confira digitando
+<literal>pwd</literal>) e depois o comando <literal>cat GPL</literal>.  Você
+pode ver os arquivos de <filename>/usr/doc/copyright</filename> com o comando
+<command>"ls"</command>.
+</para>
+<para>
+<filename>/usr/doc/copyright</filename> é o caminho de diretório que devemos
+percorrer para chegar até o arquivo <filename>GPL</filename>.
+</para>
+</listitem>
+<listitem>
+<para>
+Na segunda, é digitado o caminho completo para o <command>"cat"</command>
+localizar o arquivo <filename>GPL</filename>: <literal>cat
+/usr/doc/copyright/GPL</literal>.  Neste caso, você continuará no diretório
+padrão (confira digitando <literal>pwd</literal>).  Digitando
+<literal>ls</literal>, os arquivos do diretório atual serão listados.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+O <emphasis>caminho de diretórios</emphasis> é necessário para dizer ao sistema
+operacional onde encontrar um arquivo na "árvore" de diretórios.
+</para>
+</section>
+
+
+<!-- [ %EXEMPLO [ -->
+<section xml:id="basico-diretorio-exemplo"><info><title>Exemplo de diretório</title></info>
+<para>
+Um exemplo de diretório é o seu diretório de usuário, todos seus arquivos
+essenciais devem ser colocadas neste diretório.  Um diretório pode conter outro
+diretório, isto é útil quando temos muitos arquivos e queremos melhorar sua
+organização.  Abaixo um exemplo de uma empresa que precisa controlar os
+arquivos de Pedidos que emite para as fábricas:
+</para>
+<para>
+/pub/vendas - diretório principal de vendas /pub/vendas/mes01-1999 - diretório
+contendo vendas do mês 01/1999 /pub/vendas/mes02-2009 - diretório contendo
+vendas do mês 02/2009 /pub/vendas/mes01-2010 - diretório contendo vendas do mês
+03/2010
+</para>
+<para>
+<filename>mes01-99, mes02-2009, mes01-2010</filename> são diretórios usados
+para armazenar os arquivos de pedidos do mês e ano correspondente.  Isto é
+essencial para organização, pois se todos os pedidos fossem colocados
+diretamente no diretório vendas, seria muito difícil encontrar o arquivo do
+cliente "João" do mês 01/2009.
+</para>
+<para>
+Você deve ter reparado que usei a palavra <emphasis>sub-diretório</emphasis>
+para mes01-1999, mes02-2009 e mes01-2010, porque que eles estão dentro do
+diretório vendas.  Da mesma forma, <filename>vendas</filename> é um
+sub-diretório de <filename>pub</filename>.
+</para>
+</section>
+<!-- ]]> -->
+
+
+<section xml:id="basico-diretorio-estrutura"><info><title>Estrutura básica de diretórios do Sistema Linux</title></info>
+<para>
+O sistema <command>GNU/Linux</command> possui a seguinte estrutura básica de
+diretórios organizados segundo o FHS (Filesystem Hierarchy Standard):
+</para>
+<variablelist>
+<varlistentry>
+<term><filename>/bin</filename></term>
+<listitem>
+<para>
+Contém arquivos programas do sistema que são usados com freqüência pelos
+usuários.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><filename>/boot</filename></term>
+<listitem>
+<para>
+Contém arquivos necessários para a inicialização do sistema.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><filename>/cdrom</filename></term>
+<listitem>
+<para>
+Ponto de montagem da unidade de CD-ROM.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><filename>/media</filename></term>
+<listitem>
+<para>
+Ponto de montagem de dispositivos diversos do sistema (rede, pen-drives, CD-ROM
+em distribuições mais novas).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><filename>/dev</filename></term>
+<listitem>
+<para>
+Contém arquivos usados para acessar dispositivos (periféricos) existentes no
+computador.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><filename>/etc</filename></term>
+<listitem>
+<para>
+Arquivos de configuração de seu computador local.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><filename>/floppy</filename></term>
+<listitem>
+<para>
+Ponto de montagem de unidade de disquetes
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><filename>/home</filename></term>
+<listitem>
+<para>
+Diretórios contendo os arquivos dos usuários.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><filename>/lib</filename></term>
+<listitem>
+<para>
+Bibliotecas compartilhadas pelos programas do sistema e módulos do kernel.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><filename>/lost+found</filename></term>
+<listitem>
+<para>
+Local para a gravação de arquivos/diretórios recuperados pelo utilitário
+<command>fsck.ext2</command>.  Cada partição possui seu próprio diretório
+<filename>lost+found</filename>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><filename>/mnt</filename></term>
+<listitem>
+<para>
+Ponto de montagem temporário.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><filename>/proc</filename></term>
+<listitem>
+<para>
+Sistema de arquivos do kernel.  Este diretório não existe em seu disco rígido,
+ele é colocado lá pelo kernel e usado por diversos programas que fazem sua
+leitura, verificam configurações do sistema ou modificar o funcionamento de
+dispositivos do sistema através da alteração em seus arquivos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><filename>/sys</filename></term>
+<listitem>
+<para>
+Sistema de arquivos do kernel.  Este diretório não existe em seu disco rígido,
+ele é colocado lá pelo kernel e usado por diversos programas que fazem sua
+leitura, verificam configurações do sistema ou modificar o funcionamento de
+dispositivos do sistema através da alteração em seus arquivos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><filename>/root</filename></term>
+<listitem>
+<para>
+Diretório do usuário <literal>root</literal>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><filename>/sbin</filename></term>
+<listitem>
+<para>
+Diretório de programas usados pelo superusuário (root) para administração e
+controle do funcionamento do sistema.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><filename>/tmp</filename></term>
+<listitem>
+<para>
+Diretório para armazenamento de arquivos temporários criados por programas.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><filename>/usr</filename></term>
+<listitem>
+<para>
+Contém maior parte de seus programas.  Normalmente acessível somente como
+leitura.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><filename>/var</filename></term>
+<listitem>
+<para>
+Contém maior parte dos arquivos que são gravados com freqüência pelos programas
+do sistema, e-mails, spool de impressora, cache, etc.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+</section>
+
+
+<section xml:id="basico-nomeando"><info><title>Nomeando Arquivos e Diretórios</title></info>
+<para>
+No <command>GNU/Linux</command>, os arquivos e diretórios pode ter o tamanho de
+até <emphasis>255</emphasis> letras.  Você pode identifica-lo com uma extensão
+(um conjunto de letras separadas do nome do arquivo por um ".").
+</para>
+<para>
+Os programas executáveis do <command>GNU/Linux</command>, ao contrário dos
+programas de <command>DOS</command> e <command>Windows</command>, não são
+executados a partir de extensões <filename>.exe, .com</filename> ou
+<filename>.bat</filename>.  O <command>GNU/Linux</command> (como todos os
+sistemas POSIX) usa a <emphasis>permissão de execução</emphasis> de arquivo
+para identificar se um arquivo pode ou não ser executado.
+</para>
+<para>
+No exemplo anterior, nosso trabalho de história pode ser identificado mais
+facilmente caso fosse gravado com o nome <filename>trabalho.text</filename> ou
+<filename>trabalho.txt</filename>.  Também é permitido gravar o arquivo com o
+nome <filename>Trabalho de Historia.txt</filename> mas não é recomendado gravar
+nomes de arquivos e diretórios com espaços.  Porque será necessário colocar o
+nome do arquivo entre "aspas" para acessa-lo (por exemplo, <literal>cat
+"Trabalho de Historia.txt"</literal>).  Ao invés de usar espaços, prefira
+<emphasis>capitalizar</emphasis> o arquivo (usar letras maiúsculas e minúsculas
+para identifica-lo): <filename>TrabalhodeHistoria.txt</filename>.
+</para>
+</section>
+
+
+<section xml:id="basico-comandos"><info><title>Comandos</title></info>
+<para>
+Comandos são ordens que passamos ao sistema operacional para executar uma
+determinada tarefa.
+</para>
+<para>
+Cada comando tem uma função específica, devemos saber a função de cada comando
+e escolher o mais adequado para fazer o que desejamos, por exemplo:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<command>ls</command> - Mostra arquivos de diretórios
+</para>
+</listitem>
+<listitem>
+<para>
+<command>cd</command> - Para mudar de diretório
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Este guia tem uma lista de vários comandos organizados por categoria com a
+explicação sobre o seu funcionamento e as opções aceitas (incluindo alguns
+exemplos).
+</para>
+<para>
+É sempre usado um espaço depois do comando para separá-lo de uma opção ou
+parâmetro que será passado para o processamento.  Um comando pode receber
+opções e parâmetros:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<listitem>
+<para>
+As <emphasis>opções</emphasis> são usadas para controlar como o comando será
+executado, por exemplo, para fazer uma listagem mostrando o <emphasis>dono,
+grupo, tamanho dos arquivos</emphasis> você deve digitar <literal>ls
+-l</literal>.
+</para>
+<para>
+Opções podem ser passadas ao comando através de um "-" ou "--":
+</para>
+<variablelist>
+<varlistentry>
+<term>-</term>
+<listitem>
+<para>
+Opção identificada por uma letra.  Podem ser usadas mais de uma opção com um
+único hífen.  O comando <literal>ls -l -a</literal> é a mesma coisa de
+<literal>ls -la</literal>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>--</term>
+<listitem>
+<para>
+Opção identificada por um nome.  Também chamado de opção extensa.  O comando
+<literal>ls --all</literal> é equivalente a <literal>ls -a</literal>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+Pode ser usado tanto "-" como "--", mas há casos em que somente "-" ou "--"
+esta disponível.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>parâmetros</term>
+<listitem>
+<para>
+Um parâmetro identifica o <emphasis>caminho, origem, destino, entrada
+padrão</emphasis> ou <emphasis>saída padrão</emphasis> que será passada ao
+comando.
+</para>
+<para>
+Se você digitar: <literal>ls /usr/share/doc/copyright</literal>,
+<filename>/usr/share/doc/copyright</filename> será o parâmetro passado ao
+comando <command>ls</command>, neste caso queremos que ele liste os arquivos do
+diretório <emphasis>/usr/share/doc/copyright</emphasis>.
+</para>
+<para>
+É normal errar o nome de comandos, mas não se preocupe, quando isto acontecer o
+sistema mostrará a mensagem <literal>command not found</literal> (comando não
+encontrado) e voltará ao aviso de comando.  As mensagens de erro não fazem
+nenhum mal ao seu sistema, somente dizem que algo deu errado para que você
+possa corrigir e entender o que aconteceu.  No <command>GNU/Linux</command>,
+você tem a possibilidade de criar comandos personalizados usando outros
+comandos mais simples (isto será visto mais adiante).  Os comandos se encaixam
+em duas categorias: <emphasis>Comandos Internos</emphasis> e <emphasis>Comandos
+Externos</emphasis>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- [ %EXEMPLO [ -->
+<para>
+Por exemplo: <literal>"ls -la /usr/share/doc"</literal>, <literal>ls</literal>
+é o comando, <literal>-la</literal> é a opção passada ao comando, e
+<literal><filename>/usr/share/doc</filename></literal> é o diretório passado
+como parâmetro ao comando <literal>ls</literal>.
+</para>
+<!-- ]]> -->
+
+
+<section xml:id="basico-comandos-internos"><info><title>Comandos Internos</title></info>
+<para>
+São comandos que estão localizados dentro do interpretador de comandos
+(normalmente o <command>Bash</command>) e não no disco.  Eles são carregados na
+memória RAM do computador junto com o interpretador de comandos.
+</para>
+<para>
+Quando executa um comando, o interpretador de comandos verifica primeiro se ele
+é um <emphasis>Comando Interno</emphasis> caso não seja é verificado se é um
+<emphasis>Comando Externo</emphasis>.
+</para>
+<para>
+Exemplos de comandos internos são: <literal>cd, exit, echo, bg, fg, source,
+help</literal>
+</para>
+</section>
+
+</section>
+
+<section xml:id="basico-comandos-externos"><info><title>Comandos Externos</title></info>
+<para>
+São comandos que estão localizados no disco.  Os comandos são procurados no
+disco usando o ordem do <literal>PATH</literal> e executados assim que
+encontrados.
+</para>
+<para>
+Para detalhes veja <xref linkend="run-path"/>.
+</para>
+</section>
+
+<section xml:id="basico-avisocmd"><info><title>Aviso de comando (Prompt)</title></info>
+<para>
+Aviso de comando (ou Prompt), é a linha mostrada na tela para
+<emphasis>digitação de comandos</emphasis> que serão passados ao
+<literal>interpretador de comandos</literal> para sua execução.
+</para>
+<para>
+A posição onde o comando será digitado é marcado um "traço" piscante na tela
+chamado de <emphasis>cursor</emphasis>.  Tanto em shells texto como em gráficos
+é necessário o uso do cursor para sabermos onde iniciar a digitação de textos e
+nos orientarmos quanto a posição na tela.
+</para>
+<para>
+O aviso de comando do usuário <literal>root</literal> é identificado por uma
+"#" (tralha), e o aviso de comando de usuários é identificado pelo símbolo "$".
+Isto é padrão em sistemas <command>UNIX</command>.
+</para>
+<para>
+Você pode retornar comandos já digitados pressionando as teclas <literal>Seta
+para cima</literal> / <literal>Seta para baixo</literal>.
+</para>
+<para>
+A tela pode ser rolada para baixo ou para cima segurando a tecla
+<literal>SHIFT</literal> e pressionando <literal>PGUP</literal> ou
+<literal>PGDOWN</literal>.  Isto é útil para ver textos que rolaram rapidamente
+para cima.
+</para>
+<para>
+Abaixo algumas dicas sobre a edição da linha de comandos (não é necessário se
+preocupar em decora-los):
+</para>
+<itemizedlist>
+<listitem>
+<para>
+Pressione a tecla <literal>Back Space</literal> ("<emphasis role="strong">&lt;--</emphasis>") para apagar um caracter à esquerda do cursor.
+</para>
+</listitem>
+<listitem>
+<para>
+Pressione a tecla <literal>Del</literal> para apagar o caracter acima do
+cursor.
+</para>
+</listitem>
+<listitem>
+<para>
+Pressione <literal>CTRL</literal>+<literal>A</literal> para mover o cursor para
+o inicio da linha de comandos.
+</para>
+</listitem>
+<listitem>
+<para>
+Pressione <literal>CTRL</literal>+<literal>E</literal> para mover o cursor para
+o fim da linha de comandos.
+</para>
+</listitem>
+<listitem>
+<para>
+Pressione <literal>CTRL</literal>+<literal>U</literal> para apagar o que
+estiver à esquerda do cursor.  O conteúdo apagado é copiado para uso com
+<literal>CTRL</literal>+<literal>y</literal>.
+</para>
+</listitem>
+<listitem>
+<para>
+Pressione <literal>CTRL</literal>+<literal>K</literal> para apagar o que
+estiver à direita do cursor.  O conteúdo apagado é copiado para uso com
+<literal>CTRL</literal>+<literal>y</literal>.
+</para>
+</listitem>
+<listitem>
+<para>
+Pressione <literal>CTRL</literal>+<literal>L</literal> para limpar a tela e
+manter o texto que estiver sendo digitado na linha de comando (parecido com o
+comando <command>clear</command>).
+</para>
+</listitem>
+<listitem>
+<para>
+Pressione <literal>CTRL</literal>+<literal>Y</literal> para colocar o texto que
+foi apagado na posição atual do cursor.
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+	<!-- ]]> -->
+	<!-- [ %AVANCADO [ -->
+
+<section xml:id="basico-monitlogs"><info><title>Monitorando os logs</title></info>
+<para>
+Os arquivos e diretórios de logs residem em <filename>/var/log</filename> e
+registram tudo o que acontecem com o kernel, com os daemons e utilitários do
+sistema.  Eles são muito importantes tanto para monitorar o que acontece com o
+seu sistema como para ajudar na solução de problemas diversos.  É comum
+programas como o servidor web, e-mail, mensagens instantaneas, firewall, irc,
+banco de dados, gravarem os arquivos de log em diretórios próprios dentro de
+<filename>/var/log/programa</filename>, desta forma evitam misturar seus
+arquivos com os de log do sistema residentes em <filename>/var/log</filename>.
+</para>
+<para>
+Acostume-se a olhar constantemente os arquivos de log em seu sistema, isto pode
+ser importante para encontrar possíveis falhas de segurança, tentativa de
+acesso ao sistema e, principalmente, solucionar problemas (principalmente os
+mais complicados).  <!-- [ %CAPJUNTOS [ --> Leia <xref linkend="log"/> para mais detalhes. <!-- ]]> -->
+</para>
+
+
+<section xml:id="basico-delarquivos"><info><title>Destruindo arquivos/partições de forma segura</title></info>
+<para>
+Esta seção tem a intenção de conscientizar o administrador do uso devido de
+técnicas para garantir que dados sensíveis sejam apagados de forma um pouco
+mais segura em seu sistema.
+</para>
+<para>
+Quando um arquivo é apagado, apenas a entrada na tabela de inodes é mexida, e
+ele pode ainda ser recuperado com o <command>debugfs</command> e um pouco de
+paciência e engenharia.  O mesmo acontece com as partições, que podem ser
+recuperadas com facilidade (isto é explicado no nível Intermediário do guia).
+Esta recuperação é proporcionada pelas regras de funcionamento do sistema de
+arquivos e do esquema de particionamento, ou seja, são permitidas pelo SO.
+</para>
+<para>
+Vou um pouco mais além: O disco rígido é uma mídia magnética e opera de forma
+mecânica para ler/gravar dados.  Quando um arquivo é apagado, seja por qualquer
+motivo, ainda é possível recupera-lo.  O que permite isto é porque o HD nem
+sempre tem a precisão de gravar <emphasis role="strong">exatamente</emphasis>
+no mesmo lugar (pois a cabeça é movida mecanicamente), gravando em trilhas
+microscópicamente vizinhas a anterior.  Então a imagem do arquivo que foi
+apagada continua lá.  Segundo ouvi falar, a NASA possui recursos para recuperar
+até 60 regravações posteriores no disco.  É claro que isto pode ocorrer em
+pouco tempo, dependendo do tamanho de sua partição e se esta for uma
+<filename>/var/spool</filename> em um servidor de e-mails :-)
+</para>
+<para>
+Baseado nesta teoria, você poderá apagar os dados de forma destrutiva usando o
+programa <command>shred</command>, que regrava o arquivo repetidamente com
+dados aleatórios.  Sua sintaxe é a seguinte:
+</para>
+<screen>
+shred -n 70 -v -u arquivo
+</screen>
+<para>
+Isto faz com que ele regrava o conteúdo do <filename>arquivo</filename> 70
+vezes com dados aleatórios.  O <emphasis>-u</emphasis> trunca e remove o
+arquivo após concluído.
+</para>
+<para>
+Note que o uso de dados aleatórios serve para destruir as possibilidades de uma
+recuperação simples, este é o motivo de se recomendar sempre o uso de
+<filename>/dev/urandom</filename> ao invés de <filename>/dev/zero</filename>
+para destruição de arquivos.
+</para>
+<!-- [ %OBS [ -->
+<para>
+<emphasis role="strong">OBS1:</emphasis> Saiba exatamente o que está fazendo
+pois estes procedimentos servem para dificultar ao máximo a recuperação de
+dados.
+</para>
+<para>
+<emphasis role="strong">OBS2:</emphasis> Devido as tecnologias de sistemas que
+utilizam journaling (<emphasis>XFS</emphasis>, <emphasis>EXT3</emphasis>,
+<emphasis>EXT4</emphasis>, <emphasis>JFS</emphasis> e
+<emphasis>ReiserFS</emphasis>) e sistemas RAID, o <command>shred</command> não
+funcionará.  O <command>shred</command> também não funcionará com sistemas de
+arquivos via rede (<emphasis>NFS</emphasis>, <emphasis>SMB</emphasis>, etc.).
+Se procura alguma forma de proteger seus dados, mesmo que apagados, utilize um
+método de criptografia como o <emphasis>DM-CRYPTO</emphasis>,
+<emphasis>crypto-loop</emphasis>, <emphasis>gpg</emphasis>, etc.
+</para>
+<para>
+<emphasis role="strong">OBS3:</emphasis> Caso esteja usando um sistema de
+arquivos criptografado, estes procedimentos são quase desnecessários
+(dependendo do nível de segurança e algorítmos que você utiliza).
+</para>
+<!-- ]]> -->
+</section>
+
+</section>
+
+	<!-- ]]> -->
+
+	<!-- [ %INIC-INTER [ -->
+<section xml:id="basico-interpcmd"><info><title>Interpretador de comandos</title></info>
+<para>
+Também conhecido como "shell".  É o programa responsável em interpretar as
+instruções enviadas pelo usuário e seus programas ao sistema operacional (o
+kernel).  
+<!-- [ %DESCRICAOD [ --> Ele que executa comandos lidos do dispositivo de entrada padrão
+(teclado) ou de um arquivo executável.  É a principal ligação entre o usuário,
+os programas e o kernel.  O <command>GNU/Linux</command> possui diversos tipos
+de interpretadores de comandos, entre eles posso destacar o <command>bash, ash,
+csh, tcsh, sh,</command> etc.  Entre eles o mais usado é o
+<command>bash</command>.  O interpretador de comandos do DOS, por exemplo, é o
+<filename>command.com</filename>. <!-- ]]> -->
+</para>
+<para>
+Os comandos podem ser enviados de duas maneiras para o interpretador:
+<literal>interativa</literal> e <literal>não-interativa</literal>:
+</para>
+<variablelist>
+<varlistentry>
+<term><literal>Interativa</literal></term>
+<listitem>
+<para>
+Os comandos são digitados no aviso de comando e passados ao interpretador de
+comandos um a um.  Neste modo, o computador depende do usuário para executar
+uma tarefa, ou próximo comando.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><literal>Não-interativa</literal></term>
+<listitem>
+<para>
+São usados arquivos de comandos criados pelo usuário (scripts) para o
+computador executar os comandos na ordem encontrada no arquivo.  Neste modo, o
+computador executa os comandos do arquivo um por um e dependendo do término do
+comando, o script pode checar qual será o próximo comando que será executado e
+dar continuidade ao processamento.
+</para>
+<para>
+Este sistema é útil quando temos que digitar por várias vezes seguidas um mesmo
+comando ou para compilar algum programa complexo.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+O shell <command>Bash</command> possui ainda outra característica interessante:
+A completação dos nomes.  Isto é feito pressionando-se a tecla
+<literal>TAB</literal>.  Por exemplo, se digitar "ls tes" e pressionar
+&lt;tab&gt;, o <command>Bash</command> localizará todos os arquivos que iniciam
+com "tes" e completará o restante do nome.  Caso a completação de nomes
+encontre mais do que uma expressão que satisfaça a pesquisa, ou nenhuma, é
+emitido um beep.  Se você apertar novamente a tecla TAB imediatamente depois do
+beep, o interpretador de comandos irá listar as diversas possibilidades que
+satisfazem a pesquisa, para que você possa escolher a que lhe interessa.  A
+completação de nomes funciona sem problemas para comandos internos.
+</para>
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplo: <literal>ech</literal> (pressione <literal>TAB</literal>).
+<literal>ls /vm</literal>(pressione <literal>TAB</literal>)
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="basico-terminal"><info><title>Terminal Virtual (console)</title></info>
+<para>
+Terminal (ou console) é o teclado e tela conectados em seu computador.  O
+<command>GNU/Linux</command> faz uso de sua característica
+<emphasis>multi-usuária</emphasis> usando os "terminais virtuais".  Um terminal
+virtual é uma segunda seção de trabalho completamente independente de outras,
+que pode ser acessada no computador local ou remotamente via <command>telnet,
+rsh, rlogin,</command> etc.
+</para>
+<para>
+No <command>GNU/Linux</command>, em modo texto, você pode acessar outros
+terminais virtuais segurando a tecla <literal>ALT</literal> e pressionando
+<literal>F1 a F6</literal>.  Cada tecla de função corresponde a um número de
+terminal do 1 ao 6 (o sétimo é usado por padrão pelo ambiente gráfico X).  O
+<command>GNU/Linux</command> possui mais de 63 terminais virtuais, mas apenas 6
+estão disponíveis inicialmente por motivos de economia de memória RAM 
+<!-- [ %INTERMEDIARIO [ --> (cada
+terminal virtual ocupa aproximadamente 350 Kb de memória RAM, desative a
+quantidade que não estiver usando para liberar memória RAM para uso de outros
+programas!). <!-- ]]> -->
+</para>
+<para>
+Se estiver usando o modo gráfico, você deve segurar <literal>CTRL</literal>+
+<literal>ALT</literal> enquanto pressiona uma tela de &lt;F1&gt; a &lt;F6&gt;.
+Para voltar ao modo gráfico, pressione
+<literal>CTRL</literal>+<literal>ALT</literal>+ &lt;F7&gt;.
+</para>
+<!-- [ %EXEMPLO [ -->
+<para>
+Um exemplo prático: Se você estiver usando o sistema no Terminal 1 com o nome
+"joao" e desejar entrar como "root" para instalar algum programa, segure
+<literal>ALT</literal> enquanto pressiona &lt;F2&gt; para abrir o segundo
+terminal virtual e faça o login como "root".  Será aberta uma nova seção para o
+usuário "root" e você poderá retornar a hora que quiser para o primeiro
+terminal pressionando <literal>ALT</literal>+&lt;F1&gt;.
+</para>
+<!-- ]]> -->
+</section>
+	<!-- ]]> -->
+
+	<!-- [ %INICIANTE [ -->
+<section xml:id="basico-login"><info><title>Login</title></info>
+<para>
+Login é a entrada no sistema quando você digita seu <emphasis>nome</emphasis> e
+<emphasis>senha</emphasis>.  Por enquanto vou manter o seu suspense sobre o que
+é o <emphasis>logout</emphasis>.
+</para>
+</section>
+
+
+<section xml:id="basico-logout"><info><title>Logout</title></info>
+<para>
+Logout é a saída do sistema.  A saída do sistema é feita pelos comandos
+<command>logout</command>, <command>exit</command>,
+<literal>CTRL</literal>+<literal>D</literal>, ou quando o sistema é reiniciado
+ou desligado.
+</para>
+</section>
+	<!-- ]]> -->
+
+
+<section xml:id="basico-coringas"><info><title>coringas</title></info>
+<para>
+coringas (ou referência global) é um recurso usado para especificar um ou mais
+arquivos ou diretórios do sistema de uma só vez.  Este é um recurso permite que
+você faça a filtragem do que será listado, copiado, apagado, etc.  São usados 4
+tipos de coringas no <command>GNU/Linux</command>:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+"*" - Faz referência a um nome completo/restante de um arquivo/diretório.
+</para>
+</listitem>
+<listitem>
+<para>
+"?"  - Faz referência a uma letra naquela posição.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>[padrão]</literal> - Faz referência a uma faixa de caracteres de um
+arquivo/diretório.  Padrão pode ser:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>[a-z][0-9]</literal> - Faz referência a caracteres de
+<literal>a</literal> até <literal>z</literal> seguido de um caracter de
+<literal>0</literal> até <literal>9</literal>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>[a,z][1,0]</literal> - Faz a referência aos caracteres
+<literal>a</literal> e <literal>z</literal> seguido de um caracter
+<literal>1</literal> ou <literal>0</literal> naquela posição.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>[a-z,1,0]</literal> - Faz referência a intervalo de caracteres de
+<literal>a</literal> até <literal>z</literal> ou <literal>1</literal> ou
+<literal>0</literal> naquela posição.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+A procura de caracteres é "Case Sensitive" assim se você deseja que sejam
+localizados todos os caracteres alfabéticos você deve usar
+<literal>[a-zA-Z]</literal>.
+</para>
+<para>
+Caso a expressão seja precedida por um <literal>^</literal>, faz referência a
+qualquer caracter exceto o da expressão.  Por exemplo <literal>[^abc]</literal>
+faz referência a qualquer caracter exceto <literal>a</literal>,
+<literal>b</literal> e <literal>c</literal>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>{padrões}</literal> - Expande e gera strings para pesquisa de padrões
+de um arquivo/diretório.
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>X{ab,01}</literal> - Faz referência a seqüencia de caracteres
+<literal>Xab</literal> ou <literal>X01</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>X{a-z,10}</literal> Faz referencia a seqüencia de caracteres
+X<literal>a-z</literal> e <literal>X10</literal>.
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</itemizedlist>
+<para>
+O que diferencia este método de expansão dos demais é que a existência do
+arquivo/diretório é opcional para geração do resultado.  Isto é útil para a
+criação de diretórios.  Lembrando que os 4 tipos de coringas ("*", "?", "[]",
+"{}") podem ser usados juntos.  
+</para>
+
+<!-- [ %EXEMPLO [ -->
+<para>
+Para entender melhor vamos a prática:
+</para>
+<para>
+Vamos dizer que tenha 5 arquivo no diretório <filename>/usr/teste</filename>:
+<filename>teste1.txt, teste2.txt, teste3.txt, teste4.new,
+teste5.new</filename>.
+</para>
+<para>
+Caso deseje listar <emphasis role="strong">todos</emphasis> os arquivos do
+diretório <filename>/usr/teste</filename> você pode usar o coringa "*" para
+especificar todos os arquivos do diretório:
+</para>
+<para>
+<literal>cd /usr/teste</literal> e <literal>ls *</literal> ou <literal>ls
+/usr/teste/*</literal>.
+</para>
+<para>
+Não tem muito sentido usar o comando <command>ls</command> com "*" porque todos
+os arquivos serão listados se o <command>ls</command> for usado sem nenhum
+Coringa.
+</para>
+<para>
+Agora para listar todos os arquivos <filename>teste1.txt, teste2.txt,
+teste3.txt</filename> com excessão de <filename>teste4.new</filename>,
+<filename>teste5.new</filename>, podemos usar inicialmente 3 métodos:
+</para>
+<orderedlist numeration="arabic">
+<listitem>
+<para>
+Usando o comando <literal>ls *.txt</literal> que pega todos os arquivos que
+começam com qualquer nome e terminam com <filename>.txt</filename>.
+</para>
+</listitem>
+<listitem>
+<para>
+Usando o comando <literal>ls teste?.txt</literal>, que pega todos os arquivos
+que começam com o nome <filename>teste</filename>, tenham qualquer caracter no
+lugar do coringa <literal>?</literal> e terminem com <filename>.txt</filename>.
+Com o exemplo acima <literal>teste*.txt</literal> também faria a mesma coisa,
+mas se também tivéssemos um arquivo chamado <filename>teste10.txt</filename>
+este também seria listado.
+</para>
+</listitem>
+<listitem>
+<para>
+Usando o comando <literal>ls teste[1-3].txt</literal>, que pega todos os
+arquivos que começam com o nome <filename>teste</filename>, tenham qualquer
+caracter entre o número 1-3 no lugar da 6a letra e terminem com
+<filename>.txt</filename>.  Neste caso se obtém uma filtragem mais exata, pois
+o coringa <emphasis>?</emphasis> especifica qualquer caracter naquela posição e
+[] especifica números, letras ou intervalo que será usado.
+</para>
+</listitem>
+</orderedlist>
+<para>
+Agora para listar somente <filename>teste4.new</filename> e
+<filename>teste5.new</filename> podemos usar os seguintes métodos:
+</para>
+<orderedlist numeration="arabic">
+<listitem>
+<para>
+<literal>ls *.new</literal> que lista todos os arquivos que terminam com
+<filename>.new</filename>
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ls teste?.new</literal> que lista todos os arquivos que começam com
+<filename>teste</filename>, contenham qualquer caracter na posição do coringa
+<emphasis>?</emphasis> e terminem com <filename>.new</filename>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ls teste[4,5].*</literal> que lista todos os arquivos que começam com
+<filename>teste</filename> contenham números de 4 e 5 naquela posição e
+terminem com qualquer extensão.
+</para>
+</listitem>
+</orderedlist>
+<para>
+Existem muitas outras formas de se fazer a mesma coisa, isto depende do gosto
+de cada um.  O que pretendi fazer aqui foi mostrar como especificar mais de um
+arquivo de uma só vez.  O uso de coringas será útil ao copiar arquivos, apagar,
+mover, renomear, e nas mais diversas partes do sistema.  Alias esta é uma
+característica do <command>GNU/Linux</command>: permitir que a mesma coisa
+possa ser feita com liberdade de várias maneiras diferentes.
+</para>
+<!-- ]]> -->
+</section>
+
+</chapter>

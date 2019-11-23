@@ -1,0 +1,177 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE book [
+
+<!-- 
+Guia Foca GNU/Linux
+
+Estilo de tags adotadas neste documento:
+- Nome de Programa, nome de comando - <prgn>
+- Nome de pacote                    - <package>
+- Saída de comando, entrada no 
+  teclado, parâmetros e comandos    - <tt>
+- Nome de arquivo, diretório        - <file>
+- Parte em destaque no texto        - <em>
+- Aviso de observação, atenção, etc - <strong>
+- Nome de variável                  - <var>
+  
+Copyleft 1999-2019, Gleydson Mazioli da Silva <gleydson@guiafoca.org>
+-->
+
+<!-- Definições de entities dinâmicas usadas no Foca Linux -->
+<!ENTITY % dinamic    SYSTEM "dinamicas.ent" > %dinamic;
+<!ENTITY % definicoes SYSTEM "padroes.ent"   > %definicoes;
+<!ENTITY % urldata    SYSTEM "urls.ent"      > %urldata;
+<!ENTITY % userlevel  SYSTEM "userlevel.ent" > %userlevel;
+
+<!-- Arquivos separados contendo o texto do Documento -->
+<!--                Versão Iniciante                       -->
+<!ENTITY introducao         SYSTEM "Iniciante/introducao.xml"         >
+<!ENTITY basico             SYSTEM "Iniciante/basico.xml"             >
+<!ENTITY discos             SYSTEM "Iniciante/discos.xml"             >
+<!ENTITY ajuda              SYSTEM "Iniciante/ajuda.xml"              >
+<!ENTITY migrando           SYSTEM "Iniciante/migrando.xml"           >
+<!ENTITY comandos-arquivo   SYSTEM "Iniciante/comandos-arquivo.xml"   >
+<!ENTITY comandos-contas    SYSTEM "Iniciante/comandos-contas.xml"    >
+<!ENTITY comandos-diretorio SYSTEM "Iniciante/comandos-diretorio.xml" >
+<!ENTITY comandos-diversos  SYSTEM "Iniciante/comandos-diversos.xml"  >
+<!ENTITY comandos-rede      SYSTEM "Iniciante/comandos-rede.xml"      >
+<!ENTITY configurando       SYSTEM "Iniciante/configurando.xml"       >
+<!ENTITY redir              SYSTEM "Iniciante/redir.xml"              >
+<!ENTITY run                SYSTEM "Iniciante/run.xml"                >
+<!ENTITY impressao          SYSTEM "Iniciante/impressao.xml"          >
+<!ENTITY x11                SYSTEM "Iniciante/x11.xml"                >
+<!ENTITY permissoes         SYSTEM "Iniciante/permissoes.xml"         >
+<!ENTITY apendice           SYSTEM "Iniciante/apendice.xml"           >
+
+<!--                  Versão Intermediário                     -->
+<!ENTITY aplicativos        SYSTEM "Intermediario/aplicativos.xml"    >
+<!ENTITY bootloaders        SYSTEM "Intermediario/bootloaders.xml"    >
+<!ENTITY compactadores      SYSTEM "Intermediario/compactadores.xml"  >
+<!ENTITY compilacao         SYSTEM "Intermediario/compilacao.xml"     >
+<!ENTITY debian             SYSTEM "Intermediario/debian.xml"         >
+<!ENTITY dpkg               SYSTEM "Intermediario/dpkg.xml"           >
+<!ENTITY hardware           SYSTEM "Intermediario/hardware.xml"       >
+<!ENTITY kernel             SYSTEM "Intermediario/kernel.xml"         >
+<!ENTITY log                SYSTEM "Intermediario/log.xml"            >
+<!ENTITY manutencao         SYSTEM "Intermediario/manutencao.xml"     >
+<!ENTITY internet           SYSTEM "Intermediario/internet.xml"       >
+<!ENTITY personalizacao     SYSTEM "Intermediario/personalizacao.xml" >
+<!ENTITY tasks              SYSTEM "Intermediario/tasks.xml"          >
+<!ENTITY etc                SYSTEM "Intermediario/etc.xml"            >
+<!ENTITY rede               SYSTEM "Intermediario/rede.xml"           >
+
+<!--                  Versão Avançado                         -->
+<!ENTITY % apache         SYSTEM "Avancado/apache/Apache-INDEX.xml"> %apache;
+<!ENTITY % cfgrede      SYSTEM "Avancado/conf-rede/CFGRede-INDEX.xml"> %cfgrede;
+<!ENTITY % iptables     SYSTEM "Avancado/iptables-firewall/iptables-INDEX.xml"> %iptables;
+<!ENTITY % contas       SYSTEM "Avancado/gerenc-contas/contas-INDEX.xml"> %contas;
+<!ENTITY % restricoes   SYSTEM "Avancado/restr-seguranca/restricoes-INDEX.xml"> %restricoes;
+<!ENTITY % criptografia SYSTEM "Avancado/criptografia/Cripto-INDEX.xml"> %criptografia;
+<!ENTITY % ident        SYSTEM "Avancado/identd/Ident-INDEX.xml"> %ident;
+<!ENTITY % telnet       SYSTEM "Avancado/telnet/telnet-INDEX.xml"> %telnet;
+<!ENTITY % ssh          SYSTEM "Avancado/ssh/ssh-INDEX.xml"> %ssh;
+<!ENTITY % pop3         SYSTEM "Avancado/pop3/pop3-INDEX.xml"> %pop3;
+<!ENTITY % cvs          SYSTEM "Avancado/cvs/CVS-INDEX.xml"> %cvs;
+<!ENTITY % samba        SYSTEM "Avancado/samba/SAMBA-INDEX.xml"> %samba;
+
+]>
+
+<book xmlns="http://docbook.org/ns/docbook" version="5.0" xml:lang="pt">
+
+<title>Guia Foca Linux</title>
+<titleabbrev>focalinux</titleabbrev>
+
+<bookinfo>
+    <legalnotice>
+    <para>
+Permission is granted to copy, distribute and/or modify this document under the
+terms of the GNU Free Documentation License, Version 1.2 published by the Free
+Software Foundation; A copy of the license is included in the section entitled
+"GNU Free Documentation License".
+    </para>
+    </legalnotice>
+
+    <author><firstname>Gleydson</firstname> <surname>Mazioli da Silva</surname><email>gleydson@guiafoca.org</email></author>
+    <releaseinfo>Versão &VERSAO; - &DATADOC;</releaseinfo>
+    <copyright><year>1999-&ULTIMOANO; -</year><holder>Gleydson Mazioli da Silva</holder></copyright>
+
+    <pubdate>&DATADOC;</pubdate>
+
+<abstract>
+<para>
+Este guia tem por objetivo ser uma referência ao aprendizado do usuário e um
+manual de consulta, operação e configuração de sistemas Linux (e outros tipos
+de *ix).  A última versão oficial deste guia pode ser encontrada na <ulink
+url="http://www.guiafoca.org">Página Oficial do Foca Linux</ulink>.  Novas
+versões são lançadas com uma freqüência mensal e você pode receber avisos de
+novos lançamentos deste guia preenchendo um formulário na página Web ou
+assinando o twitter <ulink
+url="http://twitter.com/guiafoca">@guiafoca</ulink>.
+</para>
+</abstract>
+
+</bookinfo>
+
+
+&introducao;
+&basico;
+<!--
+<![ %INTER-AVANC [ &hardware; ]]>
+<![ %INIC-INTER [ &migrando; ]]>
+<![ %INIC-INTER [ &discos; ]]>
+<![ %INTERMEDIARIO [ &bootloaders; ]]>
+<![ %INIC-INTER [ &run; ]]>
+<![ %INIC-INTER [ &comandos-diretorio; ]]>
+<![ %INIC-INTER [ &comandos-arquivo; ]]>
+<![ %INIC-INTER [ &comandos-diversos; ]]>
+<![ %INIC-INTER [ &comandos-rede; ]]>
+<![ %INIC-INTER [ &comandos-contas; ]]>
+<![ %INIC-INTER [ &permissoes; ]]>
+<![ %INIC-INTER [ &redir; ]]>
+<![ %INTER-AVANC [ &rede; ]]>
+<![ %AVANCADO [ &d-cfgrede1; ]]>
+<![ %INTERMEDIARIO [ &kernel; ]]>
+<![ %INTER-AVANC [ &log; ]]>
+<![ %INTERMEDIARIO [ &compactadores; ]]>
+<![ %INTER-AVANC [ <![ %DEBIAN [ &debian; ]]> ]]>
+<![ %INTERMEDIARIO [ <![ %DEBIAN [ &dpkg; ]]> ]]>
+<![ %INTER-AVANC [ &personalizacao; ]]>
+&impressao;
+<![ %INTERMEDIARIO [ &configurando; ]]>
+<![ %INTERMEDIARIO [ &tasks; ]]>
+<![ %INTERMEDIARIO [ &compilacao; ]]>
+<![ %INTERMEDIARIO [ &manutencao; ]]>
+<![ %INTERMEDIARIO [ &etc; ]]>
+<![ %INTERMEDIARIO [ &internet; ]]>
+<![ %INIC-INTER [ &x11; ]]>
+
+  <![ %AVANCADO [
+ &fw-iptables1; &fw-iptables2; &fw-iptables3; &fw-iptables4; &fw-iptables5; \
+              &fw-iptables6; &fw-iptables7; &fw-iptables8;
+ &d-contas1; 
+ &s-apache1; &s-apache2; &s-apache3; &s-apache4; &s-apache5; &s-apache6; \
+              &s-apache7; &s-apache8; &s-apache9; &s-apache10;
+<![ %CONSTRUCAO [ 
+  &s-bind1; 
+  &s-dhcp1; 
+ ]]>
+ &s-ident1; 
+ &s-telnet1;
+ &s-ssh1; &s-ssh2; &s-ssh3;
+ &s-pop3-1; 
+ &s-cvs1; &s-cvs2; &s-cvs3; &s-cvs4; &s-cvs5; &s-cvs6;
+ &s-samba1; &s-samba2; &s-samba3; &s-samba4; &s-samba5; &s-samba6; &s-samba7; \
+ &s-samba8; &s-samba9; &s-samba10; &s-samba11; &s-samba12; &s-samba13;
+ &d-restricoes1;
+ &d-cripto1;
+ 
+  ]]>
+
+
+<![ %INTERMEDIARIO [ &aplicativos; ]]>
+<![ %INIC-INTER [ &ajuda; ]]>
+-->
+
+&apendice;
+
+</book>

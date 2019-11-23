@@ -1,0 +1,3101 @@
+<!-- Converted by db4-upgrade version 1.0 -->
+<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="cmdv"><info><title>Comandos Diversos</title></info>
+<para>
+Comandos de uso diversos no sistema.
+</para>
+<section xml:id="cmdv-clear"><info><title>clear</title></info>
+<para>
+Limpa a tela e posiciona o cursor no canto superior esquerdo do vídeo.
+</para>
+<para>
+<literal>clear</literal>
+</para>
+</section>
+
+
+<section xml:id="cmdv-date"><info><title>date</title></info>
+<para>
+Permite ver/modificar a Data e Hora do Sistema.  Você precisa estar como
+usuário root para modificar a data e hora.  
+<!-- [ %INTERMEDIARIO [ --> 
+Muitos programas do sistema, arquivos de registro (log) e tarefas agendadas 
+funcionam com base na data e hora fornecidas pelo sistema, assim esteja consciente 
+das modificações que a data/hora pode trazer a estes programas (principalmente em 
+se tratando de uma rede com muitos usuários). <!-- ]]> -->
+</para>
+<para>
+<command>date</command> MesDiaHoraMinuto[AnoSegundos]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term>MesDiaHoraMinuto[AnoSegundos]</term>
+<listitem>
+<para>
+São respectivamente os números do mês, dia, hora e minutos sem espaços.
+Opcionalmente você pode especificar o Ano (com 2 ou 4 dígitos) e os Segundos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>+[FORMATO]</term>
+<listitem>
+<para>
+Define o formato da listagem que será usada pelo comando
+<command>date</command>.  Os seguintes formatos são os mais usados:
+</para>
+<itemizedlist>
+<listitem><para><literal>%d</literal> - Dia do Mês (00-31).</para></listitem>
+<listitem><para><literal>%m</literal> - Mês do Ano (00-12).</para></listitem>
+<listitem><para><literal>%y</literal> - Ano (dois dígitos).</para></listitem>
+<listitem><para><literal>%Y</literal> - Ano (quatro dígitos).</para></listitem>
+<listitem><para><literal>%H</literal> - Hora (00-24).</para></listitem>
+<listitem><para><literal>%I</literal> - Hora (00-12).</para></listitem>
+<listitem><para><literal>%M</literal> - Minuto (00-59).</para></listitem>
+<listitem><para><literal>%j</literal> - Dia do ano (1-366).</para></listitem>
+<listitem><para><literal>%p</literal> - AM/PM (útil se utilizado com %d).</para></listitem>
+<listitem><para><literal>%r</literal> - Formato de 12 horas completo (hh:mm:ss AM/PM).</para></listitem>
+<listitem><para><literal>%T</literal> - Formato de 24 horas completo (hh:mm:ss).</para></listitem>
+<listitem><para><literal>%w</literal> - Dia da semana (0-6).</para></listitem>
+</itemizedlist>
+<para>
+Outros formatos podem ser obtidos através da página de manual do
+<command>date</command>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<para>
+Para maiores detalhes, veja a página de manual do comando
+<command>date</command>.
+</para>
+<!-- [ %EXEMPLO [ -->
+<para>
+Para ver a data atual digite: <literal>date</literal>
+</para>
+<para>
+Se quiser mudar a Data para 25/12 e a hora para 08:15 digite: <literal>date
+12250815</literal>
+</para>
+<para>
+Para mostrar somente a data no formato dia/mês/ano: <literal>date
++%d/%m/%Y</literal>
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdv-df"><info><title>df</title></info>
+<para>
+Mostra o espaço livre/ocupado de cada partição.
+</para>
+<para>
+<command>df</command> [<emphasis>opções</emphasis>]
+</para>
+<!-- [ %OPCOES [ --> 
+<para>
+onde:
+</para>
+<variablelist>
+
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-a</term>
+<listitem>
+<para>
+Inclui sistemas de arquivos com 0 blocos.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>-h, --human-readable</term>
+<listitem>
+<para>
+Mostra o espaço livre/ocupado em <emphasis>MB, KB, GB</emphasis> ao invés de
+blocos.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>-H</term>
+<listitem>
+<para>
+Idêntico a <literal>-h</literal> mas usa 1000 ao invés de 1024 como unidade de
+cálculo.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>-k</term>
+<listitem>
+<para>
+Lista em Kbytes.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>-l</term>
+<listitem>
+<para>
+Somente lista sistema de arquivos locais.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>-m</term>
+<listitem>
+<para>
+Lista em Mbytes (equivalente a --block-size=1048576).
+</para>
+</listitem>
+</varlistentry>
+
+<!-- [ %INTERMEDIARIO [ -->
+<varlistentry>
+<term>--sync</term>
+<listitem>
+<para>
+Executa o <command>sync</command> antes de mostrar os dados.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>-T</term>
+<listitem>
+<para>
+Lista o tipo de sistema de arquivos de cada partição
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>-t <emphasis>tipo</emphasis></term>
+<listitem>
+<para>
+Lista somente sistema de arquivos do tipo <emphasis>tipo</emphasis>.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term>-x <emphasis>tipo</emphasis></term>
+<listitem>
+<para>
+Não lista sistemas de arquivos do tipo <emphasis>tipo</emphasis>.
+</para>
+</listitem>
+</varlistentry>
+<!-- ]]> -->
+</variablelist>
+<!-- ]]> -->
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplos: <literal>df</literal>, <literal>df -h</literal>, <literal>df -t
+vfat</literal>.
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdv-ln"><info><title>ln</title></info>
+<para>
+Cria links para arquivos e diretórios no sistema.  
+<!-- [ %DESCRICAOD [ --> O link é um mecanismo que faz referência a outro arquivo ou 
+diretório em outra localização.  O link em sistemas <command>GNU/Linux</command> 
+faz referência reais ao arquivo/diretório podendo ser feita cópia do link (será 
+copiado o arquivo alvo), entrar no diretório (caso o link faça referência a um 
+diretório), etc. <!-- ]]> -->
+</para>
+<para>
+<command>ln</command> [<emphasis>opções</emphasis>] [<emphasis>origem</emphasis>]
+[<emphasis>link</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>origem</emphasis></term>
+<listitem>
+<para>
+Diretório ou arquivo de onde será feito o link.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>link</emphasis></term>
+<listitem>
+<para>
+Nome do link que será criado.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-s</term>
+<listitem>
+<para>
+Cria um link simbólico.  Usado para criar ligações com o arquivo/diretório de
+destino.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-v</term>
+<listitem>
+<para>
+Mostra o nome de cada arquivo antes de fazer o link.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-d</term>
+<listitem>
+<para>
+Cria um hard link para diretórios.  Somente o root pode usar esta opção.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<para>
+Existem 2 tipos de links: <emphasis>simbólicos</emphasis> e
+<emphasis>hardlinks</emphasis>.
+</para>
+<itemizedlist>
+<listitem>
+<para>
+O <emphasis>link simbólico</emphasis> cria um arquivo especial no disco (do
+tipo link) que tem como conteúdo o caminho para chegar até o arquivo alvo (isto
+pode ser verificado pelo tamanho do arquivo do link).  Use a opção
+<literal>-s</literal> para criar links simbólicos.
+</para>
+</listitem>
+<listitem>
+<para>
+O <emphasis>hardlink</emphasis> faz referência ao mesmo inodo do arquivo
+original, desta forma ele será perfeitamente idêntico, inclusive nas permissões
+de acesso, ao arquivo original.
+</para>
+<para>
+Ao contrário dos links simbólicos, não é possível fazer um hardlink para um
+diretório ou fazer referência a arquivos que estejam em partições diferentes.
+</para>
+</listitem>
+</itemizedlist>
+
+<!-- [ %OBS [ -->
+<para>
+Observações:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+Se for usado o comando <command>rm</command> com um link, somente o link será
+removido.
+</para>
+</listitem>
+<listitem>
+<para>
+Se for usado o comando <command>cp</command> com um link, o arquivo original
+será copiado ao invés do link.
+</para>
+</listitem>
+<listitem>
+<para>
+Se for usado o comando <command>mv</command> com um link, a modificação será
+feita no link.
+</para>
+</listitem>
+<listitem>
+<para>
+Se for usado um comando de visualização (como o <command>cat</command>), o
+arquivo original será visualizado.
+</para>
+</listitem>
+</itemizedlist>
+<!-- ]]> -->
+
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplos:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>ln -s /dev/ttyS1 /dev/modem</literal> - Cria o link
+<filename>/dev/modem</filename> para o arquivo <filename>/dev/ttyS1</filename>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ln -s /tmp ~/tmp</literal> - Cria um link <filename>~/tmp</filename>
+para o diretório <filename>/tmp</filename>.
+</para>
+</listitem>
+</itemizedlist>
+<!-- ]]> -->
+</section>
+
+<section xml:id="cmdv-du"><info><title>du</title></info>
+<para>
+Mostra o espaço ocupado por arquivos e sub-diretórios do diretório atual.
+</para>
+<para>
+<command>du</command> [<emphasis>opções</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-a, --all</term>
+<listitem>
+<para>
+Mostra o espaço ocupado por todos os arquivos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-b, --bytes</term>
+<listitem>
+<para>
+Mostra o espaço ocupado em bytes.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-c, --total</term>
+<listitem>
+<para>
+Faz uma totalização de todo espaço listado.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-D</term>
+<listitem>
+<para>
+Não conta links simbólicos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-h, --human</term>
+<listitem>
+<para>
+Mostra o espaço ocupado em formato legível por humanos (Kb, Mb) ao invés de
+usar blocos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-H</term>
+<listitem>
+<para>
+Como o anterior mas usa 1000 e não 1024 como unidade de cálculo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-k</term>
+<listitem>
+<para>
+Mostra o espaço ocupado em Kbytes.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-m</term>
+<listitem>
+<para>
+Mostra o espaço ocupado em Mbytes.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-S, --separate-dirs</term>
+<listitem>
+<para>
+Não calcula o espaço ocupado por sub-diretórios.
+</para>
+</listitem>
+</varlistentry>
+
+<!-- [ %INTERMEDIARIO [ -->
+<varlistentry>
+<term>-x</term>
+<listitem>
+<para>
+Não faz a contagem de diretórios em sistemas de arquivos diferentes do atual.
+</para>
+</listitem>
+</varlistentry>
+<!-- ]]> -->
+</variablelist>
+<!-- ]]> -->
+
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplo: <literal>du -h</literal>, <literal>du -hc</literal>.
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdv-find"><info><title>find</title></info>
+<para>
+Procura por arquivos/diretórios no disco.  
+<!-- [ %DESCRICAOD [ --> O<command>find</command> pode
+procurar arquivos através de sua data de modificação, tamanho, etc através do
+uso de opções.  <command>find</command>, ao contrário de outros programas, usa
+opções longas através de um <literal>"-"</literal>. <!-- ]]> -->
+</para>
+<para>
+<command>find</command> [<emphasis>diretório</emphasis>]
+[<emphasis>opções/expressão</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>diretório</emphasis></term>
+<listitem>
+<para>
+Inicia a procura neste diretório, percorrendo seu sub-diretórios.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções/expressão</emphasis></term>
+<term>-name [expressão]</term>
+<listitem>
+<para>
+Procura pelo nome [expressão] nos nomes de arquivos e diretórios processados.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-depth</term>
+<listitem>
+<para>
+Processa os sub-diretórios primeiro antes de processar os arquivos do diretório
+principal.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-maxdepth [num]</term>
+<listitem>
+<para>
+Faz a procura até [num] sub-diretórios dentro do diretório que está sendo
+pesquisado.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-mindepth [num]</term>
+<listitem>
+<para>
+Não faz nenhuma procura em diretórios menores que [num] níveis.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-mount, -xdev</term>
+<listitem>
+<para>
+Não faz a pesquisa em sistemas de arquivos diferentes daquele de onde o comando
+<command>find</command> foi executado.
+</para>
+</listitem>
+</varlistentry>
+
+<!-- [ %INTERMEDIARIO [ -->
+<varlistentry>
+<term>-amin [num]</term>
+<listitem>
+<para>
+Procura por arquivos que foram acessados [num] minutos atrás.  Caso for
+antecedido por "-", procura por arquivos que foram acessados entre [num]
+minutos atrás até agora.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-atime [num]</term>
+<listitem>
+<para>
+Procura por arquivos que foram acessados [num] dias atrás.  Caso for antecedido
+por "-", procura por arquivos que foram acessados entre [num] dias atrás e a
+data atual.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-gid [num]</term>
+<listitem>
+<para>
+Procura por arquivos que possuam a identificação numérica do grupo igual a
+[num].
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-group [nome]</term>
+<listitem>
+<para>
+Procura por arquivos que possuam a identificação de nome do grupo igual a
+[nome].
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-uid [num]</term>
+<listitem>
+<para>
+Procura por arquivos que possuam a identificação numérica do usuário igual a
+[num].
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-user [nome]</term>
+<listitem>
+<para>
+Procura por arquivos que possuam a identificação de nome do usuário igual a
+[nome].
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-inum [num]</term>
+<listitem>
+<para>
+Procura por arquivos que estão localizados no inodo [num].
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-links [num]</term>
+<listitem>
+<para>
+Procura por arquivos que possuem [num] links como referência.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-mmin [num]</term>
+<listitem>
+<para>
+Procura por arquivos que tiveram seu conteúdo modificado há [num] minutos.
+Caso for antecedido por "-", procura por arquivos que tiveram seu conteúdo
+modificado entre [num] minutos atrás até agora.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-mtime [num]</term>
+<listitem>
+<para>
+Procura por arquivos que tiveram seu conteúdo modificado há [num] dias.  Caso
+for antecedido por "-", procura por arquivos que tiveram seu conteúdo
+modificado entre [num] dias atrás até agora.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-ctime [num]</term>
+<listitem>
+<para>
+Procura por arquivos que teve seu status modificado há [num] dias.  Caso for
+antecedido por "-", procura por arquivos que tiveram seu conteúdo modificado
+entre [num] dias atrás até agora.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-nouser</term>
+<listitem>
+<para>
+Procura por arquivos que não correspondam a identificação do usuário atual.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-nogroup</term>
+<listitem>
+<para>
+Procura por arquivos que não correspondam a identificação do grupo do usuário
+atual.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-perm [modo]</term>
+<listitem>
+<para>
+Procura por arquivos que possuam os modos de permissão [modo].  Os [modo] de
+permissão pode ser numérico (octal) ou literal.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-used [num]</term>
+<listitem>
+<para>
+O arquivo foi acessado [num] vezes antes de ter seu status modificado.
+</para>
+</listitem>
+</varlistentry>
+<!-- ]]> -->
+<varlistentry>
+<term>-size [num]</term>
+<listitem>
+<para>
+Procura por arquivos que tiverem o tamanho [num].  [num] pode ser antecedido de
+"+" ou "-" para especificar um arquivo maior ou menor que [num].  A opção -size
+pode ser seguida de:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>b</literal> - Especifica o tamanho em blocos de 512 bytes.  É o padrão
+caso [num] não seja acompanhado de nenhuma letra.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>c</literal> - Especifica o tamanho em bytes.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>k</literal> - Especifica o tamanho em Kbytes.
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-type [tipo]</term>
+<listitem>
+<para>
+Procura por arquivos do [tipo] especificado.  Os seguintes tipos são aceitos:
+</para>
+<itemizedlist>
+<listitem><para><literal>b</literal> - bloco</para></listitem>
+<listitem><para><literal>c</literal> - caracter</para></listitem>
+<listitem><para><literal>d</literal> - diretório</para></listitem>
+<listitem><para><literal>p</literal> - pipe</para></listitem>
+<listitem><para><literal>f</literal> - arquivo regular</para></listitem>
+<listitem><para><literal>l</literal> - link simbólico</para></listitem>
+<listitem><para><literal>s</literal> - sockete</para></listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<para>
+A maior parte dos argumentos numéricos podem ser precedidos por "+" ou "-".
+Para detalhes sobre outras opções e argumentos, consulte a página de manual.
+</para>
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplo:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>find / -name grep</literal> - Procura no diretório raíz e
+sub-diretórios um arquivo/diretório chamado <filename>grep</filename>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>find / -name grep -maxdepth 3</literal> - Procura no diretório raíz e
+sub-diretórios até o 3o.  nível, um arquivo/diretório chamado
+<filename>grep</filename>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>find .  -size +1000k</literal> - Procura no diretório atual e
+sub-diretórios um arquivo com tamanho maior que 1000 kbytes (1Mbyte).
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>find / -mmin 10</literal> - Procura no diretório raíz e sub-diretórios
+um arquivo que foi modificado há 10 minutos atrás.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>find / -links 4</literal> - Procura no diretório raíz e
+sub-diretórios, todos os arquivos que possuem 4 links como referência.
+</para>
+</listitem>
+</itemizedlist>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdv-free"><info><title>free</title></info>
+<para>
+Mostra detalhes sobre a utilização da memória RAM do sistema.
+</para>
+<para>
+<command>free</command> [<emphasis>opções</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-b</term>
+<listitem>
+<para>
+Mostra o resultado em bytes.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-k</term>
+<listitem>
+<para>
+Mostra o resultado em Kbytes.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-m</term>
+<listitem>
+<para>
+Mostra o resultado em Mbytes.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-o</term>
+<listitem>
+<para>
+Oculta a linha de buffers.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-t</term>
+<listitem>
+<para>
+Mostra uma linha contendo o total.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-s [num]</term>
+<listitem>
+<para>
+Mostra a utilização da memória a cada [num] segundos.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<para>
+O <command>free</command> é uma interface ao arquivo
+<filename>/proc/meminfo</filename>.
+</para>
+</section>
+
+
+<section xml:id="cmdv-grep"><info><title>grep</title></info>
+<para>
+Procura por um texto dentro de um arquivo(s) ou no dispositivo de entrada
+padrão.
+</para>
+<para>
+<command>grep</command> [<emphasis>expressão</emphasis>] [<emphasis>arquivo</emphasis>]
+[<emphasis>opções</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>expressão</emphasis></term>
+<listitem>
+<para>
+palavra ou frase que será procurada no texto.  Se tiver mais de 2 palavras você
+deve identifica-la com aspas "" caso contrário o <command>grep</command>
+assumirá que a segunda palavra é o arquivo!
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>arquivo</emphasis></term>
+<listitem>
+<para>
+Arquivo onde será feita a procura.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-A [número]</term>
+<listitem>
+<para>
+Mostra o [número] de linhas após a linha encontrada pelo
+<command>grep</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-B [número]</term>
+<listitem>
+<para>
+Mostra o [número] de linhas antes da linha encontrada pelo
+<command>grep</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-f [arquivo]</term>
+<listitem>
+<para>
+Especifica que o texto que será localizado, esta no arquivo [arquivo].
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-h, --no-filename</term>
+<listitem>
+<para>
+Não mostra os nomes dos arquivos durante a procura.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-i, --ignore-case</term>
+<listitem>
+<para>
+Ignora diferença entre maiúsculas e minúsculas no texto procurado e arquivo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-n, --line-number</term>
+<listitem>
+<para>
+Mostra o nome de cada linha encontrada pelo <command>grep</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-E</term>
+<listitem>
+<para>
+Ativa o uso de expressões regulares.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-U, --binary</term>
+<listitem>
+<para>
+Trata o arquivo que será procurado como binário.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<para>
+Se não for especificado o nome de um arquivo ou se for usado um hífen "-",
+<command>grep</command> procurará a string no dispositivo de entrada padrão.  O
+<command>grep</command> faz sua pesquisa em arquivos texto.  Use o comando
+<command>zgrep</command> para pesquisar diretamente em arquivos compactados com
+<command>gzip</command>, os comandos e opções são as mesmas.
+</para>
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplos: <literal>grep "capitulo" texto.txt</literal>, <literal>ps ax|grep
+inetd</literal>, <literal>grep "capitulo" texto.txt -A 2 -B 2</literal>.
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdv-head"><info><title>head</title></info>
+<para>
+Mostra as linhas iniciais de um arquivo texto.
+</para>
+<para>
+<command>head</command> [<emphasis>opções</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term>-c [numero]</term>
+<listitem>
+<para>
+Mostra o [numero] de bytes do inicio do arquivo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-n [numero]</term>
+<listitem>
+<para>
+Mostra o [numero] de linhas do inicio do arquivo.  Caso não for especificado, o
+<command>head</command> mostra as 10 primeiras linhas.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplos: <literal>head teste.txt</literal>, <literal>head -n 20
+teste.txt</literal>.
+</para>
+<!-- ]]> -->
+</section>
+
+<section xml:id="cmdv-nl"><info><title>nl</title></info>
+<para>
+Mostra o número de linhas junto com o conteúdo de um arquivo.
+</para>
+<para>
+<command>nl</command> [<emphasis>opções</emphasis>]
+[<emphasis>arquivo</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-f [opc]</term>
+<listitem>
+<para>
+Faz a filtragem de saída de acordo com [opc]:
+</para>
+<variablelist>
+<varlistentry>
+<term>a</term>
+<listitem>
+<para>
+Numera todas as linhas.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>t</term>
+<listitem>
+<para>
+Não numera linhas vazias.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>n</term>
+<listitem>
+<para>
+Numera linhas vazias.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>texto</term>
+<listitem>
+<para>
+Numera somente linhas que contém o [texto].
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-v [num]</term>
+<listitem>
+<para>
+Número inicial (o padrão é 1).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-i [num]</term>
+<listitem>
+<para>
+Número de linhas adicionadas a cada linha do arquivo (o padrão é 1).
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplos: <literal>nl /etc/passwd</literal>, <literal>nl -i 2
+/etc/passwd</literal>.
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdv-more"><info><title>more</title></info>
+<para>
+Permite fazer a paginação de arquivos ou da entrada padrão.  
+<!-- [ %DESCRICAOD [ --> O comando <command>more</command> pode ser usado como comando 
+para leitura de arquivos que ocupem mais de uma tela.  Quando toda a tela é ocupada, 
+o <command>more</command> efetua uma pausa e permite que você pressione
+<literal>Enter</literal> ou <literal>espaço</literal> para continuar avançando
+no arquivo sendo visualizado.  Para sair do <command>more</command> pressione
+<literal>q</literal>. <!-- ]]> -->
+</para>
+<para>
+<command>more</command> [<emphasis>arquivo</emphasis>]
+</para>
+<para>
+Onde: <emphasis>arquivo</emphasis> É o arquivo que será paginado.
+</para>
+<para>
+Para visualizar diretamente arquivos texto compactados pelo
+<command>gzip</command> <filename>.gz</filename> use o comando
+<command>zmore</command>.
+</para>
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplos: <literal>more /etc/passwd</literal>, <literal>cat
+/etc/passwd|more</literal>.
+</para> 
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdv-less"><info><title>less</title></info>
+<para>
+Permite fazer a paginação de arquivos ou da entrada padrão.  
+<!-- [ %DESCRICAOD [ --> O comando
+<command>less</command> pode ser usado como comando para leitura de arquivos
+que ocupem mais de uma tela.  Quando toda a tela é ocupada, o
+<command>less</command> efetua uma pausa (semelhante ao
+<command>more</command>) e permite que você pressione Seta para Cima e Seta
+para Baixo ou PgUP/PgDown para fazer o rolamento da página.  Para sair do
+<command>less</command> pressione <literal>q</literal>. <!-- ]]> -->
+</para>
+<para>
+<command>less</command> [<emphasis>arquivo</emphasis>]
+</para>
+<para>
+Onde: <emphasis>arquivo</emphasis> É o arquivo que será paginado.
+</para>
+<!-- [ %OBS [ -->
+<para>
+Para visualizar diretamente arquivos texto compactados pelo utilitário
+<command>gzip</command> (arquivos <filename>.gz</filename>), use o comando
+<command>zless</command>.
+</para> <!-- ]]> -->
+<!-- [ %EXEMPLO [ --> 
+<para>
+Exemplos: <literal>less /etc/passwd</literal>, <literal>cat
+/etc/passwd|less</literal>
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdv-sort"><info><title>sort</title></info>
+<para>
+Organiza as linhas de um arquivo texto ou da entrada padrão.  
+<!-- [ %DESCRICAOD [ --> A organização é
+feita por linhas e as linhas são divididas em <emphasis>campos</emphasis> que é
+a ordem que as palavras aparecem na linha separadas por um delimitador
+(normalmente um espaço). <!-- ]]> -->
+</para>
+<para>
+<command>sort</command> [<emphasis>opções</emphasis>]
+[<emphasis>arquivo</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>arquivo</emphasis></term>
+<listitem>
+<para>
+É o nome do arquivo que será organizado.  Caso não for especificado, será usado
+o dispositivo de entrada padrão (normalmente o teclado ou um "|").
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-b</term>
+<listitem>
+<para>
+Ignora linhas em branco.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-d</term>
+<listitem>
+<para>
+Somente usa letras, dígitos e espaços durante a organização.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-f</term>
+<listitem>
+<para>
+Ignora a diferença entre maiúsculas e minúsculas.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-r</term>
+<listitem>
+<para>
+Inverte o resultado da comparação.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-n</term>
+<listitem>
+<para>
+Caso estiver organizando um campo que contém números, os números serão
+organizados na ordem aritmética.  Por exemplo, se você tiver um arquivo com os
+números
+</para>
+<screen>
+100
+10
+50
+</screen>
+<para>
+Usando a opção <literal>-n</literal>, o arquivo será organizado desta maneira:
+</para>
+<screen>
+10
+50 
+100
+</screen>
+<para>
+Caso esta opção <emphasis role="strong">não</emphasis> for usada com o
+<command>sort</command>, ele organizará como uma listagem alfabética (que
+começam de <literal>a</literal> até <literal>z</literal> e do
+<literal>0</literal> até <literal>9</literal>)
+</para>
+<screen>
+10 
+100
+50
+</screen>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-c</term>
+<listitem>
+<para>
+Verifica se o arquivo já esta organizado.  Caso não estiver, retorna a mensagem
+"disorder on <emphasis>arquivo</emphasis>".
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-o <emphasis>arquivo</emphasis></term>
+<listitem>
+<para>
+Grava a saída do comando <command>sort</command> no
+<emphasis>arquivo</emphasis>.
+</para>
+</listitem>
+</varlistentry>
+
+<!-- [ %INTERMEDIARIO [ -->
+<varlistentry>
+<term>-m <emphasis>arquivo1</emphasis> <emphasis>arquivo2</emphasis></term>
+<listitem>
+<para>
+Combina o conteúdo de <emphasis>arquivo1</emphasis> e
+<emphasis>arquivo2</emphasis> gerando um único arquivo.  Os dois arquivos
+precisam estar ordenados antes de se utilizar esta opção.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-i</term>
+<listitem>
+<para>
+Ignora os caracteres fora da faixa octal ASCII 040-0176 durante a organização.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-t <emphasis>caracter</emphasis></term>
+<listitem>
+<para>
+Usa <emphasis>caracter</emphasis> como delimitador durante a organização de
+linhas.  Por padrão é usado um <emphasis>espaço em branco</emphasis> como
+delimitador de caracteres.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>+num1 -num2</emphasis></term>
+<listitem>
+<para>
+Especifica qual o campo dentro na linha que será usado na organização.  O(s)
+campo(s) usado(s) para organização estará entre <emphasis>+num1</emphasis> e
+<emphasis>+num2</emphasis>.  O delimitador padrão utilizado é um
+<emphasis>espaço em branco</emphasis> (use a opção <literal>-t</literal> para
+especificar outro).  A contagem é iniciada em "0".  Caso não for especificada,
+a organização é feita no primeiro campo.  Caso <emphasis>-num2</emphasis> não
+seja especificado, a organização será feita usando a coluna
+<emphasis>+num1</emphasis> até o fim da linha.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-k <emphasis>num1</emphasis>, <emphasis>num2</emphasis></term>
+<listitem>
+<para>
+Esta é uma alternativa ao método acima para especificar as chaves de
+organização.  O uso é idêntico, mas o delimitador é iniciado em "1".
+</para>
+</listitem>
+</varlistentry>
+<!-- ]]> -->
+</variablelist>
+<!-- ]]> -->
+
+<!-- [ %EXEMPLO [ -->
+<para>
+Abaixo, exemplos de uso do comando <command>sort</command>:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>sort <filename>texto.txt</filename></literal> - Organiza o arquivo
+<filename>texto.txt</filename> em ordem crescente.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>sort <filename>texto.txt</filename> -r</literal> - Organiza o conteúdo
+do arquivo <filename>texto.txt</filename> em ordem decrescente.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cat <filename>texto.txt</filename>|sort</literal> - Faz a mesma coisa
+que o primeiro exemplo, só que neste caso a saída do comando
+<command>cat</command> é redirecionado a entrada padrão do comando
+<command>sort</command>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>sort -f <filename>texto.txt</filename></literal> - Ignora diferenças
+entre letras maiúsculas e minúsculas durante a organização.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>sort +1 -3 texto.txt</literal> - Organiza o arquivo
+<filename>texto.txt</filename> usando como referência a segunda até a quarta
+palavra (segundo ao quarto campo) que constam naquela linha.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>sort -t : +2 -3 passwd</literal> - Organiza o arquivo
+<filename>passwd</filename> usando como referência a terceira até a quarta
+palavra (terceiro ao quarto campo).  Note que a opção <literal>-t</literal>
+especifica o caracter ":" como delimitador de campos ao invés do espaço.  Neste
+caso, o que estiver após ":" será considerado o próximo campo.
+</para>
+</listitem>
+</itemizedlist>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdv-tail"><info><title>tail</title></info>
+<para>
+Mostra as linhas finais de um arquivo texto.
+</para>
+<para>
+<command>tail</command> [<emphasis>opções</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term>-c [numero]</term>
+<listitem>
+<para>
+Mostra o [numero] de bytes do final do arquivo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-n [numero]</term>
+<listitem>
+<para>
+Mostra o [numero] de linhas do final do arquivo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-f</term>
+<listitem>
+<para>
+Mostra continuamente linhas adicionadas no final do arquivo.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplos: <literal>tail teste.txt</literal>, <literal>tail -n 20 teste.txt</literal>.
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdv-time"><info><title>time</title></info>
+<para>
+Mede o tempo gasto para executar um processo (programa).
+</para>
+<para>
+<command>time</command> [<emphasis>comando</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Onde: <emphasis>comando</emphasis> é o comando/programa que deseja medir o
+tempo gasto para ser concluído.
+</para>
+<!-- ]]> -->
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplo: <literal>time ls</literal>, <literal>time find / -name
+crontab</literal>.
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdv-touch"><info><title>touch</title></info>
+<para>
+Muda a data e hora que um arquivo foi criado.  Também pode ser usado para criar
+arquivos vazios.  
+<!-- [ %DESCRICAOD [ --> Caso o <command>touch</command> seja usado com arquivos que
+não existam, por padrão ele criará estes arquivos. <!-- ]]> -->
+</para>
+<para>
+<command>touch</command> [<emphasis>opções</emphasis>]
+[<emphasis>arquivos</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>arquivos</emphasis></term>
+<listitem>
+<para>
+Arquivos que terão sua data/hora modificados.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-t MMDDhhmm[ANO.segundos]</term>
+<listitem>
+<para>
+Usa Mês (MM), Dias (DD), Horas (hh), minutos (mm) e opcionalmente o ANO e
+segundos para modificação do(s) arquivos ao invés da data e hora atual.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-a, --time=atime</term>
+<listitem>
+<para>
+Faz o <command>touch</command> mudar somente a data e hora do acesso ao
+arquivo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-c, --no-create</term>
+<listitem>
+<para>
+Não cria arquivos vazios, caso os <emphasis>arquivos</emphasis> não existam.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-m, --time=mtime</term>
+<listitem>
+<para>
+Faz o <command>touch</command> mudar somente a data e hora da modificação.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-r [arquivo]</term>
+<listitem>
+<para>
+Usa as horas no [arquivo] como referência ao invés da hora atual.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplos:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>touch teste</literal> - Cria o arquivo <filename>teste</filename> caso
+ele não existir.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>touch -t 10011230 teste</literal> - Altera da data e hora do arquivo
+para 01/10 e 12:30.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>touch -t 120112301999.30 teste</literal> - Altera da data, hora ano, e
+segundos do arquivo para 01/12/1999 e 12:30:30.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>touch -t 12011200 *</literal> - Altera a data e hora do arquivo para
+01/12 e 12:00.
+</para>
+</listitem>
+</itemizedlist>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdv-uptime"><info><title>uptime</title></info>
+<para>
+Mostra o tempo de execução do sistema desde que o computador foi ligado.
+</para>
+<para>
+<command>uptime</command>
+</para>
+</section>
+
+
+<section xml:id="cmdv-dmesg"><info><title>dmesg</title></info>
+<para>
+Mostra as mensagens de inicialização do kernel.  São mostradas as mensagens da
+última inicialização do sistema.
+</para>
+<!-- [ %EXEMPLO [ -->
+<para>
+<command>dmesg | less</command>
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdv-mesg"><info><title>mesg</title></info>
+<para>
+Permite ou não o recebimentos de requisições de <command>talk</command> de
+outros usuários.
+</para>
+<para>
+<command>mesg</command> [<emphasis>y/n</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Onde: <emphasis>y</emphasis> permite que você receba "talks" de outros
+usuários.
+</para>
+<!-- ]]> -->
+<para>
+Digite <literal>mesg</literal> para saber se você pode ou não receber "talks"
+de outros usuários.  Caso a resposta seja "n" você poderá enviar um talk para
+alguém mas o seu sistema se recusará em receber talks de outras pessoas.
+</para>
+<para>
+É interessante colocar o comando <literal>mesg y</literal> em seu arquivo de
+inicialização <filename>.bash_profile</filename> para permitir o recebimento de
+"talks" toda vez que entrar no sistema.
+</para>
+<para>
+Para detalhes sobre como se comunicar com outros usuários, veja o comando <xref linkend="cmdn-talk"/>.
+</para>
+</section>
+
+
+<section xml:id="cmdv-echo"><info><title>echo</title></info>
+<para>
+Mostra mensagens.  Este comando é útil na construção de scripts para mostrar
+mensagens na tela para o usuário acompanhar sua execução.
+</para>
+<para>
+<command>echo</command> [<emphasis>mensagem</emphasis>]
+</para>
+<para>
+A opção <literal>-n</literal> pode ser usada para que não ocorra o salto de
+linha após a mensagem ser mostrada.
+</para>
+</section>
+
+
+<section xml:id="cmdv-su"><info><title>su</title></info>
+<para>
+Permite o usuário mudar sua identidade para outro usuário sem fazer o logout.
+<!-- [ %DESCRICAOD [ --> Útil para executar um programa ou comando como root sem ter que 
+abandonar a seção atual. <!-- ]]> -->
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+<command>su</command> [<emphasis>usuário</emphasis>] [<emphasis>-c comando</emphasis>]
+</para>
+<para>
+Onde: <emphasis>usuário</emphasis> é o nome do usuário que deseja usar para
+acessar o sistema.  Se não digitado, é assumido o usuário
+<literal>root</literal>.  Caso seja especificado <emphasis>-c
+comando</emphasis>, executa o comando sob o usuário especificado.
+</para>
+<!-- ]]> -->
+<para>
+Será pedida a senha do superusuário para autenticação.  Digite
+<literal>exit</literal> quando desejar retornar a identificação de usuário
+anterior.
+</para>
+</section>
+
+
+<section xml:id="cmdv-sync"><info><title>sync</title></info>
+<para>
+Grava os dados do cache de disco na memória RAM para todos os discos rígidos e
+flexíveis do sistema.  
+<!-- [ %DESCRICAOD [ --> O cache um mecanismo de aceleração que permite que um
+arquivo seja armazenado na memória ao invés de ser imediatamente gravado no
+disco, quando o sistema estiver ocioso, o arquivo é gravado para o disco.  O
+<command>GNU/Linux</command> procura utilizar toda memória RAM disponível para
+o cache de programas acelerando seu desempenho de leitura/gravação. <!-- ]]> -->
+</para>
+<para>
+<literal>sync</literal>
+</para>
+<para>
+O uso do <command>sync</command> é útil em disquetes quando gravamos um
+programa e precisamos que os dados sejam gravados imediatamente para retirar o
+disquete da unidade.  Mas o método recomendado é especificar a opção
+<literal>sync</literal> durante a montagem da unidade de disquetes (para
+detalhes veja <xref linkend="disc-fstab"/>.
+</para>
+</section>
+
+
+<section xml:id="cmdv-uname"><info><title>uname</title></info>
+<para>
+Retorna o nome e versão do kernel atual.
+</para>
+<para>
+<literal>uname</literal>
+</para>
+</section>
+
+
+<section xml:id="cmdv-reboot"><info><title>reboot</title></info>
+<para>
+Reinicia o computador.
+</para>
+</section>
+
+
+<section xml:id="cmdv-shutdown"><info><title>shutdown</title></info>
+<para>
+Desliga/reinicia o computador imediatamente ou após determinado tempo
+(programável) de forma segura.  
+<!-- [ %DESCRICAOD [ --> Todos os usuários do sistema são avisados que o
+computador será desligado .  Este comando somente pode ser executado pelo
+usuário root ou quando é usada a opção <literal>-a</literal> pelos usuários
+cadastrados no arquivo <filename>/etc/shutdown.allow</filename> que estejam
+logados no console virtual do sistema. <!-- ]]> -->
+</para>
+<para>
+<command>shutdown</command> [<emphasis>opções</emphasis>] [<emphasis>hora</emphasis>]
+[<emphasis>mensagem</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<variablelist>
+<varlistentry>
+<term><emphasis>hora</emphasis></term>
+<listitem>
+<para>
+Momento que o computador será desligado.  Você pode usar
+<literal>HH:MM</literal> para definir a hora e minuto, <literal>MM</literal>
+para definir minutos, <literal>+SS</literal> para definir após quantos
+segundos, ou <literal>now</literal> para imediatamente (equivalente a +0).
+</para>
+<para>
+O <command>shutdown</command> criará o arquivo
+<filename>/etc/nologin</filename> para não permitir que novos usuários façam
+login no sistema (com excessão do root).  Este arquivo é removido caso a
+execução do <command>shutdown</command> seja cancelada (opção -c) ou após o
+sistema ser reiniciado.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>mensagem</emphasis></term>
+<listitem>
+<para>
+Mensagem que será mostrada a todos os usuários alertando sobre o
+reinicio/desligamento do sistema.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-h</term>
+<listitem>
+<para>
+Inicia o processo para desligamento do computador.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-r</term>
+<listitem>
+<para>
+Reinicia o sistema
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-c</term>
+<listitem>
+<para>
+Cancela a execução do <command>shutdown</command>.  Você pode acrescentar uma
+mensagem avisando aos usuários sobre o fato.
+</para>
+</listitem>
+</varlistentry>
+
+<!-- [ %INTERMEDIARIO [ -->
+<varlistentry>
+<term>-a</term>
+<listitem>
+<para>
+Permite que os nomes de usuários contidos no arquivo
+<filename>/etc/shutdown.allow</filename> possam utilizar o
+<command>shutdown</command> para reinicializar/desligar o sistema.  Deve ser
+colocado um nome de usuário por linha.  O limite máximo de usuários neste
+arquivo é de 32.
+</para>
+<para>
+Este arquivo é útil quando o <command>shutdown</command> é usado para controlar
+o pressionamento das teclas <literal>CTRL+ALT+DEL</literal> no
+<filename>/etc/inittab</filename>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-k</term>
+<listitem>
+<para>
+Simula o desligamento/reinicio do sistema, enviando mensagem aos usuários.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-f</term>
+<listitem>
+<para>
+Não executa a checagem do sistema de arquivos durante a inicialização do
+sistema.  Este processo é feito gravando-se um arquivo
+<filename>/fastboot</filename> que é interpretado pelos scripts responsáveis
+pela execução do <command>fsck</command> durante a inicialização do sistema.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-F</term>
+<listitem>
+<para>
+Força a checagem do sistema de arquivos durante a inicialização.  É gravado um
+arquivo chamado <filename>/forcefsck</filename> que é interpretado pelos
+scripts responsáveis pela execução do <command>fsck</command> durante a
+inicialização do sistema.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-n</term>
+<listitem>
+<para>
+Faz com que o <command>shutdown</command> ignore a execução do
+<command>init</command> fechando todos os processos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-t [num]</term>
+<listitem>
+<para>
+Faz com que o <command>shutdown</command> envie um sinal de término aos
+processos e aguarde [num] segundos antes de enviar o sinal KILL.
+</para>
+</listitem>
+</varlistentry>
+<!-- ]]> -->
+</variablelist>
+<!-- ]]> -->
+
+<para>
+O <command>shutdown</command> envia uma mensagem a todos os usuários do sistema
+alertando sobre o desligamento durante os 15 minutos restantes e assim permite
+que finalizem suas tarefas.  Após isto, o <command>shutdown</command> muda o
+nível de execução através do comando <command>init</command> para 0
+(desligamento), 1 (modo monousuário), 6 (reinicialização).  É recomendado
+utilizar o símbolo "&amp;" no final da linha de comando para que o
+<command>shutdown</command> seja executado em segundo plano.
+</para>
+<!-- [ %OBS [ -->
+<para>
+Quando restarem apenas 5 minutos para o reinicio/desligamento do sistema, o
+programa <command>login</command> será desativado, impedindo a entrada de novos
+usuários no sistema.
+</para>
+<para>
+O programa <command>shutdown</command> pode ser chamado pelo
+<command>init</command> através do pressionamento da combinação das teclas de
+reinicialização <literal>CTRL+ALT+DEL</literal> alterando-se o arquivo
+<filename>/etc/inittab</filename>.  Isto permite que somente os usuários
+autorizados (ou o root) possam reinicializar o sistema.
+</para>
+<!-- ]]> -->
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplos:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>"shutdown -h now"</literal> - Desligar o computador imediatamente.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>"shutdown -r now"</literal> - Reinicia o computador imediatamente.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>"shutdown 19:00 A manutenção do servidor será iniciada às
+19:00"</literal> - Faz o computador entrar em modo monousuário (init 1) às
+19:00 enviando a mensagem <emphasis>A manutenção do servidor será iniciada às
+19:00</emphasis> a todos os usuários conectados ao sistema.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>"shutdown -r 15:00 O sistema será reiniciado às 15:00 horas"</literal>
+- Faz o computador ser reiniciado (init 6) às 15:00 horas enviando a mensagem
+<emphasis>O sistema será reiniciado às 15:00 horas</emphasis> a todos os
+usuários conectados ao sistema.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>shutdown -r 20</literal> - Faz o sistema ser reiniciado após 20
+minutos.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>shutdown -c</literal> - Cancela a execução do
+<command>shutdown</command>.
+</para>
+</listitem>
+<!-- [ %INTERMEDIARIO [ -->
+<listitem>
+<para>
+<literal>shutdown -t 30 -r 20</literal> - Reinicia o sistema após 20 minutos,
+espera 30 segundos após o sinal de término para enviar o sinal KILL a todos os
+programas abertos.
+</para>
+</listitem>
+<!-- ]]> -->
+</itemizedlist>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdv-wc"><info><title>wc</title></info>
+<para>
+Conta o número de palavras, bytes e linhas em um arquivo ou entrada padrão.  
+<!-- [ %DESCRICAOD [ --> Se as opções forem omitidas, o <command>wc</command> mostra 
+a quantidade de linhas, palavras, e bytes. <!-- ]]> -->
+</para>
+<para>
+<command>wc</command> [<emphasis>opções</emphasis>]
+[<emphasis>arquivo</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>arquivo</emphasis></term>
+<listitem>
+<para>
+Arquivo que será verificado pelo comando <command>wc</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-c, --bytes</term>
+<listitem>
+<para>
+Mostra os bytes do arquivo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-w, --words</term>
+<listitem>
+<para>
+Mostra a quantidade de palavras do arquivo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-l, --lines</term>
+<listitem>
+<para>
+Mostra a quantidade de linhas do arquivo.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<!-- [ %OBS [ -->
+<para>
+A ordem da listagem dos parâmetros é única, e modificando a posição das opções
+não modifica a ordem que os parâmetros são listados.
+</para>
+<!-- ]]> -->
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplo:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>wc /etc/passwd</literal> - Mostra a quantidade de linhas, palavras e
+letras (bytes) no arquivo <filename>/etc/passwd</filename>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wc -w /etc/passwd</literal> - Mostra a quantidade de palavras.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wc -l /etc/passwd</literal> - Mostra a quantidade de linhas.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wc -l -w /etc/passwd</literal> - Mostra a quantidade de linhas e
+palavras no arquivo <filename>/etc/passwd</filename>.
+</para>
+</listitem>
+</itemizedlist>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdv-seq"><info><title>seq</title></info>
+<para>
+Imprime uma seqüência de números começando em [primeiro] e terminando em
+[último], utilizando [incremento] para avançar.
+</para>
+<para>
+<command>seq</command> [<emphasis>opções</emphasis>] [<emphasis>primeiro</emphasis>]
+[<emphasis>incremento</emphasis>] [<emphasis>último</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>primeiro</emphasis></term>
+<listitem>
+<para>
+Número inicial da seqüência.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>incremento</emphasis></term>
+<listitem>
+<para>
+Número utilizado para avançar na seqüência.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>último</emphasis></term>
+<listitem>
+<para>
+Número final da seqüência.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-f, --format=[formato]</term>
+<listitem>
+<para>
+Formato de saída dos números da seqüência.  Utilize o estilo do printf para
+ponto flutuante (valor padrão: %g).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-s, --separator=[string]</term>
+<listitem>
+<para>
+Usa [string] para separar a seqüência de números (valor padrão: \n).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-w, --equal-width</term>
+<listitem>
+<para>
+Insere zeros na frente dos números mantendo a seqüência alinhada.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<!-- [ %OBS [ -->
+<para>
+Observações:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+Se [primeiro] ou [incremento] forem omitidos, o valor padrão 1 será utilizado.
+</para>
+</listitem>
+<listitem>
+<para>
+Os números recebidos são interpretados como números em ponto flutuante.
+</para>
+</listitem>
+<listitem>
+<para>
+[incremento] deve ser positivo se [primeiro] for menor do que o último, e
+negativo caso contrário.
+</para>
+</listitem>
+<listitem>
+<para>
+Quando utilizarmos a opção --format, o argumento deve ser exatamente %e, %f ou
+%g.
+</para>
+</listitem>
+</itemizedlist>
+<!-- ]]> -->
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplos: <literal>seq 0 2 10</literal>, <literal>seq -w 0 10</literal>,
+<literal>seq -f%f 0 10</literal>, <literal>seq -s", " 0 10</literal>
+</para>
+<!-- ]]> -->
+</section>
+
+
+	<!-- [ %INTERMEDIARIO [ -->
+<section xml:id="cmdv-chattr"><info><title>chattr</title></info>
+<para>
+Modifica atributos de arquivos/diretórios.  Não confunda atributos de arquivo
+com permissões de acesso (<xref linkend="perm"/>), os atributos são diferentes
+e definem outras características especiais para os arquivos/diretórios
+especificados.
+</para>
+<para>
+<command>chattr</command> [<emphasis>opções</emphasis>] [<emphasis>atributos</emphasis>] [<emphasis>arquivos/diretórios</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>arquivos/diretórios</emphasis></term>
+<listitem>
+<para>
+Arquivos/Diretórios que terão os atributos modificados.  Podem ser usados
+coringas
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-R</term>
+<listitem>
+<para>
+Modifica atributos em subdiretórios
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-V</term>
+<listitem>
+<para>
+Mostra detalhes sobre a modificação de atributos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>atributos</emphasis></term>
+<listitem>
+<para>
+Os atributos de arquivos/diretórios podem ser especificados da seguinte
+maneira:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>+</literal> - Adiciona o atributo
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>-</literal> - Remove o atributo
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>=</literal> - Define o atributo exatamente como especificado
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Os atributos são os seguintes:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>A</literal> - Não modifica a hora de acesso de arquivos.  Poder
+aumentar consideravelmente a performance em Notebooks devido a diminuição de
+I/O no disco rígido.  Quando especificada em diretórios, faz com que todos os
+arquivos e subdiretórios residentes nele não tenham a hora de acesso
+modificada.
+</para>
+<para>
+Este atributo funciona apenas em kernels 2.2 e superiores
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>a</literal> - Append-Only - Arquivos com este atributo podem somente
+ser gravados em modo incrementais (o conteúdo poderá somente ser adicionado ao
+final do arquivo).  Eles não poderão ser removidos, renomeados e novos links
+não poderão ser criados para estes arquivos.
+</para>
+<para>
+Em diretórios faz com que os arquivos sejam apenas adicionados.  Somente o root
+pode especificar ou retirar este atributo.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>c</literal> - Permite compactação nos arquivos especificados de forma
+transparente para o usuário.  Durante a leitura, o kernel retorna dados
+descompactados e durante a gravação os dados são compactados e gravados no
+disco.
+</para>
+<para>
+Este atributo ainda não foi totalmente implementado no código atual do kernel.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>d</literal> - Este atributo não é usado pelo kernel, mas faz com que o
+programa <command>dump</command> evitar backup dos arquivos marcados com este
+atributo.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>i</literal> - Imutável - Arquivos imutáveis não podem ser modificados,
+os dados também não podem ser gravados para estes arquivos, não podem ser
+removidos, renomeados.  Até mesmo o usuário root não poderá modificar estes
+arquivos.
+</para>
+<para>
+Em diretórios, faz com que arquivos não possam ser adicionados ou apagados.
+Somente o usuário root pode especificar ou retirar este atributo.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>s</literal> - O arquivo especificado é marcado como "apagamento
+seguro"; quando o arquivo é apagado, seus blocos são zerados e gravados de
+volta no disco (eliminando qualquer possibilidade de recuperação).
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>S</literal> - Faz a gravação imediatamente para o arquivo
+especificado.  É como especificar a opção "sync" na montagem do sistema de
+arquivos ext2, mas afeta somente os arquivos especificados.  Não tem efeito em
+diretórios.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>u</literal> - O arquivo especificado é marcado como recuperável.
+Quando o arquivo é apagado, seu conteúdo é salvo para permitir futura
+recuperação.
+</para>
+<para>
+Este atributo ainda não foi implementado totalmente no código atual do kernel.
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<para>
+Os atributos de arquivos/diretórios são visualizados através do utilitário
+<command>lsattr</command>.  Existem patches para os kernels da série 2.2 que
+adicionam o suporte experimental aos atributos "c" e "u".
+</para>
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplos:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>chattr +AacdiSsu teste.txt</literal> - Adiciona todos os atributos
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>chattr =ASs teste.txt</literal> - Define os atributos para "ASs"
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>chattr +i -A teste.txt</literal> - Retira o atributo "A" e adiciona
+"i"
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>chattr = teste.txt</literal> - Retira todos os atributos
+</para>
+</listitem>
+</itemizedlist>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdv-lsattr"><info><title>lsattr</title></info>
+<para>
+Lista atributos de um arquivo/diretório.  Os atributos podem ser modificados
+através do comando <command>chattr</command>.
+</para>
+<para>
+<command>lsattr</command> [<emphasis>opções</emphasis>] [<emphasis>arquivos/diretórios</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>arquivos/diretórios</emphasis></term>
+<listitem>
+<para>
+Arquivos/diretórios que deseja listar os atributos.  Podem ser usados coringas.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-a</term>
+<listitem>
+<para>
+Lista todos os arquivos, incluindo ocultos (iniciando com um ".").
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-d</term>
+<listitem>
+<para>
+Lista os atributos de diretórios ao invés de listar os arquivos que ele contém.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-R</term>
+<listitem>
+<para>
+Faz a listagem em diretórios e subdiretórios.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-v</term>
+<listitem>
+<para>
+Mostra versões dos arquivos.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<para>
+Caso seja especificado sem parâmetros, o <command>lsattr</command> listará os
+atributos de todos os arquivos e diretórios do diretório atual.  O
+<command>lsattr</command> mostrará mensagens de erro caso seja usado em um
+diretório de pontos de montagem ou arquivos que não sejam
+<emphasis>ext2</emphasis>.
+</para>
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplo: <literal>lsattr -d</literal>, <literal>lsattr -R</literal>,
+<literal>lsattr -R *.txt</literal>
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdv-cut"><info><title>cut</title></info>
+<para>
+Mostra seções de cada linha do arquivo dependendo das opções passadas ao
+programa.
+</para>
+<para>
+<command>cut</command> [<emphasis>opções</emphasis>] [<emphasis>arquivo</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>arquivo</emphasis></term>
+<listitem>
+<para>
+Arquivo que será verificado pelo comando <command>cut</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-b, --bytes [bytes]</term>
+<listitem>
+<para>
+Mostra somente a lista de [bytes] do arquivo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-c, --characters [numero]</term>
+<listitem>
+<para>
+Mostra somente o [número] de caracteres no arquivo.  É semelhante a opção "-b"
+mas tabs e espaços são tratados como qualquer caracter.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-f, --field [campos]</term>
+<listitem>
+<para>
+Mostra somente a lista de [campos].
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-d, --delimite [delimitador]</term>
+<listitem>
+<para>
+Para uso com a opção -f, os campos são separados pelo primeiro caracter em
+[delimitador] ao invés de tabulações.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-s</term>
+<listitem>
+<para>
+Para uso com a opção -f, somente mostra linhas que contém o caracter separador
+de campos.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<para>
+Devem ser especificadas opções para o funcionamento deste comando.  Os bytes,
+campos e delimitadores podem ser especificados através de intervalos de
+caracteres (usando a-z), através de vírgulas (a,b,d) ou da combinação entre
+eles.
+</para>
+<!-- [ %EXEMPLO [ -->
+<itemizedlist>
+<listitem>
+<para>
+<literal>cut -b 1,3 /etc/passwd</literal> - Pega a primeira e terceira letra
+(byte) de cada linha do arquivo <filename>/etc/passwd</filename>
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cut -b 1,3-10 /etc/passwd</literal> - Pega a primeira letra (byte) e
+terceira a décima letra de cada linha do arquivo
+<filename>/etc/passwd</filename>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cut -c 1,3-10 /etc/passwd</literal> - Pega o primeiro caracter e
+terceiro ao décimo caracter de cada linha do arquivo
+<filename>/etc/passwd</filename>.
+</para>
+</listitem>
+</itemizedlist>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdv-cmp"><info><title>cmp</title></info>
+<para>
+Compara dois arquivos de qualquer tipo (binário ou texto).  
+<!-- [ %DESCRICAOD [ --> Os dois arquivos especificados serão comparado e caso exista 
+diferença entre eles, é mostrado o número da linha e byte onde ocorreu a primeira 
+diferença na saída padrão (tela) e o programa retorna o código de saída 1. <!-- ]]> -->
+</para>
+<para>
+<command>cmp</command> [<emphasis>arquivo1</emphasis>] [<emphasis>arquivo2</emphasis>] [<emphasis>opções</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Opções:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>arquivo1/arquivo2</emphasis></term>
+<listitem>
+<para>
+Arquivos que serão comparados.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-l</term>
+<listitem>
+<para>
+Mostra o número do byte (hexadecimal) e valores diferentes de bytes (octal)
+para cada diferença.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-s</term>
+<listitem>
+<para>
+Não mostra nenhuma diferença, só retorna o código de saída do programa.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<para>
+Use o comando <command>zcmp</command> para comparar diretamente arquivos
+binários/texto compactados com <command>gzip</command>.
+</para>
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplo: <literal>cmp teste.txt teste1.txt</literal>.
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdv-dirname"><info><title>dirname</title></info>
+<para>
+Obtém o nome do diretório através do caminho passado ao programa.
+</para>
+<para>
+<command>dirname</command> [<emphasis>diretório/arquivo</emphasis>]
+</para>
+<!-- [ %EXEMPLO [ -->
+<para>
+<literal>dirname /usr/bin/dirname</literal>, <literal>dirname /tmp/*</literal>.
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdv-diff"><info><title>diff</title></info>
+<para>
+Compara dois arquivos e mostra as diferenças entre eles.  O comando
+<command>diff</command> é usado somente para a comparação de arquivos em
+formato texto.  
+<!-- [ %DESCRICAOD [ --> As diferenças encontradas podem ser redirecionadas para um
+arquivo que poderá ser usado pelo comando <command>patch</command> para aplicar
+as alterações em um arquivo que não contém as diferenças.  Isto é útil para
+grandes textos porque é possível copiar somente as modificações (geradas
+através do diff, que são muito pequenas) e aplicar no arquivo para atualiza-lo
+(através do <command>patch</command>) ao invés de copiar a nova versão.  Este é
+um sistema de atualização muito usado na atualização dos código fonte do kernel
+do <command>Linux</command>. <!-- ]]> -->
+</para>
+<para>
+<command>diff</command> [<emphasis>diretório1/arquivo1</emphasis>] [<emphasis>diretório2/arquivo2</emphasis>] 
+[<emphasis>opções</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Opções:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>diretório1/arquivo1 diretório2/arquivo2</emphasis></term>
+<listitem>
+<para>
+Arquivos /diretórios que serão comparados.  Normalmente é usado como primeiro
+arquivo/diretório o mais antigo e o mais novo como segundo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-lines [num]</term>
+<listitem>
+<para>
+Gera a diferença com [num] linhas de contexto.  Por padrão o
+<command>diff</command> gera um arquivo com 2 linhas que é o mínimo necessário
+para o correto funcionamento do <command>patch</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-a</term>
+<listitem>
+<para>
+Compara os dois arquivos como arquivos texto.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-b</term>
+<listitem>
+<para>
+Ignora espaços em branco como diferenças.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-B</term>
+<listitem>
+<para>
+Ignora linhas em branco inseridas ou apagadas nos arquivos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-i</term>
+<listitem>
+<para>
+Ignora diferenças entre maiúsculas e minúsculas nos arquivos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-H</term>
+<listitem>
+<para>
+Usa análise heurística para verificar os arquivos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-N</term>
+<listitem>
+<para>
+Em uma comparação de diretórios, se o arquivo apenas existe em um diretório,
+trata-o como presente mas vazio no outro diretório.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-P</term>
+<listitem>
+<para>
+Em uma comparação de diretórios, se o arquivos apenas existe no segundo
+diretório, trata-o como presente mas vazio no primeiro diretório.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-q</term>
+<listitem>
+<para>
+Mostra somente se os dois arquivos possuem diferenças.  Não mostra as
+diferenças entre eles.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-r</term>
+<listitem>
+<para>
+Compara diretórios e sub-diretórios existentes.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-S [nome]</term>
+<listitem>
+<para>
+Inicia a comparação de diretórios pelo arquivo [nome].  É útil quando
+cancelamos uma comparação.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-t</term>
+<listitem>
+<para>
+Aumenta a tabulação das diferenças encontradas.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-u</term>
+<listitem>
+<para>
+Usa o formato de comparação unificado.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<para>
+Use o comando <command>zdiff</command> para comparar diretamente arquivos
+compactados pelo utilitário <command>gzip</command>
+</para>
+<para>
+Use o comando <command>sdiff</command> para visualizar as linhas diferentes
+entre os dois arquivos em formato texto simples.
+</para>
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplo:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>diff texto.txt texto1.txt</literal> - Compara o arquivo
+<filename>texto.txt</filename> com <filename>texto1.txt</filename> e exibe suas
+diferenças na tela.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>diff -Bu texto.txt texto1.txt</literal> - Compara o arquivo
+<filename>texto.txt</filename> com <filename>texto1.txt</filename> ignorando
+linhas em branco diferentes entre os dois arquivos e usando o formato
+unificado.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>diff texto.txt texto1.txt &gt;texto.diff</literal> - Compara o arquivo
+<filename>texto.txt</filename> com <filename>texto1.txt</filename> e gera um
+arquivo chamado <filename>texto.diff</filename> contendo a diferença entre
+eles.  Este arquivo poderá ser usado pelo <command>patch</command> para aplicar
+as diferenças existente entre os dois no arquivo
+<filename>texto.txt</filename>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>diff -r /usr/src/linux-2.2.13 /usr/src/linux-2.2.14
+&gt;patch-2.2.14.diff</literal> - Compara o diretório e sub-diretórios
+<filename>linux-2.2.13</filename> e <filename>linux-2.2.14</filename> e grava
+as diferenças entre eles no arquivo <filename>patch-2.2.14.diff</filename>.
+</para>
+</listitem>
+</itemizedlist>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdv-pr"><info><title>pr</title></info>
+<para>
+Página arquivos texto ou a entrada padrão para impressão.  
+<!-- [ %DESCRICAOD [ --> Este comando faz a
+paginação de um arquivo texto e opcionalmente ajusta o número de colunas e
+mostra o resultado na saída padrão. <!-- ]]> -->
+</para>
+<para>
+<command>pr</command> [<emphasis>opções</emphasis>] [<emphasis>arquivo</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>arquivo</emphasis></term>
+<listitem>
+<para>
+Arquivo que será paginado para impressão.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>+[NUM]</term>
+<listitem>
+<para>
+Inicia a numeração de páginas na página [PAGINA]
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-[NUM]</term>
+<listitem>
+<para>
+Mostra a saída com [NUM] colunas.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-c</term>
+<listitem>
+<para>
+Imprime o caracter CTRL como <literal>"^"</literal> na saída padrão.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-F, -f</term>
+<listitem>
+<para>
+Usa avanço de página ao invés de linhas em branco para separar páginas.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-e[caracter][tamanho]</term>
+<listitem>
+<para>
+Usa o caracter [caracter] como tabulação (o padrão é tab) e o espaço da
+tabulação [tamanho].
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-h [nome]</term>
+<listitem>
+<para>
+Mostra [nome] ao invés do nome do arquivo no cabeçalho.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-l [num]</term>
+<listitem>
+<para>
+Define o número máximo de linhas por página para [num].
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-m</term>
+<listitem>
+<para>
+Imprime vários arquivos em paralelo, um por coluna.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-r</term>
+<listitem>
+<para>
+Oculta mensagens de erro de abertura de arquivos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-w [num]</term>
+<listitem>
+<para>
+Ajusta a largura da página para [num] colunas (o padrão é 72).
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<!-- ]]> -->
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplo: <literal>pr -l 50 -h "Teste do comando pr" teste.txt</literal>.
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdv-patch"><info><title>patch</title></info>
+<para>
+Atualiza arquivos texto através das diferenças geradas pelo comando
+<command>diff</command>.
+</para>
+<para>
+<command>patch</command> [<emphasis>opções</emphasis>] [<emphasis>arquivo.diff</emphasis>] ou 
+<command>patch</command> [<emphasis>opções</emphasis>] &lt; [<emphasis>arquivo.diff</emphasis>]
+</para>
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>arquivo.diff</emphasis></term>
+<listitem>
+<para>
+Arquivo contendo as diferenças geradas pelo comando <command>diff</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-p [num]</term>
+<listitem>
+<para>
+Nível do diretório onde o <command>patch</command> será aplicado, se igual a 0,
+o <command>patch</command> assume que os arquivos que serão atualizados estão
+no diretório atual, se 1, assume que os arquivos que serão atualizado estão no
+diretório acima (..), se 2, 2 diretórios acima ...
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-b</term>
+<listitem>
+<para>
+Cria cópias de segurança dos arquivos originais ao aplica o patch.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-binary</term>
+<listitem>
+<para>
+Lê e grava arquivo usando modo binário.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-d [dir]</term>
+<listitem>
+<para>
+Muda para o diretório [dir] antes de aplica o patch.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-E</term>
+<listitem>
+<para>
+Remove arquivos vazios após a aplicação do patch.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-n</term>
+<listitem>
+<para>
+Interpreta o arquivo de patch como um <filename>.diff</filename> normal.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-N</term>
+<listitem>
+<para>
+Não desfaz patches já aplicados.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-s</term>
+<listitem>
+<para>
+Não mostra mensagens de erro.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-u</term>
+<listitem>
+<para>
+Interpreta o patch em formato unificado.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+As diferenças são aplicadas em arquivos originais gerados pelo comando
+<command>diff</command>.  É importante entender os comandos
+<command>patch</command> e <command>diff</command> pois são comandos muito
+utilizados para desenvolvimento feito por equipes de pessoas.
+</para>
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplo:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>patch -p0&lt;texto.diff</literal> - Aplica as diferenças contidas no
+arquivo <filename>texto.diff</filename> nos arquivos originais.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>patch -p0 texto.txt texto.diff</literal> - Aplica as diferenças
+contidas no arquivo <filename>texto.diff</filename> nos arquivos originais.
+Faz a mesma coisa que o comando anterior.
+</para>
+</listitem>
+</itemizedlist>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdv-whereis"><info><title>whereis</title></info>
+<para>
+Localiza o arquivo que contém uma página de manual.  
+<!-- [ %DESCRICAOD [ --> A pesquisa é feita usando-se os caminhos de páginas 
+de manuais configuradas no sistema (normalmente o arquivo 
+<filename>/etc/manpath.config</filename>). <!-- ]]> -->
+</para>
+<para>
+<command>whereis</command> [<emphasis>comando</emphasis>]
+</para>
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplo: <literal>whereis ls</literal>, <literal>whereis cd</literal>.
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdv-which"><info><title>which</title></info>
+<para>
+Mostra a localização de um arquivo executável no sistema.  
+<!-- [ %DESCRICAOD [ --> A pesquisa de
+arquivos executáveis é feita através do path do sistema. <!-- ]]> -->
+<!-- [ %INICIANTE [ --> Para maiores detalhes, veja <xref linkend="run-path"/>. <!-- ]]> -->
+</para>
+<para>
+<command>which</command> [<emphasis>comando</emphasis>]
+</para>
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplos: <literal>which ls</literal>, <literal>which shutdown</literal>,
+<literal>which which</literal>.
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdv-zforce"><info><title>zforce</title></info>
+<para>
+Renomeia extensão de arquivos para <filename>.gz</filename>.  
+<!-- [ %DESCRICAOD [ --> Este comando é útil quando fazemos downloads de 
+arquivos compactados pelo <command>gzip</command> mas que não estão 
+identificados pela extensão <filename>.gz</filename>. <!-- ]]> -->
+</para>
+<para>
+<command>zforce</command> [<emphasis>arquivos</emphasis>]
+</para>
+<para>
+Quando é usado o <command>zforce</command> verifica se o arquivo especificado foi
+compactado pelo <command>gzip</command>, caso seja, é verificado se já tem a
+extensão <filename>.gz</filename>, caso não tiver, acrescenta a extensão.
+</para>
+</section>
+
+
+<section xml:id="cmdv-gzexe"><info><title>gzexe</title></info>
+<para>
+Cria arquivos compactados <command>gzip</command> auto-extrácteis.  
+<!-- [ %DESCRICAOD [ --> Este comando é usado para compactar arquivos executáveis 
+que se auto-descompactam assim que são solicitados.  É útil para sistemas 
+ou unidades de disco que possuem pouco espaço disponível. <!-- ]]> --> Este comando deve 
+somente ser usado para arquivos executáveis.
+</para>
+<para>
+<command>gzexe</command> [<emphasis>arquivo</emphasis>]
+</para>
+<!-- [ %OPCOES [ -->
+<para>
+Onde: <emphasis>arquivo</emphasis> é o arquivo executável que será compactado.
+</para>
+<!-- ]]> -->
+<para>
+Quando <command>gzexe</command> é executado, uma cópia do arquivo original é
+gravada com o formato <filename>nome_do_arquivo</filename>~.
+</para>
+<!-- [ %EXEMPLO [ -->
+<para>
+Exemplo: <literal>gzexe /tmp/teste</literal>.
+</para>
+<!-- ]]> -->
+</section>
+
+
+<section xml:id="cmdv-znew"><info><title>znew</title></info>
+<para>
+Recompacta arquivos do formato <command>compress</command>
+(<filename>.Z</filename>) para o formato <command>gzip</command>
+(<filename>.gz</filename>).  Após a re-compactação, os arquivos de origem
+<filename>.Z</filename> são apagados.
+</para>
+<para>
+<command>znew</command> [<emphasis>opções</emphasis>] [<emphasis>arquivo</emphasis>]
+</para>
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>arquivo.Z</emphasis></term>
+<listitem>
+<para>
+Arquivo compactado pelo <command>compress</command> que será re-compactado para
+o <command>gzip</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-f</term>
+<listitem>
+<para>
+Substitui o arquivo <filename>.gz</filename> caso já exista.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-t</term>
+<listitem>
+<para>
+Teste os novos arquivos criados antes de apagar os arquivos
+<filename>.Z</filename>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-v</term>
+<listitem>
+<para>
+Mostra o nome e porcentagem de compactação para cada arquivo processado.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-9</term>
+<listitem>
+<para>
+Usa a máxima compactação.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-P</term>
+<listitem>
+<para>
+Usa pipes durante a conversão para reduzir o espaço ocupado no disco.  A data e
+hora do arquivo não é mantida caso esta opção seja usada.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-K</term>
+<listitem>
+<para>
+Mantém o arquivo <filename>.Z</filename> caso seja menor que o arquivo
+<filename>.gz</filename>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+	<!-- ]]> -->
+
+</chapter>
