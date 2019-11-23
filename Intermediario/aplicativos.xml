@@ -1,0 +1,6095 @@
+<!-- Converted by db4-upgrade version 1.0 -->
+<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="aplic"><info><title>Aplicativos para Linux</title></info>
+<para>
+Este capítulo traz uma lista de aplicativos e suas características e tem como
+objetivo servir de referência para a escolha de um programa que atenda as suas
+necessidades específicas.
+</para>
+<para>
+Os programas descritos aqui são "Clientes", ou seja, fazem acesso a um programa
+"Servidor" (como é o caso dos navegadores) para funcionarem.  Os programas
+servidores estão descritos na versão <emphasis>Avançado</emphasis> do guia, de
+forma passo a passo, características e métodos de configuração recomendados.
+</para>
+<para>
+Se você conhece um bom programa e acha que ele deveria estar aqui, me avise
+pelo email <email>gleydson@guiafoca.org</email>.
+</para>
+<section xml:id="aplic-b"><info><title>Aplicativos Básicos</title></info>
+<para>
+São aplicativos que fazem parte do cotidiano da maioria dos usuários domésticos
+e de empresas.
+</para>
+<section xml:id="aplic-b-editores"><info><title>Editores de Texto</title></info>
+<variablelist>
+<varlistentry>
+<term>vi</term>
+<listitem>
+<para>
+Modo Texto - (existem algumas versões adaptadas para o modo gráfico).  É um dos
+editores padrões dos sistemas <command>GNU/Linux</command> e sua interface é
+complexa e possui muitas funções (usuários <command>GNU/Linux</command>
+avançados adoram a quantidade de funções deste programa).  Recomendo que
+aprenda o básico sobre ele, pois sempre estará disponível caso ocorra algum
+problema no sistema.
+</para>
+<para>
+Para sair do editor <command>vi</command> sem salvar pressione
+<literal>ESC</literal> e digite <literal>:q!</literal>.  Para sair do editor e
+salvar pressione <literal>ESC</literal> e digite <literal>:wq</literal>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>elvis</term>
+<listitem>
+<para>
+Modo Texto - possui boa interface de comunicação com o usuário, suporte a HTML
+e Metacaracteres.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>ae</term>
+<listitem>
+<para>
+Modo Texto - é um dos editores padrões dos sistemas
+<command>GNU/Linux</command> (encontrado nas distribuições
+<command>Debian</command> e baseadas).  Sua interface é mais fácil que o
+<command>vi</command>.  Também recomendo que aprenda o básico sobre ele, pois é
+requerido para a manutenção do sistema.
+</para>
+<para>
+Para sair do <command>ae</command> sem salvar pressione
+<literal>CTRL+Q</literal>, para salvar o texto pressione
+<literal>CTRL+X</literal> e <literal>CTRL+W</literal> (após isto se quiser sair
+do editor, pressione <literal>CTRL+Q</literal>).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>jed</term>
+<listitem>
+<para>
+Modo Texto - Recomendável para aqueles que estão acostumados com o EDIT do
+<command>DOS</command> e gostam de menus suspensos.  Sua interface é de fácil
+operação.
+</para>
+<para>
+O <command>jed</command> possui recursos poderosos para programadores de C e
+outras linguagens que faz auto-tabulação, auto-identação e delimitação de
+blocos de código através de cores.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>mcedit</term>
+<listitem>
+<para>
+Modo Texto - Muito fácil de utilizar e possui interface em Português do Brasil,
+em geral não requer um tutorial para aprendizado.  Este programa faz parte do
+pacote <emphasis>Midnight Commander</emphasis> (conhecido também como
+<command>mc</command>).
+</para>
+<para>
+Você utiliza as teclas de função (F1 a F10) para salvar o texto, procurar
+palavras no texto, pedir ajuda, sair, etc.  Ele possui recursos para colorir
+blocos de código (testado com arquivos HTML e SGML).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>joe</term>
+<listitem>
+<para>
+Modo Texto - É um editor muito versátil e você pode escolher inclusive sua
+interface.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>gedit</term>
+<listitem>
+<para>
+Modo Gráfico - editor do Gnome, sua interface de comunicação é ótima e
+recomendado para aqueles que gostam de trabalhar com muitos arquivos abertos,
+copiar e colar, etc.  Possui muitos recursos de operação de arquivo,
+tabulações, browser, diff de documentos, etc.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>gxedit</term>
+<listitem>
+<para>
+Modo Gráfico - Editor no estilo do <command>gedit</command>, sua interface de
+comunicação com o usuário é ótima, possui suporte a e-mail, mede o número de
+toques por minuto do usuário (digitação), suporte a tags HTML, audio, rede,
+correção ortográfica, etc.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="aplic-b-escritorio"><info><title>Aplicativos para Escritório</title></info>
+<variablelist>
+<varlistentry>
+<term>Open Office</term>
+<listitem>
+<para>
+Modo Gráfico - Pacote de Escritório contendo editor de texto, planilha de
+cálculo, banco de dados, digitalizador de imagens, editor gráfico, calculadora,
+navegador, e-mail, abre todos os arquivos do MS Office 2000 e sua interface é
+idêntica aos programas do Office, não requerendo novo treinamento dos usuários.
+Todos os programas do <command>Open Office</command> são iniciados através de
+uma interface virtual idêntica ao Windows (com menu iniciar e tudo mais).
+</para>
+<para>
+Possui versão em Português e sua versão atual é a 1.0.  Além da impressionante
+integração entre os programas que compõem o conjunto, o <command>Open
+Office</command> possui um frame de navegação com centenas de modelos, barra de
+desktop, localização fácil de arquivos e abertura instantânea.
+</para>
+<para>
+O <command>Open Office</command> possui mais recursos que o Office e não custa
+nada!  Seu tamanho para download é de 80MB e não requer o pagamento de licenças
+para a instalação em computadores de empresas ou domésticos.
+</para>
+<para>
+O equipamento mínimo que recomendo para a execução do <command>Open
+Office</command> é um 586 com 64 MB de memória RAM e 200 MB Livres no disco
+rígido.  Sua instalação é feita em modo gráfico e o tamanho ocupado no disco
+depende dos componentes selecionados.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Abiword</term>
+<listitem>
+<para>
+Modo Gráfico - é um editor de Textos mais simples que o <command>Star
+Office</command> e uma boa interface de operação que possui suporte a arquivos
+do Office 2000.
+</para>
+<para>
+O equipamento mínimo que recomendo para a execução do
+<command>Abiword</command> é um 486 com 8 MB de memória RAM e 7 MB de espaço
+livre no disco rígido (ele pode ocupar menos espaço caso as bibliotecas
+compartilhados que utiliza já estiverem instaladas).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Corel Word Perfect</term>
+<listitem>
+<para>
+Modo Gráfico - Pacote de escritório da Corel.  Uma alternativa ao <command>Open
+Office</command>.  Ele requer o pagamento de licenças para seu uso.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="aplic-b-internet"><info><title>Internet</title></info>
+<variablelist>
+<varlistentry>
+<term>Netscape 4.73</term>
+<listitem>
+<para>
+Modo Gráfico - Versão do Netscape Communicator para
+<command>GNU/Linux</command>, com criptografia forte, programa de e-mail, news,
+editor interativo de páginas HTML, catálogo de endereços.  Também possui
+suporte a rede proxy e conexão via firewall.
+</para>
+<para>
+Equipamento mínimo recomendável: 486 com 32 MB de RAM e 40 MB de espaço em
+disco livre.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Mozilla</term>
+<listitem>
+<para>
+Modo Gráfico - Navegador que inspirou a construção do Netscape, foi o primeiro
+navegador gráfico e hoje a versão do Netscape 6.0 é baseada no Mozilla.  Se
+gosta de frescuras na aparência do navegador escolha este mas o desempenho do
+Netscape 4.73 é melhor...  Também possui suporte a rede proxy e conexão via
+firewall
+</para>
+<para>
+Equipamento mínimo recomendado: 486 com 48 MB de RAM e 40 MB de espaço em disco
+livre.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Arena</term>
+<listitem>
+<para>
+Modo Gráfico - navegador pequeno, sem suporte a Java e Frames, ideal para
+computadores menos potentes.  Recomendo o <command>Lynx</command>!
+</para>
+<para>
+Equipamento mínimo recomendado: 386 com 8 MB de RAM e 12 MB de disco
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Opera</term>
+<listitem>
+<para>
+Modo Gráfico - Navegador pequeno, sem suporte a Java e Frames, ideal para
+computadores menos potentes.  Ainda recomendo o <command>Lynx</command>!
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Lynx</term>
+<listitem>
+<para>
+Modo Texto - Agora sim!  Navegador pequeno, não tem suporte a frames mas exibe
+uma listagem permitindo selecionar qual será aberto, sem suporte a Java e muito
+flexível em sua configuração (dê uma olhada na quantidade de opções no arquivo
+<filename>/etc/lynx.cfg</filename>).  Também funciona via proxy tradicional ou
+firewall.
+</para>
+<para>
+Equipamento mínimo recomendado: 386 com 2 MB de RAM e 2 MB de disco.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Pine</term>
+<listitem>
+<para>
+Modo Texto - Programa de E-Mail muito usado entre os usuários
+<command>GNU/Linux</command>, mas não é gratuito...  Possui suporte a
+criptografia PGP e HTML em sua nova versão.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Mutt</term>
+<listitem>
+<para>
+Modo Texto - Outro programa de E-mail muito usado pelos usuários do
+<command>GNU/Linux</command>.  Possui suporte a criptografia PGP, cores de
+destaque nas mensagens e processamento de links HTML.  É muito personalizável
+(veja a quantidade de opções no arquivo de configuração
+<filename>/etc/Muttrc</filename>).  Sua interface é em Português.
+</para>
+<para>
+Equipamento mínimo recomendado: 386 com 2 MB de RAM e 2 MB de disco.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>ftp</term>
+<listitem>
+<para>
+Modo Texto - O próprio!  faz cópias de arquivos de um site remoto para seu
+disco local ou vice versa.  Veja <xref linkend="cmdn-ftp"/> para mais detalhes.
+</para>
+<para>
+Equipamento mínimo recomendado: 386 com 2 MB de RAM e 1 MB de disco.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>telnet</term>
+<listitem>
+<para>
+Modo Texto - Conexão ao terminal virtual remotamente.  Permite controlar seu
+terminal remotamente através de uma conexão via rede TCP/IP.  Veja <xref linkend="cmdn-telnet"/> para mais detalhes.
+</para>
+<para>
+Equipamento mínimo recomendado: 386 com 2 MB de RAM e 1 MB de disco.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>talk</term>
+<listitem>
+<para>
+Modo Texto - Permite conversar com outros usuários <command>GNU/Linux</command>
+conectados através de uma rede TCP/IP no estilo do Bate Papo ou do Chat do ICQ.
+Veja <xref linkend="cmdn-talk"/> para mais detalhes.
+</para>
+<para>
+Equipamento mínimo recomendado: 386 com 2 MB de RAM e 1 MB de disco.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>fetchmail</term>
+<listitem>
+<para>
+Modo Texto - Permite baixar as mensagens de seu servidor de e-mail para o seu
+diretório de usuário no sistema.
+</para>
+<para>
+Equipamento mínimo recomendado: 386 com 2 MB de RAM e 1 MB de disco.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>procmail</term>
+<listitem>
+<para>
+Modo Texto - Organiza mensagens em arquivos separados de acordo com a
+origem/assunto/conteúdo.  O <command>procmail</command> é muito flexível e
+também permite resposta automática de acordo com alguns tipos de mensagens e a
+criação de filtros de mensagens muito poderosos caso você conheça e saiba
+integrar as ferramentas do sistema.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>bitchx</term>
+<listitem>
+<para>
+Programa de IRC muito complexo e poderoso.  Ele opera em modo texto e em modo
+gráfico (xbitchx).  Tem que ter disposição de hacker para aprender o que
+significam cada uma das 4 telas de comandos obtidos com o /help.
+</para>
+<para>
+Equipamento mínimo recomendado: 386 com 2 MB de RAM e 4 MB de disco.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>xchat</term>
+<listitem>
+<para>
+Programa de IRC muito fácil de usar e com muitos recursos.  Ele possui versões
+para modo texto e gráfico e possui suporte a scripts Perl e Python,
+personalização de menus, comandos, etc.  Sua flexibilidade é muito boa para
+quem conhece os comandos dos clientes IRC.  Também permite o log das conversas
+públicas e privadas.  Também funciona via proxy tradicional ou Firewall.
+</para>
+<para>
+Equipamento mínimo recomendado: 386 com 8 MB de RAM e 3 MB de disco.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>licq</term>
+<listitem>
+<para>
+Modo gráfico - Programa de ICQ gráfico para <command>GNU/Linux</command>.
+Apesar de ter muitos recursos, sua interface é muito organizada e possui
+suporte a seleção de sua aparência (<emphasis>Skins</emphasis>).  Emite avisos
+sonoros e levanta-se sobre as outras janelas durante o recebimento de
+mensagens.  Também funciona via proxy tradicional ou Firewall.
+</para>
+<para>
+Equipamento mínimo recomendado: 486 com 16 MB de RAM e 10 MB de disco.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>gaim</term>
+<listitem>
+<para>
+Modo gráfico - Possui suporte a múltiplos protocolos, podendo se conectar ao
+ICQ, MSN, Jabber, e outros.
+</para>
+<para>
+Equipamento mínimo recomendado: 486 com 16 MB de RAM e 20 MB de disco.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>zicq</term>
+<listitem>
+<para>
+Modo Texto - Programa de ICQ em modo Texto.
+</para>
+<para>
+Equipamento mínimo recomendado: 386 com 2 MB de RAM e 1 MB de disco.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>amsn</term>
+<listitem>
+<para>
+Modo Gráfico - Suporta protocolo MSN.
+</para>
+<para>
+Equipamento mínimo recomendado: 486 com 16 MB de RAM e 8 MB de disco.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="aplic-b-emuladores"><info><title>Emuladores</title></info>
+<variablelist>
+<varlistentry>
+<term>DosEmu</term>
+<listitem>
+<para>
+Emulador do DOS.  Permite executar aplicativos e jogos de DOS no
+<command>GNU/Linux</command>
+</para>
+<para>
+Equipamento mínimo recomendado: 486 com 8 MB de RAM e 4 MB de disco.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Wine</term>
+<listitem>
+<para>
+Emulador de Windows.  Permite executar aplicativos desenvolvidos para Windows
+3.1X, 9X, NT e 200x no <command>GNU/Linux</command>.
+</para>
+<para>
+Equipamento mínimo recomendado: 486 com 16 MB de RAM e 12 MB de disco.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="aplic-b-utils"><info><title>Utilitários</title></info>
+<variablelist>
+<varlistentry>
+<term>Midnight Commander</term>
+<listitem>
+<para>
+Gerenciador de Arquivos no estilo do <emphasis>Norton Commander</emphasis> e
+<emphasis>Far</emphasis>.  Opera tanto em modo texto e gráfico e possui todas
+as qualidades dos gerenciadores acima, mais o suporte ao painel FTP, permissões
+de arquivos e dicas sobre o sistema.  Simples, prático e útil.
+</para>
+<para>
+Equipamento mínimo recomendado: 386 com 4 MB de RAM e 2 MB de disco.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>wget</term>
+<listitem>
+<para>
+Modo Texto - Permite a cópia completa de sites remotos e também pode ser usado
+como mirror.  Com o simples comando <literal>wget
+http://www.guiafoca.org</literal>, todo o site do guia <emphasis>Foca
+Linux</emphasis> será gravado em seu disco.  O <command>wget</command> também
+tem a característica de resumir downloads interrompidos e copiar somente
+arquivos mais novos.
+</para>
+<para>
+Gostou da idéia?  Isto é só o começo!  existem ferramentas mais poderosas no
+<command>GNU/Linux</command> :-)
+</para>
+<para>
+Equipamento mínimo recomendado: 386 com 4 MB de RAM e disco dependendo do
+tamanho do site que deseja copiar (um disco maior que 540 MB exige uma placa
+mãe com suporte a LBA :-)
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="aplic-b-admin"><info><title>Administração do Sistema</title></info>
+<variablelist>
+<varlistentry>
+<term>logcheck</term>
+<listitem>
+<para>
+Envia um E-Mail periodicamente ao usuário alertando sobre ocorrências especiais
+encontradas nos logs do sistema, como tentativas de invasão sem sucesso,
+tentativas de acesso ao usuário root do sistema, erros nos dispositivos,
+mensagens dos daemons, inetd, etc.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+</section>
+
+<section xml:id="s42.2"><info><title>Listagem de Aplicativos para <command>GNU/Linux</command></title></info>
+<para>
+Esta seção contém uma listagem dos mais diversos tipos de
+aplicativos/ferramentas/scripts/suites/servidores, etc.  para
+<command>GNU/Linux</command> com sua respectiva descrição.  A listagem está
+organizada em ordem alfabética e subseções para facilitar a sua navegação e
+localização do aplicativo desejado.
+</para>
+<para>
+Alguns aplicativos marcados com <literal>(D)</literal> no final da descrição
+são <emphasis>Docks</emphasis> que são executados como ícones no gerenciador de
+janelas.
+</para>
+<section xml:id="aplic-l-perifericos"><info><title>Periféricos / Gerenciamento de Hardware</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>3c5x9utils</literal> - Utilitários de configuração e diagnóstico para
+placas 3Com 5x9
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>apcupsd</literal> - Gerenciamento de Energia para No Breaks APC
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>buffer</literal> - Programa de buffering/reblocking para backup em
+tapes, impressão, etc
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dds2tar</literal> - Ferramenta para usar características DDS de
+unidades DAT com o programa tar da GNU
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dtlk</literal> -Controlador de dispositivo Linux para o DoubleTalk PC
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>eject</literal> - ejeta CDs e opera CD-Changers sob o Linux
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>estic</literal> - Programa de administração para ISDN PABX ISTEC
+1003/1008
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gatos</literal> - Software de captura TV All-in-Wonder da ATI
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>genpower</literal> - Monitor de No Break e manipulador de falhas de
+energia
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>hdparm</literal> - Permite fazer um ajuste fino na performance do
+disco rígido
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>hpscanpbm</literal> - Utilitário para o Scanner HP ScanJet
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>hwtools</literal> - Coleção de ferramentas para o gerenciamento em
+baixo nível do hardware
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>isapnp</literal> - Permite configurar recursos de dispositivos
+Plug-and-Play no Linux
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>jazip</literal> - monta e desmonta Zip drives Iomega e/ou Jaz
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>jaztool</literal> - Utilitário para manipular drives Iomega
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>joystick</literal> -Ferramentas de teste e calibragem de Joysticks
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>lcdproc</literal> - Daemon de tela LCD
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>lm-sensors</literal> - Utilitários para ler a
+temperatura/voltagem/sensores da ventoinha da CPU
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mtx</literal> - Controla unidades tape autochangers
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>pciutils</literal> - Utilitários PCI para o Linux (para kernels
+2.[123].x )
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>powstatd</literal> - Daemon de monitoramento de No Breaks configurável
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>prime-net</literal> - Permite doar ciclos da CPU não usados - Cliente
+PrimeNet GIMPS
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>sane-gimp1.1</literal> - Interface para Scanners no gimp
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>sane</literal> - Interface para Scanners.  Permite a comunicação e uso
+de diversos tipos de scanners diferentes.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>setcd</literal> - Controla características de funcionamento de sua
+unidade de CD-ROM (auto-lock, auto-eject, etc)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>sformat</literal> - Formatador de discos SCSI e ferramenta de reparo
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>svgatextmode</literal> - Executa o modo de texto em alta resolução
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>synaptics</literal> - Configura um TouchPad da Synaptics
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>upsd</literal> - Programa monitor de No Breaks
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wanpipe</literal> - Utilitários de configuração para placas Sangoma
+S508/S514 WAN
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wdsetup</literal> - Utilitário de configuração para placas ethernet
+Western Digital e SMC
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xsane-gimp1.1</literal> - Uma interface X11 baseada no GTK para o SANE
+(Scanner Access Now Easy)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xsane</literal> - Uma interface X11 baseada no GTK para o SANE
+(Scanner Access Now Easy)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xviddetect</literal> - Detecta o modelo da placa de vídeo e indica
+servidores X associados a placa
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="aplic-l-internet"><info><title>Internet</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>arena</literal> - um navegador WWW compatível com HTML 3.0 para o X
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>bezerk</literal> - Cliente IRC baseado em GTK
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>bitchx</literal> - Cliente IRC Avançado
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>bitchx-gtk</literal> - Interface gráfica GTK para o BitchX
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cftp</literal> - Cliente ftp de tela cheia
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>chimera2</literal> - Navegador Web para o X
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dxftp</literal> - Cliente FTP Darxite baseado em linha de comando
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>epic4</literal> - Cliente irc epic irc client, versão 4
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>epic</literal> - Cliente ircII modificado com funcionalidades
+adicionais
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>everybuddy</literal> - Cliente ICQ, AOL, Yahoo (tudo em 1)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>express</literal> - Navegador web baseado em GTK para o GNOME
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>filerunner</literal> - Programa FTP e Gerenciador de Arquivos baseado
+em X
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ftp</literal> - O cliente FTP padrão
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ftp-upload</literal> - Envia arquivos FTP através de um script
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gaim</literal> - Um clone GTK do AOL Instant Messenger
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gftp</literal> - Cliente FTP do X/GTK+
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gnap</literal> - Cliente Gnome para o Napster
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gnapster</literal> - Cliente Napster para Linux - localiza arquivos
+MP3 na Internet
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gnomeicu</literal> - Clone pequeno, rápido e funcional do Mirabilis
+ICQ
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gnome-napster</literal> - Cliente Napster para Linux - localiza
+arquivos MP3 na Internet
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gpppon</literal> - Um applet do gnome que funciona como uma interface
+ao pon e poff
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gzilla</literal> - Um navegador web baseado em GTK
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>irssi</literal> - Cliente IRC para Gnome
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>isdnbutton</literal> - Inicia e Interrompe conexões ISDN e mostra
+status
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>licq-data</literal> - Arquivos de daods para o Licq
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>licq-plugin-qt2</literal> - Interface gráfica para o Licq usando
+bibliotecas QT2
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>licq</literal> - Programa ICQ gráfico para Linux
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>lynx</literal> - Navegador WWW em modo texto
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>micq</literal> - Cliente ICQ baseado em texto com muitas
+características
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mosaic</literal> - Navegador WWW Gráfico
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mozilla</literal> - Um Navegador WWW de código aberto para o X e GTK+
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ncftp2</literal> - Um cliente FTP com interface fácil e com muitas
+características
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ncftp</literal> - Um cliente FTP com interface fácil e com muitas
+características
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>Netscape</literal> - Navegador gráfico com programa de e-mail, news,
+livro de endereços, editor de páginas HTML.  Suporta Java, tabelas, frames,
+CSS, proxy, etc...
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ppxp</literal> - Programa PPP
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ppxp-tcltk</literal> - Console tk do ppxp
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ppxp-x11</literal> - Console X do ppxp
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>quickppp</literal> - Ferramenta de configuração PPP
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>realplayer</literal> - Real Player
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>sysnews</literal> - Mostra noticias do sistema (de /var/news)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>talk</literal> - Permite conversar com outro usuário conectado ao
+sistema ou via rede TCP/IP
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tftp</literal> - Programa trivial file transfer
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tik</literal> - Cliente Tcl/Tk do serviço AOL Instant Messenger
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>utalk</literal> - programa parecido com o talk com características
+adicionais
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>vrwave</literal> - Navegador baseado em VRML 2.0 java
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>vrweb</literal> - Um navegador VRML e editor
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wvdial</literal> - Discador PPP com inteligência embutida.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wxftp-gtk</literal> - Um programa ftp gráfico com a interface GTK
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xchat</literal> - Cliente IRC para X similar ao AmIRC
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xchat-gnome</literal> - Cliente IRC para o GNOME similar ao AmIRC
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xisp</literal> - Uma interface X amigável ao pppd/chat
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xitalk</literal> - Programa talk que lista usuários atuais do sistema.
+Ele também pode iniciar uma seção talk, tocar som, executar um aplicativo, etc.
+durante uma requisição talk
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xrn</literal> - Leitor de news NNTP baseado em X
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xtalk</literal> - Um cliente X-Window BSD talk, escrito em Python
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ytalk</literal> - Programa talk avançado com suporte ao X
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>zicq</literal> - Cliente ICQ baseado em ncurses
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="aplic-l-conferencia"><info><title>Conferência de audio/vídeo via Internet/Intranet</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>camediaplay</literal> - Interface de Câmera Digital
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cqcam</literal> - Programa de Controle da Câmera Colorida QuickCam
+(PC/Paralela)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gphoto</literal> - Aplicativo Universal para câmeras digitais
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gstalker</literal> - Stock and commodity price charting utility
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>photopc</literal> - Interface para câmeras digitais
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>phototk</literal> - Interface gráfica para câmeras digitais
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>qcam</literal> - Capturador de Imagens da QuickCam
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>qvplay</literal> - Ferramenta de comunicação para a câmera Casio QV
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rat</literal> - RAT - Ferramenta de conferência de audio unicast e
+multicast
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>Vat</literal> - Ferramenta de audio conferência via rede/Internet
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>vic</literal> - Ferramenta de vídeo conferência
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wbd</literal> - Prancha de Desenho para Multicast
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>webcam</literal> - Captura e faz o upload automático de imagens para
+um servidor web
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="aplic-l-webhtml"><info><title>Gerenciamento de WebSites / Linguagem HTML</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>adacgi</literal> - Interface CGI para o Ada
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>amaya</literal> - Editor HTML Gráfico da w3.org
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>analog</literal> - Analiza arquivos de log de servidores www
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>bk2site</literal> - Utilitário para tornar bookmarks em páginas
+parecidas com o yahoo/Slashdot
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>bluefish</literal> - Um editor HTML baseado em Gtk+
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>bookmarker</literal> - Gerenciamento de bookmark baseado em WWW,
+ferramenta de recuperação e procura
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>bookmarks</literal> - Outra coleção de bookmarks
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>browser-history</literal> - Daemon do usuário que captura URLs
+procuradas e as registra
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>c2html</literal> - Destaca códigos em C para apresentação em WWW
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cgic-capture</literal> - Captura de ambiente CGI para depuração
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cgiemail</literal> - Conversor de formulário CGI para E-Mail
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cgilib</literal> - Biblioteca CGI simples
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cgiwrap</literal> - Permite usuários ordinários executar seus próprios
+Scripts CGI
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>checkbot</literal> - Verificador de links WWW
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cocoon</literal> - Um Framework de publicação XML/XSL
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cronolog</literal> - Um roteador de arquivos de log para servidores
+web
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>curl</literal> - Copia um arquivo de um servidor FTP, GOPHER, ou HTTP
+(sem suporte a ssl)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cvs2html</literal> - Cria versões em html dos logs do CVS
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>faqomatic</literal> - FAQ cgi online e interativa
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>freetable</literal> - Um script em Perl que facilita a produção de
+tabelas HTML
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gifsicle</literal> - Poderoso programa para a manipulação de imagens
+GIF
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>giftrans</literal> - Converte qualquer arquivo GIF em um GIF89a
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gnujsp</literal> - Uma implementação gratuita do Sun's Java Server
+Pages (JSP 1.0)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gtml</literal> - Um pré-processador HTML
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>htdig</literal> - Sistema de procura WWW para a Intranet ou uma
+pequena internet
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>htget</literal> - Um capturador de arquivos que obtém arquivos atraes
+de servidores HTTP
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>htmldoc</literal> - Processador HTML que gera arquivos HTML, PS, e PDF
+indexados
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>htmlgen</literal> - Geração de documentos HTML com scripts em Python
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>htp</literal> - Um pré-processador HTML
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>http-analyze</literal> - Um analizador rápido de logs de servidores
+WWW
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>hypermail</literal> - Cria arquivos HTML de listas de discussões por
+E-Mail
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>imaptool</literal> - Uma ferramenta para a criação de mapas de imagens
+do lado cliente
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>imgsizer</literal> - Adiciona os atributos WIDTH e HEIGHT a tags IMG
+tags em arquivos HTML
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>imho</literal> - Módulo de E-Mail baseado na Web para o Roxen (usando
+IMAP)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>imp</literal> - Programa de E-Mail baseado em IMAP para a Web
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>java2html</literal> - Destaca códigos em Java e C++ para apresentação
+via WWW
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>jserv</literal> - Motor Java Servlet 2.0 com um módulo Apache
+adicional
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>junkbuster</literal> - O Junkbuster da Internet!
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>latte</literal> - A linguagem para transformação de texto (atualmente
+para html)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>linbot</literal> - Verificador de links de sites WWW
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>lists-archives</literal> - Arquivo Web para listas de discussão por
+E-Mail
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mailto</literal> - Ligação de formulários WWW com o programa de E-Mail
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>muffin</literal> - Um proxy Web pessoal e extensível
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>pas2html</literal> - Destaca fontes do Pascal e Modula para
+apresentação via WWW
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>pcd2html</literal> - Scripts para converter imagens PCD para páginas
+HTML comentadas
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>perl2html</literal> - Destaca fontes do Perl para apresentação via WWW
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>php3</literal> - Uma linguagem script embutida em HTML - lado do
+servidor
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>php4</literal> - Uma linguagem script embutida em HTML - lado do
+servidor
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>phplib</literal> - Biblioteca para escrever aplicações para a Web
+facilmente
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>plugger</literal> - Plug-in Mime do Netscape
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rpm2html</literal> - Gera índices HTML dos diretórios de RPMs
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>screem</literal> - Um ambiente de desenvolvimento de website
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>sitecopy</literal> - Um programa para gerenciar um site WWW via FTP
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>squishdot</literal> - Sistema de discussão/news baseado na Web
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>swish-e</literal> - Sistema simples de indexação Web para Humanos
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>swish++</literal> - Sistema simples de indexação Web para Humanos++
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tidy</literal> - Verificador de sintaxe HTML e reformatador do código
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>w3mir</literal> - Ferramenta de cópia completa HTTP e mirror
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wdg-html-validator</literal> - Verificador de arquivos HTML
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>webalizer</literal> - Programa de análise arquivos de log do servidor
+Web
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>weblint</literal> - Um verificador de sintaxe e estilo mínimo para
+HTML
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>webmagick</literal> - Cria uma galeria de thumbnails para website
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>websec</literal> - Secretária Web
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wget</literal> - Utilitário para copiar arquivos atraes da WWW via
+HTTP e FTP com suporte a reinicio do ponto de interrupção do download.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wmf</literal> - Web Mail Folder
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wml</literal> - Website META Language por Ralf Engelschall
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wwwcount</literal> - Contador de acessos a páginas Web
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wwwoffle</literal> - Explorer OFFline da World Wide Web
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wwwtable</literal> - Um script em Perl que facilita a produção de
+tabelas em HTML
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xsitecopy</literal> - Um programa para gerenciar um site WWW via FTP
+(versão GNOME)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>zope</literal> - O Ambiente de Publicação de Objetos Z
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="aplic-l-multimidia"><info><title>Multimídia</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>gxanim</literal> - Interface em GTK para o xanim
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>smpeg-gtv</literal> - Exibe arquivos MPEG de audio/vídeo com interface
+em GTK+
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>smpeg-plaympeg</literal> - Exibe arquivos MPEG de audio/vídeo através
+da linha de comando
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>streamer</literal> - Programa de captura de vídeo para a bt848 a
+video4linux
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tkxanim</literal> - Interface Tcl/Tk para o xanim
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ucbmpeg</literal> - Encoder de vídeo MPEG e ferramentas de análise
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ucbmpeg-play</literal> - Exibe arquivos de vídeo MPEG
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>vstream</literal> - Utilitário de captura de vídeo bttv para a criação
+de MPEGs
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xanim</literal> - Exibe arquivos multimídia (animações, filmes e sons)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xanim-modules</literal> - Instalação de binários de xanim - somente
+módulos
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="aplic-l-som"><info><title>Som</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>ascdc</literal> - CD changer ideal para ser usado no After Step junto
+com o módulo wharf
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ascd</literal> - CD Player e mixer para Window Maker e After Step (D)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>aumix</literal> - Mixer em modo texto que permite modificar, salvar e
+restaurar a configuração de som na inicialização do sistema
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>bplay</literal> - Player/Gravador wav que opera em modo texto (root)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cam</literal> - Mixer para modo texto com controle completo da placa
+de som.  Também permite salvar e restaurar a configuração de som, embora isto
+seja mais simples através do aumix.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cdda2wav</literal> - Extrai audio do CD para arquivos wav e mp3
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cd-diskio</literal> - Obtem dados do CDDB sobre o CD de audio
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cdparanoia</literal> - Extrai dados de CD para wav
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cdtool</literal> - Utilitários para manipulação de CD player em modo
+texto
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dtmfdial</literal> - Gera tons de discagem para linhas tom
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>festival</literal> - Lê textos para a placa de som do sistema
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>freeamp</literal> - Player mp2/mp3
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gramofile</literal> - Programa de gravação de músicas de disco de
+vinil para wav com filtros para retirada de ruídos
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>graudio</literal> - Permite controlar placas de rádio FM
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>grip</literal> - CD-Ripper e CD-Player (do CD paranoia)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gtick</literal> - Gera ruídos de batida em <filename>/dev</filename> e
+<filename>/dsp</filename>
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>id3</literal> - Modifica cabeçalhos de identificação de arquivos mp3
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>maplay</literal> - Decoder mp3 que permite a decodificação para a
+saída padrão
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mctools</literal> - CDplayer e mixer
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mixer.app</literal> - Mixer para Window Maker (D)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mp3blaster</literal> - Player mp3 para console
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mp3info</literal> - Mostra cabeçalho de arquivos mp3
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>nas</literal> - Network Audio Server - Sistema de audio através da
+rede
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>playmidi</literal> - Toca musicas .mid
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>recite</literal> - Lê textos para a placa de som do sistema
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rplay</literal> - Toca sons através da rede
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>s3mod</literal> - Player para arquivos de música s3m e mod
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>saytime</literal> - Diz as horas na placa de som
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>snack</literal> - Adiciona suporte a som na linguagem TCL/TK
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>soundtracker</literal> - Módulos para edição.  suporta módulos .xt e
+instrumentos .xi
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>sox</literal> - Tradutor universal de sons
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>splay</literal> - Toca arquivos mp1, mp2, mp3
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>synaesthesia</literal> - Osciloscópio musical
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>timitidy</literal> - Midi sequencer.  Também faz a conversão de
+arquivos .mid para .wav
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tkmixer</literal> - Mixer em TCL/TK
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>transcriber</literal> - Permite gravar notas durante a descrição de
+programas
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>vkeybd</literal> - Teclado virtual (requer placa awe)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wav2cdr</literal> - Converte wav em arquivos cdr.  Permite edição de
+músicas
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wavtools</literal> - Ferramentas para arquivos wav (player, recorder,
+compactação)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wmcdplayer</literal> - Módulo de Cd player para Window Maker
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wmxmms-spectrum</literal> - Spectrum analizador para Window Maker (D)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>workbone</literal> - CD player para modo texto operado através do
+teclado numérico
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wosundprefs</literal> - Preferências musicais para o Window Maker
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wsoundserver</literal> - Servidor de som para Window Maker
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xcolmix</literal> - Um mixer colorido RGB
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xfreecd</literal> - Programa para tocar CDS
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xmcd</literal> - CD player/changer muito completo com suporte ao CDDB
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xmix</literal> - Mixer para o X
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xmp</literal> - Player mod, s3m, 669, mtm, ptm, okt, far, wow, amd,
+rad, alm
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="aplic-l-comm"><info><title>Comunicação/Fax</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>adbbs</literal> - AD BBS, uma BBS baseada em perl ou menu de sistema
+fácil
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>efax</literal> - Programas para enviar e receber mensagens de fax
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>hylafax-client</literal> - Programa HylaFAX cliente
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>hylafax-server</literal> - Programa HylaFAX servidor
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>lrzsz</literal> - Ferramentas para a transferência de arquivos através
+de zmodem/xmodem/ymodem
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mgetty-fax</literal> - Ferramentas de Fax para o mgetty
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mgetty</literal> - Substituição ao getty
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mgetty-viewfax</literal> - Programa para mostrar arquivos de fax sob o
+X
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mgetty-voice</literal> -Secretária Eletrônica para o mgetty
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>minicom</literal> - Clone do "Telix" - um programa de comunicação do
+DOS
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mserver</literal> - Servidor de Modem para a Rede
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>seyon</literal> - Programa de comunicação nativo completo nativo do
+X11
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>smsclient</literal> - Um programa para enviar mensagens curtas para
+telefones móveis/Pagers (SM / SMS)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>speaker</literal> - Aplicativo Viva Voz baseado em Tcl/Tk
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tkhylafax</literal> - Uma interface td ao hylafax
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xringd</literal> - Daemon de chamadas Extendida - Monitora toques do
+telefone e executa alguma ação
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="aplic-l-x11"><info><title>X Window</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>asclock</literal> - Relógio do After Step
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dfm</literal> - Gerenciador de Arquivos/Desktop
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dgs</literal> - Visualizador de arquivos do Ghost Script
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dxpc</literal> - Compactador do protocolo X para linhas lentas
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>floatbg</literal> - Modifica lentamente a cor do fundo da janela do
+root
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gdm</literal> - Gerenciador de seção do GNOME - Substituição ao xdm
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gentoo</literal> - Um gerenciador de arquivos totalmente configurável
+para o X usando o GTK+
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gtkcookie</literal> - Editor de arquivos cookie
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gtkfind</literal> - Localizador de arquivos completo
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gtkfontsel</literal> - Visualizador de fontes
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ical</literal> - Um aplicativo de calendário baseado em X11/Tk
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>regexplorer</literal> - Explorer visual de expressões regulares
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rt</literal> - Mostra arquivos de log selecionados na janela raíz do X
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>sclient</literal> - Um cliente MUD baseado em gtk.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>sfm</literal> - Um gerenciador de arquivos baseado em texto usando o
+GTK+
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tkdesk</literal> - Um gerenciador de Desktop/Arquivos X11 baseado em
+TCL/TK
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tkvnc</literal> - Mostra uma lista de máquinas definidas para iniciar
+o VNC
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tkworld</literal> - Uma interface gráfica para comandos do shell
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tuxeyes</literal> - Uma versão do xeyes para o penguim
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ude</literal> - Ambiente desktop do Unix
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>unclutter</literal> - Oculta o mouse no X após um período de
+inatividade
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>uwm</literal> - Gerenciador de janelas ultimate para o UDE
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>vreng</literal> - Motor de realidade virtual
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wdm</literal> - Substituição ao XDM com visual do Window Maker,
+animações e suporte a seleção do gerenciador de janelas
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wmanager</literal> - Permite selecionar o gerenciador de janelas após
+o login do xdm
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wmapm</literal> - Mostra o status da bateria, gerenciamento de energia
+do sistema (D)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wmdate</literal> - Mostra a data/dia da semana (D)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wmifs</literal> - Monitor das interfaces de rede com indicador de
+atividade das interfaces (envio/recebimento) gráfico de atividade na rede e
+indicador de interface ativa (D)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wmitime</literal> - Relógio analógico+digital+data e hora da Internet.
+(D)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wmload</literal> - Mostra a carga da CPU na forma de barras (D)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wmmail</literal> - Monitor de E-mails (D)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wmmatrix</literal> - Mostra um dock do matrix (D)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wmmixer</literal> - Mixer para o Window maker (D)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wmmoonclock</literal> - Relógio da lua (D)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wmnet</literal> - Monitor de interfaces de rede (D)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wmnetselect</literal> - Dispara o netscape através de um ícone (D)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wmpinboard</literal> - Todo list com animações e um excelente visual
+(D)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wmspaceweather</literal> - Monitora prótons e elétrons do espaço (D)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wmtime</literal> - Relógio analógico, dia da semana e data (D)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wmtv</literal> - Sintonlizador de TV para Window Maker com suporte a
+seleção de canais, sistema de cores PAM-M/Secam/NTSC, ajuste fino, procura de
+estações de TV, uso de aplicativos de TV externos e muito mais (D)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>x2x</literal> - Liga a imagem de 2 monitores simulando multi-telas
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xautolock</literal> - Inicia um programa após certo período de
+inatividade do X
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xawtv</literal> - Visualizador Video4linux
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xbanner</literal> - Deixa a tela de login mais bonita
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xext</literal> - Extensões para os servidores X
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xfishtank</literal> - Mostra um aquário na janela raíz do X Window
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xfs</literal> - Servidor de fontes do X
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xfs-xtt</literal> - Servidor de fontes do X com suporte a fontes true
+type
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xinput</literal> - Configuração em tempo de execução e teste para
+dispositivos de entrada do X
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xipmsg</literal> - Envia mensagens
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xjscal</literal> - Calibrador de Joystick para o X11
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xkbsel</literal> - Ferramenta para definir, selecionar e indicar
+teclados para o X
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xkbsel-gnome</literal> - Ferramenta para definir, selecionar e indicar
+teclados para o X (versão para Gnome)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xkeycaps</literal> - Mostra o código de teclas do seu teclado no X
+para a construção de um Xmodmap personalizado
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xlockmore-gl</literal> - Versão do xlockmore em GL
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xlockmore</literal> - Trava a tela do X até que uma senha seja
+digitada
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xmaddressbook</literal> - Agenda de endereços para o X
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xmanpages</literal> - Visualizador de páginas de manual para o X
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xmbdfed</literal> - Editor de fontes para o X11
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xmon</literal> - Monitor do protocolo X
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xmotd</literal> - Navegador da mensagem do dia par ao X
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xodo</literal> - Mede a "distância" percorrida pelo cursos do seu
+mouse.  É permitido escolher até a unidade de medida da distância
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xpaste</literal> - Mostra o conteúdo copiado com CTRL+C
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xrootconsole</literal> - Melhora a aparência do desktop
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xscreensaver</literal> - Coleção de Screen Savers automático para o X
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xscreensaver-gl</literal> - Proteções de tela GL para o xscreensaver
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xsm</literal> - Gerenciador de seção do X
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xsnow</literal> - Animação de neve para o X (muito legal).
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xt</literal> - Traceroute gráfico em GL.  Mostra o caminho percorrido
+por sua conexão até chegar ao destino
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xvt</literal> - Emulador de terminal do X parecido com o xterm, mas
+menor
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xwit</literal> - Uma coleção de rotinas simples para chamar algumas
+funções do X11
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xwrits</literal> - Te lembra para dar uma parada na digitação
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xzoom</literal> - Lente de aumento para parte da sua tela do X, com
+atualizações rápidas
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="aplic-l-edicao"><info><title>Editoração Gráfica/Visualizadores</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>dia</literal> - Editor de Diagramas
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>egon</literal> - Programa de animações da Siag Office
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gimp</literal> - O Programa de Manipulação de Imagens da GNU
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>imagemagick</literal> - Programas de manipulação de Imagem
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mentor</literal> - Uma coleção de algoritmos de animação
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>moonlight</literal> - Cria e desenha cenas em 3D
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>pixmap</literal> - Um editor de pixmaps
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>qcad</literal> - Sistema CAD PROFISSIONAL.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>qiv</literal> - Um visualizador rápido de imagens para o X
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>saoimage</literal> - Utilitário para mostrar e processar imagens
+atronômicas
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>sced</literal> - Um programa para criar cenas em 3D
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>sketch</literal> - Um programa de desenho interativo do X11
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>terraform</literal> - Um programa para geração/manipulação de mapas
+Tridimensionais da Terra
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tgif</literal> - Programa para desenhos 2-D sob o X11
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>whirlgif</literal> - Cria GIFs animadas
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xbmbrowser</literal> - Navegador para Pixmaps e Bitmaps
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xfig</literal> - Facilita a geração de figuras interativamente sob o
+X11
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xli</literal> - Visualiza imagens sob o X11
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xloadimage</literal> - Visualizador de arquivos gráficos sob o X11
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xpcd</literal> - Coleção de ferramentas PhotoCD: Básico
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xpcd-gimp</literal> - Coleção de ferramentas PhotoCD: Suporte ao Gimp
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xpcd-svga</literal> - Coleção de ferramentas PhotoCD: Visualizador
+SVGA
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xv-doc</literal> - Documentação do XV em Posscript e HTML.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xv</literal> - Uma visualizador e manipulador de imagens para o X
+Window System
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xwpick</literal> - Captura uma tela X11 e armazena em arquivos
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="aplic-l-emul"><info><title>Emuladores/Ferramentas p/ Interação com outros SO</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>doschk</literal> - Verifica a compatibilidade de arquivos SYSV e DOS
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dosemu</literal> - Emulador de DOS para Linux
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dosfstools-</literal>Utilitários para criar e checar sistemas de
+arquivos DOS FAT
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>hfsutils</literal> - Ferramenta para ler e gravar volumes Macintosh.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>hfsutils-tcltk</literal> -Interface Tcl/Tk para ler e gravar volumes
+Macintosh
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>macutils</literal> - Conjunto de ferramentas para negociar com
+arquivos especiais do Macintosh
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mcvert</literal> - Ferramenta para negociar com arquivos encodificados
+especiais do Macintosh
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mixal</literal> - Um emulador MIX e interpretador MIXAL
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mtools</literal> - Ferramenta para manipulação de arquivos do DOS
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>p3nfs</literal> - Monta unidades da séria Psion 3[ac], 5
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>simh</literal> - Um emulador de vários computadores DEC
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>stella</literal> - Emulador do video game Atari 2600 Emulator para X
+Windows
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>uae-exotic</literal> - O Emulador Amiga Ubiquitous: Binários exóticos
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>uae</literal> - O Emulador Amiga Ubiquitous: Básico
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>uae-suid</literal> - O Emulador Amiga Ubiquitous: Binários Suid root
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>umsdos</literal> - Utilitários para o sistema de arquivos UMSDOS
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>vice</literal> - Emulador versátil do commodore
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wine</literal> - Emulador do Windows (Emulador Binário)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xapple2</literal> - Emulador do Apple
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xcopilot</literal> - Emulador do Pilot
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xspectemu</literal> - Emulador do Spectrim Fast 48k ZX para X11
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xtrs</literal> - Emulador para os computadores TRS-80 Modelos
+I/III/4/4P
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xzx</literal> - Emulador de espectro baseado em ZX para o X11
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="aplic-l-prog"><info><title>Programação / Bancos de Dados / Acesso a Dados</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>bcc</literal> - Compilador C 16 Bits
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>bin86</literal> - Assembler 16 bits e carregador
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>binutils</literal> - Assembler da GNU, linker e utilitários binários
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>clc-intercal</literal> - Compilador para a linguagem Intercal
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cmucl</literal> - Compilador lisp CMUCL e sistema de desenvolvimento
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>colorgcc</literal> - Colore mensagens de alerta/erro do GCC
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cutils</literal> - Utilitários de código fonte C
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cvs</literal> - Concurrent Versions System
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cvsweb</literal> - uma interface CGI ao seu repositório CVS
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cxref</literal> - Gera documentação em latex e HTML para seus
+programas em C
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dbf2pg</literal> - Converte arquivos do xBase para PostgreSQL
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dbf</literal> - Pacote de manipulação de arquivos xbase
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dbview</literal> - Visualiza arquivos do dBase III
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dialog</literal> - Permite adicionar o recurso de caixas de diálogo em
+shell scripts como "Yes/No", "Ok", "Cancelar", etc.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dist</literal> - Ferramentas para desenvolver, manter e distribuir
+softwares
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>doc++</literal> - Um sistema de documentação para C/C++ e Java
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>f2c</literal> -Um tradutor do Fortran77 para C/C++ com bibliotecas
+estáticas e compartilhadas
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>f77reorder</literal> - Um script de compilação Fortran chamando o
+f2c/gcc
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>fp-api</literal> -Units Livres da API do Pascal
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>fp-compiler</literal> - Compilador Livre do Pascal
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>fp-extra</literal> - Pacotes Extras do Pascal Livre
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>fp-fcl</literal> - Pascal Livre - Biblioteca de Componentes Livres
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>fp-gtk</literal> - Ligações Pascal - GTK
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>fp-utils</literal> - Units do Pascal Livre
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>freetds-jdbc</literal> - Driver JDBC Java puro para MS SQL e Sybase
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>g77</literal> - Compilador GNU Fortran 77.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gbdk-dev</literal> - Kit de desenvolvimento do GameBoy - pacotes de
+desenvolvimento
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gbdk-examples</literal> - Kit de desenvolvimento do GameBoy - pacote
+de exemplos
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gbdk</literal> -Kit de desenvolvimento GameBoy - pacote binário
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gcc272-docs</literal> - Documentação para compiladores gcc (gcc272,
+g++272)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gcc-i386-gnu</literal> - Cheap cross-compiler para GNU/Hurd
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gcc</literal> - O compilador C da GNU
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>g++</literal> - Compilador GNU C++
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gdb</literal> - O depurador GNU
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gengetopt</literal> - Gerador de estrutura main.c
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>global</literal> - Ferramenta de procura e navegação do código fonte
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gpc</literal> - Compilador Pascal da GNU
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gprolog</literal> - Compilador GNU Prolog
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gtksql</literal> - Interface gráfica GTK para o banco de dados
+posgress SQL
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>guavac</literal> - Compilador java
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>hello-debhelper</literal> - O programa inicial e um bom exemplo
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>hello</literal> - O programa inicial e um bom exemplo
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>indent</literal> - Programa de formatação do código fonte em linguagem
+C
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>inform</literal> - Compilador para jogos de aventura
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>jitterbug</literal> - Um ferramenta cgi-bin para relato de problemas e
+teste
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>lclint</literal> - Uma ferramenta para checagem estática de programas
+em C
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>liwc</literal> - Ferramentas para manipular o código fonte em C
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mercury</literal> - Nova linguagem de programação lógica/funcional
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mmake</literal> - Gerador Makefile para programas em java
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mpsql</literal> - Uma interface gráfica ao PostgreSQL
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mysql-client</literal> - Binários cliente do banco de dados mysql
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mysql-gpl-client</literal> - Binários cliente do banco de dados mysql
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mysql-manual</literal> - Documentação não oficial do MySQL 3.20
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mysql-server 3.22.32-1</literal> - binários do servidor do banco de
+dados mysql
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>nosql</literal> - um sistema de Gerenciamento de Banco de Dados
+Relacional para Unix
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>p2c</literal> - Tradutor Pascal para C
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>pentium-builder</literal> - Força a compilação otimizada para
+computadores Pentium
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>pgaccess</literal> - Interface gráfica Tk/Tcl para o banco de dados
+PostgreSQL
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>phylip</literal> - [Biology] A program package for inferring
+phylogenies
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>postgresql</literal> - Banco de dados SQL relacionado a objetos,
+descendente do POSTGRES
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>postgresql-client</literal> - Programas de interface para o PostgreSQL
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>postgresql-contrib</literal> - Facilidades adicionais para o
+PostgreSQL
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>postgresql-test</literal> - Conjunto de testes de regressão para o
+PostgreSQL
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>smalleiffel</literal> - Compilador Eiffel GNU
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>solid-desktop</literal> - Servidor SQL Sólido
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>solid-devel</literal> - Desenvolvimento do Servidor SQL Sólido
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>solid-doc-</literal>Documentação do servidor sólido SQL
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>solid-tools</literal> - Ferramentas do servidor sólido SQL
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>www-mysql</literal> - Uma interface WWW interface para o banco de
+dados TCX mySQL
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>www-pgsql</literal> - Uma interface WWW para o banco de dados
+PostgreSQL
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xmysqladmin</literal> - Interface gráfica para o mysql (3.22.xx)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xxgdb</literal> - Interface gráfica para o GNU debugger gdb
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="aplic-l-impressao"><info><title>Impressão</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>apsfilter</literal> - Um filtro de linha de impressão para sistemas
+com lpd/lpr
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cupsys-bsd</literal> - Common UNIX Printing System(tm) - comandos BSD
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cupsys</literal> - Common UNIX Printing System(tm) - básico
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>djtools</literal> - Ferramentas para a impressora HP Deskjet
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ifhp</literal> - Filtro para impressoras HP LaserJet
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>lprng</literal> - Sistema de spooling de impressão lpr/lpd
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>lpr</literal> - Sistema de spooling da linha de impressão estilo BSD
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>magicfilter</literal> - Filtro automático de impressora
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mpage</literal> - Mostra múltiplas páginas em uma impressora
+PostScript
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>printop</literal> - Interface gráfica para o daemon de impressão LPRng
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>printtool</literal> - Ferramenta de administração de impressoras
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>psptools</literal> - Ferramentas para impressoras PostScript e
+dispositivos
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rlpr</literal> -Um utilitário para impressão do ldp sem usar o
+/etc/printcap
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wip</literal> - Pacote de para ploters gráficos com alta qualidade de
+saída
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="aplic-l-texto"><info><title>Texto</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>1a2ps</literal> - Conversor GNU de "tudo para PostScript" e impressão
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>abc2ps</literal> - Traduz arquivos de descrição de música ABC para
+PostScript
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>acroread</literal> - Adobe Acrobat Reader: Visualizador de arquivos
+Portable Document Format
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>aspell</literal> - Uma substituição mais inteligente para o
+verificador ortográfico ispell
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>brazilian-conjugate</literal> - Conjugador de verbos Portugues do
+Brasil
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>catdoc</literal> - Conversor de arquivos MS-Word para TeX ou texto
+plano
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>colortail</literal> - tail que colore os padrões que conferem
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cost</literal> - Ferramenta de pós processamento SGML de propósito
+geral
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>debiandoc-sgml</literal> -DTD DebianDoc SGML e ferramentas de
+formatação
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>docbook</literal> - DTD SGML para a documentação de software
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dog</literal> - Substituição avançada para o cat
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>figlet</literal> - Cria palavras usando tabelas de caracteres ASCII
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>flip</literal> - Converte arquivos de texto entre os formatos DOS e
+Unix
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ghostview</literal> - Um visualizador PostScript para o X11
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gnuhtml2latex</literal> - Um Script Perl que converte arquivos html em
+latex
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gs-aladdin</literal> - Interpretador PostScript com suporte a X11 e
+preview svgalib
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gsfonts</literal> - Fontes para o interpretador ghostscript
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gs</literal> - Interpretador PostScript com suporte a X11 e preview
+svgalib
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gtkdiff</literal> - Ferramenta de comparação de texto gráfica
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>help2man</literal> - Gerador automático de páginas de manual
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>html2ps</literal> - Conversor HTML para PostScript
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>iamerican</literal> - Um dicionário de Inglês Americano para o ispell
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ibrazilian</literal> - Um dicionário do Brasileiro para o ispell
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ispell</literal> - International Ispell (um corretor ortográfico
+interativo)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>less</literal> - Programa de paginação de arquivos, parecido com o
+more
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>lincredits</literal> - Gera versões com melhor formatação do arquivo
+CREDITS do Linux
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>lookup</literal> - utilitário para procurar arquivos de texto
+rapidamente e com muitos recursos
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>lout</literal> - Sistema de Digitação, uma alternativa ao (La)TeX
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>lv</literal> - Um poderoso visualizador de arquivos multi-língua
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>lyx</literal> - Processador de textos de alto nível
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mgdiff</literal> - clone do xdiff
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mswordview</literal> - Um conversor de arquivos MS Word 97/2000 para
+HTML
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ndtpd</literal> - Servidor CD-ROM books
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>par</literal> - Reformatador de parágrafo
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>pbm2ppa</literal> - Conversor PBM para PPA
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>perlsgml</literal> - Ferramentas para construir e analizar DTDs SGML
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>perspic</literal> - Programa indexador de textos e localizador de
+palavras
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>poster</literal> - Faz grandes posters de páginas PostScript
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ppd-gs</literal> - Arquivos de descrição de impressora PostScript para
+o Ghostscript
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>pstotext</literal> - Extrai textos de arquivos PostScript e PDF
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>recode</literal> - Utilitário de conversão do conjunto de caracteres
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>sgml-base</literal> - Utilitário para manter o arquivo de catálogo
+SGML
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>sgml-data</literal> - Dados comuns entre DTDs SGML e entities
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>sgml-tools</literal> - Conversores SGML somente par ao DTD linuxdoc
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>spell</literal> - Spell GNU, um clone do "spell" para Unix
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>sufary</literal> - Ferramentas de procura em texto completo usando uma
+array de sufixos
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>sufary-tcltk</literal> - Interface Tcl/Tk para o SUFARY
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tcs</literal> - Tradutor de conjunto de caracteres
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tkdiff</literal> - Utilitário "diff" gráfico
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>trueprint</literal> - Imprime de forma organizada o código fonte
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>word2x</literal> - Traduz arquivos do Word em texto ascii ou LaTeX
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xpdf</literal> - Visualizador do formato Portable Document Format para
+X11
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xpw</literal> - O processador de textos Patético
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="aplic-l-kernel"><info><title>Kernel</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>adjtimex</literal> - Mostra e configura variáveis do kernel
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>autofs</literal> - Montador automático baseado no kernel para Linux
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>kernellab</literal> - Gerencia facilmente configurações do kernel em
+muitas máquinas
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>kernel-package</literal> - Scripts de construção do pacote de kernel
+para a Debian
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>knl</literal> - Obtém/ajusta parâmetros de imagem do kernel
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ksymoops</literal> - Interpreta mensagens oops e de erro do kernel
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>psmisc</literal> - Utilitários que utilizam o sistema de arquivos
+/proc
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>systune</literal> - Ajuste fino do kernel através do sistema de
+arquivos /proc
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="aplic-l-notebooks"><info><title>Notebooks</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>apmd</literal> - Utilitário para gerenciamento avançado de energia
+(APM) em Notebooks
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>toshutils</literal> - Utilitários para Note Books Toshiba
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wmbattery</literal> - Mostra o status/carga da bateria (D)
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="aplic-l-cdrec"><info><title>Gravação de CD/DVD</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>cdrdao</literal> - Grava CDs de audio ou tipos de dados diversos no
+disco de uma só vez
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cdrecord</literal> - Ferramenta de gravação de CD/DVD
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cdrtoaster</literal> - Interface gráfica em Tcl/Tk para gravar CD-ROMs
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cdwrite</literal> - Ferramenta de gravação de CD para unidades CD-R
+Orange Book
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cdlabelgen</literal> - Gera capa e fundo para CDs
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gtoaster</literal> - Gnome Toaster, uma interface gráfica para
+gravação de CD's
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mkhybrid</literal> - Cria imagens do sistema de arquivos CD-ROM
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mkisofs</literal> - Cria imagens do sistema de arquivos CD-ROM
+ISO-9660
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tkcdlayout</literal> - Programa simples em X para criar capas de CDs
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xcdroast</literal> - Software de gravação de CDs baseado no X
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="aplic-l-cluster"><info><title>Computação Paralela/Clusters</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>lam2-dev</literal> - Ativa processamento paralelo entre múltiplos
+processadores
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mpich</literal> - Sistema de computação Paralela
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>pvm</literal> - Máquina Virtual Paralela - binários e bibliotecas
+compartilhadas
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="aplic-l-handhelds"><info><title>PalmTop / Palm Pilot / Computadores de Mão</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>imgvtopgm</literal> -Utilitário de conversão de imagem PalmPilot/III
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>jpilot</literal> -Um utilitário GTK para modificar o conteúdo de seus
+Bancos de Dados no Pilot.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>lpkg</literal> - Carregador do pacotes de mensagens para o PDA Newton
+MessagePad
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>lx-gdb</literal> - Mostra e carrega banco de dados do palmtop da HP
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>lxtools</literal> -Permite o gerenciamento de arquivos em palmtops
+HP100/200LX
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>palm-doctoolkit</literal> - Ferramentas de texto eletrônico para
+usuários PalmPilot
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>picasm</literal> -Assembler para a familia de controladores Microchip
+PIC
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>pilot-link</literal> -Ferramentas para se comunicar com um Pilot 3COM
+PDA através de uma porta serial
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>pilot-manager</literal> - PalmPilot PIM, UI, e gerenciador de conduíte
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>pilot-template</literal> - Gerador de código para programas do
+PalmPilot
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>pilrc</literal> - Compilador de recursos e editor do PalmPilot/PalmIII
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>pose</literal> - Emulador PalmOS
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>prc-tools</literal> - GCC, GDB, binutils, etc.  para o PalmPilot e
+Palm III
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>pyrite</literal> - Kit da plataforma de comunicação Palm Computing(R)
+para Python
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="aplic-l-backup"><info><title>Backup</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>afbackup-client</literal> - Sistema de backup cliente-servidor (lado
+Cliente)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>afbackup</literal> - Sistema de backup cliente-servidor (lado
+Servidor)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>amanda-client</literal> - Advanced Maryland Automatic Network Disk
+Archiver (Cliente)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>amanda-common</literal> - Advanced Maryland Automatic Network Disk
+Archiver (Libs)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>amanda-server</literal> - Advanced Maryland Automatic Network Disk
+Archiver (Servidor)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>floppybackup</literal> - Backup em disquetes usando diversos tipos de
+formatos de disquetes
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>taper</literal> - Utilitário de backup do sistema em tela cheia
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tob</literal> - Programa pequeno e poderoso orientado a backup de
+tapes
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="aplic-l-uteis"><info><title>Utilitários</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>afio</literal> - Programa de manipulação de arquivos
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>aish</literal> - Conversor ish/base64/uuencoded_file
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>alien</literal> - Instala pacotes da Red Hat, Stampede e Slackware com
+o dpkg
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ascii</literal> - Mostra aliases e tabela para caracteres ASCII
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>autoconf</literal> - Script de configuração automático
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>autogen</literal> - Gerador automático de arquivos texto
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>automake</literal> - Gerador automático de scripts Makefile
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>autoproject</literal> - Cria um esqueleto de pacote fonte para um novo
+programa
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>barcode</literal> - Cria código de barras no formato .ps
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>binstats</literal> - Ferramenta de estatística para programas
+instalados
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>birthday</literal> - Alerta sobre eventos pendentes no login
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>blinkd</literal> -Pisca LEDS do teclado para uma secretária eletrônica
+ou máquina de fax
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>bl</literal> - Pisca seqüencialmente os LEDs do teclado
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>bsdmainutils</literal> - Mais utilitários do 4.4BSD-Lite
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>btoa</literal> - Converte binário para ascii e vice versa
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cbb</literal> - Um clone do Quicken
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>chase</literal> - Segue um link simbólico e mostra seu arquivo alvo
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dgpsip</literal> - Corrige localização GPS com o sinal DGPS da
+internet
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>diffstat</literal> - produz gráficos das alterações introduzidas por
+um arquivo diff
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dotfile-bash</literal> - Gerador de arquivos dotfile, módulo para o
+bash
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dotfile</literal> -Configuração fácil de programas populares através
+da interface Tcl/Tk
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dotfile-elm</literal> - Gerador de arquivos dotfile, módulo para o elm
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dotfile-fvwm1</literal> - Gerador de arquivos dotfile, módulo para o
+fvwm1
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dotfile-fvwm2</literal> - Gerador de arquivos dotfile, módulo para o
+fvwm2
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dotfile-ipfwadm</literal> - Gerador de arquivos dotfile, módulo para o
+ipfwadm
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dotfile-procmail</literal> - Gerador de arquivos dotfile, módulo para
+o procmail
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dotfile-rtin</literal> - Gerador de arquivos dotfile, módulo para o
+rtin
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dotfile-tcsh</literal> - Gerador de arquivos dotfile, módulo para o
+tcsh
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dump</literal> - 4.4bsd dump e restore para sistema de arquivos ext2
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>fastjar</literal> - Utilitário de criação de arquivos Jar
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>fdupes</literal> - Identifica arquivos duplicados residindo nos
+diretórios especificados
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>fdutils</literal> - Utilitários de disquete do Linux
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>file</literal> - Determina o tipo de arquivo usando números "mágicos"
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gcal</literal> - Mostra um calendário
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gettext</literal> - Utilitários de internacionalização da GNU
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gfloppy</literal> - Interface gráfica para a formatação de disquetes
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>git</literal> - Ferramentas interativas da GNU
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>glimpse</literal> - Ferramentas de indexação e localização em tela
+cheia
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gmc</literal> - Midnight Commander - Um poderoso gerenciador de
+arquivos - Versão gnome
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gmemusage</literal> -Mostra um gráfico detalhando a utilização de
+memória por cada processo
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gnotes</literal> - Applet de notas Yellow sticky para o GNOME
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gnucash</literal> - Um programa de tratamento de finanças pessoais
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gpm</literal> - Daemon de mouse para modo texto
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>grep-dctrl</literal> - Versão do gru para informações de pacotes da
+Debian
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gtktalog</literal> - Catálogo de Disco
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>guitar</literal> - Ferramenta de extração/visualização de arquivos em
+GTK+
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gxset</literal> - Interface gráfica baseada em GTK a ferramenta de
+linha de comando xset
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>hextype</literal> - Hexdump de acordo com o formato de saída do antido
+Debug do DOS
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>iraf</literal> - Redução de Imagem e Facilidade de Análise
+(astronomia/imagem)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>jdresolve</literal> - Alternativa rápida ao logresolve do Apache
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>kbd</literal> - Utilitários de fonte e mapas de teclado para o console
+do Linux
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>launcher</literal> - Seleciona que programa carregar de acordo com a
+extensão
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>lavaps</literal> - Uma lâmpada de lava dos processos atualmente
+executados
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>leave</literal> - Te lembra quando deve deixar o sistema (muito útil
+para quem gosta do Linux :-)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>linuxlogo</literal> - Logotipo do Sistema Colorido em ANSI
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>loadwatch</literal> - Executa um programa usando somente ciclos
+ociosos da CPU
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>makepatch</literal> - gera/aplica arquivos de patch com mais
+funcionalidade que o diff plano
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mc-common</literal> - Arquvios comuns par ao mc e gmc
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mc</literal> - Midnight Commander - Um poderoso gerenciador de
+arquivos
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mirrordir</literal> - Duplica um diretório fazendo um mínimo de
+modificações
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ncdt</literal> - Mostra a árvore de diretórios
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>netplan</literal> - Servidor de rede para o "plan"
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>nwrite</literal> - Substituição avançada ao comando write
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>patch</literal> - Aplica um arquivo gerado pelo diff a um original
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>pcal</literal> - Cria calendários imprimíveis via PostScript sem o X
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>perforate</literal> - Utilitários para salvar espaço em disco
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>pgrep</literal> - utilitário grep que usa expressões regulares
+compatíveis com o Perl
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>plan</literal> - Planejamento diário baseado em X/Motif (compilado
+dinamicamente com LessTif)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>pointerize</literal> - Utilitários de internacionalização baseado no
+gettext
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>popularity-contest</literal> - Vote em seus pacotes favoritos
+automaticamente
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>pydf</literal> - Clone df com saída em cores
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rtlinux</literal> - Linux em Tempo Real
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>set6x86</literal> -Ferramenta de configuração para CPUs Cyrix/IBM
+5x86/6x86
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>splitvt</literal> - Executa dois programas em uma tela dividida
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>statserial</literal> - Mostra a linha de status da porta serial do
+modem
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>strace</literal> - Um traçador de chamadas do sistema
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>sunclock</literal> - Mostra porção iluminada do planeta terra
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>symlinks</literal> - procura/modifica links simbólicos
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tleds</literal> - Pisca LEDs do teclado indicando Envio e Recebimento
+de pacotes da rede
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tree</literal> - Mostra a árvore de diretórios em cores
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>units</literal> - conversor entre diferentes unidades de sistema
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>uptimed</literal> - Utilitário para registrar seus maiores tempos de
+utilização do sistema
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>urlview</literal> - Extrai URLs de textos
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>vold</literal> - Daemon de volume para unidades de CDROM
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>vrms</literal> - Virtual Richard M.  Stallman (mostra mensalmente uma
+lista de pacotes não-livres instalados em seu sistema)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wipe</literal> - Deleção segura de arquivos (sem possibilidade de
+recuperação)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xcal</literal> - Um calendário gráfico com alarmes de alerta
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xplanet</literal> - Cria imagens do planeta Terra
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xvmount</literal> - Pequeno utilitário gráfico para a montagem de
+dispositivos pelos usuários
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="aplic-l-compactadores"><info><title>Compactadores/Descompactadores/Arquivadores</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>bzip2</literal> - Um ótimo compactador de arquivos texto - utilitários
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gzip</literal> - Compactador de arquivos de formato .gz
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>lha</literal> - Compactador de arquivos no formato .lha ou .  lzh
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>lzop</literal> - Um compactador em tempo real
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ncompress</literal> - Compress / Uncompress original para a
+transferência de News, etc.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rar</literal> - Compactador/Descompactador de arquivos .rar
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tar</literal> - Utilitário de arquivamento de arquivos
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>unarj</literal> - Descompactador de arquivos .arj
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>unzip</literal> - Descompactador de arquivos .zip
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>zoo</literal> - Manipula arquivos compactados no formato .zoo
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="aplic-l-x10"><info><title>Dispositivos X-10 (Controle de eletrodomésticos e aparelhos via PC)</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>bottlerocket</literal> - Utilitário para controle de dispositivos X10
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>heyu</literal> - Comunicação X10 de dois pontos para o CM11A
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wmx10</literal> - Permite controlar uma casa através de módulos x10.
+Este aplicativo permite controlar até 8 dispositivos por casa (D)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>x10</literal> - Opera módulos de controle de força elétrica
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>X10x10-automate</literal> - Interface gráfica para o utilitário de
+controle de força de linha X10
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xtend</literal> - Daemon monitor de status X10
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="aplic-l-outros"><info><title>Outros</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>acs</literal> - Simulador de Circuito Al's
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>avra</literal> - Montador para microcontroladoras AVR Atmel
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>avrp</literal> - Programador para microcontroladoras AVR Atmel
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>chipmunk-log</literal> - Ferramenta de captura esquemática e ambiente
+de simulação
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cracklib2-dev</literal> - Uma biblioteca de checagem de senhas
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cracklib2</literal> - Uma biblioteca de checagem de senhas
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cracklib-runtime</literal> - Uma biblioteca de checagem de senhas
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>display-dhammapada</literal> - Mostra versos do Dhammapada
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>fastdnaml</literal> - [Biologia] Uma ferramenta para construção de
+árvores da seqüência do DNA
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>geda</literal> - GNU EDA -- Software de design eletrônico
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gwave</literal> - Um visualizador waveform para simuladores spice
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>megahal</literal> - Um simulador de conversação que pode aprender
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mime-support</literal> - Arquivos MIME "mime.types" e "mailcap", e
+programas
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>nitpic</literal> - Simulador para o Microcontrolador Microchip
+PIC16C84
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>pcb</literal> - Programa de Design de Placas de Circuito Impresso
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>puzzle</literal> - [Biology] Reconstruction of phylogenetic trees by
+maximum likelihood
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>readseq</literal> - [Biologia] Conversão entre formatos em seqüência
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>savant</literal> - Analizador VHDL 93 livre da University de
+Cincinnati's
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>screen</literal> - Um gerenciador de tela com a emulação de terminal
+VT100/ANSI
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>seaview</literal> - [Biologia] Um editor de alinhamento em múltiplas
+seqüências
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>simulpic</literal> - Simulador de dispositivo PIC Microchip
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>smtm</literal> - Show Me The Money is a configurable Perl/Tk stock
+ticker program
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>spim</literal> - Emulador MIPS R2000/R3000
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xacc-smotif</literal> -Um programa de tratamento de finanças pessoais
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xacc</literal> - Um programa de tratamento de finanças pessoais
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xcircuit</literal> - Esquemas de circuitos de desenho de quase tudo
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="aplic-l-admin"><info><title>Administração do Sistema/Servidor</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>acct</literal> - Utilitários para manipulação de contas
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>anacron</literal> - Programa estilo cron para sistemas que ficam pouco
+tempo ligado
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>aptitude</literal> - Interface baseada em console para o programa apt
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>at</literal> - Executa tarefas em determinado horário
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>autolog</literal> - Finaliza a conexão de usuários ociosos
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>chrony</literal> - Sincroniza o relógio de seu computador através de
+servidores de hora na Internet/Rede
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>crashme</literal> - Testes estressantes para testar a estabilidade do
+sistema operacional
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cron</literal> - Executa aplicativos em data/horas determinadas
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>defrag</literal> - Desfragmentador de sistemas de arquivos ext2 minix
+xiafs
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dialdcost</literal> - Estimador de custo e painel do controle X para o
+DIALD
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>divine</literal> - Detecção automática de configuração IP para
+notebooks
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>eql</literal> - Ferramenta de balanceamento de carga para conexões
+seriais
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ext2resize</literal> - Modifica o tamanho de um sistema de arquivos
+ext2
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>fakeroot</literal> - Oferece um falso ambiente root
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>falselogin</literal> - Shell de login Falso
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>fbgetty</literal> - Um console getty com e sem capacidade fremebuffer
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>fbset</literal> - Programa de manutenção de dispositivos Framebuffer
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>genromfs</literal> - É um equivalente ao mkfs para o sistema de
+arquivos rom
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gnome-apt</literal> - Interface gráfica do Gnome para o apt
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gnome-print</literal> - Arquitetura de impressão para o GNOME
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gpart</literal> - Analiza tabela de partição do PC e procura por
+partições perdidas
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gps</literal> - PS gráfico usando GTK
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gtop</literal> - Variante gráfico do comando top
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>libpam-ldap</literal> - Módulo de Autenticação Plugável permitindo
+interfaces LDAP
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>libpam-pwdfile</literal> - Módulo PAM permitindo autenticação no
+estilo /etc/passwd
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>libpam-smb</literal> - Módulo PAM permitindo interface com o Samba
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>linuxconf-i18n</literal> - Arquivos de idiomas internacionais para o
+Linuxconf
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>linuxconf</literal> - Um poderoso kit para administração do Linux
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>linuxconf-x</literal> - Interface X para o Linuxconf
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>loadlin</literal> - Um gerenciador de inicialização do Linux através
+do DOS
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>lockvc</literal> - Programa para bloquear seu console do Linux
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>logcheck</literal> - Envia anomalias nos arquivos de log do sistema
+por E-mail ao administrador
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>logrotate</literal> - Utilitário para rotação de Logs
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>lshell</literal> - Impõe limites no shell para proteger a integridade
+do seu sistema
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>lsof-2.2</literal> - Lista arquivos/portas utilizadas
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>makepasswd</literal> - Gera senhas encriptadas compatíveis com as
+usadas no /etc/passwd
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>members</literal> - Mostra os membros de um grupo; por padrão, todos
+os membros
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>menu</literal> - Oferece funções de atualização de menus para alguns
+aplicativos
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mon</literal> - Monitora o computador/serviços/tudo e alerta sobre
+problemas
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>netenv</literal> - Configura seu sistema para diferentes ambientes de
+rede
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>pwgen</literal> - Gerador automático de senha
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>sac</literal> - Contas de Login
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>slay</literal> - Destrói todos os processos do usuário
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>slocate</literal> - Uma substituição segura ao comando locale
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>stopafter</literal> - Destrói processos após um dado tempo
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>sudo</literal> - Oferece privilégios limitados do root para usuários
+específicos
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>suidmanager</literal> - Gerencia Permissões de arquivos
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>syslog-ng</literal> - Próxima geração do daemon de LOGs
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>syslog-summary</literal> - Resume o conteúdo de um arquivo de log do
+sistema
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tcpquota</literal> - Um pacote de monitoração de discagem/masquerading
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>timeoutd</literal> - Um daemon de timeout flexível
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tmpreaper</literal> - Limpa arquivos de diretórios de acordo com sua
+idade
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tripwire</literal> - Um verificador de integridade de arquivos e
+diretórios
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ttylog</literal> - Logger para porta serial
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ttysnoop</literal> - TTY Snoop - Permite espionar suas conexões
+telnet+serial
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>uutraf</literal> - Um analizador de tráfego UUCP e estimador de custo
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>vlock</literal> - Programa de bloqueio para o console virtual
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>whowatch</literal> - Ferramenta de monitoração em tempo real dos
+logins e processos de usuários
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xezmlm</literal> - Uma ferramenta de configuração de lista de
+discussões para o X Window
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xlogmaster</literal> - Um programa para monitorar arquivos de log
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xwatch</literal> - Monitora arquivos de log e mostra novos logs em uma
+janela do X
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="aplic-l-rede"><info><title>Rede</title></info>
+<section xml:id="aplic-l-rede-netbios"><info><title>NetBios</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>gnomba</literal> - Navegador Samba para GNOME
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gnosamba</literal> - Utilitário de configuração gráfico para o Samba
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>linpopup</literal> - Versão do programa Winpopup para Xwindow,
+executado através do Samba
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>samba</literal> - Um servidor NetBios/LanManager completo para Unix
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>smb2www</literal> - Um cliente de rede Windows que é acessível através
+de um navegador web
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>smbclient</literal> -Um cliente NetBios/LanManager para Unix
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>smbfs</literal> - Comandos para a montagem e desmontagem de sistemas
+de arquivos NetBeui no Linux
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>smb-nat</literal> - Ferramenta de análise de rede SMB
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>swat</literal> - Ferramenta de Administração Web do Samba
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tkchooser</literal> - Permite a comunicação e visualização de recursos
+em redes NetBios / outras
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tksmb</literal> - Navegador de rede SMB/Netbios (Samba e Windows)
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="aplic-l-rede-netware"><info><title>NetWare</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>ipxripd</literal> - Daemon IPX RIP/SAP
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ipx</literal> - Utilitários para configura a interface ipx do kernel
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ncpfs</literal> - Utilitários para utilização de recursos de
+servidores NetWare
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="aplic-l-rede-macintosh"><info><title>Macintosh</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>macgate</literal> - Programas user-space para o roteamento IP no
+Appletalk
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>netatalk</literal> - Binários Appletalk do usuários
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="aplic-l-rede-mon"><info><title>Sniffers/Monitoração/Diagnóstico de rede TCP/IP</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>arpwatch</literal> - Monitor de atividade na estação Ethernet/FDDI.
+Verifica o mapeamento de endereços ARP/Ethernet e envia modificações ao
+administrador da rede
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>bigbrother</literal> - Um monitor do sistema e rede
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>bing</literal> - Teste de banda Empirical stochastic
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>echoping</literal> - Uma pequena ferramenta de testes para servidores
+TCP
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>epan</literal> - Analizador de protocolo ethernet offline
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ethereal</literal> - Analizador de tráfego da Rede
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>fakebo</literal> - Programa para detectar scans do Back Orifice e
+NetBus
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>fping</literal> - Envia pacotes ICMP ECHO_REQUEST a computadores da
+rede
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>hunt</literal> - Sniffer de pacotes avançado, hijacking e detecção de
+conexões intrusas
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>icmpinfo</literal> - Interpreta mensagens ICMP
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ipgrab</literal> - Utilitário no estilo do Tcpdump que mostra
+informações detalhadas do cabeçalho IP
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>iplogger</literal> - Registro de eventos TCP e ICMP
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ippl</literal> - Registrador de protocolos IP
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>iptraf</literal> - Monitor de rede IP Colorido e Interativo
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>jail</literal> -Programa de registro de seção ICMP
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>karpski</literal> -Analizador ethernet e sniffer
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mrtg</literal> - Multi Router Traffic Grapher
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mtr</literal> - Ncurses em tela cheia ou ferramenta traceroute para o
+X11 tool
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>netdiag</literal> - Diagnósticos da Rede (trafshow, strobe, netwatch,
+statnet, tcpspray, tcpblast)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ngrep</literal> - grep para o tráfego na rede
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>nmap</literal> - Ferramenta de Exploração da rede e scanner de
+segurança
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>nsmon</literal> - Verificador de servidor intranet/internet
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>nstreams</literal> - Um analizador de saída do tcpdump
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ntop</literal> - Mostra o uso da rede em um formato semelhante ao top
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>saint</literal> - Secure Administrator's Integrated Network Tool -
+checagem e scanner de rede
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>satan</literal> - Security Auditing Tool for Analysing Networks
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>shaper</literal> - Traffic Shaper para Linux
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>sniffit</literal> - Sniffer de pacotes e ferramenta de monitoração
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>snort</literal> - Um sniffer/logger flexível que detecta ataques
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tcpdump</literal> - Uma poderosa ferramenta para monitoração da rede e
+aquisição de dados
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tcpslice</literal> - Extrai peças de e/ou através dos arquivos do
+tcpdump
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>traceroute</literal> - Traça a rota do tráfego de pacotes através de
+uma rede TCP/IP
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xnetload</literal> - Um Xload para os pacotes das interfaces de rede
+taxas/totais
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="aplic-l-rede-servidores"><info><title>Servidores de serviços TCP/IP - Utilitários dos Servidores</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>aolserver-postgres</literal> - Driver PostgreSQL para o Servidor da
+AOL
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>aolserver</literal> - Servidor Web da AOL
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>apache</literal> - Servidor HTTP versável e de alta performance
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>arpd</literal> - Um daemon ARP user-space
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>bind</literal> - Servidor de Nomes de Domínio da Internet
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>bnetd</literal> -Servidor Battle.Net para sistemas baseados no Unix
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>boa</literal> - Um servidor Web leve e de alta performance
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>bootparamd</literal> - Servidor de parâmetros de Inicialização
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>bootp</literal> - Servidor bootp/DHCP
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cern-httpd</literal> - O Servidor CERN HTTP (World-Wide Web)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cfingerd</literal> - Daemon seguro do finger configurável
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cucipop</literal> - Daemon POP3 da Cubic Circle
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dante-server</literal> - Servidor SOCKS
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>darxite</literal> - Daemon que transfere arquivos via FTP/HTTP em
+segundo plano
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dhcp</literal> - Servidor DHCP para designação automática de endereços
+IP
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dhttpd</literal> - Servidor Web com segurança mínima.  Não possui
+suporte a cgi-bin!
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>diald</literal> - Daemon de discagem em demanda para PPP e SLIP
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dnrd</literal> - Daemon Proxy DNS
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>efingerd</literal> - Outro daemon finger para unix capaz de ajuste
+fino em sua saída.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ffingerd</literal> - Um daemon seguro do finger
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>fingerd</literal> - Servidor de dados da conta do usuário
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>fspd</literal> - Servidor do Protocolo de Serviços de Arquivos (FSP)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ftpd</literal> - Servidor FTP
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>icecast-server</literal> - Streaming de sons MP3
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ipip</literal> - Daemon de Encapsulamento IP sobre IP
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ircd</literal> - Daemon do servidor IRC
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ircd-dalnet</literal> - DALnet IRCd (Servidor IRC)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mrouted</literal> - Daemon de roteamento Multicast para conectar um
+Mbone a sua subrede
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>net-acct</literal> - Daemon de conta IP em modo do usuário
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>netobjd</literal> - O daemon agente de objetos da rede
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ntp</literal> - Daemon e utilitários para controle completo de
+data/hora na rede - NTP v4
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>oidentd</literal> - Substituição ao daemon do ident
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>omirr</literal> - Daemon online do Mirror
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>pftp</literal> - Programa FTP rápido (SEM AUTENTICAÇÃO!)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>pidentd</literal> - Servidor do protocolo TCP/IP IDENT
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>pkspxy</literal> - Daemon do servidor proxy do PGP Public Key
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>pptpd</literal> - Servidor Point to Point Tunneling
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>proftpd</literal> - Daemon FTP versátil com suporte a host virtuais
+(multihomed)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>qtss</literal> - Servidor de streaming multimídia
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rbootd</literal> - Daemon de inicialização remota
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rinetd</literal> - Servidor de redirecionamento da Internet
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>routed</literal> - Daemon de roteamento da Rede
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>roxen</literal> - O Servidor Web Roxem Challenger
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rrlogind</literal> - Daemon de Login para o Serviço de Cable Modem
+Road Runner
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rsh-server</literal> - Servidores rsh
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rusersd</literal> - Servidor de usuários logados
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rwhod</literal> - Servidor de status do sistema
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>snmpd</literal> - Agente UCD SNMP (Simple Network Management Protocol)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>snmptraplogd</literal> - Um daemon configurável snmp trap
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>socks4-server</literal> - Servidor SOCKS4 para o proxy de serviços
+baseados em IP através de um firewall
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>squidclient</literal> - Extrai URLs via linha de comando que se
+comunica com o squid
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>squid</literal> - Servidor Proxy de Alto desempenho/Cache de Objetos
+da Internet
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>talkd</literal> - Daemon de monitoração que permite receber avisos de
+talk de outros usuários
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>telnetd</literal> - O servidor telnet
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tftpd</literal> - Servidor do protocolo Internet trivial file transfer
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ugidd</literal> - Daemon de mapeamento de UID NFS
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>umich-ldapd</literal> - Servidor LDAP
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>urlredir</literal> - Utilitário para permitir o redirecionamento de
+url ao squid
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>vncserver</literal> - Sevidor VNC
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wu-ftpd</literal> - Um servidor FTP poderoso e muito usado
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xtell</literal> - Programa simples de mensagens cliente e servidor
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>zebra</literal> - Um daemon de roteamento GPL com capacidades
+BGP/OSPF/RIP
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="aplic-l-rede-clientes"><info><title>Clientes de serviços TCP/IP - Utilitários dos Clientes</title></info>
+<para>
+Atenção: Clientes de serviços comuns de rede estão listados na seção Internet
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>bootpc</literal> - Cliente bootp
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dante-client</literal> - Oferece um wrapper SOCKS para usuários
+através de um firewall
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>darxite-applet</literal> - Applet do painel do que permite DnD através
+do Netscape
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>darxite-control</literal> - Controle gnome para o darxite
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>darxstat</literal> - Cliente Darxite que mostra o estado atual
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dhcpcd</literal> - Cliente DHCP para configuração automática de redes
+IPv4
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dhcp-client</literal> - Cliente DHCP
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>finger</literal> - Programa que visualiza dados da conta do usuário
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>hx</literal> - Cliente Unix para o Hotline
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>icecast-client</literal> - Streaming de MP3
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>nis</literal> - Cliente e daemons para o Serviço de Informações da
+Rede (NIS)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>pump</literal> - Cliente DHCP/BOOTP simples para kernels da série
+2.2.x
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rexec</literal> - Cliente de execução remota para um servidor exec
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rsh-client</literal> - Clientes rsh
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rstat-client</literal> - Um cliente para rstatd
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>socks4-clients</literal> - Contém ferramentas modificadas para operar
+via Socks4 como rtelnet, rftp
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>svncviewer</literal> - Cliente VNS para SVGA (tela cheia)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>telnet</literal> - O cliente telnet
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>whois</literal> - Cliente whois
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="aplic-l-rede-outros"><info><title>Outros</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>amd</literal> - Montador automático 4.4BSD
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>asp</literal> - Descobre endereço IP atual de computadores que
+receberam endereço IP dinâmico
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>authbind</literal> - Permite programas não-root fazerem o bind() para
+portas baixas
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>bridge</literal> - Programa de controle e documentação para ponte nos
+kernels 2.0
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dhcp-dns</literal> - Atualizações DNS dinâmicas para o DHCP
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dhcp-relay</literal> - Relay para o DHCP
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>diskless</literal> - Gera a estrutura de arquuivos NFS para uma
+inicialização sem disco rígido
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>diskless-image-secure</literal> - Arquivos requeridos para imagem raíz
+segura do NFS
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>diskless-image-simple</literal> - Arquivos requeridos para imagem raíz
+simples do NFS
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dlint</literal> - Verifica informações de zonas dns usando chamadas no
+servidor de nomes
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dns-browse</literal> - Interfaces para a procura DNS
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dnscvsutil</literal> - Mantém arquivos de zonas DNS sob o controle do
+CVS
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dnsutils</literal> - Utilitários para a manipulação de servidores DNS
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dnswalk</literal> - Verifica detalhes da zona dns usando chamadas no
+servidor de nomes
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dsgtk</literal> - Mostra o status da transferência do Darxite em uma
+janela GTK
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dxclip</literal> - Monitor da área de transferência do Darxite baseado
+em GTK
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dxpref</literal> - Interface GTK para modificar as preferências do
+Darxite
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>eggdrop</literal> - Robô de IRC Avançado
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>fmirror</literal> - Programa mirror ftp
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>frad</literal> - Ferramentas Frame Relay para controladores DLCI/SDLA
+nos kernels 2.0/2.1
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>fsh</literal> - Execução rápida de comandos remotos através de
+rsh/ssh/lsh
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>fsp</literal> - Utilitários clientes para o Protocolo de Serviços de
+Arquivos (FSP)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ftpgrab</literal> - Utilitário para mirror de arquivos
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ftpmirror</literal> - Faz mirror da árvore de diretórios com FTP
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ftpwatch</literal> - Envia notificações de modificações em servidores
+ftp remotos
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gfcc</literal> - Centro de controle GTK firewall
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gnome-network</literal> - Utilitários de rede gnome
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ipac</literal> - Configuração de contas IP e ferramenta de estatística
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>iproute</literal> - Ferramentas profissionais para controlar a rede
+nos kernels 2.2.x
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>iroffer</literal> - Bot de IRC
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>madoka</literal> - Proxy IRC pessoal, com registro de seções e
+programa de bot (pirc)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mason</literal> - Cria interativamente um firewall de filtragem de
+pacotes no Linux
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>masqdialer</literal> - Daemon Cliente-servidor para controle de links
+PPP
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mclient</literal> - Cliente para o sistema de controle PPP MasqDialer
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>midentd</literal> - Substituição ao identd com suporte a masquerading
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mirror</literal> - Programa de mirror em Perl para manter os arquivos
+do FTP sempre atualizados.  Excelente controle e gerenciamento
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>netboot</literal> - Inicialização de um computador sem disco rígido
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>netleds-applet</literal> - Applet de LEDs de rede para gnome
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>netmask</literal> - ajuda a configurar a máscara de rede
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>netselect</literal> - Seleciona o servidor mais rápido automaticamente
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>nfs-common</literal> - Arquivos de suporte NFS comuns a cliente e
+servidores
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>nhfsstone</literal> - Programa de benchmark para NFS
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>npadmin</literal> - Obtém detalhes sobre uma impressora com
+características SNMP
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>nscd</literal> - Biblioteca GNU C: Daemon de Cache do Serviço de Nomes
+(manipulação de senhas e chamadas de grupos para serem usados com serviços
+lentos como NIS, NIS+ ou LDAP)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>nslint</literal> - Verifica a integridade de arquivos DNS
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>pkspxyc</literal> - Daemon do cliente proxy do PGP Public Key
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>plum</literal> - Proxy IRC, registro de seções e programa bot (pirc)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>pppoe</literal> - Driver do PPP sobre Ethernet
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>queso</literal> - Guess the operating system of a remote machine
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rdate</literal> - Ajusta a data do sistema através de um computador
+remoto
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rdist</literal> - Distribuição de arquivos remotos cliente e servidor
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>redir</literal> - Redireciona conexões TCP
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rlinetd</literal> - Substituição ao inetd com muitas características
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rstatd</literal> - Mostra informações de tempo de execução em máquinas
+remotas
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rsync</literal> - Programa de cópia rápida de arquivos (como rcp)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ruptime</literal> - Mostra status do host de máquinas locais
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rusers</literal> - Mostra quem está logado em máquinas na rede local
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rwalld</literal> - Escreve mensagens aos usuários logados atualmente
+no computador
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rwall</literal> - Envia uma mensagem a usuários logados em um
+computador
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rwho</literal> - Mostra quem está logado em máquinas locais
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>sliplogin</literal> - Ferramenta para se conectar a uma interface de
+rede serial
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>slirp</literal> - Emulador SLIP/PPP usando uma conta shell dial up
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>snarf</literal> - Capturador de URL via linha de comando
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>snmp</literal> - Aplicativos UCD SNMP (Simple Network Management
+Protocol)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>socket</literal> - Ferramenta de soquete de múltiplos propósitos
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>stone</literal> - Repetidor de pacotes TCP/IP na camada do aplicativo
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tcputils</literal> - Utilitários para programação TCP em shell scripts
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tn5250</literal> - Emulador telnet 5250 para acessar um IBM AS/400
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>umich-ldap-utils</literal> - Utilitários LDAP
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>uucp</literal> - Programa UUCP (Unix to Unix Copy)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wmppp.app</literal> - Um monitor PPP e de carga da rede com o visual
+do NeXTStep
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wmppxp</literal> - Um console PPxP para Window Maker (D)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xinetd</literal> - Substituição ao inetd com muitos avanços
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>zone-file-check</literal> - Verificador de sintaxe para arquivos de
+zona do BIND
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+</section>
+
+<section xml:id="aplic-l-developer"><info><title>Debian Developer</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>bug</literal> - Ferramenta para Relatório de Falhas que faz interface
+com o Debian Bug Tracking System
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dbuild</literal> - Ferramenta para criar pacotes binários da Debian
+através dos fontes da Debian
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>debbugs</literal> - O bug tracking system baseado no ativo Debian BTS
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>debhelper</literal> - programas úteis para debian/rules
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>debian-keyring</literal> - Chaves do GnuPG (e do obsoleto PGP) de
+Desenvolvedores da Debian
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>debian-test</literal> -Scripts usados para executar testes em um
+sistema Debian instalado
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>debmake</literal> - Ferramenta para criação de pacotes Debian e
+automatizar a geração de binários
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>devscripts</literal> - Scripts para deixar a vida de um maintainer de
+pacotes Debian mais fácil
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dh-make</literal> - Ferramenta para criação de pacotes para o
+debhelper
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dpkg-cross</literal> - Ferramentas para cross compiling de pacotes
+Debian
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dupload</literal> - Utilitário para o envio de pacotes Debian
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>lintian</literal> - Verificador de pacotes Debian
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>reportbug</literal> - Permite relatar bugs na distribuição Debian
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>theme-converters</literal> - Converte temas do
+WindowMaker/GTK+/Sawmill para arquivos .deb
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="aplic-l-diag"><info><title>Status do Sistema/Diagnóstico/Benchmarch</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>bonnie</literal> - Medidor de Performance do sistema de arquivos
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>bonnie++</literal> - Programa de teste do desempenho do disco rígido
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gmemusage</literal> -Mostra um gráfico detalhando a utilização de
+memória por cada processo
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>grmonitor</literal> - Monitor Gráfico de Processos
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>linuxinfo</literal> - Mostra informações extendidas do sistema
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>loadmeter</literal> - Meditor de carga atrativo para X11
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>procmeter3</literal> - Monitor de status do sistema baseado em X
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>qps</literal> - Monitor de processos baseado em Qt
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wmcpu</literal> - Mostra o status da CPU/ Swap/Memória e o tempo de
+execução do sistema (D)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wmfire</literal> - Mostra a carga da CPU como chamas (D)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wmloadavg</literal> - Mede a média de carga do sistema (D)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wmmon</literal> - Monitora carga da CPU e carga média do sistema
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wmmount</literal> - Utilitário de montagem e ferramenta de monitoração
+do espaço livre, estilo NeXTStep
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wmsysmon</literal> - Monitora a memória, carga da CPU, swap, tempo de
+execução do sistema, I/O dos discos, e interrupções de hardware (D)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xengine</literal> - Ferramenta de Benchmarking
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xmcpustate</literal> - Mostra carga da CPU/Swap/Memória/Rede
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xmem</literal> - Monitor de memória para o X
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xosview</literal> - Monitor do sistema baseado em X
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xsysinfo</literal> - Mostra alguns dos parâmetros do kernel de forma
+gráfica
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>zcav</literal> - Testa a taxa de leitura de um disco rígido em
+diferentes trilhas
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="aplic-l-criptografia"><info><title>Criptografia</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>fsh</literal> - Execução rápida de comandos sob rsh/ssl/lsh
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gnupg</literal> - Programa de criptografia Open PGP (compatível com
+PGP 5.0)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gpgp</literal> - Interface gráfica para o gpg
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gs-pdfencrypt</literal> - Oferece suporte para visualizar arquivos PDF
+criptografados
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>lynx-ssl</literal> - Lynx com suporte a SSL (https)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>nessusd</literal> - Daemon do nessus
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>nessus-plugins</literal> - Plugins do nessus
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>nessus</literal> - Segurança em rede
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>openssl</literal> - Secure Sockets Layer
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ssh</literal> - Secure Shell
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>sshwrap</literal> - Encriptação simples de serviço TCP usando TLS/SSL
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>telnetd-ssl</literal> - Daemon do Telnet com suporte a SSL
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>telnet-ssl</literal> - Telnet com suporte a SSL
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tkpgp</literal> -Um script em Tcl/Tk script que serve como um shell
+gráfico para o PGP e GnuPG
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xpdf-i</literal> - Visualizador PDF para o X com suporta a decriptação
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+</section>
+
+</chapter>

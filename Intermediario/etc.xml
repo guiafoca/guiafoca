@@ -1,0 +1,823 @@
+<!-- Converted by db4-upgrade version 1.0 -->
+<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="etc"><info><title>Principais arquivos de configuração do diretório <filename>/etc</filename></title></info>
+<para>
+Este capítulo descreve a função, parâmetros e exemplos de utilização de alguns
+arquivos/diretórios de configuração em <filename>/etc</filename>.  Estes
+arquivos estão disponíveis por padrão na instalação básica do
+<command>GNU/Linux</command>, o que assegura um máximo de aproveitamento deste
+capítulo.  Não serão descritos aqui arquivos de configuração específicos de
+servidores ou daemons (com exceção do <command>inetd</command>).
+</para>
+<section xml:id="etc-alternatives"><info><title>Diretório <filename>/etc/alternatives</filename></title></info>
+<para>
+Este diretório contém links para diversos aplicativos padrões utilizados pelo
+sistema.  Dentre eles são encontrados links para o <filename>editor</filename>
+do sistema e o <filename>xterm</filename> padrão usado pelo sistema.
+</para>
+<para>
+Por exemplo, se você quiser usar o editor <command>jed</command> ao invés do
+<command>ae</command> ou <command>vi</command>, remova o link
+<filename>editor</filename> com o comando <literal>rm editor</literal>,
+localize o arquivo executável do <command>jed</command> com <literal>which
+jed</literal> e crie um link para ele <literal>ln -s /usr/bin/jed
+editor</literal>.  De agora em diante o editor padrão usado pela maioria dos
+aplicativos será o <command>jed</command>.
+</para>
+</section>
+
+<section xml:id="etc-devpts"><info><title>Arquivo <filename>/etc/default/devpts</filename></title></info>
+<para>
+Este arquivo contém algumas configurações para os pseudo terminais em
+<filename>/dev/pts</filename>.
+</para>
+</section>
+
+<section xml:id="etc-rcs"><info><title>Arquivo <filename>/etc/default/rcS</filename></title></info>
+<para>
+Contém variáveis padrões que alteram o comportamento de inicialização dos
+scripts em <filename>/etc/rcS.d</filename>
+</para>
+<para>
+Por exemplo, se quiser menos mensagens na inicialização do sistema, ajuste o
+valor da variável <filename>VERBOSE</filename> para <literal>no</literal>.
+</para>
+<para>
+OBS: Somente modifique aquilo que tem certeza do que está fazendo, um valor
+modificado incorretamente poderá causar falhas na segurança de sua rede ou no
+sistemas de arquivos do disco.
+</para>
+</section>
+
+<section xml:id="etc-config"><info><title>Arquivo <filename>/etc/console-tools/config</filename></title></info>
+<para>
+Este arquivo contém configurações padrões do pacote <systemitem role="package">console-tools</systemitem> para as fontes de tela e mapas de
+teclado usados pelo sistema.  A fonte de tela é especificada neste arquivo (as
+fontes disponíveis no sistema estão localizadas em
+<filename>/usr/share/consolefonts</filename>).
+</para>
+<para>
+Os arquivos de mapa de teclados estão localizados no diretório
+<filename>/usr/share/keymaps/</filename>.
+</para>
+</section>
+
+<section xml:id="etc-menu-methods"><info><title>Diretório <filename>/etc/menu-methods</filename></title></info>
+<para>
+Este diretório contém uma lista de arquivos que são executados pelo programa
+<command>update-menu</command> para criar os menus dos programas.
+</para>
+</section>
+
+<section xml:id="etc-menu-translate"><info><title>Arquivo <filename>/etc/menu-methods/translate_menus</filename></title></info>
+<para>
+Este arquivo permite fazer a tradução de nomes de menus, identificação ou
+títulos usados no ambiente gráfico.
+</para>
+</section>
+
+<section xml:id="etc-networks"><info><title>Diretório <filename>/etc/network</filename></title></info>
+<para>
+Este diretório contém as configurações das interfaces (placas) de rede do
+sistema e outras opções úteis para a configuração/segurança da rede.
+</para>
+</section>
+
+<section xml:id="etc-network-interfaces"><info><title>Arquivo <filename>/etc/network/interfaces</filename></title></info>
+<para>
+Este é o arquivo de configuração usado pelos programas <command>ifup</command>
+e <command>ifdown</command>, respectivamente para ativar e desativas as
+interfaces de rede.
+</para>
+<para>
+O que estes utilitários fazem na realidade é carregar os utilitários
+<command>ifconfig</command> e <command>route</command> através dos argumentos
+passados do arquivo <filename>/etc/network/interfaces</filename>, permitindo
+que o usuário iniciante configure uma interface de rede com mais facilidade.
+</para>
+<para>
+Abaixo um exemplo do arquivo <filename>interfaces</filename> é o seguinte:
+</para>
+<screen>
+iface eth0 inet static
+   address 192.168.1.1
+   netmask 255.255.255.0 
+   network 192.168.1.0
+   broadcast 192.168.1.255
+</screen>
+<para>
+As interfaces e roteamentos são configurados na ordem que aparecem neste
+arquivo.  Cada configuração de interface inicia com a palavra chave
+<literal>iface</literal>.  A próxima palavra é o nome da interface que deseja
+configurar (da mesma forma que é utilizada pelos comandos
+<command>ifconfig</command> e <command>route</command>).  Você pode também usar
+<literal>IP aliases</literal> especificando <filename>eth0:0</filename> mas
+tenha certeza que a interface real (<filename>eth0</filename>) é inicializada
+antes.
+</para>
+<para>
+A próxima palavra especifica a familia de endereços da interface; Escolha
+<literal>inet</literal> para a rede TCP/IP, <literal>ipx</literal> para
+interfaces IPX e <literal>IPv6</literal> para interfaces configuradas com o
+protocolo IPV6.
+</para>
+<para>
+A palavra <literal>static</literal> especifica o método que a interface será
+configurada, neste caso é uma interface com endereço estático (fixo).
+</para>
+<para>
+Outros métodos e seus parâmetros são especificados abaixo (traduzido da página
+do arquivo <command>interfaces</command>):
+</para>
+<variablelist>
+<varlistentry>
+<term>O método <emphasis>loopback</emphasis></term>
+<listitem>
+<para>
+É usado para configurar a interface <emphasis>loopback</emphasis> (lo) IPv4.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>O método <emphasis>static</emphasis></term>
+<listitem>
+<para>
+É usado para configurar um endereço IPv4 fixo para a interface.  As opções que
+podem ser usadas com o métodos <emphasis>static</emphasis> são as seguintes
+(opções marcadas com * no final são requeridas na configuração):
+</para>
+<variablelist>
+<varlistentry>
+<term>address <emphasis>endereço</emphasis> *</term>
+<listitem>
+<para>
+Endereço IP da Interface de rede (por exemplo, 192.168.1.1).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>netmask <emphasis>máscara</emphasis> *</term>
+<listitem>
+<para>
+Máscara de rede da Interface de rede (por exemplo, 255.255.255.0).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>broadcast <emphasis>endereço</emphasis></term>
+<listitem>
+<para>
+Endereço de Broadcast da interface (por exemplo, 192.168.1.255).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>network <emphasis>endereço</emphasis></term>
+<listitem>
+<para>
+Endereço da rede (por exemplo, 192.168.0.0).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>gateway <emphasis>endereço</emphasis></term>
+<listitem>
+<para>
+Endereço do gateway padrão (por exemplo, 192.168.1.10).  O gateway é o endereço
+do computador responsável por conectar o seu computador a outra rede.  Use
+somente se for necessário em sua rede.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>O método <emphasis>dhcp</emphasis></term>
+<listitem>
+<para>
+Este método é usado para obter os parâmetros de configuração através de um
+servidor DHCP da rede através das ferramentas: <command>dhclient</command>,
+<command>pump</command> (somente Kernels 2.2.x) ou <command>dpcpcp</command>
+(somente kernels 2.0.x e 2.2.x)
+</para>
+<variablelist>
+<varlistentry>
+<term>hostname <emphasis>nome</emphasis></term>
+<listitem>
+<para>
+Nome da estação de trabalho que será requisitado.  (pump, dhcpcd)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>leasehours <emphasis>leasttime</emphasis></term>
+<listitem>
+<para>
+Lease time preferida em horas (pump)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>leasetime <emphasis>leasetime</emphasis></term>
+<listitem>
+<para>
+Lease time preferida em segundos (dhcpcd)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>vendor <emphasis>vendedor</emphasis></term>
+<listitem>
+<para>
+Identificador do vendedor (dhcpcd)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>client <emphasis>identificação</emphasis></term>
+<listitem>
+<para>
+Identificação do cliente (dhcpcd)
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+Exemplo:
+</para>
+<screen>
+iface eth0 inet dhcp
+ leasehours 6
+ client estacao 10
+</screen>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>O método <emphasis>bootp</emphasis></term>
+<listitem>
+<para>
+Este método pode ser usado para obter um endereço via <command>bootp</command>:
+</para>
+<variablelist>
+<varlistentry>
+<term>bootfile <filename>arquivo</filename></term>
+<listitem>
+<para>
+Diz ao servidor para utilizar <filename>arquivo</filename> como arquivo de
+inicialização
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>server <emphasis>endereço</emphasis></term>
+<listitem>
+<para>
+Especifica o endereço do servidor <command>bootp</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>hwaddr <emphasis>endereço</emphasis></term>
+<listitem>
+<para>
+Usa <emphasis>endereço</emphasis> como endereço de hardware no lugar do
+endereço original.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+Algumas opções se aplicam a todas as interfaces e são as seguintes:
+</para>
+<variablelist>
+<varlistentry>
+<term>noauto</term>
+<listitem>
+<para>
+Não configura automaticamente a interface quando o <command>ifup</command> ou
+<command>ifdown</command> são executados com a opção <literal>-a</literal>
+(normalmente usada durante a inicialização ou desligamento do sistema).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>pre-up <literal>comando</literal></term>
+<listitem>
+<para>
+Executa o <literal>comando</literal> antes da inicialização da interface.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>up <literal>comando</literal></term>
+<listitem>
+<para>
+Executa o <literal>comando</literal> após a interface ser iniciada.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>down <literal>comando</literal></term>
+<listitem>
+<para>
+Executa o <literal>comando</literal> antes de desativar a interface.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>pre-down <literal>comando</literal></term>
+<listitem>
+<para>
+Executa o <literal>comando</literal> após desativar a interface.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+Os comandos que são executados através das opções <emphasis>up</emphasis>,
+<emphasis>pre-up</emphasis> e <emphasis>down</emphasis> podem aparecer várias
+vezes na mesma interface, eles são executados na seqüência que aparecem.  Note
+que se um dos comandos falharem, nenhum dos outros será executado.  Você pode
+ter certeza que os próximos comandos serão executados adicionando <literal>||
+true</literal> ao final da linha de comando.
+</para>
+</section>
+
+<section xml:id="etc-networks-options"><info><title>Arquivo <filename>/etc/networks/options</filename></title></info>
+<para>
+Este arquivo contém opções que serão aplicadas as interfaces de rede durante a
+inicialização do sistema.  Este arquivo é lido pelo script de inicialização
+<filename>/etc/init.d/network</filename> que verifica os valores e aplica as
+modificações apropriadas no kernel.
+</para>
+</section>
+
+<section xml:id="etc-pam"><info><title>Diretório <filename>/etc/pam.d</filename></title></info>
+<para>
+Este diretório possui arquivos de configuração de diversos módulos PAM
+existentes em seu sistema.
+</para>
+</section>
+
+<section xml:id="etc-ppp"><info><title>Diretório <filename>/etc/ppp</filename></title></info>
+<para>
+Contém arquivos de configuração usados pelo daemon pppd para fazer uma conexão
+com uma rede PPP externa, criados manualmente ou através do
+<command>pppconfig</command>.
+</para>
+</section>
+
+<section xml:id="etc-security"><info><title>Diretório <filename>/etc/security</filename></title></info>
+<para>
+Este diretório contém arquivos para controle de segurança e limites que serão
+aplicados aos usuários do sistema.  O funcionamento de muitos dos arquivos
+deste diretório depende de modificações nos arquivos em
+<filename>/etc/pam.d</filename> para habilitar as funções de controle, acesso e
+restrições.
+</para>
+</section>
+
+<section xml:id="etc-security-access"><info><title>Arquivo <filename>/etc/security/access.conf</filename></title></info>
+<para>
+É lido no momento do login do usuário e permite definir quem terá acesso ao
+sistema e de onde tem permissão de acessar sua conta.  O formato deste arquivo
+são 3 campos separados por <literal>:</literal>, cada linha contendo uma regra
+de acesso.
+</para>
+<para>
+O primeiro campo deve conter o caracter <literal>+</literal> ou
+<literal>-</literal> para definir se aquela regra permitirá (+) ou bloqueará(-)
+o acesso do usuário.
+</para>
+<para>
+O segundo campo deve conter uma lista de logins, grupos, usuário@computador ou
+a palavra <literal>ALL</literal> (confere com tudo) e <literal>EXCEPT</literal>
+(excessão).
+</para>
+<para>
+O terceiro campo deve conter uma lista de terminais tty (para logins locais),
+nomes de computadores, nomes de domínios (iniciando com um
+<literal>.</literal>), endereço IP de computadores ou endereço IP de redes
+(finalizando com <literal>.</literal>).  Também pode ser usada a palavra
+<literal>ALL</literal>, <literal>LOCAL</literal> e <literal>EXCEPT</literal>
+(atinge somente máquinas locais conhecidas pelo sistema).
+</para>
+<para>
+Abaixo um exemplo do <filename>access.conf</filename>
+</para>
+<screen>
+# Somente permite o root entrar em tty1
+#
+-:ALL EXCEPT root:tty1
+
+# bloqueia o logins do console a todos exceto whell, shutdown e sync.
+#
+-:ALL EXCEPT wheel shutdown sync:console
+
+# Bloqueia logins remotos de contas privilegiadas (grupo wheel).
+#
+-:wheel:ALL EXCEPT LOCAL .win.tue.nl
+
+# Algumas contas não tem permissão de acessar o sistema de nenhum lugar:
+#
+-:wsbscaro wsbsecr wsbspac wsbsym wscosor wstaiwde:ALL
+
+# Todas as outras contas que não se encaixam nas regras acima, podem acessar de 
+# qualquer lugar
+</screen>
+</section>
+
+<section xml:id="etc-securith-limits"><info><title>Arquivo <filename>/etc/security/limits.conf</filename></title></info>
+<para>
+Defini limites de uso dos recursos do sistema para cada usuário ou grupos de
+usuários.  Os recursos são descritos em linhas da seguinte forma:
+</para>
+<screen>
+#&lt;dominio&gt;          &lt;tipo&gt;  &lt;item&gt;  &lt;valor&gt;
+</screen>
+<para>
+O <literal>domínio</literal> pode ser um nome de usuário, um grupo
+(especificado como <literal>@grupo</literal>) ou o coringa
+<literal>*</literal>.
+</para>
+<para>
+O <literal>tipo</literal> pode ser <literal>soft</literal> para o limite
+mínimos e <literal>hard</literal> para o limite máximo.  O campo
+<literal>item</literal> pode ser um dos seguintes:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>core</literal> - limita o tamanho do arquivo core (KB)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>data</literal> - tamanho máximo de dados (KB)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>fsize</literal> - Tamanho máximo de arquivo (KB)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>memlock</literal> - Espaço máximo de endereços bloqueados na memória
+(KB)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>nofile</literal> - Número máximo de arquivos abertos
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rss</literal> - Tamanho máximo dos programas residentes (KB)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>stack</literal> - Tamanho máximo de pilha (KB)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cpu</literal> - Tempo máximo usado na CPU (MIN)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>nproc</literal> - Número máximo de processos
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>as</literal> - Limite de espaço de endereços
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>maxlogins</literal> - Número máximo de logins deste usuário
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>priority</literal> - Prioridade que os programas deste usuário serão
+executados
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Abaixo um exemplo de arquivo <filename>/etc/security/limits.conf</filename>:
+</para>
+<screen>
+ 
+#&lt;dominio&gt;      &lt;tipo&gt;  &lt;item&gt;         &lt;valor&gt;
+
+*               soft    core            0
+*               hard    rss             10000
+@student        hard    nproc           20
+@faculty        soft    nproc           20
+@faculty        hard    nproc           50
+ftp             hard    nproc           0
+@student        -       maxlogins       4
+</screen>
+</section>
+
+<section xml:id="etc-crontab"><info><title>Arquivo <filename>/etc/crontab</filename></title></info>
+<para>
+Arquivo que contém a programação de programas que serão executados em
+horários/datas programadas.
+</para>
+<para>
+Veja <xref linkend="manut-cron"/> para mais detalhes sobre o formato deste
+arquivo e outras opções.
+</para>
+</section>
+
+<section xml:id="s28.16"><info><title>Arquivo <filename>/etc/fstab</filename></title></info>
+<para>
+Contém detalhes para a montagem dos sistemas de arquivos do sistema.  Veja
+<xref linkend="disc-fstab"/> para detalhes sobre o formato deste arquivo.
+</para>
+</section>
+
+<section xml:id="s28.17"><info><title>Arquivo <filename>/etc/group</filename></title></info>
+<para>
+Lista de grupos existentes no sistema.  Veja <xref linkend="cmdc-incluirgrupo"/> para mais detalhes sobre o formato deste arquivo.
+</para>
+</section>
+
+<section xml:id="etc-gshadow"><info><title>Arquivo <filename>/etc/gshadow</filename></title></info>
+<para>
+Senhas ocultas dos grupos existentes no sistema (somente o usuário
+<literal>root</literal> pode ter acesso a elas).  Use o utilitário
+<command>shadowconfig</command> para ativar/desativar o suporte a senhas
+ocultas.
+</para>
+</section>
+
+<section xml:id="s28.19"><info><title>Arquivo <filename>/etc/host.conf</filename></title></info>
+<para>
+Veja <xref linkend="rede-dns-a-hostconf"/>.
+</para>
+</section>
+
+<section xml:id="s28.20"><info><title>Arquivo <filename>/etc/hostname</filename></title></info>
+<para>
+Arquivo lido pelo utilitário <command>hostname</command> para definir o nome de
+sua estação de trabalho.
+</para>
+</section>
+
+<section xml:id="s28.21"><info><title>Arquivo <filename>/etc/hosts</filename></title></info>
+<para>
+Banco de dados DNS estático que mapeia o nome ao endereço IP da estação de
+trabalho (ou vice versa).  Veja <xref linkend="rede-dns-a-hosts"/> para mais
+detalhes sobre o formato deste arquivo.
+</para>
+</section>
+
+<section xml:id="s28.22"><info><title>Arquivo <filename>/etc/hosts.allow</filename></title></info>
+<para>
+Controle de acesso do wrapper TCPD que permite o acesso de determinadas de
+determinados endereços/grupos aos serviços da rede.  Veja <xref linkend="rede-seg-tcpd-a"/> para detalhes sobre o formato deste arquivo.
+</para>
+</section>
+
+<section xml:id="s28.23"><info><title>Arquivo <filename>/etc/hosts.deny</filename></title></info>
+<para>
+Controle de acesso do wrapper TCPD que bloqueia o acesso de determinados
+endereços/grupos aos serviços da rede.  Este arquivo é somente lido caso o
+<filename>/etc/hosts.allow</filename> não tenha permitido acesso aos serviços
+que contém.  Um valor padrão razoavelmente seguro que pode ser usado neste
+arquivo que serve para a maioria dos usuários domésticos é:
+</para>
+<screen>
+ALL: ALL
+</screen>
+<para>
+caso o acesso ao serviço não tenha sido bloqueado no
+<filename>hosts.deny</filename>, o acesso ao serviço é permitido.
+</para>
+<para>
+Veja <xref linkend="rede-seg-tcpd-d"/> para detalhes sobre o formato deste
+arquivo.
+</para>
+</section>
+
+<section xml:id="s28.24"><info><title>Arquivo <filename>/etc/hosts.equiv</filename></title></info>
+<para>
+Veja <xref linkend="rede-seg-tcpd-e"/>.
+</para>
+</section>
+
+<section xml:id="s28.25"><info><title>Arquivo <filename>/etc/inetd.conf</filename></title></info>
+<para>
+Veja <xref linkend="rede-servicos-inetd-c"/>.
+</para>
+</section>
+
+<section xml:id="etc-inittab"><info><title>Arquivo <filename>/etc/inittab</filename></title></info>
+<para>
+Este é o arquivo de configuração utilizado pelo programa
+<command>init</command> para a inicialização do sistema.  Para mais detalhes
+sobre o formato deste arquivo, consulte a página de manual do
+<emphasis>inittab</emphasis>.
+</para>
+</section>
+
+<section xml:id="etc-inputrc"><info><title>Arquivo <filename>/etc/inputrc</filename></title></info>
+<para>
+Este arquivo contém parâmetros para a configuração do teclado.  Veja o final da
+seção <xref linkend="cfg-acentuacao-t"/> e a página de manual do
+<emphasis>inputrc</emphasis> para mais detalhes.
+</para>
+</section>
+
+<section xml:id="etc-issue"><info><title>Arquivo <filename>/etc/issue</filename></title></info>
+<para>
+Contém um texto ou mensagem que será mostrada antes do login do sistema.
+</para>
+</section>
+
+<section xml:id="etc-issue-n"><info><title>Arquivo <filename>/etc/issue.net</filename></title></info>
+<para>
+Mesma utilidade do <filename>/etc/issue</filename> mas é mostrado antes do
+login de uma seção <command>telnet</command>.  Outra diferença é que este
+arquivo aceita os seguintes tipos de variáveis:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>%t</literal> - Mostra o terminal tty atual.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>%h</literal> - Mostra o nome de domínio completamente qualificado
+(FQDN).
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>%D</literal> - Mostra o nome do domínio NIS.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>%d</literal> - Mostra a data e hora atual.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>%s</literal> - Mostra o nome do Sistema Operacional.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>%m</literal> - Mostra o tipo de hardware do computador.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>%r</literal> - Mostra a revisão do Sistema Operacional.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>%v</literal> - Mostra a versão do Sistema Operacional.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>%%</literal> - Mostra um simples sinal de porcentagem (%).
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="s28.30"><info><title>Arquivo <filename>/etc/lilo.conf</filename></title></info>
+<para>
+Arquivo de configuração do gerenciador de partida <command>lilo</command>.
+Veja <xref linkend="boot-lilo"/> e <xref linkend="boot-lilo-exemplo"/>.
+</para>
+</section>
+
+<section xml:id="etc-login-d"><info><title>Arquivo <filename>/etc/login.defs</filename></title></info>
+<para>
+Definições de configuração para o pacote login
+</para>
+</section>
+
+<section xml:id="s28.32"><info><title>Arquivo <filename>/etc/modules</filename></title></info>
+<para>
+Veja <xref linkend="kern-arquivos-modules"/>.
+</para>
+</section>
+
+<section xml:id="s28.33"><info><title>Arquivo <filename>/etc/modules.conf</filename></title></info>
+<para>
+Veja <xref linkend="kern-arquivos-modulesconf"/>.
+</para>
+</section>
+
+<section xml:id="etc-motd"><info><title>Arquivo <filename>/etc/motd</filename></title></info>
+<para>
+Mostra um texto ou mensagem após o usuário se logar com sucesso no sistema.
+Também é usado pelo telnet, ftp, e outros servidores que requerem autenticação
+do usuário (nome e senha).
+</para>
+</section>
+
+<section xml:id="etc-mtab"><info><title>Arquivo <filename>/etc/mtab</filename></title></info>
+<para>
+Lista os sistemas de arquivos montados atualmente no sistema.  Sua função é
+idêntica ao <filename>/proc/mounts</filename>.
+</para>
+</section>
+
+<section xml:id="s28.36"><info><title>Arquivo <filename>/etc/networks</filename></title></info>
+<para>
+Veja <xref linkend="rede-dns-a-networks"/>.
+</para>
+</section>
+
+<section xml:id="etc-passwd"><info><title>Arquivo <filename>/etc/passwd</filename></title></info>
+<para>
+É o arquivo mais cobiçado por Hackers porque contém os dados pessoais do
+usuário como o login, uid, telefone e senha (caso seu sistema esteja usando
+senhas ocultas, a senha terá um <literal>*</literal> no lugar e as senhas reais
+estarão armazenadas no arquivo <filename>/etc/shadow</filename>).
+</para>
+</section>
+
+<section xml:id="etc-printcap"><info><title>Arquivo <filename>/etc/printcap</filename></title></info>
+<para>
+Banco de dados de configuração da impressora, usado por daemons de impressão
+como o <command>lpr</command> e <command>lprng</command>.
+</para>
+</section>
+
+<section xml:id="s28.39"><info><title>Arquivo <filename>/etc/protocols</filename></title></info>
+<para>
+Veja <xref linkend="rede-outros-protocols"/>.
+</para>
+</section>
+
+<section xml:id="s28.40"><info><title>Arquivo <filename>/etc/resolv.conf</filename></title></info>
+<para>
+Veja <xref linkend="rede-dns-a-resolv"/>.
+</para>
+</section>
+
+<section xml:id="serial-c"><info><title>Arquivo <filename>/etc/serial.conf</filename></title></info>
+<para>
+Configurações das portas seriais do sistema.  Veja a página de manual do
+<emphasis>serial.conf</emphasis> e a página de manual do utilitário
+<command>setserial</command> para detalhes de como configurar adequadamente a
+taxa de transmissão serial conforme seu dispositivo.
+</para>
+</section>
+
+<section xml:id="s28.42"><info><title>Arquivo <filename>/etc/services</filename></title></info>
+<para>
+Veja <xref linkend="rede-outros-services"/>.
+</para>
+</section>
+
+<section xml:id="etc-shadow"><info><title>Arquivo <filename>/etc/shadow</filename></title></info>
+<para>
+Este arquivo armazena as senhas criptografadas caso estiver usando o recurso de
+senhas ocultas.  Este arquivo somente pode ser lido pelo usuário
+<literal>root</literal>.
+</para>
+</section>
+
+<section xml:id="etc-shells"><info><title>Arquivo <filename>/etc/shells</filename></title></info>
+<para>
+Contém uma lista de interpretadores de comando (shells) válidos no sistema.
+</para>
+</section>
+
+<section xml:id="etc-syslog-c"><info><title>Arquivo <filename>/etc/syslog.conf</filename></title></info>
+<para>
+Contém configurações para definir o que será registrado nos arquivos de log em
+<filename>/var/log</filename> do sistema.  Veja a página de manual
+<emphasis>syslog.conf</emphasis> e dos programas <command>klog</command> e
+<command>syslogd</command> para entender o formato usado neste arquivo.
+</para>
+</section>
+
+<section xml:id="etc-timezones"><info><title>Arquivo <filename>/etc/timezone</filename></title></info>
+<para>
+Contém a sua localização para cálculo correto do seu fuso-horário local.
+</para>
+</section>
+
+</chapter>

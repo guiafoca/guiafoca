@@ -1,0 +1,417 @@
+<!-- Converted by db4-upgrade version 1.0 -->
+<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="inter"><info><title>Conectando seu computador a Internet</title></info>
+<para>
+Este capítulo descreve como configurar seu sistema para se conectar a Internet,
+navegar, enviar/receber mensagens, etc.
+</para>
+<section xml:id="inter-conectando"><info><title>Conectando-se a Internet</title></info>
+<section xml:id="inter-conectando-adsl"><info><title>Conectando através de ADSL</title></info>
+<para>
+A conexão através de banda larga em sistemas <command>Debian</command> é
+realizada através do programa <command>pppoeconf</command> ou modificando
+manualmente os arquivos de configuração em <filename>/etc/ppp</filename>.  Esta
+seção explicará como configurar a conexão em modo bridge e assume que você já
+tem o modem conectado e sua placa de rede configurada.  Para criar uma conexão
+internet através do <command>pppoeconf</command> entre como usuário root no
+sistema, digite <literal>pppoeconf</literal> e siga os passos de configuração:
+</para>
+<orderedlist numeration="arabic">
+<listitem>
+<para>
+Na primeira tela, ele perguntará se deseja que o modem seja detectado
+automaticamente.  Selecione sim.  O sistema procurará e detectará o modem no
+sistema (assegure-se que ele esteja ligado durante essa etapa).
+</para>
+</listitem>
+<listitem>
+<para>
+Ao detectar o modem siga adiante e informe o nome de usuário para conexão
+</para>
+</listitem>
+<listitem>
+<para>
+Em seguida informe a senha usada para autenticação
+</para>
+</listitem>
+<listitem>
+<para>
+Nas próximas telas, selecione o valor padrão para MTU e MSS (a não ser que seu
+provedor DSL solicite a alteração).
+</para>
+</listitem>
+<listitem>
+<para>
+Na tela sobre se a conexão deve ser iniciada na inicialização do sistema,
+selecione "Sim".
+</para>
+</listitem>
+</orderedlist>
+</section>
+
+<section xml:id="inter-conectando-ppp"><info><title>Conectando através de Internet Discada</title></info>
+<para>
+Para conectar usando internet discada é utilizada a placa de Fax-Modem.  A
+conexão através de sistemas <command>Debian</command> é fácil, e todo o
+trabalho de configuração pode ser feito através do programa
+<command>pppconfig</command> ou modificando manualmente os arquivos em
+<filename>/etc/ppp</filename>.  Para criar uma conexão internet através do
+<command>pppconfig</command>, entre como usuário root no sistema, digite
+<literal>pppconfig</literal> e siga os passos de configuração (esta
+configuração serve para usuários domésticos e assume que você possui o kernel
+com suporte a PPP):
+</para>
+<orderedlist numeration="arabic">
+<listitem>
+<para>
+No primeiro menu, escolha a opção <literal>Create</literal> para criar uma nova
+conexão.  As outras opções disponíveis são <literal>Change</literal> para
+modificar uma conexão a Internet criada anteriormente,
+<literal>Delete</literal> para apagar uma conexão.  A opção
+<literal>Quit</literal> sai do programa.
+</para>
+</listitem>
+<listitem>
+<para>
+Agora o sistema perguntará qual será o nome da conexão que será criada.  O nome
+<literal>provider</literal> é o padrão, e será usado caso digite
+<literal>pon</literal> para iniciar uma conexão internet sem nenhum argumento.
+</para>
+</listitem>
+<listitem>
+<para>
+O próximo passo é especificar como os servidores de nomes serão acessados.
+Escolha <literal>Static</literal> se não tiver nenhum tipo de rede local ou
+<literal>None</literal> para usar os servidores especificados no arquivo
+<filename>/etc/resolv.conf</filename>.
+</para>
+<para>
+Aperte a tecla <literal>TAB</literal> e tecle <literal>ENTER</literal> para
+seguir para o próximo passo.
+</para>
+</listitem>
+<listitem>
+<para>
+Agora digite o endereço do servidor DNS especificado pelo seu provedor de
+acesso.  Um servidor DNS converte os nomes como
+<literal>www.blablabla.com.br</literal> para o endereço IP correspondente para
+que seu computador possa fazer conexão.
+</para>
+<para>
+Tecle <literal>ENTER</literal> para seguir para o próximo passo.
+</para>
+</listitem>
+<listitem>
+<para>
+Você pode digitar um endereço de um segundo computador que será usado na
+resolução de nomes DNS.  Siga as instruções anteriores caso tiver um segundo
+servidor de nomes ou <literal>ENTER</literal> para continuar.
+</para>
+</listitem>
+<listitem>
+<para>
+Agora você precisará especificar qual é o método de autenticação usado pelo seu
+provedor de acesso.  O <emphasis>Password Autentication Protocol</emphasis> é
+usado pela maioria dos provedores de acesso.  Desta forma escolha a opção
+<literal>PAP</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Agora entre com o seu login no provedor de acesso, ou seja, o nome para acesso
+ao sistema que escolheu no momento que fez sua assinatura.
+</para>
+</listitem>
+<listitem>
+<para>
+Agora especifique a sua senha.
+</para>
+</listitem>
+<listitem>
+<para>
+O próximo passo será especificar a taxa de transmissão da porta serial do
+micro.  O valor de 115200 deve funcionar com todas as configurações mais
+recentes.
+</para>
+<para>
+Uma configuração serial DTE detalhada pode ser feita com a ferramenta
+<command>setserial</command>.
+</para>
+</listitem>
+<listitem>
+<para>
+Agora será necessário selecionar o modo de discagem usado pelo seu fax-modem.
+Escolha <literal>tone</literal> para linha digital e <literal>pulse</literal>
+se possuir uma linha telefônica analógica.
+</para>
+<para>
+Pressione <literal>TAB</literal> e tecle <literal>ENTER</literal> para
+prosseguir.
+</para>
+</listitem>
+<listitem>
+<para>
+Agora digite o número do telefone para fazer conexão com o seu provedor de
+acesso.
+</para>
+</listitem>
+<listitem>
+<para>
+O próximo passo será a identificação do seu fax-modem, escolha
+<literal>YES</literal> para que seja utilizada a auto-detecção ou
+<literal>NO</literal> para especificar a localização do seu fax-modem
+manualmente.
+</para>
+</listitem>
+<listitem>
+<para>
+Se você quiser especificar mais detalhes sobre sua configuração, como strings
+de discagem, tempo de desconexão, auto-discagem, etc., faça isto através do
+menu <literal>Advanced</literal>.
+</para>
+<para>
+Escolha a opção <literal>Finished</literal> para salvar a sua configuração e
+retornar ao menu principal.  Escolha a opção <literal>Quit</literal> para sair
+do programa.
+</para>
+</listitem>
+</orderedlist>
+<para>
+Pronto!  todos os passos para você se conectar a Internet estão concluídos,
+basta digitar <literal>pon</literal> para se conectar e <literal>poff</literal>
+para se desconectar da Internet.  Caso tenha criado uma conexão com o nome
+diferente de <literal>provider</literal> você terá que especifica-la no comando
+<command>pon</command> (por exemplo, <literal>pon provedor2</literal>).
+</para>
+<para>
+A conexão pode ser monitorada através do comando <command>plog</command> e os
+pacotes enviados/recebidos através do <command>pppconfig</command>.
+</para>
+<para>
+Para uma navegação mais segura, é recomendável que leia e compreenda alguns
+ítens que podem aumentar consideravelmente a segurança do seu sistema em <xref linkend="rede-seg"/>, <xref linkend="rede-seg-tcpd-a"/>, <xref linkend="rede-seg-tcpd-d"/>.  A seção <xref linkend="rede-dns-a-resolv"/> pode
+ser também útil.
+</para>
+</section>
+
+</section>
+
+<section xml:id="inter-navegando"><info><title>Navegando na Internet</title></info>
+<para>
+Existem diversos tipos de navegadores web para <command>GNU/Linux</command> e a
+escolha depende dos recursos que pretende utilizar (e do poder de processamento
+de seu computador).
+</para>
+<para>
+Para navegar na Internet com muitos recursos, você pode usar o navegador
+<command>Firefox</command>, ele suporta plug-ins, extensões adicionais, java,
+flash, etc.  Você também tem a escolha do <command>Mozilla</command> que
+inspirou a criação do <command>Netscape</command> e outros navegadores
+derivados.
+</para>
+<para>
+O <command>dillo</command> é uma boa alternativa para aqueles que desejam um
+navegador em modo gráfico, mas eles não tem suporte a Java e Frames.
+</para>
+<para>
+Os usuários e administradores de servidores que operam em modo texto e precisam
+de navegadores para testes, podem optar pelo <command>Lynx</command> ou o
+<command>links</command>.  
+Uma listagem mais detalhada e recursos requeridos por cada navegador podem ser 
+encontrados em <xref linkend="aplic-b-internet"/>. 
+</para>
+</section>
+
+
+<section xml:id="inter-emails-r"><info><title>Recebimento de E-Mails através do <command>fetchmail</command></title></info>
+<para>
+É o programa mais tradicional no recebimento de mensagens através dos serviços
+<emphasis>pop3</emphasis>, <emphasis>imap</emphasis>,
+<emphasis>pop2</emphasis>, etc.  no <command>GNU/Linux</command>.  Ele pega as
+mensagens de seu servidor <emphasis>pop3</emphasis> e as entrega ao MDA local
+ou nos arquivos de e-mails dos usuários do sistema em
+<filename>/var/mail</filename>
+</para>
+<para>
+Todo o funcionamento do <command>fetchmail</command> é controlado pelo arquivo
+<filename>~/.fetchmailrc</filename>.  Segue abaixo um modelo padrão deste
+arquivo:
+</para>
+<screen>
+ poll pop3.seuprovedor.com.br protocol pop3
+   user gleydson password sua_senha keep fetchall is gleydson here
+</screen>
+<para>
+Este arquivo é lido pelo <command>fetchmail</command> na ordem que foi escrito.
+Veja a explicação abaixo sobre o arquivo exemplo:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+A palavra <literal>poll</literal> especifica o servidor de onde suas mensagens
+serão baixadas, o servidor especificado no exemplo é
+<literal>pop3.seuprovedor.com.bt</literal>.  A palavra <literal>skip</literal>
+pode ser especificada, mas as mensagens no servidor especificado por
+<literal>skip</literal> somente serão baixadas caso o nome do servidor de
+mensagens for especificado através da linha de comando do
+<command>fetchmail</command>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>protocol</literal> é o protocolo que será usado para a transferência
+de mensagens do servidor.  O <command>fetchmail</command> utilizará a
+auto-detecção de protocolo caso este não seja especificado.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>user</literal> define o nome do usuário no servidor
+pop3.seuprovedor.com.br, que no exemplo acima é <literal>gleydson</literal>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>password</literal> define a senha do usuário
+<literal>gleydson</literal> (acima), especificada como
+<literal>sua_senha</literal> no exemplo.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>keep</literal> é opcional e serve para não apagar as mensagens do
+servidor após baixa-las (útil para testes e acesso a uma única conta de e-mail
+através de vários locais, como na empresa e sua casa por exemplo).
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>fetchall</literal> baixa todas as mensagens do provedor marcadas como
+lidas e não lidas.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>is gleydson here</literal> é um modo de especificar que as mensagens
+obtidas de <literal>pop3.seuprovedor.com.br</literal> do usuário
+<literal>gleydson</literal> com a senha <literal>sua_senha</literal> serão
+entregues para o usuário local <literal>gleydson</literal> no diretório
+<filename>/var/mail/gleydson</filename>.
+</para>
+<para>
+As palavras <literal>is</literal> e <literal>here</literal> são completamente
+ignoradas pelo <command>fetchmail</command>, servem somente para dar um tom de
+linguagem natural na configuração do programa e da mesma forma facilitar a
+compreensão da configuração.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Se possuir várias contas no servidor
+<literal>pop3.seuprovedor.com.br</literal>, não é necessário repetir toda a
+configuração para cada conta, ao invés disso especifique somente os outros
+usuários do mesmo servidor:
+</para>
+<screen>
+poll pop3.seuprovedor.com.br protocol pop3
+ user gleydson password sua_senha keep fetchall is gleydson here
+ user conta2 password sua_senha2 fetchall is gleydson here
+ user conta3 password sua_senha3 fetchall is gleydson here
+</screen>
+<para>
+Note que todos os e-mails das contas <literal>gleydson</literal>,
+<literal>conta2</literal> e <literal>conta3</literal> do servidor de mensagens
+<literal>pop3.seuprovedor.com.br</literal> são entregues ao usuário local
+<literal>gleydson</literal> (arquivo <filename>/var/mail/gleydson</filename>).
+</para>
+<para>
+Agora você pode usar um programa MUA como o <command>mutt</command> ou
+<command>pine</command> para ler localmente as mensagens.  O armazenamento de
+mensagens no diretório <filename>/var/mail</filename> é preferido pois permite
+a utilização de programas de notificação de novos e-mais como o
+<command>comsat</command>, <command>mailleds</command>,
+<command>biff</command>, etc.
+</para>
+<para>
+Também é possível utilizar um processador de mensagens ao invés do MTA para a
+entrega de mensagens.  O programa <command>procmail</command> é um exemplo de
+processador de mensagens rápido e funcional que pode separar as mensagens em
+arquivos de acordo com sua origem, destino, assunto, enviar respostas
+automáticas, listas de discussão, envio de arquivos através de requisição, etc.
+Veja <xref linkend="inter-procmail"/> para detalhes.
+</para>
+<para>
+Para mais detalhes sobre outras opções específicas de outros protocolos,
+checagem de mensagens, criptografia, etc, veja a página de manual do
+<command>fetchmail</command>.
+</para>
+<section xml:id="inter-procmail"><info><title>Processamento de mensagens através do procmail</title></info>
+<para>
+O processamento de mensagens pode ser usado para inúmeras finalidades, dentre
+elas a mais comum é separar uma mensagem em arquivos/diretórios de acordo com
+sua origem, prioridade, assuntos, destinatário, conteúdo, etc., programar
+auto-respostas, programa de férias, servidor de arquivos, listas de discussão,
+etc.
+</para>
+<para>
+O <command>procmail</command> é um programa que reúne estas funções e permitem
+muito mais, dependendo da habilidades e conhecimento das ferramentas
+<command>GNU/Linux</command> para saber integra-las corretamente.  Toda a
+operação do <command>procmail</command> é controlada pelo arquivo
+<filename>/etc/procmailrc</filename> e <filename>~/.procmailrc</filename>.
+Abaixo um modelo do arquivo <filename>~/.procmailrc</filename> usado para
+enviar todas as mensagens contendo a palavra <literal>GNU/Linux</literal> no
+assunto para o arquivo <filename>mensagens-linux</filename>:
+</para>
+<screen>
+PATH=/usr/bin:/bin:/usr/local/bin:
+MAILDIR=$HOME/Mail
+DEFAULT=$MAILDIR/mbox
+LOGFILE=$MAILDIR/log
+
+:0: 
+* ^Subject:.*Linux
+mensagens-linux
+</screen>
+<para>
+A variável de ambiente <filename>MAILDIR</filename> especifica o diretório que
+serão armazenadas as mensagens e logs das operações do
+<command>procmail</command>.  A variável <filename>DEFAULT</filename>
+especifica a caixa de correio padrão onde todas as mensagens que não se
+encaixam nas descrições do filtro do <filename>procmailrc</filename> serão
+enviadas.  A variável <filename>LOGFILE</filename> especifica o arquivo que
+registrará todas as operações realizadas durante o processamento de mensagens
+do <command>procmail</command>.
+</para>
+<para>
+O arquivo <filename>mensagens-linux</filename> é criado dentro do diretório
+especificado por <filename>MAILDIR</filename>.
+</para>
+<para>
+Para que o <command>procmail</command> entre em ação toda vez que as mensagens
+forem baixadas via <command>fetchmail</command>, é preciso modificar o arquivo
+<filename>.fechmailrc</filename> e incluir a linha <literal>mda
+/usr/bin/procmail -d %T</literal> no final do arquivo e retirar as linhas
+<literal>is [usuáriolocal] here</literal> para que o processamento das
+mensagens seja feita pelo MDA local (neste caso, o
+<command>procmail</command>).
+</para>
+<para>
+Se quiser que o <command>procmail</command> seja executado pelo MDA local,
+basta criar um arquivo <filename>~/.forward</filename> no diretório do usuário
+e incluir a linha <literal>exec /usr/bin/procmail</literal> (note que em
+algumas implementações do <command>exim</command>, o
+<command>procmail</command> é executado automaticamente caso um arquivo
+<filename>~/.procmailrc</filename> seja encontrado, caso contrário será
+necessário adicionar a linha "/usr/bin/procmail" ao arquivo
+<filename>~/.forward</filename> (somente <command>exim</command>).
+</para>
+<para>
+Para mais detalhes, veja a página de manual do <command>procmail</command>,
+<command>procmailrc</command> e HOWTOs relacionados com e-mails no
+<command>GNU/Linux</command>.
+</para>
+</section>
+
+</section>
+
+</chapter>

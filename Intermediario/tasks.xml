@@ -1,0 +1,296 @@
+<!-- Converted by db4-upgrade version 1.0 -->
+<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="tasks"><info><title>Executando tarefas diversas no Linux</title></info>
+<para>
+Este capítulo explica como realizar tarefas específicas no sistema, como gravar
+um CD, assistir filmes, etc.  Ele também contém nomes de programas recomendados
+tanto em modo texto como modo gráfico.
+</para>
+<section xml:id="tasks-cdwriting"><info><title>Gravando CDs e DVDs no Linux</title></info>
+<para>
+A gravação de CDs no <command>Linux</command> pode ser feita através dos
+programas <command>cdrecord</command> ou <command>CDRDAO</command> e a gravação
+de DVDs usando o <command>dvd+rw-tools</command>.  Neste capítulo vou explicar
+a gravação usando o <command>cdrecord</command> para gravar um CD de dados e
+audio e o <command>growisofs</command> para a gravação de DVDs de dados.
+Primeiro instale o <command>cdrecord</command>, <command>mkisofs</command>,
+<command>dvd+rw-tools</command> e <command>cdda2wav</command> em sua máquina
+(<literal>apt-get install cdrecord dvd+rw-tools mkisofs cdda2wav</literal>).
+</para>
+<section xml:id="tasks-cdwriting-data"><info><title>Gravando CDs / DVDs de dados</title></info>
+<para>
+O processo de gravação de um CD/DVD de dados é feito em 2 etapas: primeiro é
+gerado um arquivo ISO com o programa <command>mkisofs</command> que será a
+imagem exata do CD que será gravado e a gravação usando o
+<command>cdrecord</command> ou <command>growisofs</command> (DVD).  Caso ainda
+não tenha configurado seu gravador no <command>Linux</command> ou não tem
+certeza do seu funcionamento, veja <xref linkend="hardw-cfgdisp-cdwritter"/>.
+</para>
+<para>
+Vou assumir que os dados que deseja gravar estão no diretório
+<filename>/dados</filename>.  Primeiro gere o arquivo ISO:
+</para>
+<screen>
+cd /dados
+mkisofs -r -o dados.iso -J -V"CD_DADOS" .
+</screen>
+<para>
+Na linha acima, você permite que todos possam ler o CD alterando as permissões
+(<literal>-r</literal>), o arquivo de saída será <filename>dados.iso</filename>
+(<literal>-o <filename>dados.iso</filename></literal>), os nomes também terão o
+índice no formato Joliet (<command>Windows</command>) (<literal>-J</literal>),
+o nome de volume será <emphasis>CD_DADOS</emphasis>
+(<literal>-V"CD_DADOS"</literal>).  Foi colocado <literal>.</literal> para o
+diretório raíz porque estamos dentro do diretório que queremos gravar dados.
+Não us e "*" para especificar os arquivos, a não ser que queira que todos os
+arquivos do seus subdiretórios fiquem dentro do raíz do CD :-)
+</para>
+<para>
+Antes de gravar você pode testar se o conteúdo do CD está OK montando a imagem
+ISO:
+</para>
+<screen>
+mkdir /tmp/iso
+mount /dados/dados.iso /tmp/iso -o loop -t iso9660
+</screen>
+<para>
+Você poderá entrar no diretório <filename>/tmp/iso</filename> e ver como está o
+conteúdo do seu CD antes da gravação.  Qualquer modificação deverá ser feita no
+diretório <filename>/dados</filename> e depois gerar novamente o iso com
+<command>mkisofs</command>.  Desmonte o arquivo ISO antes de gravar o CD.
+</para>
+<para>
+Agora, para gravar um CD (750Mb) execute o comando:
+</para>
+<screen>
+cdrecord -v -dev=/dev/hdc -data /dados/dados.iso
+</screen>
+<para>
+O <literal>-v</literal> mostra a progressão da gravação.  Caso seu gravador de
+CD esteja configurado com emulação SCSI ou SCSI, o número passado como
+argumento a <literal>-dev</literal> deverá ser obtido pelo comando
+<literal>cdrecord -scanbus</literal> (por ex.  <literal>0,0,0</literal>).  A
+opção <literal>-data</literal> especifica o arquivo iso que contém os dados que
+serão gravados.
+</para>
+<para>
+Para gravar um DVD, execute o comando:
+</para>
+<screen>
+growisofs -Z /dev/hdc=/dados/dados.iso
+</screen>
+<para>
+Após isto seu CD ou DVD estará gravado e pronto para uso.
+</para>
+</section>
+
+<section xml:id="tasks-cdwriting-audio"><info><title>Gravando um CD de audio</title></info>
+<para>
+A gravação de um CD de audio se divide em 2 etapas: Extração das trilhas de
+audio para um diretório em formato <replaceable>wav</replaceable> e a gravação.
+Após inserir o CD de audio na unidade, a extração é feita pelo programa
+<command>cdda2wav</command> da seguinte forma:
+</para>
+<screen>
+mkdir /audio
+cd /audio
+cdda2wav -x -D/dev/cdrom -d99999 -S4 -Owav -B audio
+</screen>
+<para>
+A opção <literal>-x</literal> extrai usando máxima qualidade,
+<literal>-D/dev/cdrom</literal> diz qual é o dispositivo onde o CD de audio
+está inserido, <literal>-d99999</literal> diz a duração total da extração
+(99999 é um valor que garante a extração de TODO o CD), <literal>-S4</literal>
+diz que a velocidade de extração será de 4X, a <literal>-B audio</literal> diz
+para criar arquivos contendo as faixas seqüencialmente como
+<filename>audio01.wav</filename>, <filename>audio02.wav</filename>, etc.
+</para>
+<para>
+Após extrair, você deverá executar o comando:
+</para>
+<screen>
+cdrecord -v -dev=/dev/hdc -dao -useinfo *.wav
+</screen>
+<para>
+O comando acima usa o dispositivo gravador /dev/hdc para fazer a gravação do CD
+de audio.  O formato usado é o DAO (<literal>-dao</literal>), o que garante que
+não haverá intervalo entre as faixas de CD, útil em CDs ao vivo e que os
+arquivos <filename>*.inf</filename> contendo os dados das faixas serão usados
+para controlar a duração de cada uma (-useinfo *.wav).
+</para>
+<para>
+Se você quer gravar uma seleção de arquivos <filename>.wav</filename> ou
+<filename>.cdr</filename>, será preciso faze-lo em modo TAO (track at once),
+mantendo a pausa de 2 segundos entre as músicas.  Isto é feito pelo comando:
+</para>
+<screen>
+cdrecord -v -dev=/dev/hdc -pad -audio *.wav
+</screen>
+<para>
+Estamos dizendo para o <command>cdrecord</command> gravar diversos arquivos de
+audio (<literal>-audio *.wav</literal>) e preencher os intervalos dos arquivos
+de audio com zeros (<literal>-pad</literal>) pois nem sempre os arquivos tem o
+múltiplo de setores requeridos para a gravação de arquivos de audio.
+</para>
+</section>
+
+<section xml:id="tasks-cdwriting-cdcd"><info><title>Cópia de CD para CD no mesmo gravador</title></info>
+<para>
+A cópia de CD/DVD de dados para outro é feita em duas etapas: A extração do
+arquivo ISO e a gravação do CD.  Esse recurso é útil pela economia de tempo que
+proporciona e porque mantém características especiais do CD como setor de boot.
+</para>
+<para>
+Primeiro, extraia o conteúdo do CD/DVD em format raw com o comando:
+</para>
+<screen>
+dd if=/dev/cdrom of=/dados/arquivo.iso
+</screen>
+<para>
+Confira se no final o número de bytes conferem, isso diz que a extração foi
+feita com sucesso.  O parâmetro <literal>if=</literal> indica o arquivo de
+entrada e <literal>of=</literal> o arquivo de saída.  Depois disso grave o CD
+ou DVD com o comando:
+</para>
+<screen>
+(Para gravação de CD (750Mb)
+cdrecord -v -dev=/dev/hdc -data /dados/dados.iso
+
+(Para gravação de DVD)
+groisofs -Z /dev/hdc=/dados/dados.iso
+</screen>
+<para>
+Veja a explicação dos parâmetros em <xref linkend="tasks-cdwriting-data"/>.
+Note que você também poderá gravar o CD usando o comando <command>dd</command>:
+</para>
+<screen>
+dd if=/dados/arquivo.iso of=/dev/sr0
+</screen>
+</section>
+
+<section xml:id="tasks-cdwriting-massivewrite"><info><title>Gravação massiva de CDs</title></info>
+<para>
+Isso é feito pelo programa <command>cdcontrol</command> que permite a gravação
+de CDs paralelamente, sendo bastante útil para gerar CDs para install fests,
+distribuições comerciais em massa.  Ele mantém um relatório de CDs totais por
+unidade de disco e também de falhas, também permite a cópia de CDs de
+inicialização.  Ele está disponível em <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://cdcontrol.sourceforge.net/">http://cdcontrol.sourceforge.net/</link>.
+Ele também está disponível como pacote <filename>.deb</filename>
+(<literal>apt-get install cdcontrol</literal>).
+</para>
+</section>
+
+<section xml:id="tasks-cdwriting-cdfrommp3"><info><title>Gravação de CDs diretamente através de arquivos mp3 ou Ogg</title></info>
+<para>
+Utilize o aplicativo <command>mp3burn</command> para fazer isto.  Por exemplo:
+</para>
+<screen>
+mp3burn -o "-v -dev=/dev/hdc" *.mp3
+</screen>
+<para>
+A opção <literal>-o</literal> indica as opções que devem ser passadas ao
+<command>cdrecord</command>.  A opção <literal>-audio</literal> e
+<literal>-pad</literal> são adicionadas automaticamente.
+</para>
+</section>
+
+<section xml:id="tasks-cdwriting-backupcd"><info><title>Backup de dados para 1 ou mais CDs</title></info>
+<para>
+O programa <command>multicd</command> é a ferramenta que permite esta função.
+</para>
+</section>
+
+<section xml:id="tasks-cdwriting-graphicapps"><info><title>Aplicações gráficas para gravação de CDs</title></info>
+<para>
+Os seguintes aplicativos são interfaces gráficas e amigáveis que usam o
+<command>cdrecord</command>, <command>cdda2wav</command> e
+<command>mkisofs</command> para fazer a gravação de seus CDs.  Normalmente eles
+acrescentam uma carga maior para a máquina, mas se você gosta de uma interface
+amigável para fazer as coisas, ter animações, etc.  o preço que paga é a
+performance :-)
+</para>
+<para>
+Entre os principais programas, destaco os seguintes:
+<command>cdrtoaster</command>, <command>cdbakeoven</command>,
+<command>kreatecd</command>, <command>gcombust</command>.
+</para>
+</section>
+
+<section xml:id="tasks-cdwriting-cover"><info><title>Criar a capa de frente e verso do CD/DVD</title></info>
+<para>
+Capas de frente e verso podem ser produzidas com o
+<command>cdlabelgen</command>.
+</para>
+</section>
+
+</section>
+
+<section xml:id="tasks-cdwriting-rundivx"><info><title>Executando vídeos DIVX</title></info>
+<para>
+O programa mais recomendado é o <command>mplayer</command>.  Após instalar,
+execute o comando: <literal>mplayer -framedrop -vo xv arquivo.avi</literal>.  A
+opção <literal>-framedrop</literal> diz ao <command>mplayer</command> pular
+frames que ele não conseguir exibir (útil em sistemas que tem CPU lenta).
+</para>
+<para>
+O <command>gmplayer</command> é a interface gráfica do
+<command>mplayer</command> e aceita todos os seus parâmetros.
+</para>
+</section>
+
+<section xml:id="tasks-rundvd"><info><title>Assistindo DVDs</title></info>
+<para>
+Para assistir filmes em DVD recomendo os seguintes programas:
+<command>ogle</command>, <command>xine</command> e <command>mplayer</command>.
+Lembre-se de fazer um link de <filename>/dev/dvd</filename> para seu
+dispositivo leitor de DVD antes de executar um destes programas.
+</para>
+</section>
+
+<section xml:id="tasks-wavtomp3"><info><title>Convertendo músicas no formato wav para mp3</title></info>
+<para>
+A conversão é explicada aqui usando o programa <command>bladeenc</command>.
+Você pode baixa-lo de <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://bladeenc.mp3.no/">http://bladeenc.mp3.no/</link>.  O
+<command>bladeenc</command> foi o escolhido por apresentar a melhor performance
+e qualidade para conversão da músicas, que é importante para quem tem máquinas
+menos potentes e processamento leve é valioso para você :-)
+</para>
+<para>
+A conversão é feita da seguinte forma:
+</para>
+<screen>
+bladeenc -progress=4 -del *.wav
+</screen>
+<para>
+A opção <literal>-del</literal> diz para apagar os arquivos
+<filename>.wav</filename> a medida que são convertidos e
+<literal>-progress=4</literal> para mostrar uma barra de progresso total e
+outra do arquivo que está sendo processado.
+</para>
+</section>
+
+<section xml:id="tasks-mp3cdr"><info><title>Convertendo músicas do formato mp3 para cdr</title></info>
+<para>
+Esta conversão necessária quando deseja gravar um CD de audio a partir de uma
+seleção de músicas MP3.  As explicações aqui são baseadas no programa
+<command>mpg123</command>, que pode ser instalado com <literal>apt-get install
+mpg123</literal>.  Execute o seguinte comando para fazer a conversão:
+</para>
+<screen>
+mpg123 --cdr - arquivo.mp3 &gt;arquivo.cdr
+</screen>
+<para>
+Para fazer a conversão de todos os arquivos <filename>mp3</filename> dentro de
+um diretório, use o comando:
+</para>
+<screen>
+for MUSICA in *.mp3; do
+ mpg123 --cdr - "$MUSICA" &gt;"${VAR}.cdr"
+done
+</screen>
+<para>
+Após feita a conversão de músicas necessárias para completar um CD (normalmente
+600MB), vá até <xref linkend="tasks-cdwriting-audio"/>.
+</para>
+</section>
+
+</chapter>

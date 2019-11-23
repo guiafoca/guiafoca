@@ -1,0 +1,1140 @@
+<!-- Converted by db4-upgrade version 1.0 -->
+<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="manut"><info><title>Manutenção do Sistema</title></info>
+<para>
+Este capítulo descreve como fazer a manutenção de seu sistema de arquivos e os
+programas de manutenção automática que são executados periodicamente pelo
+sistema.
+</para>
+<section xml:id="manut-checagem"><info><title>Checagem dos sistemas de arquivos</title></info>
+<para>
+A checagem do sistema de arquivos permite verificar se toda a estrutura para
+armazenamento de arquivos, diretórios, permissões, conectividade e superfície
+do disco estão funcionando corretamente.  Caso algum problema exista, ele
+poderá ser corrigido com o uso da ferramenta de checagem apropriada.  As
+ferramentas de checagem de sistemas de arquivos costumam ter seu nome iniciado
+por <literal>fsck</literal> e terminados com o nome do sistema de arquivos que
+verifica, separados por um ponto:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>fsck.ext2</literal> - Verifica o sistema de arquivos
+<literal>EXT2</literal> ou <literal>EXT3</literal>.  Pode também ser encontrado
+com o nome <command>e2fsck</command>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>fsck.ext3</literal> - Um alias para <command>fsck.ext3</command>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>fsck.minix</literal> - Verifica o sistema de arquivos
+<literal>Minix</literal>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>fsck.msdos</literal> - Verifica o sistema de arquivos
+<literal>Msdos</literal>.  Pode também ser encontrado com o nome
+<command>dosfsck</command>.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Para verificar um sistema de arquivos é necessário que ele esteja desmontado
+caso contrário poderá ocorrer danos em sua estrutura.  Para verificar o sistema
+de arquivos raíz (que não pode ser desmontado enquanto o sistema estiver sendo
+executado) você precisará inicializar através de um disquete e executar o
+<command>fsck.ext2</command>.
+</para>
+<section xml:id="manut-checagem-ext2"><info><title>fsck.ext2</title></info>
+<para>
+Este utilitário permite verificar erros em sistemas de arquivos
+<literal>EXT2</literal> e <literal>EXT3</literal> (<emphasis>Linux
+Native</emphasis>).
+</para>
+<para>
+<command>fsck.ext2</command> [<emphasis>opções</emphasis>]
+[<emphasis>dispositivo</emphasis>]
+</para>
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term>dispositivo</term>
+<listitem>
+<para>
+É o local que contém o sistema de arquivos <literal>EXT2/EXT3</literal> que
+será verificado (partições, disquetes, arquivos).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>opções</term>
+<term>-c</term>
+<listitem>
+<para>
+Faz o <command>fsck.ext2</command> verificar se existem agrupamentos
+danificados na unidade de disco durante a checagem.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-d</term>
+<listitem>
+<para>
+Debug - Mostra detalhes de processamento do <command>fsck.ext2</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-f</term>
+<listitem>
+<para>
+Força a checagem mesmo se o sistema de arquivos aparenta estar em bom estado.
+Por padrão, um sistema de arquivos que aparentar estar em bom estado não são
+verificados.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-F</term>
+<listitem>
+<para>
+Grava os dados do cache no disco antes de iniciar.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-l [arquivo]</term>
+<listitem>
+<para>
+Inclui os blocos listados no [arquivo] como blocos defeituosos no sistema de
+arquivos.  O formato deste arquivo é o mesmo gerado pelo programa
+<command>badblocks</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-L [arquivo]</term>
+<listitem>
+<para>
+Faz o mesmo que a opção <literal>-l</literal>, só que a lista de blocos
+defeituosos do dispositivo é completamente limpa e depois a lista do [arquivo]
+é adicionada.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-n</term>
+<listitem>
+<para>
+Faz uma verificação de <literal>somente leitura</literal> no sistema de
+arquivos.  Com esta opção é possível verificar o sistema de arquivos montado.
+Será assumido <literal>não</literal> para todas as perguntas e nenhuma
+modificação será feita no sistema de arquivos.
+</para>
+<para>
+Caso a opção <literal>-c</literal> seja usada junto com <literal>-n</literal>,
+<literal>-l</literal> ou <literal>-L</literal>, o sistema de arquivos será
+verificado e permitirá somente a atualização dos setores danificados não
+alterando qualquer outra área.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-p</term>
+<listitem>
+<para>
+Corrige automaticamente o sistema de arquivos sem perguntar.  É recomendável
+fazer isto manualmente para entender o que aconteceu, em caso de problemas com
+o sistema de arquivos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-v</term>
+<listitem>
+<para>
+Ativa o modo verbose (mais mensagens são mostradas durante a execução do
+programa).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-y</term>
+<listitem>
+<para>
+Assume <literal>sim</literal> para todas as questões.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+Caso sejam encontrados arquivos problemáticos e estes não possam ser
+recuperados, o <command>fsck.ext2</command> perguntará se deseja salva-los no
+diretório <filename>lost+found</filename>.  Este diretório é encontrado em
+todas as partições <emphasis>ext2</emphasis>.  Não há risco de usar o
+<command>fsck.ext3</command> em uma partição <literal>EXT2</literal>.
+</para>
+<para>
+Após sua execução é mostrado detalhes sobre o sistema de arquivos verificado
+como quantidade de blocos livres/ocupados e taxa de fragmentação.
+</para>
+<para>
+Exemplos: <literal>fsck.ext2 /dev/hda2</literal>, <literal>fsck.ext2 -f
+/dev/hda2</literal>, <literal>fsck.ext2 -vrf /dev/hda1</literal>.
+</para>
+</section>
+
+</section>
+
+<section xml:id="manut-checagem-reiserfsck"><info><title>reiserfsck</title></info>
+<para>
+Verifica um sistema de arquivos <command>reiserfs</command> em sistema de
+arquivos.
+</para>
+<para>
+<command>reiserfsck</command> [<emphasis>opções</emphasis>]
+[<emphasis>dispositivo</emphasis>]
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>dispositivo</emphasis></term>
+<listitem>
+<para>
+Dispositivo que contém o sistema de arquivos <command>reiserfs</command> que
+será verificado.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<term>-a</term>
+<listitem>
+<para>
+Mostra detalhes sobre o sistema de arquivos e sai
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-j arquivo</term>
+<listitem>
+<para>
+Especifica um arquivo de Journal alternativo usado pelo sistema de arquivos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-q quiet</term>
+<listitem>
+<para>
+Não exibe mensagens sobre o status da checagem do sistema de arquivos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-S</term>
+<listitem>
+<para>
+Constrói a árvore de todos os blocos do dispositivo.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+O <command>reiserfsck</command> possui outros modos de operação além de
+checagem (o padrão), para detalhes veja a página de manual do programa.
+</para>
+<para>
+Exemplos: <literal>reiserfsck /dev/hda1</literal>, <literal>reiserfsck -S
+/tmp/arq-reiserfs</literal>.
+</para>
+</section>
+
+<section xml:id="manut-checagem-minix"><info><title>fsck.minix</title></info>
+<para>
+Verifica o sistema de arquivos <emphasis>minix</emphasis> em um dispositivo.
+</para>
+<para>
+<command>fsck.minix</command> [<emphasis>opções</emphasis>]
+[<emphasis>dispositivo</emphasis>]
+</para>
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term>dispositivo</term>
+<listitem>
+<para>
+Partição, disquete ou arquivo que contém o sistema de arquivos
+<literal>Minix</literal> que será verificado
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>opções</term>
+<term>-f</term>
+<listitem>
+<para>
+Verifica o sistema de arquivos mesmo se ele estiver perfeito.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-r</term>
+<listitem>
+<para>
+Permite reparo manual do sistema de arquivos
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-a</term>
+<listitem>
+<para>
+Permite um reparo automático do sistema de arquivos.  É recomendado fazer o
+reparo manual.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-v</term>
+<listitem>
+<para>
+Verbose - Mostra detalhes durante a execução do programa
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-s</term>
+<listitem>
+<para>
+Exibe detalhes sobre os blocos de root.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+Exemplo: <literal>fsck.minix -f /dev/hda8</literal>, <literal>fsck.minix -vf
+/dev/hda8</literal>
+</para>
+</section>
+
+<section xml:id="manut-badblocks"><info><title>badblocks</title></info>
+<para>
+Procura blocos defeituosos em um dispositivo.  Note que este <emphasis role="strong">apenas</emphasis> pesquisa por blocos defeituosos, sem alterar a
+configuração do disco.  Para marcar os blocos defeituosos para não serem mais
+usados, utilize a opção <literal>-l</literal> do <command>fsck</command> (veja
+<xref linkend="manut-checagem-ext2"/>).
+</para>
+<para>
+<command>badblocks</command> [<emphasis>opções</emphasis>] [<emphasis>dispositivo</emphasis>]
+</para>
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term>dispositivo</term>
+<listitem>
+<para>
+Partição, disquete ou arquivo que contém o sistema de arquivos que será
+verificado.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>opções</term>
+<term>-b [tamanho]</term>
+<listitem>
+<para>
+Especifica o [tamanho] do bloco do dispositivo em bytes
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-o [arquivo]</term>
+<listitem>
+<para>
+Gera uma lista dos blocos defeituosos do disco no [arquivo].  Este lista pode
+ser usada com o programa <command>fsck.ext2</command> junto com a opção
+<literal>-l</literal>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-s</term>
+<listitem>
+<para>
+Mostra o número de blocos checados durante a execução do
+<command>badblocks</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-v</term>
+<listitem>
+<para>
+Modo verbose - São mostrados mais detalhes.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-w</term>
+<listitem>
+<para>
+Usa o modo leitura/gravação.  Usando esta opção o <command>badblocks</command>
+procura por blocos defeituosos gravando alguns padrões (0xaa, 0x55, 0xff, 0x00)
+em cada bloco do dispositivo e comparando seu conteúdo.
+</para>
+<para>
+Nunca use a opção <literal>-w</literal> em um dispositivo que contém arquivos
+pois eles serão apagados!
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+Exemplo: <literal>badblocks -s /dev/hda6</literal>, <literal>badblocks -s -o
+bad /dev/hda6</literal>
+</para>
+</section>
+
+<section xml:id="manut-defrag"><info><title>defrag</title></info>
+<para>
+Permite desfragmentar uma unidade de disco.  A fragmentação é o armazenamento
+de arquivos em áreas não seqüenciais (uma parte é armazenada no começo a outra
+no final, etc), isto diminui o desempenho da unidade de disco porque a leitura
+deverá ser interrompida e feita a movimentação da cabeça para outra região do
+disco onde o arquivo continua, por este motivo discos fragmentados tendem a
+fazer um grande barulho na leitura e o desempenho menor.
+</para>
+<para>
+A desfragmentação normalmente é desnecessária no <command>GNU/Linux</command>
+porque o sistema de arquivos <emphasis>ext2</emphasis> procura automaticamente
+o melhor local para armazenar o arquivo.  Mesmo assim, é recomendável
+desfragmentar um sistema de arquivos assim que sua taxa de fragmentação subir
+acima de 10%.  A taxa de fragmentação pode ser vista através do
+<command>fsck.ext2</command>.  Após o <command>fsck.ext2</command> ser
+executado é mostrada a taxa de fragmentação seguida de
+<literal>non-contiguos</literal>.
+</para>
+<para>
+A ferramenta de desfragmentação usada no <command>GNU/Linux</command> é o
+<command>defrag</command> que vem com os seguintes programas:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>e2defrag</literal> - Desfragmenta sistemas de arquivos
+<emphasis>Ext2</emphasis>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>defrag</literal> - Desfragmenta sistemas de arquivos
+<emphasis>Minix</emphasis>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>xdefrag</literal> - Desfragmenta sistemas de arquivos
+<emphasis>Xia</emphasis>.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+O sistema de arquivos deve estar desmontado ao fazer a desfragmentação.  Se
+quiser desfragmentar o sistema de arquivos raíz (<filename>/</filename>), você
+precisará inicializar através de um disquete e executar um dos programas de
+desfragmentação apropriado ao seu sistema de arquivos.  A checagem individual
+de fragmentação em arquivos pode ser feita com o programa
+<command>frag</command>.
+</para>
+<para>
+ATENÇÃO: Retire cópias de segurança de sua unidade antes de fazer a
+desfragmentação.  Se por qualquer motivo o programa de desfragmentação não
+puder ser completado, você poderá perder dados!
+</para>
+<para>
+<command>e2defrag</command> [<emphasis>opções</emphasis>] [<emphasis>dispositivo</emphasis>]
+</para>
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term>dispositivo</term>
+<listitem>
+<para>
+Partição, arquivo, disquete que contém o sistema de arquivos que será
+desfragmentado.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-d</term>
+<listitem>
+<para>
+Debug - serão mostrados detalhes do funcionamento
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-n</term>
+<listitem>
+<para>
+Não mostra o mapa do disco na desfragmentação.  É útil quando você inicializa
+por disquetes e recebe a mensagem "Failed do open term Linux" ao tentar
+executar o <command>e2defrag</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-r</term>
+<listitem>
+<para>
+Modo somente leitura.  O defrag simulará sua execução no sistema de arquivos
+mas não fará nenhuma gravação.  Esta opção permite que o defrag seja usado com
+sistema de arquivos montado.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-s</term>
+<listitem>
+<para>
+Cria um sumário da fragmentação do sistema de arquivos e performance do
+desfragmentador.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-v</term>
+<listitem>
+<para>
+Mostra detalhes durante a desfragmentação do sistema de arquivos.  Caso mais de
+uma opção -v seja usada, o nível de detalhes será maior.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-i [arquivo]</term>
+<listitem>
+<para>
+Permite definir uma lista de prioridades em que um arquivo será gravado no
+disco, com isto é possível determinar se um arquivo será gravado no começo ou
+final da unidade de disco.  Esta lista é lida do [arquivo] e deve conter uma
+lista de prioridades de -100 a 100 para cada inodo do sistema de arquivos.
+Arquivos com prioridade alta serão gravados no começo do disco.
+</para>
+<para>
+Todos os inodos terão prioridade igual a zero caso a opção
+<literal>-i</literal> não seja usada ou o inodo não seja especificado no
+[arquivo].  O [arquivo] deverá conter uma série de linhas com um número (inodo)
+ou um número prefixado por um sinal de igual seguido da prioridade.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-p [numero]</term>
+<listitem>
+<para>
+Define o [numero] de buffers que serão usados pela ferramenta de
+desfragmentação na realocação de dados, quanto mais buffers mais eficiente será
+o processo de realocação.  O número depende de quantidade memória RAM e Swap
+você possui.  Por padrão 512 buffers são usados correspondendo a 512Kb de
+buffer (em um sistema de arquivos de blocos com 1Kb).
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+Exemplo: <literal>e2defrag -n -v /dev/hdb4</literal>, <literal>e2defrag -r
+/dev/hda1</literal>
+</para>
+</section>
+
+<section xml:id="manut-hdbadblocks"><info><title>Verificando e marcando setores danificados em um HD</title></info>
+<para>
+Um dos sintomas de um disco rígido que contém setores danificados (bad blocks)
+é a mudança repentina do sistema de arquivos para o modo somente leitura, o
+aparecimento de diversas mensagens no syslog indicando falha de leitura do hd,
+uma pausa se segundos no sistema junto com o led de atividade de disco ligado.
+Se isto acontece com você, uma forma de solucionar este inconveniente é
+executar o teste na superfície física do disco para procurar e marcar os blocos
+problemáticos como defeituosos.
+</para>
+<para>
+Em alguns casos, os blocos defeituosos ocorrem isoladamente no disco rígido,
+não aumentando mais sua quantidade, entretanto, se o número de blocos
+danificados em seu disco está crescendo em um curto espaço de tempo, comece a
+pensar na troca do disco rígido por um outro.  Existem empresas que recuperam
+HDs mas pelo valor cobrado por se tratar de um serviço delicado, só compensa
+caso você não tenha o backup e <emphasis role="strong">realmente</emphasis>
+precisa dos dados do disco.
+</para>
+<para>
+Para fazer uma checagem de HD no sistema de arquivos <filename>ext2</filename>
+ou <filename>ext3</filename>, proceda da seguinte forma:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+Se possível, faça um backup de todos os dados ou dos dados essenciais da
+partição será checada.
+</para>
+</listitem>
+<listitem>
+<para>
+Inicie o sistema por um disquete de boot ou CD de recuperação.  Este passo é
+útil pois em alguns casos, pode ocorrer a perda de interrupção do disco rígido
+e seu sistema ficar paralisado.  Só o método de checar o HD usando um disquete
+de boot lhe fará agendar uma parada no sistema e notificar os usuários,
+evitando sérios problemas do que fazendo isto com um sistema em produção.
+</para>
+</listitem>
+<listitem>
+<para>
+Execute o <command>badblocks</command> usando a opção <literal>-o</literal>
+para gravar os possíveis blocos defeituosos encontrados para um arquivo:
+<literal>badblocks -v -o blocos-defeituosos.lista /dev/hd??</literal>.
+</para>
+<para>
+Substitua o dispositivo <filename>/dev/hd??</filename> pelo dispositivo que
+deseja verificar.  A checagem do <command>badblocks</command> deverá ser feita
+para cada partição existente no disco rígido.  O tempo de checagem dependerá da
+velocidade do disco rígido, velocidade do barramento, cabo de dados utilizado,
+velocidade de processamento e é claro, do estado do disco rígido (quantos
+setores defeituosos ele tem).
+</para>
+</listitem>
+<listitem>
+<para>
+Após concluir o <command>badblocks</command>, veja se foram encontrados blocos
+defeituosos.  Caso tenha encontrado, siga para o próximo passo.
+</para>
+</listitem>
+<listitem>
+<para>
+Para marcar os blocos encontrados pelo <command>badblocks</command> como
+defeituosos, execute o comando: <literal>fsck.ext3 -l blocos-defeituosos.lista
+-f /dev/hd??</literal>.
+</para>
+<para>
+Substitua o dispositivo, pelo dispositivo que verificou com o
+<command>badblocks</command>.  O arquivo
+<filename>blocos-defeituosos.list</filename> contém a lista de blocos gerada
+pelo <command>badblocks</command> que serão marcados como defeituosos.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Para mais detalhes sobre as opções de checagem usada pelos programas, veja
+<xref linkend="manut-badblocks"/> e <xref linkend="manut-checagem-ext2"/>.
+</para>
+</section>
+
+<section xml:id="manut-logs-l"><info><title>Limpando arquivos de LOGS</title></info>
+<para>
+Tudo que acontece em sistemas <command>GNU/Linux</command> pode ser registrado
+em arquivos de log em <filename>/var/log</filename>, como vimos anteriormente.
+Eles são muito úteis por diversos motivos, para o diagnóstico de problemas,
+falhas de dispositivos, checagem da segurança, alerta de eventuais tentativas
+de invasão, etc.
+</para>
+<para>
+O problema é quando eles começam a ocupar muito espaço em seu disco.  Verifique
+quantos Megabytes seus arquivos de LOG estão ocupando através do comando
+<literal>cd /var/log;du -hc</literal>.  Antes de fazer uma limpeza nos arquivos
+de LOG, é necessário verificar se eles são desnecessários e só assim zerar os
+que forem dispensáveis.
+</para>
+<para>
+Não é recomendável apagar um arquivo de log pois ele pode ser criado com
+permissões de acesso indevidas (algumas distribuições fazem isso).  Você pode
+usar o comando: <literal>echo -n &gt;arquivo</literal> ou o seguinte shell
+script para zerar todos os arquivos de LOG de uma só vez (as linhas iniciante
+com <literal>#</literal> são comentários):
+</para>
+<screen>
+#! /bin/sh
+cd /var/log
+for l in `ls -p|grep '/'`; do
+ echo -n &gt;$l &amp;&gt;/dev/null
+ echo Zerando arquivo $l...
+done
+echo Limpeza dos arquivos de log concluída!
+</screen>
+<para>
+Copie o conteúdo acima em um arquivo com a extensão <filename>.sh</filename>,
+dê permissão de execução com o <command>chmod</command> e o execute como
+usuário <literal>root</literal>.  É necessário executar este script para zerar
+arquivos de log em subdiretórios de <filename>/var/log</filename>, caso sejam
+usados em seu sistema.
+</para>
+<para>
+Algumas distribuições, como a <command>Debian</command> GNU/Linux, fazem o
+arquivamento automático de arquivos de LOGs em arquivos
+<filename>.gz</filename> através de scripts disparados automaticamente pelo
+<command>cron</command>.  ATENÇÃO: LEMBRE-SE QUE O SCRIPT ACIMA APAGARÁ TODOS
+OS ARQUIVOS DE LOGs DO SEU SISTEMA SEM POSSIBILIDADE DE RECUPERAÇÃO.  TENHA
+ABSOLUTA CERTEZA DO QUE NÃO PRECISARÁ DELES QUANDO EXECUTAR O SCRIPT ACIMA!
+</para>
+</section>
+
+<section xml:id="manut-recpart"><info><title>Recuperando partições apagadas</title></info>
+<para>
+Caso tenha apagado uma partição acidentalmente ou todas as partições do seu
+disco, uma forma simples de recuperar todos os seus dados é simplesmente
+recriar todas as partições com o tamanho <emphasis role="strong">EXATAMENTE</emphasis> igual ao existente anteriormente.  Isto
+deve ser feito dando a partida com um disquete ou CD de inicialização.  Após
+recriar todas as partições e seus tipos (83, 82 8e, etc), execute novamente o
+lilo para recriar o setor de boot do HD e garantir que a máquina dará o boot.
+</para>
+<para>
+A recuperação desta forma é possível porque quando se cria ou apaga uma
+partição, você está simplesmente delimitando espaço onde cada sistema de
+arquivos gravará seus dados, sem fazer nenhuma alteração dentro dele.  Assim, é
+também útil manter uma cópia dos tamanhos usados durante o processo de criação
+das partições para ser usado como recuperação em uma possível emergência.
+</para>
+</section>
+
+<section xml:id="manut-senhaperdida"><info><title>Recuperando a senha de root perdida</title></info>
+<para>
+Uma situação que você deve ter se deparado (ou algum dia ainda vai se deparar)
+é precisar alterar a senha de root e não sabe ou não lembra a senha atual.
+Esta situação também pode ser encontrada quando ocorre uma falha de disco,
+falha elétrica, reparos em uma máquina que não detém sua manutenção, etc.  A
+melhor notícia é que a alteração da senha de root é possível e não apresenta
+problema qualquer para o sistema.  Existem várias formas para se fazer isto, a
+forma que descreverei abaixo assume que você tem acesso a um outro dispositivo
+de partida que não seja o HD do Linux (<emphasis>CD-ROM</emphasis>,
+<emphasis>disquetes</emphasis>, <emphasis>outro disco rígido</emphasis>, etc).
+Assim, mesmo que encontre uma senha de BIOS em uma máquina, poderá colocar o
+disco rígido em outra máquina e executar estes procedimentos.
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis> Estes procedimentos tens fins didáticos
+e administrativos, não sendo escritos com a intenção de fornecer mal uso desta
+técnica.  Entender a exposição de riscos também ajuda a desenvolver novas
+técnicas de defesa para sistemas críticos, e estas são totalmente possíveis e
+as mais usadas documentadas neste guia.
+</para>
+<itemizedlist>
+<listitem>
+<para>
+Como primeiro passo consiga um CD de partida ou disquete de uma distribuição
+<command>Linux</command>.  Normalmente os mesmos CDs que usou para instalar sua
+distribuição também são desenvolvidos para permitir a manutenção do sistema,
+contendo ferramentas diversas e um terminal virtual disponível para trabalhos
+manuais (tanto de instalação como manutenção).
+</para>
+</listitem>
+<listitem>
+<para>
+Vá até a BIOS da máquina e altere a ordem de inicialização para que seu sistema
+inicialize a partir do disquete ou CD-ROM (dependendo do método escolhido no
+passo anterior).
+</para>
+</listitem>
+<listitem>
+<para>
+Inicialize a partir do Disquete/CD-ROM.
+</para>
+</listitem>
+<listitem>
+<para>
+Na maioria dos casos você provavelmente estará utilizando o CD-ROM que usou
+para instalar sua distribuição.  Imediatamente quando o programa de instalação
+for iniciado, pressione <emphasis>ALT</emphasis>+<emphasis>F2</emphasis> para
+alternar para o segundo terminal virtual do sistema.  O segundo terminal esta
+sempre disponível nas distribuições distribuições <command>Debian</command>,
+<command>Red Hat</command>, <command>Mandriva</command>,
+<command>Fedora</command>, etc.
+</para>
+</listitem>
+<listitem>
+<para>
+O próximo passo será montar sua partição raíz para ser possível alterar sua
+senha de root.  Para isto, crie um diretório onde a partição será montada (por
+exemplo, <filename>/target</filename>) e execute o comando mount:
+<literal>mount /dev/hda1 /target</literal> (assumindo que
+<filename>/dev/hda1</filename> é a partição que contém seu sistema de arquivos
+raíz (<filename>/</filename>).
+</para>
+</listitem>
+<listitem>
+<para>
+Entre no diretório <filename>/target</filename> (<literal>cd /target</literal>)
+e torne-o seu diretório raíz atual com o comando: <literal>chroot .</literal>.
+</para>
+</listitem>
+<listitem>
+<para>
+digite <literal>passwd</literal> e entre com a nova senha de superusuário.
+</para>
+</listitem>
+<listitem>
+<para>
+saia do <command>chroot</command> digitando <literal>exit</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Digite <literal>sync</literal> para salvar todas as alterações pendentes para o
+disco e reinicie o sistema (pressionando-se as teclas
+<literal>CTRL+ALT+DEL</literal>, <literal>init 6</literal>,
+<literal>reboot</literal>).
+</para>
+</listitem>
+<listitem>
+<para>
+Retire o CD da unidade de discos e altere sua BIOS para dar a partida a partir
+do disco rígido.
+</para>
+</listitem>
+<listitem>
+<para>
+Teste e verifique se a senha de root foi alterada.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Normalmente as distribuições seguem o padrão FHS, mantendo binários de
+administração necessários para recuperação do sistema em caso de panes dentro
+da partição <filename>/</filename>, se este não for o caso de sua distribuição
+(hoje em dia é raro), você terá que montar sistemas de arquivos adicionais
+(como o <filename>/usr</filename>, <filename>/var</filename>) ou então o
+comando <command>passwd</command> não será encontrado ou terá problemas durante
+sua execução.
+</para>
+</section>
+
+<section xml:id="manut-tarefas"><info><title>Tarefas automáticas de manutenção do sistema</title></info>
+<para>
+Os arquivos responsáveis pela manutenção automática do sistema se encontram em
+arquivos individuais localizados nos diretórios
+<filename>/etc/cron.daily</filename>, <filename>/etc/cron.weekly</filename> e
+<filename>/etc/cron.montly</filename>.  A quantidade de arquivos depende da
+quantidade de pacotes instalado em seu sistema, porque alguns programam tarefas
+nestes diretórios e não é possível descrever todas, para detalhes sobre o que
+cada arquivo faz veja o cabeçalho e o código de cada arquivo.
+</para>
+<para>
+Estes arquivos são executados pelo <command>cron</command> através do arquivo
+<filename>/etc/crontab</filename>.  Você pode programar quantas tarefas
+desejar, para detalhes veja <xref linkend="manut-cron"/> e <xref linkend="manut-at"/>.  Alguns programas mantém arquivos do
+<command>cron</command> individuais em
+<filename>/var/spool/cron/crontabs</filename> que executam comandos
+periodicamente.
+</para>
+</section>
+
+<section xml:id="manut-cron"><info><title>cron</title></info>
+<para>
+O <command>cron</command> é um daemon que permite o agendamento da execução de
+um comando/programa para um determinado dia/mês/ano/hora.  É muito usado em
+tarefas de arquivamento de logs, checagem da integridade do sistema e execução
+de programas/comandos em horários determinados.
+</para>
+<para>
+As tarefas são definidas no arquivo <filename>/etc/crontab</filename> e por
+arquivos individuais de usuários em
+<filename>/var/spool/cron/crontabs/[usuário]</filename> (criados através do
+programa <command>crontab</command>).  Adicionalmente a distribuição
+<command>Debian</command> utiliza os arquivos no diretório
+<filename>/etc/cron.d</filename> como uma extensão para o
+<filename>/etc/crontab</filename>.
+</para>
+<para>
+Para agendar uma nova tarefa, basta editar o arquivo
+<filename>/etc/crontab</filename> com qualquer editor de texto (como o
+<command>ae</command> e o <command>vi</command>) e definir o mês/dia/hora que a
+tarefa será executada.  Não é necessário reiniciar o daemon do
+<command>cron</command> porque ele verifica seus arquivos a cada minuto.  Veja
+a seção <xref linkend="manut-cron-formato"/> para entender o formato de arquivo
+<command>cron</command> usado no agendamento de tarefas.
+</para>
+<section xml:id="manut-cron-formato"><info><title>O formato de um arquivo crontab</title></info>
+<para>
+O arquivo <filename>/etc/crontab</filename> tem o seguinte formato:
+</para>
+<screen>
+52  18    1   *   *    root     run-parts --report /etc/cron.montly
+|   |     |   |   |      |      |
+|   |     |   |   |      |      \_Comando que será executado
+|   |     |   |   |      |      
+|   |     |   |   |      \_ UID que executará o comando
+|   |     |   |   |            
+|   |     |   |   \_ Dia da semana (0-7)
+|   |     |   |
+|   |     |   \_ Mês (1-12)
+|   |     |
+|   |     \_ Dia do Mês (1-31)
+|   |
+|   \_ Hora
+|
+\_ Minuto
+</screen>
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term>Minuto</term>
+<listitem>
+<para>
+Valor entre 0 e 59
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Hora</term>
+<listitem>
+<para>
+Valor entre 0 e 23
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Dia do Mês</term>
+<listitem>
+<para>
+Valor entre 0 e 31
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Mês</term>
+<listitem>
+<para>
+Valor entre 1 e 12 (identificando os meses de Janeiro a Dezembro)
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Dia da Semana</term>
+<listitem>
+<para>
+Valor entre 0 e 7 (identificando os dias de Domingo a Sábado).  Note que tanto
+0 e 7 equivalem a Domingo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>usuário</term>
+<listitem>
+<para>
+O usuário especificado será usado para executar o comando (o usuário deverá
+existir).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>comando</term>
+<listitem>
+<para>
+Comando que será executado.  Podem ser usados parâmetros normais usados na
+linha de comando.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+Os campos do arquivo são separados por um ou mais espaços ou tabulações.  Um
+asterisco <literal>*</literal> pode ser usado nos campos de data e hora para
+especificar todo o intervalo disponível.  O hífen <literal>-</literal> serve
+para especificar períodos de execução (incluindo a o número inicial/final).  A
+vírgula serve para especificar lista de números.  Passos podem ser
+especificados através de uma <literal>/</literal>.  Veja os exemplos no final
+desta seção.
+</para>
+<para>
+O arquivo gerado em <filename>/var/spool/cron/crontabs/[usuário]</filename>
+pelo <command>crontab</command> tem o mesmo formato do
+<filename>/etc/crontab</filename> exceto por não possuir o campo
+<literal>usuário (UID)</literal>, pois o nome do arquivo já identifica o
+usuário no sistema.
+</para>
+<para>
+Para editar um arquivo de usuário em
+<filename>/var/spool/cron/crontabs</filename> ao invés de editar o
+<filename>/etc/crontab</filename> use <literal>crontab -e</literal>, para
+listar as tarefas daquele usuário <literal>crontab -l</literal> e para apagar o
+arquivo de tarefas do usuário <literal>crontab -r</literal> (adicionalmente
+você pode remover somente uma tarefa através do <literal>crontab -e</literal> e
+apagando a linha correspondente).
+</para>
+<para>
+OBS: Não esqueça de incluir uma linha em branco no final do arquivo, caso
+contrário o último comando não será executado.
+</para>
+<para>
+O <command>cron</command> define o valor de algumas variáveis automaticamente
+durante sua execução; a variável <filename>SHELL</filename> é definida como
+<literal>/bin/sh</literal>, <filename>PATH</filename> como
+<literal>/usr/bin:/bin</literal>, <filename>LOGNAME</filename>,
+<filename>MAILTO</filename> e <filename>HOME</filename> são definidas através
+do arquivo <filename>/etc/passwd</filename>.  Os valores padrões destas
+variáveis podem ser substituídos especificando um novo valor nos arquivos do
+<command>cron</command>.
+</para>
+<para>
+Exemplos de um arquivo <filename>/etc/crontab</filename>:
+</para>
+<screen>
+SHELL=/bin/sh
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+
+00 10  * * *  root sync
+# Executa o comando sync todo o dia as 10:00
+00 06  * * 1  root updatedb
+# Executa o comando updatedb toda segunda-feira as 06:00.
+10,20,40 *  * * *  root runq
+# Executa o comando runq todos os dias e a toda a hora em 10, 20 e 40 minutos. 
+*/10 *  * * *  root fetchmail
+# Executa o comando fetchmail de 10 em 10 minutos todos os dias
+15 0  25 12 * root echo "Feliz Natal"|mail john
+# Envia um e-mail as 0:15 todo o dia 25/12 para john desejando um feliz natal. 
+30 5  * * 1-6   root  poff
+# Executa o comando poff automaticamente as 5:30 de segunda-feira a sábado.
+</screen>
+</section>
+
+</section>
+
+<section xml:id="manut-at"><info><title>at</title></info>
+<para>
+O <command>at</command> agenda tarefas de forma semelhante ao
+<command>cron</command> com uma interface que permite a utilização de linguagem
+natural nos agendamentos.  Sua principal aplicação é no uso de tarefas que
+sejam disparadas somente uma vez.  Uma característica deste programa é a
+execução de aplicativos que tenham passado de seu horário de execução, muito
+útil se o computador é desligado com freqüência ou quando ocorre uma
+interrupção no fornecimento de energia.
+</para>
+<para>
+Para utilizar o <command>at</command>, instale-o com o comando:
+<literal>apt-get install at</literal>.  O próximo passo é criar os arquivos
+<filename>/etc/at.allow</filename> e <filename>at.deny</filename>.  Estes
+arquivos são organizados no formato de um usuário por linha.  Durante o
+agendamento, é verificado primeiro o arquivo <filename>at.allow</filename>
+(lista de quem pode executar comandos) e depois o <filename>at.deny</filename>
+(lista de quem NÃO pode executar comandos).  Caso eles não existam, o
+agendamento de comandos é permitido a todos os usuários.
+</para>
+<para>
+Abaixo seguem exemplos do agendamento através do comando <command>at</command>:
+</para>
+<variablelist>
+<varlistentry>
+<term>echo ls | at 10am today</term>
+<listitem>
+<para>
+Executa as 10 da manha de hoje
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>echo ls | at 10:05 today</term>
+<listitem>
+<para>
+Executa as 10:05 da manha de hoje
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>echo ls | at 10:05pm today</term>
+<listitem>
+<para>
+Executa as 10:05 da noite de hoje
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>echo ls | at 22:05 today</term>
+<listitem>
+<para>
+Executa as 22:05 da noite de hoje
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>echo ls | at 14:50 tomorrow</term>
+<listitem>
+<para>
+Executa o comando amanhã as 14:50 da tarde
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>echo ls | at midnight</term>
+<listitem>
+<para>
+Executa o comando a meia noite de hoje
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>echo ls | at midnight tomorrow</term>
+<listitem>
+<para>
+Executa o comando a meia noite de amanhã
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>echo ls | at noon</term>
+<listitem>
+<para>
+Executa o comando de tarde (meio dia).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>at -f comandos.txt teatime</term>
+<listitem>
+<para>
+Executa os comandos especificados no arquivo "comandos.txt" no horário do café
+da tarde (as 16:00 horas).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>at -f comandos.txt +3 minutes</term>
+<listitem>
+<para>
+Executa os comandos especificados no arquivo "comandos.txt" daqui a 3 minutos.
+Também pode ser especificado "hours" ou "days".
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>at -f comandos.txt tomorrow +3 hours</term>
+<listitem>
+<para>
+Executa os comandos especificados no arquivo "comandos.txt" daqui a 3 horas no
+dia de amanhã.  (se agora são 10:00, ela será executada amanhã as 13:00 da
+tarde).
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+Todas as tarefas agendadas são armazenadas em arquivos dentro do diretório
+<filename>/var/spool/cron/atjobs</filename>.  A sintaxe de comandos para
+gerenciar as tarefas é semelhante aos utilitários do <command>lpd</command>:
+Para ver as tarefas, digite <literal>atq</literal>.  Para remover uma tarefa,
+use o comando <literal>atrm</literal> seguido do número da tarefa obtida pelo
+<literal>atq</literal>.
+</para>
+</section>
+
+</chapter>

@@ -1,0 +1,654 @@
+<!-- Converted by db4-upgrade version 1.0 -->
+<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="deb"><info><title>A distribuição Debian GNU/Linux</title></info>
+<para>
+Este capítulo traz algumas características sobre a distribuição <command>Debian
+GNU/Linux</command>, programas de configuração e particularidades.  A maioria
+dos trechos aqui descritos, também se aplicam a distribuições baseadas na
+<command>Debian</command>, como o <emphasis>Kurumin</emphasis> e o
+<emphasis>Ubuntu</emphasis>.
+</para>
+<para>
+Você deve estar se perguntando <literal>mas porque um capítulo falando sobre a
+distribuição Debian se eu uso outra?</literal>.  Bem, a partir da versão
+<emphasis>Intermediário</emphasis> do <emphasis>Foca Linux</emphasis> existem
+algumas partes que são especificas de algumas distribuições Linux e que não se
+aplicam a outras, como a localização dos arquivos de configuração, nomes dos
+programas de configuração e outros detalhes específicos e esta versão é a
+baseada na <command>Debian</command>.  Pegue na página do Foca Linux (<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.guiafoca.org">http://www.guiafoca.org</link>) uma versão
+Intermediário /Avançado do guia específico para sua distribuição.
+</para>
+<section xml:id="deb-carac"><info><title>Porque usar a Debian?</title></info>
+<para>
+A <command>Debian</command> é a distribuição que mais cresce no mundo, cada
+versão é somente lançada após rigorosos testes de segurança e correção de
+falhas fazendo desta a mais segura e confiável dentre todas as outras
+distribuições Linux.  É reconhecida como a mais segura, maior e atualizada mais
+freqüentemente entre as outras distribuições <command>Linux</command>, além de
+ser a única sem fins comerciais.
+</para>
+<para>
+É a única que adota o estilo de desenvolvimento aberto e não é mantida por uma
+empresa comercial (note que o endereço do WebSite da <command>Debian</command>
+termina com <filename>.org</filename>), ao invés disso é mantida por
+programadores, hackers e especialistas de segurança espalhados ao redor do
+mundo, seguindo o estilo de desenvolvimento do Linux.  Possui suporte a mais de
+12 arquiteturas e 15 sub-arquiteturas (entre elas, Intel x86, Alpha, VMS,
+Sparc, Macintosh (m68k), Power Pc, ARM, etc).
+</para>
+<para>
+Suas atualizações são constantes e não é necessário adquirir um novo CD para
+fazer upgrades.  Meu sistema é atualizado semanalmente e de forma segura
+através de 2 simples comandos.  Veja <xref linkend="dpkg-apt"/> as instruções
+de como fazer isto.
+</para>
+<para>
+Cada pacote da distribuição é mantida por uma pessoa, o que garante uma boa
+qualidade, implementações de novos recursos e rápida correção de falhas.
+Qualquer pessoa com bons conhecimentos no sistema e inglês pode se tornar um
+<emphasis>Debian Developer</emphasis>, para detalhes consulte a lista de
+discussão <emphasis>debian-user-portuguese</emphasis> (veja <xref linkend="ajuda-listas"/>) ou veja a página oficial da
+<command>Debian</command>: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.debian.org/">http://www.debian.org/</link>.
+</para>
+<para>
+A distribuição apresenta compatibilidade com outros sistemas a partir da
+instalação até a seleção de programas e execução do sistema, sua instalação
+está até mesmo disponível desde computadores 386 que utilizam unidades de
+disquetes de 5 1/4 polegadas até para computadores UDMA66, instalando através
+de DVD e pen drives.  Com a Debian é possível iniciar a instalação usando um
+pen drive e continuar usando a internet.
+</para>
+<para>
+É a distribuição mais indicada para uso em servidores devido ao seu desempenho,
+segurança e programas úteis de gerenciamento e monitoração da rede,
+recomendados por especialistas que participam de seu desenvolvimento.
+</para>
+<para>
+Não existem versões separadas da Debian para servidores, uso pessoal, etc, ao
+invés disso a distribuição usa perfis de usuário (dependendo da função do
+usuário) e perfis de computador (dependendo do que deseja fazer), podendo ser
+selecionado mais de um perfil de usuário/computador.
+</para>
+<para>
+Os perfis selecionam automaticamente os pacotes mais úteis para a instalação.
+Os pacotes existentes em cada perfil foram escolhidos através de debates entre
+usuários que trabalham ativamente naquela área, resultando em uma seleção de
+pacotes de alta produtividade.
+</para>
+<para>
+Para os usuários avançados e exigentes, também é possível selecionar os pacotes
+individualmente via <command>dselect</command>, o que resultará em uma
+instalação somente com pacotes úteis e melhor configurada.
+</para>
+</section>
+
+<section xml:id="deb-pacotes"><info><title>Pacotes existentes na Debian</title></info>
+<para>
+O número de pacotes existentes na distribuição atual da
+<command>Debian</command> (<emphasis>Etch</emphasis> - 4.0) é de 25000.
+</para>
+<para>
+A <command>Debian</command> (como a <command>Red Hat</command>) usa um formato
+próprio para armazenar os programas: o formato <filename>.deb</filename>.  Este
+formato permite a declaração, resolução e checagem automática de dependências,
+pacotes sugeridos, opcionais e outras características que o torna atraente para
+o desenvolvimento, gerenciamento e manutenção do sistema.
+</para>
+<para>
+Estes pacotes são gerenciados através do programa <command>dpkg</command>
+(<emphasis>Debian Package</emphasis>) ou através de front-ends como o
+<command>dselect</command> ou <command>apt</command> (para detalhes veja <xref linkend="dpkg"/>).
+</para>
+</section>
+
+<section xml:id="deb-suf"><info><title>O que é sid/testing/frozen/stable?</title></info>
+<para>
+Para o lançamento de uma nova distribuição <command>Debian</command>, o
+seguinte processo ocorre: <literal>sid =&gt; testing =&gt; stable</literal> (sendo a
+<emphasis>stable</emphasis> sempre o lançamento oficial e sem bugs da
+distribuição).
+</para>
+<variablelist>
+<varlistentry>
+<term>sid</term>
+<listitem>
+<para>
+Durante o desenvolvimento de uma nova distribuição <command>Debian</command>,
+ela é chamada de <emphasis>sid</emphasis>.  A <emphasis>sid</emphasis> é a
+versão <emphasis>Unstable</emphasis>, isto não significa instabilidade, mas sim
+que a distribuição esta sofrendo modificações para se tornar uma versão
+estável, recebendo novos pacotes, etc.
+</para>
+<para>
+Quando os pacotes não são modificados após um determinado período, os scripts
+da Debian copiam estes pacotes (novos ou atualizados) para a
+<emphasis>testing</emphasis>.
+</para>
+<para>
+Não use a distribuição <emphasis>sid</emphasis> (<emphasis>unstable</emphasis>)
+ao menos que tenha experiência no <command>Linux</command> para corrigir
+problemas, que certamente aparecerão.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>testing</term>
+<listitem>
+<para>
+A <emphasis>testing</emphasis> recebe os pacotes que não são modificados
+durante algum tempo da <emphasis>unstable</emphasis>, isto significa que eles
+possuem alguma estabilidade.
+</para>
+<para>
+A <emphasis>testing</emphasis> é uma espécie de congelamento permanente
+(freeze) durante o desenvolvimento da <emphasis>Unstable</emphasis>.
+</para>
+<para>
+Os novos pacotes que entram na <emphasis>unstable</emphasis> também caem na
+<emphasis>testing</emphasis> após certo tempo.
+</para>
+<para>
+Mesmo assim, podem existir falhas graves na <emphasis>testing</emphasis>, se
+você precisa de um ambiente realmente livre de falhas, use a
+<emphasis>stable</emphasis>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>frozen (congelada)</term>
+<listitem>
+<para>
+Na data programada pela equipe de lançamento da <command>Debian</command>, a
+distribuição <emphasis>testing</emphasis> é congelada: nenhum pacote novo da
+<emphasis>unstable</emphasis> cai na <emphasis>testing</emphasis> e começa a
+procura de falhas na distribuição <emphasis>testing</emphasis>.  Nenhuma nova
+característica é implementada nos pacotes (a não ser que seja extremamente
+necessário) e os developers se dedicam a correção de erros nos pacotes.
+</para>
+<para>
+A distribuição <emphasis>testing</emphasis> congelada se tornará a futura
+<emphasis>stable</emphasis> após todas as falhas serem corrigidas.  É
+considerado seguro usar a <emphasis>frozen</emphasis> após 1 mês de
+"congelamento".
+</para>
+<para>
+Quando a <emphasis>testing</emphasis> é congelada, o ciclo de desenvolvimento
+da <emphasis>unstable</emphasis> continua para que a próxima distribuição da
+<command>Debian</command> seja lançada.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>stable</term>
+<listitem>
+<para>
+Quando todos os bugs da <emphasis>testing</emphasis> congelada são eliminados,
+ela é lançada como <emphasis>stable</emphasis>, a nova <emphasis>versão
+Oficial</emphasis> da <command>Debian</command>.
+</para>
+<para>
+A <emphasis>stable</emphasis> é o resultado final do desenvolvimento, das
+correção de falhas/segurança e que passou por todos os ciclos de testes para
+ser lançada.  Resumindo é a distribuição pronta para ser usada com toda a
+segurança.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="deb-obtendo"><info><title>Como obter a Debian</title></info>
+<para>
+A instalação da distribuição pode ser obtida através de Download de <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="ftp://ftp.debian.org//debian/dists/stable/main/disks-i386">ftp://ftp.debian.org//debian/dists/stable/main/disks-i386</link>
+(para Intel x86), seus programas diversos estão disponíveis em <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="ftp://ftp.debian.org//debian/dists/stable/main/binary-i386">ftp://ftp.debian.org//debian/dists/stable/main/binary-i386</link>.
+</para>
+</section>
+
+<section xml:id="deb-prgnconfig"><info><title>Programas de configuração</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<command>aptitude</command> - Seleciona pacote para instalação/desinstalação
+</para>
+</listitem>
+<listitem>
+<para>
+<command>pppconfig</command> - Configura o computador para se conectar a
+Internet usando conexão discada.  Após isto, use <literal>pon</literal> para se
+conectar a Internet, <literal>poff</literal> para se desconectar e
+<literal>plog</literal> para monitorar a conexão.
+</para>
+</listitem>
+<listitem>
+<para>
+<command>pppoeconf</command> - Configura o computador para conectar a internet
+usando ADSL
+</para>
+</listitem>
+<listitem>
+<para>
+<command>modconf</command> - Permite selecionar os módulos que serão
+automaticamente carregados na inicialização do sistema.  Se requerido pelos
+módulos os parâmetros I/O, IRQ e DMA também podem ser especificados.
+</para>
+</listitem>
+<listitem>
+<para>
+<command>shadowconfig</command> - Permite ativar ou desativar o suporte a
+senhas ocultas (shadow password).  Com as senhas ocultas ativadas, as senhas
+criptografadas dos usuários e grupos são armazenadas nos arquivos
+<filename>shadow</filename> e <filename>gshadow</filename> respectivamente, que
+somente podem ser acessadas pelo usuário root.
+</para>
+<para>
+Isto aumenta consideravelmente a segurança do sistema pois os arquivos
+<filename>passwd</filename> e <filename>group</filename> contém dados de
+usuários que devem ter permissão de leitura de todos os usuários do sistema.
+</para>
+</listitem>
+<listitem>
+<para>
+<command>tasksel</command> - Permite selecionar/modificar de forma fácil a
+instalação de pacotes em seu sistema através da função que sua máquina terá ou
+do seu perfil de usuário.
+</para>
+</listitem>
+<listitem>
+<para>
+<command>tzconfig</command> - Permite modificar/selecionar o fuso-horário usado
+na distribuição.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Além destes, a Debian conta com o sistema de configuração baseado no
+<literal>dpkg-reconfigure</literal> que permite configurar de forma fácil e
+rápida aspecto de pacotes: <literal>dpkg-reconfigure xserver-xorg</literal>.
+</para>
+</section>
+
+<section xml:id="deb-startup"><info><title>Arquivos de inicialização</title></info>
+<para>
+Os arquivos de inicialização da distribuição <command>Debian</command> (e
+baseadas nela) estão localizados no diretório <filename>/etc/init.d</filename>.
+Cada daemon (programa residente na memória) ou configuração específica possui
+um arquivo de onde pode ser ativado/desativado.  Os sistemas residentes neste
+diretório não são ativados diretamente, mas sim através de links existentes nos
+diretórios <filename>/etc/rc?.d</filename> onde cada diretório consiste em um
+nível de execução do sistema (veja também a <xref linkend="deb-runlevels"/>).
+</para>
+<para>
+Por padrão, você pode usar as seguintes palavras chaves com os arquivos de
+configuração:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>start</literal> - Inicia o daemon ou executa a configuração
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>stop</literal> - Interrompe a execução de um daemon ou desfaz a
+configuração feita anteriormente (se possível).
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>restart</literal> - Reinicia a execução de um daemon.  É equivalente
+ao uso de <literal>stop</literal> e <literal>start</literal> mas se aplicam
+somente a alguns daemons e configurações, que permitem a interrupção de
+execução e reinicio.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Por exemplo, para reconfigurar as interfaces de rede do computador, podemos
+utilizar os seguintes comandos:
+</para>
+<screen>
+cd /etc/init.d
+./networking restart
+</screen>
+</section>
+
+<section xml:id="deb-runlevels"><info><title>Níveis de Execução</title></info>
+<para>
+Os <emphasis>Níveis de execução</emphasis> (run levels) são diferentes modos de
+funcionamento do <command>GNU/Linux</command> com programas, daemons e recursos
+específicos.  Em geral, os sistemas <command>GNU/Linux</command> possuem sete
+níveis de execução numerados de 0 a 6.  O daemon <command>init</command> é o
+primeiro programa executado no <command>GNU/Linux</command> (veja através do
+<literal>ps ax|grep init</literal>) e responsável pela carga de todos daemons
+de inicialização e configuração do sistema.
+</para>
+<para>
+O nível de execução padrão em uma distribuição <command>GNU/Linux</command> é
+definido através do arquivo de configuração do
+<filename>/etc/inittab</filename> (<xref linkend="etc-inittab"/>) através da
+linha
+</para>
+<screen>
+id:2:initdefault:
+</screen>
+<section xml:id="deb-runlevels-e"><info><title>Entendendo o funcionamento dos níveis de execução do sistema (runlevels)</title></info>
+<para>
+Os nível de execução atual do sistema pode ser visualizado através do comando
+<command>runlevel</command> e modificado através dos programas
+<command>init</command> ou <command>telinit</command>.  Quando é executado, o
+<command>runlevel</command> lê o arquivo <filename>/var/run/utmp</filename> e
+adicionalmente lista o nível de execução anterior ou a letra
+<literal>N</literal> em seu lugar (caso ainda não tenha ocorrido a mudança do
+nível de execução do sistema).
+</para>
+<para>
+Na <command>Debian</command>, os diretórios <filename>/etc/rc0.d</filename> a
+<filename>/etc/rc6.d</filename> contém os links simbólicos para arquivos em
+<filename>/etc/init.d</filename> que são acionados pelo nível de execução
+correspondente.
+</para>
+<para>
+Por exemplo, o arquivo <filename>S10sysklogd</filename> em
+<filename>/etc/rc2.d</filename>, é um link simbólico para
+<filename>/etc/init.d/sysklogd</filename>.
+</para>
+<para>
+O que aconteceria se você removesse o arquivo
+<filename>/etc/rc2.d/S10sysklogd</filename>?  Simplesmente o daemon
+<command>sysklogd</command> deixaria de ser executado no nível de execução 2 do
+sistema (que é o padrão da <command>Debian</command>).
+</para>
+<para>
+A <command>Debian</command> segue o seguinte padrão para definir se um link
+simbólico em <filename>/etc/rc[0-6].d</filename> iniciará ou interromperá a
+execução de um serviço em <filename>/etc/init.d</filename>, que é o seguinte:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+Se um link é iniciado com a letra <literal>K</literal> (kill), quer dizer que o
+serviço será interrompido naquele nível de execução.  O que ele faz é executar
+o daemon em <filename>/etc/init.d</filename> seguido de
+<literal>stop</literal>.
+</para>
+</listitem>
+<listitem>
+<para>
+Se um link é iniciado com a letra <literal>S</literal> (start), quer dizer que
+o serviço será iniciado naquele nível de execução (é equivalente a executar o
+daemon seguido de <literal>start</literal>).
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Primeiro os links com a letra <literal>K</literal> são executado e depois os
+<literal>S</literal>.  A ordem que os links são executados dependem do valor
+numérico que acompanha o link, por exemplo, os seguintes arquivos são
+executados em seqüência:
+</para>
+<screen>
+S10sysklogd
+S12kerneld
+S20inetd
+S20linuxlogo
+S20logoutd
+S20lprng
+S89cron
+S99xdm
+</screen>
+<para>
+Note que os arquivos que iniciam com o mesmo número (<literal>S20*</literal>)
+são executados alfabeticamente.  O nível de execução do sistema pode ser
+modificado usando-se o comando <command>init</command> ou
+<command>telinit</command>.  Os seguinte níveis de execução estão disponíveis
+na <command>Debian</command>:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>0</literal> - Interrompe a execução do sistema.  todos os programas e
+daemons finalizados.  É acionado pelo comando <literal>shutdown -h</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>1</literal> - Modo monousuário, útil para manutenção dos sistema.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>2</literal> - Modo multiusuário (padrão da Debian)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>3</literal> - Modo multiusuário
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>4</literal> - Modo multiusuário
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>5</literal> - Modo multiusuário com login gráfico
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>6</literal> - Reinicialização do sistema.  Todos os programas e
+daemons são encerrados e o sistema é reiniciado.  É acionado pelo comando
+<literal>shutdown -r</literal> e o pressionamento de
+<literal>CTRL</literal>+<literal>ALT</literal>+<literal>DEL</literal>.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Por exemplo, para listar o nível de execução atual do sistema digite:
+<literal>runlevel</literal>.  O <command>runlevel</command> deverá listar algo
+como:
+</para>
+<screen>
+N 2
+</screen>
+<para>
+Agora para mudar para o nível de execução 1, digite: <literal>init 3</literal>.
+Agora confira a mudança digitando: <literal>runlevel</literal>.  Você deverá
+ver este resultado:
+</para>
+<screen>
+2 3
+</screen>
+<para>
+Isto quer dizer que o nível de execução anterior era o <literal>2</literal> e o
+atual é o <literal>3</literal>.
+</para>
+</section>
+
+</section>
+
+<section xml:id="deb-rede"><info><title>Rede no sistema Debian</title></info>
+<para>
+O local que contém as configurações de rede em um sistema
+<command>Debian</command> é o <filename>/etc/network/interfaces</filename>.  O
+formato deste arquivo é descrito em <xref linkend="etc-network-interfaces"/>.
+</para>
+</section>
+
+<section xml:id="deb-bts"><info><title>Bug tracking system</title></info>
+<para>
+É o sistema para relatar bugs e enviar sugestões sobre a distribuição.  Para
+relatar um bug primeiro você deve saber inglês (é a língua universal entendida
+pelos desenvolvedores) e verificar se o bug já foi relatado.  O Debian
+<emphasis>Bug tracking system</emphasis> pode ser acessado pelo endereço:
+<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://bugs.debian.org/">http://bugs.debian.org/</link>.
+</para>
+<para>
+Para relatar uma falha/sugestão, envie um e-mail para:
+<email>submit@bugs.debian.org</email>, com o assunto referente a falha/sugestão
+que deseja fazer e no corpo da mensagem:
+</para>
+<screen>
+Package: pacote
+Severity: normal/grave/wishlist
+Version: versão do pacote
+
+E o relato do problema
+</screen>
+<para>
+O bug será encaminhado diretamente ao mantenedor do pacote que verificará o
+problema relatado.  Os campos <literal>Package</literal> e
+<literal>Severity</literal> são obrigatórios para definir o nome do pacote
+(para endereçar o bug para a pessoa correta) e versão do pacote (esta falha
+pode ter sido relatada e corrigida em uma nova versão).
+</para>
+</section>
+
+<section xml:id="deb-download"><info><title>Onde encontrar a Debian para Download?</title></info>
+<para>
+No endereço <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="ftp://ftp.debian.org/">ftp://ftp.debian.org/</link>.
+Outros endereços podem ser obtidos na página oficial da
+<command>Debian</command> (<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.debian.org/">http://www.debian.org/</link>) clicando no link
+<literal>Download</literal> e <literal>mirrors</literal>.
+</para>
+<para>
+A distribuição Etch (4.0) completa, com 18830 pacotes ocupa em torno de 10 GB.
+Você também pode optar por fazer a instalação dos pacotes opcionais via
+Internet através do método apt.  Para detalhes veja o guia do dselect ou envie
+uma mensagem para a lista de discussão
+<email>debian-user-portuguese@lists.debian.org</email> (veja <xref linkend="ajuda-listas"/> para detalhes).
+</para>
+</section>
+
+<section xml:id="deb-lista-pacotes"><info><title>Lista de pacotes para uma instalação rápida e manual</title></info>
+<para>
+Esta seção contém uma lista de pacotes necessários que atendem a maioria dos
+usuários normais da <command>Debian</command> em um <emphasis role="strong">sistema padrão</emphasis> sem desperdício de espaço e sabendo
+exatamente o que está instalando.
+</para>
+<para>
+Estou assumindo que você concluiu a instalação da <command>Debian</command> 3.0
+(Woody) mas preferiu pular o passo de seleção de pacotes do
+<command>dselect</command> e fazer uma instalação manual.
+</para>
+<para>
+A lista de pacotes está dividida por categorias e você precisa ter o programa
+<command>apt</command> configurado corretamente para que os comandos funcionem
+(veja <xref linkend="dpkg-apt"/> para detalhes).
+</para>
+<para>
+Se pretende usar a lista de pacotes para fazer a instalação da
+<command>Debian</command> em muitos computadores, você tem duas opções:
+</para>
+<orderedlist numeration="arabic">
+<listitem>
+<para>
+Copiar o conteúdo das seções que seguem e fazer um script de instalação
+personalizado para automatizar a instalação de pacotes da
+<command>Debian</command> em outras máquinas
+</para>
+</listitem>
+<listitem>
+<para>
+Após a instalação dos pacotes no computador, utilize o comando <literal>dpkg
+--get-selections &gt;Lista-Pacotes.txt</literal> para gerar o arquivo
+<filename>Lista-Pacotes.txt</filename> contendo a lista de pacotes instalados.
+</para>
+<para>
+Então no computador que pretende fazer a instalação de pacotes, use o comando
+<literal>dpkg --set-selections &lt;Lista-Pacotes.txt</literal> e então digitar
+<literal>apt-get -f install</literal> ou escolher a opção
+<literal>Install</literal> no <command>dselect</command>.
+</para>
+</listitem>
+</orderedlist>
+<para>
+Para mais detalhes veja <xref linkend="dpkg-get-selections"/> e a <xref linkend="dpkg-set-selections"/>.  É importante usar o comando <literal>apt-get
+clean</literal> após a instalação de pacotes para remover os pacotes baixados
+pelo <command>apt</command> de <filename>/var/cache/apt/archives</filename>
+(exceto na instalação de pacotes através do disco rígido local).
+</para>
+<section xml:id="s20.11.1"><info><title>Pacotes Básicos (Altamente Recomendado)</title></info>
+<screen>
+apt-get install cpio info libident libncurses4 man-db manpages whois nvi 
+                hdparm mc exim linuxlogo less kbd mutt bzip2 
+                cron gpm libstdc++2.10
+</screen>
+</section>
+
+<section xml:id="s20.11.2"><info><title>Compilação do Kernel e programas em linguagem C</title></info>
+<screen>
+apt-get install perl, gcc libc6-dev bin86 make
+</screen>
+<para>
+Se pretender utilizar o <systemitem role="package">kernel-package</systemitem>
+para compilar o kernel mais facilmente, então você precisará dos seguintes
+pacotes:
+</para>
+<screen>
+apt-get install kernel-package dpkg-dev
+</screen>
+<para>
+Veja <xref linkend="kern-recompilando"/> para entender como compilar seu
+próprio kernel.
+</para>
+</section>
+
+<section xml:id="s20.11.3"><info><title>X11 (básico)</title></info>
+<screen>
+apt-get install xbase-clients xserver-xorg xfonts-75dpi xfonts-base 
+                xserver-common xterm xfstt xdm
+</screen>
+<para>
+Caso suas fontes sejam mostradas em tamanho exagerado, remova o pacotes
+<systemitem role="package">xfonts-100dpi</systemitem> ou ajuste a seção
+<literal>Files</literal> do arquivo <filename>/etc/X11/xorg.conf</filename>
+apropriadamente.
+</para>
+</section>
+
+<section xml:id="s20.11.4"><info><title>Window Managers para o X</title></info>
+<screen>
+apt-get install wmaker wmakerconf wmaker-data wmavload 
+                eterm enlightenment enlightenment-theme-bluesteel asclock
+		afterstep
+</screen>
+<para>
+OBS: Existem também gerenciadores de seção como o <command>gnome</command>,
+<command>kde</command>, ocupam bastante espaço em disco
+</para>
+</section>
+
+<section xml:id="s20.11.5"><info><title>Impressão (texto e gráfico com sistema de spool)</title></info>
+<screen>
+apt-get install lprng magicfilter gs gsfonts
+</screen>
+</section>
+
+<section xml:id="s20.11.6"><info><title>Som (mixer, mp3, Midi, wav, CD-Player)</title></info>
+<screen>
+xmms playmidi cam aumix alsa-base alsa-oss alsamixergui xmcd sox
+</screen>
+</section>
+
+<section xml:id="s20.11.7"><info><title>Programas de Internet (clientes)</title></info>
+<screen>
+apt-get install xchat gaim firefox fetchmail procmail mime-support
+</screen>
+</section>
+
+<section xml:id="s20.11.8"><info><title>Acessórios</title></info>
+<screen>
+apt-get install gimp gimp-nonfree gnotepad openoffice freefont
+</screen>
+</section>
+
+<section xml:id="s20.11.9"><info><title>Rede</title></info>
+<screen>
+apt-get install finger, talk, talkd, telnet
+</screen>
+</section>
+
+</section>
+
+</chapter>

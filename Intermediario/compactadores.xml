@@ -1,0 +1,1636 @@
+<!-- Converted by db4-upgrade version 1.0 -->
+<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="cpctd"><info><title>Compactadores</title></info>
+<para>
+Esta seção explica o que são e como usar programas compactadores no
+<command>GNU/Linux</command>, as características de cada um, como identificar
+um arquivo compactado e como descompactar um arquivo compactado usando o
+programa correspondente.
+</para>
+<para>
+A utilização de arquivos compactados é método útil principalmente para reduzir
+o consumo de espaço em disco ou permitir grandes quantidades de texto serem
+transferidas para outro computador através de disquetes.
+</para>
+<section xml:id="cpctd-oque"><info><title>O que fazem os compactadores/descompactadores?</title></info>
+<para>
+Compactadores são programas que diminuem o tamanho de um arquivo (ou arquivos)
+através da substituição de caracteres repetidos.  Para entender melhor como
+eles funcionam, veja o próximo exemplo:
+</para>
+<screen>
+compactadores compactam e deixam arquivos compactados.
+
+-- após a compactação da frase --
+
+%dores %m e deixam arquivos %dos
+</screen>
+<para>
+O que aconteceu realmente foi que a palavra <literal>compacta</literal> se
+encontrava 3 vezes na frase acima, e foi substituída por um sinal de
+<literal>%</literal>.  Para descompactar o processo seria o contrário: Ele
+substituiria % por <literal>compacta</literal> e nós temos a frase novamente
+restaurada.
+</para>
+<para>
+Você deve ter notado que o tamanho da frase <literal>compactada</literal> caiu
+quase pela metade.  A quantidade de compactação de um arquivo é chamada de
+<emphasis>taxa de compactação</emphasis>.  Assim se o tamanho do arquivo for
+diminuído a metade após a compactação, dizemos que conseguiu uma <emphasis>taxa
+de compactação</emphasis> de 2:1 (lê-se dois para um), se o arquivo diminuiu 4
+vezes, dizemos que conseguiu uma compactação de 4:1 (quatro para um) e assim
+por diante.
+</para>
+<para>
+Para controle dos caracteres que são usados nas substituições, os programas de
+compactação mantém cabeçalhos com todas as substituições usadas durante a
+compactação.  O tamanho do cabeçalho pode ser fixo ou definido pelo usuário,
+depende do programa usado na compactação.
+</para>
+<para>
+Este é um exemplo bem simples para entender o que acontece durante a
+compactação, os programas de compactação executam instruções muito avançadas e
+códigos complexos para atingir um alta taxa de compactação.
+</para>
+<para>
+Observações:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+Não é possível trabalhar diretamente com arquivos compactados!  É necessário
+descompactar o arquivo para usa-lo.  Note que alguns programas atualmente
+suportam a abertura de arquivos compactados, mas na realidade eles apenas
+simplificam a tarefa descompactando o arquivo, abrindo e o recompactando assim
+que o trabalho estiver concluído.
+</para>
+</listitem>
+<listitem>
+<para>
+Arquivos de texto tem uma taxa de compactação muito melhor que arquivos
+binários, porque possuem mais caracteres repetidos.  É normal atingir taxas de
+compactação de 10 para 1 ou mais quando se compacta um arquivo texto.  Arquivos
+binários, como programas, possuem uma taxa de compactação média de 2:1.
+</para>
+</listitem>
+<listitem>
+<para>
+Note que também existem programas compactadores especialmente desenvolvidos
+para compactação de músicas, arquivos binários, imagens, textos.
+</para>
+</listitem>
+</itemizedlist>
+<section xml:id="cpctd-tipos"><info><title>Tipos de compactação</title></info>
+<para>
+Existem basicamente dois tipos de compactação, a compactação <emphasis>sem
+perdas</emphasis> e a compactação <emphasis>com perdas</emphasis>.
+</para>
+<para>
+Os exemplos a seguir tentam explicar de forma simples os conceitos envolvidos.
+</para>
+<para>
+A compactação sem perdas, como o próprio nome diz não causa nenhuma perda nas
+informações contidas no arquivo.  Quando você compacta e descompacta um
+arquivo, o conteúdo é o mesmo do original.
+</para>
+<para>
+A compactação com perdas é um tipo específico de compactação desenvolvido para
+atingir altas taxas, porém com perdas parciais dos dados.  É aplicada a tipos
+de arquivos especiais, como músicas e imagens ou arquivos que envolvam a
+percepção humana.
+</para>
+<para>
+Sabe-se que o ouvido humano não é tão sensível a determinados sons e
+freqüências, então a compactação de um arquivo de música poderia deixar de
+gravar os sons que seriam pouco percebidos, resultando em um arquivo menor.
+Uma compactação do tipo <emphasis>ogg</emphasis> ou <emphasis>mp3</emphasis>
+utiliza-se destes recursos.  O arquivo resultante é muito menor que o original,
+porém alguns dados sonoros são perdidos.  Você só notaria se estivesse
+reproduzindo a música em um equipamento de alta qualidade e se tivesse um
+ouvido bem aguçado.  Para efeitos práticos, você está ouvindo a mesma música e
+economizando muito espaço em disco.
+</para>
+<para>
+Outro exemplo de compactação com perdas são as imagens
+<emphasis>jpg</emphasis>.  Imagine que você tem uma imagem com 60000 tons de
+cor diferentes, mas alguns tons são muito próximos de outros, então o
+compactador resume para 20000 tons de cor e a imagem terá 1/3 do tamanho
+original e o nosso olho conseguirá entender a imagem sem problemas e quase não
+perceberá a diferença.  Exemplos de extensões utilizadas em imagens compactadas
+são <emphasis>jpg</emphasis>, <emphasis>png</emphasis>,
+<emphasis>gif</emphasis>.
+</para>
+<para>
+Apesar das vantagens da grande taxa de compactação conseguida nos processos com
+perdas, nem sempre podemos utilizá-lo.  Quando compactamos um texto ou um
+programa, não podemos ter perdas, senão o nosso texto sofre alterações ou o
+programa não executa.  Nem mesmo podemos tem perdas quando compactamos imagens
+ou musicas que serão utilizadas em processos posteriores de masterização,
+mixagem ou impressão em alta qualidade.
+</para>
+</section>
+
+</section>
+
+<section xml:id="cpctd-extensoes"><info><title>Extensões de arquivos compactados</title></info>
+<para>
+As extensões identificam o tipo de um arquivo e assim o programa o programa
+necessário para trabalhar com aquele tipo de arquivo.  Existem dezenas de
+extensões que identificam arquivos compactados.  Quando um arquivo (ou
+arquivos) é compactado, uma extensão correspondente ao programa usado é
+adicionada ao nome do arquivo (caso o arquivo seja compactado pelo
+<command>gzip</command> receberá a extensão <filename>.gz</filename>, por
+exemplo).  Ao descompactar acontece o contrário: a extensão é retirada do
+arquivo.  Abaixo segue uma listagem de extensões mais usadas e os programas
+correspondentes:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<filename>.gz</filename> - Arquivo compactado pelo <command>gzip</command>.
+Use o programa <command>gzip</command> para descompacta-lo (para detalhes veja
+<xref linkend="cpctd-gzip"/>).  <filename>.bz2</filename> - Arquivo compactado
+pelo <command>bzip2</command>.  Use o programa <command>bzip2</command> para
+descompacta-lo (para detalhes veja <xref linkend="cpctd-bzip2"/>).
+</para>
+</listitem>
+<listitem>
+<para>
+<filename>.Z</filename> - Arquivo compactado pelo programa
+<command>compress</command>.  Use o programa <command>uncompress</command> para
+descompacta-lo.
+</para>
+</listitem>
+<listitem>
+<para>
+<filename>.zip</filename> - Arquivo compactado pelo programa
+<command>zip</command>.  Use o programa <command>unzip</command> para
+descompacta-lo.
+</para>
+</listitem>
+<listitem>
+<para>
+<filename>.rar</filename> - Arquivo compactado pelo programa
+<command>rar</command>.  Use o programa <command>rar</command> para
+descompacta-lo.
+</para>
+</listitem>
+<listitem>
+<para>
+<filename>.tar.gz</filename> - Arquivo compactado pelo programa
+<command>gzip</command> no utilitário de arquivamento <command>tar</command>.
+Para descompacta-lo, você pode usar o <command>gzip</command> e depois o
+<command>tar</command> ou somente o programa <command>tar</command> usando a
+opção <literal>-z</literal>.  Para detalhes veja <xref linkend="cpctd-gzip"/> e
+<xref linkend="cpctd-tar"/>.
+</para>
+</listitem>
+<listitem>
+<para>
+<filename>.tgz</filename> - Abreviação de <filename>.tar.gz</filename>.
+</para>
+</listitem>
+<listitem>
+<para>
+<filename>.tar.bz2</filename> - Arquivo compactado pelo programa
+<command>bzip2</command> no utilitário de arquivamento <command>tar</command>.
+Para descompacta-lo, você pode usar o <command>bzip2</command> e depois o
+<command>tar</command> ou somente o programa <command>tar</command> usando a
+opção <literal>-j</literal>.  Para detalhes veja <xref linkend="cpctd-bzip2"/>
+e <xref linkend="cpctd-tar"/>.
+</para>
+</listitem>
+<listitem>
+<para>
+<filename>.tar.Z</filename> - Arquivo compactado pelo programa
+<command>compress</command> no utilitário de arquivamento
+<command>tar</command>.  Para descompacta-lo, você pode usar o
+<command>uncompress</command> e depois o <command>tar</command> ou somente o
+programa <command>tar</command> usando a opção <literal>-Z</literal>.  Para
+detalhes veja <xref linkend="cpctd-tar"/>.
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="cpctd-gzip"><info><title>gzip</title></info>
+<para>
+É praticamente o compactador padrão do <command>GNU/Linux</command>, possui uma
+ótima taxa de compactação e velocidade.  A extensão dos arquivos compactados
+pelo <command>gzip</command> é a <filename>.gz</filename>, na versão para
+<command>DOS</command>, <command>Windows NT</command> é usada a extensão
+<filename>.z</filename>.
+</para>
+<para>
+<command>gzip</command> [<emphasis>opções</emphasis>] [<emphasis>arquivos</emphasis>]
+</para>
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term>arquivos</term>
+<listitem>
+<para>
+Especifica quais arquivos serão compactados pelo <command>gzip</command>.  Caso
+seja usado um <literal>-</literal>, será assumido a entrada padrão.  coringas
+podem ser usados para especificar vários arquivos de uma só vez (veja <xref linkend="basico-coringas"/>).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Opções</term>
+<term>-d, --decompress [arquivo]</term>
+<listitem>
+<para>
+Descompacta um arquivo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-f</term>
+<listitem>
+<para>
+Força a compactação, compactando até mesmo links.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-l [arquivo]</term>
+<listitem>
+<para>
+Lista o conteúdo de um arquivo compactado pelo <command>gzip</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-r</term>
+<listitem>
+<para>
+Compacta diretórios e sub-diretórios.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-c [arquivo]</term>
+<listitem>
+<para>
+Descompacta o arquivo para a saída padrão.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-t [arquivo]</term>
+<listitem>
+<para>
+Testa o arquivo compactado pelo <command>gzip</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-[num], --fast, --best</term>
+<listitem>
+<para>
+Ajustam a taxa de compactação/velocidade da compactação.  Quanto melhor a taxa
+menor é a velocidade de compactação e vice versa.  A opção
+<literal>--fast</literal> permite uma compactação rápida e tamanho do arquivo
+maior.  A opção <literal>--best</literal> permite uma melhor compactação e uma
+velocidade menor.
+</para>
+<para>
+O uso da opção <literal>-[número]</literal> permite especificar uma compactação
+individualmente usando números entre 1 (menor compactação) e 9 (melhor
+compactação).  É útil para buscar um bom equilibro entre taxa de
+compactação/velocidade (especialmente em computadores muito lentos).
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+Quando um arquivo é compactado pelo <command>gzip</command>, é automaticamente
+acrescentada a extensão <filename>.gz</filename> ao seu nome.
+</para>
+<para>
+O <command>gzip</command> também reconhece arquivos compactados pelos programas
+<command>zip</command>, <command>compress</command>, <command>compress
+-H</command> e <command>pack</command>.  As permissões de acesso dos arquivos
+são também armazenadas no arquivo compactado.
+</para>
+<para>
+Exemplos:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>gzip -9 texto.txt</literal> - Compacta o arquivo
+<filename>texto.txt</filename> usando a compactação máxima (compare o tamanho
+do arquivo compactado usando o comando <literal>ls -la</literal>).
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gzip -d texto.txt.gz</literal> - Descompacta o arquivo
+<filename>texto.txt</filename>
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gzip -c texto.txt.gz</literal> - Descompacta o arquivo
+<filename>texto.txt</filename> para a tela
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gzip -9 *.txt</literal> - Compacta todos os arquivos que terminam com
+<filename>.txt</filename>
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gzip -t texto.txt.gz</literal> - Verifica o arquivo
+<filename>texto.txt.gz</filename>.
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="cpctd-zip"><info><title>zip</title></info>
+<para>
+Utilitário de compactação compatível com <command>pkzip</command> (do
+<command>DOS</command>) e trabalha com arquivos de extensão
+<filename>.zip</filename>.  Possui uma ótima taxa de compactação e velocidade
+no processamento dos arquivos compactados (comparando-se ao
+<command>gzip</command>).
+</para>
+<para>
+<command>zip</command> [<emphasis>opções</emphasis>] [<emphasis>arquivo-destino</emphasis>] [<emphasis>arquivos-origem</emphasis>]
+</para>
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term>arquivo-destino</term>
+<listitem>
+<para>
+Nome do arquivo compactado que será gerado.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>arquivos-origem</term>
+<listitem>
+<para>
+Arquivos/Diretórios que serão compactados.  Podem ser usados coringas para
+especificar mais de um arquivo de uma só vez (veja <xref linkend="basico-coringas"/>).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>opções</term>
+<term>-r</term>
+<listitem>
+<para>
+Compacta arquivos e sub-diretórios.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-e</term>
+<listitem>
+<para>
+Permite encriptar o conteúdo de um arquivo <filename>.zip</filename> através de
+senha.  A senha será pedida no momento da compactação.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-f</term>
+<listitem>
+<para>
+Somente substitui um arquivo compactado existente dentro do arquivo
+<filename>.zip</filename> somente se a versão é mais nova que a atual.  Não
+acrescenta arquivos ao arquivo compactado.  Deve ser executado no mesmo
+diretório onde o programa <command>zip</command> foi executado anteriormente.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-F</term>
+<listitem>
+<para>
+Repara um arquivo <filename>.zip</filename> danificado.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-[NUM]</term>
+<listitem>
+<para>
+Ajusta a qualidade/velocidade da compactação.  Pode ser especificado um número
+de 1 a 9.  O 1 permite mínima compactação e máxima velocidade, 9 permite uma
+melhor compactação e menor velocidade.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-i [arquivos]</term>
+<listitem>
+<para>
+Compacta somente os [arquivos] especificados.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-j</term>
+<listitem>
+<para>
+Se especificado, não armazena caminhos de diretórios.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-m</term>
+<listitem>
+<para>
+Apaga os arquivos originais após a compactação.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-T [arquivo]</term>
+<listitem>
+<para>
+Procura por erros em um arquivo <filename>.zip</filename>.  Caso sejam
+detectados problemas, utilize a opção <literal>-F</literal> para corrigi-los.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-y</term>
+<listitem>
+<para>
+Armazena links simbólicos no arquivo <filename>.zip</filename>.  Por padrão, os
+links simbólicos são ignorados durante a compactação.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-k [arquivo]</term>
+<listitem>
+<para>
+Modifica o [arquivo] para ter compatibilidade total com o
+<command>pkzip</command> do <command>DOS</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-l</term>
+<listitem>
+<para>
+Converte saltos de linha <command>UNIX</command> (LF) para o formato CR+LF
+(usados pelo <command>DOS</command>).  Use esta opção com arquivos Texto.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-ll</term>
+<listitem>
+<para>
+Converte saltos de linha <command>DOS</command> (CR+LF) para o formato
+<command>UNIX</command> (LF).  Use esta opção com arquivos texto.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-n [extensão]</term>
+<listitem>
+<para>
+Não compacta arquivos identificados por [extensão].  Ele é armazenado sem
+compactação no arquivo <filename>.zip</filename>, muito útil para uso com
+arquivos já compactados.
+</para>
+<para>
+Caso sejam especificados diversas extensões de arquivos, elas devem ser
+separadas por <literal>:</literal> - Por exemplo, <literal>zip -n .zip:.tgz
+arquivo.zip *.txt</literal>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-q</term>
+<listitem>
+<para>
+Não mostra mensagens durante a compactação do arquivo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-u</term>
+<listitem>
+<para>
+Atualiza/adiciona arquivos ao arquivo <filename>.zip</filename>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-X</term>
+<listitem>
+<para>
+Não armazena detalhes de permissões, UID, GID e datas dos arquivos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-z</term>
+<listitem>
+<para>
+Permite incluir um comentário no arquivo <filename>.zip</filename>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+Caso o nome de arquivo de destino não termine com <filename>.zip</filename>,
+esta extensão será automaticamente adicionada.  Para a descompactação de
+arquivos <filename>.zip</filename> no <command>GNU/Linux</command>, é
+necessário o uso do utilitário <command>unzip</command>.  Exemplos:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>zip textos.zip *.txt</literal> - Compacta todos os arquivos com a
+extensão <filename>.txt</filename> para o arquivo
+<filename>textos.zip</filename> (compare o tamanho do arquivo compactado
+digitando <literal>ls -la</literal>).
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>zip -r textos.zip /usr/*.txt</literal> - Compacta todos os arquivos
+com a extensão <filename>.txt</filename> do diretório <filename>/usr</filename>
+e sub-diretórios para o arquivo <filename>textos.zip</filename>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>zip -9 textos.zip *</literal> - Compacta todos os arquivos do
+diretório atual usando a compactação máxima para o arquivo
+<filename>textos.zip</filename>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>zip -T textos.zip</literal> - Verifica se o arquivo
+<filename>textos.zip</filename> contém erros.
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="cpctd-unzip"><info><title>unzip</title></info>
+<para>
+Descompacta arquivos <filename>.zip</filename> criados com o programa
+<command>zip</command>.  Este programa também é compatível com arquivos
+compactados pelo <command>pkzip</command> do <command>DOS</command>.
+</para>
+<para>
+<command>unzip</command> [<emphasis>opções</emphasis>] [<emphasis>arquivo.zip</emphasis>]
+[<emphasis>arquivos-extrair</emphasis>] [<emphasis>-d
+diretório</emphasis>]
+</para>
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term>arquivo.zip</term>
+<listitem>
+<para>
+Nome do arquivo que deseja descompactar.  Podem ser usados coringas para
+especificar mais de um arquivo para ser descompactado.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>arquivos-extrair</term>
+<listitem>
+<para>
+Nome dos arquivos (separados por espaço) que serão descompactados do arquivo
+<filename>.zip</filename>.  Caso não seja especificado, é assumido
+<literal>*</literal> (todos os arquivos serão descompactados).
+</para>
+<para>
+Se for usado <literal>-x arquivos</literal>, os arquivos especificados não
+serão descompactados.  O uso de coringas é permitido.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-d diretório</term>
+<listitem>
+<para>
+Diretório onde os arquivos serão descompactados.  Caso não for especificado, os
+arquivos serão descompactados no diretório atual.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>opções</term>
+<term>-c</term>
+<listitem>
+<para>
+Descompacta os arquivos para stdout (saída padrão) ao invés de criar arquivos.
+Os nomes dos arquivos também são mostrados (veja a opção
+<literal>-p</literal>).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-f</term>
+<listitem>
+<para>
+Descompacta somente arquivos que existam no disco e mais novos que os atuais.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-l</term>
+<listitem>
+<para>
+Lista os arquivos existentes dentro do arquivo <filename>.zip</filename>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-M</term>
+<listitem>
+<para>
+Efetua uma pausa a cada tela de dados durante o processamento (a mesma função
+do comando <command>more</command>).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-n</term>
+<listitem>
+<para>
+Nunca substitui arquivos já existentes.  Se um arquivo existe ele é pulado.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-o</term>
+<listitem>
+<para>
+Substitui arquivos existentes sem perguntar.  Tem a função contrária a opção
+<literal>-n</literal>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-P [SENHA]</term>
+<listitem>
+<para>
+Permite descompactar arquivos <filename>.zip</filename> usando a [SENHA].
+CUIDADO!  qualquer usuário conectado em seu sistema pode ver a senha digitada
+na linha de comando digitada.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-p</term>
+<listitem>
+<para>
+Descompacta os arquivos para stdout (saída padrão) ao invés de criar arquivos.
+Os nomes dos arquivos não são mostrados (veja a opção <literal>-c</literal>).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-q</term>
+<listitem>
+<para>
+Não mostra mensagens.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-t</term>
+<listitem>
+<para>
+Verifica o arquivo <filename>.zip</filename> em busca de erros.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-u</term>
+<listitem>
+<para>
+Idêntico a opção <literal>-f</literal> só que também cria arquivos que não
+existem no diretório.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-v</term>
+<listitem>
+<para>
+Mostra mais detalhes sobre o processamento do <command>unzip</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-z</term>
+<listitem>
+<para>
+Mostra somente o comentário existente no arquivo.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+Por padrão o <command>unzip</command> também descompacta sub-diretórios caso o
+arquivo <filename>.zip</filename> tenha sido gerado com <command>zip
+-r</command>.
+</para>
+<para>
+Exemplos:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>unzip texto.zip</literal> - Descompacta o conteúdo do arquivo
+<filename>texto.zip</filename> no diretório atual.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>unzip texto.zip carta.txt</literal> - Descompacta somente o arquivo
+<filename>carta.txt</filename> do arquivo <filename>texto.zip</filename>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>unzip texto.zip -d /tmp/texto</literal> - Descompacta o conteúdo do
+arquivo <filename>texto.zip</filename> para o diretório
+<filename>/tmp/texto</filename>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>unzip -l texto.zip</literal> - Lista o conteúdo do arquivo
+<filename>texto.zip</filename>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>unzip -t texto.zip</literal> - Verifica o arquivo
+<filename>texto.zip</filename>.
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+
+<section xml:id="cpctd-tar"><info><title>tar</title></info>
+<para>
+Na verdade o <command>tar</command> não é um compactador e sim um "arquivador"
+(ele junta vários arquivos em um só), mas pode ser usado em conjunto com um
+compactar (como o <command>gzip</command> ou <command>zip</command>) para
+armazena-los compactados.  O <command>tar</command> também é muito usado para
+cópias de arquivos especiais ou dispositivos do sistema.  É comum encontrar
+arquivos com a extensão <filename>.tar</filename>,
+<filename>.tar.gz</filename>, <filename>.tgz</filename>,
+<filename>.tar.bz2</filename>, <filename>.tar.Z</filename>,
+<filename>.tgZ</filename>, o primeiro é um arquivo normal gerado pelo
+<command>tar</command> e todos os outros são arquivos gerados através
+<command>tar</command> junto com um programa de compactação
+(<command>gzip</command> (<filename>.gz</filename>), <command>bzip2</command>
+(<filename>.bz2</filename>) e <command>compress</command>
+(<filename>.Z</filename>).
+</para>
+<para>
+<command>tar</command> [<emphasis>opções</emphasis>]
+[<emphasis>arquivo-destino</emphasis>]
+[<emphasis>arquivos-origem</emphasis>]
+</para>
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term>arquivo-destino</term>
+<listitem>
+<para>
+É o nome do arquivo de destino.  Normalmente especificado com a extensão
+<filename>.tar</filename> caso seja usado somente o arquivamento ou
+<filename>.tar.gz</filename>/<filename>.tgz</filename> caso seja usada a
+compactação (usando a opção <literal>-z</literal>).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>arquivos-origem</term>
+<listitem>
+<para>
+Especifica quais arquivos/diretórios serão compactados.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>opções</term>
+<term>-c, --create</term>
+<listitem>
+<para>
+Cria um novo arquivo <filename>.tar</filename>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-t, --list</term>
+<listitem>
+<para>
+Lista o conteúdo de um arquivo <filename>.tar</filename>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-u, --update</term>
+<listitem>
+<para>
+Atualiza arquivos compactados no arquivo <filename>.tar</filename>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-f, --file [HOST:]F</term>
+<listitem>
+<para>
+Usa o arquivo especificado para gravação ou o dispositivo
+<filename>/dev/rmt0</filename>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-j, --bzip2</term>
+<listitem>
+<para>
+Usa o programa <command>bzip2</command> para processar os arquivos do
+<command>tar</command>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-l, --one-file-system</term>
+<listitem>
+<para>
+Não processa arquivos em um sistema de arquivos diferentes de onde o
+<command>tar</command> foi executado.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-M, --multi-volume</term>
+<listitem>
+<para>
+Cria/lista/descompacta arquivos em múltiplos volumes.  O uso de arquivos em
+múltiplos volumes permite que uma grande cópia de arquivos que não cabe em um
+disquete, por exemplo, seja feita em mais de um disquete.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-o</term>
+<listitem>
+<para>
+Grava o arquivo no formato VT7 ao invés do ANSI.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-O, --to-stdout</term>
+<listitem>
+<para>
+Descompacta arquivos para a saída padrão ao invés de gravar em um arquivo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>--remove-files</term>
+<listitem>
+<para>
+Apaga os arquivos de origem após serem processados pelo <command>tar</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-R, --record-number</term>
+<listitem>
+<para>
+Mostra o número de registros dentro de um arquivo <filename>tar</filename> em
+cada mensagem.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>--totals</term>
+<listitem>
+<para>
+Mostra o total de bytes gravados com a opção <literal>--create</literal>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-v</term>
+<listitem>
+<para>
+Mostra os nomes dos arquivos enquanto são processados.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-V [NOME]</term>
+<listitem>
+<para>
+Inclui um [NOME] no arquivo <command>tar</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-W, --verify</term>
+<listitem>
+<para>
+Tenta verificar o arquivo gerado pelo <command>tar</command> após grava-lo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>x</term>
+<listitem>
+<para>
+Extrai arquivos gerados pelo <command>tar</command>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-X [ARQUIVO]</term>
+<listitem>
+<para>
+Tenta apagar o [ARQUIVO] dentro de um arquivo compactado
+<filename>.tar</filename>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-Z</term>
+<listitem>
+<para>
+Usa o programa <command>compress</command> durante o processamento dos
+arquivos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-z</term>
+<listitem>
+<para>
+Usa o programa <command>gzip</command> durante o processamento dos arquivos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>--use-compress-program [PROGRAMA]</term>
+<listitem>
+<para>
+Usa o [PROGRAMA] durante o processamento dos arquivos.  Ele deve aceitar a
+opção <literal>-d</literal>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-[0-7][lmh]</term>
+<listitem>
+<para>
+Especifica a unidade e sua densidade.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+A extensão precisa ser especificada no arquivo de destino para a identificação
+correta:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+Arquivos gerados pelo <command>tar</command> precisam ter a extensão
+<filename>.tar</filename>
+</para>
+</listitem>
+<listitem>
+<para>
+Caso seja usada a opção <literal>-j</literal> para compactação, a extensão
+deverá ser <filename>.tar.bz2</filename>
+</para>
+</listitem>
+<listitem>
+<para>
+Caso seja usada a opção <literal>-z</literal> para compactação, a extensão
+deverá ser <filename>.tar.gz</filename> ou <filename>.tgz</filename>
+</para>
+</listitem>
+<listitem>
+<para>
+Caso seja usada a opção <literal>-Z</literal> para a compactação, a extensão
+deverá ser <filename>.tar.Z</filename> ou <filename>.tgZ</filename>
+</para>
+</listitem>
+</itemizedlist>
+<para>
+É importante saber qual qual o tipo de compactador usado durante a geração do
+arquivo <filename>.tar</filename> pois será necessário especificar a opção
+apropriada para descompacta-lo (para detalhes veja <xref linkend="cpctd-extensoes"/>).
+</para>
+<para>
+Exemplos:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>tar -cf index.txt.tar index.txt</literal> - Cria um arquivo chamado
+<filename>index.txt.tar</filename> que armazenará o arquivo
+<filename>index.txt</filename>.  Você pode notar digitando <literal>ls
+-la</literal> que o arquivo <filename>index.txt</filename> foi somente
+arquivado (sem compactação), isto é útil para juntar diversos arquivos em um
+só.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tar -xf index.txt.tar</literal> - Desarquiva o arquivo
+<filename>index.txt</filename> criado pelo comando acima.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tar -czf index.txt.tar.gz index.txt</literal> - O mesmo que o exemplo
+de arquivamento anterior, só que agora é usado a opção <literal>-z</literal>
+(compactação através do programa <command>gzip</command>).  Você agora pode
+notar digitando <literal>ls -la</literal> que o arquivo
+<filename>index.txt</filename> foi compactado e depois arquivado no arquivo
+<filename>index.txt.tar.gz</filename> (você também pode chama-lo de
+<filename>index.txt.tgz</filename> que também identifica um arquivo
+<filename>.tar</filename> compactado pelo <command>gzip</command>)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tar -xzf index.txt.tar.gz</literal> - Descompacta e desarquiva o
+arquivo <filename>index.txt.tar.gz</filename> criado com o comando acima.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>gzip -dc index.tar.gz | tar -xf -</literal> - Faz o mesmo que o
+comando acima só que de uma forma diferente: Primeiro descompacta o arquivo
+<filename>index.txt.tar.gz</filename> e envia a saída do arquivo descompactado
+para o <command>tar</command> que desarquivará o arquivo
+<filename>index.txt</filename>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tar -cjf index.txt.tar.bz2 index.txt</literal> - Arquiva o arquivo
+<filename>index.txt</filename> em <filename>index.txt.tar.bz2</filename>
+compactando através do <command>bzip2</command> (opção -j).
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tar -xjf index.txt.tar.bz2</literal> - Descompacta e desarquiva o
+arquivo <filename>index.txt.tar.bz2</filename> criado com o comando acima.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>bzip2 -dc index.txt.tar.bz2 | tar -xf -</literal> - Faz o mesmo que o
+comando acima só que de uma forma diferente: Primeiro descompacta o arquivo
+<filename>index.txt.tar.bz2</filename> e envia a saída do arquivo descompactado
+para o <command>tar</command> que desarquivará o arquivo
+<filename>index.txt</filename>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tar -t index.txt.tar</literal> - Lista o conteúdo de um arquivo
+<filename>.tar</filename>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>tar -tz index.txt.tar.gz</literal> - Lista o conteúdo de um arquivo
+<filename>.tar.gz</filename>.
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+
+<section xml:id="cpctd-bzip2"><info><title>bzip2</title></info>
+<para>
+É um novo compactador que vem sendo cada vez mais usado porque consegue atingir
+a melhor compactação em arquivos texto se comparado aos já existentes (em
+conseqüência sua velocidade de compactação também é menor; quase duas vezes
+mais lento que o <command>gzip</command>).  Suas opções são praticamente as
+mesmas usadas no <command>gzip</command> e você também pode usa-lo da mesma
+forma.  A extensão dos arquivos compactados pelo <command>bzip2</command> é a
+<filename>.bz2</filename>
+</para>
+<para>
+<command>bzip2</command> [<emphasis>opções</emphasis>]
+[<emphasis>arquivos</emphasis>]
+</para>
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term>arquivos</term>
+<listitem>
+<para>
+Especifica quais arquivos serão compactados pelo <command>bzip2</command>.
+Caso seja usado um <literal>-</literal>, será assumido a entrada padrão.
+coringas podem ser usados para especificar vários arquivos de uma só vez (veja
+<xref linkend="basico-coringas"/>).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Opções</term>
+<term>-d, --decompress [arquivo]</term>
+<listitem>
+<para>
+Descompacta um arquivo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-f</term>
+<listitem>
+<para>
+Força a compactação, compactando até mesmo links.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-l [arquivo]</term>
+<listitem>
+<para>
+Lista o conteúdo de um arquivo compactado pelo <command>bzip2</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-r</term>
+<listitem>
+<para>
+Compacta diretórios e sub-diretórios.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-c [arquivo]</term>
+<listitem>
+<para>
+Descompacta o arquivo para a saída padrão.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-t [arquivo]</term>
+<listitem>
+<para>
+Testa o arquivo compactado pelo <command>bzip2</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-[num], --fast, --best</term>
+<listitem>
+<para>
+Ajustam a taxa de compactação/velocidade da compactação.  Quanto melhor a taxa
+menor é a velocidade de compactação e vice versa.  A opção
+<literal>--fast</literal> permite uma compactação rápida e tamanho do arquivo
+maior.  A opção <literal>--best</literal> permite uma melhor compactação e uma
+velocidade menor.
+</para>
+<para>
+O uso da opção <literal>-[número]</literal> permite especificar uma compactação
+individualmente usando números entre 1 (menor compactação) e 9 (melhor
+compactação).  É útil para buscar um bom equilibro entre taxa de
+compactação/velocidade (especialmente em computadores muito lentos).
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+Quando um arquivo é compactado pelo <command>bzip2</command>, é automaticamente
+acrescentada a extensão <filename>.bz2</filename> ao seu nome.  As permissões
+de acesso dos arquivos são também armazenadas no arquivo compactado.
+</para>
+<para>
+Exemplos:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>bzip2 -9 texto.txt</literal> - Compacta o arquivo
+<filename>texto.txt</filename> usando a compactação máxima (compare o tamanho
+do arquivo compactado usando o comando <literal>ls -la</literal>).
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>bzip2 -d texto.txt.bz2</literal> - Descompacta o arquivo
+<filename>texto.txt</filename>
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>bzip2 -c texto.txt.bz2</literal> - Descompacta o arquivo
+<filename>texto.txt</filename> para a saída padrão (tela)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>bzip2 -9 *.txt</literal> - Compacta todos os arquivos que terminam com
+<filename>.txt</filename>
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>bzip2 -t texto.txt.bz2</literal> - Verifica o arquivo
+<filename>texto.txt.bz2</filename>.
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+
+<section xml:id="cpctd-rar"><info><title>rar</title></info>
+<para>
+<command>rar</command> é um compactador desenvolvido por <literal>Eugene
+Roshal</literal> e possui versões para <command>GNU/Linux</command>,
+<command>DOS</command>, <command>Windows</command>, <command>OS/2</command> e
+<command>Macintosh</command>.  Trabalha com arquivos de extensão
+<filename>.rar</filename> e permite armazenar arquivos compactados em vários
+disquetes (múltiplos volumes).  Se trata de um produto comercial, mas decidi
+coloca-lo aqui porque possui boas versões Shareware e pode ser muito útil em
+algumas situações.
+</para>
+<para>
+<command>rar</command> [<emphasis>ações</emphasis>] [<emphasis>opções</emphasis>]
+[<emphasis>arquivo-destino.rar</emphasis>]
+[<emphasis>arquivos-origem</emphasis>]
+</para>
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term>arquivo-destino.rar</term>
+<listitem>
+<para>
+É o nome do arquivo de destino
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>arquivos-origem</term>
+<listitem>
+<para>
+Arquivos que serão compactados.  Podem ser usados coringas para especificar
+mais de um arquivo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>ações</term>
+<term>a</term>
+<listitem>
+<para>
+Compacta arquivos
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>x</term>
+<listitem>
+<para>
+Descompacta arquivos
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>d</term>
+<listitem>
+<para>
+Apaga arquivos especificados
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>t</term>
+<listitem>
+<para>
+Verifica o arquivo compactado em busca de erros.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>c</term>
+<listitem>
+<para>
+Inclui comentário no arquivo compactado
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>r</term>
+<listitem>
+<para>
+Repara um arquivo <filename>.rar</filename> danificado
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>l</term>
+<listitem>
+<para>
+Lista arquivos armazenados no arquivo compactado
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>u</term>
+<listitem>
+<para>
+Atualiza arquivos existentes no arquivo compactado.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>m</term>
+<listitem>
+<para>
+Compacta e apaga os arquivos de origem (move).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>e</term>
+<listitem>
+<para>
+Descompacta arquivos para o diretório atual
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>p</term>
+<listitem>
+<para>
+Mostra o conteúdo do arquivo na saída padrão
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>rr</term>
+<listitem>
+<para>
+Adiciona um registro de verificação no arquivo
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>s</term>
+<listitem>
+<para>
+Converte um arquivo <filename>.rar</filename> normal em arquivo auto-extráctil.
+Arquivos auto-extrácteis são úteis para enviar arquivos a pessoas que não tem o
+programa <command>rar</command>.  Basta executar o arquivo e ele será
+automaticamente descompactado (usando o sistema operacional que foi criado).
+Note que esta opção requer que o arquivo <filename>default.sfx</filename>
+esteja presente no diretório home do usuário.  Use o comando
+<command>find</command> para localiza-lo em seu sistema.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>opções</term>
+<term>o+</term>
+<listitem>
+<para>
+Substitui arquivos já existentes sem perguntar
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>o-</term>
+<listitem>
+<para>
+Não substitui arquivos existentes
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>sfx</term>
+<listitem>
+<para>
+Cria arquivos auto-extrácteis.  Arquivos auto-extrácteis são úteis para enviar
+arquivos a pessoas que não tem o programa <command>rar</command>.  Basta
+executar o arquivo e ele será automaticamente descompactado.  Note que este
+processo requer que o arquivo <filename>default.sfx</filename> esteja presente
+no diretório home do usuário.  Use o comando <command>find</command> para
+localiza-lo em seu sistema.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>y</term>
+<listitem>
+<para>
+Assume <literal>sim</literal> para todas as perguntas
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>r</term>
+<listitem>
+<para>
+Inclui sub-diretórios no arquivo compactado
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>x [ARQUIVO]</term>
+<listitem>
+<para>
+Processa tudo menos o [ARQUIVO].  Pode ser usados coringas
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>v[TAMANHO]</term>
+<listitem>
+<para>
+Cria arquivos com um limite de tamanho.  Por padrão, o tamanho é especificado
+em bytes, mas o número pode ser seguido de <literal>k</literal> (kilobytes) ou
+<literal>m</literal>(megabytes).
+</para>
+<para>
+Exemplo: <literal>rar a -v1440k ...</literal> ou <literal>rar a -v10m
+...</literal>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>p [SENHA]</term>
+<listitem>
+<para>
+Inclui senha no arquivo.  CUIDADO, pessoas conectadas em seu sistema podem
+capturar a linha de comando facilmente e descobrir sua senha.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>m [0-5]</term>
+<listitem>
+<para>
+Ajusta a taxa de compactação/velocidade de compactação.  0 não faz compactação
+alguma (mais rápido) somente armazena os arquivos, 5 é o nível que usa mais
+compactação (mais lento).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>ed</term>
+<listitem>
+<para>
+Não inclui diretórios vazios no arquivo
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>isnd</term>
+<listitem>
+<para>
+Ativa emissão de sons de alerta pelo programa
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>ierr</term>
+<listitem>
+<para>
+Envia mensagens de erro para stderr
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>inul</term>
+<listitem>
+<para>
+Desativa todas as mensagens
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>ow</term>
+<listitem>
+<para>
+Salva o dono e grupo dos arquivos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>ol</term>
+<listitem>
+<para>
+Salva links simbólicos no arquivo ao invés do arquivo físico que o link faz
+referência.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>mm[f]</term>
+<listitem>
+<para>
+Usa um método especial de compactação para arquivos multimídia (sons, vídeos,
+etc).  Caso for usado <literal>mmf</literal>, força o uso do método multimídia
+mesmo que o arquivo compactado não seja deste tipo.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+Os arquivos gerados pelo <command>rar</command> do <command>GNU/Linux</command>
+podem ser usados em outros sistemas operacionais, basta ter o
+<command>rar</command> instalado.  Quando é usada a opção <literal>-v</literal>
+para a criação de múltiplos volumes, a numeração dos arquivos é feita na forma:
+<filename>arquivo.rar</filename>, <filename>arquivo.r00</filename>,
+<filename>arquivo.r01</filename>, etc, durante a descompactação os arquivos
+serão pedidos em ordem.  Se você receber a mensagem <literal>cannot modify
+volume</literal> durante a criação de um arquivo <filename>.rar</filename>,
+provavelmente o arquivo já existe.  Apague o arquivo existente e tente
+novamente.
+</para>
+<para>
+Exemplos:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>rar a texto.rar texto.txt</literal> - Compacta o arquivo
+<filename>texto.txt</filename> em um arquivo com o nome
+<filename>texto.rar</filename>
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rar x texto.rar</literal> - Descompacta o arquivo
+<filename>texto.rar</filename>
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rar a -m5 -v1400k textos.rar *</literal> - Compacta todos os arquivos
+do diretório atual, usando a compactação máxima no arquivo
+<filename>textos.rar</filename>.  Note que o tamanho máximo de cada arquivo é
+1440 para ser possível grava-lo em partes para disquetes.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rar x -v -y textos.rar</literal> - Restaura os arquivos em múltiplos
+volumes criados com o processo anterior.  Todos os arquivos devem ter sido
+copiados dos disquetes para o diretório atual antes de prosseguir.  A opção
+<literal>-y</literal> é útil para não precisar-mos responder
+<literal>yes</literal> a toda pergunta que o <command>rar</command> fizer.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rar t textos.rar</literal> - Verifica se o arquivo
+<filename>textos.rar</filename> possui erros.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rar r textos.rar</literal> - Repara um arquivo
+<filename>.rar</filename> danificado.
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+</chapter>
