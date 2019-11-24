@@ -1,5 +1,5 @@
 <!-- Converted by db4-upgrade version 1.0 -->
-<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="x11"><info><title>X Window (ambiente gráfico)</title></info>
+<chapter userlevel='inic;inter' xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="x11"><info><title>X Window (ambiente gráfico)</title></info>
 <para>
 Este capítulo do guia traz explicações sobre o ambiente gráfico X Window
 System.

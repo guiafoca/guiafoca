@@ -1,5 +1,5 @@
 <!-- Converted by db4-upgrade version 1.0 -->
-<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="boot"><info><title>Gerenciadores de Partida (boot loaders)</title></info>
+<chapter userlevel='inter' xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="boot"><info><title>Gerenciadores de Partida (boot loaders)</title></info>
 <para>
 <emphasis>Gerenciadores de Partida</emphasis> são programas que carregam um
 sistema operacional e/ou permitem escolher qual será iniciado.  Normalmente

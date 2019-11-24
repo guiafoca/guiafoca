@@ -1,5 +1,5 @@
 <!-- Converted by db4-upgrade version 1.0 -->
-<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="deb"><info><title>A distribuição Debian GNU/Linux</title></info>
+<chapter userlevel='inter;avanc' xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="deb"><info><title>A distribuição Debian GNU/Linux</title></info>
 <para>
 Este capítulo traz algumas características sobre a distribuição <command>Debian
 GNU/Linux</command>, programas de configuração e particularidades.  A maioria

@@ -1,5 +1,5 @@
 <!-- Converted by db4-upgrade version 1.0 -->
-<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="etc"><info><title>Principais arquivos de configuração do diretório <filename>/etc</filename></title></info>
+<chapter userlevel='inter' xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="etc"><info><title>Principais arquivos de configuração do diretório <filename>/etc</filename></title></info>
 <para>
 Este capítulo descreve a função, parâmetros e exemplos de utilização de alguns
 arquivos/diretórios de configuração em <filename>/etc</filename>.  Estes

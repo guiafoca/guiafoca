@@ -1,5 +1,5 @@
 <!-- Converted by db4-upgrade version 1.0 -->
-<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="hardw"><info><title>Hardware</title></info>
+<chapter userlevel='inter;avanc' xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="hardw"><info><title>Hardware</title></info>
 <para>
 Hardware é tudo que diz respeito a parte física do computador.  Nesta seção
 serão abordados assuntos relacionados com a configuração de hardwares, escolha

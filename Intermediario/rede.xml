@@ -1,5 +1,5 @@
 <!-- Converted by db4-upgrade version 1.0 -->
-<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="rede"><info><title>Rede</title></info>
+<chapter userlevel='inter;avanc' xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="rede"><info><title>Rede</title></info>
 <para>
 Este capítulo descreve o que é uma rede, os principais dispositivos de rede no
 <command>GNU/Linux</command>, a identificação de cada um, como configurar os

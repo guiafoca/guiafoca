@@ -1,5 +1,5 @@
 <!-- Converted by db4-upgrade version 1.0 -->
-<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="perm"><info><title>Permissões de acesso a arquivos e diretórios</title></info>
+<chapter userlevel='inic;inter' xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="perm"><info><title>Permissões de acesso a arquivos e diretórios</title></info>
 <para>
 As permissões de acesso protegem o sistema de arquivos Linux do acesso indevido
 de pessoas ou programas não autorizados.

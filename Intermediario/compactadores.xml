@@ -1,5 +1,5 @@
 <!-- Converted by db4-upgrade version 1.0 -->
-<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="cpctd"><info><title>Compactadores</title></info>
+<chapter userlevel='inter' xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="cpctd"><info><title>Compactadores</title></info>
 <para>
 Esta seção explica o que são e como usar programas compactadores no
 <command>GNU/Linux</command>, as características de cada um, como identificar

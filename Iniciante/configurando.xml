@@ -1,5 +1,5 @@
 <!-- Converted by db4-upgrade version 1.0 -->
-<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="cfg"><info><title>Configuração do sistema</title></info>
+<chapter userlevel='inic;inter' xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="cfg"><info><title>Configuração do sistema</title></info>
 <para>
 Este capítulo traz explicações sobre algumas configurações úteis que podem ser
 feitas no sistema.  Neste documento assumimos que o kernel do seus sistema já

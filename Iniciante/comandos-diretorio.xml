@@ -1,5 +1,5 @@
 <!-- Converted by db4-upgrade version 1.0 -->
-<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="cmdd"><info><title>Comandos para manipulação de diretório</title></info>
+<chapter userlevel='inic;inter' xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="cmdd"><info><title>Comandos para manipulação de diretório</title></info>
 <para>
 Abaixo comandos úteis para a manipulação de diretórios.
 </para>

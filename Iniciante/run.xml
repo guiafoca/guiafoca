@@ -1,5 +1,5 @@
 <!-- Converted by db4-upgrade version 1.0 -->
-<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="run"><info><title>Execução de programas</title></info>
+<chapter userlevel='inic;inter' xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="run"><info><title>Execução de programas</title></info>
 <para>
 Este capítulo explica como executar programas no <command>GNU/Linux</command> e
 o uso das ferramentas de controle de execução dos programas.

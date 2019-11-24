@@ -1,4 +1,3 @@
-<!-- Converted by db4-upgrade version 1.0 -->
 <chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="intro"><info><title>Introdução</title></info>
 <para>
 Bem vindo ao guia <emphasis>Foca GNU/Linux</emphasis>.  O nome
@@ -17,7 +16,7 @@ está dividido em 3 níveis de aprendizado e versão que esta lendo agora conté
 Entre o conteúdo do guia, você encontrará:
 </para>
 <itemizedlist>
-<!-- [ %INICIANTE [ --> 
+<!-- [ %INICIANTE [ -->
 <listitem>
 <para>
 Textos explicativos falando sobre o sistema <command>Linux</command>, seus
@@ -46,7 +45,7 @@ de cada comando e evitando, sempre que possível, termos técnicos
 </listitem>
 <!-- ]]> -->
 
-<!-- [ %INTERMEDIARIO [ --> 
+<!-- [ %INTERMEDIARIO [ -->
 <listitem>
 <para>
 Explicações necessárias para conhecer, operar, configurar, desenvolver,
@@ -536,9 +535,9 @@ Gleydson (<email>gleydson@guiafoca.org</email>).
 
 <section xml:id="introducao-requisitos"><info><title>Pré-requisitos para a utilização deste guia</title></info>
 <para>
-<!-- [ %INICIANTE [ --> 
+<!-- [ %INICIANTE [ -->
 É assumido que você já tenha seu <command>GNU/Linux</command> instalado e
-funcionando. <!-- ]]> -->. 
+funcionando. <!-- ]]> -->.
 <!-- [ %INTERMEDIARIO [ --> É assumido que você tenha entendido a função de boa parte dos
 comandos que consta na versão iniciante do Foca Linux, arquivos e permissões de
 acesso.  Em resumo, que saiba decidir quando e qual(is) comando(s) deve usar em
@@ -546,9 +545,9 @@ cada situação.
 </para>
 <para>
 Caso não entenda as explicações da versão INTERMEDIÁRIO, recomendo que faça a
-leitura da versão INICIANTE do Foca Linux que pode ser encontrada em <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.guiafoca.org">http://www.guiafoca.org</link>.  
+leitura da versão INICIANTE do Foca Linux que pode ser encontrada em <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.guiafoca.org">http://www.guiafoca.org</link>.
 <!-- ]]> -->
-<!-- [ %AVANCADO [ --> 
+<!-- [ %AVANCADO [ -->
 É assumido que você ja tenha experiência na configuração de sistemas <command>Linux</command>,
 conheça boa parte dos comandos e sua utilização, tenha noções de rede e saiba
 como procurar documentação para complementar o que vem aprendendo.  Enfim,
@@ -665,7 +664,7 @@ redor do mundo.  Outra opção de suporte é através da comunidade Linux; você
 pode se inscrever em uma lista de discussão e relatar sua dúvida ou alguma
 falha, e sua mensagem será vista por centenas de usuários na Internet e algum
 irá te ajudar ou avisará as pessoas responsáveis sobre a falha encontrada para
-devida correção.  
+devida correção.
 <!-- [ %INIC-INTER [ --> Para detalhes, veja <xref linkend="ajuda-listas"/>. <!-- ]]> -->
 </para>
 
@@ -1951,7 +1950,7 @@ Se estiver em dúvida consulte um eletricista de confiança.
 <para>
 Não instale seu computador muito próximo de campos magnéticos com televisores,
 aparelhos de som, motores, etc.  Estes aparelhos geram ruídos elétricos e/ou
-magnéticos que podem prejudicar o bom funcionamento de seu micro.  
+magnéticos que podem prejudicar o bom funcionamento de seu micro.
 <!-- [ %OBS [ -->
 OBS: As
 caixas de som de kits multimídia possuem os ímãs revestidos de metais em seus
@@ -2051,7 +2050,7 @@ disco rígido, quando for mostrada a mensagem <literal>"power down"</literal>,
 pressione o botão <emphasis>POWER</emphasis> em seu gabinete para desligar a
 alimentação de energia do computador.
 </para>
-<!-- [ %OBS [ --> 
+<!-- [ %OBS [ -->
 <para>
 <emphasis role="strong">NUNCA</emphasis> desligue diretamente o computador sem
 usar o comando <command>shutdown</command>, <command>halt</command> ou

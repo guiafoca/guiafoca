@@ -1,5 +1,5 @@
 <!-- Converted by db4-upgrade version 1.0 -->
-<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="cmdc"><info><title>Comandos para manipulação de contas</title></info>
+<chapter userlevel='inic;inter' xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="cmdc"><info><title>Comandos para manipulação de contas</title></info>
 <para>
 Este capítulo traz comandos usados para manipulação de conta de usuários e
 grupos em sistemas <command>GNU/Linux</command>.  Entre os assuntos descritos

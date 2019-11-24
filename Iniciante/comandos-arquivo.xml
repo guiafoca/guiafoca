@@ -1,5 +1,5 @@
 <!-- Converted by db4-upgrade version 1.0 -->
-<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="cmd"><info><title>Comandos para manipulação de Arquivos</title></info>
+<chapter userlevel='inic;inter' xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="cmd"><info><title>Comandos para manipulação de Arquivos</title></info>
 <para>
 Abaixo, comandos utilizados para manipulação de arquivos.
 </para>

@@ -1,5 +1,5 @@
 <!-- Converted by db4-upgrade version 1.0 -->
-<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="compil"><info><title>Compilação</title></info>
+<chapter userlevel='inter' xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="compil"><info><title>Compilação</title></info>
 <para>
 Este capítulo explica o que é compilação, os principais compiladores e como
 compilar programas e principalmente o Kernel do <command>GNU/Linux</command>

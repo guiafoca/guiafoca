@@ -1,5 +1,5 @@
 <!-- Converted by db4-upgrade version 1.0 -->
-<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="dpkg"><info><title>Sistema de gerenciamento de pacotes</title></info>
+<chapter userlevel='inter' xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="dpkg"><info><title>Sistema de gerenciamento de pacotes</title></info>
 <para>
 Este capítulo ensina a operação básica do programa de manipulação de pacotes
 <command>Debian</command>, a instalação, remoção, consulta e checagem de

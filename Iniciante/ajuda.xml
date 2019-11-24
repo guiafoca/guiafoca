@@ -1,5 +1,5 @@
 <!-- Converted by db4-upgrade version 1.0 -->
-<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="ajuda"><info><title>Como obter ajuda</title></info>
+<chapter userlevel='inic;inter' xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="ajuda"><info><title>Como obter ajuda</title></info>
 <para>
 Dúvidas são comuns durante o aprendizado e uso do <command>Linux</command> e existem
 várias maneiras de se obter ajuda e encontrar a resposta para algum problema.

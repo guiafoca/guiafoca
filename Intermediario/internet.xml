@@ -1,5 +1,5 @@
 <!-- Converted by db4-upgrade version 1.0 -->
-<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="inter"><info><title>Conectando seu computador a Internet</title></info>
+<chapter userlevel='inter' xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="inter"><info><title>Conectando seu computador a Internet</title></info>
 <para>
 Este capítulo descreve como configurar seu sistema para se conectar a Internet,
 navegar, enviar/receber mensagens, etc.

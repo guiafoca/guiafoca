@@ -1,5 +1,5 @@
 <!-- Converted by db4-upgrade version 1.0 -->
-<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="pers"><info><title>Personalização do Sistema</title></info>
+<chapter userlevel='inter;avanc' xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="pers"><info><title>Personalização do Sistema</title></info>
 <para>
 Este capítulo ensina como personalizar algumas características de seu sistema
 <command>GNU/Linux</command>.

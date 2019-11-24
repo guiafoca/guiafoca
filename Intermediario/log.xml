@@ -1,5 +1,5 @@
 <!-- Converted by db4-upgrade version 1.0 -->
-<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="log"><info><title>Arquivos e daemons de Log</title></info>
+<chapter userlevel='inter;avanc' xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="log"><info><title>Arquivos e daemons de Log</title></info>
 <para>
 A atividade dos programas são registradas em arquivos localizados em
 <filename>/var/log</filename> .  Estes arquivos de registros são chamados de

@@ -1,5 +1,5 @@
 <!-- Converted by db4-upgrade version 1.0 -->
-<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="kern"><info><title>Kernel e Módulos</title></info>
+<chapter userlevel='inter' xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="kern"><info><title>Kernel e Módulos</title></info>
 <para>
 Este capítulo descreve em detalhes o que é o kernel, módulos, sua configuração
 e programas relacionados.

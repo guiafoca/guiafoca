@@ -1,5 +1,5 @@
 <!-- Converted by db4-upgrade version 1.0 -->
-<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="disc"><info><title>Discos e Partições</title></info>
+<chapter userlevel='inic;inter' xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="disc"><info><title>Discos e Partições</title></info>
 <para>
 Este capítulo traz explicações de como manipular discos rígidos e partições no
 sistema <command>GNU/Linux</command> e como acessar seus discos de CD-ROM e
