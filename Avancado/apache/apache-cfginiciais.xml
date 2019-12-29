@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<section xml:id="s-apache-port"><info><title>Configurando a porta padrão do Apache</title></info>
+    <para>
+    Use a diretiva <emphasis>Port</emphasis> para configurar a porta padrão que o
+    <command>Apache</command> receberá requisições por padrão.  A diretiva
+    <emphasis>Listen</emphasis> também é usada para ajustar o endereço/portas
+    alternativas (usadas também em <literal>Virtual Hosts</literal>) e substituirá
+    as definições de <emphasis>Port</emphasis>(veja <xref linkend="s-apache-listen"/> para detalhes).
+    </para>
+    <para>
+    <emphasis role="strong">OBS:</emphasis>: Somente uma diretiva
+    <emphasis>Port</emphasis> e um argumento poderão ser especificados.  Para mais
+    controle sobre as portas do sistema use a diretiva <emphasis>Listen</emphasis>.
+    </para>
+</section>
+    
+    <section xml:id="s-apache-adicpagina"><info><title>Adicionando uma página no Apache</title></info>
+    <para>
+    Existem dois tipos de páginas que podem ser adicionadas ao
+    <command>Apache</command>: a página raíz e sub-páginas.
+    </para>
+    <variablelist>
+    <varlistentry>
+    <term><emphasis>Página Raíz</emphasis></term>
+    <listitem>
+    <para>
+    A página raíz é especificada através da diretiva
+    <emphasis>DocumentRoot</emphasis> e será mostrada quando se entrar no domínio
+    principal, como <filename>http://www.guiafoca.org</filename>.  Na configuração
+    padrão do <command>Apache</command>, <emphasis>DocumentRoot</emphasis> aponta
+    para o diretório <filename>/var/www</filename>.  Este diretório será assumido
+    como <emphasis role="strong">raíz</emphasis> caso os diretórios não sejam
+    iniciados por uma <filename>/</filename>:
+    </para>
+    <itemizedlist>
+    <listitem>
+    <para>
+    <filename>home/focalinux</filename> - Aponta para
+    <filename>/var/www/home/focalinux</filename>
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+    <filename>/home/focalinux</filename> - Aponta para
+    <filename>/home/focalinux</filename>
+    </para>
+    </listitem>
+    </itemizedlist>
+    <para>
+    Este diretório deve conter um arquivo de índice válido (especificado pela
+    diretiva <emphasis>DocumentIndex</emphasis> no <filename>srm.conf</filename>) e
+    permissões de acesso válidas no arquivo <filename>access.conf</filename> para
+    autorizar o acesso as páginas em <filename>/var/www</filename> (veja <xref linkend="s-apache-acesso-restr"/> para detalhes).
+    </para>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term>Sub-páginas</term>
+    <listitem>
+    <para>
+    Sub páginas são armazenadas abaixo do diretório da <emphasis>Página
+    raíz</emphasis>, como <filename>http://www.guiafoca.org/download</filename>.
+    Elas podem ser um subdiretório da página principal em
+    <filename>/var/www</filename> ou serem criadas através da diretiva
+    <emphasis>Alias</emphasis> no arquivo <filename>srm.conf</filename>.  Caso seja
+    um sub-diretório, as permissões de acesso de <filename>/var/www</filename>
+    serão herdadas para este subdiretório, mas também poderão ser modificadas com a
+    especificação de uma nova diretiva de acesso.
+    </para>
+    <para>
+    Através da diretiva <emphasis>Alias</emphasis> a página pode estar localizada
+    em outro diretório do disco (até mesmo outro sistema de arquivos) e as
+    permissões de acesso deverão ser definidas para aquela página.  Para criar um
+    endereço <filename>http://www.guiafoca.org/iniciante</filename> que aponta para
+    o diretório <filename>/home/focalinux/download/iniciante</filename> no disco
+    local, basta usar a seguinte diretiva no <filename>srm.conf</filename>:
+    </para>
+    <screen>
+    Alias /iniciante /home/focalinux/download/iniciante
+    </screen>
+    <para>
+    Pode ser necessário permitir o acesso a nova página caso o servidor tenha uma
+    configuração restritiva por padrão (veja <xref linkend="s-apache-acesso-restr"/> para detalhes).  Após isto, faça o servidor
+    <command>httpd</command> re-ler os arquivos de configuração ou reinicia-lo.
+    Após isto, a página <filename>/home/focalinux/download/iniciante</filename>
+    estará acessível via <filename>http://www.guiafoca.org/iniciante</filename>.
+    </para>
+    <para>
+    <emphasis role="strong">OBS:</emphasis> Caso inclua uma <filename>/</filename>
+    no diretório que será acessível via URL, o endereço somente estará disponível
+    caso você entre com <filename>/</filename> no final da URL:
+    </para>
+    <screen>
+    Alias /doc/ /usr/doc/
+    </screen>
+    <para>
+    O diretório <filename>/doc</filename> somente poderá ser acessado usando
+    <filename>http://www.guiafoca.org/doc/</filename>, o uso de
+    <filename>http://www.guiafoca.org/doc</filename> retornará uma mensagem de URL
+    não encontrada.
+    </para>
+    </listitem>
+    </varlistentry>
+    </variablelist>
+    </section>
+    

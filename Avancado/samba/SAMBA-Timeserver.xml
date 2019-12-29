@@ -1,0 +1,71 @@
+<!-- Converted by db4-upgrade version 1.0 -->
+
+<section xml:id="s-samba-s-timeserver"><info><title>Servidor de data/hora</title></info>
+<para>
+O samba pode atuar como um servidor de data/hora ajustando o horário de suas
+estações de trabalho com o servidor da rede.
+</para>
+<para>
+As estações clientes poderão executar o comando <command>net</command> para
+sincronizar seu relógio durante a inicialização do Windows, ou durante o logon
+da rede através do script de logon, caso tenha configurado o servidor
+<command>samba</command> para logon em domínios NT.
+</para>
+<section xml:id="s-samba-s-timeserver-s"><info><title>Configuração do serviço de data/hora no SAMBA</title></info>
+<para>
+Para configurar o samba para atuar como servidor de data/hora de sua rede,
+adicione o seguinte parâmetro na seção global do arquivo de configuração
+<filename>/etc/samba/smb.conf</filename>:
+</para>
+<screen>
+[global]
+time server = yes
+</screen>
+<para>
+Para sincronizar a data/hora das estações de trabalho usando o servidor samba,
+veja <xref linkend="s-samba-s-timeserver-c"/>.  Caso o seu servidor SAMBA
+também seja o servidor de autenticação PDC da rede, a melhor forma de se fazer
+isto é colocar o comando <literal>net time \\servidor_SAMBA /set /yes</literal>
+em um script que será executado pela estação.
+</para>
+<para>
+<emphasis role="strong">OBS</emphasis> É recomendável instalar um cliente ntp
+para manter o relógio do servidor sempre atualizado, conseqüentemente mantendo
+a data/hora das estações também em sincronismo .  .
+</para>
+</section>
+
+<section xml:id="s-samba-s-timeserver-c"><info><title>Sincronizando a data/hora no Cliente</title></info>
+<para>
+Na estação cliente Windows, use o seguinte comando:
+</para>
+<screen>
+NET TIME \\SERVIDOR /WORKGROUP:GRUPO /SET /YES
+</screen>
+<para>
+Um local interessante para colocação deste comando é na pasta Iniciar da
+estação Windows, pois todos os comandos que estejam nesta pasta são executados
+quando o sistema é iniciado.
+</para>
+<para>
+Exemplos:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>net time \\linux /set /yes</literal> - Sincroniza a hora com o
+servidor "\\linux" e não pede confirmação (/yes).
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>net time \\linux /WORKGROUP:pinguim /set /yes</literal> - Sincroniza a
+hora com o servidor "\\linux" do grupo de trabalho pinguim (/WORKGROUP:pinguim)
+e não pede confirmação (/yes).
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+</section>
+

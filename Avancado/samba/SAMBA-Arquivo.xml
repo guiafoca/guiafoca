@@ -1,0 +1,400 @@
+<!-- Converted by db4-upgrade version 1.0 -->
+
+<section xml:id="s-samba-s-a"><info><title>Compartilhamento de arquivos e diretórios</title></info>
+<para>
+Esta seção documenta como disponibilizar arquivos e impressoras com o SAMBA e
+os parâmetros usados para realizar restrições de compartilhamento, modo que os
+dados serão disponibilizados e ítens de performance.  A maior parte destes
+parâmetros são empregados em serviços do SAMBA, mas nada impede que também
+sejam colocado na seção <emphasis>[global]</emphasis> do arquivo de
+configuração, principalmente quando isto é válido para diversos serviços
+compartilhados (veja <xref linkend="s-samba-s-global"/>).
+</para>
+<section xml:id="s-samba-s-a-param"><info><title>Descrição de parâmetros usados em compartilhamento</title></info>
+<para>
+Abaixo o guia traz algumas das opções que podem ser usadas para controlar o
+comportamento do compartilhamento de arquivos por <emphasis>serviços</emphasis>
+no servidor SAMBA:
+</para>
+<variablelist>
+<varlistentry>
+<term>path</term>
+<listitem>
+<para>
+Indica o diretório que será compartilhado.  Lembre-se que o usuário terá as
+permissões de acesso que ele teria caso estivesse logado no sistema como um
+usuário UNIX normal, exceto se estiver fazendo mapeamento para outros nomes de
+usuários (veja <xref linkend="s-samba-a-usernamemap"/>).
+</para>
+<para>
+Ex: <literal>path=/pub</literal> - Compartilha o diretório local
+<filename>/pub</filename>.
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis> Quando não é definido um
+<literal>path</literal>, o diretório <filename>/tmp</filename> é usado como
+padrão.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>comment</term>
+<listitem>
+<para>
+Descrição do compartilhamento que será mostrada na janela de procura de rede ou
+no <literal>smbclient -L maquina</literal>.
+</para>
+<para>
+Ex: <literal>comment=Pasta de conteúdo público do sistema</literal>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>browseable</term>
+<listitem>
+<para>
+Define se o compartilhamento será ou não exibido na janela de procura de rede.
+Mesmo não sendo exibido, o compartilhamento poderá ser acessado.  Veja <xref linkend="s-samba-a-invisivel"/> para uma explicação mais detalhada.
+</para>
+<para>
+Ex: <literal>browseable=yes</literal> - Lista o compartilhamento na janela de
+pesquisa de servidores.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>guest account</term>
+<listitem>
+<para>
+Conta que será usada para fazer acesso sem senha (convidado) quando o parâmetro
+<literal>guest ok</literal> ou <literal>public</literal> forem usados em um
+compartilhamento.  Por padrão ela é mapeada para o usuário
+<literal>nobody</literal>.  É importante especificar uma nome de usuário
+<emphasis>guest</emphasis> (convidado), principalmente porque seu UID será
+usado para fazer várias operações no SAMBA, como exibir os recursos disponíveis
+na máquina para a rede.  Por motivos claros, é recomendável que este usuário
+<emphasis role="strong">não</emphasis> tenha acesso login ao sistema.
+</para>
+<para>
+Caso não tenha a intenção de ocultar o SAMBA na lista de máquinas da rede
+(fazendo apenas acesso direto aos recursos), especifique um valor para esta
+opção.
+</para>
+<para>
+Ex: <literal>guest account = sambausr</literal> - Mapeia os usuário se
+conectando sem senha para o usuário <literal>sambausr</literal>, desde que o
+acesso guest seja permitido pela opção <literal>public</literal>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>public</term>
+<listitem>
+<para>
+Permitem aos usuários usuários se conectarem ao compartilhamento sem fornecer
+uma senha usando o usuário guest.  O UID que o usuário guest será mapeado é
+especificado pelo parâmetro <literal>guest account</literal>).  Veja <xref linkend="s-samba-a-publico"/>.  O parâmetro <literal>guest ok</literal> é
+equivalente a <literal>public</literal>.
+</para>
+<para>
+Ex: <literal>public = no</literal> - Não permite
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>guest only</term>
+<listitem>
+<para>
+Permite somente conexões guest ao recurso.  O UID do usuário é mapeado para
+guest, mesmo que forneça uma senha correta.  O valor padrão é
+<literal>no</literal>.
+</para>
+<para>
+Ex: <literal>guest only = no</literal>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>write list</term>
+<listitem>
+<para>
+Lista de usuários separados por espaço ou vírgula que poderão ler e gravar no
+compartilhamento.  Caso o nome for iniciado por "@", o nome especificado será
+tratado como um grupo UNIX (<filename>/etc/group</filename>) e todos os
+usuários daquele grupo terão acesso de gravação.  O uso deste parâmetro ignora
+o <literal>read only = yes</literal>.  Veja <xref linkend="s-samba-a-restr"/>
+para mais detalhes.
+</para>
+<para>
+Ex: <literal>write list = gleydson, @usuarios</literal> - Permite acesso
+gravação somente do usuário <literal>gleydson</literal> e todos os usuários
+pertencentes ao grupo <literal>@usuarios</literal>.
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis> - O significado de "@" nos parâmetros
+"invalid users"/"valid users" é diferente das opções <literal>write
+list</literal> e <literal>read list</literal>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>read list</term>
+<listitem>
+<para>
+Lista de usuários separados por espaço ou vírgula que poderão apenas ler o
+compartilhamento.  O caracter "@" pode ser especificado para fazer referência a
+grupos, como no <literal>write list</literal>.  O uso deste parâmetro ignora o
+<literal>read only = no</literal>.  Veja <xref linkend="s-samba-a-restr"/> para
+mais detalhes.
+</para>
+<para>
+Ex: <literal>read list = nobody, system, operador, @usuarios</literal> -
+Permite acesso de leitura somente do usuário <literal>nobody, system,
+operador</literal> e todos os usuários pertencentes ao grupo
+<literal>@usuarios</literal>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>user</term>
+<listitem>
+<para>
+Especifica um ou mais nomes de usuários ou grupos (caso o nome seja seguido de
+"@") para checagem de senha.  Quando o cliente somente fornece uma senha
+(especialmente na rede <command>Lan Manager</command>, <command>Windows for
+Workgroups</command> e primeira versão do <command>Windows 95</command>) ela
+será validada no banco de dados de senhas usando o usuário especificado nesta
+opção.
+</para>
+<para>
+Ex: <literal>user = john @usuariosrede</literal>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>only user</term>
+<listitem>
+<para>
+Especifica se somente serão permitidas conexões vindas de usuários da diretiva
+<literal>user</literal>.  O padrão é <literal>no</literal>.  Caso deseje
+restringir o acesso a determinados usuários, o certo é faze-lo usando
+<literal>valid users</literal> e <literal>invalid users</literal> (veja <xref linkend="s-samba-a-restrusu"/>).  O uso de <literal>only user</literal> é
+apropriado quando é necessário um controle específico de acesso sobre a
+diretiva <literal>user</literal>.
+</para>
+<para>
+Ex: <literal>only user = no</literal>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>locking</term>
+<listitem>
+<para>
+Permite ao SAMBA fazer um lock real de arquivo ou apenas simular.  Caso seja
+especificado como "0", o arquivo não é bloqueado para acesso exclusivo no
+servidor mas uma resposta positiva de lock é retornada ao cliente.  Se definido
+como "1", um lock real é feito.  O padrão é <literal>yes</literal>.
+</para>
+<para>
+Ex: <literal>locking = yes</literal>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>available</term>
+<listitem>
+<para>
+Faz o SAMBA ignorar o compartilhamento (como se tivesse retirado do servidor).
+O valor padrão é "no".
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>follow symlinks</term>
+<listitem>
+<para>
+Permite o uso de links simbólicos no compartilhamento (veja também a opção
+<literal>wide links</literal>).  A desativação desta opção diminui um pouco a
+performance de acesso aos arquivos.  Como é restrita a compartilhamento, o
+impacto de segurança depende dos dados sendo compartilhados.  O valor padrão
+desta opção é "YES".
+</para>
+<para>
+Ex: <literal>follow symlinks = yes</literal>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>wide links</term>
+<listitem>
+<para>
+Permite apontar para links simbólicos para fora do compartilhamento exportada
+pelo SAMBA.  O valor padrão esta opção é "YES".
+</para>
+<para>
+Ex: <literal>wide links = yes</literal>.
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis> - A desativação desta opção causa um
+aumento na performance do servidor SAMBA, evitando a chamada de funções do
+sistema para resolver os links.  Entretanto, diminui a segurança do seu
+servidor, pois facilita a ocorrência de ataques usando links simbólicos.
+</para>
+<para>
+Lembre-se mais uma vez que a segurança do seu sistema começa pela política e
+uma instalação bem configurada, isso já implica desde a escolha de sua
+distribuição até o conhecimento de permissões e planejamento na implantação do
+servidor de arquivos.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>dont descend</term>
+<listitem>
+<para>
+Não mostra o conteúdo de diretórios especificados.
+</para>
+<para>
+Ex: <literal>dont descend = /root, /proc, /win/windows, "/win/Arquivos de
+Programas", "/win/program files"</literal>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>printable</term>
+<listitem>
+<para>
+Especifica se o compartilhamento é uma impressora (yes) ou um compartilhamento
+de arquivo/diretório (no).  O padrão é "no".
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>read only</term>
+<listitem>
+<para>
+Especifica se o compartilhamento é somente para leitura (yes) ou não (no) para
+todos os usuários.  O parâmetro <literal>writable</literal> é um antônimo
+equivalente a este parâmetro, só que utiliza as opções invertidas.  Por
+segurança, o valor padrão é somente leitura.  Veja uma explicação mais
+detalhada em <xref linkend="s-samba-a-ro"/>.
+</para>
+<para>
+Ex: <literal>read only = yes</literal>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>create mask</term>
+<listitem>
+<para>
+Modo padrão para criação de arquivos no compartilhamento.  O parâmetro "create
+mode" é um sinônimo para este.  O modo de arquivos deve ser especificado em
+formato octal.  Veja <xref linkend="perm-octal"/>).
+</para>
+<para>
+Ex: <literal>create mask = 0600</literal>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>directory mask</term>
+<listitem>
+<para>
+Modo padrão para a criação de diretórios no compartilhamento.  O parâmetro
+"directory mode" é um sinônimo para este.  O modo de diretório deve ser
+especificado em formato octal.
+</para>
+<para>
+Ex: <literal>directory mask = 0700</literal>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>getwd cache</term>
+<listitem>
+<para>
+Permite utilizar um cache para acesso as requisições getwd, diminuindo o número
+de ciclos de processamento para acesso a arquivos/diretórios.  O valor padrão é
+"Yes".
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>write cache size</term>
+<listitem>
+<para>
+Tamanho do cache de leitura/gravação do compartilhamento.  Este valor é
+especificado em bytes e o padrão é "0".  Veja <xref linkend="s-samba-perf"/>
+para detalhes sobre seu uso.
+</para>
+<para>
+Ex: <literal>write cache size = 384000</literal>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>inherit permissions</term>
+<listitem>
+<para>
+Permite herdar permissões de arquivos/diretórios do diretório pai quando novos
+arquivos/diretórios são criados, isto inclui bits SGID (set group ID).  O
+padrão é <literal>NÃO</literal> herdar permissões.  O uso desta opção substitui
+as opções fornecidas por <literal>create mask</literal>, <literal>directory
+mask</literal>, <literal>force create mask</literal> e <literal>force directory
+mask</literal>.
+</para>
+<para>
+Ex: <literal>inherit permissions</literal>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>preexec</term>
+<listitem>
+<para>
+Executa um comando antes a abertura de um compartilhamento.  O parâmetro
+<literal>exec</literal> é um sinônimo para este.  Veja <xref linkend="s-samba-a-comandos"/>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>postexec</term>
+<listitem>
+<para>
+Executa um comando depois da utilização do compartilhamento.  Veja <xref linkend="s-samba-a-comandos"/>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>preexec close</term>
+<listitem>
+<para>
+Fecha imediatamente o compartilhamento caso o valor do comando executado pela
+opção <literal>preexec</literal> seja diferente de 0.  O uso desta opção só faz
+sentido em conjunto com <literal>preexec</literal>.  O valor padrão é "no".
+Veja <xref linkend="s-samba-a-comandos"/>.
+</para>
+<para>
+Exemplo: <literal>preexec close = yes</literal>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>volume = nome</term>
+<listitem>
+<para>
+Retorna o nome de volume especificado quando é feito o acesso ao
+compartilhamento.  Isto é muito útil para instalações onde o serial do CD,
+disquete ou HD é verificado durante o acesso.  Isto acontece com freqüência em
+produtos de fabricantes proprietários como forma de evitar a execução ilegal do
+programa.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+</section>
+

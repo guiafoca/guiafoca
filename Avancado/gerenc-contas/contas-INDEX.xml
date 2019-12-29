@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+<!ENTITY d-contas1 SYSTEM "contas-Introducao.xml">
+-->
+
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="contas-Introducao.xml" /> 

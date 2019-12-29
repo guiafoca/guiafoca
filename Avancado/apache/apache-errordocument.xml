@@ -1,0 +1,92 @@
+<!-- Converted by db4-upgrade version 1.0 -->
+
+<section xml:id="s-apache-errordocument"><info><title>Definindo documentos de erro personalizados</title></info>
+<para>
+Documentos de erros personalizados são definidos através da diretiva
+<emphasis>ErrorDocument</emphasis>.  É possível especificar códigos de erros
+que serão atendidos por certos documentos ou colocar esta diretiva dentro de
+blocos de controle de acesso &lt;Directory&gt;, &lt;Location&gt; ou
+&lt;VirtualHost&gt; para que tenham mensagens de erro personalizadas, ao invés
+da padrão usada pelo servidor <command>httpd</command>.
+</para>
+<para>
+<literal>ErrorDocument [<emphasis>código de erro</emphasis>]
+[<emphasis>documento</emphasis>]</literal>
+</para>
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>código de erro</emphasis></term>
+<listitem>
+<para>
+Código de erro da mensagem (veja <xref linkend="s-apache-httpcodes"/> como
+referência).  O código de erro <emphasis>401</emphasis> deve referir-se a um
+arquivo local.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>documento</emphasis></term>
+<listitem>
+<para>
+Documento, mensagem de erro ou redirecionamento que será usado no servidor caso
+aquele código de erro seja encontrado:
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+Para definir uma mensagem de erro padrão para todo servidor web, basta colocar
+a diretiva <emphasis>ErrorDocument</emphasis> fora das diretivas que controlam
+o acesso a diretórios e virtual hosts (o inicio do arquivo
+<filename>httpd.conf</filename> é ideal).
+</para>
+<para>
+Exemplos:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>ErrorDocument 404 /cgi-bin/erros404.pl</literal> - Direciona para um
+script em Perl que manda um e-mail ao administrador falando sobre o link
+quebrado e envia o usuário a uma página de erro padrão.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ErrorDocument 404 /naoencontrada.html</literal> - Direciona o usuário
+para o arquivo <filename>naoencontrada.html</filename> (dentro de
+<emphasis>DocumentRoot</emphasis>) quando ocorrer o erro 404.  Note que o
+diretório <filename>/</filename> levado em consideração é o especificado pela
+diretiva <emphasis>DocumentRoot</emphasis>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ErrorDocument 500 "Erro Interno no servidor"</literal> - Mostra a
+mensagem na tela quando ocorrer o erro 500.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ErrorDocument 401 /obtendoacesso.html</literal> - Direciona o usuário
+ao arquivo explicando como obter acesso ao sistema.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ErrorDocument 503 http://www.guiafoca.org/servicos.html</literal> -
+Redireciona o usuário a URL especificada.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ErrorDocument 403 "Acesso negado"</literal> - Mostra a mensagem na
+tela no caso de erros 403.
+</para>
+</listitem>
+</itemizedlist>
+</section>
+

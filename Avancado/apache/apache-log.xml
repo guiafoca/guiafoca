@@ -1,0 +1,467 @@
+<!-- Converted by db4-upgrade version 1.0 -->
+
+<section xml:id="s-apache-log"><info><title>Sistema de Log do Apache</title></info>
+<para>
+O <command>Apache</command> é bem flexível na especificação do que será
+registrado em seus arquivos de log, possibilitando utilizar um arquivo de log
+único, diversos arquivos de logs registrando cada evento ocorrido no sistema
+(conexão, navegador, bloqueio de acesso, erros, etc) incluindo os campos que
+deseja em cada arquivo e a ordem dos campos em cada um deles.
+</para>
+<para>
+Enfim qualquer coisa pode ser especificada de forma que atenda as suas
+necessidades particulares de logging.
+</para>
+<section xml:id="s-apache-log-agentlog"><info><title>AgentLog</title></info>
+<para>
+<literal>AgentLog arquivo/pipe</literal>: Indica o nome do arquivo que
+registrará o nome do navegador que está acessando a página (conteúdo do
+cabeçalho <literal>User-Agent</literal>).  É possível usar o pipe "|" para
+direcionar os erros para um programa de formatação ou processamento.  <emphasis role="strong">ATENÇÃO</emphasis>: Se um programa for usado como pipe, ele será
+executado sob o usuário que iniciou o <command>apache</command>.  Revise o
+código fonte do programa para ter certeza que não contém falhas que possam
+comprometer a segurança de seu sistema.
+</para>
+<para>
+Exemplo: <literal>AgentLog /var/log/apache/agent.log</literal>
+</para>
+</section>
+
+<section xml:id="s-apache-log-errorlog"><info><title>ErrorLog</title></info>
+<para>
+<literal>ErrorLog arquivo/pipe</literal> - Especifica o arquivo que registrará
+as mensagens de erro do servidor <command>Apache</command>.  É possível usar o
+pipe "|" para direcionar os erros para um programa de formatação ou
+processamento.
+</para>
+<para>
+Exemplo: <literal>ErrorLog /var/log/apache/errors.log</literal>
+</para>
+</section>
+
+<section xml:id="s-apache-log-customlog"><info><title>CustomLog</title></info>
+<para>
+Permite especificar onde os logs serão gravados para os arquivos de logs
+personalizados.  Esta diretiva também aceita apelidos definidos pela diretiva
+<emphasis>LogFormat</emphasis>.
+</para>
+<para>
+<literal>CustomLog [arquivo/pipe] [formato/nome]</literal>
+</para>
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>arquivo/pipe</emphasis></term>
+<listitem>
+<para>
+Arquivo de log personalizado ou pipe.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>formato/nome</emphasis></term>
+<listitem>
+<para>
+Especifica o formato do arquivo de log (da mesma forma que o especificado na
+opção <emphasis>LogFormat</emphasis>).  Deverá ser especificado entre "aspas"
+caso tiver espaços.  Veja <xref linkend="s-apache-log-logformat"/> para
+detalhes.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+Ao invés de especificar o formato, também é possível usar um apelido definido
+pela opção <emphasis>LogFormat</emphasis> (<xref linkend="s-apache-log-logformat"/>), neste caso os parâmetros definidos pelo
+<emphasis>LogFormat</emphasis> para "nome" serão atribuídos a diretiva
+<emphasis>CustomLog</emphasis>.
+</para>
+<para>
+Exemplos:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>CustomLog /var/log/apache/common.log "%h %l %u %t \"%r\" %&gt;s
+%b"</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>CustomLog /var/log/apache/common.log common</literal>
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="s-apache-log-refererlog"><info><title>RefererLog</title></info>
+<para>
+<literal>RefererLog [arquivo/pipe]</literal>: Indica que arquivo/pipe
+registrará os campos Referer do cabeçalho HTTP.  Esta diretiva é mantida por
+compatibilidade com o servidor web NCSA 1.4.
+</para>
+<para>
+A configuração padrão do <command>Apache</command> usa uma diretiva alternativa
+para a especificação do <emphasis>referer</emphasis> que é a seguinte:
+</para>
+<screen>
+LogFormat "%{Referer}i -&gt; %U" referer
+CustomLog /var/log/apache/referer.log referer
+</screen>
+<para>
+Exemplo: <literal>RefererLog /var/log/apache/referer.log</literal>
+</para>
+</section>
+
+<section xml:id="s-apache-log-rewritelog"><info><title>RewriteLog</title></info>
+<para>
+<literal>RewriteLog: [arquivo/pipe]</literal>: Indica o arquivo/pipe que
+registrará qualquer regravação de URL feita pelo <command>Apache</command>.
+</para>
+<para>
+<emphasis role="strong">OBS</emphasis>: Não é recomendável direcionar o nome de
+arquivo para <filename>/dev/null</filename> como forma de desativar este log,
+porque o módulo de regravação não cria a saída para um arquivo de log, ele cria
+a saída de log internamente.  Isto somente deixará o servidor lento.  Para
+desativar este registro, simplesmente remova/comente a diretiva RewriteLog ou
+use a opção RewriteLogLevel 0.
+</para>
+<para>
+Exemplo: <literal>RewriteLog "/usr/local/var/apache/logs/rewrite.log</literal>
+</para>
+</section>
+
+<section xml:id="s-apache-log-rewriteloglevel"><info><title>RewriteLogLevel</title></info>
+<para>
+<literal>RewriteLogLevel [num]</literal>: Especifica os detalhes que serão
+incluídos no registro da opção RewriteLog, os valores permitidos estão entre 0
+e 9.  Se for usado 0, o registro do RewriteLog é totalmente desativado (esta é
+a padrão).  <emphasis role="strong">OBS</emphasis>: Qualquer valor acima de 2
+deixa o servidor Web cada vez mais lento devido ao processamento e a quantidade
+de detalhes registrados no arquivo especificado por
+<emphasis>RewriteLog</emphasis>.
+</para>
+</section>
+
+<section xml:id="s-apache-log-scriptlog"><info><title>ScriptLog</title></info>
+<para>
+<literal>ScriptLog [arquivo]</literal>: Especifica o nome do arquivo de log que
+receberá as mensagens de erros gerados por scripts CGI executados no servidor.
+Esta opção é controlada pelo módulos <emphasis>mod_cgi</emphasis>.
+</para>
+<para>
+Os arquivos de log serão abertos por um sub-processo rodando com as permissões
+do usuário especificado na diretiva "user".
+</para>
+<para>
+<emphasis role="strong">OBS</emphasis>: Esta opção somente é recomendada como
+depuradora de scripts CGI, não para uso contínuo em servidores ativos.
+</para>
+<para>
+Exemplo: <literal>ScriptLog /var/log/apache/cgiscripts.log</literal>
+</para>
+</section>
+
+<section xml:id="s-apache-log-scriptlogbuffer"><info><title>ScriptLogBuffer</title></info>
+<para>
+<literal>ScriptLogBuffer</literal>: Especifica o tamanho do cabeçalho PUT ou
+POST gravado no arquivo especificado por <emphasis>ScriptLog</emphasis>.  O
+valor padrão é 1024 bytes.  Esta opção é controlada pelo módulos
+<emphasis>mod_cgi</emphasis>
+</para>
+<para>
+Exemplo: <literal>ScriptLogBuffer 512</literal>
+</para>
+</section>
+
+<section xml:id="s-apache-log-scriptloglength"><info><title>ScriptLogLength</title></info>
+<para>
+<literal>ScriptLogLength: [tamanho]</literal>: Especifica o tamanho máximo do
+arquivo de log gerado pela opção ScriptLog.  O valor padrão é 10385760 bytes
+(10.3MB).  Esta opção é controlada pelo módulos <emphasis>mod_cgi</emphasis>
+</para>
+<para>
+Exemplo: <literal>ScriptLogLength 1024480</literal>
+</para>
+</section>
+
+<section xml:id="s-apache-log-logformat"><info><title>LogFormat</title></info>
+<para>
+<literal>LogFormat</literal>: Define os campos padrões do arquivo gerado pela
+opção <emphasis>TransferLog</emphasis>.  O seu formato é o seguinte:
+</para>
+<para>
+<literal>LogFormat [formato] [nome]</literal>
+</para>
+<para>
+Quando o formato não é especificado, assume o valor padrão <literal>%h %l %u %t
+\"%r\" %s %b</literal>.  A especificação do [<emphasis>nome</emphasis>] permite
+que você utilize o formato especificado em uma opção
+<emphasis>CustomLog</emphasis> ou outra diretiva
+<emphasis>LogFormat</emphasis>, facilitando a especificação do formato do log.
+</para>
+<para>
+Os seguintes formatos são válidos:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>%b</literal> - Bytes enviados, excluindo cabeçalhos HTTP.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>%f</literal> - Nome do arquivo.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>%{FOOBAR}e</literal> - O conteúdo da variável de ambiente FOOBAR.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>%h</literal> - Máquina cliente.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>%a</literal> - Endereço IP da máquina cliente.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>%A</literal> - Endereço IP local.  Muito útil em virtual hostings.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>%{Foobar}i</literal> - O conteúdo de Foobar: linhas de cabeçalho na
+requisição enviada ao servidor.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>%l</literal> - O nome de login remoto enviado pelo identd (se
+fornecido).
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>%{Foobar}n</literal> - O conteúdo de "FooBar" de outro módulo.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>%{Foobar}o:</literal> - O conteúdo de Foobar: linhas de cabeçalho na
+resposta.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>%p</literal> - A porta do servidor servindo a requisição.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>%P</literal> - A identificação do processo filho que serviu a
+requisição.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>%r</literal> - A primeira linha da requisição.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>%s</literal> - Status.  Para requisições que foram redirecionadas.
+internamente.  Este é o status de uma requisição *original*.  Use %s para a
+última.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>%t</literal> - Hora, no formato do arquivo de log (formato inglês
+padrão).
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>%{format}t</literal> - Hora, no formato definido por strftime.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>%T</literal> - O tempo necessário para servir a requisição, em
+segundos.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>%u</literal> - Usuário remoto (através do auth, pode ser falso se o
+status de retorno (%s) for 401).
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>%U</literal> - O caminho da URL requisitada.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>%v</literal> - O nome canônico definido por
+<emphasis>ServerName</emphasis> que serviu a requisição.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>%V</literal> - O nome do servidor de acordo com a configuração de
+<emphasis>UseCanonicalName</emphasis>.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Exemplos:
+</para>
+<screen>
+ LogFormat "%h %l %u %t \"%r\" %&gt;s %b \"%{Referer}i\" \"%{User-Agent}i\" %T %v" full
+ LogFormat "%h %l %u %t \"%r\" %&gt;s %b \"%{Referer}i\" \"%{User-Agent}i\" %P %T" debug
+ LogFormat "%h %l %u %t \"%r\" %&gt;s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
+ LogFormat "%h %l %u %t \"%r\" %&gt;s %b" common
+ LogFormat "%{Referer}i -&gt; %U" referer
+ LogFormat "%{User-agent}i" agent
+</screen>
+</section>
+
+<section xml:id="s-apache-log-transferlog"><info><title>TransferLog</title></info>
+<para>
+<literal>TransferLog [arquivo/pipe]</literal>: Indica o arquivo que armazenará
+as transferências entre o servidor http e o cliente.  Ela cria o arquivo de log
+com o formato definido pela opção <emphasis>LogFormat</emphasis> mais recente
+(sem a especificação do nome associado a diretiva) ou o formato padrão CLF do
+log do <command>Apache</command>.
+</para>
+<para>
+Se omitido, o arquivo não será gerado
+</para>
+<para>
+Exemplo: <literal>TransferLog /var/log/apache/transferências.log</literal>
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis> Se esta não é uma opção muito utilizada
+na administração de seus sistemas, é recomendável o uso da diretiva
+<emphasis>CustomLog</emphasis> (veja <xref linkend="s-apache-log-customlog"/>)
+para evitar confusões futuras.
+</para>
+</section>
+
+<section xml:id="s-apache-log-loglevel"><info><title>LogLevel</title></info>
+<para>
+Define o nível de alerta das mensagens que serão gravadas no arquivo
+especificado pela diretiva <emphasis>ErrorLog</emphasis>.  Quando não é
+especificado, assume o nível "error" como padrão.  Abaixo os parâmetros aceitos
+em sua respectiva ordem de importância:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>emerg</literal> - O sistema está inutilizável.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>alert</literal> - A ação deve ser tomada imediatamente.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>crit</literal> - Condições críticas.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>error</literal> - Condições de erro.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>warn</literal> - Condições de alerta.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>notice</literal> - Condição normal mas significante.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>info</literal> - Mensagens informativas.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>debug</literal> - Mensagens do nível de depuração.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Note que os níveis são os mesmos usados pelo <command>syslog</command>.  Quando
+um nível particular é especificado, as mensagens de todos os níveis de maior
+importância também serão registrados.  Por exemplo, se o nível "info" for
+especificado, as mensagens com os níveis de "notice" e "warn" também serão
+registradas.  É recomendado o uso de um nível de no mínimo
+<emphasis>crit</emphasis>.
+</para>
+</section>
+
+<section xml:id="s-apache-log-anonylogmail"><info><title>Anonymous_LogEmail</title></info>
+<para>
+Se estiver como "on" a senha digitada será registrada no arquivo especificado
+por <emphasis>ErrorLog</emphasis>.  Esta diretiva é
+<emphasis>ativada</emphasis> por padrão.
+</para>
+<para>
+Exemplo: <literal>Anonymous_LogEmail off</literal>
+</para>
+</section>
+
+<section xml:id="s-apache-log-cookielog"><info><title>CookieLog</title></info>
+<para>
+Especifica o arquivo que será usado para registrar os cookies
+</para>
+<para>
+<emphasis role="strong">OBS1</emphasis>: Caso o caminho do arquivo não for
+especificado nas diretivas, será assumido <emphasis>DocumentRoot</emphasis>
+como diretório padrão.
+</para>
+<para>
+<emphasis role="strong">OBS2</emphasis>: Caso esteja usando o pipe, o dono do
+processo será o mesmo que iniciou o servidor WEB Apache.  Tenha certeza do
+funcionamento do programa para não comprometer o seu sistema, e cuide para que
+ele não possa ser modificado indevidamente por outros usuários.
+</para>
+<para>
+Exemplo: <literal>CookieLog /var/log/apache/cookies.log</literal>
+</para>
+</section>
+
+<section xml:id="s-apache-log-webalizer"><info><title>Relatório gráfico de acesso ao sistema</title></info>
+<para>
+O programa <command>webalizer</command> poderá ser instalado para gerar um
+relatório gráfico com a estatísticas de visitas por ano/mes/dia/hora usando os
+dados do <filename>access.log</filename>.  Outra interessante característica
+são as estatísticas de códigos http (veja <xref linkend="s-apache-httpcodes"/>), onde é possível saber a quantidade de links
+quebrados existentes em nosso servidor (estes poderão ser detectados usando o
+pacote de análise de sites <systemitem role="package">linbot</systemitem>).  O
+<command>webalizer</command> também é compatível com os formatos de log do
+<command>squid</command> e <command>proftpd</command>.  Na distribuição
+<command>Debian</command> ele pode ser instalado a partir do pacote <systemitem role="package">webalizer</systemitem> e gera um relatório geral quando é
+executado sem opções.
+</para>
+</section>
+
+</section>
+

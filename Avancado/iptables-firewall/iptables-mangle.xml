@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="fw-iptables-mangle"><info><title>A tabela mangle</title></info>
+<para>
+A tabela <emphasis>mangle</emphasis> serve para especificar ações especiais
+para o tratamento do tráfego que atravessa os chains.  Nesta tabela existem
+cincos chains: <emphasis>PREROUTING</emphasis>,
+<emphasis>POSTROUTING</emphasis>, <emphasis>INPUT</emphasis>,
+<emphasis>OUTPUT</emphasis> e <emphasis>FORWARD</emphasis> (veja <xref linkend="fw-iptables-tabelas"/> para maiores detalhes).
+</para>
+<para>
+Em geral, cada um deste chain é processado antes do chain correspondente na
+tabela <emphasis>filter</emphasis> e <emphasis>nat</emphasis> para definir
+opções especiais para o tráfego (por exemplo, o chain
+<emphasis>PREROUTING</emphasis> da tabela <emphasis>mangle</emphasis> é
+processado antes do <emphasis>PREROUTING</emphasis> da tabela
+<emphasis>nat</emphasis>).  O chain <emphasis>OUTPUT</emphasis> da tablea
+<emphasis>mangle</emphasis> corresponde ao <emphasis>OUTPUT</emphasis> da
+tabela <emphasis>nat</emphasis>.  Opções como o <emphasis>Tipo de Serviço
+(TOS)</emphasis> é especificado nesta tabela para classificar e aumentar
+consideravelmente a velocidade de tráfego considerados em tempo real.  Mesmo
+após o tráfego ser estabelecido, os chains da tabela mangle continuam ativos
+para garantir que as opções especiais relacionadas com a conexão continuem
+fazendo efeito (veja os exemplos de <xref linkend="fw-iptables-path"/>).
+</para>
+
+<section xml:id="fw-iptables-mangle-TOS"><info><title>Especificando o tipo de serviço</title></info>
+<para>
+O tipo de serviço é um campo existente no cabeçalho de pacotes do protocolo
+ipv4 que tem a função especificar qual é a prioridade daquele pacote.  A
+prioridade é definida usando o algoritmo FIFO do próprio kernel, sendo uma das
+alternativas de controle/priorização de tráfego das mais simples e rápidas.
+</para>
+<para>
+Uma das vantagens da utilização do tipo de serviço é dar prioridade ao tráfego
+de pacotes interativos (como os do ICQ, IRC, servidores de chat), etc.  Com o
+TOS especificado, mesmo que esteja fazendo um download consumindo toda a banda
+de sua interface de rede, o tráfego com prioridade interativa será enviado
+antes, aumentando a eficiência do uso de serviços em sua máquina.
+</para>
+<para>
+Em testes realizados em minha conexão de 56K, o uso de regras TOS aumentou
+bastante o desempenho em tráfego interativo (em torno de 300%), durante o uso
+total da banda da interface ppp em grande consumo de banda.
+</para>
+<para>
+Usamos o alvo TOS (-j TOS) para especificar a modificação do tipo de serviço
+nos pacotes que atravessam as regras do firewall, acompanhada do argumento
+<emphasis>--set-tos TOS</emphasis> que define a nova prioridade dos pacotes.
+Os valores aceitos são os seguintes:
+</para>
+<variablelist>
+<varlistentry>
+<term>Espera Mínima</term>
+<listitem>
+<para>
+É especificado através de <emphasis>Minimize-Delay</emphasis>,
+<emphasis>16</emphasis> ou <emphasis>0x10</emphasis>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Máximo Processamento</term>
+<listitem>
+<para>
+É especificado através de <emphasis>Maximize-Throughput</emphasis>,
+<emphasis>8,</emphasis> ou <emphasis>0x08</emphasis>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Máxima Confiança</term>
+<listitem>
+<para>
+É especificado através de <emphasis>Maximize-Reliability</emphasis>,
+<emphasis>4</emphasis> ou <emphasis>0x04</emphasis>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Custo mínimo</term>
+<listitem>
+<para>
+Especificado através de <emphasis>Minimize-Cost</emphasis>,
+<emphasis>2</emphasis> ou <emphasis>0x02</emphasis>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Prioridade Normal</term>
+<listitem>
+<para>
+Especificado através de <emphasis>Normal-Service</emphasis>,
+<emphasis>0</emphasis> ou <emphasis>0x00</emphasis>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+Os pacotes vem por padrão com o valor TOS ajustado como <emphasis>prioridade
+normal</emphasis> (bits tos ajustados para 0x00).  O tipo <emphasis>Mínima
+Espera</emphasis> é o de maior prioridade, recomendado para tráfego interativo.
+</para>
+</section>
+
+<section xml:id="fw-iptables-mangle-TOS-out"><info><title>Especificando o TOS para tráfego de saída</title></info>
+<para>
+Este é o mais usado, pois prioriza o tráfego que sai da máquina (com destino a
+Internet, por exemplo).  Sua operação é realizada através do chain
+<emphasis>OUTPUT</emphasis> ou <emphasis>POSTROUTING</emphasis>.
+</para>
+<para>
+Para priorizar todo o tráfego de IRC de nossa rede interna indo para a
+interface ppp0:
+</para>
+<screen>
+iptables -t mangle -A OUTPUT -o ppp0 -p tcp --dport 6666-6668 -j TOS --set-tos 16
+</screen>
+<para>
+O bit TOS é ajustado para <emphasis>Espera mínima</emphasis> e será enviado
+antes dos pacotes com prioridade normal para fora.  Para priorizar a
+transmissão de dados ftp saindo da rede:
+</para>
+<screen>
+iptables -t mangle -A OUTPUT -o ppp0 -p tcp --dport 20 -j TOS --set-tos 8
+</screen>
+<para>
+Para priorizar o tráfego de ICQ da rede:
+</para>
+<screen>
+iptables -t mangle -A OUTPUT -o ppp0 -p tcp --dport 5190 -j TOS --set-tos 16
+</screen>
+<para>
+Existem muitas outras otimizações que podem ser feitas, só depende dos
+requerimentos e análise de cada serviço da rede pelo administrador.
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis> - Os pacotes que atravessam o alvo TOS
+somente tem os bits tipo do serviço modificados, eles não serão de qualquer
+forma rejeitados.
+</para>
+</section>
+
+</section>

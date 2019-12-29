@@ -1,0 +1,239 @@
+<!-- Converted by db4-upgrade version 1.0 -->
+
+<section xml:id="s-samba-usermap"><info><title>Mapeamento de usuários/grupos em clientes</title></info>
+<para>
+O mapeamento de usuários do servidor remoto com a máquina local é usado quando
+você deseja controlar o acesso aos arquivos/diretórios a nível de usuário.  No
+<command>Windows</command> isto permite que cada arquivo/diretório tenha o
+acesso leitura/gravação somente para os usuários definidos e autenticados no
+controlador de domínio.  No <command>Linux</command> as permissões de arquivos
+e diretórios podem ser definidas para o usuário do PDC, garantindo o mesmo
+nível de controle de acesso.
+</para>
+<para>
+Esta seção explica como configurar o mapeamento de UID/GID entre o servidor PDC
+SAMBA e seus clientes NetBIOS Windows e Linux.
+</para>
+<section xml:id="s-samba-usermap-w"><info><title>Mapeamento de usuários/grupos domínio em Windows</title></info>
+<para>
+Para o <command>Windows</command> utilizar os usuários remotos do servidor para
+fazer seu controle de acesso por nível de usuário, siga os seguintes passos:
+</para>
+<variablelist>
+<varlistentry>
+<term>Windows 9X</term>
+<listitem>
+<para>
+Entre no <emphasis>Painel de Controle</emphasis>/<emphasis>Propriedades de
+Rede</emphasis> e clique na tab <emphasis>Controle de Acesso</emphasis>.
+Marque a opção <emphasis>Controle de acesso a nível de usuário</emphasis> e
+coloque o nome da máquina PDC na caixa de diálogo de onde os usuários/grupos
+serão obtidos.  Você também pode colocar o nome do grupo de trabalho, neste
+caso a máquina fará uma busca pelo PDC ou outra máquina de onde pode obter os
+nomes de usuários/grupos.
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis> Para fazer isto, você deverá estar
+autenticado no domínio.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s-samba-usermap-l"><info><title>Mapeamento de usuários/grupos domínio em Linux</title></info>
+<para>
+A associação de UIDs de usuários de um domínio com usuários locais no
+<command>Linux</command> é feita pelo programa <command>winbind</command>.  Ele
+utiliza o mecanismo <command>nsswitch</command> para obter outras fontes de
+dados de usuários e os associa nas ferramentas de gerenciamento de contas
+existentes no sistema.  Siga estes passos para fazer sua instalação e
+configuração do <command>Winbind</command> em um servidor
+<command>Linux</command>:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+Instale o programa <command>winbind</command>: <literal>apt-get install
+winbind</literal>.
+</para>
+</listitem>
+<listitem>
+<para>
+Modifique o arquivo <filename>smb.conf</filename> adicionando as seguintes
+linhas na seção <literal>[global]</literal>:
+</para>
+<screen>
+winbind separator = +
+winbind cache time = 30
+winbind uid = 10000-15000
+winbind gid = 10000-12000
+winbind enum users = yes
+winbind enum groups = yes
+template homedir = /home/winbind/%D/%U
+template shell = /bin/false
+</screen>
+<para>
+Onde
+</para>
+<variablelist>
+<varlistentry>
+<term>winbind separator</term>
+<listitem>
+<para>
+Separador usado para separar o nome dos grupos do nome de domínio.  Este
+parâmetro somente tem sentido quando usado em conjunto com um PDC Windows ou
+quando os módulos <filename>pam_winbind.so</filename> e
+<filename>nss_winbind.so</filename> estão sendo utilizados.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>winbind cache time</term>
+<listitem>
+<para>
+Define a quantidade de tempo em segundos que um nome/grupo permanecerá no cache
+local para não ser feita uma nova consulta no servidor PDC.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>winbind uid</term>
+<listitem>
+<para>
+Especifica o intervalo que será usado para mapear os nomes de usuários remotos
+como UIDs locais.  Você precisará ter certeza que nenhum UID nesse intervalo é
+usado no sistema, como pelo LDAP, NIS ou usuários normais.  Por padrão, os IDS
+de usuários normais na maioria dos sistemas Linux, começam por 1000.  No
+exemplo serão usados os UIDs de 10000 a 15000 para mapeamento e UIDs dos
+usuários do domínio para usuários locais.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>winbind gid</term>
+<listitem>
+<para>
+Especifica o intervalo de GIDs que será usado para mapear os nomes de grupos
+remotos do domínio como GIDs locais.  Como no parâmetro <literal>winbind
+uid</literal>, você deverá ter certeza que esta faixa de GIDs não está sendo
+usada em seu sistema.
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis> Atualmente <command>SAMBA</command> não
+possui suporte a grupos globais, apenas para usuários globais, desta forma os
+grupos da máquina remota não serão trazidos para o sistema.  Uma forma de
+contornar isto, é utilizando o LDAP ou o NIS no PDC e nos clientes
+<command>Linux</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>winbind enum users</term>
+<listitem>
+<para>
+Permite enumerar usuários do winbind para retornarem dados quando solicitados.
+A não ser que possua uma instalação parecida em todas as máquinas (como com o
+uso de LDAP e NIS) responda "yes" para não ter problemas.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>winbind enum groups</term>
+<listitem>
+<para>
+Permite enumerar grupos do winbind para retornarem dados quando solicitados.  A
+não ser que possua uma instalação parecida em todas as máquinas (como com o uso
+de LDAP e NIS) responda "yes" para não ter problemas.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>template homedir</term>
+<listitem>
+<para>
+Quando o sistema cliente for um Windows NT ou baseado, este diretório será
+retornado como diretório de usuário para o sistema.  O parâmetro %D será
+substituído pelo nome do domínio e %U pelo nome de usuário durante a conexão.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>template shell</term>
+<listitem>
+<para>
+Este será o shell enviado para máquinas NT ou baseadas nele como shell usado
+para login.  O valor usado foi <filename>/bin/false</filename> pois desabilita
+os logons, mas você poderá usar <filename>/bin/sh</filename> (ou algum outro
+shell) para efetuar conexões do comando <command>net</command> ou outras
+ferramentas NetBEUI ao servidor.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</listitem>
+<listitem>
+<para>
+Reinicie o servidor <command>SAMBA</command>
+</para>
+</listitem>
+<listitem>
+<para>
+Edite o arquivo <filename>/etc/nsswitch.conf</filename> alterando a ordem de
+pesquisa de nomes de usuários e grupos do sistema local para a seguinte:
+</para>
+<screen>
+passwd:         files winbind
+group:          files winbind
+shadow:         compat
+</screen>
+</listitem>
+<listitem>
+<para>
+Agora, inicie o daemon <command>winbind</command> local com o comando:
+<literal>/etc/init.d/winbind restart</literal>.
+</para>
+</listitem>
+<listitem>
+<para>
+Entre no domínio com o comando: <literal>smbpasswd -j domínio -r nome_do_PDC -U
+usuario</literal> (veja <xref linkend="s-samba-c-dominio-linux"/> para aprender
+como entrar no domínio em caso de dúvidas).
+</para>
+</listitem>
+<listitem>
+<para>
+Agora faça o teste para obter a listagem dos grupos e usuários do domínio do
+PDC digitando:
+</para>
+<screen>
+wbinfo -u
+wbinfo -g
+getent passwd
+getent group
+</screen>
+<para>
+Caso isto não aconteça, revise suas configurações e veja os logs procurando por
+erros quando o <command>winbind</command> tenta obter a lista de
+usuários/grupos do domínio.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Agora você deve ser capaz de criar diretórios/arquivos locais usando os nomes
+de usuários/grupos do domínio.  Lembre-se de reiniciar sempre o
+<command>winbind</command> quando reiniciar o SAMBA por alguma modificação for
+feita (ao mesmo que saiba que não afeta o <command>winbind</command>), assim
+como entrar novamente no domínio, caso contrário o mapeamento deixará de
+funcionar.
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis> Atualmente, o
+<command>winbind</command> não oferece suporte a restrições por data/hora de
+logon para estações de trabalho.  Isto deverá ser implementado em uma futura
+versão
+</para>
+</section>
+
+</section>
+

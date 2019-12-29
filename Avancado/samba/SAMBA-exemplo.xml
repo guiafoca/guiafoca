@@ -1,0 +1,285 @@
+<!-- Converted by db4-upgrade version 1.0 -->
+
+<section xml:id="s-samba-exemplos"><info><title>Exemplos de configuração do servidor SAMBA</title></info>
+<para>
+Os exemplos existentes nesta seção cobrem diferentes tipos de configuração do
+servidor, tanto em modo de compartilhamento com acesso público ou um domínio
+restrito de rede.  Todos os exemplos estão bem comentados e explicativos,
+apenas pegue o que se enquadre mais em sua situação para uso próprio e
+adaptações.
+</para>
+<section xml:id="s-samba-exemplos-workgroup-p"><info><title>Grupo de Trabalho com acesso público</title></info>
+<para>
+Este exemplo pode ser usado de modelo para construir uma configuração baseada
+no controle de acesso usando o nível de segurança <emphasis>share</emphasis> e
+quando possui compartilhamentos de acesso público.  Esta configuração é
+indicada quando necessita de compatibilidade com softwares NetBIOS antigos.
+</para>
+<screen>
+ # Arquivo de configuração do SAMBA criado por 
+ # Gleydson Mazioli da Silva &lt;gleydson@debian.org&gt;
+ # para o guia Foca GNU/Linux Avançado - Capítulo SAMBA
+ # Este script pode ser copiado e distribuído livremente de 
+ # acordo com os termos da GPL. Ele não tem a intenção de 
+ # atender uma determinada finalidade, sendo usado apenas 
+ # para fins didáticos, portanto fica a inteira responsabilidade
+ # do usuário sua utilização.
+
+[global]
+ # nome da máquina na rede
+ netbios name = teste
+ # nome do grupo de trabalho que a máquina pertencerá
+ workgroup = focalinux
+ # nível de segurança share permite que clientes antigos mantenham a compatibilidade
+ # enviando somente a senha para acesso ao recurso, determinando o nome de usuário
+ # de outras formas
+ security = share
+ # O recurso de senhas criptografadas não funciona quando usamos o nível share 
+ # de segurança. O motivo disto é porque automaticamente é assumido que você 
+ # está selecionando este nível por manter compatibilidade com sistemas antigos
+ # ou para disponibilizar compartilhamentos públicos, onde 
+ encrypt passwords = false
+ # Conta que será mapeada para o usuário guest
+ guest account = nobody
+ # Como todos os compartilhamentos desta configuração são de acesso público
+ # coloquei este parâmetro na seção [global], assim esta opção afetará todos
+ # os compartilhamentos.
+ guest ok = 1
+ # Conjunto de caracteres utilizados para acessar os compartilhamentos. O padrão
+ # para o Brasil e países de língua latina é o ISO 8859-1
+ character set = ISO8859-1
+ 
+
+# Compartilha o diretório /tmp (path = /tmp) com o nome "temporario" ([temporario]),
+# é adicionada a descrição "Diretório temporário" com acesso leitura/gravação 
+# (read only = no) e exibido na janela de navegação da rede (browseable = yes).
+[temporario]
+ path = /tmp
+ comment = Diretório temporário
+ read only = no
+ browseable = yes
+
+# Compartilha o diretório /pub (path = /pub) com o nome "publico" ([publico]).
+# A descrição "Diretório de acesso público" é associada ao compartilhamento
+# com acesso somente leitura (read only = yes) e exibido na janela de navegação 
+# da rede (browseable = yes).
+[publico] 
+ path =/pub
+ comment = Diretório de acesso público
+ read only = yes
+ browseable = yes
+
+# Compartilha todas as impressoras encontradas no /etc/printcap do sistema
+# Uma descrição melhor do tipo especial de compartilhamento "[printers]"
+# é explicado no inicio do guia Foca Linux
+[printers]
+ comment = All Printers
+ path = /tmp
+ create mask = 0700
+ printable = Yes
+ browseable = No
+</screen>
+</section>
+
+<section xml:id="s-samba-exemplos-workgroup-u"><info><title>Grupo de Trabalho com acesso por usuário</title></info>
+<para>
+O exemplo abaixo descreve uma configuração a nível de segurança por usuário
+onde existem compartilhamentos que requerem login e usuários específicos, e
+restrições de IPs e interface onde o servidor opera.  Esta configuração utiliza
+senhas em texto claro para acesso dos usuários, mas pode ser facilmente
+modificada para suportar senhas criptografadas.
+</para>
+<screen>
+ # Arquivo de configuração do SAMBA criado por 
+ # Gleydson Mazioli da Silva &gt;gleydson@debian.org&gt;
+ # para o guia Foca GNU/Linux Avançado - Capítulo SAMBA
+ # Este script pode ser copiado e distribuído livremente de 
+ # acordo com os termos da GPL. Ele não tem a intenção de 
+ # atender uma determinada finalidade, sendo usado apenas 
+ # para fins didáticos, portanto fica a inteira responsabilidade
+ # do usuário sua utilização.
+
+[global]
+ # nome da máquina na rede
+ netbios name = teste
+ # nome do grupo de trabalho que a máquina pertencerá
+ workgroup = focalinux
+ # nível de segurança user somente aceita usuários autenticados após o envio 
+ # de login/senha
+ security = user
+ # É utilizada senhas em texto claro nesta configuração
+ encrypt passwords = false
+ # Conta que será mapeada para o usuário guest
+ guest account = nobody
+ # Permite restringir quais interfaces o SAMBA responderá
+ bind interfaces only = yes
+ # Faz o samba só responder requisições vindo de eth0
+ interfaces = eth0
+ # Supondo que nossa interface eth0 receba conexões roteadas de diversas 
+ # outras redes, permite somente as conexões vindas da rede 192.168.1.0/24
+ hosts allow = 192.168.1.0/24
+ # A máquina 192.168.1.57 possui gateway para acesso interno, como medida
+ # de segurança, bloqueamos o acesso desta máquina.
+ hosts deny = 192.168.1.57/32
+ 
+ # Conjunto de caracteres utilizados para acessar os compartilhamentos. O padrão
+ # para o Brasil e países de língua latina é o ISO 8859-1
+ character set = ISO8859-1
+
+ # As restrições do PAM terão efeito sobre os usuários e recursos usados do SAMBA
+ obey pam restriction = yes 
+
+# Mapeia o diretório home do usuário autenticado. Este compartilhamento especial
+# é descrito em mais detalhes no inicio do capítulo sobre o SAMBA no Foca Linux.
+[homes]
+  comment = Diretório do Usuário
+  create mask = 0700
+  directory mask = 0700
+  browseable = No
+
+# Compartilha o diretório win (path = /win) com o nome "win" ([win]). 
+# A descrição associada ao compartilhamento será "Disco do Windows", 
+# o nome de volume precisa ser especificado pois usamos programas 
+# que a proteção anti cópia é o serial. Ainda fazemos uma proteção
+# onde qualquer usuário existente no grupo @adm é automaticamente 
+# rejeitado e o usuário "baduser" somente possui permissão de leitura
+# (read list = baduser).
+#
+[win]
+ path = /win
+ comment = Disco do Windows
+ volume = 3CF434C
+ invalid users = @adm
+ browseable = yes
+ read list = baduser
+
+# Compartilha o diretório /pub (path = /pub) com o nome "publico" ([publico]).
+# A descrição "Diretório de acesso público" é associada ao compartilhamento
+# com acesso somente leitura (read only = yes) e exibido na janela de navegação 
+# da rede (browseable = yes). O parâmetro public = yes permite que este 
+# compartilhamento seja acessado usando o usuário "nobody" sem o fornecimento
+# de senha.
+[publico] 
+ path =/pub
+ comment = Diretório de acesso público
+ read only = yes
+ browseable = yes
+ public = yes
+</screen>
+</section>
+
+<section xml:id="s-samba-exemplos-dominio"><info><title>Domínio</title></info>
+<screen>
+ # Arquivo de configuração do SAMBA criado por 
+ # Gleydson Mazioli da Silva &lt;gleydson@debian.org&gt;
+ # para o guia Foca GNU/Linux Avançado - Capítulo SAMBA
+ # Este script pode ser copiado e distribuído livremente de 
+ # acordo com os termos da GPL. Ele não tem a intenção de 
+ # atender uma determinada finalidade, sendo usado apenas 
+ # para fins didáticos, portanto fica a inteira responsabilidade
+ # do usuário sua utilização.
+
+[global]
+ # nome da máquina na rede
+ netbios name = teste
+ # nome do grupo de trabalho que a máquina pertencerá
+ workgroup = focalinux
+ # String que será mostrada junto com a descrição do servidor
+ server string = servidor PDC principal de testes
+ # nível de segurança user somente aceita usuários autenticados após o envio 
+ # de login/senha
+ security = user
+ # Utilizamos senhas criptografadas nesta configuração
+ encrypt passwords = true
+ smb passwd file = /etc/samba/smbpasswd
+ # Conta que será mapeada para o usuário guest
+ guest account = nobody
+ # Permite restringir quais interfaces o SAMBA responderá
+ bind interfaces only = yes
+ # Faz o samba só responder requisições vindo de eth0
+ interfaces = eth0
+
+ # como estamos planejando ter um grande número de usuários na rede, dividimos
+ # os arquivos de log do servidor por máquina.
+ log file =  /var/log/samba/samba-%m-%I.log
+ # O tamanho de CADA arquivo de log criado deverá ser 1MB (1024Kb). 
+ max log size = 1000 
+ # Escolhemos um nível de OS com uma boa folga para vencer as eleições de 
+ # controlador de domínio local
+ os level = 80 
+ # Dizemos que queremos ser o Domain Master Browse (o padrão é auto)
+ domain master = yes
+ # Damos algumas vantagens para o servidor ganhar a eleição caso 
+ # aconteça desempate por critérios
+ preferred master = yes
+ # Também queremos ser o local master browser para nosso segmento de rede
+ local master = yes
+ # Este servidor suportará logon de usuários
+ domain logons = yes
+ # Usuários que possuem poderes para adicionar/remover máquinas no domínio
+ # (terão seu nível de acesso igual a root)
+ admin users = gleydson
+ # Unidade que será mapeada para o usuário local durante o logon (apenas
+ # sistemas baseados no NT).
+ logon drive = m:
+ # Nome do script que será executado pelas máquinas clientes
+ logon script = logon.bat
+
+ # Ação que será tomada durante o recebimento de mensagens do 
+ # Winpopup. 
+ message command = /bin/sh -c '/usr/bin/linpopup "%f" "%m" %s; rm %s' &amp;
+
+ # Conjunto de caracteres utilizados para acessar os compartilhamentos. O padrão
+ # para o Brasil e países de língua latina é o ISO 8859-1
+ character set = ISO8859-1
+
+ # As restrições do PAM terão efeito sobre os usuários e recursos usados do SAMBA
+ obey pam restriction = yes 
+
+# Mapeia o diretório home do usuário autenticado. Este compartilhamento especial
+# é descrito em mais detalhes no inicio do capítulo sobre o SAMBA no Foca Linux.
+[homes]
+  comment = Diretório do Usuário
+  create mask = 0700
+  directory mask = 0700
+  browseable = No
+
+# Compartilha o diretório win (path = /win) com o nome "win" ([win]). 
+# A descrição associada ao compartilhamento será "Disco do Windows", 
+# o nome de volume precisa ser especificado pois usamos programas 
+# que a proteção anti cópia é o serial. Ainda fazemos uma proteção
+# onde qualquer usuário existente no grupo @adm é automaticamente 
+# rejeitado e o usuário "baduser" somente possui permissão de leitura
+# (read list = baduser).
+#
+[win]
+ path = /win
+ comment = Disco do Windows
+ volume = 3CF434C
+ invalid users = @adm
+ browseable = yes
+ read list = baduser
+
+# Compartilha o diretório /pub (path = /pub) com o nome "publico" ([publico]).
+# A descrição "Diretório de acesso público" é associada ao compartilhamento
+# com acesso somente leitura (read only = yes) e exibido na janela de navegação 
+# da rede (browseable = yes). O parâmetro public = yes permite que este 
+# compartilhamento seja acessado usando o usuário "nobody" sem o fornecimento
+# de senha.
+[publico] 
+ path =/pub
+ comment = Diretório de acesso público
+ read only = yes
+ browseable = yes
+ public = yes
+
+# Compartilhamento especial utilizado para o logon de máquinas na rede
+[netlogon]
+ path=/pub/samba/netlogon/logon.bat
+ read only = yes
+</screen>
+</section>
+
+</section>
+
+</chapter>

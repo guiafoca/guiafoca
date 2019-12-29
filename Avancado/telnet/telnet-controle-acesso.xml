@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="s-telnet-access"><info><title>Controle de acesso</title></info>
+<para>
+É feito pelos arquivos <filename>hosts.allow</filename> e
+<filename>hosts.deny</filename>.  Veja <xref linkend="rede-seg-tcpd"/>.
+</para>
+</section>
+
+<section xml:id="s-telnet-recomend"><info><title>Recomendações</title></info>
+    <para>
+    O serviço telnet utiliza texto plano para seção (exceto nas versões
+    cliente/servidor "-ssl").  Os dados transmitidos por serviços que utilizam
+    texto plano podem ser capturados por sniffers e trazer perigo ao seu sistema
+    (veja <xref linkend="d-cripto-sniffer"/>).
+    </para>
+    <para>
+    É recomendável somente executar o servidor telnet padrão em ambientes seguros
+    (como em uma rede interna) e a versão com suporte a ssl para fazer conexões via
+    redes inseguras (como a Internet).  O serviço <command>ssh</command> (<xref linkend="ssh"/>) é uma excelente alternativa ao telnet, além de possuir outras
+    características adicionais que justifiquem seu uso, além de programas cliente
+    para <command>Linux</command> e <command>Windows</command>.
+    </para>
+ </section>
+    
+ <section xml:id="s-telnet-telnet"><info><title>Fazendo conexões ao servidor telnet</title></info>
+    <para>
+    Use o comando: <literal>telnet [endereço] [porta]</literal> para realizar
+    conexões com uma máquina rodando o servidor telnet.
+    </para>
+    <para>
+    Adicionalmente as seguintes opções podem ser usadas:
+    </para>
+    <itemizedlist>
+    <listitem>
+    <para>
+    <literal>-l [usuario]</literal> - Envia o nome de usuário ao computador remoto.
+    Muito útil com o <command>telnet-ssl</command>.
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+    <literal>-E</literal> - Desativa o caracter de escape
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+    <literal>-a</literal> - Tenta fazer o login automático usando o nome de usuário
+    local.  Se o login falhar, será solicitado o nome de usuário.  Esta opção é
+    usada por padrão com o cliente <command>telnet-ssl</command>.
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+    <literal>-r</literal> - Emula o comportamento do programa
+    <command>rlogin</command>.
+    </para>
+    </listitem>
+    </itemizedlist>
+    <screen>
+    Exemplos:
+    
+    # Conecta-se ao servidor telnet rodando na porta 23 de sua própria máquina
+    telnet localhost
+    
+    # Conecta-se ao servidor telnet 200.200.200.200 operando na porta 53454 usando o 
+    # nome de usuário john
+    telnet -l john 200.200.200.200 53454
+    </screen>
+ </section>
+    

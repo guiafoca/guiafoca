@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="s-apache-intro"><info><title>Introdução</title></info>
+<para>
+O servidor web é um programa responsável por disponibilizar páginas, fotos, ou
+qualquer outro tipo de objeto ao navegador do cliente.  Ele também pode operar
+recebendo dados do cliente, processando e enviando o resultado para que o
+cliente possa tomar a ação desejada (como em aplicações CGI's, banco de dados
+web, preenchimento de formulários, etc).
+</para>
+<para>
+O <command>Apache</command> é um servidor Web extremamente configurável,
+robusto e de alta performance desenvolvido por uma equipe de voluntários
+(conhecida como <literal>Apache Group</literal>) buscando criar um servidor web
+com muitas características e com código fonte disponível gratuitamente via
+Internet.  Segundo a Netcraft (<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.netcraft.com/">http://www.netcraft.com/</link>), o
+<command>Apache</command> é mais usado que todos os outros servidores web do
+mundo juntos.
+</para>
+<para>
+Este capítulo não tenta ser um guia completo ao <command>Apache</command>, mas
+tentará mostrar como sua estrutura é organizada, as diretivas principais de
+configuração, diretivas de segurança, virtual hosting, proxy, o uso de
+utilitários de gerenciamento do servidor, como personalizar algumas partes do
+servidor e programas úteis de terceiros para análise e diagnóstico do servidor
+web.  Não deixe também de ver <xref linkend="s-apache-exemplo"/> pois contém
+diretivas básicas de configuração comentadas e explicações interessante e faz
+parte do aprendizado.
+</para>
+
+<section xml:id="s-apache-versao"><info><title>Versão</title></info>
+<para>
+É assumido que esteja usando a versão 1.3.22 do <command>apache</command>.  As
+explicações contidas aqui podem funcionar para versões posteriores, mas é
+recomendável que leia a documentação sobre modificações no programa (changelog)
+em busca de mudanças que alterem o sentido das explicações fornecidas aqui.
+</para>
+</section>
+
+<section xml:id="s-apache-historia"><info><title>Um resumo da História do Apache</title></info>
+<para>
+O <command>Apache</command> tem como base o servidor web <command>NCSA
+1.3</command> (<emphasis>National Center of Supercomputing
+Applications</emphasis>), que foi desenvolvido por Rob McCool.  Quando Rob
+deixou o NCSA, o desenvolvimento foi interrompido, assim muitos desenvolvedores
+buscaram personalizar sua própria versão do NCSA ou adicionar mais
+características para atender as suas necessidades.  Neste momento começa a
+história do <command>Apache</command> com <emphasis>Brian Behlendorf</emphasis>
+e <emphasis>Cliff Skolnick</emphasis> abrindo uma lista de discussão para
+interessados no desenvolvimento, conseguindo espaço em um servidor doado pela
+<emphasis>HotWired</emphasis> e trocando patches corrigindo problemas,
+adicionando recursos e discutindo idéias com outros desenvolvedores e hackers
+interessados neste projeto.
+</para>
+<para>
+A primeira versão oficial do <command>Apache</command> foi a 0.6.2, lançada em
+Abril de 1995 (neste período a NCSA retomava o desenvolvimento de seu servidor
+web, tendo como desenvolvedores <emphasis>Brandon Long</emphasis> e
+<emphasis>Beth Frank</emphasis> que também se tornaram membros especiais do
+grupo <command>Apache</command>, compartilhando idéias sobre seus projetos).
+</para>
+<para>
+Nas versões 2.x do Apache, a escalabilidade do servidor foi ampliada suportando
+as plataformas <command>Win32</command> (não obtendo o mesmo desempenho que em
+plataformas UNIX mas sendo melhorado gradativamente).
+</para>
+</section>
+
+<section xml:id="s-apache-contribuindo"><info><title>Enviando Correções/Contribuindo com o projeto</title></info>
+<para>
+Um formulário está disponível na Web para o envio de correções/sugestões em
+<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.apache.org/bug_report.html/">http://www.apache.org/bug_report.html/</link></literal>.
+Uma lista de anuncio sobre o <command>Apache</command> está disponível em
+<email>apache-announce@apache.org</email> que divulgam correções, novas versões
+e realização de eventos.
+</para>
+<para>
+Mais detalhes sobre o desenvolvimento do Apache podem ser visualizadas na URL
+<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://dev.apache.org/">http://dev.apache.org/</link></literal>.
+</para>
+</section>
+
+<section xml:id="s-apache-caracteristicas"><info><title>Características do Apache</title></info>
+<para>
+Abaixo estão algumas características que fazem esse servidor web o preferido
+entre os administradores de sistemas:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+Possui suporte a scripts cgi usando linguagens como <emphasis>Perl, PHP, Shell
+Script, ASP, etc</emphasis>.
+</para>
+</listitem>
+<listitem>
+<para>
+Suporte a autorização de acesso podendo ser especificadas restrições de acesso
+separadamente para cada endereço/arquivo/diretório acessado no servidor.
+</para>
+</listitem>
+<listitem>
+<para>
+Autenticação requerendo um nome de usuário e senha válidos para acesso a alguma
+página/sub-diretório/arquivo (suportando criptografia via Crypto e MD5).
+</para>
+</listitem>
+<listitem>
+<para>
+Negociação de conteúdo, permitindo a exibição da página Web no idioma
+requisitado pelo Cliente Navegador.
+</para>
+</listitem>
+<listitem>
+<para>
+Suporte a tipos mime.
+</para>
+</listitem>
+<listitem>
+<para>
+Personalização de logs.
+</para>
+</listitem>
+<listitem>
+<para>
+Mensagens de erro.
+</para>
+</listitem>
+<listitem>
+<para>
+Suporte a virtual hosting (é possível servir 2 ou mais páginas com endereços/
+portas diferentes através do mesmo processo ou usar mais de um processo para
+controlar mais de um endereço).
+</para>
+</listitem>
+<listitem>
+<para>
+Suporte a IP virtual hosting.
+</para>
+</listitem>
+<listitem>
+<para>
+Suporte a name virtual hosting.
+</para>
+</listitem>
+<listitem>
+<para>
+Suporte a servidor Proxy ftp e http, com limite de acesso, caching (todas
+flexivelmente configuráveis).
+</para>
+</listitem>
+<listitem>
+<para>
+Suporte a proxy e redirecionamentos baseados em URLs para endereços Internos.
+</para>
+</listitem>
+<listitem>
+<para>
+Suporte a criptografia via SSL,Certificados digitais
+</para>
+</listitem>
+<listitem>
+<para>
+Módulos DSO (Dynamic Shared Objects) permitem adicionar/remover funcionalidades
+e recursos sem necessidade de recompilação do programa.
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="s-apache-ficha"><info><title>Ficha técnica</title></info>
+<para>
+Pacote: <systemitem role="package">apache</systemitem>
+</para>
+<para>
+Utilitários:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>apache</literal> - Servidor Web Principal
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>apachectl</literal> - Shell script que faz interface com o
+<command>apache</command> de forma mais amigável
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>apacheconfig</literal> - Script em Perl para configuração interativa
+básica do <command>Apache</command>
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>htpasswd</literal> - Cria/Gerencia senhas criptografadas Crypto/MD5
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>htdigest</literal> - Cria/Gerencia senhas criptografadas Crypto/MD5
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>dbmmanage</literal> - Cria/Gerencia senhas em formato DBM (Perl)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>logresolve</literal> - Faz um DNS reverso dos arquivos de log do
+<command>Apache</command> para obter o endereço de hosts com base nos endereços
+IP's.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ab</literal> - Apache Benchmarcking - Ferramenta de medida de
+desempenho do servidor Web Apache.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Por padrão, os arquivos de configuração do <command>Apache</command> residem no
+diretório <filename>/etc/apache</filename>:
+</para>
+<variablelist>
+<varlistentry>
+<term>httpd.conf</term>
+<listitem>
+<para>
+Arquivo de configuração principal do <command>Apache</command>, possui
+diretivas que controlam a operação do daemon servidor.  Um arquivo de
+configuração alternativo pode ser especificado através da opção "-f" da linha
+de comando.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>srm.conf</term>
+<listitem>
+<para>
+Contém diretivas que controlam a especificação de documentos que o servidor
+oferece aos clientes.  O nome desse arquivo pode ser substituído através da
+diretiva ResourceConfig no arquivo principal de configuração.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>access.conf</term>
+<listitem>
+<para>
+Contém diretivas que controlam o acesso aos documentos.  O nome desse arquivo
+pode ser substituído através da diretiva <emphasis>AccessConfig</emphasis> no
+arquivo principal de configuração.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+O servidor Web lê os arquivos acima na ordem que estão especificados
+(<filename>httpd.conf</filename>, <filename>srm.conf</filename> e
+<filename>access.conf</filename>).  As configurações também podem ser
+especificadas diretamente no arquivo <filename>httpd.conf</filename>.  Note que
+não é obrigatório usar os arquivos <filename>srm.conf</filename> e
+<filename>access.conf</filename>, mas isto proporciona uma melhor organização
+das diretivas do servidor, principalmente quando se tem um grande conjunto de
+diretivas.  Um exemplo comentado destes três arquivos de configuração é
+encontrado em <xref linkend="s-apache-exemplo"/>.
+</para>
+</section>
+
+<section xml:id="s-apache-hwreq"><info><title>Requerimentos</title></info>
+<para>
+A máquina mínima para se rodar um servidor <command>Apache</command> para
+atender a uma rede padrão 10MB/s é um Pentium 90, 24MB de RAM, um HD com um bom
+desempenho e espaço em disco considerável de acordo com o tamanho projetado de
+seu servidor web (considerando seu crescimento).
+</para>
+<para>
+Uma configuração mais rápida para redes 100MB/s teria como processador um Cyrix
+MX ou Intel Pentium MMX como plataforma mínima (Cyrix é o recomendado pelo alto
+desempenho no processamento de strings), barramento de HD SCSI com uma boa
+placa controladora (Adaptec 19160 ou superior) com 64MB de RAM no mínimo.
+</para>
+</section>
+
+<section xml:id="s-apache-logs"><info><title>Arquivos de log criados pelo Apache</title></info>
+<para>
+O servidor <command>httpd</command> grava seus arquivos de log geralmente em
+<filename>/var/log/apache</filename>, não é possível descrever os arquivos de
+logs usados porque tanto seus nomes como conteúdo podem ser personalizados no
+arquivo <filename>httpd.conf</filename>.  Mesmo assim, os arquivos de logs
+encontrados na instalação padrão do <command>Apache</command> são os seguintes:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<filename>access.log</filename> - Registra detalhes sobre o acesso as páginas
+do servidor <command>httpd</command>.
+</para>
+</listitem>
+<listitem>
+<para>
+<filename>error.log</filename> - Registra detalhes saber erros de acesso as
+páginas ou erros internos do servidor.
+</para>
+</listitem>
+<listitem>
+<para>
+<filename>agent.log</filename> - Registra o nome do navegador do cliente (campo
+<replaceable>UserAgent</replaceable> do cabeçalho http).
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Mais referências podem ser encontradas em <xref linkend="s-apache-log"/>.  Um
+bom programa para geração de estatísticas de acesso com gráficos é o <xref linkend="s-apache-log-webalizer"/>.
+</para>
+</section>
+
+<section xml:id="s-apache-install"><info><title>Instalação</title></info>
+<para>
+<literal>apt-get install apache apache-doc</literal>
+</para>
+<para>
+(o pacote <systemitem role="package">apache-doc</systemitem> contém a
+documentação de referencia do <command>Apache</command>, é recomendável
+instala-lo se estiver curioso e deseja entender melhor seu funcionamento ou
+consultar diretivas).
+</para>
+</section>
+
+<section xml:id="s-apache-rodando"><info><title>Iniciando o servidor/reiniciando/recarregando a configuração</title></info>
+<para>
+O <command>Apache</command> pode ser executado tanto como um servidor
+<emphasis>Inetd</emphasis> ou como um <emphasis>Daemon</emphasis>.  A
+inicialização de programas pelo <emphasis>Inetd</emphasis> é uma boa estratégia
+quando você precisa de um controle de acesso básico (o fornecido pelo
+<command>tcpd</command>), e o serviço é pouco usado na máquina.
+</para>
+<para>
+A segurança de um serviço iniciado pelo <command>inetd</command> pode ser
+substituída e melhorada por um firewall bem configurado, garantindo facilidades
+extras como um relatório de tráfego para a porta do servidor web, por exemplo.
+Mesmo assim se o servidor <command>Apache</command> estiver rodando como daemon
+e estiver ocioso, ele será movido para swap liberando a memória RAM para a
+execução de outros programas.
+</para>
+<para>
+Neste capítulo será assumido seu funcionamento do <command>Apache</command>
+como Daemon, que é o método de funcionamento recomendado para sites de grande
+tráfego onde ele é freqüentemente requisitado e considerado um serviço crítico.
+</para>
+<para>
+O método padrão para iniciar programas como daemons na
+<command>Debian</command> é através dos diretórios
+<filename>/etc/rc?.d</filename>.  Cada diretório deste contém os programas que
+serão executados/interrompidos no nível de execução "?"
+(<filename>rc1.d/</filename>, <filename>rc2.d/</filename> ...).  O conteúdo
+destes diretórios são links para os scripts originais em
+<filename>/etc/init.d/programa</filename>, o nosso programa alvo é
+<filename>/etc/init.d/apache</filename>.  O
+<filename>/etc/init.d/apache</filename> aceita os seguintes parâmetros:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>start</literal> - Inicia o <command>Apache</command>
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>stop</literal> - Finaliza o <command>Apache</command>
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>restart</literal> - Reinicia o <command>Apache</command>, efetuando
+uma pausa de 5 segundos entre a interrupção do seu funcionamento e reinicio.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>reload</literal> - Recarrega os arquivos de configuração do
+<literal>Apache</literal>, as alterações entram em funcionamento imediatamente.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>reload-modules</literal> - Recarrega os módulos.  Basicamente é feito
+um restart no servidor.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>force-reload</literal> - Faz a mesma função que o reload
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Para reiniciar o <command>Apache</command> usando o
+<filename>/etc/init.d/apache</filename>, digite:
+</para>
+<para>
+./etc/init.d/apache restart
+</para>
+<para>
+ou
+</para>
+<para>
+<literal>cd /etc/init.d;./apache restart</literal>
+</para>
+<para>
+Na realidade, o que o <filename>/etc/init.d/apache</filename> faz é interagir
+diretamente com o shell script <command>apachectl</command>.
+</para>
+<para>
+O <command>apachectl</command> recebe os parâmetros enviados pelo usuário e
+converte para sinais que serão enviados para o binário
+<command>apache</command>.  Da mesma forma ele verifica os códigos de saída do
+<command>apache</command> e os transforma em mensagens de erro legíveis para o
+usuário comum.  Os seguintes comandos são aceitos pelo
+<command>apachectl</command>:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>httpd-server/start</literal> - Inicia o <command>Apache</command>
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>stop</literal> - Finaliza o <command>Apache</command> (enviando um
+sinal TERM)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>restart</literal> - Reinicia o <command>Apache</command> (enviando um
+sinal HUP)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>graceful</literal> - Recarrega os arquivos de configuração do
+<command>Apache</command> (enviando um sinal USR1)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>fullstatus</literal> - Mostra o status completo do servidor
+<command>Apache</command> (requer o <command>lynx</command> e o módulo
+<emphasis>mod_status</emphasis> carregado).
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>status</literal> - Mostra o status do processo do servidor
+<command>Apache</command> (requer o <command>lynx</command> e o módulo
+<emphasis>mod_status</emphasis> carregado).
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>configtest</literal> - Verifica se a sintaxe dos arquivos de
+configuração está OK (executa um <literal>apache -t</literal>).
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="s-apache-opcoescmd"><info><title>Opções de linha de comando</title></info>
+<itemizedlist>
+<listitem>
+<para>
+<literal>-D nome</literal> - define um nome que será usado na diretiva
+&lt;IfDefine nome&gt;.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>-d diretório</literal> - especifica o diretório
+<emphasis>ServerRoot</emphasis> (substitui o do arquivo de configuração).
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>-f arquivo</literal> - especifica um arquivo
+<emphasis>ServerConfigFile</emphasis> alternativo.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>-C "diretiva"</literal> - processa a diretiva antes de ler os arquivo
+de configuração.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>-c "diretiva"</literal> - processa a diretiva depois de ler os
+arquivos de configuração.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>-v</literal> - mostra a versão do programa.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>-V</literal> - mostra opções usadas na compilação do
+<command>Apache</command>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>-h</literal> - Mostra o help on-line do programa
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>-l</literal> - lista módulos compilados junto com o Apache (embutidos)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>-L</literal> - lista diretivas de configurações disponíveis
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>-S</literal> - Mostra configurações de Virtual Hosting
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>-t</literal> - executa a checagem de sintaxe nos arquivos de
+configuração do Apache (incluindo a checagem da diretiva
+<emphasis>DocRoot</emphasis>).
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>-T</literal> - executa a checagem de sintaxe nos arquivos de
+configuração do <command>Apache</command> (menos da diretiva
+<emphasis>DocRoot</emphasis>).
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+</section>
+
+

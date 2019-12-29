@@ -1,0 +1,551 @@
+<!-- Converted by db4-upgrade version 1.0 -->
+<section xml:id="s-ssh-server"><info><title>Servidor ssh</title></info>
+<section xml:id="s-ssh-server-sshd"><info><title>sshd</title></info>
+<para>
+Este é o daemon de controle da conexão encriptada via protocolo ssh,
+transferência de arquivos e shell interativo.  As opções de linha de comando
+estão disponíveis em <xref linkend="s-ssh-opcoescmd"/>.  Seu arquivo de
+configuração principal é <filename>/etc/ssh/sshd_config</filename>, um exemplo
+e descrição das opções deste arquivo é encontrada em <xref linkend="s-ssh-server-sshd-config"/>.
+</para>
+<para>
+<emphasis role="strong">OBS1:</emphasis> É recomendável que o arquivo
+<filename>/etc/ssh/sshd_config</filename> seja lido somente pelo dono/grupo,
+por conter detalhes de acesso de usuários, grupos e intervalo entre a geração
+de chave de seção.
+</para>
+<para>
+<emphasis role="strong">OBS2:</emphasis> Se estiver ocorrendo falhas no acesso
+ao servidor ssh, verifique as permissões nos arquivos
+<filename>/etc/hosts.allow</filename> e <filename>/etc/hosts.deny</filename> (o
+nome do serviço é <command>sshd</command>).  Mesmo operando como daemon, o
+servidor utiliza estes arquivos para fazer um controle de acesso adicional.
+</para>
+</section>
+
+<section xml:id="s-ssh-acesso"><info><title>Controle de acesso</title></info>
+<para>
+É definido pelas opções <literal>ListenAddress</literal>,
+<literal>AllowUsers</literal>, <literal>DenyUsers</literal>,
+<literal>AllowGroups</literal>, <literal>DenyGroups</literal> e
+<literal>PermitRootLogin</literal> do arquivo de configuração
+<filename>sshd_config</filename> (veja <xref linkend="s-ssh-server-sshd-config"/>) e via tcpd (arquivos
+<filename>hosts.allow</filename> e <filename>hosts.deny</filename>).  Veja
+<xref linkend="rede-seg-tcpd"/>.
+</para>
+</section>
+
+<section xml:id="s-ssh-server-rsaauth"><info><title>Usando autenticação RSA/DSA - chave pública/privada</title></info>
+<para>
+Este método de autenticação utiliza o par de chaves pública (que será
+distribuído nas máquinas que você conecta) e outra privada (que ficará em seu
+diretório pessoal) para autenticação.  A encriptação e decriptação são feitas
+usando chaves separadas e não é possível conseguir a chave de decriptação
+usando a chave de encriptação.  É possível inclusive gerar uma chave sem senha
+para efetuar o logon em um sistema ou execução de comandos remotos (este
+esquema é um pouco mais seguro que os arquivos <filename>~/.rhosts</filename> e
+<filename>~/.shosts</filename>).
+</para>
+<para>
+Siga os seguintes passos para se autenticar usando RSA 1 - usada na versão 1 do
+<command>ssh</command>:
+</para>
+<orderedlist numeration="arabic">
+<listitem>
+<para>
+Gere um par de chaves pública/privada usando o comando:
+</para>
+<screen>
+ssh-keygen
+</screen>
+<para>
+Um par de chaves RSA versão 1 será gerado com o tamanho de 1024 bits por
+padrão, garantindo uma boa segurança/performance, e salvas no diretório
+<filename>~/.ssh</filename> com o nome <filename>identity</filename> e
+<filename>identity.pub</filename>.  Para alterar o tamanho da chave use a opção
+<emphasis>-b tamanho</emphasis>.  Depois de gerar a chave, o
+<command>ssh-keygen</command> pedirá uma <literal>frase-senha</literal> (é
+recomendável ter um tamanho maior que 10 caracteres e podem ser incluídos
+espaços).  Se não quiser digitar uma senha para acesso ao sistema remoto, tecle
+&lt;Enter&gt; quando perguntado.  Mude as permissões do diretório
+<filename>~/.ssh</filename> para 750.
+</para>
+<para>
+A opção <emphasis>-f</emphasis> especifica o diretório e nome das chaves.  A
+chave pública terá a extensão <filename>.pub</filename> adicionada ao nome
+especificado.
+</para>
+<para>
+<emphasis role="strong">ATENÇÃO</emphasis> Nunca distribua sua chave privada,
+nem armazene-a em servidores de acesso públicos ou outros métodos que permitem
+outros terem acesso a ela.  Se precisar de uma cópia de segurança, faça em
+disquetes e guarde-a em um lugar seguro.
+</para>
+</listitem>
+<listitem>
+<para>
+Instale a chave pública no servidor remoto que deseja se conectar, por exemplo,
+<filename>www.sshserver.org</filename>:
+</para>
+<screen>
+ssh-copy-id -i ~/.ssh/identity gleydson@www.servidorssh.org
+</screen>
+<para>
+A função do utilitário acima é entrar no sistema remoto e adicionar a chave
+pública local <filename>~/.ssh/identity.pub</filename> no arquivo
+<filename>/home/gleydson/.ssh/authorized_keys</filename> do sistema remoto
+<filename>www.sshserver.org</filename>.  O mesmo processo poderá ser feito
+manualmente usando os métodos tradicionais
+(<command>ssh</command>/<command>scp</command>).  Caso o arquivo remoto
+<filename>/home/gleydson/.ssh/authorized_keys</filename> não existe, ele será
+criado.  Seu formato é idêntico ao <filename>~/.ssh/know_hosts</filename> e
+contém uma chave pública por linha.
+</para>
+</listitem>
+<listitem>
+<para>
+Agora utilize o <command>ssh</command> para entrar no sistema remoto usando o
+método de chave pública/privada.  Entre com a senha que usou para gerar o par
+de chaves público/privado (ele entrará diretamente caso não tenha digitado uma
+senha).
+</para>
+</listitem>
+</orderedlist>
+<para>
+Para autenticar em uma versão 2 do <command>ssh</command> (usando chave RSA 2
+ou DSA):
+</para>
+<orderedlist numeration="arabic">
+<listitem>
+<para>
+Gere um par de chaves pública/privada usando o comando:
+</para>
+<screen>
+ssh-keygen -t rsa -f ~/.ssh/id_rsa
+
+ou 
+
+ssh-keygen -t dsa -f ~/.ssh/id_rsa
+</screen>
+<para>
+Um par de chaves RSA 2/DSA será gerado.  Para alterar o tamanho da chave use a
+opção <emphasis>-b tamanho</emphasis>.  Depois de gerar a chave, o
+<command>ssh-keygen</command> pedirá uma <literal>frase-senha</literal> (é
+recomendável ter um tamanho maior que 10 caracteres e podem ser incluídos
+espaços).  Se não quiser digitar uma senha para acesso ao sistema remoto, tecle
+&lt;Enter&gt; quando perguntado.  Mude as permissões do diretório
+<filename>~/.ssh</filename> para 750.
+</para>
+<para>
+<emphasis role="strong">ATENÇÃO</emphasis> Nunca distribua sua chave privada,
+nem armazene-a em servidores de acesso públicos ou outros métodos que permitem
+outros terem acesso a ela.  Se precisar de uma cópia de segurança, faça em
+disquetes e guarde-a em um lugar seguro.
+</para>
+</listitem>
+<listitem>
+<para>
+Instale a chave pública no servidor remoto que deseja se conectar copiando o
+arquivo com:
+</para>
+<screen>
+scp ~/.ssh/id_rsa.pub usuario@servidorremoto:~/.ssh/authorized_keys2
+ou
+scp ~/.ssh/id_dsa.pub usuario@servidorremoto:~/.ssh/authorized_keys2
+(caso tenha gerado a chave com a opção -t dsa)
+</screen>
+<para>
+Caso o arquivo remoto <filename>/home/gleydson/.ssh/authorized_keys2</filename>
+não existe, ele será criado.  Seu formato é idêntico ao
+<filename>~/.ssh/know_hosts2</filename> e contém uma chave pública por linha.
+</para>
+</listitem>
+<listitem>
+<para>
+Agora utilize o <command>ssh</command> para entrar no sistema remoto usando o
+método de chave pública/privada.  Entre com a senha que usou para gerar o par
+de chaves público/privado (ele entrará diretamente caso não tenha digitado uma
+senha).
+</para>
+</listitem>
+</orderedlist>
+<para>
+<emphasis role="strong">OBS:</emphasis> Deverá ser levado em consideração a
+possibilidade de acesso físico ao seu diretório pessoal, qualquer um que tenha
+posse de sua chave privada poderá ter acesso ao sistema remoto.  O tipo de
+chave criada por padrão é a <emphasis>rsa1</emphasis> (compatível com as
+versões 1 e 2 do ssh).  A opção <emphasis>-t [chave]</emphasis> poderá ser
+usada (ao gerar a chave) para selecionar o método de criptografia:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>rsa1</literal> - Cria uma chave rsa compatível com a versão 1 e 2 do
+<command>ssh</command> (esta é a padrão).
+</para>
+</listitem>
+<listitem>
+<para>
+<emphasis>rsa</emphasis> - Cria uma chave rsa compatível somente com a versão 2
+do <command>ssh</command>.
+</para>
+</listitem>
+<listitem>
+<para>
+<emphasis>dsa</emphasis> - Cria uma chave dsa compatível somente com a versão 2
+do <command>ssh</command>.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Para trocar a senha utilize o comando: <literal>ssh-keygen -p -t tipo_chave -f
+~/.ssh/identity</literal> - será pedida sua senha antiga e a nova senha (no
+mesmo estilo do <command>passwd</command>).  Opcionalmente você pode utilizar a
+sintaxe: <literal>ssh-keygen -p -f ~/.ssh/identity -P senha_antiga -N
+senha_nova</literal>, que troca a senha em um único comando (útil para ser
+usado em scripts junto com a opção <emphasis>-q</emphasis> para evitar a
+exibição de mensagens de saída do <command>ssh-keygen</command>).
+</para>
+</section>
+
+<section xml:id="s-ssh-server-cmdkey"><info><title>Execução de comandos específicos usando chaves</title></info>
+<para>
+Com o uso de chaves também é possível o uso do <command>ssh</command> para
+execução de comandos específicos em máquinas remotas, isto é possível com os
+novos recursos da versão 3 do <command>ssh</command>.  Para fazer isto, siga os
+passos <xref linkend="s-ssh-server-rsaauth"/> para gerar um par de chaves
+<emphasis>DSA</emphasis> (o par <emphasis>RSA</emphasis> não aceita execução de
+comandos específicos) e copiar para <filename>authorized_keys2</filename>.
+Após isto, entre no servidor remoto e edite a chave, inserindo o comando que
+deverá ser executado antes da linha <emphasis>dds</emphasis>, por exemplo:
+</para>
+<screen>
+command="ls / -la" ssh-dss ABCAB3NzaC5555MAAACBAL3...
+</screen>
+<para>
+Com este método é possível restringir a execução de alguns comandos/serviços
+além de outras possibilidades como a mudança de variáveis específicas para o
+comando:
+</para>
+<screen>
+no-port-forwarding,no-X11-forwarding,no-agent-forwarding,command="ls / -la" ssh-dss ABCAB3NzaC1kc55355MAADBBYLp...
+</screen>
+</section>
+
+<section xml:id="s-ssh-server-gatewayssh"><info><title>Criando um gateway ssh</title></info>
+<para>
+Imagine quando você deseja ter acesso a uma máquina de sua rede interna que
+esteja atrás de um gateway, isto é possível usando os recursos explicados em
+<xref linkend="s-ssh-server-cmdkey"/> fazendo um redirecionamento de acesso
+para seu usuário da seguinte forma:
+</para>
+<screen>
+command="ssh -t usuario@maquina.interna" ssh-dss DAK874CKLDSAUE83da9x...
+</screen>
+<para>
+Isto o acesso do usuário ser redirecionado automaticamente quando efetuar o
+logon.  Caso tenha definido uma senha para a chave DSA, o usuário deverá
+fornecer a senha para entrar no gateway e outra para acessar sua estação de
+trabalho.
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis> Não estou levando em conta as
+considerações de segurança que este exemplo tem em sua rede, bem como o que
+pode ou não ser redirecionado.  A intenção foi manter a simplicidade para
+entender sem dificuldades como isto é feito.
+</para>
+</section>
+
+<section xml:id="s-ssh-server-proxy"><info><title>Criando um tunel proxy</title></info>
+<para>
+Aplicações remotas podem ser abertas localmente com o uso desta técnica.  Você
+poderá usar para acessar portas que estariam disponíveis somente através do
+endereço remoto, realizar conexões criptografadas ou com compactação
+(garantindo uma boa taxa de transferência para protocolos que usem mais texto).
+</para>
+<para>
+Por exemplo, para redirecionar o tráfego da porta 80 do servidor remoto para a
+porta 2003 local:
+</para>
+<screen>
+ssh -l seu_login servidor -L2003:servidor_remoto:80 -f sleep 60
+</screen>
+<para>
+O <literal>sleep 60</literal> tem a função de apenas deixar o tunel aberto por
+60 segundos, tempo suficiente para realizarmos nossa conexão.  Agora, entre no
+seu navegador local e acesse a porta <emphasis>2003</emphasis>:
+</para>
+<screen>
+http://localhost:2003
+</screen>
+<para>
+A opção <emphasis>-C</emphasis> também pode ser especificada junto ao
+<command>ssh</command> para usar compactação dos dados da conexão.  Como notou,
+este recurso também é útil para fazer a administração remota de máquinas,
+porque o que está realizando a conexão será o IP do servidor remoto, não o seu.
+Da mesma forma, você poderá ter problemas caso não tenha uma boa política de
+distribuição de contas de máquinas em sua rede.  Veja <xref linkend="d-contas"/> para detalhes .
+</para>
+</section>
+
+<section xml:id="s-ssh-server-protodiff"><info><title>Diferenças nas versões do protocolo</title></info>
+<para>
+Retirada da página de manual do <command>sshd</command>:
+</para>
+<variablelist>
+<varlistentry>
+<term>Protocolo SSH versão 1</term>
+<listitem>
+<para>
+Cada servidor possui uma chave RSA específica (1024 bits por padrão) usada para
+identifica-lo.  Quando o sshd inicia, ele gera uma chave RSA do servidor (768
+bits por padrão, valor definido por ServerKeyBits) que é recriada a cada hora
+(modificado por KeyRegenerationInterval no <filename>sshd_config</filename>) e
+permanece sempre residente na RAM.
+</para>
+<para>
+Quando um cliente se conecta o sshd responde com sua chave pública da máquina e
+chaves do servidor.  O cliente ssh compara a chave RSA com seu banco de dados
+(em <filename>~/.ssh/know_hosts</filename>) para verificar se não foi
+modificada.
+</para>
+<para>
+Estando tudo OK, o cliente gera um número aleatório de 256 bits, o encripta
+usando ambas as chaves de máquina e chave do servidor e envia este número ao
+servidor.  Ambos os lados então usam este número aleatório como chave de seção
+que é usado para encriptar todas as comunicações seguintes na seção.
+</para>
+<para>
+O resto da seção usa um método de embaralhamento de dados convencional,
+atualmente Blowfish ou 3DES (usado como padrão).  O cliente seleciona o
+algoritmo de criptografia que será usado de um destes oferecidos pelo servidor.
+Após isto o servidor e cliente entram em um diálogo de autenticação.  O cliente
+tenta se autenticar usando um dos seguintes métodos de autenticação:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<filename>~/.rhosts</filename> ou <filename>~/.shosts</filename> (normalmente
+desativada).
+</para>
+</listitem>
+<listitem>
+<para>
+<filename>~/.rhosts</filename> ou <filename>~/.shosts</filename> combinado com
+autenticação RSA (normalmente desativada).
+</para>
+</listitem>
+<listitem>
+<para>
+Autenticação RSA por resposta de desafio.
+</para>
+</listitem>
+<listitem>
+<para>
+Autenticação baseada em senha.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+A autenticação usando Rhosts normalmente é desativada por ser muito insegura
+mas pode ser ativada no arquivo de configuração do servidor se realmente
+necessário.  A segurança do sistema não é melhorada a não ser que os serviços
+<command>rshd</command>, <command>rlogind</command>, <command>rexecd</command>
+e <command>rexd</command> estejam desativados (assim, o
+<command>rlogin</command> e <command>rsh</command> serão completamente
+desativados na máquina).   
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Protocolo SSH versão 2</term>
+<listitem>
+<para>
+A versão 2 funciona de forma parecida com a 1: Cada máquina possui uma chave
+RSA/DSA específica usada para se identificar.  A diferença é que quando o
+<command>sshd</command> inicia, ele não gera uma chave de servidor.  A
+segurança de redirecionamento é oferecida através da concordância do uso de uma
+chave Diffie-Hellman.  Esta concordância de chave resulta em uma seção com
+chave compartilhada.  O resto da seção é encriptada usando um algoritmo
+simétrico, como Blowfish, 3DES, CAST128, Arcfour, 128 bit AES, ou 256 bit AES.
+</para>
+<para>
+O cliente que seleciona o algoritmo de criptografia que será usado entre os
+oferecidos pelo servidor.  A versão 2 também possui integridade de seção feita
+através de um código de autenticação de mensagem criptográfica (hmac-sha1 ou
+hmac-md5).  A versão 2 do protocolo oferece um método de autenticação baseado
+em chave pública (PubkeyAuthentication) e o método de autenticação convencional
+usando senhas.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s-ssh-server-sshd-config"><info><title>Exemplo de <filename>sshd_config</filename> com explicações das diretivas</title></info>
+<para>
+Abaixo segue um exemplo deste arquivo que poderá ser adaptado ao seu sistema.
+O objetivo é ser ao mesmo tempo útil para sua configuração e didático:
+</para>
+<screen>
+# Modelo personalizado para o guia Foca GNU/Linux baseado na configuração 
+# original do FreeBSD. 
+# Autor: Gleydson Mazioli da Silva
+# Data: 20/09/2001. 
+
+# Porta padrão usada pelo servidor sshd. Múltiplas portas podem ser 
+# especificadas separadas por espaços.
+Port 22
+
+# Especifica o endereço IP das interfaces de rede que o servidor sshd 
+# servirá requisições. Múltiplos endereços podem ser especificados 
+# separados por espaços. A opção Port deve vir antes desta opção
+ListenAddress 0.0.0.0
+
+# Protocolos aceitos pelo servidor, primeiro será verificado se o cliente é 
+# compatível com a versão 2 e depois a versão 1. Caso seja especificado 
+# somente a versão 2 e o cliente seja versão 1, a conexão será descartada. 
+# Quando não é especificada, o protocolo ssh 1 é usado como padrão.
+Protocol 2,1
+
+# As 4 opções abaixo controlam o acesso de usuários/grupos no sistema.
+# Por padrão o acesso a todos é garantido (exceto o acesso root se 
+# PermitRootLogin for "no"). AllowUsers e AllowGroups definem uma lista 
+# de usuários/grupos que poderão ter acesso ao sistema. Os coringas 
+# "*" e "?" podem ser especificados. Note que somente NOMES são válidos, 
+# UID e GID não podem ser especificados. 
+# 
+# As diretivas Allow são processadas primeiro e depois Deny. O método que 
+# estas diretivas são processadas é idêntico a diretiva 
+# "Order mutual-failure" do controle de acesso do Apache: 
+# O usuário deverá TER acesso via AllowUsers e AllowGroups e NÃO ser bloqueado
+# por DenyUsers e DenyGroups para ter acesso ao sistema. Se uma das diretivas 
+# não for especificada, "*" é assumido como padrão. 
+# Estas permissões são checadas após a autenticação do usuário, porque 
+# dados a ele pelo /etc/passwd e PAM são obtidos após o processo de 
+# autenticação. 
+#AllowUsers gleydson teste?
+#DenyUsers root adm
+#AllowGroups users
+#DenyGroups root adm bin
+
+# Permite (yes) ou não (no) o login do usuário root
+PermitRootLogin no
+
+# Chaves privadas do servidor (as chaves públicas possuem um ".pub" adicionado
+# no final do arquivo. 
+HostKey /etc/ssh/ssh_host_key
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_dsa_key
+
+# Tamanho da chave. 768 bits é o padrão
+ServerKeyBits 768
+
+# Tempo máximo para login no sistema antes da conexão ser fechada
+LoginGraceTime 600
+
+# Tempo para geração de nova chave do servidor (segundos). O padrão é 
+# 3600 segundos (1 hora). 
+KeyRegenerationInterval 3600
+
+# Ignora os arquivos ~/.rhosts e ~/.shosts
+IgnoreRhosts yes
+
+# Ignora (yes) ou não (no) os arquivos ~/.ssh/known_hosts quando for usado 
+# para a opção RhostsRSAAuthentication. Se você não confia neste mecanismo 
+# ajuste esta opção para yes.
+IgnoreUserKnownHosts no
+
+# Checa por permissões de dono dos arquivos e diretório de usuário antes de 
+# fazer o login. É muito recomendável para evitar riscos de segurança 
+# com arquivos lidos por todos os usuários. 
+StrictModes yes
+
+# Permite (yes) ou não (no) o redirecionamento de conexões X11. A segurança 
+# do sistema não é aumentada com a desativação desta opção, outros métodos
+# de redirecionamento podem ser usados
+X11Forwarding yes
+
+# Especifica o número do primeiro display que será usado para o redirecionamento
+# X11 do ssh. Por padrão é usado o display 10 como inicial para evitar conflito 
+# com display X locais
+X11DisplayOffset 10
+
+# Mostra (yes) ou não (no) a mensagem em /etc/motd no login. O padrão é "no".
+PrintMotd no
+
+# Mostra (yes) ou não (no) a mensagem de último login do usuário. O padrão é "no".
+PrintLastLog no
+
+# Permite (yes) ou não (no) o envio de pacotes keepalive (para verificar se o 
+# cliente responde. Isto é bom para fechar conexões que não respondem mas 
+# também podem fechar conexões caso não existam rotas para o cliente 
+# naquele momento (é um problema temporário). Colocando esta opção como 
+# "no" por outro lado pode deixar usuários que não tiveram a oportunidade
+# de efetuar o logout do servidor dados como "permanentemente conectados"
+# no sistema. Esta opção deve ser ativada/desativada aqui e no programa 
+# cliente para funcionar. 
+KeepAlive yes
+
+# Facilidade e nível das mensagens do sshd que aparecerão no syslogd
+SyslogFacility AUTH
+LogLevel INFO
+
+# Especifica se somente a autenticação via arquivos ~/.rhosts e /etc/hosts.equiv é 
+# suficiente para entrar no sistema. Não é muito bom usar "yes" aqui.
+RhostsAuthentication no
+
+# Mesmo que o acima com o acréscimo que o arquivo /etc/ssh/ssh_known_hosts também 
+# é verificado. Também evite usar "yes" aqui.
+RhostsRSAAuthentication no
+
+# Especifica se a autenticação via RSA é permitida (só usado na versão 1 do 
+# protocolo ssh). Por padrão "yes". 
+RSAAuthentication yes
+
+# Permite autenticação usando senhas (serve para ambas as versões 1 e 2 do ssh).
+# O padrão é "yes". 
+PasswordAuthentication yes
+
+# Se a PasswordAuthentication for usada, permite (yes) ou não (no) login 
+# sem senha. O padrão é "no".
+PermitEmptyPasswords no
+
+# Ativa senhas s/key ou autenticação PAM NB interativa. Nenhum destes é 
+# compilado por padrão junto com o sshd. Leia a página de manual do 
+# sshd antes de ativar esta opção em um sistema que usa PAM. 
+ChallengeResponseAuthentication no
+
+# Verifica se o usuário possui emails ao entrar no sistema. O padrão é "no".
+# Este módulo também pode estar sendo habilitado usando PAM (neste caso 
+# cheque a configuração em /etc/pam.d/ssh). 
+CheckMail no
+
+# Especifica se o programa login é usado para controlar a seções de shell 
+# interativo. O padrão é "no".
+UseLogin no
+
+# Especifica o número máximo de conexões de autenticação simultâneas feitas 
+# pelo daemon sshd. O valor padrão é 10. Valores aleatórios podem ser 
+# especificados usando os campos "inicio:taxa:máximo". Por exemplo, 
+# 5:40:15 rejeita até 40% das tentativas de autenticação que excedam o 
+# limite de 5 até atingir o limite máximo de 15  conexões, quando 
+# nenhuma nova autenticação é permitida.
+MaxStartups 10
+#MaxStartups 10:30:60
+
+# Mostra uma mensagem antes do nome de usuário/senha
+Banner /etc/issue.net
+
+# Especifica se o servidor sshd fará um DNS reverso para verificar se o 
+# endereço confere com a origem (isto é útil para bloquear conexões 
+# falsificadas - spoofing). O padrão é "no". 
+ReverseMappingCheck yes
+
+# Ativa o subsistema de ftp seguro. Para desabilitar comente a linha 
+# abaixo
+Subsystem	sftp	/usr/lib/sftp-server
+</screen>
+</section>
+
+</section>

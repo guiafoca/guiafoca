@@ -1,0 +1,1806 @@
+<!-- Converted by db4-upgrade version 1.0 -->
+<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="s-cvs"><info><title>CVS</title></info>
+<para>
+Este capítulo explica os requerimentos, instalação, configuração, segurança e
+diversos modelos de configuração de acesso para trabalho em grupo utilizados
+pelo <command>CVS</command>.
+</para>
+<para>
+Não tome-o como uma referência completa ao uso e configuração do cvs, a
+pesquisa de sua info page é muito importante.
+</para>
+<section xml:id="s-cvs-intro"><info><title>Introdução ao CVS</title></info>
+<para>
+O CVS (<emphasis>Concurrent Version Software</emphasis>) permite que se
+organizem grupos de trabalho para desenvolvimento de projetos colaborativos.
+Um projeto pode ser desde um programa em C, documentação em equipe, etc.  O uso
+do CVS é recomendado para qualquer desenvolvimento de projeto que tenha vários
+envolvidos trabalhando ao mesmo tempo.
+</para>
+<para>
+Para cada mudança feita no programa, é pedido uma descrição dos trabalhos
+realizados e o sistema registra todas as modificações realizadas ao longo do
+desenvolvimento, permitindo voltar a uma versão anterior ou ver as mudanças
+entre elas facilmente.
+</para>
+<para>
+Imagine uma situação onde você está desenvolvendo um programa de computador e
+após a última modificação ele para de funcionar.  Com o CVS é possível ver o
+que foi modificado e voltar até a versão que estava funcionando para consertar
+o problema.  No desenvolvimento de documentação e tradução o CVS também
+desempenha um papel importante, pois com ele o tradutor pode ver o que foi
+modificado entre a versão do documento original que ele usou para tradução e
+uma versão recente, traduzindo apenas as diferenças.
+</para>
+<para>
+Uma seção de <command>cvs</command> é feita de modo interativo através do
+comando <command>cvs</command>.  Por exemplo:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>logar no sistema</literal> - cvs login
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>baixar um projeto</literal> - cvs checkout projeto
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Cada comando do <command>cvs</command> será explicado em detalhes no decorrer
+deste capítulo.
+</para>
+<section xml:id="s-cvs-versao"><info><title>Versão</title></info>
+<para>
+A versão do <command>CVS</command> documentada no guia é a
+<emphasis>1.11.1</emphasis>.  As explicações aqui certamente serão compatíveis
+com versões posteriores deste programa.
+</para>
+</section>
+
+<section xml:id="s-cvs-historia"><info><title>História</title></info>
+<para>
+O <command>CVS</command> é uma substituição do sistema RCS (Revision Control
+System) ele possui mais recursos e foi criado sendo compatível com o RCS.
+</para>
+<para>
+A história do CVS (extraída de sua info page) é que ele foi iniciado a partir
+de um conjunto de scripts shell escritos por <emphasis>Dick Grune</emphasis>
+que foram postados ao grupo de notícias <literal>comp.sources.unix</literal> no
+volume 6 de Dezembro de 1986.  Na versão atual não estão mais presentes shell
+scripts porque muitos dos conflitos de resolução de algorítmos vem deles.
+</para>
+<para>
+Em Abril de 1989, <emphasis>Brian Berliner</emphasis> fez o design e programou
+o CVS.  Mais tarde, Jeff Polk ajudou Brian com o design do módulo CVS.
+</para>
+</section>
+
+<section xml:id="s-cvs-contribuindo"><info><title>Contribuindo com o CVS</title></info>
+<para>
+Através da lista de discussão <literal>info-cvs</literal>.  Para se inscrever
+envie uma mensagem com o subject "subscribe" para
+<literal>info-cvs-request@gnu.org</literal>.  Outra alternativa é através do
+grupo de noticias (newsgroup) da Usenet
+<literal>comp.software.config-mgm</literal>.
+</para>
+</section>
+
+<section xml:id="s-cvs-caracteristicas"><info><title>Características</title></info>
+<para>
+Abaixo uma lista de características que tornam o CVS útil no gerenciamento de
+trabalhos em grupo:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+Gerenciamento de projeto em equipe
+</para>
+</listitem>
+<listitem>
+<para>
+Log de todas as alterações realizadas
+</para>
+</listitem>
+<listitem>
+<para>
+Lock de arquivos, permitindo que somente uma determinada pessoa modifique o
+arquivo durante o desenvolvimento do projeto.
+</para>
+</listitem>
+<listitem>
+<para>
+Histórico de todas as mudanças feitas, isto permite voltar a uma versão
+anterior em caso de problemas, e ver o que houve de errado com o código.
+</para>
+</listitem>
+<listitem>
+<para>
+Os projetos podem ser hospedados em repositórios.
+</para>
+</listitem>
+<listitem>
+<para>
+Podem ser criados diversas equipes de trabalho para cada repositórios, e
+definidos quem terá ou não acesso ao repositório individualmente.  O
+desenvolvedor <literal>gleydson</literal>, por exemplo, podem ter acesso ao
+projeto <literal>x_beta</literal> e não ter acesso a projeto
+<literal>secret_y</literal>.
+</para>
+</listitem>
+<listitem>
+<para>
+Permissões de acesso individuais de leitura/gravação.
+</para>
+</listitem>
+<listitem>
+<para>
+É possível criar um usuário com acesso anônimo sem dar uma conta no sistema.
+</para>
+</listitem>
+<listitem>
+<para>
+Pode tanto utilizar o banco de dados de contas/senhas do sistema como um banco
+de dados de autenticação do próprio CVS.
+</para>
+</listitem>
+<listitem>
+<para>
+Permite utilizar diversos "métodos" de acesso ao servidor:
+<emphasis>local</emphasis>, <emphasis>pserver</emphasis>,
+<emphasis>ext</emphasis>, etc.  Cada um destes métodos será descrito a seguir.
+</para>
+</listitem>
+<listitem>
+<para>
+Permite o acesso via ssh para usuários que já possuam conta na máquina
+servidora.  Este método garante segurança no envio da senha criptografada (veja
+<xref linkend="d-cripto-sniffer"/> para detalhes).
+</para>
+</listitem>
+<listitem>
+<para>
+Permite visualizar facilmente o que foi modificado entre duas versões de um
+arquivo.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+<emphasis role="strong">OBS</emphasis>: O CVS possui algumas limitações e
+falhas, uma delas que mais me faz falta é um suporte a protocolo pserver via
+ssh que resolveria o problema de tráfego em texto plano e gerenciamento de
+grupos com permissões diferenciadas.
+</para>
+</section>
+
+<section xml:id="s-cvs-ficha"><info><title>Ficha técnica</title></info>
+<para>
+Pacote: <systemitem role="package">cvs</systemitem>
+</para>
+<para>
+Utilitários:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>cvs</literal> - Servidor/ferramenta cliente.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cvsbug</literal> - Envia um bug sobre o CVS para a equipe de suporte.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rcs2log</literal> - Converte arquivos de log do formato usado pelo
+<command>RCS</command> para o <command>CVS</command>.  Utilizado na migração
+desta ferramenta para o <command>CVS</command>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cvsconfig</literal> - Usado pela <command>Debian</command> para
+ativar/desativar o servidor <literal>pserver</literal>.  Pode também ser usado
+o <literal>dpkg-reconfigure cvs</literal> para desativar o servidor
+<literal>pserver</literal> e suas características.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cvs-makerepos</literal> - Script da <command>Debian</command> que lê a
+lista de repositórios de <filename>/etc/cvs-pserver.conf</filename>, cria os
+repositórios no local apropriado, corrige as permissões do diretório e adiciona
+os repositórios no servidor <literal>pserver</literal>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cvs-pserver</literal> - Script da <command>Debian</command>
+responsável por fazer uma inicialização mais inteligente do servidor de CVS via
+<literal>pserver</literal>, leitura e processamento de repositórios, etc.
+Normalmente ele é chamado a partir do arquivo
+<filename>/etc/inetd.conf</filename>.
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="s-cvs-hwreq"><info><title>Requerimentos de Hardware</title></info>
+<para>
+Para executar o <command>CVS</command> é requerido pelo menos 3 vezes mais
+memória que o tamanho do maior arquivo usado pelo projeto (para realização de
+diffs entre as atualizações) e uma boa quantidade de espaço em disco.
+</para>
+<para>
+Na realidade os requerimentos sobre o CVS dependem muito da aplicação que será
+desenvolvida.  É recomendável que a máquina tenha memória suficiente para
+evitar o uso de swap, que degrada bastante a performance do sistema.
+</para>
+</section>
+
+<section xml:id="s-cvs-logs"><info><title>Arquivos de log criados pelo CVS</title></info>
+<para>
+Problemas na inicialização do <command>CVS</command> são registrados no arquivo
+<filename>/var/log/daemon.log</filename>.  Os logs de modificações feitas nos
+arquivos de um projeto no CVS são armazenadas no formato
+<filename>arquivo.extensão,v</filename> (é adicionado o ",v" ao final do
+arquivo para indicar que é um arquivo de controle de modificações do CVS).
+</para>
+</section>
+
+<section xml:id="s-cvs-install"><info><title>Instalação</title></info>
+<para>
+O <command>CVS</command> pode ser baixado de <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.cvshome.org/">http://www.cvshome.org/</link>.
+</para>
+<para>
+Para pacotes <command>Debian</command> basta apenas executar o comando:
+<literal>apt-get install cvs</literal> e seguir as telas de configuração para
+ter o pacote <command>CVS</command> instalado e (opcionalmente) com o servidor
+sendo executado.  Você poderá a qualquer momento reconfigurar o
+<command>CVS</command> executando: <literal>dpkg-reconfigure cvs</literal>.
+</para>
+<para>
+Uma boa documentação de referência é encontrada no pacote <systemitem role="package">cvs-doc</systemitem>.
+</para>
+</section>
+
+<section xml:id="s-cvs-rodando"><info><title>Iniciando o servidor/reiniciando/recarregando a configuração</title></info>
+<para>
+A única configuração requerida é quando o <command>CVS</command> é executado
+via <literal>pserver</literal>.  Para isto, é necessária a seguinte linha no
+arquivo <filename>/etc/inetd.conf</filename>
+</para>
+<screen>
+cvspserver      stream  tcp     nowait.200      root    /usr/sbin/tcpd /usr/sbin/cvs-pserver
+</screen>
+<para>
+Note que o parâmetro "200" indica quantas vezes o processo
+<command>CVS</command> poderá ser executado por minuto no sistema.  Caso esse
+número seja excedido, o serviço será desabilitado e será necessário reiniciar o
+servidor <command>inetd</command> com o comando <literal>killall -HUP
+inetd</literal> para reativar o servidor CVS pserver (veja <xref linkend="rede-servicos-inetd-c"/> capítulo do <command>inetd</command> para
+detalhes).  Ajuste este valor de forma adequada ao seu servidor!
+</para>
+<para>
+Veja o script <filename>cvs-pserver</filename> sendo executado no final da
+linha.  Ele foi desenvolvido para lidar de forma mais inteligente com a
+configuração do servidor CVS pserver.
+</para>
+</section>
+
+<section xml:id="s-cvs-opcoescmd"><info><title>Opções de linha de comando</title></info>
+<para>
+As seguintes opções são aceitas pelo CVS.
+</para>
+<variablelist>
+<varlistentry>
+<term>-z [num]</term>
+<listitem>
+<para>
+Utiliza o gzip para fazer a transferência compactada dos arquivos.  O valor
+especificado pode ser de 0 a 9, quanto maior o número maior o nível de
+compactação e uso da CPU.
+</para>
+<para>
+Exemplo: <literal>cvs -z 3 checkout teste</literal>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-q</term>
+<listitem>
+<para>
+Oculta mensagens sobre recursão de diretório durante os comandos do CVS.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-d [repositório]</term>
+<listitem>
+<para>
+Permite especificar o repositório através da linha de comando.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-e [editor]</term>
+<listitem>
+<para>
+Define qual é o editor de textos usado para registrar o texto de commits.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-n</term>
+<listitem>
+<para>
+Executa o cvs em modo "simulação" não modificando qualquer arquivo do
+repositório.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-t</term>
+<listitem>
+<para>
+Mostra mensagens mostrando o processo de execução de comandos do CVS.  É
+bastante útil para aprendizado do cvs usado junto com a opção
+<emphasis>-n</emphasis>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-r</term>
+<listitem>
+<para>
+Torna os novos arquivos criados somente para leitura.  É a mesma coisa que
+especificar a variável <replaceable>CVSREAD</replaceable>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-w</term>
+<listitem>
+<para>
+Torna os novos arquivos criados leitura/gravação que é o padrão.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-x</term>
+<listitem>
+<para>
+Utiliza criptografia para a transferência dos arquivos quando é utilizado em
+conjunto com o <command>Kerberos</command>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+Você pode obter detalhes sobre opções sobre um comando em especial do CVS
+(<emphasis>commit</emphasis>, <emphasis>checkout</emphasis>, etc) digitando:
+<literal>cvs comando --help</literal>.  Veja <xref linkend="s-cvs-p"/> para
+exemplos sobre cada uma delas.
+</para>
+</section>
+
+</section>
+
+<section xml:id="s-cvs-d"><info><title>Servidor de CVS - configurando métodos de acesso ao repositório</title></info>
+<para>
+O CVS é uma aplicação cliente/servidor, possuindo diversas maneiras de fazer o
+acesso seu repositório (veja <xref linkend="s-cvs-p-repos"/> repositórios).
+Estes métodos são os seguintes:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+local (<xref linkend="s-cvs-d-metodos-local"/>).
+</para>
+</listitem>
+<listitem>
+<para>
+ext (<xref linkend="s-cvs-d-metodos-ext"/>).
+</para>
+</listitem>
+<listitem>
+<para>
+pserver (<xref linkend="s-cvs-d-metodos-pserver"/>).
+</para>
+</listitem>
+<listitem>
+<para>
+fork (<xref linkend="s-cvs-d-metodos-fork"/>).
+</para>
+</listitem>
+<listitem>
+<para>
+GSSAPI (<xref linkend="s-cvs-d-metodos-gssapi"/>).
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Eles são explicados em detalhes nas sub-seções a seguir.
+</para>
+<section xml:id="s-cvs-d-metodos-local"><info><title>local</title></info>
+<para>
+Acessa o diretório do repositório diretamente no disco local.  A vantagem deste
+método é que não é requerido nem nome nem senha para acesso (você precisa
+apenas ter permissões para acesso aos arquivos que deseja trabalhar) e também
+não é preciso nenhuma conexão de rede.
+</para>
+<para>
+Este método é ideal para trabalhar na máquina local ou com os arquivos
+administrativos do CVS existentes no diretório <filename>CVSROOT</filename> do
+repositório.  É muito útil também para configurar outros métodos de acesso,
+como o <literal>pserver</literal>.
+</para>
+<para>
+Para criar seu repositório, veja <xref linkend="s-cvs-p-mkrepos"/>.
+</para>
+<section xml:id="s-cvs-d-metodos-local-c"><info><title>Configurando o método local</title></info>
+<para>
+Para utilizar o método de acesso local, basta definir a variável
+<replaceable>CVSROOT</replaceable> da seguinte forma (assumindo que o
+repositório esteja instalado em <filename>/var/lib/cvs</filename>):
+</para>
+<screen>
+export CVSROOT=/var/lib/cvs
+
+ou 
+
+export CVSROOT=local:/var/lib/cvs
+</screen>
+<para>
+Depois disso, basta utilizar os comandos normais do <command>cvs</command> sem
+precisar se autenticar no sistema.  Veja os detalhes de utilização dos comandos
+de CVS após o login na seção <xref linkend="s-cvs-c"/>.
+</para>
+</section>
+
+</section>
+
+<section xml:id="s-cvs-d-metodos-fork"><info><title>fork</title></info>
+<para>
+Este método é semelhante ao local, mas ele "simula" uma conexão de rede com o
+servidor.  É muito usado para fins de testes.
+</para>
+<section xml:id="s-cvs-d-metodos-fork-c"><info><title>Configurando o método fork</title></info>
+<para>
+Para utilizar o método de acesso <emphasis>fork</emphasis>, basta definir a
+variável <replaceable>CVSROOT</replaceable> da seguinte forma (assumindo que o
+repositório esteja instalado em <filename>/var/lib/cvs</filename>):
+</para>
+<screen>
+export CVSROOT=fork:/var/lib/cvs
+</screen>
+<para>
+Depois disso, basta utilizar os comandos normais do <command>cvs</command>, sem
+precisar se autenticar no sistema.  Veja os detalhes de utilização dos comandos
+do CVS após o login em <xref linkend="s-cvs-c"/>.
+</para>
+</section>
+
+</section>
+
+<section xml:id="s-cvs-d-metodos-ext"><info><title>ext</title></info>
+<para>
+Este método de acesso lhe permite especificar um programa externo que será
+usado para fazer uma conexão remota com o servidor <command>cvs</command>.Este
+programa é definido na variável <replaceable>CVS_RSH</replaceable> e caso não
+ela seja especificada o padrão é <command>rsh</command>.
+</para>
+<para>
+Este método requer que o usuário possua um login/senha no banco de dados de
+autenticação <filename>/etc/passwd</filename> do servidor de destino.  Suas
+permissões de acesso ao CVS (leitura/gravação) serão as mesmas definidas neste
+arquivo.
+</para>
+<para>
+O uso do acesso criptografado via <command>ssh</command> é possível definindo o
+programa <command>ssh</command> na variável <replaceable>CVS_RSH</replaceable>.
+Veja os exemplos a seguir em <xref linkend="s-cvs-d-metodos-ext-c"/>.
+</para>
+<para>
+Para criar seu repositório, veja <xref linkend="s-cvs-p-mkrepos"/>.
+</para>
+<section xml:id="s-cvs-d-metodos-ext-c"><info><title>Configurando o método ext</title></info>
+<para>
+Defina a variável <replaceable>CVSROOT</replaceable> da seguinte forma para
+utilizar este método de acesso (assumindo <filename>/var/lib/cvs</filename>
+como repositório):
+</para>
+<screen>
+export CVSROOT=:ext:conta@servidor.org.br:/var/lib/cvs
+cvs login
+</screen>
+<para>
+A "conta" é uma conta de usuário existente no servidor remoto (por exemplo,
+<literal>gleydson</literal>) seguido do nome do servidor remoto (separado por
+uma "@").  Por exemplo para acessar o servidor
+<emphasis>cvs.cipsga.org.br</emphasis> usando a conta
+<emphasis>michelle</emphasis>:
+</para>
+<screen>
+export CVSROOT=:ext:michelle@cvs.cipsga.org.br:/var/lib/cvs
+cvs checkout
+</screen>
+<para>
+OBS: A senha via método de acesso "ext" será pedida somente uma vez quando for
+necessário o primeiro acesso ao servidor remoto.  Veja os detalhes de
+utilização dos comandos de CVS após o login na seção <xref linkend="s-cvs-c"/>.
+O uso mais freqüente do <literal>ext</literal> é para conexões seguras feitas
+via <command>ssh</command>, feita da seguinte forma:
+</para>
+<screen>
+export CVS_RSH=ssh
+export CVSROOT=:ext:michelle@cvs.cipsga.org.br:/var/lib/cvs
+cvs checkout
+</screen>
+<para>
+O acesso de leitura/gravação do usuário, é definido de acordo com as permissões
+deste usuário no sistema.  Uma maneira recomendada é definir um grupo que terá
+acesso a gravação no CVS e adicionar usuários que possam fazer gravação neste
+grupo.
+</para>
+<para>
+<emphasis role="strong">OBS1:</emphasis> O acesso via <command>ssh</command>
+traz a vantagem de que as senhas trafegarão de forma segura via rede, não sendo
+facilmente capturadas por sniffers e outros programas de monitoração que possam
+estar instalados na rota entre você e o servidor.
+</para>
+<para>
+<emphasis role="strong">OBS2:</emphasis> É possível especificar a senha na
+variável <replaceable>CVSROOT</replaceable> usando a sintaxe semelhante a usada
+no ftp:
+</para>
+<screen>
+export CVSROOT=:ext:michelle:senha@cvs.cipsga.org.br:/var/lib/cvs
+</screen>
+<para>
+Entretanto isto não é recomendado, pois os processos da máquina poderão
+capturar facilmente a senha (incluindo usuários normais, caso a máquina não
+esteja com patches de restrições de acesso a processos configurada, que é o
+padrão em quase todas as distribuições de <command>Linux</command>).
+</para>
+</section>
+
+</section>
+
+<section xml:id="s-cvs-d-metodos-pserver"><info><title>pserver (password server)</title></info>
+<para>
+Este é um método de acesso remoto que utiliza um banco de dados de usuários
+senhas para acesso ao repositório.  A diferença em relação ao método de acesso
+<emphasis>ext</emphasis> é que o <emphasis>pserver</emphasis> roda através de
+um servidor próprio na porta 2401.  O acesso dos usuários (leitura/gravação) no
+repositório pode ser feita tanto através do banco de dados de usuários do
+sistema (<filename>/etc/passwd</filename>) como através de um banco de dados
+separado por repositório.
+</para>
+<para>
+A grande vantagem deste segundo método é que cada projeto poderá ter membros
+com acessos diferenciados; o membro x poderá ter acesso ao projeto
+<literal>sgml</literal> mas não ao projeto <literal>focalinux</literal>; ou o
+usuário y poderá ter acesso de gravação (para trabalhar no projeto
+<literal>focalinux</literal>) mas somente acesso de leitura ao projeto
+<literal>sgml</literal>.
+</para>
+<para>
+Este é o método de acesso preferido para a criação de usuários anônimos (uma
+vez que o administrador de um servidor que hospede muitos projetos não vai
+querer abrir um acesso anônimo via <literal>ext</literal> para todos os
+projetos).
+</para>
+<para>
+Também existe a vantagem que novos membros do projeto e tarefas administrativas
+são feitas por qualquer pessoa que possua acesso de gravação aos arquivos do
+repositório.
+</para>
+</section>
+
+<section xml:id="s-cvs-d-metodos-pserver-c"><info><title>Configurando um servidor pserver</title></info>
+<section xml:id="s-cvs-d-metodos-pserver-c-pserver"><info><title>Ativando o servidor pserver</title></info>
+<para>
+Para ativar o pserver (caso ainda não o tenha feito).  Execute o comando
+<literal>dpkg-reconfigure cvs</literal> e selecione a opção <literal>Ativar o
+servidor pserver</literal>.  Uma maneira de fazer isso automaticamente é
+modificando o arquivo <filename>/etc/inetd.conf</filename> adicionando a
+seguinte linha:
+</para>
+<screen>
+# na Debian
+cvspserver      stream  tcp     nowait.400      root    /usr/sbin/tcpd /usr/sbin/cvs-pserver
+
+# em outras Distribuições 
+cvspserver  stream  tcp  nowait  root  /usr/bin/cvs cvs -f --allow-root=/var/lib/cvs pserver
+</screen>
+<para>
+Na <command>Debian</command>, o cvs é iniciado através do script
+<filename>/usr/sbin/cvs-pserver</filename> que checa os binários e executa o
+<command>cvs</command> para todos os repositórios especificados no arquivo
+<filename>/etc/cvs-pserver.conf</filename>.
+</para>
+<para>
+Caso precise adicionar mais repositórios para acesso via
+<emphasis>pserver</emphasis> ou outro método de acesso, veja <xref linkend="s-cvs-p-mkrepos"/>.
+</para>
+<para>
+Você também poderá executar o método <literal>pserver</literal> sob um usuário
+que não seja o root, para isto, modifique a entreada referênte ao usuário.grupo
+no <filename>inetd.conf</filename> e tenha certeza que o daemon consegue fazer
+as operações de suid/sgid no diretório onde o repositório se encontra.
+</para>
+</section>
+
+<section xml:id="s-cvs-d-metodos-pserver-c-system"><info><title>Servidor pserver usando autenticação do sistema</title></info>
+<para>
+Para usar o banco de dados de autenticação do sistema
+(<filename>/etc/passwd</filename>) para autenticar os usuários remotos,
+primeiro tenha certeza que o servidor <emphasis>pserver</emphasis> está ativado
+(como descrito em <xref linkend="s-cvs-d-metodos-pserver-c-pserver"/>.
+Repetindo o exemplo anterior, a usuária <emphasis>Michelle</emphasis> deverá
+ter uma conta em <filename>/etc/passwd</filename> para fazer acesso ao cvs:
+</para>
+<screen>
+export CVSROOT=:pserver:michelle@cvs.cipsga.org.br:/var/lib/cvs
+cvs login
+</screen>
+<para>
+Será pedido a senha da usuária <literal>michelle</literal>.  Entrando com a
+senha correta, o sistema retornará para o aviso de comando.  Uma mensagem será
+mostrada caso a senha entrada seja incorreta.  Daqui em diante, o resto da
+seção CVS é normal e você terá as permissões de acesso ao repositório de acordo
+com as suas permissões de acesso naquele diretório.
+</para>
+<para>
+<emphasis role="strong">OBS1:</emphasis> A senha poderá ser passada junto com o
+login da mesma forma como o ftp.  Veja a observação em <xref linkend="s-cvs-d-metodos-ext-c"/>.
+</para>
+<para>
+<emphasis role="strong">OBS2:</emphasis> A desvantagem do método pserver padrão
+é que a seção é feita em texto plano, desta forma, alguns cuidados podem ser
+tomados para tornar o sistema um pouco mais seguro.  Um deles é dar
+<filename>/bin/false</filename> como shell de usuário (para desativar o login
+no sistema) ou usar o método de acesso descrito em <xref linkend="s-cvs-d-metodos-pserver-c-system"/> em combinação com este.  Tenha
+conciencia das influências disso se a máquina for usada para outras tarefas,
+como um servidor "pop3" por exemplo.
+</para>
+</section>
+
+<section xml:id="s-cvs-d-metodos-pserver-c-pwrepos"><info><title>Servidor pserver com autenticação própria</title></info>
+<para>
+Esta forma de acesso armazena os usuários em um banco de dados próprio, não
+requerendo a criação de contas locais no arquivo
+<filename>/etc/passwd</filename>.  Para criar um servidor deste tipo siga os
+seguintes procedimentos:
+</para>
+<orderedlist numeration="arabic">
+<listitem>
+<para>
+Exporte a variável <replaceable>CVSROOT</replaceable> apontando para o
+repositório que deseja configurar o acesso.  Como isto é uma configuração
+administrativa, assumo o método de acesso <emphasis>local</emphasis> sendo
+usada pelo usuário administrador do servidor: <literal>export
+CVSROOT=/var/lib/cvs</literal>.
+</para>
+</listitem>
+<listitem>
+<para>
+Crie um diretório para trabalhar nos arquivos administrativos do repositório:
+<literal>mkdir /tmp/repos</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Entre no diretório criado acima e execute o comando: <literal>cvs checkout
+.</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Quando terminar de baixar os arquivos, entre no subdiretório
+<filename>CVSROOT</filename>, os arquivos de configuração do repositório se
+encontram lá (para detalhes sobre cada um destes arquivos, veja <xref linkend="s-cvs-cvsroot"/>.
+</para>
+</listitem>
+<listitem>
+<para>
+Edite o arquivo <filename>config</filename> e mude a variável
+<replaceable>SystemAuth</replaceable> para <literal>no</literal>.  Isto diz ao
+servidor <emphasis>pserver</emphasis> não usar os arquivos de autenticação do
+sistema, mas a invés disso usar seu banco de dados próprio.
+</para>
+<para>
+Em algumas instalações, caso exista o arquivo <filename>passwd</filename> no
+repositório, o <emphasis>pserver</emphasis> automaticamente o utiliza ao invés
+do <filename>/etc/passwd</filename>.
+</para>
+</listitem>
+<listitem>
+<para>
+Crie um arquivo <filename>passwd</filename> no diretório
+<filename>CVSROOT</filename> o formato deste arquivo é:
+</para>
+<screen>
+usuario:senha:usuario_local
+</screen>
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term>usuario</term>
+<listitem>
+<para>
+Nome da conta de usuário que fará acesso ao CVS.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>senha</term>
+<listitem>
+<para>
+Senha que será usada pelo usuário.  Ela deverá ser criptografada usando o
+algoritmo crypt.  O comando <command>mkpasswd senha</command> pode ser usado
+para gerar a senha criptografada.  Caso este campo seja deixado em branco,
+nenhuma senha de usuário será utilizada.  O utilitário
+<command>mkpasswd</command> está presente no pacote <systemitem role="package">whois</systemitem> na <command>Debian</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>usuario_local</term>
+<listitem>
+<para>
+Usuário local que terá suas permissões mapeadas ao usuário do CVS.  Como a
+conta de usuário do <command>cvs</command> não existe no sistema, é necessário
+que o sistema tenha uma maneira de saber que nível de acesso este usuário terá.
+Caso não crie este usuário ou ele seja inválido, você terá erros do tipo ": no
+such user" no momento que fizer o "cvs login".
+</para>
+<para>
+Uma forma segura de se fazer isto, é criar uma conta de usuário *somente* com
+acesso aos arquivos do CVS, sem shell e senha.  Isto permitirá mapear a UID/GID
+do usuário criado com o acesso do CVS sem comprometer a segurança do sistema de
+arquivos.  Isto pode ser feito através do seguinte comando:
+</para>
+<screen>
+adduser --disabled-password --disabled-login usuario
+</screen>
+<para>
+É necessário especificar um diretório home do usuário, pois o servidor cvs
+precisa ter acesso ao arquivo <filename>/home/do/cvs/.cvsignore</filename>.
+</para>
+<para>
+<emphasis role="strong">OBS1:</emphasis> Mais uma vez: Leve sempre em conta a
+forma que os outros serviços em sua máquina estão configurados (como eles fazem
+acesso, permissões de acesso, diretórios onde gravam arquivos, são algumas
+delas) antes de escolher como um serviço novo na máquina funcionará.  Isto
+poderá modificar ou deixar vulnerável a segurança de sua instalação.
+</para>
+<para>
+<emphasis role="strong">OBS2:</emphasis> Permita que os usuários <emphasis role="strong">somente</emphasis> tenham acesso a máquina via CVS.
+</para>
+<para>
+<emphasis role="strong">OBS3:</emphasis> Certifique-se sempre que o dono/grupo
+do repositório seja <literal>root.src</literal> (ou outro grupo que tenha
+criado) adicione somente usuários de confiança no grupo
+<filename>src</filename> para criar novos projetos.
+</para>
+<para>
+Exemplos:
+</para>
+<screen>
+gleydsonm:K32dk1234k:cvsuser
+anonymous::pooruser
+</screen>
+<para>
+O usuário cvs <emphasis>gleydsonm</emphasis> quando logar no cvs, terá as
+permissões de acesso do usuário <emphasis>cvsuser</emphasis> do sistema.
+</para>
+<para>
+<emphasis role="strong">OBS1:</emphasis> Certifique-se que o usuário local
+possui permissões de gravação no diretório do CVS, caso contrário ele não
+poderá fazer <emphasis>commits</emphasis>.  Lembre-se que as permissões de
+leitura/gravação do usuário serão controladas através de arquivos do próprio
+pserver, mas também é necessária a permissão de gravação do usuário no
+repositório.  Isto poderá ser feito através de grupos de sistema e garante uma
+dupla camada de segurança.
+</para>
+<para>
+<emphasis role="strong">OBS2:</emphasis> Caso tenha preferido usar o
+<literal>pserver</literal> sob um usuário diferente de root e esteja obtendo a
+mensagem <literal>setgid failed: Operation not permitted</literal>, significa
+que o servidor CVS não consegue mudar para o grupo referente ao usado no
+diretório do repositório.  Verifique se as permissões estão adequadas e se o
+grupo do usuário CVS no <filename>/etc/passwd</filename> é o mesmo que
+especificou para acesso ao repositório.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</listitem>
+<listitem>
+<para>
+Para dar direito de leitura ao repositório, crie um arquivo chamado
+<filename>readers</filename> e adicione os nomes de usuários que terão acesso
+ao repositório (um por linha).  O nome que deverá ser usado é o nome do usuário
+de <emphasis>CVS</emphasis> e não do sistema (usuário
+<literal>gleydsonm</literal>, segundo o exemplo).
+</para>
+<para>
+Exemplo:
+</para>
+<screen>
+gleydsonm
+anonymous
+</screen>
+</listitem>
+<listitem>
+<para>
+Para dar direito de gravação ao repositório, crie um arquivo chamado
+<filename>writers</filename>.  Seu formato é idêntico ao arquivo
+<filename>readers</filename>.
+</para>
+<para>
+Exemplo:
+</para>
+<screen>
+gleydsonm
+macan
+otavio
+hmh
+kov
+</screen>
+</listitem>
+<listitem>
+<para>
+Pronto, o acesso a CVS usando um banco de dados próprio está pronto!  basta dar
+o commit nos arquivos, adicionar os arquivos <filename>readers</filename>,
+<filename>writers</filename> e <filename>passwd</filename> no repositório (veja
+<xref linkend="s-cvs-p-add"/>) para o servidor de CVS para te-lo funcionando.
+Note que em versões mais novas do CVS, não é possível transferir o arquivo
+<filename>passwd</filename> via rede, então será necessário cria-lo manualmente
+dentro do repositório do servidor.
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis> O arquivo <filename>passwd</filename>
+não é transferido pelo commit por motivos de segurança, pois ele contém senhas
+que podem ser capturadas e usada por pessoas maliciosas.  Será necessário
+transferi-lo manualmente para o repositório do servidor remoto (você terá que
+ser o usuário <emphasis>root</emphasis> ou ter permissões adequadas).  O
+recomendável é utilizar o <command>scp</command> (<xref linkend="s-ssh-cliente-scp"/>) para realizar transferências seguras.  .
+</para>
+</listitem>
+</orderedlist>
+<para>
+O método de acesso do CVS aos arquivos <filename>readers</filename> e
+<filename>writers</filename> é restritiva, portanto se um nome de usuário
+existir no arquivo <filename>readers</filename> e <filename>writers</filename>
+o que valerá será o menor nível de acesso.  Vendo os exemplos acima, os
+usuários <emphasis>gleydsonm e anonymous</emphasis> terão somente acesso a
+leitura do repositório e <emphasis>macan, otavio, hmh, kov</emphasis> acesso de
+leitura e gravação.
+</para>
+</section>
+
+</section>
+
+<section xml:id="s-cvs-d-metodos-gssapi"><info><title>gssapi</title></info>
+<para>
+Quando o CVS é compilado com o suporte a Kerberos 5, ele tenta estabelecer
+automaticamente uma conexão segura usando este método.  Este método funciona
+somente se o CVS estiver compilado com o suporte a Kerberos (opção
+<literal>--with-gssapi</literal>).
+</para>
+</section>
+
+</section>
+
+<section xml:id="s-cvs-p"><info><title>Criando projetos para serem usados no CVS</title></info>
+<para>
+Esta seção descreve todos os passos necessários para colocação de um projeto
+para ser desenvolvido através do CVS, os comandos do cvs, considerações a
+respeito dos comandos e sua utilização através de exemplos didáticos.
+</para>
+<section xml:id="s-cvs-p-repos"><info><title>Repositório</title></info>
+<para>
+Um repositório CVS é o local que armazena módulos e também os arquivos
+administrativos (que contém permissões, etc) são armazenados em um subdiretório
+chamado <filename>CVSROOT</filename>.
+</para>
+<para>
+O acesso a um repositório é feito através de parâmetros especificados na
+variável <replaceable>CVSROOT</replaceable> ou pela opção <emphasis>-d
+repositório</emphasis> do cvs.  Veja <xref linkend="s-cvs-d"/> para ver
+exemplos de métodos de acesso.
+</para>
+<para>
+O Repositório pode conter um ou mais módulos, cada módulo representa um projeto
+no servidor, criado após o uso do comando <literal>import</literal>.  Segue um
+exemplo da estrutura de um repositório CVS:
+</para>
+<screen>
+var/lib
+     |
+     +- cvs
+         |- CVSROOT
+         |- projeto1
+         +- projeto2
+</screen>
+<para>
+O subdiretório <filename>cvs</filename> é o repositório (veja o subdiretório
+<filename>CVSROOT</filename> dentro dele) e os diretórios dentro dele
+<filename>projeto1</filename> e <filename>projeto2</filename> são os módulos
+criados através do comando <literal>cvs import ...</literal>(veja <xref linkend="s-cvs-p-import"/>).
+</para>
+<para>
+Para acessar o projeto do CVS, então é definido o repositório que tem
+permissões de acesso na variável <literal>CVSROOT</literal> e então é executado
+um comando (checkout, update, commit, etc) no módulo que desejamos utilizar:
+</para>
+<screen>
+export CVSROOT=:ext:anonymous@servidor.org.br:/var/lib/cvs (&lt;- Repositório "cvs")
+cvs checkout projeto1 (&lt;- módulo que desejamos pegar do servidor)
+</screen>
+<para>
+Nas seções seguintes serão explicados cada um dos comandos usados para
+trabalhar com um projeto no <command>cvs</command>.
+</para>
+</section>
+
+<section xml:id="s-cvs-p-mkrepos"><info><title>Criando um repositório</title></info>
+<para>
+Para adicionar um novo repositório no sistema, edite o arquivo
+<filename>/etc/cvs-pserver.conf</filename> e defina o nome de cada repositório
+na variável <replaceable>CVS_PSERV_REPOS</replaceable> separados por ":"
+(exemplo: <literal>CVS_PSERV_REPOS="/var/lib/cvs:/var/lib/cvs2"</literal>).
+</para>
+<para>
+Feito isso execute o comando <command>cvs-makerepos</command> para que os
+diretórios especificados no arquivo <filename>/etc/cvs-pserver.conf</filename>
+sejam criados com as devidas permissões.
+</para>
+<para>
+Para adicionar manualmente um repositório (/var/lib/cvs), execute os seguintes
+passos:
+</para>
+<orderedlist numeration="arabic">
+<listitem>
+<para>
+Execute o comando <literal>cvs -d /var/lib/cvs init</literal> (para criar o
+repositório e os arquivos administrativos que ficam armazenados dentro de
+<filename>CVSROOT</filename>.
+</para>
+</listitem>
+<listitem>
+<para>
+Mude as permissões do diretório para sgid com: <literal>chmod 2775
+/var/lib/cvs</literal>.
+</para>
+</listitem>
+<listitem>
+<para>
+Mude o dono/grupo com o comando: <literal>chown root.src /var/lib/cvs</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Opcional: caso utilize o método de acesso <emphasis>pserver</emphasis> será
+necessário adicionar a opção <literal>--allow-root=/var/lib/cvs</literal> na
+linha que inicia o servidor pserver.  Este parâmetro deve ser usada para cada
+repositório adicionado no servidor.
+</para>
+</listitem>
+</orderedlist>
+<para>
+A partir de agora, seu repositório já está pronto para ser utilizado.
+</para>
+</section>
+
+<section xml:id="s-cvs-p-login"><info><title>Logando no servidor de CVS via pserver</title></info>
+<para>
+Quando é usado o método de acesso pserver (<xref linkend="s-cvs-d-metodos-pserver"/>), é necessário fazer para ter acesso ao
+repositório.  Por exemplo, para acessar o repositório
+<filename>/var/lib/cvs</filename> no servidor
+<filename>servidor.org.br</filename>:
+</para>
+<screen>
+export CVSROOT=:pserver:anonymous@servidor.org.br:/var/lib/cvs
+cvs login
+
+ou 
+
+cvs -d :pserver:anonymous@servidor.org.br:/var/lib/cvs login
+</screen>
+<para>
+Então será solicitada a senha para ter acesso ao sistema.  Note que toda a
+seção de <command>cvs</command> ocorre por comandos interativos que logo após
+concluídos retornam para o interpretador de comandos.  O restante desta seção
+descreverá estes comandos e como utiliza-los de maneira eficiente.
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis> O uso da variável
+<replaceable>CVSROOT</replaceable> torna a utilização bastante prática, assim
+não precisamos especificar o repositório, método de acesso, etc.  toda vez que
+usar um comando do <command>cvs</command>.
+</para>
+</section>
+
+<section xml:id="s-cvs-p-logout"><info><title>Encerrando uma seção de CVS</title></info>
+<para>
+Embora que não seja necessário, após o uso do cvs é recomendável executar o
+logout do servidor para encerrar sua conexão com a máquina remota.
+</para>
+<screen>
+# (assumindo que a variável CVSROOT está definida)
+cvs logout
+
+ou 
+
+cvs -d :pserver:anonymous@servidor.org.br:/var/lib/cvs logout
+</screen>
+<para>
+<emphasis role="strong">OBS:</emphasis> Para os paranóicos é importante
+encerrar uma seção de CVS, pois ele possui alguns bugs e um spoofing pode
+tornar possível o uso de uma seção deixada aberta.
+</para>
+</section>
+
+<section xml:id="s-cvs-p-checkout"><info><title>Baixando arquivos</title></info>
+<para>
+O comando <literal>checkout</literal> (ou "co") é usado para fazer isto.  Para
+utilizá-lo seguindo os exemplos anteriores:
+</para>
+<screen>
+mkdir /tmp/cvs
+cd /tmp/cvs
+cvs checkout modulo
+cvs -d :pserver:anonymous@servidor.org.br:/var/lib/cvs
+</screen>
+<para>
+Será criado um subdiretório chamado <filename>modulo</filename> que contém
+todos os arquivos do servidor de CVS remoto.  É necessário apenas que tenha
+acesso de leitura ao servidor de CVS para executar este comando.  Você pode
+usar a opção <literal>-z [num]</literal> para ativar a compactação na
+transferência dos arquivos, isso acelera bastante a transferência em conexões
+lentas: <literal>cvs -z 3 checkout modulo</literal>.
+</para>
+<para>
+Também é possível especificar apenas subdiretórios de um módulo para baixa-lo
+via CVS e a estrutura de diretórios criada localmente será idêntica ao do
+servidor remoto.
+</para>
+</section>
+
+<section xml:id="s-cvs-p-import"><info><title>Adicionando um novo projeto</title></info>
+<para>
+Use o comando <literal>cvs import</literal> para adicionar um novo projeto ao
+CVS.  As entradas nos arquivos administrativos serão criadas e o projeto estará
+disponível para utilização dos usuários.  A sintaxe básica do comando
+<literal>import</literal> é a seguinte:
+</para>
+<para>
+<literal>cvs import [<emphasis>opções</emphasis>]
+[<emphasis>dir_modulo</emphasis>] [<emphasis>tag</emphasis>] start</literal>
+</para>
+<para>
+Para adicionar o projeto <literal>focalinux</literal> que reside em
+<filename>/usr/src/focalinux</filename> ao cvs:
+</para>
+<screen>
+# Primeiro exportamos o CVSROOT para dizer onde e qual repositório acessar
+export CVSROOT=:ext:usuario@servidor.com.br:2401/var/lib/cvs
+
+cd /usr/src/focalinux
+cvs import documentos/focalinux tag_modulo start
+</screen>
+<para>
+Por padrão o <command>import</command> sempre utiliza a máscara
+<emphasis>*</emphasis> para fazer a importação dos arquivos do diretório atual.
+O projeto <literal>focalinux</literal> será acessado através de
+$CVSROOT/documentos/focalinux (<literal>cvs checkout
+documentos/focalinux</literal>), ou seja,
+<filename>/var/lib/cvs/documentos/focalinux</filename> no servidor CVS terá a
+cópia do focalinux.  <literal>tag_modulo</literal> define o nome que será usado
+como identificador nas operações com os arquivos do CVS (pode ser usado
+"focalinux" em nosso exemplo).  O parâmetro "start" diz para criar o módulo.
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis> Por segurança, o diretório que contém
+os arquivos deverá ser sempre um caminho relativo na estrutura de diretórios,
+ou seja, você precisará entrar no diretório pai (como
+<filename>/usr/src/projeto</filename>) para executar o <literal>cvs
+import</literal>.  Não é permitido usar <literal>/</literal> ou
+<literal>..</literal>, isto proíbe a descida em diretórios de nível mais altos
+e sérios incidentes de segurança em servidores CVS mal configurados pelo
+Administrador.
+</para>
+</section>
+
+<section xml:id="s-cvs-p-update"><info><title>Sincronizando a cópia remota com a cópia local</title></info>
+<para>
+Este comando sincroniza a cópia remota do CVS (ou arquivo) com a cópia local
+que está trabalhando em sua máquina.  Quando se trabalha nativamente no CVS em
+equipe é recomendado a utilização deste comando pois alguém pode ter modificado
+o arquivo antes de você, então uma incompatibilidade entre sua versão e a nova
+poderia causar problemas.
+</para>
+<para>
+Supondo que tenha acabado de modificar o arquivo <filename>main.c</filename> do
+módulo <filename>cvsproj</filename>, então antes de fazer o commit (<xref linkend="s-cvs-p-commit"/>) use o update:
+</para>
+<screen>
+cvs update main.c
+
+ou 
+
+cvs -d :ext:usuario@servidor.com.br:2401/var/lib/cvs update main.c
+</screen>
+<para>
+Após alguns segundos, sua cópia local ficará sincronizada com a cópia remota.
+Caso ele mostre alguma mensagem de saída, verifique o arquivo para solucionar
+qualquer conflito e então envie o arquivo para o servidor remoto (<xref linkend="s-cvs-p-commit"/>).
+</para>
+<para>
+Você pode fazer o update de mais arquivos usando referências globais
+(<literal>*</literal>, <literal>?</literal> ou <literal>[]</literal>).
+</para>
+</section>
+
+<section xml:id="s-cvs-p-commit"><info><title>Enviando as mudanças para o servidor remoto</title></info>
+<para>
+O comando "commit" (ou "ci"), envia as mudanças feitas nos arquivos locais para
+o servidor remoto.  Um exemplo de commit no arquivo
+<filename>main.c</filename>:
+</para>
+<screen>
+cvs commit main.c
+
+cvs commit main.?
+
+cvs commit *
+</screen>
+<para>
+O editor padrão do sistema será aberto e pedirá uma descrição das modificações
+para o commit.  Esta descrição será usada como referência sobre as atualizações
+feitas em cada etapa do desenvolvimento.  A mensagem também pode ser
+especificada usando a opção "-m mensagem", principalmente quando o texto
+explicando as alterações é pequeno.
+</para>
+<para>
+Para mudar o editor de texto padrão que será usado pelo <command>cvs</command>,
+altere a variável de ambiente <replaceable>EDITOR</replaceable> ou especifique
+o editor que deseja usar na linha de comando com a opção "-e editor":
+</para>
+<screen>
+cvs commit -e vi main.c
+</screen>
+</section>
+
+<section xml:id="s-cvs-p-add"><info><title>Adicionando um arquivo ao módulo CVS do servidor</title></info>
+<para>
+Após criar/copiar o arquivo para seu diretório de trabalho, use o comando
+<literal>add</literal> para fazer isto.  O arquivo será enviado ao servidor,
+bastando apenas executa o <literal>commit</literal> para salvar o arquivo:
+</para>
+<screen>
+cvs add main.h
+cvs commit main.h
+</screen>
+</section>
+
+<section xml:id="s-cvs-p-add-dir"><info><title>Adicionando um diretório ao módulo CVS do servidor</title></info>
+<para>
+O método para adicionar um diretório com arquivos é semelhante ao de adicionar
+apenas arquivos ao cvs.  O único ponto que deve se seguido é que primeiro deve
+ser adicionado o diretório (com o "cvs add") salvar no servidor remoto ("cvs
+commit") e depois adicionar os arquivos existentes dentro dele (assim como
+descrito em <xref linkend="s-cvs-p-add"/>).  Para adicionar o diretório
+<filename>teste</filename> e seus arquivos no servidor <command>cvs</command>
+remoto:
+</para>
+<screen>
+cvs add teste
+cvs commit -m "Adicionado" teste
+cvs add teste/*
+cd teste
+cvs commit -m "Adicionados" .
+</screen>
+<para>
+Os dois primeiros comandos agendam o diretório <filename>teste</filename> e
+fazem o <literal>commit</literal> no diretório remoto.  Os dois últimos, enviam
+os arquivos existentes dentro deste diretório para o servidor remoto.
+</para>
+</section>
+
+<section xml:id="s-cvs-p-remove"><info><title>Removendo um arquivo do módulo CVS remoto</title></info>
+<para>
+O comando para fazer isto é o "remove".  Primeiro use o <command>rm</command>
+para remover o arquivo/diretório de sua cópia local, depois execute o
+<literal>remove</literal> seguido de commit para confirmar a remoção do
+arquivo:
+</para>
+<screen>
+cvs remove main.h
+cvs commit main.h
+</screen>
+</section>
+
+<section xml:id="s-cvs-p-removed"><info><title>Removendo um diretório do módulo CVS remoto</title></info>
+<para>
+Para remover um diretório, primeiro remova todos os arquivos existentes dentro
+dele com o comando <command>rm</command> e salve para o servidor (seguindo os
+métodos descritos em <xref linkend="s-cvs-p-remove"/>).  O CVS não remove
+diretamente diretórios vazios, uma maneira de contornar isto é usar o
+<literal>update</literal> ou <literal>commit</literal> seguido da opção
+<literal>-P</literal> para ignorar diretórios vazios.  Então a cópia remota do
+diretório será removida do servidor:
+</para>
+<screen>
+rm -f teste/*
+cvs remove teste/.
+cvs commit teste/.
+cd ..
+cvs checkout modulo
+</screen>
+<para>
+Depois do checkout, o subdiretório teste terá sido removido.
+</para>
+</section>
+
+<section xml:id="s-cvs-p-release"><info><title>Dizendo que o módulo atual não está mais em uso</title></info>
+<para>
+O comando "release" faz esta função.  Ele não é requerido, mas caso você tenha
+feito modificações que ainda não foram salvas no servidor de cvs
+(<literal>commit</literal>), ele alertará de arquivos modificados e perguntará
+se deseja continuar.  Registrando também o abandono das modificações no
+histórico do <command>cvs</command>.  O comando pode ser acompanhado de "-d"
+para remover o módulo anteriormente baixado com o "commit":
+</para>
+<screen>
+cvs release modulo
+
+cvs release -d modulo
+</screen>
+<para>
+O <literal>release</literal> retorna os seguintes códigos quando verifica que
+as duas cópias (local e remota) não estão sincronizadas:
+</para>
+<variablelist>
+<varlistentry>
+<term>U ou P</term>
+<listitem>
+<para>
+Existe uma versão nova do arquivo no repositório.  Para corrigir isso, execute
+o comando "update".
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>A</term>
+<listitem>
+<para>
+O arquivo não foi adicionado ainda ao repositório remoto.  Se apagar o
+repositório local, este arquivo não será adicionado.  Para corrigir isto,
+executa o comando "add" do cvs.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>R</term>
+<listitem>
+<para>
+O arquivo foi removido localmente, mas não foi removido do servidor remoto.
+Use os procedimentos em <xref linkend="s-cvs-p-remove"/> para corrigir a
+situação.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>M</term>
+<listitem>
+<para>
+O arquivo está modificado localmente e não foi salvo ainda no servidor.  Use os
+procedimentos em <xref linkend="s-cvs-p-update"/> e <xref linkend="s-cvs-p-commit"/> para salvar o arquivo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>?</term>
+<listitem>
+<para>
+O arquivo está em seu diretório de trabalho mas não tem referências no
+repositório remoto e também não está na lista de arquivos ignorados do CVS.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s-cvs-p-diff"><info><title>Visualizando diferenças entre versões de um arquivo</title></info>
+<para>
+Com o comando "diff" é possível visualizar que diferenças o arquivo que está
+sendo editado possui em relação ao arquivo do repositório remoto.  Outra
+funcionalidade útil do "diff" é comparar 2 versões de arquivos do mesmo
+repositório CVS.  Exemplos:
+</para>
+<variablelist>
+<varlistentry>
+<term>cvs diff main.c</term>
+<listitem>
+<para>
+Verifica as diferenças entre o arquivo <filename>main.c</filename> local e
+remoto.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>cvs diff -u -r 1.1 -r 1.2 main.c</term>
+<listitem>
+<para>
+Mostra as diferenças em formato unificado para mostrar as diferenças entre as
+versões 1.1 e 1.2 do arquivo <filename>main.c</filename>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s-cvs-p-status"><info><title>Visualizando o status de versão de arquivos</title></info>
+<para>
+O comando "status" permite verificar que versões do arquivo especificado está
+disponível localmente, remotamente, qual a versão inicial do arquivo no
+repositório, sticky tag.  Exemplos:
+</para>
+<variablelist>
+<varlistentry>
+<term>cvs status main.c</term>
+<listitem>
+<para>
+Verifica o status do arquivo <filename>main.c</filename>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>cvs status -v main.c</term>
+<listitem>
+<para>
+Mostra o status do arquivo <filename>main.c</filename>, adicionalmente mostra
+também as tags existentes no arquivo (versão inicial, versão do repositório).
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s-cvs-p-utils"><info><title>Outros utilitários para trabalho no repositório</title></info>
+<para>
+Além dos comandos do <command>cvs</command> descritos aqui, existem comandos no
+pacote <systemitem role="package">cvsutils</systemitem> que auxiliam desde quem
+está aprendendo a utilizar o CVS (com o comando <command>cvsdo</command> para
+simular algumas operações de adição/remoção de arquivos) até profissionais que
+usam o programa no dia a dia (<command>cvsu</command>,
+<command>cvsco</command>, <command>cvschroot</command>).
+</para>
+</section>
+
+</section>
+
+<section xml:id="s-cvs-cvsroot"><info><title>Arquivos administrativos em CVSROOT</title></info>
+<para>
+Esta seção descreve a função de cada um dos arquivos administrativos, isto pode
+ser útil na configuração e personalização do CVS e de seu repositório.
+</para>
+<para>
+Para não alongar muito o capítulo, procurei colocar uma breve descrição da
+função de cada um deles, o comentários e exemplos existentes nos arquivos
+oferecem uma boa compreensão do seu conteúdo.
+</para>
+<section xml:id="s-cvs-cvsroot-config"><info><title><filename>config</filename></title></info>
+<para>
+Este arquivo é segue os padrões do arquivos de configuração e possui alguns
+parâmetros que controlam o comportamento do CVS.  Segue uma lista deles:
+</para>
+<variablelist>
+<varlistentry>
+<term><replaceable>SystemAuth</replaceable></term>
+<listitem>
+<para>
+Define se será utilizado a autenticação via <filename>/etc/passwd</filename>
+quando o método <emphasis>pserver</emphasis> for utilizado.  Note que se o
+arquivo <filename>passwd</filename> for criado no <filename>CVSROOT</filename>,
+o <replaceable>SystemAuth</replaceable> será definido automaticamente para
+<literal>no</literal>.
+</para>
+<para>
+Exemplo: <literal>SystemAuth=yes</literal>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><replaceable>LockDir</replaceable></term>
+<listitem>
+<para>
+Especifica o diretório onde serão gravados os arquivos de lock.  Caso não seja
+especificado, será usado o diretório do CVS.
+</para>
+<para>
+Exemplo: <literal>LockDir=/var/lock/cvs</literal>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><replaceable>TopLevelAdmin</replaceable></term>
+<listitem>
+<para>
+Permite criar ou não um diretório chamado <filename>CVS</filename> no root do
+diretório de trabalho durante o <literal>cvs checkout</literal>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><replaceable>LogHistory</replaceable></term>
+<listitem>
+<para>
+Utiliza opções para especificar o que será registrado nos arquivos de log do
+<literal>CVS</literal>.
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>TOFEWGCMAR</literal> ou <literal>all</literal>
+</para>
+<para>
+Registra todas as operações nos logs do <command>cvs</command>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>TMAR</literal>
+</para>
+<para>
+Registra todas as operações que modificam os arquivos <filename>",v"</filename>
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s-cvs-cvsroot-modules"><info><title><filename>modules</filename></title></info>
+<para>
+Especifica opções e programas externos que serão usados durante a execução de
+comandos no repositório CVS.
+</para>
+</section>
+
+<section xml:id="s-cvs-cvsroot-cvswrappers"><info><title><filename>cvswrappers</filename></title></info>
+<para>
+Este arquivo define ações de controle de características de arquivos, de acordo
+com seu nome.
+</para>
+<para>
+Pode ser também definidas ações através de arquivos
+<filename>.cvswrappers</filename>.
+</para>
+</section>
+
+<section xml:id="s-cvs-cvsroot-commitinfo"><info><title><filename>commitinfo</filename></title></info>
+<para>
+Define programas para fazer uma checagem baseada no diretório e dizer se o
+commit é permitido.
+</para>
+</section>
+
+<section xml:id="s-cvs-cvsroot-verifymsg"><info><title><filename>verifymsg</filename></title></info>
+<para>
+Especifica o programa usado para verificar as mensagens de log.
+</para>
+</section>
+
+<section xml:id="s-cvs-cvsroot-loginfo"><info><title><filename>loginfo</filename></title></info>
+<para>
+Programa que é executado após o commit.  Ele pode ser usado para tratar a
+mensagem de log e definir onde ela será gravada/enviada, etc.
+</para>
+</section>
+
+<section xml:id="s-cvs-cvsroot-cvsignore"><info><title><filename>cvsignore</filename></title></info>
+<para>
+Tudo que constar neste arquivo não será gravado (commit) no cvs.  Referências
+globais podem ser usadas para especificar estes arquivos.  Veja a info page do
+cvs para detalhes sober seu formato.
+</para>
+<para>
+Pode também ser especificado através de arquivos
+<filename>.cvsignore</filename>.
+</para>
+</section>
+
+<section xml:id="s-cvs-cvsroot-checkoutlist"><info><title><filename>checkoutlist</filename></title></info>
+<para>
+Especifica os arquivos que deseja manter sobre o controle do CVS que se
+encontram em <filename>CVSROOT</filename>.  Se adicionar um script adicional,
+ou qualquer outro arquivo no diretório <filename>CVSROOT</filename> ele deverá
+constar neste arquivo.
+</para>
+</section>
+
+<section xml:id="s-cvs-cvsroot-history"><info><title><filename>history</filename></title></info>
+<para>
+É usado para registrar detalhes do comando <emphasis>history</emphasis> do CVS.
+</para>
+</section>
+
+</section>
+
+<section xml:id="s-cvs-c"><info><title>Clientes de CVS</title></info>
+<para>
+Esta seção traz alguns programas cliente em modo texto/gráfico e visualizadores
+de repositórios via web.  Eles facilitam o trabalho de controle de revisão por
+parte de iniciantes e flexibilidade para pessoas mais experientes, além de ter
+uma interface de navegação disponível para todos os interessados em fazer
+pesquisas no repositório.
+</para>
+<section xml:id="s-cvs-c-cvs"><info><title>cvs</title></info>
+<para>
+Este é o cliente <command>Unix</command> padrão, bastante poderoso e que opera
+em modo texto.  As explicações neste capítulo do guia assumem este cliente de
+<command>cvs</command>, então as explicações sobre sua utilização se encontra
+em <xref linkend="s-cvs-p"/> e os parâmetros de linha de comando em <xref linkend="s-cvs-opcoescmd"/>
+</para>
+<para>
+É <emphasis role="strong">altamente</emphasis> recomendável a leitura caso
+deseje utilizar um cliente de <command>cvs</command> gráfico, pois os conceitos
+são os mesmos.
+</para>
+</section>
+
+<section xml:id="s-cvs-c-gcvs"><info><title>gcvs - Linux</title></info>
+<para>
+Este é um cliente CVS em GTK+Python para <command>Linux</command> que interage
+externamente com o cliente <command>cvs</command> externo, todas as opções do
+cvs estão disponíveis através de checkboxes nas telas de comando, incluindo
+suporte a compactação, visualizador gráfico da árvore de releases, histórico,
+diffs, etc.
+</para>
+<para>
+Sua instalação é bastante fácil, instale o programa com <literal>apt-get
+install gcvs</literal> e execute o programa através do menu do sistema ou do
+terminal.  Utilize os seguintes procedimentos para configurar e utilizar o
+programa:
+</para>
+<orderedlist numeration="arabic">
+<listitem>
+<para>
+Defina o repositório <replaceable>CVSROOT</replaceable> através do menu
+<emphasis>Admin</emphasis>/<emphasis>Preferences</emphasis>.  Selecione o
+método de acesso, entre com o login, servidor e repositório.
+</para>
+<screen>
+Exemplo: :pserver:anonymous@servidor:/var/lib/cvs
+</screen>
+<para>
+O formato deve ser <emphasis>EXATAMENTE</emphasis> como o usado na variável
+CVSROOT no shell, incluindo os ":".  Caso tenha erros de login, verifique o
+valor de <replaceable>CVSROOT</replaceable> cuidadosamente antes de contactar o
+administrador de sistemas!
+</para>
+</listitem>
+<listitem>
+<para>
+Agora faça o login no sistema em: <emphasis>Admin</emphasis>,
+<emphasis>Login</emphasis>.  Note que o status de todas as operações do
+<command>cvs</command> são mostradas na janela de status que fica na parte
+inferior da tela.
+</para>
+</listitem>
+<listitem>
+<para>
+Crie um diretório que será usado para armazenar os fontes baixados do CVS, por
+exemplo: <literal>mkdir ~/projetos</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Acesse o menu <emphasis>Create</emphasis>, <emphasis>Checkout Module</emphasis>
+para baixar o projeto do CVS para sua máquina local.  Ele irá te pedir o nome
+de diretório para onde o código fonte do servidor CVS será baixado.  Digite
+<filename>~/projetos</filename> ou outro diretório que foi criado no passo
+anterior.
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis> Não utilize o nome
+<filename>"cvs"</filename> para o diretório local, pois o
+<command>gcvs</command> oculta automaticamente pois os arquivos administrativos
+de controle ficam neste local.
+</para>
+</listitem>
+<listitem>
+<para>
+Altere o diretório padrão do <command>gcvs</command> para o diretório onde
+baixou o projeto (<filename>~/projetos</filename>)clicando no botão "set" no
+topo da coluna esquerda do <command>gcvs</command>.
+</para>
+</listitem>
+<listitem>
+<para>
+Para enviar um arquivo modificado de volta ao servidor, selecione os arquivos,
+clique em <emphasis>Modify</emphasis>, <emphasis>Commit Selection</emphasis>,
+entre com a mensagem descrevendo as alterações e clique em "OK".
+</para>
+<para>
+Note que os arquivos modificados serão identificados por um ícone vermelho e
+seu status será "Mod.  File" (arquivo modificado).
+</para>
+</listitem>
+<listitem>
+<para>
+Se desejar adicionar um novo projeto no CVS, entre em
+<emphasis>Create</emphasis>, <emphasis>Import Module</emphasis>, entre no
+diretório que deseja adicionar como um projeto no servidor de CVS.  Após isto
+será feita uma checagem e mostrada uma tela de possíveis problemas que podem
+ocorrer durante a importação do novo projeto.
+</para>
+<para>
+Na próxima tela, digite o nome do módulo e caminho no servidor remoto no
+primeiro campo, no segundo campo a mensagem de log para adicionar o projeto ao
+servidor.  Em "Vendor tag" especifique o nome do projeto e sua versão logo
+abaixo.  Clique em "OK" e aguarde a transferência dos arquivos para o servidor.
+</para>
+<para>
+Para maiores detalhes sobre a criação de novos projetos no servidor de CVS,
+veja <xref linkend="s-cvs-p-import"/>.
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis> Você deverá ter permissão de gravação
+para criar um novo projeto no servidor CVS.
+</para>
+</listitem>
+<listitem>
+<para>
+A partir de agora você poderá explorar as funções do programa e fazer uso das
+funções habituais do CVS.  Todas as funções de operação e opções extras do CVS
+estão disponíveis na interface gráfica, basta se acostumar com sua utilização.
+</para>
+</listitem>
+</orderedlist>
+<para>
+Após isto, explore bastante as opções do programa.  Todas as funcionalidades do
+CVS estão organizadas entre os menus do programa.  Caso não entenda bem as
+funções do programa, leia atentamente <xref linkend="s-cvs-p"/> e também não
+deixe de consultar detalhes na info page do cvs.
+</para>
+</section>
+
+<section xml:id="s-cvs-c-wincvs"><info><title>WinCVS - Windows</title></info>
+<para>
+Este é um cliente CVS em Python para <command>Windows</command> equivalente ao
+<command>gcvs</command> para <command>Linux</command>.  Suas funcionalidades e
+recomendações são idênticas aos do <command>gcvs</command>.  Este cliente pode
+ser baixado de: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://telia.dl.sourceforge.net/sourceforge/cvsgui/WinCvs13b13.zip">http://telia.dl.sourceforge.net/sourceforge/cvsgui/WinCvs13b13.zip</link>
+e o Python para Windows de <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://starship.python.net/crew/mhammond/downloads/win32all-153.exe">http://starship.python.net/crew/mhammond/downloads/win32all-153.exe</link>.
+</para>
+<para>
+Para sua utilização, as explicações em <xref linkend="s-cvs-c-gcvs"/> são
+totalmente válidas.
+</para>
+</section>
+
+<section xml:id="s-cvs-c-maccvs"><info><title>MacCVS - Macintosh (PPC)</title></info>
+<para>
+Idêntico ao <command>gcvs</command>, pode ser baixado de <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://telia.dl.sourceforge.net/sourceforge/cvsgui/MacCvsX-3.3a1-1.dmg">http://telia.dl.sourceforge.net/sourceforge/cvsgui/MacCvsX-3.3a1-1.dmg</link>.
+</para>
+</section>
+
+<section xml:id="s-cvs-c-viewcvs"><info><title>viewcvs</title></info>
+<para>
+Este é um visualizador de repositórios CVS via web, ele precisa apenas de um
+servidor web instalado com suporte a CGI.  Para instalar, execute o comando
+<literal>apt-get install <systemitem role="package">viewcvs</systemitem></literal> e siga os passos para configurar
+programa.  Para adequar melhor o <command>viewcvs</command> ao seu sistema,
+edite o arquivo <filename>/etc/viewcvs/viewcvs.conf</filename>.
+</para>
+<para>
+O <command>viewcvs</command> possui uma interface que se parece com a navegação
+de um diretório de ftp, recursos como a extração de diffs coloridos entre
+versões de um arquivo selecionado, visualização de commits (com data, log do
+commit, usuário, etc.), classificação da listagem exibida.
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis>Leve em consideração as implicações de
+segurança impostas por aplicativos cgi sendo executados em seu sistema.  Veja
+<xref linkend="apache"/> para entender melhor o assunto.
+</para>
+</section>
+
+</section>
+
+<section xml:id="s-cvs-exemplo"><info><title>Exemplo de uma seção CVS</title></info>
+<para>
+Nota: este exemplo é apenas didático, não foi feita nenhuma modificação real no
+conteúdo do repositório do <command>dillo</command> :-)
+</para>
+<screen>
+# Definir o CVSROOT
+export CVSROOT=:pserver:gleydson@ima.cipsga.org.br:/var/lib/cvs
+
+# entrar no servidor
+gleydson@host:/tmp/teste$ cvs login
+Logging in to :pserver:gleydson@ima.cipsga.org.br:2401/var/lib/cvs
+CVS password: &lt;password&gt;
+
+gleydson@oberon:/tmp/teste$ 
+
+# Pegar o módulo "dillo do cvs"
+cvs -z 3 co dillo
+
+cvs server: Updating dillo
+cvs server: Updating dillo/CVSROOT
+U dillo/CVSROOT/checkoutlist
+U dillo/CVSROOT/commitinfo
+U dillo/CVSROOT/config
+U dillo/CVSROOT/cvswrappers
+U dillo/CVSROOT/editinfo
+U dillo/CVSROOT/loginfo
+U dillo/CVSROOT/modules
+U dillo/CVSROOT/notify
+U dillo/CVSROOT/rcsinfo
+U dillo/CVSROOT/taginfo
+U dillo/CVSROOT/verifymsg
+cvs server: Updating dillo/CVSROOT/Emptydir
+cvs server: Updating dillo/dillo
+U dillo/dillo/AUTHORS
+U dillo/dillo/COPYING
+U dillo/dillo/ChangeLog
+U dillo/dillo/ChangeLog.old
+U dillo/dillo/INSTALL
+U dillo/dillo/Makefile.am
+U dillo/dillo/Makefile.in
+U dillo/dillo/NEWS
+U dillo/dillo/README
+U dillo/dillo/aclocal.m4
+U dillo/dillo/config.h.in
+U dillo/dillo/configure
+U dillo/dillo/configure.in
+U dillo/dillo/depcomp
+U dillo/dillo/dillorc
+U dillo/dillo/install-sh
+U dillo/dillo/missing
+U dillo/dillo/mkinstalldirs
+U dillo/dillo/stamp-h.in
+cvs server: Updating dillo/dillo/doc
+U dillo/dillo/doc/Cache.txt
+U dillo/dillo/doc/Cookies.txt
+U dillo/dillo/doc/Dillo.txt
+U dillo/dillo/doc/Dw.txt
+U dillo/dillo/doc/DwImage.txt
+U dillo/dillo/doc/DwPage.txt
+...
+
+# Modifica o arquivo do projeto
+cd /dillo/dillo/doc
+vi Cache.txt
+
+
+# Update no arquivo para atualizar a cópia local com a remota
+cvs update Cache.txt
+M Cache.txt
+
+gleydson@host:/tmp/teste
+
+# Damos o commit no arquivo
+cvs commit Cache.txt
+
+
+# Saimos do sistema
+cvs logout
+</screen>
+</section>
+
+</chapter>

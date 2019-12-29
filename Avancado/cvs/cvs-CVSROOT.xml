@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="s-cvs-cvsroot"><info><title>Arquivos administrativos em CVSROOT</title></info>
+<para>
+Esta seção descreve a função de cada um dos arquivos administrativos, isto pode
+ser útil na configuração e personalização do CVS e de seu repositório.
+</para>
+<para>
+Para não alongar muito o capítulo, procurei colocar uma breve descrição da
+função de cada um deles, o comentários e exemplos existentes nos arquivos
+oferecem uma boa compreensão do seu conteúdo.
+</para>
+<section xml:id="s-cvs-cvsroot-config"><info><title><filename>config</filename></title></info>
+<para>
+Este arquivo é segue os padrões do arquivos de configuração e possui alguns
+parâmetros que controlam o comportamento do CVS.  Segue uma lista deles:
+</para>
+<variablelist>
+<varlistentry>
+<term><replaceable>SystemAuth</replaceable></term>
+<listitem>
+<para>
+Define se será utilizado a autenticação via <filename>/etc/passwd</filename>
+quando o método <emphasis>pserver</emphasis> for utilizado.  Note que se o
+arquivo <filename>passwd</filename> for criado no <filename>CVSROOT</filename>,
+o <replaceable>SystemAuth</replaceable> será definido automaticamente para
+<literal>no</literal>.
+</para>
+<para>
+Exemplo: <literal>SystemAuth=yes</literal>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><replaceable>LockDir</replaceable></term>
+<listitem>
+<para>
+Especifica o diretório onde serão gravados os arquivos de lock.  Caso não seja
+especificado, será usado o diretório do CVS.
+</para>
+<para>
+Exemplo: <literal>LockDir=/var/lock/cvs</literal>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><replaceable>TopLevelAdmin</replaceable></term>
+<listitem>
+<para>
+Permite criar ou não um diretório chamado <filename>CVS</filename> no root do
+diretório de trabalho durante o <literal>cvs checkout</literal>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><replaceable>LogHistory</replaceable></term>
+<listitem>
+<para>
+Utiliza opções para especificar o que será registrado nos arquivos de log do
+<literal>CVS</literal>.
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>TOFEWGCMAR</literal> ou <literal>all</literal>
+</para>
+<para>
+Registra todas as operações nos logs do <command>cvs</command>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>TMAR</literal>
+</para>
+<para>
+Registra todas as operações que modificam os arquivos <filename>",v"</filename>
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s-cvs-cvsroot-modules"><info><title><filename>modules</filename></title></info>
+<para>
+Especifica opções e programas externos que serão usados durante a execução de
+comandos no repositório CVS.
+</para>
+</section>
+
+<section xml:id="s-cvs-cvsroot-cvswrappers"><info><title><filename>cvswrappers</filename></title></info>
+<para>
+Este arquivo define ações de controle de características de arquivos, de acordo
+com seu nome.
+</para>
+<para>
+Pode ser também definidas ações através de arquivos
+<filename>.cvswrappers</filename>.
+</para>
+</section>
+
+<section xml:id="s-cvs-cvsroot-commitinfo"><info><title><filename>commitinfo</filename></title></info>
+<para>
+Define programas para fazer uma checagem baseada no diretório e dizer se o
+commit é permitido.
+</para>
+</section>
+
+<section xml:id="s-cvs-cvsroot-verifymsg"><info><title><filename>verifymsg</filename></title></info>
+<para>
+Especifica o programa usado para verificar as mensagens de log.
+</para>
+</section>
+
+<section xml:id="s-cvs-cvsroot-loginfo"><info><title><filename>loginfo</filename></title></info>
+<para>
+Programa que é executado após o commit.  Ele pode ser usado para tratar a
+mensagem de log e definir onde ela será gravada/enviada, etc.
+</para>
+</section>
+
+<section xml:id="s-cvs-cvsroot-cvsignore"><info><title><filename>cvsignore</filename></title></info>
+<para>
+Tudo que constar neste arquivo não será gravado (commit) no cvs.  Referências
+globais podem ser usadas para especificar estes arquivos.  Veja a info page do
+cvs para detalhes sober seu formato.
+</para>
+<para>
+Pode também ser especificado através de arquivos
+<filename>.cvsignore</filename>.
+</para>
+</section>
+
+<section xml:id="s-cvs-cvsroot-checkoutlist"><info><title><filename>checkoutlist</filename></title></info>
+<para>
+Especifica os arquivos que deseja manter sobre o controle do CVS que se
+encontram em <filename>CVSROOT</filename>.  Se adicionar um script adicional,
+ou qualquer outro arquivo no diretório <filename>CVSROOT</filename> ele deverá
+constar neste arquivo.
+</para>
+</section>
+
+<section xml:id="s-cvs-cvsroot-history"><info><title><filename>history</filename></title></info>
+<para>
+É usado para registrar detalhes do comando <emphasis>history</emphasis> do CVS.
+</para>
+</section>
+
+</section>
+

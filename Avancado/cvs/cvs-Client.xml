@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="s-cvs-c"><info><title>Clientes de CVS</title></info>
+<para>
+Esta seção traz alguns programas cliente em modo texto/gráfico e visualizadores
+de repositórios via web.  Eles facilitam o trabalho de controle de revisão por
+parte de iniciantes e flexibilidade para pessoas mais experientes, além de ter
+uma interface de navegação disponível para todos os interessados em fazer
+pesquisas no repositório.
+</para>
+<section xml:id="s-cvs-c-cvs"><info><title>cvs</title></info>
+<para>
+Este é o cliente <command>Unix</command> padrão, bastante poderoso e que opera
+em modo texto.  As explicações neste capítulo do guia assumem este cliente de
+<command>cvs</command>, então as explicações sobre sua utilização se encontra
+em <xref linkend="s-cvs-p"/> e os parâmetros de linha de comando em <xref linkend="s-cvs-opcoescmd"/>
+</para>
+<para>
+É <emphasis role="strong">altamente</emphasis> recomendável a leitura caso
+deseje utilizar um cliente de <command>cvs</command> gráfico, pois os conceitos
+são os mesmos.
+</para>
+</section>
+
+<section xml:id="s-cvs-c-gcvs"><info><title>gcvs - Linux</title></info>
+<para>
+Este é um cliente CVS em GTK+Python para <command>Linux</command> que interage
+externamente com o cliente <command>cvs</command> externo, todas as opções do
+cvs estão disponíveis através de checkboxes nas telas de comando, incluindo
+suporte a compactação, visualizador gráfico da árvore de releases, histórico,
+diffs, etc.
+</para>
+<para>
+Sua instalação é bastante fácil, instale o programa com <literal>apt-get
+install gcvs</literal> e execute o programa através do menu do sistema ou do
+terminal.  Utilize os seguintes procedimentos para configurar e utilizar o
+programa:
+</para>
+<orderedlist numeration="arabic">
+<listitem>
+<para>
+Defina o repositório <replaceable>CVSROOT</replaceable> através do menu
+<emphasis>Admin</emphasis>/<emphasis>Preferences</emphasis>.  Selecione o
+método de acesso, entre com o login, servidor e repositório.
+</para>
+<screen>
+Exemplo: :pserver:anonymous@servidor:/var/lib/cvs
+</screen>
+<para>
+O formato deve ser <emphasis>EXATAMENTE</emphasis> como o usado na variável
+CVSROOT no shell, incluindo os ":".  Caso tenha erros de login, verifique o
+valor de <replaceable>CVSROOT</replaceable> cuidadosamente antes de contactar o
+administrador de sistemas!
+</para>
+</listitem>
+<listitem>
+<para>
+Agora faça o login no sistema em: <emphasis>Admin</emphasis>,
+<emphasis>Login</emphasis>.  Note que o status de todas as operações do
+<command>cvs</command> são mostradas na janela de status que fica na parte
+inferior da tela.
+</para>
+</listitem>
+<listitem>
+<para>
+Crie um diretório que será usado para armazenar os fontes baixados do CVS, por
+exemplo: <literal>mkdir ~/projetos</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Acesse o menu <emphasis>Create</emphasis>, <emphasis>Checkout Module</emphasis>
+para baixar o projeto do CVS para sua máquina local.  Ele irá te pedir o nome
+de diretório para onde o código fonte do servidor CVS será baixado.  Digite
+<filename>~/projetos</filename> ou outro diretório que foi criado no passo
+anterior.
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis> Não utilize o nome
+<filename>"cvs"</filename> para o diretório local, pois o
+<command>gcvs</command> oculta automaticamente pois os arquivos administrativos
+de controle ficam neste local.
+</para>
+</listitem>
+<listitem>
+<para>
+Altere o diretório padrão do <command>gcvs</command> para o diretório onde
+baixou o projeto (<filename>~/projetos</filename>)clicando no botão "set" no
+topo da coluna esquerda do <command>gcvs</command>.
+</para>
+</listitem>
+<listitem>
+<para>
+Para enviar um arquivo modificado de volta ao servidor, selecione os arquivos,
+clique em <emphasis>Modify</emphasis>, <emphasis>Commit Selection</emphasis>,
+entre com a mensagem descrevendo as alterações e clique em "OK".
+</para>
+<para>
+Note que os arquivos modificados serão identificados por um ícone vermelho e
+seu status será "Mod.  File" (arquivo modificado).
+</para>
+</listitem>
+<listitem>
+<para>
+Se desejar adicionar um novo projeto no CVS, entre em
+<emphasis>Create</emphasis>, <emphasis>Import Module</emphasis>, entre no
+diretório que deseja adicionar como um projeto no servidor de CVS.  Após isto
+será feita uma checagem e mostrada uma tela de possíveis problemas que podem
+ocorrer durante a importação do novo projeto.
+</para>
+<para>
+Na próxima tela, digite o nome do módulo e caminho no servidor remoto no
+primeiro campo, no segundo campo a mensagem de log para adicionar o projeto ao
+servidor.  Em "Vendor tag" especifique o nome do projeto e sua versão logo
+abaixo.  Clique em "OK" e aguarde a transferência dos arquivos para o servidor.
+</para>
+<para>
+Para maiores detalhes sobre a criação de novos projetos no servidor de CVS,
+veja <xref linkend="s-cvs-p-import"/>.
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis> Você deverá ter permissão de gravação
+para criar um novo projeto no servidor CVS.
+</para>
+</listitem>
+<listitem>
+<para>
+A partir de agora você poderá explorar as funções do programa e fazer uso das
+funções habituais do CVS.  Todas as funções de operação e opções extras do CVS
+estão disponíveis na interface gráfica, basta se acostumar com sua utilização.
+</para>
+</listitem>
+</orderedlist>
+<para>
+Após isto, explore bastante as opções do programa.  Todas as funcionalidades do
+CVS estão organizadas entre os menus do programa.  Caso não entenda bem as
+funções do programa, leia atentamente <xref linkend="s-cvs-p"/> e também não
+deixe de consultar detalhes na info page do cvs.
+</para>
+</section>
+
+<section xml:id="s-cvs-c-wincvs"><info><title>WinCVS - Windows</title></info>
+<para>
+Este é um cliente CVS em Python para <command>Windows</command> equivalente ao
+<command>gcvs</command> para <command>Linux</command>.  Suas funcionalidades e
+recomendações são idênticas aos do <command>gcvs</command>.  Este cliente pode
+ser baixado de: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://telia.dl.sourceforge.net/sourceforge/cvsgui/WinCvs13b13.zip">http://telia.dl.sourceforge.net/sourceforge/cvsgui/WinCvs13b13.zip</link>
+e o Python para Windows de <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://starship.python.net/crew/mhammond/downloads/win32all-153.exe">http://starship.python.net/crew/mhammond/downloads/win32all-153.exe</link>.
+</para>
+<para>
+Para sua utilização, as explicações em <xref linkend="s-cvs-c-gcvs"/> são
+totalmente válidas.
+</para>
+</section>
+
+<section xml:id="s-cvs-c-maccvs"><info><title>MacCVS - Macintosh (PPC)</title></info>
+<para>
+Idêntico ao <command>gcvs</command>, pode ser baixado de <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://telia.dl.sourceforge.net/sourceforge/cvsgui/MacCvsX-3.3a1-1.dmg">http://telia.dl.sourceforge.net/sourceforge/cvsgui/MacCvsX-3.3a1-1.dmg</link>.
+</para>
+</section>
+
+<section xml:id="s-cvs-c-viewcvs"><info><title>viewcvs</title></info>
+<para>
+Este é um visualizador de repositórios CVS via web, ele precisa apenas de um
+servidor web instalado com suporte a CGI.  Para instalar, execute o comando
+<literal>apt-get install <systemitem role="package">viewcvs</systemitem></literal> e siga os passos para configurar
+programa.  Para adequar melhor o <command>viewcvs</command> ao seu sistema,
+edite o arquivo <filename>/etc/viewcvs/viewcvs.conf</filename>.
+</para>
+<para>
+O <command>viewcvs</command> possui uma interface que se parece com a navegação
+de um diretório de ftp, recursos como a extração de diffs coloridos entre
+versões de um arquivo selecionado, visualização de commits (com data, log do
+commit, usuário, etc.), classificação da listagem exibida.
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis>Leve em consideração as implicações de
+segurança impostas por aplicativos cgi sendo executados em seu sistema.  Veja
+<xref linkend="apache"/> para entender melhor o assunto.
+</para>
+</section>
+
+</section>
+

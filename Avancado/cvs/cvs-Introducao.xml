@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="s-cvs-intro"><info><title>Introdução ao CVS</title></info>
+<para>
+O CVS (<emphasis>Concurrent Version Software</emphasis>) permite que se
+organizem grupos de trabalho para desenvolvimento de projetos colaborativos.
+Um projeto pode ser desde um programa em C, documentação em equipe, etc.  O uso
+do CVS é recomendado para qualquer desenvolvimento de projeto que tenha vários
+envolvidos trabalhando ao mesmo tempo.
+</para>
+<para>
+Para cada mudança feita no programa, é pedido uma descrição dos trabalhos
+realizados e o sistema registra todas as modificações realizadas ao longo do
+desenvolvimento, permitindo voltar a uma versão anterior ou ver as mudanças
+entre elas facilmente.
+</para>
+<para>
+Imagine uma situação onde você está desenvolvendo um programa de computador e
+após a última modificação ele para de funcionar.  Com o CVS é possível ver o
+que foi modificado e voltar até a versão que estava funcionando para consertar
+o problema.  No desenvolvimento de documentação e tradução o CVS também
+desempenha um papel importante, pois com ele o tradutor pode ver o que foi
+modificado entre a versão do documento original que ele usou para tradução e
+uma versão recente, traduzindo apenas as diferenças.
+</para>
+<para>
+Uma seção de <command>cvs</command> é feita de modo interativo através do
+comando <command>cvs</command>.  Por exemplo:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>logar no sistema</literal> - cvs login
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>baixar um projeto</literal> - cvs checkout projeto
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Cada comando do <command>cvs</command> será explicado em detalhes no decorrer
+deste capítulo.
+</para>
+<section xml:id="s-cvs-versao"><info><title>Versão</title></info>
+<para>
+A versão do <command>CVS</command> documentada no guia é a
+<emphasis>1.11.1</emphasis>.  As explicações aqui certamente serão compatíveis
+com versões posteriores deste programa.
+</para>
+</section>
+
+<section xml:id="s-cvs-historia"><info><title>História</title></info>
+<para>
+O <command>CVS</command> é uma substituição do sistema RCS (Revision Control
+System) ele possui mais recursos e foi criado sendo compatível com o RCS.
+</para>
+<para>
+A história do CVS (extraída de sua info page) é que ele foi iniciado a partir
+de um conjunto de scripts shell escritos por <emphasis>Dick Grune</emphasis>
+que foram postados ao grupo de notícias <literal>comp.sources.unix</literal> no
+volume 6 de Dezembro de 1986.  Na versão atual não estão mais presentes shell
+scripts porque muitos dos conflitos de resolução de algorítmos vem deles.
+</para>
+<para>
+Em Abril de 1989, <emphasis>Brian Berliner</emphasis> fez o design e programou
+o CVS.  Mais tarde, Jeff Polk ajudou Brian com o design do módulo CVS.
+</para>
+</section>
+
+<section xml:id="s-cvs-contribuindo"><info><title>Contribuindo com o CVS</title></info>
+<para>
+Através da lista de discussão <literal>info-cvs</literal>.  Para se inscrever
+envie uma mensagem com o subject "subscribe" para
+<literal>info-cvs-request@gnu.org</literal>.  Outra alternativa é através do
+grupo de noticias (newsgroup) da Usenet
+<literal>comp.software.config-mgm</literal>.
+</para>
+</section>
+
+<section xml:id="s-cvs-caracteristicas"><info><title>Características</title></info>
+<para>
+Abaixo uma lista de características que tornam o CVS útil no gerenciamento de
+trabalhos em grupo:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+Gerenciamento de projeto em equipe
+</para>
+</listitem>
+<listitem>
+<para>
+Log de todas as alterações realizadas
+</para>
+</listitem>
+<listitem>
+<para>
+Lock de arquivos, permitindo que somente uma determinada pessoa modifique o
+arquivo durante o desenvolvimento do projeto.
+</para>
+</listitem>
+<listitem>
+<para>
+Histórico de todas as mudanças feitas, isto permite voltar a uma versão
+anterior em caso de problemas, e ver o que houve de errado com o código.
+</para>
+</listitem>
+<listitem>
+<para>
+Os projetos podem ser hospedados em repositórios.
+</para>
+</listitem>
+<listitem>
+<para>
+Podem ser criados diversas equipes de trabalho para cada repositórios, e
+definidos quem terá ou não acesso ao repositório individualmente.  O
+desenvolvedor <literal>gleydson</literal>, por exemplo, podem ter acesso ao
+projeto <literal>x_beta</literal> e não ter acesso a projeto
+<literal>secret_y</literal>.
+</para>
+</listitem>
+<listitem>
+<para>
+Permissões de acesso individuais de leitura/gravação.
+</para>
+</listitem>
+<listitem>
+<para>
+É possível criar um usuário com acesso anônimo sem dar uma conta no sistema.
+</para>
+</listitem>
+<listitem>
+<para>
+Pode tanto utilizar o banco de dados de contas/senhas do sistema como um banco
+de dados de autenticação do próprio CVS.
+</para>
+</listitem>
+<listitem>
+<para>
+Permite utilizar diversos "métodos" de acesso ao servidor:
+<emphasis>local</emphasis>, <emphasis>pserver</emphasis>,
+<emphasis>ext</emphasis>, etc.  Cada um destes métodos será descrito a seguir.
+</para>
+</listitem>
+<listitem>
+<para>
+Permite o acesso via ssh para usuários que já possuam conta na máquina
+servidora.  Este método garante segurança no envio da senha criptografada (veja
+<xref linkend="d-cripto-sniffer"/> para detalhes).
+</para>
+</listitem>
+<listitem>
+<para>
+Permite visualizar facilmente o que foi modificado entre duas versões de um
+arquivo.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+<emphasis role="strong">OBS</emphasis>: O CVS possui algumas limitações e
+falhas, uma delas que mais me faz falta é um suporte a protocolo pserver via
+ssh que resolveria o problema de tráfego em texto plano e gerenciamento de
+grupos com permissões diferenciadas.
+</para>
+</section>
+
+<section xml:id="s-cvs-ficha"><info><title>Ficha técnica</title></info>
+<para>
+Pacote: <systemitem role="package">cvs</systemitem>
+</para>
+<para>
+Utilitários:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>cvs</literal> - Servidor/ferramenta cliente.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cvsbug</literal> - Envia um bug sobre o CVS para a equipe de suporte.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>rcs2log</literal> - Converte arquivos de log do formato usado pelo
+<command>RCS</command> para o <command>CVS</command>.  Utilizado na migração
+desta ferramenta para o <command>CVS</command>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cvsconfig</literal> - Usado pela <command>Debian</command> para
+ativar/desativar o servidor <literal>pserver</literal>.  Pode também ser usado
+o <literal>dpkg-reconfigure cvs</literal> para desativar o servidor
+<literal>pserver</literal> e suas características.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cvs-makerepos</literal> - Script da <command>Debian</command> que lê a
+lista de repositórios de <filename>/etc/cvs-pserver.conf</filename>, cria os
+repositórios no local apropriado, corrige as permissões do diretório e adiciona
+os repositórios no servidor <literal>pserver</literal>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>cvs-pserver</literal> - Script da <command>Debian</command>
+responsável por fazer uma inicialização mais inteligente do servidor de CVS via
+<literal>pserver</literal>, leitura e processamento de repositórios, etc.
+Normalmente ele é chamado a partir do arquivo
+<filename>/etc/inetd.conf</filename>.
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="s-cvs-hwreq"><info><title>Requerimentos de Hardware</title></info>
+<para>
+Para executar o <command>CVS</command> é requerido pelo menos 3 vezes mais
+memória que o tamanho do maior arquivo usado pelo projeto (para realização de
+diffs entre as atualizações) e uma boa quantidade de espaço em disco.
+</para>
+<para>
+Na realidade os requerimentos sobre o CVS dependem muito da aplicação que será
+desenvolvida.  É recomendável que a máquina tenha memória suficiente para
+evitar o uso de swap, que degrada bastante a performance do sistema.
+</para>
+</section>
+
+<section xml:id="s-cvs-logs"><info><title>Arquivos de log criados pelo CVS</title></info>
+<para>
+Problemas na inicialização do <command>CVS</command> são registrados no arquivo
+<filename>/var/log/daemon.log</filename>.  Os logs de modificações feitas nos
+arquivos de um projeto no CVS são armazenadas no formato
+<filename>arquivo.extensão,v</filename> (é adicionado o ",v" ao final do
+arquivo para indicar que é um arquivo de controle de modificações do CVS).
+</para>
+</section>
+
+<section xml:id="s-cvs-install"><info><title>Instalação</title></info>
+<para>
+O <command>CVS</command> pode ser baixado de <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.cvshome.org/">http://www.cvshome.org/</link>.
+</para>
+<para>
+Para pacotes <command>Debian</command> basta apenas executar o comando:
+<literal>apt-get install cvs</literal> e seguir as telas de configuração para
+ter o pacote <command>CVS</command> instalado e (opcionalmente) com o servidor
+sendo executado.  Você poderá a qualquer momento reconfigurar o
+<command>CVS</command> executando: <literal>dpkg-reconfigure cvs</literal>.
+</para>
+<para>
+Uma boa documentação de referência é encontrada no pacote <systemitem role="package">cvs-doc</systemitem>.
+</para>
+</section>
+
+<section xml:id="s-cvs-rodando"><info><title>Iniciando o servidor/reiniciando/recarregando a configuração</title></info>
+<para>
+A única configuração requerida é quando o <command>CVS</command> é executado
+via <literal>pserver</literal>.  Para isto, é necessária a seguinte linha no
+arquivo <filename>/etc/inetd.conf</filename>
+</para>
+<screen>
+cvspserver      stream  tcp     nowait.200      root    /usr/sbin/tcpd /usr/sbin/cvs-pserver
+</screen>
+<para>
+Note que o parâmetro "200" indica quantas vezes o processo
+<command>CVS</command> poderá ser executado por minuto no sistema.  Caso esse
+número seja excedido, o serviço será desabilitado e será necessário reiniciar o
+servidor <command>inetd</command> com o comando <literal>killall -HUP
+inetd</literal> para reativar o servidor CVS pserver (veja <xref linkend="rede-servicos-inetd-c"/> capítulo do <command>inetd</command> para
+detalhes).  Ajuste este valor de forma adequada ao seu servidor!
+</para>
+<para>
+Veja o script <filename>cvs-pserver</filename> sendo executado no final da
+linha.  Ele foi desenvolvido para lidar de forma mais inteligente com a
+configuração do servidor CVS pserver.
+</para>
+</section>
+
+<section xml:id="s-cvs-opcoescmd"><info><title>Opções de linha de comando</title></info>
+<para>
+As seguintes opções são aceitas pelo CVS.
+</para>
+<variablelist>
+<varlistentry>
+<term>-z [num]</term>
+<listitem>
+<para>
+Utiliza o gzip para fazer a transferência compactada dos arquivos.  O valor
+especificado pode ser de 0 a 9, quanto maior o número maior o nível de
+compactação e uso da CPU.
+</para>
+<para>
+Exemplo: <literal>cvs -z 3 checkout teste</literal>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-q</term>
+<listitem>
+<para>
+Oculta mensagens sobre recursão de diretório durante os comandos do CVS.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-d [repositório]</term>
+<listitem>
+<para>
+Permite especificar o repositório através da linha de comando.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-e [editor]</term>
+<listitem>
+<para>
+Define qual é o editor de textos usado para registrar o texto de commits.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-n</term>
+<listitem>
+<para>
+Executa o cvs em modo "simulação" não modificando qualquer arquivo do
+repositório.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-t</term>
+<listitem>
+<para>
+Mostra mensagens mostrando o processo de execução de comandos do CVS.  É
+bastante útil para aprendizado do cvs usado junto com a opção
+<emphasis>-n</emphasis>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-r</term>
+<listitem>
+<para>
+Torna os novos arquivos criados somente para leitura.  É a mesma coisa que
+especificar a variável <replaceable>CVSREAD</replaceable>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-w</term>
+<listitem>
+<para>
+Torna os novos arquivos criados leitura/gravação que é o padrão.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-x</term>
+<listitem>
+<para>
+Utiliza criptografia para a transferência dos arquivos quando é utilizado em
+conjunto com o <command>Kerberos</command>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+Você pode obter detalhes sobre opções sobre um comando em especial do CVS
+(<emphasis>commit</emphasis>, <emphasis>checkout</emphasis>, etc) digitando:
+<literal>cvs comando --help</literal>.  Veja <xref linkend="s-cvs-p"/> para
+exemplos sobre cada uma delas.
+</para>
+</section>
+
+</section>
+

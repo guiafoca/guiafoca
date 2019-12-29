@@ -1,0 +1,78 @@
+<!-- Converted by db4-upgrade version 1.0 -->
+
+<section xml:id="s-samba-wrkgrp"><info><title>Configuração em <literal>Grupo de Trabalho</literal></title></info>
+<para>
+A configuração <emphasis>grupo de trabalho</emphasis> é o método mais simples
+para compartilhar recursos em uma rede e também é indicado quando se possui uma
+rede pequena (até 30 máquinas) pois o gerenciamento não é tão complicado.
+Acima deste número, é recomendada a utilização da configuração de domínio para
+definição de políticas de acesso mais precisas pelo administrador e para manter
+o controle sobre os recursos da rede (veja <xref linkend="s-samba-dom-config"/>).
+</para>
+<para>
+A configuração do nível de acesso por grupo de trabalho tem como
+características principais essa simplicidade na configuração e o controle de
+acesso aos recursos sendo feito pela máquina local através de senhas e controle
+de IP.
+</para>
+<para>
+Quanto ao método de senhas, você pode optar tanto por usar senhas
+criptografadas (<xref linkend="s-samba-senhas-crypto"/>) ou senhas em texto
+limpo (<xref linkend="s-samba-senhas-plano"/>).
+</para>
+<para>
+Veja abaixo um exemplo explicado de configuração do <command>SAMBA</command>
+para grupo de trabalho:
+</para>
+<screen>
+ [global]
+  netbios name = servidor
+  workgroup = focalinux
+  security = user
+  obey pam restrictions = yes
+  encrypt passwords = no
+  os level = 30
+  guest account = nobody
+  server string = servidor da rede
+  local master = true
+  domain master = false
+
+ [homes]
+  comment = Diretórios de usuários
+  create mask= 0700
+  directory mask = 0700
+  browseable = no
+  
+ [tmp]
+  path = /tmp
+  comment = Diretório temporário do sistema
+  read only = yes
+  valid users = gleydson
+  public = no
+</screen>
+<para>
+Agora, verifique se existem erros na configuração com o comando
+<command>testparm</command> (<xref linkend="s-samba-s-testparm"/>) e reinicie o
+<command>SAMBA</command> (<xref linkend="s-samba-rodando"/>).  O nome do grupo
+de trabalho que a máquina pertencerá é <literal>focalinux</literal>
+(<literal>workgroup = focalinux</literal>).  O nível de acesso usado neste
+exemplo é de usuário (<literal>security = user</literal>), para mais detalhes
+sobre este método, veja <xref linkend="s-samba-s-global-nivelauth"/>.  O
+parâmetro <literal>local master</literal> foi definido para
+<literal>yes</literal> para o <command>SAMBA</command> tentar ser o navegador
+local do grupo de trabalho (veja <xref linkend="s-samba-dom-lmbrowser"/>).
+</para>
+<para>
+Para testar se o servidor está funcionando, digite o seguinte comando:
+</para>
+<screen>
+smbclient -L servidor -U usuario
+</screen>
+<para>
+Digite a senha de usuário quando solicitado.  O comando deverá listar os
+recuros da máquina, indicando que a configuração está funcionando corretamente.
+Se você é paranóico e está preocupado com a segurança da máquina, recomendo ler
+a <xref linkend="s-samba-a"/>.
+</para>
+</section>
+

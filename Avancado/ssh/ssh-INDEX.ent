@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!ENTITY s-ssh1 SYSTEM "ssh-Introducao.xml">
+<!ENTITY s-ssh2 SYSTEM "ssh-clientes.xml">
+<!ENTITY s-ssh3 SYSTEM "ssh-servidor.xml">

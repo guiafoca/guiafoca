@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+<!ENTITY s-samba1 SYSTEM "SAMBA-Introducao.xml">
+<!ENTITY s-samba2 SYSTEM "SAMBA-Servidor.xml">
+<!ENTITY s-samba3 SYSTEM "SAMBA-Arquivo.xml">
+<!ENTITY s-samba4 SYSTEM "SAMBA-Workgroup.xml">
+<!ENTITY s-samba5 SYSTEM "SAMBA-NameResolv.xml">
+<!ENTITY s-samba6 SYSTEM "SAMBA-Timeserver.xml">
+<!ENTITY s-samba7 SYSTEM "SAMBA-Dominio.xml">
+<!ENTITY s-samba8 SYSTEM "SAMBA-senhas.xml">
+<!ENTITY s-samba9 SYSTEM "SAMBA-uidmap.xml">
+<!ENTITY s-samba10 SYSTEM "SAMBA-impressao.xml">
+<!ENTITY s-samba11 SYSTEM "SAMBA-acesso.xml">
+<!ENTITY s-samba12 SYSTEM "SAMBA-Cliente.xml">
+<!ENTITY s-samba13 SYSTEM "SAMBA-exemplo.xml">
+-->
+<chapter userlevel='avanc' xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="s-samba"><info><title>SAMBA</title></info>
+    <para>
+    Este capítulo descreve a configuração, utilização, aplicação, integração de
+    redes <command>Windows</command> e <command>Linux</command> através do
+    <command>SAMBA</command>.  Entre as explicações de cada opção, são passados
+    detalhes importantes relacionados com seu funcionamento, performance e impactos
+    de segurança sobre o servidor como um todo.
+    </para>
+    <para>
+    Uma seção foi especialmente separada para os mais paranóicos (como eu)
+    conhecerem, combinar e aplicar as restrições de forma mais adequada a
+    configuração da máquina.
+    </para>
+
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SAMBA-Introducao.xml" /> 
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SAMBA-Servidor.xml" /> 
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SAMBA-Arquivo.xml" /> 
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SAMBA-Workgroup.xml" /> 
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SAMBA-NameResolv.xml" /> 
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SAMBA-Timeserver.xml" /> 
+<!-- <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SAMBA-Dominio.xml" />  -->
+<!-- <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SAMBA-senhas.xml" />  -->
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SAMBA-uidmap.xml" /> 
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SAMBA-impressao.xml" /> 
+<!-- <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SAMBA-acesso.xml" />  -->
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SAMBA-Cliente.xml" /> 
+<!-- <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SAMBA-exemplo.xml" />  -->
+</chapter>
+    

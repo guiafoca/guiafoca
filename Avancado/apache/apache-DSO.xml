@@ -1,0 +1,387 @@
+<!-- Converted by db4-upgrade version 1.0 -->
+
+<section xml:id="s-apache-dso"><info><title>Módulos DSO</title></info>
+<para>
+Os módulos <emphasis>DSO</emphasis> permitem adicionar/remover características
+do <command>Apache</command> sem necessidade de recompilar todo o servidor web,
+assim interrompendo o serviço para a atualização dos arquivos.  Módulos de
+programas terceiros também podem ser compilados e adicionado sem problemas
+através deste recurso.
+</para>
+<para>
+Os módulos são carregados para a memória no momento que o
+<command>apache</command> é iniciado através da diretiva
+<emphasis>LoadModule</emphasis> no arquivo de configuração.  Dessa forma, toda
+vez que um novo módulo for adicionado, removido ou alterado, será necessário
+reiniciar o servidor <command>apache</command>.  A sintaxe da linha para
+carregar módulos <filename>.so</filename> é a seguinte:
+</para>
+<para>
+<literal>LoadModule [<emphasis>nome_do_modulo</emphasis>]
+[<emphasis>caminho_do_arquivo_so</emphasis>]</literal>
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>nome_do_modulo</emphasis></term>
+<listitem>
+<para>
+Especifica o nome do módulo, não deve conter espaços.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>caminho_do_arquivo_so</emphasis></term>
+<listitem>
+<para>
+Define a localização do arquivo que contém o módulo especificado.  Por padrão
+os módulos estão localizados em <filename>/usr/lib/apache/[versão]</filename>
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+A posição em que os módulos aparecem podem ter influência em seu funcionamento,
+alguns requerem que sejam especificados antes de outros módulos para
+funcionarem corretamente (como o módulo <emphasis>php3_module</emphasis>, que
+deve ser carregado antes de qualquer módulo de controle de CGI's).  Leia a
+documentação específica sobe o módulo em caso de dúvidas, os módulos que
+acompanham o <command>Apache</command> são documentados em detalhes no manual
+do <command>Apache</command>.
+</para>
+<para>
+Para usar uma característica/diretiva/opção do <command>Apache</command> que
+dependa de um certo módulo, obviamente você deverá carregar o módulo
+correspondente (em caso de dúvidas, leia a documentação sobre o módulo).  Veja
+a <xref linkend="s-apache-exemplo-httpd"/> para exemplos do uso da diretiva
+<emphasis>LoadModule</emphasis>.
+</para>
+<para>
+Por exemplo, se você quiser utilizar as diretivas de autorização
+(<emphasis>allow, deny, order</emphasis>) deverá ter o módulo
+<emphasis>mod_access</emphasis> carregado, para usar as diretivas de
+autorização (<emphasis>authname, authuserfile, authtype, etc</emphasis>) deverá
+ter o módulo <emphasis>mod_auth</emphasis> carregado.  Mais detalhes podem ser
+encontrados em <xref linkend="s-apache-acesso-restr-autor"/>.  <emphasis role="strong">OBS1</emphasis>: O suporte a <emphasis>DSO</emphasis> atualmente
+só está disponível para plataforma <command>UNIX</command> e seus derivados,
+como o <command>Linux</command>.
+</para>
+<para>
+Também é possível ativar certas diretivas verificando se o módulo
+correspondente estiver ou não carregado através da diretiva
+<emphasis>IfModule</emphasis>:
+</para>
+<screen>
+&lt;IfModule mod_userdir.c&gt;
+ UserDir disabled root
+ UserDir public_html
+&lt;/IfModule&gt;
+</screen>
+<para>
+Nas linhas acima, as diretivas <emphasis>UserDir</emphasis> somente serão
+executadas se o módulo <emphasis>mod_userdir.c</emphasis> estiver carregado
+através da diretiva <emphasis>LoadModule</emphasis>.
+</para>
+<para>
+Segue abaixo uma lista de módulos padrões que acompanham do
+<command>Apache</command>, os módulos marcados com "*" são ativados por padrão:
+</para>
+<variablelist>
+<varlistentry>
+<term>Criação de Ambiente</term>
+<listitem>
+<itemizedlist>
+<listitem>
+<para>
+<literal>* mod_env</literal> - Ajusta variáveis de ambiente para scripts
+CGI/SSI
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>* mod_setenvif</literal> - Ajusta variáveis de ambiente de acordo com
+cabeçalhos http
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mod_unique_id</literal> - Gera identificadores únicos para requisições
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Decisão de tipo de conteúdo de arquivos</term>
+<listitem>
+<itemizedlist>
+<listitem>
+<para>
+<literal>* mod_mime</literal> - Determinação de tipo/encodificação do conteúdo
+(configurado)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mod_mime_magic</literal> - Determinação de tipo/encodificação do
+conteúdo (automático)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>* mod_negotiation</literal> - Seleção de conteúdo baseado nos
+cabeçalhos "HTTP Accept*"
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Mapeamento de URL</term>
+<listitem>
+<itemizedlist>
+<listitem>
+<para>
+<literal>* mod_alias</literal> - Tradução e redirecionamento de URL simples
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mod_rewrite</literal> - Tradução e redirecionamento de URL avançado
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>* mod_userdir</literal> - Seleção de diretórios de recursos por nome
+de usuário
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mod_speling</literal> - Correção de URLs digitadas incorretamente
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mod_vhost_alias</literal> - Suporte para virtual hosts dinamicamente
+configurados em massa.
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Manipulação de Diretórios</term>
+<listitem>
+<itemizedlist>
+<listitem>
+<para>
+<literal>* mod_dir</literal> - Manipulação de Diretório e arquivo padrão de
+diretório
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>* mod_autoindex</literal> - Geração de índice automático de diretório
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Controle de Acesso</term>
+<listitem>
+<itemizedlist>
+<listitem>
+<para>
+<literal>* mod_access</literal> - Controle de acesso por autorização (usuário,
+endereço, rede)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>* mod_auth</literal> - Autenticação HTTP básica (usuário, senha)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mod_auth_dbm</literal> - Autenticação HTTP básica (através de arquivos
+NDBM do Unix)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mod_auth_db</literal> - Autenticação HTTP básica (através de arquivos
+Berkeley-DB)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mod_auth_anon</literal> - Autenticação HTTP básica para usuários no
+estilo anônimo
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mod_auth_digest</literal> - Autenticação MD5
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mod_digest</literal> - Autenticação HTTP Digest
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Respostas HTTP</term>
+<listitem>
+<itemizedlist>
+<listitem>
+<para>
+<literal>mod_headers</literal> - Cabeçalhos de respostas HTTP (configurado)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mod_cern_meta</literal> - Cabeçalhos de respostas HTTP (arquivos no
+estilo CERN)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mod_expires</literal> - Respostas de expiração HTTP
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>* mod_asis</literal> - Respostas HTTP em formato simples (raw)
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Scripts</term>
+<listitem>
+<itemizedlist>
+<listitem>
+<para>
+<literal>* mod_include</literal> - Suporte a Includes no lado do servidor (SSI
+- Server Sides Includes)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>* mod_cgi</literal> - Suporte a CGI (Common Gateway Interface)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>* mod_actions</literal> - Mapeia scripts CGI para funcionarem como
+'handlers' internos.
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Manipuladores de conteúdo Interno</term>
+<listitem>
+<itemizedlist>
+<listitem>
+<para>
+<literal>* mod_status</literal> - Visualiza status do servidor em tempo de
+execução.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mod_info</literal> - Visualiza sumário de configuração do servidor.
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Registros de Requisições</term>
+<listitem>
+<itemizedlist>
+<listitem>
+<para>
+<literal>* mod_log_config</literal> - Registro de requisições personalizáveis
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mod_log_agent</literal> - Registro especializado do User-Agent HTTP
+(depreciado)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mod_log_refer</literal> - Registro especializado do Referrer HTTP
+(depreciado)
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mod_usertrack</literal> - Registro de cliques de usuários através de
+Cookies HTTP
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Outros</term>
+<listitem>
+<itemizedlist>
+<listitem>
+<para>
+<literal>* mod_imap</literal> - Suporte a Mapeamento de Imagem no lado do
+servidor.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mod_proxy</literal> - Módulo de Cache do Proxy (HTTP, HTTPS, FTP).
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>mod_so</literal> - Inicialização do Dynamic Shared Object (DSO)
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Experimental</term>
+<listitem>
+<itemizedlist>
+<listitem>
+<para>
+<literal>mod_mmap_static</literal> - Cache de páginas freqüentemente servidas
+via mmap()
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Desenvolvimento</term>
+<listitem>
+<itemizedlist>
+<listitem>
+<para>
+<literal>mod_example</literal> - Demonstração da API do Apache (somente
+desenvolvedores)
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+

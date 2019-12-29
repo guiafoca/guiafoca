@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="fw-iptables-nat"><info><title>A tabela nat (Network Address Translation) - fazendo nat</title></info>
+<para>
+A tabela <emphasis>nat</emphasis> serve para controlar a tradução dos endereços
+que atravessam o código de roteamento da máquina <command>Linux</command>.
+Existem 3 chains na tabela <emphasis>nat</emphasis>:
+<emphasis>PREROUTING</emphasis>, <emphasis>OUTPUT</emphasis> e
+<emphasis>POSTROUTING</emphasis> (veja <xref linkend="fw-iptables-tabelas"/>
+para maiores detalhes).
+</para>
+<para>
+A tradução de endereços tem inúmeras utilidades, uma delas é o Masquerading,
+onde máquinas de uma rede interna podem acessar a Internet através de uma
+máquina <command>Linux</command>, redirecionamento de porta, proxy
+transparente, etc.  Esta seção abordará os tipos de NAT, exemplos de como criar
+rapidamente uma conexão IP masquerading e entender como a tradução de endereços
+funciona no <command>iptables</command>.
+</para>
+<para>
+Se sua intenção é ligar sua rede a Internet existem duas opções:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+Você possui uma conexão que lhe oferece um endereço IP dinâmico (a cada conexão
+é dado um endereço IP - como uma conexão PPP) então o IP masquerading é o que
+precisa (veja <xref linkend="fw-iptables-nat-fastmasquerade"/> ou <xref linkend="fw-iptables-nat-snat-masquerade"/>).
+</para>
+</listitem>
+<listitem>
+<para>
+Você tem uma conexão que lhe oferece um endereço IP permanente (ADSL, por
+exemplo) então o SNAT é o que precisa (veja <xref linkend="fw-iptables-nat-snat"/>).
+</para>
+</listitem>
+</itemizedlist>
+
+<section xml:id="fw-iptables-nat-N"><info><title>Criando um novo chain na tabela NAT</title></info>
+<para>
+O procedimento para criação de um novo chain nesta tabela é o mesmo descrito em
+<xref linkend="fw-iptables-chains-N"/> será necessário somente especificar a
+tabela nat (-t nat) para que o novo chain não seja criado na tabela padrão (-t
+filter).
+</para>
+<screen>
+iptables -t nat -N intra-inter
+</screen>
+<para>
+Que criará o chain chamado <emphasis>intra-inter</emphasis> na tabela
+<emphasis>nat</emphasis>.  Para inserir regras neste chain será necessário
+especificar a opção "-t nat".
+</para>
+</section>
+
+<section xml:id="fw-iptables-nat-fastmasquerade"><info><title>Fazendo IP masquerading (para os apressados)</title></info>
+<para>
+Você precisará de um kernel com suporte ao <command>iptables</command> (veja
+<xref linkend="fw-iptables-supkernel"/> e <command>ip_forward</command> e então
+digitar os dois comandos abaixo para habilitar o masquerading para todas as
+máquinas da rede 192.168.1.*:
+</para>
+<screen>
+iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -j MASQUERADE
+echo "1" &gt;/proc/sys/net/ipv4/ip_forward
+</screen>
+<para>
+A configuração do servidor <command>Linux</command> está completa, agora os
+clientes da rede precisarão ser configurados para usar o endereço IP do
+servidor <command>Linux</command> como gateway.  É recomendável instalar um
+servidor proxy e DNS na máquina <command>Linux</command> para acelerar o
+desempenho das requisições/resolução de nomes das máquinas em rede.  A
+utilização de bits TOS também pode trazer um grande aumento de velocidade para
+os diferentes serviços da rede (veja <xref linkend="fw-iptables-mangle-TOS"/>).
+</para>
+</section>
+
+<section xml:id="fw-iptables-nat-snat"><info><title>Fazendo SNAT</title></info>
+<para>
+SNAT (source nat - nat no endereço de origem) consiste em modificar o endereço
+de origem das máquinas clientes antes dos pacotes serem enviados.  A máquina
+roteadora é inteligente o bastante para lembrar dos pacotes modificados e
+reescrever os endereços assim que obter a resposta da máquina de destino,
+direcionando os pacotes ao destino correto.  Toda operação de SNAT é feita no
+chain <emphasis>POSTROUTING</emphasis>.
+</para>
+<para>
+É permitido especificar endereços de origem/destino, protocolos, portas de
+origem/destino, interface de entrada/saída (dependendo do chain), alvos, etc.
+É desnecessário especificar fragmentos na tabela nat, pois eles serão
+remontados antes de entrar no código de roteamento.
+</para>
+<para>
+O SNAT é a solução quando você tem acesso a internet através de um único IP e
+deseja fazer que sua rede tenha acesso a Internet através da máquina
+<command>Linux</command>.  Nenhuma máquina da Internet poderá ter acesso direto
+as máquinas de sua rede interna via SNAT.
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis> A observação acima não leva em conta o
+controle de acesso externo configurado na máquina que estiver configurando o
+<command>iptables</command>, uma configuração mau realizada pode expor sua
+máquina a acessos externos indesejados e comprometer sua rede interna caso
+alguém consiga acesso direto ao servidor.
+</para>
+<para>
+É necessário especificar SNAT como alvo (-j SNAT) quando desejar que as
+máquinas de sua rede interna tenha acesso a Internet através do IP fixo da
+máquina <command>Linux</command> (para conexões intermitentes como PPP, veja
+<xref linkend="fw-iptables-nat-snat-masquerade"/>).  O parâmetro <literal>--to
+IP:portas</literal> deve ser usado após o alvo SNAT.  Ele serve para
+especificar um endereço IP, faixa de endereços e opcionalmente uma porta ou
+faixa de portas que será substituída.  Toda a operação de SNAT é realizada
+através do chain POSTROUTING:
+</para>
+<screen>
+# Modifica o endereço IP dos pacotes vindos da máquina 192.168.1.2 da rede interna 
+# que tem como destino a interface eth1 para 200.200.217.40 (que é o nosso endereço 
+# IP da interface ligada a Internet). 
+iptables -t nat -A POSTROUTING -s 192.168.1.2 -o eth1 -j SNAT --to 200.200.217.40
+</screen>
+<para>
+Os pacotes indo para a Internet (nossa conexão é feita via eth1, nossa
+interface externa) vindo do endereço 192.168.1.2, são substituídos por
+200.241.200.40 e enviados para fora.  Quando a resposta a requisição é
+retornada, a máquina com <command>iptables</command> recebe os pacotes e faz a
+operação inversa, modificando o endereço 200.241.200.40 novamente para
+192.168.1.2 e enviando a resposta a máquina de nossa rede interna.  Após
+definir suas regras de NAT, execute o comando <literal>echo "1"
+&gt;/proc/sys/net/ipv4/ip_forward</literal> para habilitar o suporte a
+redirecionamento de pacotes no kernel.
+</para>
+<para>
+Também é possível especificar faixas de endereços e portas que serão
+substituídas:
+</para>
+<screen>
+iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -o eth0 -j SNAT --to 200.200.217.40-200.200.217.50
+</screen>
+<para>
+Modifica o endereço IP de origem de todas as máquinas da rede 192.168.1.0/24
+que tem o destino a interface eth0 para 200.241.200.40 a 200.241.200.50.  O
+endereço IP selecionado é escolhido de acordo com o último IP alocado.
+</para>
+<screen>
+iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -o eth0 -j SNAT --to 200.200.217.40-200.200.217.50:1-1023
+</screen>
+<para>
+Idêntico ao anterior, mas faz somente substituições na faixa de portas de
+origem de 1 a 1023.
+</para>
+<screen>
+iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -o eth0 -j SNAT --to 200.200.217.40-200.200.217.50 --to 200.200.217.70-200.200.217.73
+</screen>
+<para>
+Faz o mapeamento para a faixa de portas 200.200.217.40 a 200.200.217.50 e de
+200.200.217.70 a 200.200.217.73.
+</para>
+<para>
+<emphasis role="strong">OBS1:</emphasis> Se por algum motivo não for possível
+mapear uma conexão NAT, ela será derrubada.
+</para>
+<para>
+<emphasis role="strong">OBS2:</emphasis> Tenha certeza que as respostas podem
+chegar até a máquina que fez o NAT.  Se estiver fazendo SNAT em um endereço
+livre em sua rede (como 200.200.217.73).
+</para>
+<para>
+<emphasis role="strong">OBS3:</emphasis> Como notou acima, o SNAT é usado
+quando temos uma conexão externa com um ou mais IP's fixos.  O Masquerading é
+uma forma especial de SNAT usada para funcionar em conexões que recebem
+endereços IP aleatórios (PPP).
+</para>
+<para>
+<emphasis role="strong">OBS4:</emphasis> Não se esqueça de habilitar o
+redirecionamento de pacotes após fazer suas regra de NAT com o comando:
+<literal>echo "1" &gt;/proc/sys/net/ipv4/ip_forward</literal>, caso contrário o
+redirecionamento de pacotes não funcionará.
+</para>
+<section xml:id="fw-iptables-nat-snat-masquerade"><info><title>Fazendo IP Masquerading</title></info>
+<para>
+O IP Masquerading é um tipo especial de SNAT usado para conectar a sua rede
+interna a internet quando você recebe um IP dinâmico de seu provedor (como em
+conexões ppp).  Todas as operações de IP Masquerading são realizadas no chain
+<emphasis>POSTROUTING</emphasis>.  Se você tem um IP fixo, deve ler <xref linkend="fw-iptables-nat-snat"/>.
+</para>
+<para>
+Para fazer IP Masquerading de uma máquina com o IP 192.168.1.2 para ter acesso
+a Internet, use o comando:
+</para>
+<screen>
+iptables -t nat -A POSTROUTING -s 192.168.1.2/32 -o ppp0 -j MASQUERADE
+</screen>
+<para>
+A diferença é que o alvo é <emphasis>-j MASQUERADE</emphasis>.  O comando acima
+faz IP Masquerading de todo o tráfego de 192.168.1.2 indo para a interface
+ppp0: O endereço IP dos pacotes vindos de 192.168.1.2 são substituídos pelo IP
+oferecido pelo seu provedor de acesso no momento da conexão, quando a resposta
+é retornada a operação inversa é realizada para garantir que a resposta chegue
+ao destino.  Nenhuma máquina da internet poderá ter acesso direto a sua máquina
+conectava via Masquerading.
+</para>
+<para>
+Para fazer o IP Masquerading de todas as máquinas da rede 192.168.1.*:
+</para>
+<screen>
+iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -o ppp0 -j MASQUERADE
+</screen>
+<para>
+Após definir a regra para fazer Masquerading (SNAT), execute o comando
+<literal>echo "1" &gt;/proc/sys/net/ipv4/ip_forward</literal> para habilitar o
+suporte a redirecionamento de pacotes no kernel.
+</para>
+</section>
+
+</section>
+
+<section xml:id="fw-iptables-nat-dnat"><info><title>Fazendo DNAT</title></info>
+<para>
+DNAT (Destination nat - nat no endereço de destino) consiste em modificar o
+endereço de destino das máquinas clientes.  O destination nat é muito usado
+para fazer redirecionamento de pacotes, proxyes transparentes e balanceamento
+de carga.
+</para>
+<para>
+Toda operação de DNAT é feita no chain <emphasis>PREROUTING</emphasis>.  As
+demais opções e observações do SNAT são também válidas para DNAT (com exceção
+que somente é permitido especificar a interface de origem no chain PREROUTING).
+</para>
+<screen>
+# Modifica o endereço IP destino dos pacotes de 200.200.217.40 vindo da interface eth0
+# para 192.168.1.2. 
+iptables -t nat -A PREROUTING -s 200.200.217.40 -i eth0 -j DNAT --to 192.168.1.2
+</screen>
+<para>
+Também é possível especificar faixas de endereços e portas que serão
+substituídas no DNAT:
+</para>
+<screen>
+iptables -t nat -A PREROUTING -i eth0 -s 192.168.1.0/24 -j DNAT --to 200.200.217.40-200.200.217.50
+</screen>
+<para>
+Modifica o endereço IP de destino do tráfego vindos da interface 192.168.1.0/24
+para um IP de 200.241.200.40 a 200.241.200.50.  Este é um excelente método para
+fazer o balanceamento de carga entre servidores.  O endereço IP selecionado é
+escolhido de acordo com o último IP alocado.
+</para>
+<screen>
+iptables -t nat -A PREROUTING -i eth0 -s 192.168.1.0/24 -j DNAT --to 200.200.217.40-200.200.217.50:1024:5000
+</screen>
+<para>
+Idêntico ao anterior, mas faz somente substituições na faixa de portas de
+destino de 1024 a 5000.  A operação acima é a mesma realizada pelo
+<command>ipmasqadm</command> dos kernels da série 2.2.
+</para>
+<para>
+<emphasis role="strong">OBS1:</emphasis> Se por algum motivo não for possível
+mapear uma conexão NAT, ela será derrubada.
+</para>
+<para>
+<emphasis role="strong">OBS2:</emphasis> Não se esqueça de conferir se o
+<filename>ip_forward</filename> está ajustado para <literal>1</literal>:
+<literal>echo "1" &gt;/proc/sys/net/ipv4/ip_forward</literal>.
+</para>
+<section xml:id="fw-iptables-nat-dnat-redir"><info><title>Redirecionamento de portas</title></info>
+<para>
+O redirecionamento de portas permite a você repassar conexões com destino a uma
+porta para outra porta na mesma máquina.  O alvo <emphasis>REDIRECT</emphasis>
+é usado para fazer esta operação, junto com o argumento
+<emphasis>--to-port</emphasis> especificando a porta que será redirecionada.
+Este é o método DNAT específico para se para fazer proxy transparente (para
+redirecionamento de endereços/portas, veja <xref linkend="fw-iptables-nat-dnat"/>).  Todas as operações de redirecionamento de
+portas é realizada no chain <emphasis>PREROUTING</emphasis> e
+<emphasis>OUTPUT</emphasis> da tabela <emphasis>nat</emphasis>.
+</para>
+<screen>
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 81
+</screen>
+<para>
+Redireciona as conexões indo para a porta 80 para a porta 81 (rodando
+<command>squid</command>) no firewall.
+</para>
+<para>
+<emphasis role="strong">ATENÇÃO:</emphasis> O <command>squid</command> possui
+suporte a proxy transparente, e poderá atender as requisições acima da regra
+acima.
+</para>
+</section>
+
+</section>
+
+<section xml:id="fw-iptables-nat-monitorando"><info><title>Monitorando conexões feitas na tabela nat</title></info>
+<para>
+Use o comando <literal>cat /proc/net/ip_conntrack</literal> para listar todas
+as conexões atuais tratadas pelo módulo nat.
+</para>
+</section>
+
+</section>
+

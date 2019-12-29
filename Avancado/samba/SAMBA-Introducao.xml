@@ -1,0 +1,419 @@
+<!-- Converted by db4-upgrade version 1.0 -->
+
+<section xml:id="s-samba-intro"><info><title>Introdução</title></info>
+<para>
+O <command>SAMBA</command> é um servidor e conjunto de ferramentas que permite
+que máquinas <command>Linux</command> e <command>Windows</command> se
+comuniquem entre si, compartilhando serviços (arquivos, diretório, impressão)
+através do protocolo SMB (Server Message Block)/CIFS (Common Internet File
+System), equivalentes a implementação NetBEUI no Windows.  O
+<command>SAMBA</command> é uma das soluções em ambiente UNIX capaz de
+interligar redes heterogênea.
+</para>
+<para>
+Na lógica da rede Windows o <command>NetBEUI</command> é o protocolo e o
+<command>NETBIOS</command> define a forma com que os dados são transportados.
+Não é correto dizer que o <command>NetBIOS</command> é o protocolo, como muitos
+fazem.
+</para>
+<para>
+Com o <command>SAMBA</command>, é possível construir domínios completos, fazer
+controle de acesso a nível de usuário, compartilhamento, montar um servidor
+WINS, servidor de domínio, impressão, etc.  Na maioria dos casos o controle de
+acesso e exibição de diretórios no samba é mais minucioso e personalizável que
+no próprio Windows.
+</para>
+<para>
+O guia Foca GNU/Linux documentará como instalar e ter as máquinas Windows de
+diferentes versões (<command>Win3.11, Win95, Win95OSR/2, Win98, XP, WinNT,
+W2K</command>) acessando e comunicando-se entre si em uma rede NetBEUI.  Estas
+explicações lhe poderão ser indispensáveis para solucionar problemas, até mesmo
+se você for um técnico especialista em redes Windows e não tem ainda planos de
+implementar um servidor SAMBA em sua rede.
+</para>
+<section xml:id="s-samba-versao"><info><title>Versão documentada</title></info>
+<para>
+A versão do servidor samba documentada neste capítulo do guia é a 2.2.
+</para>
+</section>
+
+<section xml:id="s-samba-historia"><info><title>História</title></info>
+<para>
+Andrew Tridgell - Desenvolveu o samba porque precisava montar um volume Unix em
+sua máquina DOS.  Inicialmente ele utilizava o NFS, mas um aplicativo precisava
+de suporte NetBIOS.  Andrew então utilizou um método muito avançado usado por
+administradores para detectar problemas: escreveu um sniffer de pacotes que
+atendesse aos requerimentos para ter uma única função: analisar e auxilia-lo a
+interpretar todo o tráfego NetBIOS da rede.
+</para>
+<para>
+Ele escreveu o primeiro código que fez o servidor Unix aparecer como um
+servidor de arquivos Windows para sua máquina DOS que foi publicado mais ou
+menos em meados de 1992 quando também começou a receber patches.  Satisfeito
+com o funcionamento de seu trabalho, deixou seu trabalho de lado por quase 2
+anos.  Um dia, ele resolveu testar a máquina Windows de sua esposa com sua
+máquina Linux, e ficou maravilhado com o funcionamento do programa que criou e
+veio a descobrir que o protocolo era documentado e resolveu levar este trabalho
+a fundo melhorando e implementando novas funções.
+</para>
+<para>
+O SAMBA atualmente é um servidor fundamental para a migração de pequenos grupos
+de trabalho à grandes domínios com clientes mixtos.  Nenhum servidor de rede
+NetBEUI conhecido proporciona tanta flexibilidade de acesso a clientes como o
+SAMBA para compartilhamento de arquivos/impressão em rede.  As funções de
+segurança que foram adicionadas ao SAMBA hoje garantem um controle mais
+rigoroso que a própria implementação usada no Windows NT, incluindo o serviços
+de diretórios, mapeamento entre IDs de usuários Windows com Linux, PDC, perfis
+móveis e uma coisa que inclusive apresenta problemas no Windows:
+compatibilidade total entre as diferentes implementações de versões do Windows.
+</para>
+<para>
+Sua configuração pode receber ajustes finos pelo administrador nos soquetes TCP
+de transmissão, recepção, cache por compartilhamento, configurações físicas que
+afetam a performance de rede.  Seu código vem sendo melhorado constantemente
+por hackers, obtendo excelente performance com hardwares mais obsoletos.  O
+guia tem por objetivo abordar estes temas e permitir que você configure seu
+sistema com uma performance batendo a mesma alcançada em um servidor NT
+dedicado.
+</para>
+</section>
+
+<section xml:id="s-samba-contribuindo"><info><title>Contribuindo</title></info>
+<para>
+Para contribuir com o desenvolvimento do samba, veja os detalhes na página:
+http://us1.samba.org/samba/devel/
+</para>
+<para>
+Caso encontre um bug no programa, ele poderá ser relatado se inscrevendo na
+lista de discussão samba-technical-request@lists.samba.org.  Após responder a
+mensagem de confirmação, envie um relato detalhado do problema encontrado no
+programa.
+</para>
+</section>
+
+<section xml:id="s-samba-caracteristicas"><info><title>Características</title></info>
+<para>
+Segue abaixo algumas funcionalidades importantes de aplicações do samba e seu
+conjunto de ferramentas:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+Compartilhamento de arquivos entre máquinas <command>Windows</command> e
+<command>Linux</command> ou de máquinas <command>Linux</command> (sendo o
+servidor SAMBA) com outro SO que tenha um cliente NetBEUI (Macintosh, OS/2,
+LanManager, etc).
+</para>
+</listitem>
+<listitem>
+<para>
+Montar um servidor de compartilhamento de impressão no <command>Linux</command>
+que receberá a impressão de outras máquinas <command>Windows</command> da rede.
+</para>
+</listitem>
+<listitem>
+<para>
+Controle de acesso aos recursos compartilhados no servidor através de diversos
+métodos (compartilhamento, usuário, domínio, servidor).
+</para>
+</listitem>
+<listitem>
+<para>
+Controle de acesso leitura/gravação por compartilhamento.
+</para>
+</listitem>
+<listitem>
+<para>
+Controle de acesso de leitura/gravação por usuário autenticado.
+</para>
+</listitem>
+<listitem>
+<para>
+Possibilidade de definir contas de "Convidados", que podem se conectar sem
+fornecer senha.
+</para>
+</listitem>
+<listitem>
+<para>
+Possibilidade de uso do banco de dados de senha do sistema
+(<filename>/etc/passwd</filename>), autenticação usando o arquivo de dados
+criptografados do samba, LDAP, PAM, etc.
+</para>
+</listitem>
+<listitem>
+<para>
+Controle de cache e opções de tunning por compartilhamento.
+</para>
+</listitem>
+<listitem>
+<para>
+Permite ocultar o conteúdo de determinados diretórios que não quer que sejam
+exibidos ao usuário de forma fácil.
+</para>
+</listitem>
+<listitem>
+<para>
+Possui configuração bastante flexível com relação ao mapeamento de nomes DOS =&gt;
+UNIX e vice versa, página de código, acentuação, etc.
+</para>
+</listitem>
+<listitem>
+<para>
+Permite o uso de aliases na rede para identificar uma máquina com outro nome e
+simular uma rede NetBIOS virtual.
+</para>
+</listitem>
+<listitem>
+<para>
+O <command>samba</command> possibilita ajuste fino nas configurações de
+transmissão e recepção dos pacotes TCP/IP, como forma de garantir a melhor
+performance possível de acordo com suas instalações.
+</para>
+</listitem>
+<listitem>
+<para>
+Permite o uso do gerenciador de mensagem do Linux (<command>Linpopup</command>)
+para a troca de mensagens com estações <command>Windows</command> via
+<literal>NetBios</literal>.  Com a flexibilidade do <command>samba</command> é
+possível até redirecionar a mensagem recebida via e-mail ou pager.
+</para>
+</listitem>
+<listitem>
+<para>
+Possui suporte completo a servidor WINS (também chamado de
+<emphasis>NBNS</emphasis> - <emphasis>NetBios Name Service</emphasis>) de rede.
+A configuração é bastante fácil.
+</para>
+</listitem>
+<listitem>
+<para>
+Faz auditoria tanto dos acessos a pesquisa de nomes na rede como acesso a
+compartilhamentos.  Entre os detalhes salvos estão a data de acesso, IP de
+origem, etc.
+</para>
+</listitem>
+<listitem>
+<para>
+Suporte completo a controlador de domínio Windows (PDC).
+</para>
+</listitem>
+<listitem>
+<para>
+Suporte quase completo a backup do controlador de domínio (BDC).  Até a versão
+2.2 do <command>samba</command>, o suporte a BDC é parcial.  Este código
+provavelmente estará estável até a versão 3.0.
+</para>
+</listitem>
+<listitem>
+<para>
+Permite montar unidades mapeadas de sistemas <command>Windows</command> ou
+outros servidores <command>Linux</command> como um diretório no
+<command>Linux</command>.
+</para>
+</listitem>
+<listitem>
+<para>
+Permite a configuração de recursos simples através de programas de configuração
+gráficos, tanto via sistema, como via web.
+</para>
+</listitem>
+<listitem>
+<para>
+Permite executar comandos no acesso ao compartilhamento ou quando o acesso ao
+compartilhamento é finalizado.
+</para>
+</listitem>
+<listitem>
+<para>
+Com um pouco de conhecimento e habilidade de administração de sistemas
+<command>Linux</command>, é possível criar ambientes de auditoria e monitoração
+até monitoração de acesso a compartilhamento em tempo real.
+</para>
+</listitem>
+<listitem>
+<para>
+Entre outras possibilidades.
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="s-samba-ficha"><info><title>Ficha técnica</title></info>
+<para>
+Pacote <systemitem role="package">samba</systemitem>
+</para>
+<para>
+Outros utilitários importantes para a operação do clientes
+<command>samba</command>.
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>smbclient</literal> - Ferramenta para navegação e gerenciamento de
+arquivos, diretórios e impressoras compartilhados por servidores
+<command>Windows</command> ou <command>samba</command>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>smbfs</literal> - Pacote que possui ferramentas para o mapeamento de
+arquivos e diretórios compartilhados por servidores <command>Windows</command>
+ou <command>samba</command> em um diretório local.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>winbind</literal> - Daemon que resolve nomes de usuários e grupo
+através de um servidor NT/SAMBA e mapeia os UIDs/GIDs deste servidor como
+usuários locais.
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="s-samba-hwreq"><info><title>Requerimentos de Hardware</title></info>
+<para>
+Processador 386 ou superior, 15 MB de espaço em disco (não levando em conta os
+logs gerados e espaço para arquivos de usuários, aplicativos, etc.), 8 MB de
+memória RAM.
+</para>
+</section>
+
+<section xml:id="s-samba-logs"><info><title>Arquivos de log criados</title></info>
+<para>
+O daemon nmbd salva seus logs em /var/log/daemon.log (dependendo da diretiva de
+configuração <emphasis>syslog</emphasis> do arquivo smb.conf) e em
+<filename>/var/log/samba/log.nmbd</filename>.  Os detalhes de acesso a
+compartilhamento são gravados no arquivo
+<filename>/var/log/samba/log.smbd</filename> (que pode ser modificado de acordo
+com a diretiva <emphasis>log file</emphasis> no <filename>smb.conf</filename>,
+<xref linkend="s-samba-s-global-log"/>).
+</para>
+</section>
+
+<section xml:id="s-samba-install"><info><title>Instalação</title></info>
+<para>
+Digite <literal>apt-get install samba smbclient smbfs</literal> para instalar o
+conjunto de aplicativos samba.  O pacote <systemitem role="package">samba</systemitem> é o servidor samba e os pacotes <systemitem role="package">smbclient</systemitem> e <systemitem role="package">smbfs</systemitem> fazem parte dos aplicativos cliente.  Caso
+deseje apenas mapear compartilhamentos remotos na máquina Linux, instale
+somente os 2 últimos pacotes.
+</para>
+</section>
+
+<section xml:id="s-samba-rodando"><info><title>Iniciando o servidor/reiniciando/recarregando a configuração</title></info>
+<para>
+O servidor samba pode ser executado tanto via inetd como daemon:
+</para>
+<variablelist>
+<varlistentry>
+<term>inetd</term>
+<listitem>
+<para>
+No modo inetd, o servidor de nomes <emphasis>nmbd</emphasis> será carregado
+assim que for feita a primeira requisição de pesquisa e ficará residente na
+memória.  No caso de acesso a um compartilhamento, o <emphasis>smbd</emphasis>
+será carregado e lerá a configuração em <filename>smb.conf</filename> a cada
+acesso do cliente a um compartilhamento.  Quando o <command>samba</command>
+opera via inetd, ele não usa o controle de acesso dos arquivos
+<filename>hosts.allow</filename> e <filename>hosts.deny</filename>.  Veja <xref linkend="s-samba-a-restrip"/> e <xref linkend="s-samba-a-restrif"/> para
+detalhes de como fazer o controle de acesso.
+</para>
+<para>
+Para reiniciar o samba digite <literal>killall -HUP nmbd</literal>.  Não é
+necessário reiniciar o serviço <literal>smbd</literal>, conforme foi explicado
+acima.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>daemon</term>
+<listitem>
+<para>
+Quando opera no modo <emphasis>daemon</emphasis>, ambos os daemons
+<command>nmbd</command> e <command>smbd</command> são carregados.  No caso de
+um acesso a compartilhamento, é criado um processo filho do
+<command>smbd</command> que é finalizado assim que o compartilhamento não for
+mais usado.
+</para>
+<para>
+Para iniciar o samba em modo <literal>daemon</literal> digite:
+<literal>/etc/init.d/samba start</literal>, para interromper o samba:
+<literal>/etc/init.d/samba stop</literal> e para reiniciar:
+<literal>/etc/init.d/samba restart</literal>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+Se desejar mudar do modo <emphasis>daemon</emphasis> para
+<emphasis>inetd</emphasis> ou vice versa, edite o arquivo
+<filename>/etc/default/samba</filename> e modifique o valor da linha
+<literal>RUN_MODE=</literal> para <literal>daemons</literal> ou
+<literal>inetd</literal>.  Uma forma de fazer isso automaticamente é executando
+o <literal>dpkg-reconfigure samba</literal>.
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis> Como praticamente não existe diferença
+entre os modos de operação <emphasis>inetd</emphasis> e
+<emphasis>daemon</emphasis> para o <command>SAMBA</command>, é aconselhável que
+execute sempre que possível via <emphasis>inetd</emphasis>, pois isto garantirá
+uma disponibilidade maior do serviço caso algo aconteça com um dos processos.
+</para>
+</section>
+
+<section xml:id="s-samba-opcoescmd"><info><title>Opções de linha de comando</title></info>
+<para>
+Opções de linha de comando usadas pelo <command>nmbd</command>:
+</para>
+<variablelist>
+<varlistentry>
+<term>-H [arquivo_lmhosts]</term>
+<listitem>
+<para>
+Quando especificado, o servidor samba fará a procura de nomes primeiro neste
+arquivo e depois usando a rede.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-s [arquivo_cfg]</term>
+<listitem>
+<para>
+Especifica uma nova localização para o arquivo de configuração do samba.  Por
+padrão o <filename>/etc/samba/smb.conf</filename> é usado.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-d [num]</term>
+<listitem>
+<para>
+Especifica o nível de depuração do nmbd, que podem ir de 0 a 10.  O valor
+padrão é 0.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-l [diretório]</term>
+<listitem>
+<para>
+Especifica a localização do diretório onde o nmbd gravará o arquivo de log
+<filename>log.nmbd</filename>.  O valor padrão é
+<filename>/var/log/samba</filename>
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>-n [nomeNetBIOS]</term>
+<listitem>
+<para>
+Permite utilizar o nome NetBIOS especificado a invés do especificado no arquivo
+<filename>smb.conf</filename> para identificar o computador na rede.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+</section>
+

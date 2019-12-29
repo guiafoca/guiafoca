@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="fw-iptables-mod"><info><title>Outros módulos do iptables</title></info>
+<para>
+Os módulos do iptables são especificados com a opção <emphasis>-m
+módulo</emphasis> ou <emphasis>--match módulo</emphasis> e permitem expandir a
+funcionalidade do firewall através de novas conferências e recursos de
+filtragem adicionais, como limitar a conferência de regras do firewall (um
+método útil de limitar ping floods, syn floods, etc).
+</para>
+<section xml:id="fw-iptables-mod-state"><info><title>Conferindo de acordo com o estado da conexão</title></info>
+<para>
+Este módulo permite especificar regras de acordo com o estado da conexão do
+pacote, isto é feito através da interpretação da saída do módulo
+<filename>ip_conntrack</filename>.  O parâmetro <emphasis>--state
+OPÇÕES</emphasis> deve acompanhar este módulo.  As opções permitidas são as
+seguintes:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>NEW</literal> - Confere com pacotes que criam novas conexões
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>ESTABLISHED</literal> - Confere com conexões já estabelecidas
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>RELATED</literal> - Confere com pacotes relacionados indiretamente a
+uma conexão, como mensagens de erro icmp, etc.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>INVALID</literal> - Confere com pacotes que não puderam ser
+identificados por algum motivo.  Como respostas de conexões desconhecidas.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Caso seja necessário especificar mais de uma opções estas devem ser separadas
+por vírgulas.
+</para>
+<screen>
+iptables -A INPUT -m state --state NEW -i ppp0 -j DROP
+</screen>
+<para>
+Bloqueia qualquer tentativa de nova conexão vindo da interface ppp0.
+</para>
+<screen>
+iptables -A INPUT -m state --state NEW,INVALID -i ppp0 -j LOG
+</screen>
+<para>
+Permite registrar novas conexões e pacotes inválidos vindos da interface ppp0.
+</para>
+</section>
+
+<section xml:id="fw-iptables-mod-limit"><info><title>Limitando o número de vezes que a regra confere</title></info>
+<para>
+A opção <emphasis>-m limit</emphasis> permite especificar o número de vezes que
+uma regra conferirá quando todas as outras condições forem satisfeitas.  O
+número padrão de conferência é de 3 por hora, a não ser que seja modificado
+através dos argumentos aceitos pelo <emphasis>limit</emphasis>:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>--limit num/tempo</literal> - Permite especificar a taxa de
+conferências do limit.  O parâmetro <emphasis>num</emphasis> especifica um
+número e <emphasis>tempo</emphasis> pode ser
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>s</literal> - Segundo
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>m</literal> - Minuto
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>h</literal> - Hora
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>d</literal> - Dia
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Assim uma regra como <literal>iptables -A INPUT -m limit --limit 5/m -j
+ACCEPT</literal> permitirá que a regra acima confira apenas 5 vezes por minuto
+(<emphasis>--limit 2/s</emphasis>).  Este limite pode ser facilmente adaptado
+para uma regra de log que confere constantemente não causar uma avalanche em
+seus logs.  O valor padrão é 3/h.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>--limit-burst num</literal> - Especifica o número inicial máximo de
+pacotes que irão conferir, este número é aumentado por 1 a cada vez que o
+parâmetro <emphasis>--limit</emphasis> acima não for atingido.  O valor padrão
+é 5.
+</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section xml:id="fw-iptables-mod-limit-ping"><info><title>Proteção contra ping da morte</title></info>
+<para>
+A regra abaixo pode tomada como base para proteção contra ping flood:
+</para>
+<screen>
+iptables -t filter -A ping-chain -p icmp --icmp-type echo-request -m limit --limit 1/s -j ACCEPT
+iptables -t filter -A ping-chain -j DROP
+</screen>
+<para>
+A regra acima limita em 1 vez por segundo (--limit 1/s) a passagem de pings
+(echo requests) para a máquina <command>Linux</command>.
+</para>
+<screen>
+iptables -t filter -A ping-chain -i ppp0 -p icmp --icmp-type echo-reply -m limit --limit 1/s -j RETURN
+iptables -t filter -A ping-chain -j DROP
+</screen>
+<para>
+Limita respostas a pings (echo reply) vindos da interface ppp0 (-i ppp0) a 1
+por segundo.
+</para>
+<para>
+<emphasis role="strong">ATENÇÃO:</emphasis> O exemplo acima é somente para a
+criação de suas próprias regras com limitações, caso um pacote não confira ele
+será bloqueado pela próxima regra.  Se uma regra como esta for colocada no
+chain INPUT sem modificações, ela não terá o efeito desejado, podendo colocar
+em risco a sua instalação pela falsa impressão de segurança.  Portanto, é
+recomendável sempre testar as modificações para ter certeza que elas tem
+efeito.
+</para>
+</section>
+
+<section xml:id="fw-iptables-mod-limit-synflood"><info><title>Proteção contra syn flood</title></info>
+<para>
+A regra abaixo é uma boa proteção para os ataques syn floods:
+</para>
+<screen>
+iptables -t filter -A syn-chain -p tcp --syn -m limit --limit 2/s -j ACCEPT
+iptables -t filter -A syn-chain -j DROP
+</screen>
+<para>
+Esta regra limita o atendimento de requisições de conexões a 2 por segundo.
+Outra forma de aumentar a segurança contra syn-floods é através do próprio
+kernel ativando a opção "TCP Synflood" na compilação e depois executando:
+<literal>echo "1" &gt;/proc/sys/net/ipv4/tcp_synflood</literal>.  No entanto,
+utilize estas opções com cautela em servidores que possuem um grande número de
+acessos para não ter problemas que afetem seu clientes.
+</para>
+<para>
+<emphasis role="strong">ATENÇÃO:</emphasis> Os exemplos acima devem são somente
+exemplos para criação de suas próprias regras com limitações, caso um pacote
+não confira com a regra ele será bloqueado pela próxima regra.  Se uma regra
+como esta for colocada no chain INPUT sem modificações, ela não terá o efeito
+desejado, podendo colocar em risco a sua instalação pela falsa impressão de
+segurança.  Portanto, é recomendável sempre testar as modificações para ter
+certeza que elas tem efeito.
+</para>
+</section>
+
+<section xml:id="fw-iptables-outras-ipspoof"><info><title>Proteção contra IP spoofing</title></info>
+<para>
+A especificação de endereços de origem/destino junto com a interface de rede
+pode ser usado como um detector de ataques spoofing.  A lógica é que todos os
+endereços que NUNCA devem vir da interface X devem ser negados imediatamente.
+As regras abaixo são colocadas no inicio do chain INPUT para detectar tais
+ataques:
+</para>
+<screen>
+iptables -A INPUT -s 192.168.1.0/24 -i ! eth0 -j DROP
+iptables -A INPUT ! -s 192.168.1.0/24 -i eth0 -j DROP
+</screen>
+<para>
+A primeira regra diz para bloquear todos os endereços da faixa de rede
+192.168.1.* que NÃO vem da interface eth0, a segunda regra diz para bloquear
+todos os endereços que não sejam 192.168.1.* vindos da interface eth0.  O
+símbolo "!"  serve para especificar exceções (veja <xref linkend="fw-iptables-outras-excessoes"/>.  O kernel do <command>Linux</command>
+automaticamente bloqueia a passagem de pacotes que dizem ser de 127.0.0.1 e não
+está vindo da interface loopback.
+</para>
+<para>
+O método preferido para controlar o ip spoofing é através do código de
+roteamento do kernel (a não ser que esteja usando algum tipo de roteamento de
+origem assimétrico necessário por alguns programas especiais):
+</para>
+<screen>
+for i in /proc/sys/net/ipv4/conf/*/rp_filter; do
+ echo 1 &gt;$i
+done
+</screen>
+<para>
+Desta forma qualquer endereço dizendo ser 192.168.1.5 vindo de
+<filename>ppp0</filename> será imediatamente rejeitado.  Uma checagem adicional
+contra IP spoofing pode ser feita no arquivo
+<filename>/etc/host.conf</filename> (veja <xref linkend="rede-dns-a-hostconf"/>).
+</para>
+</section>
+
+<section xml:id="fw-iptables-mod-multiport"><info><title>Especificando múltiplas portas de origem/destino</title></info>
+<para>
+O módulo <filename>multiport</filename> permite que seja especificado múltiplas
+portas para um alvo.  Podem ser especificadas até 15 portas em um único
+parâmetro e basta que uma porta confira para que a regra entre em ação, pois a
+comparação é feita usando condições "or".  O parâmetro
+<filename>multiport</filename> deve ser acompanhado de um dos argumentos
+abaixo:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>--source-port [porta1, porta2...]</literal> - Faz a regra conferir se
+a porta de origem estiver presente entre as portas especificadas.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>--destination-port [porta1, porta2...]</literal> - Faz a regra
+conferir se a porta de destino estiver presente entre as portas especificadas.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>--port [porta1, porta2...]</literal> - Faz a regra conferir caso a
+porta de origem ou destino esteja presente no parâmetro.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Este módulo pode eliminar muitas regras de firewall que fazem o mesmo
+tratamento de pacotes para diversas portas diferentes.
+</para>
+<screen>
+iptables -A INPUT -p tcp -i ppp0 -m multiport --destination-port 21,23,25,80,110,113,6667 -j DROP
+</screen>
+<para>
+Bloqueia todos os pacotes vindo de ppp0 para as portas 21 (ftp), 23 (telnet),
+25 (smtp), 80 (www), 110 (pop3), 113 (ident), 6667 (irc).
+</para>
+</section>
+
+<section xml:id="fw-iptables-mod-mac"><info><title>Especificando o endereço MAC da interface</title></info>
+<para>
+O módulo <filename>mac</filename> serve para conferir com o endereço Ethernet
+dos pacotes de origem.  Somente faz sentido se usado nos chains de PREROUTING
+(da tabela nat) ou INPUT (da tabela filter).  Aceita como argumento a opção
+<emphasis>--mac-source endereço</emphasis>.  O símbolo "!"  pode ser usado para
+especificar uma exceção.
+</para>
+<screen>
+iptables -t filter -A INPUT -m mac --mac-source 00:80:AD:B2:60:0B -j DROP
+</screen>
+<para>
+Confere com a máquina com endereço ethernet igual a
+<literal>00:80:AD:B2:60:0B</literal>.
+</para>
+</section>
+
+<section xml:id="fw-iptables-mod-owner"><info><title>Conferindo com quem criou o pacote</title></info>
+<para>
+Este módulo confere com o usuário que iniciou a conexão.  É somente válido no
+chain <emphasis>OUTPUT</emphasis> da tabela filter.  Os seguintes argumentos
+são válidas para este módulo:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>--uid-owner UID</literal> - Confere se o pacote foi criado por um
+processo com o UID especificado.  Até o momento somente UID numéricos são
+aceitos.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>--gid-owner GID</literal> - Confere se o pacote foi criado por um
+usuário pertencente ao grupo GID.  Até o momento somente GID numéricos são
+aceitos.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>--pid-owner PID</literal> - Confere se o pacote foi criado por um
+processo com o PID especificado.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>--sid-owner ID</literal> - Confere se o pacote foi criado por um
+processo no grupo de seção especificado.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+<emphasis role="strong">OBS:</emphasis> - Lembre-se que pacotes que não possuem
+detalhes suficientes de cabeçalho nunca conferirão!
+</para>
+<screen>
+iptables -A OUTPUT -m owner --gid-owner 100 -p udp -j DROP
+</screen>
+<para>
+Rejeita um conexões indo para portas UDP de pacotes criados pelo usuários
+pertencentes ao grupo 100.
+</para>
+</section>
+
+<section xml:id="fw-iptables-mod-string"><info><title>Conferindo com o conteúdo do pacote</title></info>
+<para>
+O módulo <filename>string</filename> do <command>iptables</command> permite a
+inspeção de conteúdo de um pacote e tomar uma ação se determinado tipo de
+tráfego for encontrado em um pacote.  Esta técnica pode ser usada tanto para
+segurança como para economia de banda dentro da rede.  Esta opção *NÃO* torna o
+iptables como um firewall proxy, pois o proxy tem a habilidade de inspecionar o
+conteúdo, protocolo, comandos do pacote e decidir se o seu conteúdo é nocivo ou
+não.  O firewall em nível de pacotes fazendo inspeção de conteúdo, chega a ser
+3 a 10 vezes mais rápido do que um proxy, assim seu uso deve ser analisado
+dependendo do tráfego que circula pelo link e da segurança dos dados que
+trafegam através dele.
+</para>
+<para>
+Uma boa prática é aliar esta opção a um IDS externo usando o alvo
+<emphasis>QUEUE</emphasis> e deixando o trabalho de espeção de conteúdo para
+ele.  Um exemplo de restrição direta é o bloqueio do envio de qualquer
+informação confidencial sigilosa para fora da rede interna (número de contas,
+tudo que conferir com CPF, CGC, endereços de e-mail, memorandos, etc).  De
+qualquer forma, analise o tráfego de sua rede antes de querer implementar
+qualquer solução baseada neste método sob o risco de afetar tráfego legítimo.
+</para>
+<para>
+Outra utilidade eficiente é a diminuição de tráfego, pois podemos barrar
+programas que sobrecarregam o link em uma rede com muitos usuários como, por
+exemplo, usando o <command>Kazaa</command> ou qualquer outro programa para
+cópia de arquivos via Internet.  Veja alguns exemplos:
+</para>
+<screen>
+# Bloqueia qualquer tentativa de acesso ao programa Kazaa
+iptables -A INPUT -m string --string "X-Kazaa" -j DROP
+
+# Não permite que dados confidenciais sejam enviados para fora da empresa
+# e registra o ocorrido.
+iptables -A OUTPUT -m string --string "conta" -j LOG --log-prefix "ALERTA: dados confidencial "
+iptables -A OUTPUT -m string --string "conta" -j DROP
+
+# Somente permite a passagem de pacotes que não contém ".exe" em seu conteúdo
+iptables -A INPUT -m string --string ! ".exe" -j ACCEPT
+</screen>
+</section>
+
+<section xml:id="fw-iptables-mod-ttl"><info><title>Conferindo com o tempo de vida do pacote</title></info>
+<para>
+O módulo <filename>ttl</filename> pode ser usado junto com as seguintes opções
+para conferir com o tempo de vida (TTL) de um pacote:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>--ttl-eq [num]</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>--ttl-lt [num]</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>--ttl-gq [num]</literal>
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Veja alguns exemplos:
+</para>
+<screen>
+# Confere com todos os pacotes que tem o TTL maior que 100
+iptables -A INPUT -m ttl --ttl-gt 100 -j LOG --log-prefix "TTL alto"
+
+# Confere com todos os pacotes que tem o TTL igual a 1
+iptables -A INPUT -m ttl --ttl-eq 1 -j DROP
+</screen>
+<para>
+<emphasis role="strong">OBS:</emphasis> Tenha um especial cuidado durante a
+programação de regras que usem TTL, como elas estão especialmente associadas
+com o estado da comunicação estabelecida entre as duas pontas e o tipo de
+protocolo, cuidados especiais devem ser tomados para que seu firewall não
+manipule de forma incorreta tráfego válido.
+</para>
+</section>
+
+<section xml:id="fw-iptables-mod-rpc"><info><title>Conferindo com números RPC</title></info>
+<para>
+O módulo <filename>rpc</filename> permite um controle especial sobre o tráfego
+RPC que chega até a sua máquina.  Um uso útil é restringir a chamada a
+determinados números RPC e permitir outros (por exemplo, permitindo somente o
+serviço <emphasis>keyserv</emphasis> e bloqueando outros como o
+<emphasis>ypserv</emphasis> ou <emphasis>portmapper</emphasis>).  As seguintes
+opções podem ser usadas com o módulo <filename>nfs</filename>:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>--rpcs [procedimentos]</literal> - Confere com a lista de chamadas RPC
+especificadas.  Mais de um procedimento RPC pode ser especificado como
+<literal>nome</literal> ou <literal>número</literal> separando-os com vírgulas.
+Um arquivo útil que contém esta lista é o <filename>/etc/rpc</filename>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>--strict</literal> - Ignora serviços RPC que não contenham a chamada
+<emphasis>get</emphasis> do portmapper.  Em situações normais, o inicio de
+qualquer solicitação RPC.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Veja alguns exemplos:
+</para>
+<screen>
+# Para conferir com todas as chamadas RPC referentes a conexões iniciadas
+# para o portmapper
+iptables -A INPUT -m rpc --rpcs portmapper --strict -j DROP
+
+# Para permitir que somente as chamadas para status e statmon sejam
+# aceitas
+iptables -A INPUT -m rpc --rpcs 100023,100024 -j ACCEPT
+</screen>
+</section>
+
+<section xml:id="fw-iptables-mod-pkttype"><info><title>Conferindo com tipo de pacote</title></info>
+<para>
+O módulo <filename>pkttype</filename> permite identificar um pacote do tipo
+<emphasis>unicast</emphasis> (direcionado a você),
+<emphasis>broadcast</emphasis> (direcionado a uma determinada rede, definida
+pela netmask) ou <emphasis>multicast</emphasis> (destinado a grupos de redes) e
+desta forma realizar ações em cima destes.  O tipo de pacote é identificado
+logo após a opção <emphasis>--pkt-type</emphasis>.  Veja alguns exemplos:
+</para>
+<screen>
+# Bloqueia a passagem de pacotes multicast de uma rede para outra
+iptables -A FORWARD -i eth0 -o eth0 -m pkttype --pkt-type multicast -j DROP 
+
+# Como deve ter notado, é possível fazer a associação com diversas especificações
+# de módulos, bastando apenas especificar uma opção "-m" para cada módulo
+# adicional:
+# Permite a passagem de pacotes broadcast de uma rede para outra com
+# limitação de 5/s.
+iptables -A FORWARD -i eth0 -o eth0 -m pkttype --pkt-type broadcast -m limit --limit 5/s -j ACCEPT
+</screen>
+</section>
+
+<section xml:id="fw-iptables-mod-length"><info><title>Conferindo com o tamanho do pacote</title></info>
+<para>
+O tamanho do pacote pode ser usado como condição de filtragem através do módulo
+<filename>length</filename>.  O tamanho do pacote é especificado através da
+opção <emphasis>--length</emphasis> e o argumento segue a mesma sintaxe da
+especificação de portas no <command>iptables</command> sendo separados por
+<emphasis>:</emphasis>.  Veja alguns exemplos:
+</para>
+<screen>
+# Bloqueia qualquer pacote ICMP maior que 30Kb
+iptables -A INPUT -i eth0 -m length --length 30000: -j DROP
+
+# Bloqueia qualquer pacote com o tamanho entre 20 e 2000 bytes
+iptables -A INPUT -i eth0 -m length --length 20:2000 -j DROP
+</screen>
+</section>
+
+</section>
+

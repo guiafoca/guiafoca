@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="s-cvs-d"><info><title>Servidor de CVS - configurando métodos de acesso ao repositório</title></info>
+<para>
+O CVS é uma aplicação cliente/servidor, possuindo diversas maneiras de fazer o
+acesso seu repositório (veja <xref linkend="s-cvs-p-repos"/> repositórios).
+Estes métodos são os seguintes:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+local (<xref linkend="s-cvs-d-metodos-local"/>).
+</para>
+</listitem>
+<listitem>
+<para>
+ext (<xref linkend="s-cvs-d-metodos-ext"/>).
+</para>
+</listitem>
+<listitem>
+<para>
+pserver (<xref linkend="s-cvs-d-metodos-pserver"/>).
+</para>
+</listitem>
+<listitem>
+<para>
+fork (<xref linkend="s-cvs-d-metodos-fork"/>).
+</para>
+</listitem>
+<listitem>
+<para>
+GSSAPI (<xref linkend="s-cvs-d-metodos-gssapi"/>).
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Eles são explicados em detalhes nas sub-seções a seguir.
+</para>
+<section xml:id="s-cvs-d-metodos-local"><info><title>local</title></info>
+<para>
+Acessa o diretório do repositório diretamente no disco local.  A vantagem deste
+método é que não é requerido nem nome nem senha para acesso (você precisa
+apenas ter permissões para acesso aos arquivos que deseja trabalhar) e também
+não é preciso nenhuma conexão de rede.
+</para>
+<para>
+Este método é ideal para trabalhar na máquina local ou com os arquivos
+administrativos do CVS existentes no diretório <filename>CVSROOT</filename> do
+repositório.  É muito útil também para configurar outros métodos de acesso,
+como o <literal>pserver</literal>.
+</para>
+<para>
+Para criar seu repositório, veja <xref linkend="s-cvs-p-mkrepos"/>.
+</para>
+<section xml:id="s-cvs-d-metodos-local-c"><info><title>Configurando o método local</title></info>
+<para>
+Para utilizar o método de acesso local, basta definir a variável
+<replaceable>CVSROOT</replaceable> da seguinte forma (assumindo que o
+repositório esteja instalado em <filename>/var/lib/cvs</filename>):
+</para>
+<screen>
+export CVSROOT=/var/lib/cvs
+
+ou 
+
+export CVSROOT=local:/var/lib/cvs
+</screen>
+<para>
+Depois disso, basta utilizar os comandos normais do <command>cvs</command> sem
+precisar se autenticar no sistema.  Veja os detalhes de utilização dos comandos
+de CVS após o login na seção <xref linkend="s-cvs-c"/>.
+</para>
+</section>
+
+</section>
+
+<section xml:id="s-cvs-d-metodos-fork"><info><title>fork</title></info>
+<para>
+Este método é semelhante ao local, mas ele "simula" uma conexão de rede com o
+servidor.  É muito usado para fins de testes.
+</para>
+<section xml:id="s-cvs-d-metodos-fork-c"><info><title>Configurando o método fork</title></info>
+<para>
+Para utilizar o método de acesso <emphasis>fork</emphasis>, basta definir a
+variável <replaceable>CVSROOT</replaceable> da seguinte forma (assumindo que o
+repositório esteja instalado em <filename>/var/lib/cvs</filename>):
+</para>
+<screen>
+export CVSROOT=fork:/var/lib/cvs
+</screen>
+<para>
+Depois disso, basta utilizar os comandos normais do <command>cvs</command>, sem
+precisar se autenticar no sistema.  Veja os detalhes de utilização dos comandos
+do CVS após o login em <xref linkend="s-cvs-c"/>.
+</para>
+</section>
+
+</section>
+
+<section xml:id="s-cvs-d-metodos-ext"><info><title>ext</title></info>
+<para>
+Este método de acesso lhe permite especificar um programa externo que será
+usado para fazer uma conexão remota com o servidor <command>cvs</command>.Este
+programa é definido na variável <replaceable>CVS_RSH</replaceable> e caso não
+ela seja especificada o padrão é <command>rsh</command>.
+</para>
+<para>
+Este método requer que o usuário possua um login/senha no banco de dados de
+autenticação <filename>/etc/passwd</filename> do servidor de destino.  Suas
+permissões de acesso ao CVS (leitura/gravação) serão as mesmas definidas neste
+arquivo.
+</para>
+<para>
+O uso do acesso criptografado via <command>ssh</command> é possível definindo o
+programa <command>ssh</command> na variável <replaceable>CVS_RSH</replaceable>.
+Veja os exemplos a seguir em <xref linkend="s-cvs-d-metodos-ext-c"/>.
+</para>
+<para>
+Para criar seu repositório, veja <xref linkend="s-cvs-p-mkrepos"/>.
+</para>
+<section xml:id="s-cvs-d-metodos-ext-c"><info><title>Configurando o método ext</title></info>
+<para>
+Defina a variável <replaceable>CVSROOT</replaceable> da seguinte forma para
+utilizar este método de acesso (assumindo <filename>/var/lib/cvs</filename>
+como repositório):
+</para>
+<screen>
+export CVSROOT=:ext:conta@servidor.org.br:/var/lib/cvs
+cvs login
+</screen>
+<para>
+A "conta" é uma conta de usuário existente no servidor remoto (por exemplo,
+<literal>gleydson</literal>) seguido do nome do servidor remoto (separado por
+uma "@").  Por exemplo para acessar o servidor
+<emphasis>cvs.cipsga.org.br</emphasis> usando a conta
+<emphasis>michelle</emphasis>:
+</para>
+<screen>
+export CVSROOT=:ext:michelle@cvs.cipsga.org.br:/var/lib/cvs
+cvs checkout
+</screen>
+<para>
+OBS: A senha via método de acesso "ext" será pedida somente uma vez quando for
+necessário o primeiro acesso ao servidor remoto.  Veja os detalhes de
+utilização dos comandos de CVS após o login na seção <xref linkend="s-cvs-c"/>.
+O uso mais freqüente do <literal>ext</literal> é para conexões seguras feitas
+via <command>ssh</command>, feita da seguinte forma:
+</para>
+<screen>
+export CVS_RSH=ssh
+export CVSROOT=:ext:michelle@cvs.cipsga.org.br:/var/lib/cvs
+cvs checkout
+</screen>
+<para>
+O acesso de leitura/gravação do usuário, é definido de acordo com as permissões
+deste usuário no sistema.  Uma maneira recomendada é definir um grupo que terá
+acesso a gravação no CVS e adicionar usuários que possam fazer gravação neste
+grupo.
+</para>
+<para>
+<emphasis role="strong">OBS1:</emphasis> O acesso via <command>ssh</command>
+traz a vantagem de que as senhas trafegarão de forma segura via rede, não sendo
+facilmente capturadas por sniffers e outros programas de monitoração que possam
+estar instalados na rota entre você e o servidor.
+</para>
+<para>
+<emphasis role="strong">OBS2:</emphasis> É possível especificar a senha na
+variável <replaceable>CVSROOT</replaceable> usando a sintaxe semelhante a usada
+no ftp:
+</para>
+<screen>
+export CVSROOT=:ext:michelle:senha@cvs.cipsga.org.br:/var/lib/cvs
+</screen>
+<para>
+Entretanto isto não é recomendado, pois os processos da máquina poderão
+capturar facilmente a senha (incluindo usuários normais, caso a máquina não
+esteja com patches de restrições de acesso a processos configurada, que é o
+padrão em quase todas as distribuições de <command>Linux</command>).
+</para>
+</section>
+
+</section>
+
+<section xml:id="s-cvs-d-metodos-pserver"><info><title>pserver (password server)</title></info>
+<para>
+Este é um método de acesso remoto que utiliza um banco de dados de usuários
+senhas para acesso ao repositório.  A diferença em relação ao método de acesso
+<emphasis>ext</emphasis> é que o <emphasis>pserver</emphasis> roda através de
+um servidor próprio na porta 2401.  O acesso dos usuários (leitura/gravação) no
+repositório pode ser feita tanto através do banco de dados de usuários do
+sistema (<filename>/etc/passwd</filename>) como através de um banco de dados
+separado por repositório.
+</para>
+<para>
+A grande vantagem deste segundo método é que cada projeto poderá ter membros
+com acessos diferenciados; o membro x poderá ter acesso ao projeto
+<literal>sgml</literal> mas não ao projeto <literal>focalinux</literal>; ou o
+usuário y poderá ter acesso de gravação (para trabalhar no projeto
+<literal>focalinux</literal>) mas somente acesso de leitura ao projeto
+<literal>sgml</literal>.
+</para>
+<para>
+Este é o método de acesso preferido para a criação de usuários anônimos (uma
+vez que o administrador de um servidor que hospede muitos projetos não vai
+querer abrir um acesso anônimo via <literal>ext</literal> para todos os
+projetos).
+</para>
+<para>
+Também existe a vantagem que novos membros do projeto e tarefas administrativas
+são feitas por qualquer pessoa que possua acesso de gravação aos arquivos do
+repositório.
+</para>
+</section>
+
+<section xml:id="s-cvs-d-metodos-pserver-c"><info><title>Configurando um servidor pserver</title></info>
+<section xml:id="s-cvs-d-metodos-pserver-c-pserver"><info><title>Ativando o servidor pserver</title></info>
+<para>
+Para ativar o pserver (caso ainda não o tenha feito).  Execute o comando
+<literal>dpkg-reconfigure cvs</literal> e selecione a opção <literal>Ativar o
+servidor pserver</literal>.  Uma maneira de fazer isso automaticamente é
+modificando o arquivo <filename>/etc/inetd.conf</filename> adicionando a
+seguinte linha:
+</para>
+<screen>
+# na Debian
+cvspserver      stream  tcp     nowait.400      root    /usr/sbin/tcpd /usr/sbin/cvs-pserver
+
+# em outras Distribuições 
+cvspserver  stream  tcp  nowait  root  /usr/bin/cvs cvs -f --allow-root=/var/lib/cvs pserver
+</screen>
+<para>
+Na <command>Debian</command>, o cvs é iniciado através do script
+<filename>/usr/sbin/cvs-pserver</filename> que checa os binários e executa o
+<command>cvs</command> para todos os repositórios especificados no arquivo
+<filename>/etc/cvs-pserver.conf</filename>.
+</para>
+<para>
+Caso precise adicionar mais repositórios para acesso via
+<emphasis>pserver</emphasis> ou outro método de acesso, veja <xref linkend="s-cvs-p-mkrepos"/>.
+</para>
+<para>
+Você também poderá executar o método <literal>pserver</literal> sob um usuário
+que não seja o root, para isto, modifique a entreada referênte ao usuário.grupo
+no <filename>inetd.conf</filename> e tenha certeza que o daemon consegue fazer
+as operações de suid/sgid no diretório onde o repositório se encontra.
+</para>
+</section>
+
+<section xml:id="s-cvs-d-metodos-pserver-c-system"><info><title>Servidor pserver usando autenticação do sistema</title></info>
+<para>
+Para usar o banco de dados de autenticação do sistema
+(<filename>/etc/passwd</filename>) para autenticar os usuários remotos,
+primeiro tenha certeza que o servidor <emphasis>pserver</emphasis> está ativado
+(como descrito em <xref linkend="s-cvs-d-metodos-pserver-c-pserver"/>.
+Repetindo o exemplo anterior, a usuária <emphasis>Michelle</emphasis> deverá
+ter uma conta em <filename>/etc/passwd</filename> para fazer acesso ao cvs:
+</para>
+<screen>
+export CVSROOT=:pserver:michelle@cvs.cipsga.org.br:/var/lib/cvs
+cvs login
+</screen>
+<para>
+Será pedido a senha da usuária <literal>michelle</literal>.  Entrando com a
+senha correta, o sistema retornará para o aviso de comando.  Uma mensagem será
+mostrada caso a senha entrada seja incorreta.  Daqui em diante, o resto da
+seção CVS é normal e você terá as permissões de acesso ao repositório de acordo
+com as suas permissões de acesso naquele diretório.
+</para>
+<para>
+<emphasis role="strong">OBS1:</emphasis> A senha poderá ser passada junto com o
+login da mesma forma como o ftp.  Veja a observação em <xref linkend="s-cvs-d-metodos-ext-c"/>.
+</para>
+<para>
+<emphasis role="strong">OBS2:</emphasis> A desvantagem do método pserver padrão
+é que a seção é feita em texto plano, desta forma, alguns cuidados podem ser
+tomados para tornar o sistema um pouco mais seguro.  Um deles é dar
+<filename>/bin/false</filename> como shell de usuário (para desativar o login
+no sistema) ou usar o método de acesso descrito em <xref linkend="s-cvs-d-metodos-pserver-c-system"/> em combinação com este.  Tenha
+conciencia das influências disso se a máquina for usada para outras tarefas,
+como um servidor "pop3" por exemplo.
+</para>
+</section>
+
+<section xml:id="s-cvs-d-metodos-pserver-c-pwrepos"><info><title>Servidor pserver com autenticação própria</title></info>
+<para>
+Esta forma de acesso armazena os usuários em um banco de dados próprio, não
+requerendo a criação de contas locais no arquivo
+<filename>/etc/passwd</filename>.  Para criar um servidor deste tipo siga os
+seguintes procedimentos:
+</para>
+<orderedlist numeration="arabic">
+<listitem>
+<para>
+Exporte a variável <replaceable>CVSROOT</replaceable> apontando para o
+repositório que deseja configurar o acesso.  Como isto é uma configuração
+administrativa, assumo o método de acesso <emphasis>local</emphasis> sendo
+usada pelo usuário administrador do servidor: <literal>export
+CVSROOT=/var/lib/cvs</literal>.
+</para>
+</listitem>
+<listitem>
+<para>
+Crie um diretório para trabalhar nos arquivos administrativos do repositório:
+<literal>mkdir /tmp/repos</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Entre no diretório criado acima e execute o comando: <literal>cvs checkout
+.</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Quando terminar de baixar os arquivos, entre no subdiretório
+<filename>CVSROOT</filename>, os arquivos de configuração do repositório se
+encontram lá (para detalhes sobre cada um destes arquivos, veja <xref linkend="s-cvs-cvsroot"/>.
+</para>
+</listitem>
+<listitem>
+<para>
+Edite o arquivo <filename>config</filename> e mude a variável
+<replaceable>SystemAuth</replaceable> para <literal>no</literal>.  Isto diz ao
+servidor <emphasis>pserver</emphasis> não usar os arquivos de autenticação do
+sistema, mas a invés disso usar seu banco de dados próprio.
+</para>
+<para>
+Em algumas instalações, caso exista o arquivo <filename>passwd</filename> no
+repositório, o <emphasis>pserver</emphasis> automaticamente o utiliza ao invés
+do <filename>/etc/passwd</filename>.
+</para>
+</listitem>
+<listitem>
+<para>
+Crie um arquivo <filename>passwd</filename> no diretório
+<filename>CVSROOT</filename> o formato deste arquivo é:
+</para>
+<screen>
+usuario:senha:usuario_local
+</screen>
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term>usuario</term>
+<listitem>
+<para>
+Nome da conta de usuário que fará acesso ao CVS.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>senha</term>
+<listitem>
+<para>
+Senha que será usada pelo usuário.  Ela deverá ser criptografada usando o
+algoritmo crypt.  O comando <command>mkpasswd senha</command> pode ser usado
+para gerar a senha criptografada.  Caso este campo seja deixado em branco,
+nenhuma senha de usuário será utilizada.  O utilitário
+<command>mkpasswd</command> está presente no pacote <systemitem role="package">whois</systemitem> na <command>Debian</command>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>usuario_local</term>
+<listitem>
+<para>
+Usuário local que terá suas permissões mapeadas ao usuário do CVS.  Como a
+conta de usuário do <command>cvs</command> não existe no sistema, é necessário
+que o sistema tenha uma maneira de saber que nível de acesso este usuário terá.
+Caso não crie este usuário ou ele seja inválido, você terá erros do tipo ": no
+such user" no momento que fizer o "cvs login".
+</para>
+<para>
+Uma forma segura de se fazer isto, é criar uma conta de usuário *somente* com
+acesso aos arquivos do CVS, sem shell e senha.  Isto permitirá mapear a UID/GID
+do usuário criado com o acesso do CVS sem comprometer a segurança do sistema de
+arquivos.  Isto pode ser feito através do seguinte comando:
+</para>
+<screen>
+adduser --disabled-password --disabled-login usuario
+</screen>
+<para>
+É necessário especificar um diretório home do usuário, pois o servidor cvs
+precisa ter acesso ao arquivo <filename>/home/do/cvs/.cvsignore</filename>.
+</para>
+<para>
+<emphasis role="strong">OBS1:</emphasis> Mais uma vez: Leve sempre em conta a
+forma que os outros serviços em sua máquina estão configurados (como eles fazem
+acesso, permissões de acesso, diretórios onde gravam arquivos, são algumas
+delas) antes de escolher como um serviço novo na máquina funcionará.  Isto
+poderá modificar ou deixar vulnerável a segurança de sua instalação.
+</para>
+<para>
+<emphasis role="strong">OBS2:</emphasis> Permita que os usuários <emphasis role="strong">somente</emphasis> tenham acesso a máquina via CVS.
+</para>
+<para>
+<emphasis role="strong">OBS3:</emphasis> Certifique-se sempre que o dono/grupo
+do repositório seja <literal>root.src</literal> (ou outro grupo que tenha
+criado) adicione somente usuários de confiança no grupo
+<filename>src</filename> para criar novos projetos.
+</para>
+<para>
+Exemplos:
+</para>
+<screen>
+gleydsonm:K32dk1234k:cvsuser
+anonymous::pooruser
+</screen>
+<para>
+O usuário cvs <emphasis>gleydsonm</emphasis> quando logar no cvs, terá as
+permissões de acesso do usuário <emphasis>cvsuser</emphasis> do sistema.
+</para>
+<para>
+<emphasis role="strong">OBS1:</emphasis> Certifique-se que o usuário local
+possui permissões de gravação no diretório do CVS, caso contrário ele não
+poderá fazer <emphasis>commits</emphasis>.  Lembre-se que as permissões de
+leitura/gravação do usuário serão controladas através de arquivos do próprio
+pserver, mas também é necessária a permissão de gravação do usuário no
+repositório.  Isto poderá ser feito através de grupos de sistema e garante uma
+dupla camada de segurança.
+</para>
+<para>
+<emphasis role="strong">OBS2:</emphasis> Caso tenha preferido usar o
+<literal>pserver</literal> sob um usuário diferente de root e esteja obtendo a
+mensagem <literal>setgid failed: Operation not permitted</literal>, significa
+que o servidor CVS não consegue mudar para o grupo referente ao usado no
+diretório do repositório.  Verifique se as permissões estão adequadas e se o
+grupo do usuário CVS no <filename>/etc/passwd</filename> é o mesmo que
+especificou para acesso ao repositório.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</listitem>
+<listitem>
+<para>
+Para dar direito de leitura ao repositório, crie um arquivo chamado
+<filename>readers</filename> e adicione os nomes de usuários que terão acesso
+ao repositório (um por linha).  O nome que deverá ser usado é o nome do usuário
+de <emphasis>CVS</emphasis> e não do sistema (usuário
+<literal>gleydsonm</literal>, segundo o exemplo).
+</para>
+<para>
+Exemplo:
+</para>
+<screen>
+gleydsonm
+anonymous
+</screen>
+</listitem>
+<listitem>
+<para>
+Para dar direito de gravação ao repositório, crie um arquivo chamado
+<filename>writers</filename>.  Seu formato é idêntico ao arquivo
+<filename>readers</filename>.
+</para>
+<para>
+Exemplo:
+</para>
+<screen>
+gleydsonm
+macan
+otavio
+hmh
+kov
+</screen>
+</listitem>
+<listitem>
+<para>
+Pronto, o acesso a CVS usando um banco de dados próprio está pronto!  basta dar
+o commit nos arquivos, adicionar os arquivos <filename>readers</filename>,
+<filename>writers</filename> e <filename>passwd</filename> no repositório (veja
+<xref linkend="s-cvs-p-add"/>) para o servidor de CVS para te-lo funcionando.
+Note que em versões mais novas do CVS, não é possível transferir o arquivo
+<filename>passwd</filename> via rede, então será necessário cria-lo manualmente
+dentro do repositório do servidor.
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis> O arquivo <filename>passwd</filename>
+não é transferido pelo commit por motivos de segurança, pois ele contém senhas
+que podem ser capturadas e usada por pessoas maliciosas.  Será necessário
+transferi-lo manualmente para o repositório do servidor remoto (você terá que
+ser o usuário <emphasis>root</emphasis> ou ter permissões adequadas).  O
+recomendável é utilizar o <command>scp</command> (<xref linkend="s-ssh-cliente-scp"/>) para realizar transferências seguras.  .
+</para>
+</listitem>
+</orderedlist>
+<para>
+O método de acesso do CVS aos arquivos <filename>readers</filename> e
+<filename>writers</filename> é restritiva, portanto se um nome de usuário
+existir no arquivo <filename>readers</filename> e <filename>writers</filename>
+o que valerá será o menor nível de acesso.  Vendo os exemplos acima, os
+usuários <emphasis>gleydsonm e anonymous</emphasis> terão somente acesso a
+leitura do repositório e <emphasis>macan, otavio, hmh, kov</emphasis> acesso de
+leitura e gravação.
+</para>
+</section>
+
+</section>
+
+<section xml:id="s-cvs-d-metodos-gssapi"><info><title>gssapi</title></info>
+<para>
+Quando o CVS é compilado com o suporte a Kerberos 5, ele tenta estabelecer
+automaticamente uma conexão segura usando este método.  Este método funciona
+somente se o CVS estiver compilado com o suporte a Kerberos (opção
+<literal>--with-gssapi</literal>).
+</para>
+</section>
+
+</section>
+

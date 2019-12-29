@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter userlevel='avanc' xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="s-ssh"><info><title>Servidor ssh</title></info>
+    <para>
+    Este capítulo documenta a instalação, configuração e personalização do servidor
+    de shell seguro <command>sshd</command>, além de explicar as vantagens da
+    utilização dos serviços criptográficos.  A utilização do programa cliente
+    <command>ssh</command> também é explicada, além de utilitários usados para
+    geração de chaves pública/privada para o <command>ssh</command> (autenticação
+    RSA/DAS - o que é, vantagens), cópia de arquivos e métodos de autenticação
+    usando o método de chave pública/privada RSA.
+    </para>
+    <para>
+    Ambas as versões 1 e 2 do ssh são documentadas neste capítulo.  Opções
+    específicas do protocolo 1 ou 2 do ssh serão destacadas.
+    </para>
+    
+
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ssh-Introducao.xml" /> 
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ssh-clientes.xml" /> 
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ssh-servidor.xml" /> 
+</chapter>
+

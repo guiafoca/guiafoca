@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="s-cvs-p"><info><title>Criando projetos para serem usados no CVS</title></info>
+<para>
+Esta seção descreve todos os passos necessários para colocação de um projeto
+para ser desenvolvido através do CVS, os comandos do cvs, considerações a
+respeito dos comandos e sua utilização através de exemplos didáticos.
+</para>
+<section xml:id="s-cvs-p-repos"><info><title>Repositório</title></info>
+<para>
+Um repositório CVS é o local que armazena módulos e também os arquivos
+administrativos (que contém permissões, etc) são armazenados em um subdiretório
+chamado <filename>CVSROOT</filename>.
+</para>
+<para>
+O acesso a um repositório é feito através de parâmetros especificados na
+variável <replaceable>CVSROOT</replaceable> ou pela opção <emphasis>-d
+repositório</emphasis> do cvs.  Veja <xref linkend="s-cvs-d"/> para ver
+exemplos de métodos de acesso.
+</para>
+<para>
+O Repositório pode conter um ou mais módulos, cada módulo representa um projeto
+no servidor, criado após o uso do comando <literal>import</literal>.  Segue um
+exemplo da estrutura de um repositório CVS:
+</para>
+<screen>
+var/lib
+     |
+     +- cvs
+         |- CVSROOT
+         |- projeto1
+         +- projeto2
+</screen>
+<para>
+O subdiretório <filename>cvs</filename> é o repositório (veja o subdiretório
+<filename>CVSROOT</filename> dentro dele) e os diretórios dentro dele
+<filename>projeto1</filename> e <filename>projeto2</filename> são os módulos
+criados através do comando <literal>cvs import ...</literal>(veja <xref linkend="s-cvs-p-import"/>).
+</para>
+<para>
+Para acessar o projeto do CVS, então é definido o repositório que tem
+permissões de acesso na variável <literal>CVSROOT</literal> e então é executado
+um comando (checkout, update, commit, etc) no módulo que desejamos utilizar:
+</para>
+<screen>
+export CVSROOT=:ext:anonymous@servidor.org.br:/var/lib/cvs (&lt;- Repositório "cvs")
+cvs checkout projeto1 (&lt;- módulo que desejamos pegar do servidor)
+</screen>
+<para>
+Nas seções seguintes serão explicados cada um dos comandos usados para
+trabalhar com um projeto no <command>cvs</command>.
+</para>
+</section>
+
+<section xml:id="s-cvs-p-mkrepos"><info><title>Criando um repositório</title></info>
+<para>
+Para adicionar um novo repositório no sistema, edite o arquivo
+<filename>/etc/cvs-pserver.conf</filename> e defina o nome de cada repositório
+na variável <replaceable>CVS_PSERV_REPOS</replaceable> separados por ":"
+(exemplo: <literal>CVS_PSERV_REPOS="/var/lib/cvs:/var/lib/cvs2"</literal>).
+</para>
+<para>
+Feito isso execute o comando <command>cvs-makerepos</command> para que os
+diretórios especificados no arquivo <filename>/etc/cvs-pserver.conf</filename>
+sejam criados com as devidas permissões.
+</para>
+<para>
+Para adicionar manualmente um repositório (/var/lib/cvs), execute os seguintes
+passos:
+</para>
+<orderedlist numeration="arabic">
+<listitem>
+<para>
+Execute o comando <literal>cvs -d /var/lib/cvs init</literal> (para criar o
+repositório e os arquivos administrativos que ficam armazenados dentro de
+<filename>CVSROOT</filename>.
+</para>
+</listitem>
+<listitem>
+<para>
+Mude as permissões do diretório para sgid com: <literal>chmod 2775
+/var/lib/cvs</literal>.
+</para>
+</listitem>
+<listitem>
+<para>
+Mude o dono/grupo com o comando: <literal>chown root.src /var/lib/cvs</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Opcional: caso utilize o método de acesso <emphasis>pserver</emphasis> será
+necessário adicionar a opção <literal>--allow-root=/var/lib/cvs</literal> na
+linha que inicia o servidor pserver.  Este parâmetro deve ser usada para cada
+repositório adicionado no servidor.
+</para>
+</listitem>
+</orderedlist>
+<para>
+A partir de agora, seu repositório já está pronto para ser utilizado.
+</para>
+</section>
+
+<section xml:id="s-cvs-p-login"><info><title>Logando no servidor de CVS via pserver</title></info>
+<para>
+Quando é usado o método de acesso pserver (<xref linkend="s-cvs-d-metodos-pserver"/>), é necessário fazer para ter acesso ao
+repositório.  Por exemplo, para acessar o repositório
+<filename>/var/lib/cvs</filename> no servidor
+<filename>servidor.org.br</filename>:
+</para>
+<screen>
+export CVSROOT=:pserver:anonymous@servidor.org.br:/var/lib/cvs
+cvs login
+
+ou 
+
+cvs -d :pserver:anonymous@servidor.org.br:/var/lib/cvs login
+</screen>
+<para>
+Então será solicitada a senha para ter acesso ao sistema.  Note que toda a
+seção de <command>cvs</command> ocorre por comandos interativos que logo após
+concluídos retornam para o interpretador de comandos.  O restante desta seção
+descreverá estes comandos e como utiliza-los de maneira eficiente.
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis> O uso da variável
+<replaceable>CVSROOT</replaceable> torna a utilização bastante prática, assim
+não precisamos especificar o repositório, método de acesso, etc.  toda vez que
+usar um comando do <command>cvs</command>.
+</para>
+</section>
+
+<section xml:id="s-cvs-p-logout"><info><title>Encerrando uma seção de CVS</title></info>
+<para>
+Embora que não seja necessário, após o uso do cvs é recomendável executar o
+logout do servidor para encerrar sua conexão com a máquina remota.
+</para>
+<screen>
+# (assumindo que a variável CVSROOT está definida)
+cvs logout
+
+ou 
+
+cvs -d :pserver:anonymous@servidor.org.br:/var/lib/cvs logout
+</screen>
+<para>
+<emphasis role="strong">OBS:</emphasis> Para os paranóicos é importante
+encerrar uma seção de CVS, pois ele possui alguns bugs e um spoofing pode
+tornar possível o uso de uma seção deixada aberta.
+</para>
+</section>
+
+<section xml:id="s-cvs-p-checkout"><info><title>Baixando arquivos</title></info>
+<para>
+O comando <literal>checkout</literal> (ou "co") é usado para fazer isto.  Para
+utilizá-lo seguindo os exemplos anteriores:
+</para>
+<screen>
+mkdir /tmp/cvs
+cd /tmp/cvs
+cvs checkout modulo
+cvs -d :pserver:anonymous@servidor.org.br:/var/lib/cvs
+</screen>
+<para>
+Será criado um subdiretório chamado <filename>modulo</filename> que contém
+todos os arquivos do servidor de CVS remoto.  É necessário apenas que tenha
+acesso de leitura ao servidor de CVS para executar este comando.  Você pode
+usar a opção <literal>-z [num]</literal> para ativar a compactação na
+transferência dos arquivos, isso acelera bastante a transferência em conexões
+lentas: <literal>cvs -z 3 checkout modulo</literal>.
+</para>
+<para>
+Também é possível especificar apenas subdiretórios de um módulo para baixa-lo
+via CVS e a estrutura de diretórios criada localmente será idêntica ao do
+servidor remoto.
+</para>
+</section>
+
+<section xml:id="s-cvs-p-import"><info><title>Adicionando um novo projeto</title></info>
+<para>
+Use o comando <literal>cvs import</literal> para adicionar um novo projeto ao
+CVS.  As entradas nos arquivos administrativos serão criadas e o projeto estará
+disponível para utilização dos usuários.  A sintaxe básica do comando
+<literal>import</literal> é a seguinte:
+</para>
+<para>
+<literal>cvs import [<emphasis>opções</emphasis>]
+[<emphasis>dir_modulo</emphasis>] [<emphasis>tag</emphasis>] start</literal>
+</para>
+<para>
+Para adicionar o projeto <literal>focalinux</literal> que reside em
+<filename>/usr/src/focalinux</filename> ao cvs:
+</para>
+<screen>
+# Primeiro exportamos o CVSROOT para dizer onde e qual repositório acessar
+export CVSROOT=:ext:usuario@servidor.com.br:2401/var/lib/cvs
+
+cd /usr/src/focalinux
+cvs import documentos/focalinux tag_modulo start
+</screen>
+<para>
+Por padrão o <command>import</command> sempre utiliza a máscara
+<emphasis>*</emphasis> para fazer a importação dos arquivos do diretório atual.
+O projeto <literal>focalinux</literal> será acessado através de
+$CVSROOT/documentos/focalinux (<literal>cvs checkout
+documentos/focalinux</literal>), ou seja,
+<filename>/var/lib/cvs/documentos/focalinux</filename> no servidor CVS terá a
+cópia do focalinux.  <literal>tag_modulo</literal> define o nome que será usado
+como identificador nas operações com os arquivos do CVS (pode ser usado
+"focalinux" em nosso exemplo).  O parâmetro "start" diz para criar o módulo.
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis> Por segurança, o diretório que contém
+os arquivos deverá ser sempre um caminho relativo na estrutura de diretórios,
+ou seja, você precisará entrar no diretório pai (como
+<filename>/usr/src/projeto</filename>) para executar o <literal>cvs
+import</literal>.  Não é permitido usar <literal>/</literal> ou
+<literal>..</literal>, isto proíbe a descida em diretórios de nível mais altos
+e sérios incidentes de segurança em servidores CVS mal configurados pelo
+Administrador.
+</para>
+</section>
+
+<section xml:id="s-cvs-p-update"><info><title>Sincronizando a cópia remota com a cópia local</title></info>
+<para>
+Este comando sincroniza a cópia remota do CVS (ou arquivo) com a cópia local
+que está trabalhando em sua máquina.  Quando se trabalha nativamente no CVS em
+equipe é recomendado a utilização deste comando pois alguém pode ter modificado
+o arquivo antes de você, então uma incompatibilidade entre sua versão e a nova
+poderia causar problemas.
+</para>
+<para>
+Supondo que tenha acabado de modificar o arquivo <filename>main.c</filename> do
+módulo <filename>cvsproj</filename>, então antes de fazer o commit (<xref linkend="s-cvs-p-commit"/>) use o update:
+</para>
+<screen>
+cvs update main.c
+
+ou 
+
+cvs -d :ext:usuario@servidor.com.br:2401/var/lib/cvs update main.c
+</screen>
+<para>
+Após alguns segundos, sua cópia local ficará sincronizada com a cópia remota.
+Caso ele mostre alguma mensagem de saída, verifique o arquivo para solucionar
+qualquer conflito e então envie o arquivo para o servidor remoto (<xref linkend="s-cvs-p-commit"/>).
+</para>
+<para>
+Você pode fazer o update de mais arquivos usando referências globais
+(<literal>*</literal>, <literal>?</literal> ou <literal>[]</literal>).
+</para>
+</section>
+
+<section xml:id="s-cvs-p-commit"><info><title>Enviando as mudanças para o servidor remoto</title></info>
+<para>
+O comando "commit" (ou "ci"), envia as mudanças feitas nos arquivos locais para
+o servidor remoto.  Um exemplo de commit no arquivo
+<filename>main.c</filename>:
+</para>
+<screen>
+cvs commit main.c
+
+cvs commit main.?
+
+cvs commit *
+</screen>
+<para>
+O editor padrão do sistema será aberto e pedirá uma descrição das modificações
+para o commit.  Esta descrição será usada como referência sobre as atualizações
+feitas em cada etapa do desenvolvimento.  A mensagem também pode ser
+especificada usando a opção "-m mensagem", principalmente quando o texto
+explicando as alterações é pequeno.
+</para>
+<para>
+Para mudar o editor de texto padrão que será usado pelo <command>cvs</command>,
+altere a variável de ambiente <replaceable>EDITOR</replaceable> ou especifique
+o editor que deseja usar na linha de comando com a opção "-e editor":
+</para>
+<screen>
+cvs commit -e vi main.c
+</screen>
+</section>
+
+<section xml:id="s-cvs-p-add"><info><title>Adicionando um arquivo ao módulo CVS do servidor</title></info>
+<para>
+Após criar/copiar o arquivo para seu diretório de trabalho, use o comando
+<literal>add</literal> para fazer isto.  O arquivo será enviado ao servidor,
+bastando apenas executa o <literal>commit</literal> para salvar o arquivo:
+</para>
+<screen>
+cvs add main.h
+cvs commit main.h
+</screen>
+</section>
+
+<section xml:id="s-cvs-p-add-dir"><info><title>Adicionando um diretório ao módulo CVS do servidor</title></info>
+<para>
+O método para adicionar um diretório com arquivos é semelhante ao de adicionar
+apenas arquivos ao cvs.  O único ponto que deve se seguido é que primeiro deve
+ser adicionado o diretório (com o "cvs add") salvar no servidor remoto ("cvs
+commit") e depois adicionar os arquivos existentes dentro dele (assim como
+descrito em <xref linkend="s-cvs-p-add"/>).  Para adicionar o diretório
+<filename>teste</filename> e seus arquivos no servidor <command>cvs</command>
+remoto:
+</para>
+<screen>
+cvs add teste
+cvs commit -m "Adicionado" teste
+cvs add teste/*
+cd teste
+cvs commit -m "Adicionados" .
+</screen>
+<para>
+Os dois primeiros comandos agendam o diretório <filename>teste</filename> e
+fazem o <literal>commit</literal> no diretório remoto.  Os dois últimos, enviam
+os arquivos existentes dentro deste diretório para o servidor remoto.
+</para>
+</section>
+
+<section xml:id="s-cvs-p-remove"><info><title>Removendo um arquivo do módulo CVS remoto</title></info>
+<para>
+O comando para fazer isto é o "remove".  Primeiro use o <command>rm</command>
+para remover o arquivo/diretório de sua cópia local, depois execute o
+<literal>remove</literal> seguido de commit para confirmar a remoção do
+arquivo:
+</para>
+<screen>
+cvs remove main.h
+cvs commit main.h
+</screen>
+</section>
+
+<section xml:id="s-cvs-p-removed"><info><title>Removendo um diretório do módulo CVS remoto</title></info>
+<para>
+Para remover um diretório, primeiro remova todos os arquivos existentes dentro
+dele com o comando <command>rm</command> e salve para o servidor (seguindo os
+métodos descritos em <xref linkend="s-cvs-p-remove"/>).  O CVS não remove
+diretamente diretórios vazios, uma maneira de contornar isto é usar o
+<literal>update</literal> ou <literal>commit</literal> seguido da opção
+<literal>-P</literal> para ignorar diretórios vazios.  Então a cópia remota do
+diretório será removida do servidor:
+</para>
+<screen>
+rm -f teste/*
+cvs remove teste/.
+cvs commit teste/.
+cd ..
+cvs checkout modulo
+</screen>
+<para>
+Depois do checkout, o subdiretório teste terá sido removido.
+</para>
+</section>
+
+<section xml:id="s-cvs-p-release"><info><title>Dizendo que o módulo atual não está mais em uso</title></info>
+<para>
+O comando "release" faz esta função.  Ele não é requerido, mas caso você tenha
+feito modificações que ainda não foram salvas no servidor de cvs
+(<literal>commit</literal>), ele alertará de arquivos modificados e perguntará
+se deseja continuar.  Registrando também o abandono das modificações no
+histórico do <command>cvs</command>.  O comando pode ser acompanhado de "-d"
+para remover o módulo anteriormente baixado com o "commit":
+</para>
+<screen>
+cvs release modulo
+
+cvs release -d modulo
+</screen>
+<para>
+O <literal>release</literal> retorna os seguintes códigos quando verifica que
+as duas cópias (local e remota) não estão sincronizadas:
+</para>
+<variablelist>
+<varlistentry>
+<term>U ou P</term>
+<listitem>
+<para>
+Existe uma versão nova do arquivo no repositório.  Para corrigir isso, execute
+o comando "update".
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>A</term>
+<listitem>
+<para>
+O arquivo não foi adicionado ainda ao repositório remoto.  Se apagar o
+repositório local, este arquivo não será adicionado.  Para corrigir isto,
+executa o comando "add" do cvs.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>R</term>
+<listitem>
+<para>
+O arquivo foi removido localmente, mas não foi removido do servidor remoto.
+Use os procedimentos em <xref linkend="s-cvs-p-remove"/> para corrigir a
+situação.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>M</term>
+<listitem>
+<para>
+O arquivo está modificado localmente e não foi salvo ainda no servidor.  Use os
+procedimentos em <xref linkend="s-cvs-p-update"/> e <xref linkend="s-cvs-p-commit"/> para salvar o arquivo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>?</term>
+<listitem>
+<para>
+O arquivo está em seu diretório de trabalho mas não tem referências no
+repositório remoto e também não está na lista de arquivos ignorados do CVS.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s-cvs-p-diff"><info><title>Visualizando diferenças entre versões de um arquivo</title></info>
+<para>
+Com o comando "diff" é possível visualizar que diferenças o arquivo que está
+sendo editado possui em relação ao arquivo do repositório remoto.  Outra
+funcionalidade útil do "diff" é comparar 2 versões de arquivos do mesmo
+repositório CVS.  Exemplos:
+</para>
+<variablelist>
+<varlistentry>
+<term>cvs diff main.c</term>
+<listitem>
+<para>
+Verifica as diferenças entre o arquivo <filename>main.c</filename> local e
+remoto.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>cvs diff -u -r 1.1 -r 1.2 main.c</term>
+<listitem>
+<para>
+Mostra as diferenças em formato unificado para mostrar as diferenças entre as
+versões 1.1 e 1.2 do arquivo <filename>main.c</filename>.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s-cvs-p-status"><info><title>Visualizando o status de versão de arquivos</title></info>
+<para>
+O comando "status" permite verificar que versões do arquivo especificado está
+disponível localmente, remotamente, qual a versão inicial do arquivo no
+repositório, sticky tag.  Exemplos:
+</para>
+<variablelist>
+<varlistentry>
+<term>cvs status main.c</term>
+<listitem>
+<para>
+Verifica o status do arquivo <filename>main.c</filename>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>cvs status -v main.c</term>
+<listitem>
+<para>
+Mostra o status do arquivo <filename>main.c</filename>, adicionalmente mostra
+também as tags existentes no arquivo (versão inicial, versão do repositório).
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="s-cvs-p-utils"><info><title>Outros utilitários para trabalho no repositório</title></info>
+<para>
+Além dos comandos do <command>cvs</command> descritos aqui, existem comandos no
+pacote <systemitem role="package">cvsutils</systemitem> que auxiliam desde quem
+está aprendendo a utilizar o CVS (com o comando <command>cvsdo</command> para
+simular algumas operações de adição/remoção de arquivos) até profissionais que
+usam o programa no dia a dia (<command>cvsu</command>,
+<command>cvsco</command>, <command>cvschroot</command>).
+</para>
+</section>
+
+</section>
+

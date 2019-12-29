@@ -1,0 +1,218 @@
+<!-- Converted by db4-upgrade version 1.0 -->
+
+<section xml:id="s-apache-httpcodes"><info><title>Códigos HTTP</title></info>
+<para>
+Esta seção pode ser uma interessante referência para a programação e
+configuração da diretiva <emphasis>ErrorDocument</emphasis>, etc.
+</para>
+<variablelist>
+<varlistentry>
+<term>2xx - Sucesso</term>
+<listitem>
+<itemizedlist>
+<listitem>
+<para>
+<literal>200</literal> OK
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>201</literal> Criado
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>202</literal> Aceito
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>203</literal> Informação não-autoritativa *
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>204</literal> Nenhum conteúdo
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>205</literal> Conteúdo resetado *
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>206</literal> Conteúdo parcial *
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>3xx - Redirecionamento</term>
+<listitem>
+<itemizedlist>
+<listitem>
+<para>
+<literal>300</literal> Múltiplas escolhas
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>301</literal> Movido Permanentemente
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>302</literal> Movido Temporariamente
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>303</literal> Veja outra *
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>304</literal> Não modificada
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>305</literal> Use o Proxy (redirecionamento proxy) *
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>4xx - Erros no Cliente</term>
+<listitem>
+<itemizedlist>
+<listitem>
+<para>
+<literal>400</literal> Requisição incorreta
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>401</literal> Não autorizado
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>402</literal> Pagamento Requerido *
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>403</literal> Bloqueado
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>404</literal> Não encontrada
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>405</literal> Método não permitido *
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>406</literal> Não aceitável *
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>407</literal> Autenticação via proxy requerida *
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>408</literal> Tempo limite da requisição expirado *
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>409</literal> Conflito *
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>410</literal> Gone *
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>411</literal> Tamanho requerido *
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>412</literal> Falha na pré-condição *
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>413</literal> A requisição parece ser grande *
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>414</literal> A URL requisitada é muito longa *
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>415</literal> Tipo de mídia não suportado
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>5xx - Erros no Servidor</term>
+<listitem>
+<itemizedlist>
+<listitem>
+<para>
+<literal>500</literal> Erro Interno no Servidor
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>501</literal> Não implementado
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>502</literal> Gateway incorreto
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>503</literal> Serviço não disponível
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>504</literal> Tempo limite no gateway *
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>505</literal> Versão HTTP não suportada *
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+Os códigos de erros marcados com um "*" pertencem ao padrão HTTP 1.1
+</para>
+</section>
+
+

@@ -1,0 +1,255 @@
+<!-- Converted by db4-upgrade version 1.0 -->
+
+<section xml:id="s-ssh-cliente"><info><title>Usando aplicativos clientes</title></info>
+<para>
+Esta seção explicará o uso dos utilitários <command>ssh</command>,
+<command>scp</command> e <command>sftp</command>.
+</para>
+<section xml:id="s-ssh-cliente-ssh"><info><title>ssh</title></info>
+<para>
+Esta é a ferramenta usada para seções de console remotos.  O arquivo de
+configuração de usuários é <filename>~/.ssh/config</filename> e o arquivo
+global <filename>/etc/ssh/ssh_config</filename>.  Para conectar a um servidor
+ssh remoto:
+</para>
+<screen>
+ssh usuario@ip/nome_do_servidor_ssh
+</screen>
+<para>
+Caso o nome do usuário seja omitido, seu login atual do sistema será usado.  O
+uso da opção <emphasis>-C</emphasis> é recomendado para ativar o modo de
+compactação dos dados (útil em conexões lentas).  A opção <emphasis>-l
+usuário</emphasis> pode ser usada para alterar a identificação de usuário
+(quando não é usada, o login local é usado como nome de usuário remoto).  Uma
+porta alternativa pode ser especificada usando a opção <emphasis>-p
+porta</emphasis> (a 22 é usada por padrão).
+</para>
+<para>
+Na primeira conexão, a chave pública do servidor remoto será gravada em
+<filename>~/.ssh/know_hosts</filename> ou
+<filename>~/.ssh/know_hosts2</filename> (dependendo da versão do servidor
+<command>ssh</command> remoto, veja <xref linkend="s-ssh-server-protodiff"/>),
+e verificada a cada conexão como checagem de segurança para se certificar que o
+servidor não foi alvo de qualquer ataque ou modificação não autorizada das
+chaves.  Por padrão, o cliente utilizará o protocolo ssh versão 1, a opção
+<emphasis>-2</emphasis> permite usar o protocolo versão 2.
+</para>
+<para>
+Variáveis de ambiente personalizadas para o <command>ssh</command> poderão ser
+definidas no arquivo <filename>~/.ssh/environment</filename>.  Comandos que
+serão executados somente na conexão ssh em <filename>~/.ssh/rc</filename> e
+<filename>/etc/ssh/sshrc</filename> caso contrário será executado o
+<command>xauth</command> por padrão.
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis> Para utilizar autenticação
+Rhosts/Rhosts+RSA (arquivos
+<filename>~/.rhosts</filename>/<filename>~/.shosts</filename>) o programa
+<command>ssh</command> deverá ter permissões SUID root e conectará usando
+portas baixas (menores que 1024).
+</para>
+<screen>
+Exemplos:
+# Conecta-se ao servidor remoto usando o login do usuário atual
+ssh ftp.sshserver.org
+
+# Conecta-se ao servidor remoto usando o login john (via ssh versão 2)
+ssh -2 ftp.sshserver.org -l john
+
+# Conecta-se ao servidor remoto usando compactação e o login john
+ssh ftp.sshserver.org -C -l john
+
+# Semelhante ao exemplo acima, usando o formato "login@ip"
+ssh john@ftp.sshserver.org -C
+
+# Conecta-se ao servidor remoto usando compactação, o login john, 
+# ativa o redirecionamento do agente de autenticação (-A) e redirecionamento 
+# de conexões X11 (-X). Veja a próxima seção para entender como o 
+# suporte a redirecionamento de conexões do X funciona. 
+ssh ftp.sshserver.org -C -A -X -l john
+</screen>
+<section xml:id="s-ssh-cliente-ssh-Xforward"><info><title>Redirecionamento de conexões do X</title></info>
+<para>
+O redirecionamento de conexões do X Window poderá ser habilitado em
+<filename>~/.ssh/config</filename> ou <filename>/etc/ssh/ssh_config</filename>
+ou usando as opções <emphasis>-A -X</emphasis> na linha de comando do
+<command>ssh</command> (as opções <emphasis>-a</emphasis> e
+<emphasis>-x</emphasis> desativam as opções acima respectivamente).  Uma
+variável <replaceable>$DISPLAY</replaceable> é criada automaticamente para
+fazer o redirecionamento ao servidor X local.
+</para>
+<para>
+Ao executar um aplicativo remoto, a conexão é redirecionada a um DISPLAY proxy
+criado pelo ssh (a partir de <literal>:10</literal>, por padrão) que faz a
+conexão com o display real do X (:0), ou seja, ele pulará os métodos de
+autenticação <command>xhost</command> e cookies.  Por medidas de segurança é
+recomendável habilitar o redirecionamento individualmente somente se você
+confia no administrador do sistema remoto.
+</para>
+<screen>
+# Exemplo de configuração do ssh_config
+
+# Permite Redirecionamento de conexões para o próprio computador (nomes de 
+# máquinas podem ser especificadas). 
+Host 127.0.0.1
+    ForwardAgent yes
+    ForwardX11 yes
+
+# Opções específicas do cliente para conexões realizadas a 192.168.1.4 usando 
+# somente o protocolo 2
+Host 192.168.1.4
+   # As 2 linhas abaixo ativam o redirecionamento de conexões do X
+   ForwardAgent yes
+   ForwardX11 yes
+   PasswordAuthentication yes
+   Port 22
+   Protocol 2
+   Cipher blowfish
+
+# Opções específicas do cliente para conexões realizadas a 192.168.1.5 usando 
+# somente o protocolo 1
+Host 192.168.1.5
+   # As 2 linhas abaixo desativam o redirecionamento de conexões do X
+   ForwardAgent no
+   ForwardX11 no
+   PasswordAuthentication yes
+   Port 22
+   Protocol 1
+   Cipher blowfish
+
+#   CheckHostIP yes
+#   RhostsAuthentication no
+#   RhostsRSAAuthentication yes
+#   RSAAuthentication yes
+#   FallBackToRsh no
+#   UseRsh no
+#   BatchMode no
+#   StrictHostKeyChecking yes
+#   IdentityFile ~/.ssh/identity
+#   IdentityFile ~/.ssh/id_dsa
+#   IdentityFile ~/.ssh/id_rsa1
+#   IdentityFile ~/.ssh/id_rsa2
+#   EscapeChar ~
+</screen>
+</section>
+
+<section xml:id="s-ssh-cliente-ssh-win"><info><title>Cliente ssh para Windows</title></info>
+<para>
+O <command>putty</command> é um cliente ssh Win32 que possui suporte aos
+protocolos versão 1 e 2 do ssh, aceita compactação além de funcionar também
+como cliente <command>telnet</command>.  Seu tamanho é pequeno, apenas um
+executável e requer 220KB de espaço em disco.  Ele pode ser baixado de <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">http://www.chiark.greenend.org.uk/~sgtatham/putty/</link>.
+</para>
+<para>
+Outra alternativa é o <command>MindTerm</command>, este é baseado em Java e
+pode inclusive ser executado como um applet em uma página web.  Este programa é
+encontrado em <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.mindbright.se/mindterm/">http://www.mindbright.se/mindterm/</link>.
+</para>
+</section>
+
+</section>
+
+<section xml:id="s-ssh-cliente-scp"><info><title>scp</title></info>
+<para>
+Permite a cópia de arquivos entre o cliente/servidor ssh.  A sintaxe usada por
+este comando é a seguinte:
+</para>
+<para>
+<literal>scp [<emphasis>origem</emphasis>]
+[<emphasis>destino</emphasis>]</literal>
+</para>
+<para>
+Os parâmetros de <emphasis>origem</emphasis> e <emphasis>destino</emphasis> são
+semelhantes ao do comando <command>cp</command> mas possui um formato especial
+quando é especificado uma máquina remota:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>Um caminho padrão</literal> - Quando for especificado um arquivo
+local.  Por exemplo: <filename>/usr/src/arquivo.tar.gz</filename>.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>usuario@host_remoto:/diretório/arquivo</literal> - Quando desejar
+copiar o arquivo de/para um servidor remoto usando sua conta de usuário.  Por
+exemplo: <literal>gleydson@ftp.debian.org:~/arqs</literal>.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+A opção <emphasis>-C</emphasis> é recomendável para aumentar a taxa de
+transferência de dados usando compactação.  Caso a porta remota do servidor
+<command>sshd</command> seja diferente de 22, a opção <emphasis>-P
+porta</emphasis> deverá ser especificada (é "P" maiúscula mesmo, pois a
+<emphasis>-p</emphasis> é usada para preservar permissões/data/horas dos
+arquivos transferidos).
+</para>
+<screen>
+Exemplos:
+# Para copiar um arquivo local chamado /pub/teste/script.sh para 
+# meu diretório pessoal em ftp.sshserver.org
+scp -C /pub/teste/script.sh gleydson@ftp.sshserver.org:~/
+
+# Para fazer a operação inversa a acima (copiando do servidor remoto para o local) 
+# é só inverter os parâmetros origem/destino: 
+scp -C gleydson@ftp.sshserver.org:~/script.sh /pub/teste
+
+# Para copiar o arquivo local chamado /pub/teste/script.sh para 
+# o diretório /scripts dentro do meu diretório pessoal em ftp.sshserver.org 
+# com o nome teste.sh
+scp -C /pub/teste/script.sh gleydson@ftp.sshserver.org:~/scripts/teste.sh
+
+# O exemplo abaixo faz a transferência de arquivos entre 2 computadores remotos: 
+# O arquivo teste.sh é lido do servidor server1.ssh.org e copiado para 
+# server2.ssh.org (ambos usando o login gleydson)
+scp -C gleydson@server1.ssh.org:~/teste.sh gleydson@server2.ssh.org:~/
+</screen>
+<section xml:id="s-ssh-cliente-scp-win"><info><title>Cliente scp para Windows</title></info>
+<para>
+O <command>pscp</command> faz a tarefa equivalente ao <command>scp</command> no
+windows, e pode ser baixado de <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">http://www.chiark.greenend.org.uk/~sgtatham/putty/</link>.
+</para>
+</section>
+
+</section>
+
+<section xml:id="s-ssh-cliente-sftp"><info><title>sftp</title></info>
+<para>
+Permite realizar transferência de arquivos seguras através do protocolo ssh.  A
+conexão e transferências são realizadas através da porta 22 (ainda não é
+possível modificar a porta padrão).  A sintaxe para uso deste comando é a
+seguinte:
+</para>
+<para>
+<literal>sftp usuario@host_remoto</literal>
+</para>
+<para>
+Compactação pode ser especificada através da opção <emphasis>-C</emphasis>.  Um
+arquivo contendo os comandos usados na seção <command>sftp</command> poderá se
+especificado através da opção <emphasis>-b arquivo</emphasis> para automatizar
+tarefas.
+</para>
+<para>
+<emphasis role="strong">OBS1:</emphasis> Para desativar o servidor
+<command>sftp</command>, remova a linha <literal>SubSystem sftp
+/usr/lib/sftp-server</literal> (que inicializa o sub-sistema ftp) do arquivo
+<filename>/etc/ssh/sshd_config</filename> e reinicie o servidor
+<command>sshd</command>.
+</para>
+<para>
+<emphasis role="strong">OBS2:</emphasis> O suporte ao programa
+<command>sftp</command> somente está disponível ao protocolo ssh versão 2 e
+superiores.
+</para>
+<para>
+<emphasis role="strong">OBS3:</emphasis> Algumas opções comuns do cliente
+<command>ftp</command> padrão (como <emphasis>mget</emphasis>) ainda não estão
+disponíveis ao <command>sftp</command>.  Veja a página de manual para detalhe
+sobre as opções disponíveis.
+</para>
+</section>
+
+</section>
+

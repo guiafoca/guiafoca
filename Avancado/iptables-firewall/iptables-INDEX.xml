@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+<!ENTITY fw-iptables1 SYSTEM "iptables-Introducao.xml">
+<!ENTITY fw-iptables2 SYSTEM "iptables-chains.xml">
+<!ENTITY fw-iptables3 SYSTEM "iptables-outras-opcoes.xml">
+<!ENTITY fw-iptables4 SYSTEM "iptables-nat.xml">
+<!ENTITY fw-iptables5 SYSTEM "iptables-mangle.xml">
+<!ENTITY fw-iptables6 SYSTEM "iptables-matches.xml">
+<!ENTITY fw-iptables7 SYSTEM "iptables-path.xml">
+<!ENTITY fw-iptables8 SYSTEM "iptables-exemplo.xml">
+-->
+<chapter userlevel='avanc' xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="fw-iptables"><info><title>Firewall iptables</title></info>
+    <para>
+    Este capítulo documenta o funcionamento do firewall <command>iptables</command>
+    que acompanha a série do kernel 2.4, opções usadas, e aponta alguns pontos
+    fundamentais para iniciar a configuração e construção de bons sistemas de
+    firewall.
+    </para>
+    
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="iptables-Introducao.xml" /> 
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="iptables-chains.xml" /> 
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="iptables-outras-opcoes.xml" /> 
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="iptables-nat.xml" /> 
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="iptables-mangle.xml" /> 
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="iptables-matches.xml" /> 
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="iptables-path.xml" /> 
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="iptables-exemplo.xml" /> 
+
+</chapter>
+

@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="fw-iptables-path"><info><title>Caminho percorrido pelos pacotes nas tabelas e chains</title></info>
+<para>
+É MUITO importante entender a função de cada filtro e a ordem de acesso dos
+chains de acordo com o tipo de conexão e interface de origem/destino.  Esta
+seção explica a ordem que as regra são atravessadas, isso lhe permitirá
+planejar a distribuição das regras nos chains, e evitar erros de localização de
+regras que poderia deixar seu firewall com sérios problemas de segurança, ou um
+sistema de firewall totalmente confuso e sem lógica.
+</para>
+<para>
+Nos exemplos abaixo assumirei a seguinte configuração:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+A máquina do firewall com <command>iptables</command> possui o endereço IP
+<filename>192.168.1.1</filename> e conecta a rede interna ligada via interface
+<filename>eth0</filename> a internet via a interface <filename>ppp0</filename>.
+</para>
+</listitem>
+<listitem>
+<para>
+Rede interna com a faixa de endereços <filename>192.168.1.0</filename>
+conectada ao firewall via interface <filename>eth0</filename>
+</para>
+</listitem>
+<listitem>
+<para>
+Interface <filename>ppp0</filename> fazendo conexão com a Internet com o
+endereço IP <filename>200.217.29.67</filename>.
+</para>
+</listitem>
+<listitem>
+<para>
+A conexão das máquinas da rede interna (<filename>eth0</filename>) com a rede
+externa (<filename>ppp0</filename>) é feita via
+<emphasis>Masquerading</emphasis>.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Também utilizarei a sintaxe <emphasis>CHAIN-tabela</emphasis> para fazer
+referência aos chains e tabelas dos blocos ASCII:
+<emphasis>INPUT-filter</emphasis> - chain <emphasis>INPUT</emphasis> da tabela
+<emphasis>filter</emphasis>.
+</para>
+<para>
+<emphasis role="strong">ATENÇÃO:</emphasis> A ordem de processamento das regras
+do <command>iptables</command>, é diferente do <command>ipchains</command>
+devido a inclusão do novo sistema de nat e da tabela mangle.
+</para>
+<section xml:id="fw-iptables-path-PingICMPLocal-Local"><info><title>Ping de 192.168.1.1 para 192.168.1.1</title></info>
+<itemizedlist>
+<listitem>
+<para>
+Endereço de Origem: <literal>192.168.1.1</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Endereço de Destino: <literal>192.168.1.1</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Interface de Entrada: <literal>lo</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Interface de Saída: <literal>lo</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Protocolo: <literal>ICMP</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Descrição: <literal>Ping para o próprio firewall</literal>
+</para>
+</listitem>
+</itemizedlist>
+<screen>
+SAÍDA DE PACOTES (envio do ping para 192.168.1.1): 
++-------------+    +----------+    +-------------+   +------------------+  +----------------+
+|OUTPUT-mangle| =&gt; |OUTPUT-nat| =&gt; |OUTPUT-filter| =&gt;|POSTROUTING-mangle|=&gt;|POSTROUTING-nat |
++-------------+    +----------+    +-------------+   +------------------+  +----------------+
+
+ENTRADA DOS PACOTES (Retorno da resposta ping acima): 
++-----------------+   +------------+  +------------+
+|PREROUTING-mangle| =&gt;|INPUT-mangle|=&gt;|INPUT-filter|
++-----------------+   +------------+  +------------+
+</screen>
+<para>
+Quando damos o ping (<emphasis>echo request</emphasis>) os pacotes seguem o
+caminho em <emphasis>SAÍDA DE PACOTES</emphasis> percorrendo os chains na ordem
+especificada e retornam via <emphasis>ENTRADA DOS PACOTES</emphasis>
+(<emphasis>echo reply</emphasis>).  No envio da resposta da requisição de ping,
+o caminho de saída do pacote ignora os chains OUTPUT-nat e POSTROUTING-nat (já
+que não é necessário nat) mas sempre processa os chains correspondentes da
+tabela mangle na ordem indicada acima.
+</para>
+<para>
+<emphasis role="strong">OBS1:</emphasis> Para conexões com destinos na própria
+máquina usando um endereço IP das interfaces locais, a interface será ajustada
+sempre para <filename>lo</filename> (loopback).
+</para>
+<para>
+<emphasis role="strong">OBS2:</emphasis> Em qualquer operação de entrada/saída
+de pacotes, os dois chains da tabela <emphasis>mangle</emphasis> são sempre os
+primeiros a serem acessados.  Isto é necessário para definir a prioridade e
+controlar outros aspectos especiais dos pacotes que atravessam os filtros.
+</para>
+<para>
+<emphasis role="strong">OBS3:</emphasis> O chain <emphasis>OUTPUT</emphasis> da
+tabela <emphasis>filter</emphasis> é consultado sempre quando existem conexões
+se originando em endereços de interfaces locais.
+</para>
+</section>
+
+<section xml:id="fw-iptables-path-FtpTCPLocal-Local"><info><title>Conexão FTP de 192.168.1.1 para 192.168.1.1</title></info>
+<itemizedlist>
+<listitem>
+<para>
+Endereço de Origem: <literal>192.168.1.1</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Endereço de Destino: <literal>192.168.1.1</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Interface de Origem: <literal>lo</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Interface de Destino: <literal>lo</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Porta Origem: <literal>1404</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Porta Destino: <literal>21</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Protocolo: <literal>TCP</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Descrição: <literal>Conexão ftp (até o prompt de login, sem transferência de
+arquivos).</literal>
+</para>
+</listitem>
+</itemizedlist>
+<screen>
+SAÍDA DOS PACOTES (envio da requisição para 192.168.1.1): 
++-------------+    +----------+    +-------------+    +------------------+    +---------------+
+|OUTPUT-mangle| =&gt; |OUTPUT-nat| =&gt; |OUTPUT-filter| =&gt; +POSTROUTING-mangle| =&gt; |POSTROUTING-nat|
++-------------+    +----------+    +-------------+    +------------------+    +---------------+
+
+ENTRADA DE PACOTES (respostas da requisição vindas de 192.168.1.1): 
++-----------------+    +------------+    +------------+
+|PREROUTING-mangle| =&gt; |INPUT-mangle| =&gt; |INPUT-filter|
++-----------------+    +------------+    +------------+
+</screen>
+<para>
+A requisição ftp passa através dos chains especificados em <emphasis>SAÍDA DOS
+PACOTES</emphasis> e retorna por <emphasis>ENTRADA DE PACOTES</emphasis>.  Após
+a conexão ser estabelecida, o caminho de <emphasis>SAÍDA DE PACOTES</emphasis>
+será:
+</para>
+<screen>
++-------------+    +-------------+    +------------------+
+|OUTPUT-mangle| =&gt; |OUTPUT-filter| =&gt; |POSTROUTING-mangle|
++-------------+    +-------------+    +------------------+
+</screen>
+<para>
+pois os dados de entrada que vem da interface externa, são passados diretamente
+a máquina do firewall, não necessitando de tratamento SNAT (os chains
+<emphasis>OUTPUT-nat</emphasis> e <emphasis>POSTROUTING-nat</emphasis> são
+processado somente uma vez a procura de regras que conferem, principalmente
+para fazer SNAT).  Note novamente que mesmo não sendo necessário NAT, o chain
+POSTROUTING-mangle é checado.
+</para>
+<para>
+<emphasis role="strong">OBS1:</emphasis> Para conexões com destinos na própria
+máquina usando um endereço IP das interfaces locais, a interface será ajustada
+sempre para <filename>lo</filename> (loopback).
+</para>
+<para>
+<emphasis role="strong">OBS2:</emphasis> Em qualquer operação de entrada/saída
+de pacotes, os dois chains da tabela mangle são sempre os primeiros a serem
+acessados.  Isto é necessário para definir a prioridade e controlar outros
+aspectos especiais dos pacotes que atravessam os filtros.
+</para>
+</section>
+
+<section xml:id="fw-iptables-path-FtpTCPLocal-LocalNet"><info><title>Conexão FTP de 192.168.1.1 para 192.168.1.4</title></info>
+<itemizedlist>
+<listitem>
+<para>
+Endereço de Origem: <literal>192.168.1.1</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Endereço de Destino: <literal>192.168.1.4</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Interface de Origem: <literal>eth0</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Interface de Destino: <literal>eth0</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Porta Origem: <literal>1405</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Porta Destino: <literal>21</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Protocolo: <literal>TCP</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Descrição: <literal>Conexão ftp (até o prompt de login, sem transferência de
+arquivos).</literal>
+</para>
+</listitem>
+</itemizedlist>
+<screen>
+SAÍDA DOS PACOTES (envio da requisição para 192.168.1.4): 
++-------------+    +----------+    +-------------+    +------------------+    +---------------+
+|OUTPUT-mangle| =&gt; |OUTPUT-nat| =&gt; |OUTPUT-filter| =&gt; +POSTROUTING-mangle| =&gt; |POSTROUTING-nat|
++-------------+    +----------+    +-------------+    +------------------+    +---------------+
+
+ENTRADA DE PACOTES (respostas da requisição de 192.168.1.4): 
++-----------------+    +------------+    +------------+
+|PREROUTING-mangle| =&gt; |INPUT-mangle| =&gt; |INPUT-filter|
++-----------------+    +------------+    +------------+
+</screen>
+<para>
+A requisição ftp passa através dos chains especificados em <emphasis>SAÍDA DOS
+PACOTES</emphasis> com o destino <filename>192.168.1.4</filename> porta
+<filename>21</filename> e retorna por <emphasis>ENTRADA DE PACOTES</emphasis>
+para <filename>192.168.1.1</filename> porta <filename>1405</filename>.  Após a
+conexão ser estabelecida, o caminho de <emphasis>SAÍDA DE PACOTES</emphasis>
+será:
+</para>
+<screen>
++-------------+    +-------------+    +------------------+
+|OUTPUT-mangle| =&gt; |OUTPUT-filter| =&gt; |POSTROUTING-mangle|
++-------------+    +-------------+    +------------------+
+</screen>
+<para>
+pois os dados não precisam de tratamento SNAT (os chains
+<emphasis>OUTPUT-nat</emphasis> e <emphasis>POSTROUTING-nat</emphasis> são
+processado somente uma vez a procura de regras que conferem, principalmente
+para fazer SNAT).
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis> Em qualquer operação de entrada/saída
+de pacotes, os dois chains da tabela mangle são sempre os primeiros a serem
+acessados.  Isto é necessário para definir a prioridade e controlar outros
+aspectos especiais dos pacotes que atravessam os filtros.
+</para>
+</section>
+
+<section xml:id="fw-iptables-path-FtpTCPLocal-RemoteNet"><info><title>Conexão FTP de 200.217.29.67 para a máquina ftp.debian.org.br</title></info>
+<itemizedlist>
+<listitem>
+<para>
+Endereço de Origem: <literal>200.217.29.67</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Endereço de Destino: <literal>200.198.129.162</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Interface de Origem: <literal>ppp0</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Interface de Destino: <literal>ppp0</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Porta Origem: <literal>1407</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Porta Destino: <literal>21</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Protocolo: <literal>TCP</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Descrição: <literal>Conexão ftp (até o prompt de login, sem transferência de
+arquivos).</literal>
+</para>
+</listitem>
+</itemizedlist>
+<screen>
+SAÍDA DOS PACOTES (envio da requisição para 200.198.129.162): 
++-------------+    +----------+    +-------------+    +------------------+    +---------------+
+|OUTPUT-mangle| =&gt; |OUTPUT-nat| =&gt; |OUTPUT-filter| =&gt; +POSTROUTING-mangle| =&gt; |POSTROUTING-nat|
++-------------+    +----------+    +-------------+    +------------------+    +---------------+
+
+ENTRADA DE PACOTES (respostas da requisição vindas de 200.198.129.162): 
++-----------------+    +------------+    +------------+
+|PREROUTING-mangle| =&gt; |INPUT-mangle| =&gt; |INPUT-filter|
++-----------------+    +------------+    +------------+
+</screen>
+<para>
+A requisição ftp passa através dos chains especificados em <emphasis>SAÍDA DOS
+PACOTES</emphasis> com o destino <filename>200.198.129.162</filename> porta
+<filename>21</filename> (após a resolução DNS de
+<filename>www.debian.org.br</filename>) e retorna por <emphasis>ENTRADA DE
+PACOTES</emphasis> para <filename>200.217.29.67</filename> porta
+<filename>1407</filename>.  Após a conexão ser estabelecida, o caminho de saída
+de pacotes é:
+</para>
+<screen>
++-------------+    +-------------+    +------------------+
+|OUTPUT-mangle| =&gt; |OUTPUT-filter| =&gt; |POSTROUTING-mangle|
++-------------+    +-------------+    +------------------+
+</screen>
+<para>
+pois os dados não precisam de tratamento SNAT (os chains
+<emphasis>OUTPUT-nat</emphasis> e <emphasis>POSTROUTING-nat</emphasis> são
+processado somente uma vez a procura de regras que conferem, principalmente
+para fazer SNAT).
+</para>
+<para>
+E após a conexão estabelecida, o caminho de entrada de pacotes passa a ser:
+</para>
+<screen>
++-----------------+    +------------+    +------------+
+|PREROUTING-mangle| =&gt; |INPUT-mangle| =&gt; |INPUT-filter|
++-----------------+    +------------+    +------------+
+</screen>
+<para>
+pois os dados não precisam de tratamento DNAT (o chain
+<emphasis>PREROUTING-nat</emphasis> é processado somente uma vez a procura de
+regras que conferem, principalmente para fazer DNAT).
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis> Para qualquer operação de entrada/saída
+de pacotes, os dois chains da tabela mangle são sempre os primeiros a serem
+acessados.  Isto é necessário para definir a prioridade e controlar outros
+aspectos especiais dos pacotes que atravessam os filtros.
+</para>
+</section>
+
+<section xml:id="fw-iptables-path-PingICMPLocalNet-Local"><info><title>Ping de 192.168.1.4 para 192.168.1.1</title></info>
+<itemizedlist>
+<listitem>
+<para>
+Endereço de Origem: <literal>192.168.1.4</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Endereço de Destino: <literal>192.168.1.1</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Interface de Entrada: <literal>eth0</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Interface de Saída: <literal>eth0</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Protocolo: <literal>ICMP</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Descrição: <literal>Ping de 192.168.1.4 para a máquina do firewall.</literal>
+</para>
+</listitem>
+</itemizedlist>
+<screen>
+ENTRADA DE PACOTES (recebimento da requisição, vinda de 192.168.1.4): 
++-----------------+    +--------------+    +------------+    +------------+
+|PREROUTING-mangle| =&gt; |PREROUTING-nat| =&gt; |INPUT-mangle| =&gt; |INPUT-filter|
++-----------------+    +--------------+    +------------+    +------------+
+
+SAÍDA DE PACOTES (envio da resposta a 192.168.1.4)
++-------------+    +-------------+    +------------------+
+|OUTPUT-mangle| =&gt; |OUTPUT-filter| =&gt; |POSTROUTING-mangle|
++-------------+    +-------------+    +------------------+
+</screen>
+<para>
+Quando damos o ping (<emphasis>echo request</emphasis>) os pacotes seguem o
+caminho em <emphasis>ENTRADA DE PACOTES</emphasis> percorrendo os chains na
+ordem especificada e retornam via <emphasis>SAÍDA DOS PACOTES</emphasis>
+(<emphasis>echo reply</emphasis>).
+</para>
+<para>
+<emphasis role="strong">OBS1:</emphasis> Para qualquer operação de
+entrada/saída de pacotes, os dois chains da tabela mangle são sempre os
+primeiros a serem acessados.  Isto é necessário para definir a prioridade e
+controlar outros aspectos especiais dos pacotes que atravessam os filtros.
+</para>
+</section>
+
+<section xml:id="fw-iptables-path-FtpTCPLocalNet-Local"><info><title>Conexão FTP de 192.168.1.4 para 192.168.1.1</title></info>
+<itemizedlist>
+<listitem>
+<para>
+Endereço de Origem: <literal>192.168.1.4</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Endereço de Destino: <literal>192.168.1.1</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Interface de Origem: <literal>eth0</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Interface de Destino: <literal>eth0</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Porta Origem: <literal>1030</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Porta Destino: <literal>21</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Protocolo: <literal>TCP</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Descrição: <literal>Conexão ftp (até o prompt de login, sem transferência de
+dados).</literal>
+</para>
+</listitem>
+</itemizedlist>
+<screen>
+ENTRADA DOS PACOTES (envio da requisição vindas de 192.168.1.4): 
++-----------------+    +--------------+    +------------+    +------------+
+|PREROUTING-mangle| =&gt; |PREROUTING-nat| =&gt; |INPUT-mangle| =&gt; |INPUT-filter|
++-----------------+    +--------------+    +------------+    +------------+
+
+SAÍDA DE PACOTES (respostas da requisição acima para 192.168.1.4): 
++-------------+    +-------------+    +------------------+
+|OUTPUT-mangle| =&gt; |OUTPUT-filter| =&gt; |POSTROUTING-mangle|
++-------------+    +-------------+    +------------------+
+</screen>
+<para>
+A requisição ftp passa através dos chains especificados em <emphasis>ENTRADA
+DOS PACOTES</emphasis> com o destino <filename>192.168.1.1</filename> porta
+<filename>21</filename> e retorna por <emphasis>SAÍDA DE PACOTES</emphasis>
+para <filename>192.168.1.4</filename> porta <filename>1030</filename>.  Após a
+conexão ser estabelecida, o caminho de entrada de pacotes é:
+</para>
+<screen>
++-----------------+    +------------+    +------------+
+|PREROUTING-mangle| =&gt; |INPUT-mangle| =&gt; |INPUT-filter|
++-----------------+    +------------+    +------------+
+</screen>
+<para>
+pois os dados não precisam de tratamento DNAT (o chain
+<emphasis>PREROUTING-nat</emphasis> é processado somente uma vez a procura de
+regras que conferem, principalmente para fazer DNAT).
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis> O roteamento é sempre realizado após o
+processamento do chain <emphasis>PREROUTING</emphasis> da tabela
+<emphasis>nat</emphasis>.
+</para>
+</section>
+
+<section xml:id="fw-iptables-path-FtpTCPLocalNet-RemoteNet"><info><title>Conexão FTP de 192.168.1.4 para ftp.debian.org.br</title></info>
+<itemizedlist>
+<listitem>
+<para>
+Endereço de Origem: <literal>192.168.1.4</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Endereço de Destino: <literal>200.198.129.162</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Interface de Origem: <literal>eth0</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Interface de Destino: <literal>ppp0</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Porta Origem: <literal>1032</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Porta Destino: <literal>21</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Protocolo: <literal>TCP</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Descrição: <literal>Conexão ftp (até o prompt de login, sem transferência de
+dados).</literal>
+</para>
+</listitem>
+</itemizedlist>
+<screen>
+SAÍDA DOS PACOTES (requisição vindas de 192.168.1.4): 
++-----------------+    +--------------+    +--------------+   
+|PREROUTING-mangle| =&gt; |PREROUTING-nat| =&gt; |FORWARD-mangle| =&gt; (continua abaixo)
++-----------------+    +--------------+    +--------------+   
++--------------+    +------------------+    +---------------+
+|FORWARD-filter| =&gt; |POSTROUTING-mangle| =&gt; |POSTROUTING-nat|
++--------------+    +------------------+    +---------------+
+
+ENTRADA DE PACOTES (respostas da requisição acima, enviadas para 192.168.1.4): 
++-----------------+    +--------------+    +--------------+    +------------------+
+|PREROUTING-mangle| =&gt; |FORWARD-mangle| =&gt; |FORWARD-filter| =&gt; |POSTROUTING-mangle|
++-----------------+    +--------------+    +--------------+    +------------------+
+</screen>
+<para>
+A requisição ftp passa através dos chains especificados em <emphasis>SAÍDA DOS
+PACOTES</emphasis> com o destino <filename>200.198.129.162</filename> porta
+<filename>21</filename> (após a resolução DNS de
+<filename>ftp.debian.org.br</filename>) e retorna por <emphasis>ENTRADA DE
+PACOTES</emphasis> para <filename>192.168.1.4</filename> porta
+<filename>1032</filename>.
+</para>
+<para>
+Note que o Masquerading regrava os pacotes; para a máquina
+<filename>200.198.129.162</filename> a conexão está sendo feita para
+<filename>200.217.29.67</filename>.  As respostas de conexões vindas de
+<filename>200.198.129.162</filename> e indo para
+<filename>200.217.29.67</filename> são regravadas no firewall com o destino
+<filename>192.168.1.4</filename> e enviadas para a máquina correspondente.
+Após a conexão ser estabelecida, o caminho de saída de pacotes para
+200.198.129.163 é:
+</para>
+<screen>
++-----------------+    +--------------+    +--------------+    +------------------+
+|PREROUTING-mangle| =&gt; |FORWARD-mangle| =&gt; |FORWARD-filter| =&gt; |POSTROUTING-mangle|
++-----------------+    +--------------+    +--------------+    +------------------+
+</screen>
+<para>
+Após a conexão estabelecida, o caminho da entrada de pacotes vindos de
+200.198.129.163 é:
+</para>
+<screen>
++-----------------+    +--------------+    +--------------+    +------------------+
+|PREROUTING-mangle| =&gt; |FORWARD-mangle| =&gt; |FORWARD-filter| =&gt; |POSTROUTING-mangle|
++-----------------+    +--------------+    +--------------+    +------------------+
+</screen>
+<para>
+Isto acontece porque após feita a conexão Masquerading (via PREROUTING-nat), o
+firewall já sabe como reescrever os pacotes para realizar a operação de
+Masquerading, reescrevendo todos os pacotes que chegam de
+<filename>www.debian.org.br</filename> para <filename>192.168.1.4</filename>.
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis> As conexões Masquerading feitas através
+da rede interna, são enviadas para <filename>200.198.129.162</filename> tem o
+endereço de origem ajustado para <filename>200.217.29.67</filename> que é o IP
+de nossa interface <filename>ppp0</filename>.  Quando as respostas atravessam o
+firewall, os pacotes são checados pra saber se são uma resposta a uma conexão
+masquerading e fará a regravação dos pacotes substituindo o endereço de destino
+para <filename>192.168.1.4</filename>.  Caso uma operação de Masquerading
+falhe, os pacotes serão Bloqueados.
+</para>
+</section>
+
+<section xml:id="fw-iptables-path-FtpTCPRemoteNet-Local"><info><title>Conexão FTP de 200.198.129.162 para 200.217.29.167</title></info>
+<itemizedlist>
+<listitem>
+<para>
+Endereço de Origem: <literal>200.198.129.162</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Endereço de Destino: <literal>200.217.29.67</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Interface de Origem: <literal>ppp0</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Interface de Destino: <literal>ppp0</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Porta Origem: <literal>3716</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Porta Destino: <literal>21</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Protocolo: <literal>TCP</literal>
+</para>
+</listitem>
+<listitem>
+<para>
+Descrição: <literal>Conexão ao serviço ftp do firewall</literal>
+</para>
+</listitem>
+</itemizedlist>
+<screen>
+ENTRADA DOS PACOTES (requisição vinda de 200.198.129.162): 
++-----------------+    +--------------+    +-------------+    +------------+
+|PREROUTING-mangle| =&gt; |PREROUTING-nat| =&gt; |INPUT-mangle | =&gt; |INPUT-filter|
++-----------------+    +--------------+    +-------------+    +------------+
+
+SAÍDA DE PACOTES (respostas da requisição de 200.198.129.162): 
++-------------+    +-------------+    +------------------+
+|OUTPUT-mangle| =&gt; |OUTPUT-filter| =&gt; |POSTROUTING-mangle|
++-------------+    +-------------+    +------------------+
+</screen>
+<para>
+A requisição ftp passa através dos chains especificados em <emphasis>ENTRADA
+DOS PACOTES</emphasis> com o destino <filename>200.217.29.67</filename> (nossa
+interface <filename>ppp0</filename> local) porta <filename>21</filename> e
+retorna por <emphasis>SAÍDA DE PACOTES</emphasis> para
+<filename>200.198.129.162</filename> porta <filename>3716</filename> (também
+via <filename>ppp0</filename>).  Após a conexão ser estabelecida, o caminho de
+entrada de pacotes é:
+</para>
+<screen>
++-----------------+    +------------+    +------------+
+|PREROUTING-mangle| =&gt; |INPUT-mangle| =&gt; |INPUT-filter|
++-----------------+    +------------+    +------------+
+</screen>
+<para>
+Isto acontece porque após feita a análise do chain
+<emphasis>PREROUTING</emphasis> (para necessidade de DNAT), a máquina já saberá
+tomar a decisão apropriada para gerenciar aquela conexão.
+</para>
+</section>
+
+<section xml:id="fw-iptables-path-grafico"><info><title>Gráfico geral da passagem dos pacotes</title></info>
+<para>
+Este gráfico foi retirado do documento
+<filename>netfilter-hacking-HOWTO.txt</filename> e mostra a estrutura geral de
+passagem dos pacotes nas tabelas/chains.  Os exemplos de passagem de pacotes
+acima poderão ser facilmente comparados com as etapas abaixo para compreender a
+estrutura do <command>iptables</command>.
+</para>
+<screen>
+E ---&gt; PREROUTING ------&gt; (ROTEAM.) ---&gt; FORWARD ----------&gt; POSTROUTING --&gt; S
+       Mangle e              |           Mangle       ^      Mangle
+       NAT (DNAT))           |           Filter       |      NAT (SRC)
+                             |                     (ROTEAM.)
+                             v                        |
+                             IN Mangle,              OUT - Mangle,
+                             |  Filter                ^    NAT (DNAT)
+                             |                        |    Filter
+                             v                        |  
+                    +----------------------------------------+
+                    |            Processo Local              |
+                    +----------------------------------------+
+</screen>
+</section>
+
+</section>
+
+

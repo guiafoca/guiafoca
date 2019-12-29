@@ -1,0 +1,275 @@
+<!-- Converted by db4-upgrade version 1.0 -->
+
+<section xml:id="s-samba-s-nameresolv"><info><title>Resolução de nomes de máquinas no samba</title></info>
+<para>
+O Samba pode utiliza os seguintes métodos para resolução de nomes de máquinas
+na rede (<xref linkend="s-samba-nome"/>).  Eles estão listados em ordem de
+prioridade do mais para o menos recomendável:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>lmhosts</literal> - Pesquisa primeiro o arquivo
+<filename>/etc/samba/lmhosts</filename> (veja <xref linkend="s-samba-s-nameresolv-lmhosts"/> para detalhes sobre este arquivo).
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>host</literal> - Faz a pesquisa no arquivo
+<filename>/etc/hosts</filename> e no DNS em busca do nome da máquina.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>wins</literal> - Pesquisa no servidor WINS especificado pelo parâmetro
+<emphasis>wins server</emphasis> do <filename>smb.conf</filename> (veja <xref linkend="s-samba-s-nameresolv-wins"/>).
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>bcast</literal> - Envia um pacote para o endereço de broadcast de sua
+configuração de rede.  Este geralmente deve ser o último método por gerar
+tráfego excessivo em uma rede com um considerável número de computadores.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+A ordem que a resolução de nomes é feita pelo samba, pode ser modificada usando
+o parâmetro "name resolve order = [ordem]" no arquivo de configuração do samba
+(ex.  <literal>name resolve order = lmhosts host wins bcast</literal>).
+</para>
+<section xml:id="s-samba-s-nameresolv-lmhosts"><info><title>Arquivo <filename>/etc/samba/lmhosts</filename></title></info>
+<para>
+Este arquivo é um banco de dados que mapeia o endereço IP com o nome NetBIOS de
+uma máquina, semelhante ao formato do <filename>/etc/hosts</filename>.  Este
+arquivo é útil quando temos servidores que são acessados com freqüência, quando
+servidores de rede estão em segmentos separados e não temos um servidor WINS
+entre os dois pontos para resolução de nomes, para definir máquinas WINS que
+serão acessados pela internet, etc.  Para ter certeza da localização do arquivo
+<filename>lmhosts</filename> em sua máquina, digite <literal>smbclient -d 3 -L
+localhost</literal> e veja o diretório de pesquisa deste arquivo.  Veja um
+exemplo de arquivo <filename>lmhosts</filename> em <xref linkend="s-samba-s-nameresolv-lmhosts-unix-ex"/>.
+</para>
+<para>
+O uso do arquivo <filename>lmhosts</filename> evita o excesso de broadcasting
+na rede, pois a ordem padrão usada para a resolução de nomes do
+<command>samba</command>, procura primeiro resolver o nome procurando em
+arquivos lmhosts, depois usando <emphasis>dns</emphasis>,
+<emphasis>wins</emphasis> e <emphasis>broadcast</emphasis>.  Dependendo do
+projeto de sua rede e como as máquinas resolvem os nomes, ele pode ser uma
+camada a mais de segurança contra um simples hijacking de servidor através de
+NetBEUI ou WINS (isso é evitado com o uso de domínios, veja <xref linkend="s-samba-dom-config"/>).
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis> Note que em clientes
+<command>Windows</command> que estejam em outra subrede, é necessário o arquivo
+<filename>\windows\lmhosts</filename> apontando para um servidor PDC mesmo que
+ele esteja apontando para o servidor WINS, caso contrário, a máquina não
+efetuará o logon.
+</para>
+<para>
+O formato do arquivo <filename>lmhosts</filename> do <command>Windows</command>
+é mais complexo do que o do <command>Linux</command> pois o sistema precisa de
+mais detalhes para resolver os nomes e tipos de máquinas no domínio.  Veja o
+modelo <filename>lmhosts.sam</filename> em seu sistema
+<command>Windows</command> para compreender seu funcionamento.
+</para>
+<section xml:id="s-samba-s-nameresolv-lmhosts-unix-ex"><info><title>Exemplo de <filename>lmhosts</filename> do UNIX</title></info>
+<para>
+O exemplo abaixo mapeia o endereço IP das máquinas (primeira coluna) com o
+respectivo nome de máquina (segunda coluna):
+</para>
+<screen>
+172.16.0.34 servarq
+172.16.0.30 serverdom
+192.168.5.2 servwins
+172.16.0.3 servpdc
+172.16.0.1 gateway
+</screen>
+</section>
+
+<section xml:id="s-samba-s-nameresolve-lmhosts-windows-ex"><info><title>Exemplo de <filename>lmhosts</filename> do Windows</title></info>
+<para>
+O arquivo possui uma sintaxe idêntica a do <filename>lmhosts</filename> do
+UNIX, mas alguns parâmetros especiais são especificados para ajudar o
+<command>Windows</command> resolver algumas coisas que não consegue fazer
+sozinho (principalmente com relação a identificação de função de máquinas em
+redes segmentadas):
+</para>
+<screen>
+192.168.0.5 servarq
+192.168.0.1 serverpdc #PRE #DOM:dominio
+192.168.0.2 "serverwins    \0x1e" #PRE
+#INCLUDE \\serverpdc\lmhosts
+</screen>
+<para>
+A primeira entrada do arquivo é a tradicional, onde o nome da máquina NetBIOS é
+associada ao IP.  A segunda utiliza dois parâmetros adicionais:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>#PRE</literal> - Faz a entrada ser carregada logo na inicialização e
+se tornando uma entrada permanente no cache NetBIOS.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>#DOM</literal> - Especifica que a máquina é um controlador de domínio.
+A máquina deverá ter sido configurada para a função de domínio, pois caso
+contrário isso simplesmente não funcionará.
+</para>
+</listitem>
+</itemizedlist>
+<para>
+Note que ambos <literal>#PRE</literal> e <literal>#DOM</literal> devem ser
+especificados em maiúsculas.  O terceiro exemplo faz uma referência permanente
+(#PRE) a máquina servidora WINS <emphasis>serverwins</emphasis>.  Neste exemplo
+é usada uma característica especial para especificar a ID hexadecimal da
+máquina na rede <emphasis>1e</emphasis>.  O quarto utiliza um include para
+associar outro arquivo ao atual, útil quando temos um compartilhamento que
+distribui um arquivo <filename>lmhosts</filename> para diversas máquinas na
+rede.  De preferência, utilize sempre uma diretiva <emphasis>#PRE</emphasis>
+para todas as máquinas especificadas na diretiva <emphasis>#INCLUDE</emphasis>
+em seu arquivo de configuração.
+</para>
+<para>
+Para a especificação de ID de serviço manual, é necessário manter os 15
+caracteres no nome da máquina (preenchendo os restantes com espaços, caso seja
+preciso).  O último caracter é o código hexadecimal que identifica o serviço de
+rede (veja <xref linkend="s-samba-c-workgroup-linux-nmblookup"/> para ver a
+lista de serviços e sua respectiva função).
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis> Caso crie este arquivo em um editor de
+textos do <command>Linux</command>, não se esqueça de converter o arquivo para
+que contenha o CR+LF no final das linhas.
+</para>
+</section>
+
+</section>
+
+<section xml:id="s-samba-s-nameresolv-wins"><info><title>WINS</title></info>
+<para>
+Este é um serviço de resolução de nomes que funciona de forma semelhante ao
+DNS, só que voltado para o NetBIOS.  Quando uma máquina cliente NetBIOS entra
+na rede, o servidor WINS pega seu nome e IP e inclui em uma tabela para futura
+consulta pelos clientes da rede.
+</para>
+<para>
+Esta tabela consultada toda vez que um cliente NetBIOS solicita um nome de
+máquina, componentes do grupo de trabalho ou domínio na rede.  Uma outra
+aplicação importante de um servidor WINS é permitir a resolução de nomes em
+pontos de redes que requerem roteamento, a simplicidade de um protocolo não
+roteável como o NetBIOS fica limitada a simplicidade das instalações de rede.
+Um servidor WINS pode ser instalado em cada ponta da rede e eles trocarem dados
+entre si e atualizar suas tabelas de nomes/grupos de trabalhos/IPs.
+</para>
+<para>
+A resolução de nomes de máquinas será feita consultando diretamente a máquina
+WINS ao invés de broadcasting (que geram um tráfego alto na rede).
+</para>
+<section xml:id="s-samba-s-nameresolv-wins-s"><info><title>Configurando o servidor WINS</title></info>
+<para>
+Para ativar o servidor WINS no <command>samba</command>, inclua as seguinte
+linha na seção <literal>[global]</literal> do seu arquivo
+<filename>/etc/samba/smb.conf</filename>:
+</para>
+<screen>
+[global]
+wins support = yes
+wins proxy = no
+dns proxy = no
+max wins ttl = 518400
+</screen>
+<para>
+O parâmetro <literal>wins proxy</literal> pode ser necessário para alguns
+clientes antigos que tenham problemas no envio de suas requisições WINS.  O
+<literal>dns proxy</literal> permite que o servidor WINS faça a pesquisa no DNS
+para localização de nomes de máquinas caso não exista no cache.  Ambas as
+opções <literal>wins support</literal>, <literal>wins proxy</literal> e
+<literal>dns proxy</literal> tem como valor padrão <literal>não</literal>.
+Pronto, seu servidor samba agora suporta WINS.  Fácil, prático e rápido :-)
+</para>
+<para>
+Se estiver configurando uma subrede com masquerade para acesso a um PDC ou um
+servidor WINS, você terá que mexer no gateway central para apontar uma rota
+para o gateway masquerade.  O motivo disto é porque o masquerade do
+<command>Linux</command> atua somente nos cabeçalhos, mas o IP da estação é
+enviada e processada pelo PDC para retornar uma resposta.  Da mesma forma, este
+IP é registrado no servidor WINS para uso das estações de trabalho.  Isto só
+vai ser resolvido quando for escrito um módulo de conntrack para conexões SAMBA
+(até o lançamento do kernel <literal>2.4.22</literal>, isso ainda não ocorreu).
+</para>
+<para>
+<emphasis role="strong">OBS1:</emphasis> NUNCA configure mais de um servidor
+WINS em uma mesma rede.
+</para>
+<para>
+<emphasis role="strong">OBS2:</emphasis> NÃO especifique o parâmetro
+<literal>wins server</literal> caso esteja usando o suporte a WINS.
+</para>
+</section>
+
+<section xml:id="s-samba-s-nameresolv-wins-c"><info><title>Configurando o Cliente WINS</title></info>
+<para>
+Para os clientes da rede (<command>Linux, Windows, OS/2, etc.</command>) fazer
+uso das vantagens da resolução de nomes usando o WINS, é necessário configurar
+para que eles o utilizem para resolver os nomes de máquinas.  Isto é feito da
+seguinte forma em cada um dos sistemas operacionais:
+</para>
+<variablelist>
+<varlistentry>
+<term>Linux</term>
+<listitem>
+<para>
+Adicione a linha <literal>wins server = ip_do_servidor_WINS</literal> na seção
+global do arquivo <filename>/etc/samba/smb.conf</filename>:
+</para>
+<screen>
+[global]
+wins server = 192.168.1.1
+</screen>
+<para>
+Após isto, reinicie o servidor <command>samba</command>.  Caso esteja
+executando o servidor via <literal>inetd</literal>, digite: <literal>killall
+-HUP nmbd</literal>.  Se estiver rodando através de daemons:
+<literal>/etc/init.d/samba restart</literal>.  Não é necessário reiniciar o
+computador!
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>Windows 9x</term>
+<listitem>
+<para>
+Clique com o botão direito sobre o ícone <emphasis>Ambiente de Rede</emphasis>
+e selecione propriedades.  Na janela de configuração de rede clique na aba
+<emphasis>Configuração</emphasis>.  Na lista que aparece selecione o protocolo
+TCP/IP equivalente a sua placa de rede local e clique em
+<emphasis>Propriedades</emphasis>.
+</para>
+<para>
+Na tela de <emphasis>Propriedades TCP/IP</emphasis> clique em
+<emphasis>Configurações WINS</emphasis> e marque a opção <emphasis>Ativar
+resolução WINS</emphasis>.  Digite o endereço do servidor WINS e clique em
+<emphasis>Adicionar</emphasis>.
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis> Se utilizar um servidor DHCP em sua
+rede local e o endereço do servidor WINS também é oferecido através dele, você
+poderá marcar a opção <emphasis>Usar DHCP para resolução WINS</emphasis>.  Note
+que esta opção somente estará disponível se escolher a opção <emphasis>Obter um
+endereço IP automaticamente</emphasis> na tab <emphasis>Endereços
+IP</emphasis>.  Clique em OK até fechar todas as telas e reinicie quando o
+computador perguntar :-)
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+</section>
+
+</section>
+

@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="fw-iptables-chains"><info><title>Manipulando chains</title></info>
+<para>
+O <command>iptables</command> trabalha com uma tabela de regras que é analisada
+uma a uma até que a última seja processada.  Por padrão, se uma regra tiver
+qualquer erro, uma mensagem será mostrada e ela descartada.  O pacote não
+conferirá e a ação final (se ele vai ser aceito ou rejeitado) dependerá das
+regras seguintes.
+</para>
+<para>
+As opções passadas ao <command>iptables</command> usadas para manipular os
+chains são <emphasis role="strong">SEMPRE</emphasis> em maiúsculas.  As
+seguintes operações podem ser realizadas:
+</para>
+<section xml:id="fw-iptables-chains-A"><info><title>Adicionando regras - A</title></info>
+<para>
+Como exemplo vamos criar uma regra que bloqueia o acesso a nosso própria
+máquina (127.0.0.1 - loopback).  Primeiro daremos um ping para verificar seu
+funcionamento:
+</para>
+<screen>
+#ping 127.0.0.1
+PING 127.0.0.1 (127.0.0.1): 56 data bytes
+64 bytes from 127.0.0.1: icmp_seq=0 ttl=255 time=0.6 ms
+64 bytes from 127.0.0.1: icmp_seq=1 ttl=255 time=0.5 ms
+
+--- 127.0.0.1 ping statistics ---
+2 packets transmitted, 2 packets received, 0% packet loss
+round-trip min/avg/max = 0.5/0.5/0.6 ms
+</screen>
+<para>
+Ok, a máquina responde, agora vamos incluir uma regra no chain INPUT
+(<emphasis>-A INPUT</emphasis>) que bloqueie (<emphasis>-j DROP</emphasis>)
+qualquer acesso indo ao endereço 127.0.0.1 (<emphasis>-d 127.0.0.1</emphasis>):
+</para>
+<para>
+<literal>iptables -t filter -A INPUT -d 127.0.0.1 -j DROP</literal>
+</para>
+<para>
+Agora verificamos um novo ping:
+</para>
+<screen>
+#ping 127.0.0.1
+PING 127.0.0.1 (127.0.0.1): 56 data bytes
+
+--- 127.0.0.1 ping statistics ---
+2 packets transmitted, 0 packets received, 100% packet loss
+</screen>
+<para>
+Desta vez a máquina 127.0.0.1 não respondeu, pois todos os pacotes com o
+destino 127.0.0.1 (-d 127.0.0.1) são rejeitados (-j DROP).  A opção
+<emphasis>-A</emphasis> é usada para adicionar novas regras no final do chain.
+Além de <emphasis>-j DROP</emphasis> que serve para rejeitar os pacotes,
+podemos também usar <emphasis>-j ACCEPT</emphasis> para aceitar pacotes.  A
+opção <literal>-j</literal> é chamada de <emphasis>alvo da regra</emphasis> ou
+somente <emphasis>alvo</emphasis> pois define o destino do pacote que atravessa
+a regra (veja <xref linkend="fw-iptables-outras-alvo"/>).  Bem vindo a base de
+um sistema de firewall :-)
+</para>
+<para>
+<emphasis role="strong">OBS1:</emphasis> - O acesso a interface loopback não
+deve ser de forma alguma bloqueado, pois muitos aplicativos utilizam soquetes
+tcp para realizarem conexões, mesmo que você não possua uma rede interna.
+</para>
+<para>
+<emphasis role="strong">OBS2:</emphasis> - A tabela <emphasis>filter</emphasis>
+será usada como padrão caso nenhuma tabela seja especificada através da opção
+<literal>-t</literal>.
+</para>
+</section>
+
+<section xml:id="fw-iptables-chains-L"><info><title>Listando regras - L</title></info>
+<para>
+A seguinte sintaxe é usada para listar as regras criadas:
+</para>
+<para>
+<literal>iptables [<emphasis>-t tabela</emphasis>] -L
+[<emphasis>chain</emphasis>] [<emphasis>opções</emphasis>]</literal>
+</para>
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>tabela</emphasis></term>
+<listitem>
+<para>
+É uma das tabelas usadas pelo <command>iptables</command>.  Se a tabela não for
+especificada, a tabela <emphasis>filter</emphasis> será usada como padrão.
+Veja <xref linkend="fw-iptables-tabelas"/> para detalhes.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>chain</emphasis></term>
+<listitem>
+<para>
+Um dos chains disponíveis na tabela acima (veja <xref linkend="fw-iptables-tabelas"/>) ou criado pelo usuário (<xref linkend="fw-iptables-chains-N"/>).  Caso o chain não seja especificado, todos
+os chains da tabela serão mostrados.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>opções</emphasis></term>
+<listitem>
+<para>
+As seguintes opções podem ser usadas para listar o conteúdo de chains:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>-v</literal> - Exibe mais detalhes sobre as regras criadas nos chains.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>-n</literal> - Exibe endereços de máquinas/portas como números ao
+invés de tentar a resolução DNS e consulta ao
+<filename>/etc/services</filename>.  A resolução de nomes pode tomar muito
+tempo dependendo da quantidade de regras que suas tabelas possuem e velocidade
+de sua conexão.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>-x</literal> - Exibe números exatos ao invés de números redondos.
+Também mostra a faixa de portas de uma regra de firewall.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>--line-numbers</literal> - Exibe o número da posição da regra na
+primeira coluna da listagem.
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+Para listar a regra criada anteriormente usamos o comando:
+</para>
+<screen>
+#iptables -t filter -L INPUT
+
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+DROP       all  --  anywhere             localhost
+</screen>
+<para>
+O comando <literal>iptables -L INPUT -n</literal> tem o mesmo efeito, a
+diferença é que são mostrados números ao invés de nomes:
+</para>
+<screen>
+#iptables -L INPUT -n
+
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination
+DROP       all  --  0.0.0.0/0            127.0.0.1
+
+
+#iptables -L INPUT -n --line-numbers
+
+Chain INPUT (policy ACCEPT)
+num target     prot opt source               destination
+1   DROP       all  --  0.0.0.0/0            127.0.0.1
+
+#iptables -L INPUT -n -v
+Chain INPUT (policy ACCEPT 78 packets, 5820 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+    2   194 DROP       icmp --  *      *       0.0.0.0/0            127.0.0.1
+</screen>
+<para>
+Os campos assim possuem o seguinte significado:
+</para>
+<variablelist>
+<varlistentry>
+<term>Chain INPUT</term>
+<listitem>
+<para>
+Nome do chain listado
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>(policy ACCEPT 78 packets, 5820 bytes)</term>
+<listitem>
+<para>
+política padrão do chain (veja <xref linkend="fw-iptables-chains-P"/>).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>pkts</term>
+<listitem>
+<para>
+Quantidade de pacotes que atravessaram a regra (veja <xref linkend="fw-iptables-chains-Z"/>).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>bytes</term>
+<listitem>
+<para>
+Quantidade de bytes que atravessaram a regra.  Pode ser referenciado com K
+(Kilobytes), M (Megabytes), G (Gigabytes).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>target</term>
+<listitem>
+<para>
+O alvo da regra, o destino do pacote.  Pode ser ACCEPT, DROP ou outro chain.
+Veja <xref linkend="fw-iptables-outras-alvo"/> para detalhes sobre a
+especificação de um alvo.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>prot</term>
+<listitem>
+<para>
+Protocolo especificado pela regra.  Pode ser udp, tcp, icmp ou all.  Veja <xref linkend="fw-iptables-outras-proto"/> para detalhes.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>opt</term>
+<listitem>
+<para>
+Opções extras passadas a regra.  Normalmente "!"  (veja <xref linkend="fw-iptables-outras-excessoes"/>) ou "f" (veja <xref linkend="fw-iptables-outras-fragmentos"/>).
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>in</term>
+<listitem>
+<para>
+Interface de entrada (de onde os dados chegam).  Veja <xref linkend="fw-iptables-outras-iface"/>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>out</term>
+<listitem>
+<para>
+Interface de saída (para onde os dados vão).  Veja <xref linkend="fw-iptables-outras-iface"/>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>source</term>
+<listitem>
+<para>
+Endereço de origem.  Veja <xref linkend="fw-iptables-outras-endOD"/>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>destination</term>
+<listitem>
+<para>
+Endereço de destino.  Veja <xref linkend="fw-iptables-outras-endOD"/>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>outras opções</term>
+<listitem>
+<para>
+Estas opções normalmente aparecem quando são usadas a opção -x:
+</para>
+<itemizedlist>
+<listitem>
+<para>
+<literal>dpt ou dpts</literal> - Especifica a porta ou faixa de portas de
+destino.
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>reject-with icmp-port-unreachable</literal> - Significa que foi usado
+o alvo REJECT naquela regra (veja <xref linkend="fw-iptables-outras-alvo-REJECT"/>).
+</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
+
+<section xml:id="fw-iptables-chains-D"><info><title>Apagando uma regra - D</title></info>
+<para>
+Para apagar um chain, existem duas alternativas:
+</para>
+<orderedlist numeration="arabic">
+<listitem>
+<para>
+Quando sabemos qual é o número da regra no chain (listado com a opção
+<literal>-L</literal>) podemos referenciar o número diretamente.  Por exemplo,
+para apagar a regra criada acima:
+</para>
+<para>
+<literal>iptables -t filter -D INPUT 1</literal>
+</para>
+<para>
+Esta opção não é boa quando temos um firewall complexo com um grande número de
+regras por chains, neste caso a segunda opção é a mais apropriada.
+</para>
+</listitem>
+<listitem>
+<para>
+Usamos a mesma sintaxe para criar a regra no chain, mas trocamos
+<literal>-A</literal> por <literal>-D</literal>:
+</para>
+<para>
+<literal>iptables -t filter -D INPUT -d 127.0.0.1 -j DROP</literal>
+</para>
+<para>
+Então a regra correspondentes no chain INPUT será automaticamente apagada
+(confira listando o chain com a opção "-L").  Caso o chain possua várias regras
+semelhantes, somente a primeira será apagada.
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis> Não é possível apagar os chains
+defaults do <command>iptables</command> (<emphasis>INPUT</emphasis>,
+<emphasis>OUTPUT</emphasis>...).
+</para>
+</listitem>
+</orderedlist>
+</section>
+
+<section xml:id="fw-iptables-chains-I"><info><title>Inserindo uma regra - I</title></info>
+<para>
+Precisamos que o tráfego vindo de <filename>192.168.1.15</filename> não seja
+rejeitado pelo nosso firewall.  Não podemos adicionar uma nova regra (-A) pois
+esta seria incluída no final do chain e o tráfego seria rejeitado pela primeira
+regra (nunca atingindo a segunda).  A solução é inserir a nova regra antes da
+regra que bloqueia todo o tráfego ao endereço <filename>127.0.0.1</filename> na
+posição 1:
+</para>
+<para>
+<literal>iptables -t filter -I INPUT 1 -s 192.168.1.15 -d 127.0.0.1 -j
+ACCEPT</literal>
+</para>
+<para>
+Após este comando, temos a regra inserida na primeira posição do chain (repare
+no número 1 após INPUT) e a antiga regra número 1 passa a ser a número 2.
+Desta forma a regra acima será consultada, se a máquina de origem for
+192.168.1.15 então o tráfego estará garantido, caso contrário o tráfego com o
+destino 127.0.0.1 será bloqueado na regra seguinte.
+</para>
+</section>
+
+<section xml:id="fw-iptables-chains-R"><info><title>Substituindo uma regra - R</title></info>
+<para>
+Após criar nossa regra, percebemos que a nossa intenção era somente bloquear os
+pings com o destino <filename>127.0.0.1</filename> (pacotes ICMP) e não havia
+necessidade de bloquear todo o tráfego da máquina.  Existem duas alternativas:
+apagar a regra e inserir uma nova no lugar ou modificar diretamente a regra já
+criada sem afetar outras regras existentes e mantendo a sua ordem no chain
+(isso é muito importante).  Use o seguinte comando:
+</para>
+<para>
+<literal>iptables -R INPUT 2 -d 127.0.0.1 -p icmp -j DROP</literal>
+</para>
+<para>
+O número <literal>2</literal> é o número da regra que será substituída no chain
+INPUT, e deve ser especificado.  O comando acima substituirá a regra 2 do chain
+INPUT (-R INPUT 2) bloqueando (-j DROP) qualquer pacote icmp (-p icmp) com o
+destino <filename>127.0.0.1</filename> (-d 127.0.0.1).
+</para>
+</section>
+
+<section xml:id="fw-iptables-chains-N"><info><title>Criando um novo chain - N</title></info>
+<para>
+Em firewalls organizados com um grande número de regras, é interessante criar
+chains individuais para organizar regras de um mesmo tipo ou que tenha por
+objetivo analisar um tráfego de uma mesma categoria (interface, endereço de
+origem, destino, protocolo, etc) pois podem consumir muitas linhas e tornar o
+gerenciamento do firewall confuso (e conseqüentemente causar sérios riscos de
+segurança).  O tamanho máximo de um nome de chain é de 31 caracteres e podem
+conter tanto letras maiúsculas quanto minúsculas.
+</para>
+<para>
+<literal>iptables [<emphasis>-t tabela</emphasis>] [<emphasis>-N
+novochain</emphasis>]</literal>
+</para>
+<para>
+Para criar o chain <emphasis>internet</emphasis> (que pode ser usado para
+agrupar as regras de internet) usamos o seguinte comando:
+</para>
+<screen>
+ iptables -t filter -N internet
+</screen>
+<para>
+Para inserir regras no chain <emphasis>internet</emphasis> basta especifica-lo
+após a opção -A:
+</para>
+<screen>
+ iptables -t filter -A internet -s 200.200.200.200 -j DROP
+</screen>
+<para>
+E então criamos um pulo (-j) do chain <emphasis>INPUT</emphasis> para o chain
+<emphasis>internet</emphasis>:
+</para>
+<para>
+<literal>iptables -t filter -A INPUT -j internet</literal>
+</para>
+<para>
+<emphasis role="strong">OBS:</emphasis> O chain criando pelo usuário pode ter
+seu nome tanto em maiúsculas como minúsculas.
+</para>
+<para>
+Se uma máquina do endereço 200.200.200.200 tentar acessar sua máquina, o
+<command>iptables</command> consultará as seguintes regras:
+</para>
+<screen>
+`INPUT'                         `internet'
+ ----------------------------    -----------------------------
+ | Regra1: -s 192.168.1.15  |    | Regra1: -s 200.200.200.200|
+ |--------------------------|    |---------------------------|
+ | Regra2: -s 192.168.1.1   |    | Regra2: -d 192.168.1.1    |
+ |--------------------------|    -----------------------------
+ | Regra3: -j DROP          |
+ ----------------------------
+
+O pacote tem o endereço de origem 
+200.200.200.200, ele passa pela
+primeira e segunda regras do chain
+INPUT, a terceira regra direciona 
+para o chain internet
+
+                                    _______________________________________
+                           v       /                                      v
+ /-------------------------|-\    / /-------------------------------------|-\
+ | Regra1: -s 192.168.1.15 | |   /  | Regra1: -s 200.200.200.200 -j DROP  \_____\
+ |-------------------------|-|  /   |---------------------------------------|   /
+ | Regra2: -s 192.168.1.1  | | /    | Regra2: -d 200.200.200.202 -j DROP    |
+ |-------------------------|-|/     \---------------------------------------/
+ | Regra3: -j internet      /|
+ |---------------------------|       No chain internet, a primeira regra confere
+ | Regra4: -j DROP           |       com o endereço de origem 200.200.200.200 e 
+ \---------------------------/       o pacote é bloqueado. 
+ 
+
+Se uma máquina com o endereço de origem 200.200.200.201 tentar acessar a máquina, 
+então as regra consultadas serão as seguintes:
+
+
+O pacote tem o endereço de origem 
+200.200.200.201, ele passa pela
+primeira e segunda regras do chain
+INPUT, a terceira regra direciona 
+para o chain internet               ______________________________________
+                           v       /                                      v
+ /-------------------------|-\    / /-------------------------------------|-\
+ | Regra1: -s 192.168.1.15 | |   /  | Regra1: -s 200.200.200.200 -j DROP  | |
+ |-------------------------|-|  /   |-------------------------------------|-|
+ | Regra2: -s 192.168.1.1  | | /    | Regra2: -s 200.200.200.202 -j DROP  | |
+ |-------------------------|-|/     \-------------------------------------|-/
+ | Regra3: -j internet      /|                                            v
+ |---------------------------|                                           /
+ | Regra4: -j DROP         --+-------------------------------------------      
+ \------------------------/-/       O pacote passa pelas regras 1 e 2 do chain
+                          |         internet, como ele não confere com nenhuma
+                          v         das 2 regras ele retorna ao chain INPUT e é 
+ Esta regra é a número 4            analisado pela regra seguinte.
+ que diz para rejeitar o 
+ pacote.
+</screen>
+</section>
+
+<section xml:id="s31.2.7"><info><title>Renomeando um chain criado pelo usuário - E</title></info>
+<para>
+Se por algum motivo precisar renomear um chain criado por você na tabela
+<emphasis>filter</emphasis>, <emphasis>nat</emphasis> ou
+<emphasis>mangle</emphasis>, isto poderá ser feito usando a opção
+<emphasis>-E</emphasis> do <command>iptables</command>:
+</para>
+<screen>
+iptables -t filter -E chain-antigo novo-chain
+</screen>
+<para>
+Note que não é possível renomear os chains defaults do
+<command>iptables</command>.
+</para>
+</section>
+
+<section xml:id="s31.2.8"><info><title>Listando os nomes de todas as tabelas atuais</title></info>
+<para>
+Use o comando <literal>cat /proc/net/ip_tables_names</literal> para fazer isto.
+É interessante dar uma olhada nos arquivos dentro do diretório
+<filename>/proc/net</filename>, pois os arquivos existentes podem lhe
+interessar para outras finalidades.
+</para>
+</section>
+
+<section xml:id="fw-iptables-chains-F"><info><title>Limpando as regras de um chain - F</title></info>
+<para>
+Para limpar todas as regras de um chain, use a seguinte sintaxe:
+</para>
+<para>
+<literal>iptables [<emphasis>-t tabela</emphasis>] [<emphasis>-F
+chain</emphasis>]</literal>
+</para>
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>tabela</emphasis></term>
+<listitem>
+<para>
+Tabela que contém o chain que desejamos zerar.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>chain</emphasis></term>
+<listitem>
+<para>
+Chain que desejamos limpar.  Caso um chain não seja especificado, todos os
+chains da tabela serão limpos.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<screen>
+  iptables -t filter -F INPUT
+  iptables -t filter -F
+</screen>
+</section>
+
+<section xml:id="fw-iptables-chains-X"><info><title>Apagando um chain criado pelo usuário - X</title></info>
+<para>
+Para apagarmos um chain criado pelo usuário, usamos a seguinte sintaxe:
+</para>
+<para>
+<literal>iptables [<emphasis>-t tabela</emphasis>] [<emphasis>-X
+chain</emphasis>]</literal>
+</para>
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term>tabela</term>
+<listitem>
+<para>
+Nome da tabela que contém o chain que desejamos excluir.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>chain</term>
+<listitem>
+<para>
+Nome do chain que desejamos apagar.  Caso não seja especificado, todos os
+chains definidos pelo usuário na tabela especificada serão excluídos.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+<emphasis role="strong">OBS:</emphasis> - Chains embutidos nas tabelas não
+podem ser apagados pelo usuário.  Veja os nomes destes chains em <xref linkend="fw-iptables-tabelas"/>.
+</para>
+<screen>
+ iptables -t filter -X internet
+ iptables -X
+</screen>
+</section>
+
+<section xml:id="fw-iptables-chains-Z"><info><title>Zerando contador de bytes dos chains - Z</title></info>
+<para>
+Este comando zera o campo <emphasis>pkts</emphasis> e
+<emphasis>bytes</emphasis> de uma regra do <command>iptables</command>.  Estes
+campos podem ser visualizados com o comando <command>iptables -L -v</command>.
+A seguinte sintaxe é usada:
+</para>
+<para>
+<literal>iptables [<emphasis>-t tabela</emphasis>] [<emphasis>-Z
+chain</emphasis>] [<emphasis>-L</emphasis>]</literal>
+</para>
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term><emphasis>tabela</emphasis></term>
+<listitem>
+<para>
+Nome da tabela que contém o chain que queremos zerar os contadores de bytes e
+pacotes.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><emphasis>chain</emphasis></term>
+<listitem>
+<para>
+Chain que deve ter os contadores zerados.  Caso não seja especificado, todos os
+chains da tabela terão os contadores zerados.  Note que as opções
+<emphasis>-Z</emphasis> e <emphasis>-L</emphasis> podem ser usadas juntas,
+assim o chain será listado e imediatamente zerado.  Isto evita a passagem de
+pacotes durante a listagem de um chain.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<screen>
+ iptables -t filter -Z INPUT
+</screen>
+</section>
+
+<section xml:id="fw-iptables-chains-P"><info><title>Especificando a política padrão de um chain - P</title></info>
+<para>
+A política padrão determina o que acontecerá com um pacote quando ele chegar ao
+final das regras contidas em um chain.  A política padrão do
+<command>iptables</command> é "ACCEPT" mas isto pode ser alterado com o
+comando:
+</para>
+<para>
+<literal>iptables [<emphasis>-t tabela</emphasis>] [<emphasis>-P
+chain</emphasis>] [<emphasis>ACCEPT/DROP</emphasis>]</literal>
+</para>
+<para>
+Onde:
+</para>
+<variablelist>
+<varlistentry>
+<term>tabela</term>
+<listitem>
+<para>
+Tabela que contém o chain que desejamos modificar a política padrão.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>chain</term>
+<listitem>
+<para>
+Define o chain que terá a política modificada.  O chain deve ser especificado.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>ACCEPT/DROP</term>
+<listitem>
+<para>
+ACCEPT aceita os pacotes caso nenhuma regra do chain conferir (usado em regras
+permissivas).  DROP rejeita os pacotes caso nenhuma regra do chain conferir
+(usado em regras restritivas).
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>
+A política padrão de um chain é mostrada com o comando <command>iptables
+-L</command>:
+</para>
+<screen>
+# iptables -L INPUT
+
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+DROP       icmp --  anywhere             localhost
+</screen>
+<para>
+No exemplo acima, a política padrão de INPUT é ACCEPT (policy ACCEPT), o que
+significa que qualquer pacote que não seja rejeitado pela regra do chain, será
+aceito.  Para alterar a política padrão deste chain usamos o comando:
+</para>
+<screen>
+ iptables -t filter -P INPUT DROP
+</screen>
+<para>
+<emphasis role="strong">NOTA:</emphasis> As políticas de acesso PERMISSIVASS
+(ACCEPT) normalmente são usadas em conjunto com regras restritivas no chain
+correspondentes (tudo é bloqueado e o que sobrar é liberado) e políticas
+RESTRITIVAS (DROP) são usadas em conjunto com regras permissivas no chain
+correspondente (tudo é liberado e o que sobrar é bloqueado pela política
+padrão).
+</para>
+</section>
+
+</section>
+

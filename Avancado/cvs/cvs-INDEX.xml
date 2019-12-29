@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+<!ENTITY s-cvs1 SYSTEM "CVS-Introducao.xml">
+<!ENTITY s-cvs2 SYSTEM "CVS-Servidor.xml">
+<!ENTITY s-cvs3 SYSTEM "CVS-Projeto.xml">
+<!ENTITY s-cvs4 SYSTEM "CVS-CVSROOT.xml">
+<!ENTITY s-cvs5 SYSTEM "CVS-Cliente.xml">
+<!ENTITY s-cvs6 SYSTEM "CVS-Exemplo.xml">
+-->
+
+<chapter userlevel='avanc' xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="s-cvs"><info><title>CVS</title></info>
+    <para>
+    Este capítulo explica os requerimentos, instalação, configuração, segurança e
+    diversos modelos de configuração de acesso para trabalho em grupo utilizados
+    pelo <command>CVS</command>.
+    </para>
+    <para>
+    Não tome-o como uma referência completa ao uso e configuração do cvs, a
+    pesquisa de sua info page é muito importante.
+    </para>
+    
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cvs-Introducao.xml" /> 
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cvs-Servidor.xml" /> 
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cvs-Projeto.xml" /> 
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cvs-CVSROOT.xml" /> 
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cvs-Client.xml" /> 
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="cvs-Exemplo.xml" /> 
+
+</chapter>
