@@ -1,18 +1,19 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE book [
 
-<!-- 
+<!--
 Guia Foca GNU/Linux
 
-Estilo de tags adotadas neste documento:
-- Nome de Programa, nome de comando - <prgn>
-- Nome de pacote                    - <package>
+Estilo de tagas de marcação usada no Guia Foca XML:
+- Nome de Programa, nome de comando      - <command>
+- Nome de pacote                         - <package>
+- Texto sem formatação, saida de comando - <screen>
 - Saída de comando, entrada no 
-  teclado, parâmetros e comandos    - <tt>
-- Nome de arquivo, diretório        - <file>
-- Parte em destaque no texto        - <em>
-- Aviso de observação, atenção, etc - <strong>
-- Nome de variável                  - <var>
+  teclado, parâmetros e comandos    - <literal>
+- Nome de arquivo, diretório, modulo- <filename>
+- Parte em destaque no texto        - <emphasis>
+- Aviso de observação, atenção, etc - <emphasis>
+- Nome de variável                  - <replaceable>
   
 Copyleft 1999-2019, Gleydson Mazioli da Silva <gleydson@guiafoca.org>
 -->
@@ -61,22 +62,22 @@ Copyleft 1999-2019, Gleydson Mazioli da Silva <gleydson@guiafoca.org>
 <!ENTITY rede               SYSTEM "Intermediario/rede.xml"           >
 
 <!--                  Versão Avançado                         -->
-<!ENTITY % apache         SYSTEM "Avancado/apache/Apache-INDEX.xml"> %apache;
-<!ENTITY % cfgrede      SYSTEM "Avancado/conf-rede/CFGRede-INDEX.xml"> %cfgrede;
-<!ENTITY % iptables     SYSTEM "Avancado/iptables-firewall/iptables-INDEX.xml"> %iptables;
-<!ENTITY % contas       SYSTEM "Avancado/gerenc-contas/contas-INDEX.xml"> %contas;
-<!ENTITY % restricoes   SYSTEM "Avancado/restr-seguranca/restricoes-INDEX.xml"> %restricoes;
-<!ENTITY % criptografia SYSTEM "Avancado/criptografia/Cripto-INDEX.xml"> %criptografia;
-<!ENTITY % ident        SYSTEM "Avancado/identd/Ident-INDEX.xml"> %ident;
-<!ENTITY % telnet       SYSTEM "Avancado/telnet/telnet-INDEX.xml"> %telnet;
-<!ENTITY % ssh          SYSTEM "Avancado/ssh/ssh-INDEX.xml"> %ssh;
-<!ENTITY % pop3         SYSTEM "Avancado/pop3/pop3-INDEX.xml"> %pop3;
-<!ENTITY % cvs          SYSTEM "Avancado/cvs/CVS-INDEX.xml"> %cvs;
-<!ENTITY % samba        SYSTEM "Avancado/samba/SAMBA-INDEX.xml"> %samba;
+<!-- % apache         SYSTEM "Avancado/apache/Apache-INDEX.xml"> %apache; -->
+<!-- % cfgrede      SYSTEM "Avancado/conf-rede/CFGRede-INDEX.xml"> %cfgrede; -->
+<!-- ENTITY % iptables     SYSTEM "Avancado/iptables-firewall/iptables-INDEX.xml"> %iptables; -->
+<!-- ENTITY % contas       SYSTEM "Avancado/gerenc-contas/contas-INDEX.xml"> %contas; -->
+<!-- ENTITY % restricoes   SYSTEM "Avancado/restr-seguranca/restricoes-INDEX.xml"> %restricoes; -->
+<!-- ENTITY % criptografia SYSTEM "Avancado/criptografia/Cripto-INDEX.xml"> %criptografia; -->
+<!-- ENTITY % ident        SYSTEM "Avancado/identd/Ident-INDEX.xml"> %ident; -->
+<!-- ENTITY % telnet       SYSTEM "Avancado/telnet/telnet-INDEX.xml"> %telnet; -->
+<!--  % ssh          SYSTEM "Avancado/ssh/ssh-INDEX.xml"> %ssh; -->
+<!-- % pop3         SYSTEM "Avancado/pop3/pop3-INDEX.xml"> %pop3; -->
+<!--  % cvs          SYSTEM "Avancado/cvs/CVS-INDEX.xml"> %cvs; -->
+<!-- % samba        SYSTEM "Avancado/samba/SAMBA-INDEX.xml"> %samba; -->
 
 ]>
 
-<book xmlns="http://docbook.org/ns/docbook" version="5.0" xml:lang="pt">
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.0" xml:lang="pt">
 
 <title>Guia Foca Linux</title>
 <titleabbrev>focalinux</titleabbrev>
@@ -114,6 +115,7 @@ url="http://twitter.com/guiafoca">@guiafoca</ulink>.
 
 
 &introducao;
+<!--
 &basico;
 &hardware; 
 &migrando;
@@ -129,7 +131,10 @@ url="http://twitter.com/guiafoca">@guiafoca</ulink>.
 &permissoes; 
 &redir; 
 &rede;
-&d-cfgrede1;
+
+-->
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="Avancado/conf-rede/CFGRede-INDEX.xml"/> 
+<!--
 &kernel;
 &log;
 &compactadores;
@@ -144,34 +149,35 @@ url="http://twitter.com/guiafoca">@guiafoca</ulink>.
 &etc;
 &internet;
 &x11;
+-->
 
+<!-- Inicio de capitulos apenas do Avancado -->
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="Avancado/iptables-firewall/iptables-INDEX.xml"/> 
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="Avancado/gerenc-contas/contas-INDEX.xml"/> 
 <!--
-  <![ %AVANCADO [
- &fw-iptables1; &fw-iptables2; &fw-iptables3; &fw-iptables4; &fw-iptables5; \
-              &fw-iptables6; &fw-iptables7; &fw-iptables8;
- &d-contas1; 
- &s-apache1; &s-apache2; &s-apache3; &s-apache4; &s-apache5; &s-apache6; \
-              &s-apache7; &s-apache8; &s-apache9; &s-apache10;
-<![ %CONSTRUCAO [ 
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="Avancado/apache/apache-INDEX.xml"/> 
+-->
+
+<!-- 
   &s-bind1; 
   &s-dhcp1; 
- ]]>
- &s-ident1; 
- &s-telnet1;
- &s-ssh1; &s-ssh2; &s-ssh3;
- &s-pop3-1; 
- &s-cvs1; &s-cvs2; &s-cvs3; &s-cvs4; &s-cvs5; &s-cvs6;
- &s-samba1; &s-samba2; &s-samba3; &s-samba4; &s-samba5; &s-samba6; &s-samba7; \
- &s-samba8; &s-samba9; &s-samba10; &s-samba11; &s-samba12; &s-samba13;
- &d-restricoes1;
- &d-cripto1;
- 
-  ]]>
+ -->
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="Avancado/ident/ident-INDEX.xml"/> 
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="Avancado/telnet/telnet-INDEX.xml"/> 
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="Avancado/ssh/ssh-INDEX.xml"/> 
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="Avancado/pop3/pop3-INDEX.xml"/> 
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="Avancado/cvs/cvs-INDEX.xml"/> 
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="Avancado/samba/samba-INDEX.xml"/> 
 
-
--->
+<!--  &s-cvs1; &s-cvs2; &s-cvs3; &s-cvs4; &s-cvs5; &s-cvs6; -->
+<!--  &s-samba1; &s-samba2; &s-samba3; &s-samba4; &s-samba5; &s-samba6; &s-samba7;  -->
+<!--  &s-samba8; &s-samba9; &s-samba10; &s-samba11; &s-samba12; &s-samba13; -->
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="Avancado/restr-seguranca/restricoes-INDEX.xml"/> 
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="Avancado/criptografia/cripto-INDEX.xml"/>  
+ <!-- Fim de capitulos apenas do Avancado -->
+<!--
 &aplicativos;
 &ajuda;
 &apendice;
-
+-->
 </book>

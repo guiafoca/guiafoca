@@ -1,4 +1,8 @@
 <?xml version='1.0'?> 
+<!--
+Alterar fonte para helvetica (padrao serif hoje)
+-->
+
 <xsl:stylesheet  
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
     xmlns:fo="http://www.w3.org/1999/XSL/Format"
@@ -68,6 +72,8 @@
 <xsl:template name="user.header.content">
   <xsl:call-template name="breadcrumbs"/>
 </xsl:template>
+
+
 
 </xsl:stylesheet>
   
