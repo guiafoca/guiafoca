@@ -40,6 +40,7 @@ virtual host deste tipo.
 As explicações desta seção são baseadas na documentação do
 <command>Apache</command>.
 </para>
+
 <section xml:id="s-apache-vhosts-ip"><info><title>Virtual hosts baseados em IP</title></info>
 <para>
 Existem duas maneiras de rodar este tipo de host virtual: Através de daemons

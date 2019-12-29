@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<section xml:id="s-apache-port"><info><title>Configurando a porta padrão do Apache</title></info>
+<section xml:id="s-apache-cfgini"><info><title>Configurações Básicas do Apache</title></info>
+    <para>
+        Esta seção traz algumas configurações obrigatórioas para quem 
+        está iniciando a configuração do servidor web Apache.
+    </para>
+
+<section xml:id="s-apache-port"><info><title>Configurando a porta padrao</title></info>
     <para>
     Use a diretiva <emphasis>Port</emphasis> para configurar a porta padrão que o
     <command>Apache</command> receberá requisições por padrão.  A diretiva
@@ -14,8 +20,8 @@
     controle sobre as portas do sistema use a diretiva <emphasis>Listen</emphasis>.
     </para>
 </section>
-    
-    <section xml:id="s-apache-adicpagina"><info><title>Adicionando uma página no Apache</title></info>
+
+<section xml:id="s-apache-adicpagina"><info><title>Adicionando uma página no Apache</title></info>
     <para>
     Existem dois tipos de páginas que podem ser adicionadas ao
     <command>Apache</command>: a página raíz e sub-páginas.
@@ -103,5 +109,71 @@
     </listitem>
     </varlistentry>
     </variablelist>
+</section>
+
+<section xml:id="s-apache-bindaddress"><info><title>Configurando as interfaces que o Apache atenderá</title></info>
+    <para>
+    A diretiva <emphasis>BindAddress</emphasis> é usada para especificar endereços
+    IP das interfaces ou endereços FQDN que o <command>Apache</command> responderá
+    requisições.  Mais de um endereço podem ser especificados separados por
+    espaços.  Caso não seja definido, o <command>Apache</command> assumirá o valor
+    "*" (atenderá requisições vindas de qualquer interface).
+    </para>
+    <para>
+    <emphasis role="strong">OBS1:</emphasis> - É permitido usar somente uma
+    diretiva <emphasis>BindAddress</emphasis>.  A diretiva
+    <emphasis>Listen</emphasis> deverá ser usada se desejar mais controle sobre as
+    portas do servidor web.  Veja <xref linkend="s-apache-listen"/> para detalhes.
+    </para>
+    <para>
+    <emphasis role="strong">OBS2:</emphasis> - As interfaces especificadas pela
+    diretiva <emphasis>Listen</emphasis> substituirá as especificadas em
+    <emphasis>BindAddress</emphasis>.
+    </para>
+    <para>
+    Exemplo:
+    </para>
+    <itemizedlist>
+    <listitem>
+    <para>
+    <literal>BindAddress 192.168.1.1</literal> - Especifica que os usuários da
+    faixa de rede <filename>192.168.1.*</filename> terão acesso ao servidor
+    <command>httpd</command>.  Isto assume que a máquina possui o endereço
+    <filename>192.168.1.1</filename> em sua interface de rede interna.
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+    <literal>BindAddress *</literal> - Atenderá requisições vindas de qualquer
+    interface de rede.
+    </para>
+    </listitem>
+    </itemizedlist>
     </section>
     
+    <section xml:id="s-apache-listen"><info><title>Especificando endereços/portas adicionais (a diretiva <emphasis>Listen</emphasis>)</title></info>
+        <para>
+        A diretiva <emphasis>Listen</emphasis> é usada para se ter um controle maior
+        sobre a especificação de endereços/portas alternativas que o servidor web
+        esperará por requisições externas.  Esta diretiva é muito usada na construção
+        de <emphasis>Virtual Hosts</emphasis>.  Esta diretiva pode substituir
+        completamente as diretivas <emphasis>Port</emphasis> e
+        <emphasis>BindAddress</emphasis>.  Podem ser usados o número da porta, ou o par
+        <literal>endereço:porta</literal>:
+        </para>
+        <screen>
+        Listen 192.168.1.1:80
+        Listen 192.168.7.1:81
+        Listen 60000
+        </screen>
+        <para>
+        O endereço que deverá ser usado é o da interface de rede (assim como na
+        diretiva <emphasis>BindAddress</emphasis>).  No exemplo acima, o servidor
+        <command>httpd</command> esperará por requisições vindas de
+        <filename>192.168.1.*</filename> na porta 80 e também 60000, e requisições
+        vindas de 192.168.7.1 na porta 81 e também 60000.
+        </para>
+    </section>
+    
+
+</section>

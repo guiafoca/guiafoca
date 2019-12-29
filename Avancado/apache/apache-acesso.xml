@@ -1,462 +1,5 @@
-<!-- Converted by db4-upgrade version 1.0 -->
+<?xml version="1.0" encoding="utf-8" ?>
 
-<section xml:id="s-apache-bindaddress"><info><title>Configurando as interfaces que o Apache atenderá</title></info>
-<para>
-A diretiva <emphasis>BindAddress</emphasis> é usada para especificar endereços
-IP das interfaces ou endereços FQDN que o <command>Apache</command> responderá
-requisições.  Mais de um endereço podem ser especificados separados por
-espaços.  Caso não seja definido, o <command>Apache</command> assumirá o valor
-"*" (atenderá requisições vindas de qualquer interface).
-</para>
-<para>
-<emphasis role="strong">OBS1:</emphasis> - É permitido usar somente uma
-diretiva <emphasis>BindAddress</emphasis>.  A diretiva
-<emphasis>Listen</emphasis> deverá ser usada se desejar mais controle sobre as
-portas do servidor web.  Veja <xref linkend="s-apache-listen"/> para detalhes.
-</para>
-<para>
-<emphasis role="strong">OBS2:</emphasis> - As interfaces especificadas pela
-diretiva <emphasis>Listen</emphasis> substituirá as especificadas em
-<emphasis>BindAddress</emphasis>.
-</para>
-<para>
-Exemplo:
-</para>
-<itemizedlist>
-<listitem>
-<para>
-<literal>BindAddress 192.168.1.1</literal> - Especifica que os usuários da
-faixa de rede <filename>192.168.1.*</filename> terão acesso ao servidor
-<command>httpd</command>.  Isto assume que a máquina possui o endereço
-<filename>192.168.1.1</filename> em sua interface de rede interna.
-</para>
-</listitem>
-<listitem>
-<para>
-<literal>BindAddress *</literal> - Atenderá requisições vindas de qualquer
-interface de rede.
-</para>
-</listitem>
-</itemizedlist>
-</section>
-
-<section xml:id="s-apache-listen"><info><title>Especificando endereços/portas adicionais (a diretiva <emphasis>Listen</emphasis>)</title></info>
-<para>
-A diretiva <emphasis>Listen</emphasis> é usada para se ter um controle maior
-sobre a especificação de endereços/portas alternativas que o servidor web
-esperará por requisições externas.  Esta diretiva é muito usada na construção
-de <emphasis>Virtual Hosts</emphasis>.  Esta diretiva pode substituir
-completamente as diretivas <emphasis>Port</emphasis> e
-<emphasis>BindAddress</emphasis>.  Podem ser usados o número da porta, ou o par
-<literal>endereço:porta</literal>:
-</para>
-<screen>
-Listen 192.168.1.1:80
-Listen 192.168.7.1:81
-Listen 60000
-</screen>
-<para>
-O endereço que deverá ser usado é o da interface de rede (assim como na
-diretiva <emphasis>BindAddress</emphasis>).  No exemplo acima, o servidor
-<command>httpd</command> esperará por requisições vindas de
-<filename>192.168.1.*</filename> na porta 80 e também 60000, e requisições
-vindas de 192.168.7.1 na porta 81 e também 60000.
-</para>
-</section>
-
-<section xml:id="s-apache-acesso"><info><title>Especificando opções/permissões para as páginas</title></info>
-<para>
-As opções de restrição podem tanto ser especificadas nas diretivas
-&lt;Directory&gt;, &lt;Location&gt; ou &lt;Files&gt; quanto nos arquivos
-<filename>.htaccess</filename> (ou outro nome de arquivo de controle de acesso
-especificado pela opção <emphasis>AccessFileName</emphasis> do arquivo de
-configuração do <command>Apache</command>).  Cada diretiva de acesso é
-especificada entre &lt;tags&gt; e devem ser fechadas com &lt;/tag&gt; (como na
-linguagem HTML).  As seguintes diretivas de acesso são válidas no
-<command>Apache</command>:
-</para>
-<variablelist>
-<varlistentry>
-<term>Directory</term>
-<listitem>
-<para>
-As restrição afetará o diretório no disco especificado, conseqüentemente a
-página armazenada nele.  Por exemplo:
-</para>
-<screen>
-&lt;Directory /var/www&gt;
- Order deny,allow
- deny from all
- allow from 10.1.0.1
-&lt;Directory&gt;
-</screen>
-<para>
-O acesso ao diretório <filename>/var/www</filename> será permitido somente ao
-computador com o endereço IP <literal>10.1.0.1</literal>.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>DirectoryMatch</term>
-<listitem>
-<para>
-Funciona como a diretiva &lt;Directory&gt; mas trabalha com expressões
-regulares como argumento.  Por exemplo:
-</para>
-<screen>
-&lt;DirectoryMatch "^/www/.*"&gt;
- Order deny,allow
- deny from all
-&lt;DirectoryMatch&gt;
-</screen>
-<para>
-Bloqueará o acesso ao diretório <filename>/www</filename> e sub-diretórios
-dentro dele.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>Files</term>
-<listitem>
-<para>
-As restrições afetarão os arquivos do disco que conferem com o especificado.  É
-possível usar os coringas <emphasis>?</emphasis> e <emphasis>*</emphasis> como
-no shell.  Também podem ser usadas expressões regulares especificando um "~"
-após <literal>Files</literal> e antes da expressão.  Por exemplo:
-</para>
-<screen>
-&lt;Files *.txt&gt;
- Order deny,allow
- deny from all
-&lt;/Files&gt;
-</screen>
-<para>
-Bloqueia o acesso a todos os arquivos com a extensão <filename>.txt</filename>
-</para>
-<screen>
-&lt;Files ~ "\.(gif|jpe?g|bmp|png)$"&gt;
- Order deny,allow
-&lt;/Files&gt;
-</screen>
-<para>
-Bloqueia o acesso a arquivos <filename>gif, jpg, jpeg, bmp, png</filename>
-(note que o "~" ativa o modo de interpretação de expressões regulares).
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>FilesMatch</term>
-<listitem>
-<para>
-Permite usar expressões regulares na especificação de arquivos (equivalente a
-diretiva &lt;Files ~ "expressão"&gt;).  Por exemplo:
-</para>
-<screen>
-&lt;FilesMatch "\.(gif|jpe?g|bmp|png)$"&gt;
- Order deny,allow
-&lt;/FilesMatch&gt;
-</screen>
-<para>
-Bloqueia o acesso a arquivos <filename>gif, jpg, jpeg, bmp, png</filename>.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>Location</term>
-<listitem>
-<para>
-As restrições afetarão o diretório base especificado na URL e seus
-sub-diretórios.  Por exemplo:
-</para>
-<screen>
-&lt;Location /security&gt;
- Order allow,deny
-&lt;/Location&gt;
-</screen>
-<para>
-Bloqueia o acesso de todos os usuários ao diretório
-<filename>/security</filename> da URL (a explicação porque o acesso é bloqueado
-neste caso será explicado em <xref linkend="s-apache-acesso-restr-autor"/>).
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>LocationMatch</term>
-<listitem>
-<para>
-Idêntico a diretiva &lt;Location&gt; mas trabalha com expressões regulares.
-Por exemplo:
-</para>
-<screen>
-&lt;LocationMatch "/(extra|special)/data"&gt;
- Order deny,allow
- deny from all
-&lt;/LocationMatch&gt;
-</screen>
-<para>
-Bloqueará URLs que contém a substring "/extra/data" ou "/special/data".
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
-<para>
-O uso das diretivas &lt;Directory&gt; e &lt;Files&gt; é apropriada quando você
-deseja trabalhar com permissões a nível de diretórios/arquivos no disco local
-(o controle do proxy também é feito via &lt;Directory&gt;), o uso da diretiva
-&lt;Location&gt; é adequado para trabalhar com permissões a nível de URL.  A
-ordem de processamento das diretivas de acesso são processadas é a seguinte:
-</para>
-<orderedlist numeration="arabic">
-<listitem>
-<para>
-A diretiva &lt;Directory&gt; (com exceção de &lt;DirectoryMatch&gt;) e os
-arquivos <filename>.htaccess</filename> são processados simultaneamente.  As
-definições dos arquivos <filename>.htaccess</filename> substituem as de
-&lt;Directory&gt;)
-</para>
-</listitem>
-<listitem>
-<para>
-Expressões regulares de &lt;DirectoryMatch&gt;, &lt;Directory&gt;.
-</para>
-</listitem>
-<listitem>
-<para>
-&lt;Files&gt; e &lt;FilesMatch&gt; são processados simultaneamente.
-</para>
-</listitem>
-<listitem>
-<para>
-&lt;Location&gt; e &lt;LocationMatch&gt; são processados simultaneamente.
-</para>
-</listitem>
-</orderedlist>
-<para>
-Normalmente é encontrado a opção <emphasis>Options</emphasis> dentro de uma das
-diretivas acima, a função desta diretiva é controlar os seguintes aspectos da
-listagem de diretórios:
-</para>
-<variablelist>
-<varlistentry>
-<term>All</term>
-<listitem>
-<para>
-Todas as opções são usadas exceto a <literal>MultiViews</literal>.  É a padrão
-caso a opção <emphasis>Options</emphasis> não seja especificada.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>ExecCGI</term>
-<listitem>
-<para>
-Permite a execução de scripts CGI.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>FollowSymLinks</term>
-<listitem>
-<para>
-O servidor seguirá links simbólicos neste diretório (o caminho não é
-modificado).  Esta opção é ignorada caso apareça dentro das diretivas
-&lt;Location&gt;, &lt;LocationMatch&gt; e &lt;DirectoryMatch&gt;.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>Includes</term>
-<listitem>
-<para>
-É permitido o uso de includes no lado do servidor.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>IncludesNOEXEC</term>
-<listitem>
-<para>
-É permitido o uso de includes do lado do servidor, mas o comando
-<literal>#exec</literal> e <literal>#include</literal> de um script CGI são
-desativados.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>Indexes</term>
-<listitem>
-<para>
-Se não existir um arquivo especificado pela diretiva &lt;DirectoryIndex&gt; no
-diretório especificado, o servidor formatará automaticamente a listagem ao
-invés de gerar uma resposta de acesso negado.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>MultiViews</term>
-<listitem>
-<para>
-Permite o uso da Negociação de conteúdo naquele diretório.  A negociação de
-conteúdo permite o envio de um documento no idioma requisitado pelo navegador
-do cliente.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>SymLinksIfOwnerMatch</term>
-<listitem>
-<para>
-O servidor somente seguirá links simbólicos se o arquivo ou diretório alvo
-tiver como dono o mesmo user ID do link.  Esta opção é ignorada caso apareça
-dentro das diretivas &lt;Location&gt;, &lt;LocationMatch&gt; e
-&lt;DirectoryMatch&gt;.
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
-<para>
-Múltiplos parâmetros para <emphasis>Options</emphasis> podem ser especificados
-através de espaços.
-</para>
-<para>
-<emphasis role="strong">OBS1</emphasis>: A opção Options não tem efeito dentro
-da diretiva FILES.
-</para>
-<para>
-<emphasis role="strong">OBS2</emphasis>: Tanto faz usar maiúsculas quanto
-minúsculas nas diretivas de configuração, opções e parâmetros de configuração
-do <command>Apache</command>, a capitalização apenas ajuda a leitura e
-interpretação: SymLinksIfOwnerMatch (LinksSimbólicosSeDonoConferir).
-</para>
-<para>
-As opções especificadas para o diretório afetam também seus sub-diretórios, a
-não ser que sejam especificadas opções separadas para o sub-diretório:
-</para>
-<screen>
-&lt;Directory /var/www&gt;
- Options Indexes FollowSymLinks
-&lt;/Directory&gt;
-</screen>
-<para>
-Ao acessar o diretório <filename>/var/www/focalinux</filename>, as permissões
-usadas serão de <filename>/var/www</filename>, ao menos que uma diretiva
-&lt;Directory&gt; ou &lt;Location&gt; seja especificada:
-</para>
-<screen>
-&lt;Directory /var/www&gt;
- Options Indexes FollowSymLinks
-&lt;/Directory&gt;
-
-&lt;Directory /var/www/focalinux&gt;
- Options Includes
-&lt;/Directory&gt;
-</screen>
-<para>
-As opções e restrições de acesso de <filename>/var/www/focalinux</filename>
-serão EXATAMENTE as especificadas no bloco da diretiva &lt;Directory
-/var/www/focalinux&gt; e somente os <emphasis>includes</emphasis> serão
-permitidos.  Para adicionar ou remover uma opção individual definidas por
-diretivas anteriores, podem ser usado os sinais "+" ou "-", por exemplo:
-</para>
-<screen>
-&lt;Directory /var/www&gt;
- Options Indexes FollowSymLinks
-&lt;/Directory&gt;
-
-&lt;Directory /var/www/focalinux&gt;
- Options +Includes -Indexes
-&lt;/Directory&gt;
-</screen>
-<para>
-As opções <emphasis>Indexes</emphasis> e <emphasis>FollowSymLinks</emphasis>
-são definidas para o diretório <filename>/var/www</filename>, então as
-permissões do diretório <filename>/var/www/focalinux</filename> serão
-<emphasis>FollowSymLinks</emphasis> (do diretório
-<filename>/web/docs</filename>) e <emphasis>Includes</emphasis> (adicionada) e
-o parâmetro <emphasis>Indexes</emphasis> não terá efeito neste diretório.
-</para>
-<para>
-É permitido fazer um aninhamento das diretivas &lt;Directory&gt; e
-&lt;Files&gt;:
-</para>
-<screen>
-&lt;Directory /var/www&gt;
- Order allow,deny
- allow from all
-
- &lt;Files LEIAME-DONO.txt&gt;
-  Order deny,allow
-  deny from all
- &lt;/Files&gt;
-
-&lt;/Directory&gt;
-</screen>
-<para>
-Neste caso, somente os arquivos <filename>LEIAME-DONO.txt</filename> existentes
-no diretório <filename>/var/www</filename> e seus sub-diretórios serão
-bloqueados.
-</para>
-<para>
-Se a diretiva &lt;Files&gt; for usada fora de uma estrutura &lt;Directory&gt;,
-ela terá efeito em todos os arquivos disponibilizados pelo servidor.  Este é
-excelente método para proteger os arquivos de acesso, senhas e grupos, conforme
-será explicado mais adiante.
-</para>
-<para>
-Qualquer outro tipo de aninhamento de diretivas resultará em um erro de
-configuração ao se tentar carregar/recarregar o <command>Apache</command>.  Um
-exemplo de diretiva incorreta:
-</para>
-<screen>
-&lt;Directory /var/www&gt;
- Options Indexes FollowSymLinks
-
- &lt;Directory /var/www/focalinux&gt;
-  Options +Includes -Indexes
- &lt;/Directory&gt;
-
-&lt;/Directory&gt;
-</screen>
-<para>
-O correto é:
-</para>
-<screen>
-&lt;Directory /var/www&gt;
- Options Indexes FollowSymLinks
-&lt;/Directory&gt;
-
-&lt;Directory /var/www/focalinux&gt;
- Options +Includes -Indexes
-&lt;/Directory&gt;
-</screen>
-<para>
-Espero que tenha observado o erro no exemplo acima.
-</para>
-<para>
-<emphasis role="strong">OBS1</emphasis>: Você pode verificar se a configuração
-do apache está correta digitando <literal>apache -t</literal> como usuário
-root, se tudo estiver correto com suas configurações ele retornará a mensagem:
-"Syntax OK".
-</para>
-<para>
-<emphasis role="strong">OBS2</emphasis>: Se <emphasis>Options</emphasis> não
-for especificado, o padrão será permitir tudo exceto
-<emphasis>MultiViews</emphasis>.
-</para>
-<para>
-<emphasis role="strong">OBS3</emphasis>: Qualquer restrição afetará o diretório
-atual e todos os seus sub-diretórios!  Defina permissões de sub-diretórios
-específicos separadamente caso precise de um nível de acesso diferente.  Veja
-também a seção sobre arquivos OverRide (<filename>.htaccess</filename>) para
-detalhes sobre este tipo de arquivo.
-</para>
-<para>
-<emphasis role="strong">OBS4</emphasis>: A diretiva de acesso "&lt;Directory
-/&gt;" não afetará outros sistemas de arquivos montados dentro de seus
-subdiretórios.  Caso uma diretiva de acesso padrão não seja especificada para
-outros sistemas de arquivos, o acesso será automaticamente negado.
-</para>
-</section>
 
 <section xml:id="s-apache-acesso-restr"><info><title>Restrições de Acesso</title></info>
 <para>
@@ -469,6 +12,401 @@ requer que seja passado nome e senha para garantir acesso a página.  Os método
 de <emphasis>Autorização</emphasis> e <emphasis>Autenticação</emphasis> podem
 ser combinados como veremos mais adiante.
 </para>
+
+<section xml:id="s-apache-acesso"><info><title>Especificando opções/permissões para as páginas</title></info>
+    <para>
+    As opções de restrição podem tanto ser especificadas nas diretivas
+    &lt;Directory&gt;, &lt;Location&gt; ou &lt;Files&gt; quanto nos arquivos
+    <filename>.htaccess</filename> (ou outro nome de arquivo de controle de acesso
+    especificado pela opção <emphasis>AccessFileName</emphasis> do arquivo de
+    configuração do <command>Apache</command>).  Cada diretiva de acesso é
+    especificada entre &lt;tags&gt; e devem ser fechadas com &lt;/tag&gt; (como na
+    linguagem HTML).  As seguintes diretivas de acesso são válidas no
+    <command>Apache</command>:
+    </para>
+    <variablelist>
+    <varlistentry>
+    <term>Directory</term>
+    <listitem>
+    <para>
+    As restrição afetará o diretório no disco especificado, conseqüentemente a
+    página armazenada nele.  Por exemplo:
+    </para>
+    <screen>
+    &lt;Directory /var/www&gt;
+     Order deny,allow
+     deny from all
+     allow from 10.1.0.1
+    &lt;Directory&gt;
+    </screen>
+    <para>
+    O acesso ao diretório <filename>/var/www</filename> será permitido somente ao
+    computador com o endereço IP <literal>10.1.0.1</literal>.
+    </para>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term>DirectoryMatch</term>
+    <listitem>
+    <para>
+    Funciona como a diretiva &lt;Directory&gt; mas trabalha com expressões
+    regulares como argumento.  Por exemplo:
+    </para>
+    <screen>
+    &lt;DirectoryMatch "^/www/.*"&gt;
+     Order deny,allow
+     deny from all
+    &lt;DirectoryMatch&gt;
+    </screen>
+    <para>
+    Bloqueará o acesso ao diretório <filename>/www</filename> e sub-diretórios
+    dentro dele.
+    </para>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term>Files</term>
+    <listitem>
+    <para>
+    As restrições afetarão os arquivos do disco que conferem com o especificado.  É
+    possível usar os coringas <emphasis>?</emphasis> e <emphasis>*</emphasis> como
+    no shell.  Também podem ser usadas expressões regulares especificando um "~"
+    após <literal>Files</literal> e antes da expressão.  Por exemplo:
+    </para>
+    <screen>
+    &lt;Files *.txt&gt;
+     Order deny,allow
+     deny from all
+    &lt;/Files&gt;
+    </screen>
+    <para>
+    Bloqueia o acesso a todos os arquivos com a extensão <filename>.txt</filename>
+    </para>
+    <screen>
+    &lt;Files ~ "\.(gif|jpe?g|bmp|png)$"&gt;
+     Order deny,allow
+    &lt;/Files&gt;
+    </screen>
+    <para>
+    Bloqueia o acesso a arquivos <filename>gif, jpg, jpeg, bmp, png</filename>
+    (note que o "~" ativa o modo de interpretação de expressões regulares).
+    </para>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term>FilesMatch</term>
+    <listitem>
+    <para>
+    Permite usar expressões regulares na especificação de arquivos (equivalente a
+    diretiva &lt;Files ~ "expressão"&gt;).  Por exemplo:
+    </para>
+    <screen>
+    &lt;FilesMatch "\.(gif|jpe?g|bmp|png)$"&gt;
+     Order deny,allow
+    &lt;/FilesMatch&gt;
+    </screen>
+    <para>
+    Bloqueia o acesso a arquivos <filename>gif, jpg, jpeg, bmp, png</filename>.
+    </para>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term>Location</term>
+    <listitem>
+    <para>
+    As restrições afetarão o diretório base especificado na URL e seus
+    sub-diretórios.  Por exemplo:
+    </para>
+    <screen>
+    &lt;Location /security&gt;
+     Order allow,deny
+    &lt;/Location&gt;
+    </screen>
+    <para>
+    Bloqueia o acesso de todos os usuários ao diretório
+    <filename>/security</filename> da URL (a explicação porque o acesso é bloqueado
+    neste caso será explicado em <xref linkend="s-apache-acesso-restr-autor"/>).
+    </para>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term>LocationMatch</term>
+    <listitem>
+    <para>
+    Idêntico a diretiva &lt;Location&gt; mas trabalha com expressões regulares.
+    Por exemplo:
+    </para>
+    <screen>
+    &lt;LocationMatch "/(extra|special)/data"&gt;
+     Order deny,allow
+     deny from all
+    &lt;/LocationMatch&gt;
+    </screen>
+    <para>
+    Bloqueará URLs que contém a substring "/extra/data" ou "/special/data".
+    </para>
+    </listitem>
+    </varlistentry>
+    </variablelist>
+    <para>
+    O uso das diretivas &lt;Directory&gt; e &lt;Files&gt; é apropriada quando você
+    deseja trabalhar com permissões a nível de diretórios/arquivos no disco local
+    (o controle do proxy também é feito via &lt;Directory&gt;), o uso da diretiva
+    &lt;Location&gt; é adequado para trabalhar com permissões a nível de URL.  A
+    ordem de processamento das diretivas de acesso são processadas é a seguinte:
+    </para>
+    <orderedlist numeration="arabic">
+    <listitem>
+    <para>
+    A diretiva &lt;Directory&gt; (com exceção de &lt;DirectoryMatch&gt;) e os
+    arquivos <filename>.htaccess</filename> são processados simultaneamente.  As
+    definições dos arquivos <filename>.htaccess</filename> substituem as de
+    &lt;Directory&gt;)
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+    Expressões regulares de &lt;DirectoryMatch&gt;, &lt;Directory&gt;.
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+    &lt;Files&gt; e &lt;FilesMatch&gt; são processados simultaneamente.
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+    &lt;Location&gt; e &lt;LocationMatch&gt; são processados simultaneamente.
+    </para>
+    </listitem>
+    </orderedlist>
+    <para>
+    Normalmente é encontrado a opção <emphasis>Options</emphasis> dentro de uma das
+    diretivas acima, a função desta diretiva é controlar os seguintes aspectos da
+    listagem de diretórios:
+    </para>
+    <variablelist>
+    <varlistentry>
+    <term>All</term>
+    <listitem>
+    <para>
+    Todas as opções são usadas exceto a <literal>MultiViews</literal>.  É a padrão
+    caso a opção <emphasis>Options</emphasis> não seja especificada.
+    </para>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term>ExecCGI</term>
+    <listitem>
+    <para>
+    Permite a execução de scripts CGI.
+    </para>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term>FollowSymLinks</term>
+    <listitem>
+    <para>
+    O servidor seguirá links simbólicos neste diretório (o caminho não é
+    modificado).  Esta opção é ignorada caso apareça dentro das diretivas
+    &lt;Location&gt;, &lt;LocationMatch&gt; e &lt;DirectoryMatch&gt;.
+    </para>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term>Includes</term>
+    <listitem>
+    <para>
+    É permitido o uso de includes no lado do servidor.
+    </para>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term>IncludesNOEXEC</term>
+    <listitem>
+    <para>
+    É permitido o uso de includes do lado do servidor, mas o comando
+    <literal>#exec</literal> e <literal>#include</literal> de um script CGI são
+    desativados.
+    </para>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term>Indexes</term>
+    <listitem>
+    <para>
+    Se não existir um arquivo especificado pela diretiva &lt;DirectoryIndex&gt; no
+    diretório especificado, o servidor formatará automaticamente a listagem ao
+    invés de gerar uma resposta de acesso negado.
+    </para>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term>MultiViews</term>
+    <listitem>
+    <para>
+    Permite o uso da Negociação de conteúdo naquele diretório.  A negociação de
+    conteúdo permite o envio de um documento no idioma requisitado pelo navegador
+    do cliente.
+    </para>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term>SymLinksIfOwnerMatch</term>
+    <listitem>
+    <para>
+    O servidor somente seguirá links simbólicos se o arquivo ou diretório alvo
+    tiver como dono o mesmo user ID do link.  Esta opção é ignorada caso apareça
+    dentro das diretivas &lt;Location&gt;, &lt;LocationMatch&gt; e
+    &lt;DirectoryMatch&gt;.
+    </para>
+    </listitem>
+    </varlistentry>
+    </variablelist>
+    <para>
+    Múltiplos parâmetros para <emphasis>Options</emphasis> podem ser especificados
+    através de espaços.
+    </para>
+    <para>
+    <emphasis role="strong">OBS1</emphasis>: A opção Options não tem efeito dentro
+    da diretiva FILES.
+    </para>
+    <para>
+    <emphasis role="strong">OBS2</emphasis>: Tanto faz usar maiúsculas quanto
+    minúsculas nas diretivas de configuração, opções e parâmetros de configuração
+    do <command>Apache</command>, a capitalização apenas ajuda a leitura e
+    interpretação: SymLinksIfOwnerMatch (LinksSimbólicosSeDonoConferir).
+    </para>
+    <para>
+    As opções especificadas para o diretório afetam também seus sub-diretórios, a
+    não ser que sejam especificadas opções separadas para o sub-diretório:
+    </para>
+    <screen>
+    &lt;Directory /var/www&gt;
+     Options Indexes FollowSymLinks
+    &lt;/Directory&gt;
+    </screen>
+    <para>
+    Ao acessar o diretório <filename>/var/www/focalinux</filename>, as permissões
+    usadas serão de <filename>/var/www</filename>, ao menos que uma diretiva
+    &lt;Directory&gt; ou &lt;Location&gt; seja especificada:
+    </para>
+    <screen>
+    &lt;Directory /var/www&gt;
+     Options Indexes FollowSymLinks
+    &lt;/Directory&gt;
+    
+    &lt;Directory /var/www/focalinux&gt;
+     Options Includes
+    &lt;/Directory&gt;
+    </screen>
+    <para>
+    As opções e restrições de acesso de <filename>/var/www/focalinux</filename>
+    serão EXATAMENTE as especificadas no bloco da diretiva &lt;Directory
+    /var/www/focalinux&gt; e somente os <emphasis>includes</emphasis> serão
+    permitidos.  Para adicionar ou remover uma opção individual definidas por
+    diretivas anteriores, podem ser usado os sinais "+" ou "-", por exemplo:
+    </para>
+    <screen>
+    &lt;Directory /var/www&gt;
+     Options Indexes FollowSymLinks
+    &lt;/Directory&gt;
+    
+    &lt;Directory /var/www/focalinux&gt;
+     Options +Includes -Indexes
+    &lt;/Directory&gt;
+    </screen>
+    <para>
+    As opções <emphasis>Indexes</emphasis> e <emphasis>FollowSymLinks</emphasis>
+    são definidas para o diretório <filename>/var/www</filename>, então as
+    permissões do diretório <filename>/var/www/focalinux</filename> serão
+    <emphasis>FollowSymLinks</emphasis> (do diretório
+    <filename>/web/docs</filename>) e <emphasis>Includes</emphasis> (adicionada) e
+    o parâmetro <emphasis>Indexes</emphasis> não terá efeito neste diretório.
+    </para>
+    <para>
+    É permitido fazer um aninhamento das diretivas &lt;Directory&gt; e
+    &lt;Files&gt;:
+    </para>
+    <screen>
+    &lt;Directory /var/www&gt;
+     Order allow,deny
+     allow from all
+    
+     &lt;Files LEIAME-DONO.txt&gt;
+      Order deny,allow
+      deny from all
+     &lt;/Files&gt;
+    
+    &lt;/Directory&gt;
+    </screen>
+    <para>
+    Neste caso, somente os arquivos <filename>LEIAME-DONO.txt</filename> existentes
+    no diretório <filename>/var/www</filename> e seus sub-diretórios serão
+    bloqueados.
+    </para>
+    <para>
+    Se a diretiva &lt;Files&gt; for usada fora de uma estrutura &lt;Directory&gt;,
+    ela terá efeito em todos os arquivos disponibilizados pelo servidor.  Este é
+    excelente método para proteger os arquivos de acesso, senhas e grupos, conforme
+    será explicado mais adiante.
+    </para>
+    <para>
+    Qualquer outro tipo de aninhamento de diretivas resultará em um erro de
+    configuração ao se tentar carregar/recarregar o <command>Apache</command>.  Um
+    exemplo de diretiva incorreta:
+    </para>
+    <screen>
+    &lt;Directory /var/www&gt;
+     Options Indexes FollowSymLinks
+    
+     &lt;Directory /var/www/focalinux&gt;
+      Options +Includes -Indexes
+     &lt;/Directory&gt;
+    
+    &lt;/Directory&gt;
+    </screen>
+    <para>
+    O correto é:
+    </para>
+    <screen>
+    &lt;Directory /var/www&gt;
+     Options Indexes FollowSymLinks
+    &lt;/Directory&gt;
+    
+    &lt;Directory /var/www/focalinux&gt;
+     Options +Includes -Indexes
+    &lt;/Directory&gt;
+    </screen>
+    <para>
+    Espero que tenha observado o erro no exemplo acima.
+    </para>
+    <para>
+    <emphasis role="strong">OBS1</emphasis>: Você pode verificar se a configuração
+    do apache está correta digitando <literal>apache -t</literal> como usuário
+    root, se tudo estiver correto com suas configurações ele retornará a mensagem:
+    "Syntax OK".
+    </para>
+    <para>
+    <emphasis role="strong">OBS2</emphasis>: Se <emphasis>Options</emphasis> não
+    for especificado, o padrão será permitir tudo exceto
+    <emphasis>MultiViews</emphasis>.
+    </para>
+    <para>
+    <emphasis role="strong">OBS3</emphasis>: Qualquer restrição afetará o diretório
+    atual e todos os seus sub-diretórios!  Defina permissões de sub-diretórios
+    específicos separadamente caso precise de um nível de acesso diferente.  Veja
+    também a seção sobre arquivos OverRide (<filename>.htaccess</filename>) para
+    detalhes sobre este tipo de arquivo.
+    </para>
+    <para>
+    <emphasis role="strong">OBS4</emphasis>: A diretiva de acesso "&lt;Directory
+    /&gt;" não afetará outros sistemas de arquivos montados dentro de seus
+    subdiretórios.  Caso uma diretiva de acesso padrão não seja especificada para
+    outros sistemas de arquivos, o acesso será automaticamente negado.
+    </para>
+ </section>
+
 <section xml:id="s-apache-acesso-restr-autor"><info><title>Autorização</title></info>
 <para>
 A restrição de acesso por autorização (controlado pelo módulo
@@ -774,7 +712,7 @@ A diretiva acima somente permite acesso ao diretório
  Options Indexes MultiViews
  Order allow,deny
  deny from .com .com.br
- allow from all 
+ allow from all
 &lt;/Directory&gt;
 </screen>
 <para>
@@ -837,12 +775,14 @@ solicitado.  As senhas são gravadas em formato criptografado usando
 arquivo de senhas pode ser centralizado ou especificado individualmente por
 usuário, diretório ou até mesmo por arquivo acessado.
 </para>
+
 <section xml:id="s-apache-acesso-restr-auth-arqsenha"><info><title>Criando um arquivo de Senhas</title></info>
 <para>
 O arquivo de senhas pode ser criado e mantido através do uso de 3 utilitários:
 <command>htpasswd</command>, <command>htdigest</command> e
 <command>dbmmanage</command>:
 </para>
+
 <section xml:id="s-apache-acesso-restr-auth-arqsenha-htpasswd"><info><title>htpasswd</title></info>
 <para>
 Este é usado para criar o arquivo de senhas.  Para criar um banco de dados com
@@ -1161,7 +1101,7 @@ nomes se estiver desejando ocultar dados de olhos curiosos...
 
 </section>
 
-<section xml:id="s-apache-acesso-restr-autor+auth"><info><title>Usando autorização e autenticação juntos</title></info>
+<section xml:id="s-apache-acesso-restr-autorANDauth"><info><title>Usando autorização e autenticação juntos</title></info>
 <para>
 Os métodos de <emphasis>autorização</emphasis> e
 <emphasis>autenticação</emphasis> podem ser usados ao mesmo tempo dentro de
@@ -1215,7 +1155,8 @@ senha válidos, com o login pertencente ao <emphasis>AuthGroupFile</emphasis>,
 passando pelo processo de autenticação e obtendo acesso ao diretório
 <filename>/var/www</filename>.
 </para>
-<section xml:id="s-apache-acesso-restr-autor+auth-diferenciado"><info><title>Acesso diferenciado em uma mesma diretiva</title></info>
+
+<section xml:id="s-apache-acesso-restr-autorANDauth-diferenciado"><info><title>Acesso diferenciado em uma mesma diretiva</title></info>
 <para>
 É interessante permitir usuários fazendo conexões de locais confiáveis terem
 acesso direto sem precisar fornecer nome e senha e de locais inseguros
@@ -1557,4 +1498,3 @@ menos os especificados.
 </section>
 
 </section>
-

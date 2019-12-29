@@ -20,17 +20,17 @@
     <command>httpd</command>.  Ele não tem como objetivo ser uma referência
     completa de configuração, mas sim abordar didaticamente o assunto.
     </para>
-    
-<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="apache-Introducao.xml" /> 
-<!-- <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="apache-cfginiciais.xml" />  -->
-<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="apache-acesso.xml" /> 
-<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="apache-errordocument.xml" /> 
-<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="apache-DSO.xml" /> 
-<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="apache-log.xml" /> 
-<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="apache-proxy.xml" /> 
-<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="apache-vhosts.xml" /> 
-<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="apache-ssl.xml" /> 
-<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="apache-exemplo.xml" /> 
-<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="http-codigos.xml" /> 
+
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="apache-Introducao.xml" />
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="apache-cfginiciais.xml" />
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="apache-acesso.xml" />
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="apache-errordocument.xml" />
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="apache-DSO.xml" />
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="apache-log.xml" />
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="apache-proxy.xml" />
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="apache-vhosts.xml" />
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="apache-ssl.xml" />
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="apache-exemplo.xml" />
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="http-codigos.xml" />
 
 </chapter>
