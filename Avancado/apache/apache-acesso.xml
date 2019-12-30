@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-
 <section xml:id="s-apache-acesso-restr"><info><title>Restrições de Acesso</title></info>
 <para>
 A restrição de acesso do <command>Apache</command> é feita através de
