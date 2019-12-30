@@ -17,6 +17,7 @@ programas de configuração e outros detalhes específicos e esta versão é a
 baseada na <command>Debian</command>.  Pegue na página do Foca Linux (<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.guiafoca.org">http://www.guiafoca.org</link>) uma versão
 Intermediário /Avançado do guia específico para sua distribuição.
 </para>
+
 <section xml:id="deb-carac"><info><title>Porque usar a Debian?</title></info>
 <para>
 A <command>Debian</command> é a distribuição que mais cresce no mundo, cada
@@ -84,7 +85,7 @@ instalação somente com pacotes úteis e melhor configurada.
 <section xml:id="deb-pacotes"><info><title>Pacotes existentes na Debian</title></info>
 <para>
 O número de pacotes existentes na distribuição atual da
-<command>Debian</command> (<emphasis>Etch</emphasis> - 4.0) é de 25000.
+<command>Debian</command> (<emphasis>Stretch</emphasis> - 10) é de 59000.
 </para>
 <para>
 A <command>Debian</command> (como a <command>Red Hat</command>) usa um formato
