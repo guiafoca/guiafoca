@@ -1,5 +1,10 @@
 <!-- Converted by db4-upgrade version 1.0 -->
 
+<section><info><title>Gerenciamento de senhas</title></info>
+    <para>
+        Esta seção contém explicações sobre o gerenciamento de senhas no SAMBA.
+    </para>
+
 <section xml:id="s-samba-senhas-crypto"><info><title>Ativando o suporte a senhas criptografadas</title></info>
 <para>
 O uso de senhas criptografadas é um requisito quando você deseja configurar o
@@ -169,6 +174,7 @@ a senha informada está incorreta.
 </para>
 </listitem>
 </orderedlist>
+
 <section xml:id="s-samba-senhas-crypto-migrando"><info><title>Migrando de senhas texto plano para criptografadas</title></info>
 <para>
 No SAMBA, é possível fazer um processo de migração de senhas em texto plano de
@@ -354,6 +360,7 @@ autenticação.
 <emphasis role="strong">OBS:</emphasis> Tenha certeza de não estar participando
 de um domínio ou que sua máquina seja o PDC antes de fazer esta modificação.
 </para>
+
 <section xml:id="s-samba-senhas-plano-c"><info><title>Configurando o acesso de clientes para uso de senhas em texto plano</title></info>
 <para>
 Esta seção descreve como configurar clientes para acessar o servidor
@@ -411,6 +418,7 @@ cobre os seguintes clientes:
 Em cada seção, também é explicado como habilitar novamente a autenticação
 usando senhas criptografadas (se suportado pelo cliente).
 </para>
+
 <section xml:id="s-samba-senhas-plano-c-lanmanager"><info><title>Lan Manager</title></info>
 <para>
 Cliente NetBIOS para DOS.  Ele trabalha somente com senhas em texto plano.
@@ -526,3 +534,4 @@ voltar a utilizar criptografia, veja <xref linkend="s-samba-senhas-crypto"/>.
 
 </section>
 
+</section>

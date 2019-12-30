@@ -34,12 +34,13 @@
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SAMBA-Workgroup.xml" /> 
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SAMBA-NameResolv.xml" /> 
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SAMBA-Timeserver.xml" /> 
-<!-- <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SAMBA-Dominio.xml" />  -->
-<!-- <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SAMBA-senhas.xml" />  -->
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SAMBA-Dominio.xml" />
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SAMBA-senhas.xml" />
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SAMBA-uidmap.xml" /> 
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SAMBA-impressao.xml" /> 
-<!-- <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SAMBA-acesso.xml" />  -->
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SAMBA-acesso.xml" />
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SAMBA-Tuning.xml" />
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SAMBA-Cliente.xml" /> 
-<!-- <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SAMBA-exemplo.xml" />  -->
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="SAMBA-exemplo.xml" /> 
 </chapter>
     

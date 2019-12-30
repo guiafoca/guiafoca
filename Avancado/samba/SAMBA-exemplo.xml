@@ -8,6 +8,7 @@ restrito de rede.  Todos os exemplos estão bem comentados e explicativos,
 apenas pegue o que se enquadre mais em sua situação para uso próprio e
 adaptações.
 </para>
+
 <section xml:id="s-samba-exemplos-workgroup-p"><info><title>Grupo de Trabalho com acesso público</title></info>
 <para>
 Este exemplo pode ser usado de modelo para construir uma configuração baseada
@@ -282,4 +283,3 @@ modificada para suportar senhas criptografadas.
 
 </section>
 
-</chapter>

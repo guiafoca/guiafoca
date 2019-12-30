@@ -4,6 +4,7 @@
 <para>
 Este capítulo documenta o controle de acesso ao servidor samba e restrições.
 </para>
+
 <section xml:id="s-samba-a-compart"><info><title>Nível de acesso de usuários conectados ao SAMBA</title></info>
 <para>
 Quando acessa um compartilhamento, o usuário do samba é mapeado com o UID
@@ -222,7 +223,7 @@ Não permite que os usuários especificados e os usuários do grupo
 </listitem>
 </varlistentry>
 <varlistentry>
-<term>invalid users = &;semacesso</term>
+<term>invalid users = &amp;;semacesso</term>
 <listitem>
 <para>
 Bloqueia o acesso de todos os usuários NIS que pertençam ao grupo
@@ -809,123 +810,5 @@ nobody = *
 </screen>
 </section>
 
-</section>
-
-<section xml:id="s-samba-perf"><info><title>Melhorando a performance do compartilhamento/servidor</title></info>
-<para>
-Esta seção trará algumas formas de otimização do servidor SAMBA que fazem
-diferença quando os valores adequados são utilizados: A primeira é a ativação
-de um cache de gravação/leitura de arquivos.  Este cache é feito pela opção
-<literal>write cache size</literal> e funciona fazendo o cache dos arquivos que
-serão lidos/gravados.  Ele é esvaziado assim que o arquivo for fechado ou
-quando estiver cheio.  O valor especificado nesta opção é em bytes e o padrão é
-"0" para não causar impacto em sistemas com pouca memória (ou centenas de
-compartilhamentos).  Exemplo:
-</para>
-<screen>
-[publico]
- path = /pub
- comment = Diretório de acesso público
- read only = yes
- public = yes
- write cache size = 384000
-</screen>
-<para>
-Compartilha o diretório <filename>/pub</filename> (<emphasis>path =
-/pub</emphasis>) como compartilhamento de nome <literal>publico</literal>
-(<emphasis>[publico]</emphasis>), seu acesso será feito como somente leitura
-(<emphasis>read only = yes</emphasis>) e o tamanho do cache de leitura/gravação
-reservado de 384Kb (<emphasis>write cache size = 384000</emphasis>).
-</para>
-<para>
-Deixar a opção para seguir links simbólicos ativada (<literal>follow
-symlinks</literal>) garante mais performance de acesso a arquivos no
-compartilhamento.  A desativação da opção <literal>wide links</literal> em
-conjunto com o uso de cache nas chamadas getwd (<literal>getwd cache</literal>)
-permite aumentar a segurança e tem um impacto perceptível na performance dos
-dados.
-</para>
-<para>
-A desativação da opção global <emphasis>nt smb support</emphasis> também
-melhora a performance de acesso dos compartilhamentos.  Esta é uma opção útil
-para detectar problemas de negociação de protocolo e por padrão, ela é ativada.
-</para>
-<para>
-Caso utiliza um valor de depuração de log muito alto (<emphasis>debug
-level</emphasis>), o sistema ficará mais lento pois o servidor sincroniza o
-arquivo após cada operação.  Em uso excessivo do servidor de arquivos, isso
-apresenta uma degradação perceptível de performance.
-</para>
-<para>
-A opção <literal>prediction</literal> permite que o SAMBA faça uma leitura
-adiante no arquivo abertos como somente-leitura enquanto aguarda por próximos
-comandos.  Esta opção associada com bons valores de <emphasis>write cache
-size</emphasis> pode fazer alguma diferença.  Note que o valor de leitura nunca
-ultrapassa o valor de "read size".
-</para>
-<para>
-A opção <emphasis>read size</emphasis> permite obter um sincronismo fino entre
-a leitura e gravação do disco com o envio/recebimento de dados da rede.  O
-valor é dependente da instalação local, levando em consideração a velocidade de
-disco rígido, rede, etc.  O valor padrão é 16384.
-</para>
-<para>
-Em casos onde um NFS montado ou até mesmo leitura em discos locais é
-compartilhada, o parâmetro <emphasis>strict locking</emphasis> definido para
-<literal>yes</literal> pode fazer alguma diferença de performance.  Note que
-nem todos os sistemas ganham performance com o uso desta opção e não deve ser
-usada em aplicativos que não requisitam o estado do lock de arquivo ao
-servidor.
-</para>
-<para>
-Caso você possua aplicativos que fazem o lock corretamente de arquivos, você
-poderá usar o <emphasis>share modes = no</emphasis>, isto significa que futuras
-aberturas de arquivo podem ser feitas em em modo leitura/gravação.  Caso
-utiliza um aplicativo muito bem programado que implementa de forma eficiente de
-lock, você poderá desativar esta opção.
-</para>
-<para>
-O uso de <emphasis>oplocks yes</emphasis> em compartilhamentos aumenta a
-performance de acesso a arquivos em até 30%, pois utiliza um código de cache no
-cliente.  Tenha certeza do que está fazendo antes de sair usando
-<emphasis>oplocks</emphasis> em tudo que é lugar.  A desativação de
-<emphasis>kernel oplocks</emphasis> é necessária para que isto funcione.
-</para>
-<para>
-A opção <emphasis>read raw</emphasis> e <emphasis>write raw</emphasis> devem
-ter seus valores experimentados para ver se faz diferença na performance da sua
-rede, pois é diretamente dependente do tipo de cliente que sua rede possui.
-Alguns clientes podem ficar mais lentos em modo de leitura raw.
-</para>
-<para>
-O tipo de sistema de arquivos adotado na máquina e suas opções de montagem tem
-um impacto direto na performance do servidor, principalmente com relação a
-atualização de status dos arquivos no sistema de arquivos (hora de acesso,
-data, etc).
-</para>
-<para>
-O cache de leitura adiante de abertura de arquivos em modo somente leitura
-aumenta a performance com o uso do oplocks nível 2.  Para isto, ajuste a opção
-<literal>level2 oplocks</literal> para <literal>yes</literal>.  A recomendação
-deste tipo de oplock é o mesmo do nível 1.
-</para>
-<para>
-Como o SAMBA faz o transporte NetBEUI via TCP/IP, ajustes no socket fazem
-diferença nos dados que trafegam na rede.  Como isso é dependente de rede você
-precisará usar técnicas de leitura/gravação para determinar quais são as
-melhores que se encaixam em seu caso.  A opção <emphasis>socket
-options</emphasis> é usada para fazer tais ajustes, por exemplo:
-</para>
-<screen>
-socket options = SO_SNDBUF=2048 IPTOS_THROUGHPUT=1
-</screen>
-<para>
-Em especial, a opção <literal>TCP_NODELAY</literal> apresenta uma perceptível
-melhoria de performance no acesso a arquivos locais.
-</para>
-<para>
-<emphasis role="strong">OBS:</emphasis>: Não use espaços entre o sinal de "="
-quando especificar as opções do parâmetro <literal>socket options</literal>.
-</para>
 </section>
 
