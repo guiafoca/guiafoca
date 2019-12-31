@@ -14,7 +14,8 @@ distribuição Debian se eu uso outra?</literal>.  Bem, a partir da versão
 algumas partes que são especificas de algumas distribuições Linux e que não se
 aplicam a outras, como a localização dos arquivos de configuração, nomes dos
 programas de configuração e outros detalhes específicos e esta versão é a
-baseada na <command>Debian</command>.  Pegue na página do Foca Linux (<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.guiafoca.org">http://www.guiafoca.org</link>) uma versão
+baseada na <command>Debian</command>.  Pegue na página do Foca Linux (
+    <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.guiafoca.org">http://www.guiafoca.org</link>) uma versão
 Intermediário /Avançado do guia específico para sua distribuição.
 </para>
 
@@ -85,7 +86,7 @@ instalação somente com pacotes úteis e melhor configurada.
 <section xml:id="deb-pacotes"><info><title>Pacotes existentes na Debian</title></info>
 <para>
 O número de pacotes existentes na distribuição atual da
-<command>Debian</command> (<emphasis>Stretch</emphasis> - 10) é de 59000.
+<command>Debian</command> (<emphasis>Buster</emphasis> - 10) é de 59000.
 </para>
 <para>
 A <command>Debian</command> (como a <command>Red Hat</command>) usa um formato
@@ -331,6 +332,7 @@ linha
 <screen>
 id:2:initdefault:
 </screen>
+
 <section xml:id="deb-runlevels-e"><info><title>Entendendo o funcionamento dos níveis de execução do sistema (runlevels)</title></info>
 <para>
 Os nível de execução atual do sistema pode ser visualizado através do comando
@@ -528,8 +530,8 @@ usuários normais da <command>Debian</command> em um <emphasis role="strong">sis
 exatamente o que está instalando.
 </para>
 <para>
-Estou assumindo que você concluiu a instalação da <command>Debian</command> 3.0
-(Woody) mas preferiu pular o passo de seleção de pacotes do
+Estou assumindo que você concluiu a instalação da <command>Debian</command> 10.0
+(Buster) mas preferiu pular o passo de seleção de pacotes do
 <command>dselect</command> e fazer uma instalação manual.
 </para>
 <para>
@@ -569,11 +571,12 @@ clean</literal> após a instalação de pacotes para remover os pacotes baixados
 pelo <command>apt</command> de <filename>/var/cache/apt/archives</filename>
 (exceto na instalação de pacotes através do disco rígido local).
 </para>
+
 <section xml:id="s20.11.1"><info><title>Pacotes Básicos (Altamente Recomendado)</title></info>
 <screen>
-apt-get install cpio info libident libncurses4 man-db manpages whois nvi 
-                hdparm mc exim linuxlogo less kbd mutt bzip2 
-                cron gpm libstdc++2.10
+apt-get install cpio info libident libncurses4 man-db manpages whois vim
+                hdparm mc postfix linuxlogo less kbd mutt bzip2 
+                cron gpm 
 </screen>
 </section>
 

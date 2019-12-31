@@ -5,7 +5,6 @@ Este capítulo explica como executar programas no <command>GNU/Linux</command> e
 o uso das ferramentas de controle de execução dos programas.
 </para>
 
-	<!-- [ %INICIANTE [ -->
 <section xml:id="run-prgn"><info><title>Executando um comando/programa</title></info>
 <para>
 Para executar um comando, é necessário que ele tenha permissões de execução
@@ -20,8 +19,7 @@ PID - Process Identification), este número é útil para identificar o processo
 no sistema e assim ter um controle sobre sua execução (será visto mais adiante
 neste capítulo).
 </para>
-<!-- [ %INTERMEDIARIO [ -->
-<para>
+<para userlevel='inter'>
 Todo o programa recebe uma identificação de usuário (UID) quando é executado o
 que determina quais serão suas permissões de acesso durante sua execução.  O
 programa normalmente usa o UID do usuário que o executou ou o usuário
@@ -31,7 +29,6 @@ identificação de usuário para algum que tenha menos privilégios no sistema
 (como o <command>Apache</command>, por exemplo).  Para maiores detalhes veja
 <xref linkend="perm"/>.
 </para>
-<!-- ]]> -->
 <para>
 Todo o programa executado no <command>Linux</command> roda sob o controle
 das permissões de acesso.  Recomendo ver mais tarde o <xref linkend="perm"/>.
@@ -92,7 +89,6 @@ inclua o diretório atual <command>$PWD</command> no <literal>path</literal>.
 </section>
 	<!-- ]]> -->
 
-	<!-- [ %INIC-INTER [ -->
 <section xml:id="run-tipos"><info><title>Tipos de Execução de comandos/programas</title></info>
 <para>
 Um programa pode ser executado de duas formas:
@@ -155,7 +151,6 @@ os separarmos com ";".  Por exemplo: <literal>echo primeiro;echo segundo;echo
 terceiro</literal>
 </para>
 </section>
-	<!-- ]]> -->
 
 
 <section xml:id="run-ps"><info><title>ps</title></info>
@@ -734,8 +729,7 @@ mas SIGLOST em um Sparc.
 </section>
 
 
-    <!-- [ %INTER-AVANC [ -->
-<section xml:id="run-nohup"><info><title>nohup</title></info>
+<section userlevel='inter' xml:id="run-nohup"><info><title>nohup</title></info>
 <para>
 Executa um comando ignorando os sinais de interrupção.  
 <!-- [ %DESCRICAOD [ --> O comando poderá ser executado até mesmo em segundo plano 
@@ -756,7 +750,7 @@ Exemplo: <literal>nohup find / -uid 0 &gt;/tmp/rootfiles.txt &amp;</literal>.
 </section>
 
 
-<section xml:id="run-nice"><info><title>nice</title></info>
+<section userlevel='inter' xml:id="run-nice"><info><title>nice</title></info>
 <para>
 Configura a prioridade da execução de um comando/programa.
 </para>
@@ -800,7 +794,7 @@ Exemplo: <literal>nice -n -19 find / -name apropos</literal>.
 </section>
 
 
-<section xml:id="run-fuser"><info><title>fuser</title></info>
+<section userlevel='inter' xml:id="run-fuser"><info><title>fuser</title></info>
 <para>
 Permite identificar e fechar os processos que estão utilizando arquivos e
 soquetes no sistema.
@@ -889,7 +883,7 @@ Os processos são mostrados em um estilo idêntico ao <command>ps</command>.
 </section>
 
 
-<section xml:id="run-tload"><info><title>tload</title></info>
+<section userlevel='inter' xml:id="run-tload"><info><title>tload</title></info>
 <para>
 Representa de forma gráfica a carga do sistema.
 </para>
@@ -924,7 +918,7 @@ Especifica o intervalo entre atualizações, em segundos.
 </section>
 
 
-<section xml:id="run-vmstat"><info><title>vmstat</title></info>
+<section userlevel='inter' xml:id="run-vmstat"><info><title>vmstat</title></info>
 <para>
 Mostra estatísticas sobre o uso da memória virtual do sistema.
 </para>
@@ -1096,7 +1090,7 @@ Tempo ocioso
 </section>
 
 
-<section xml:id="run-pidof"><info><title>pidof</title></info>
+<section userlevel='inter' xml:id="run-pidof"><info><title>pidof</title></info>
 <para>
 Retorna o PID do processo especificado
 </para>
@@ -1161,7 +1155,7 @@ Exemplo: <literal>pidof -s init</literal>
 </section>
 
 
-<section xml:id="run-pstree"><info><title>pstree</title></info>
+<section userlevel='inter' xml:id="run-pstree"><info><title>pstree</title></info>
 <para>
 Mostra a estrutura de processos em execução no sistema em forma de árvore.
 </para>
@@ -1266,9 +1260,7 @@ Usa o conjunto de caracteres Unicode para o desenho da árvore.
 </variablelist>
 <!-- ]]> -->
 </section>
-    <!-- ]]> -->
 
-    <!-- [ %INIC-INTER [ -->
 <section xml:id="run-fechando"><info><title>Fechando um programa quando não se sabe como sair</title></info>
 <para>
 Muitas vezes quando se esta iniciando no <command>GNU/Linux</command> você pode

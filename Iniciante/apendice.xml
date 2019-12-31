@@ -6,64 +6,84 @@ Este capítulo contém considerações sobre o guia Foca GNU/Linux.
 
 <section xml:id="apend-sobre"><info><title>Sobre este guia</title></info>
 <para>
-O guia Foca foi criado em 12 de Novembro de 1999.  A versão que está lendo tem
-o objetivo de servir como referência a usuários 
-<!-- [ %INICIANTE [ --> <emphasis>Iniciantes</emphasis> e que estão tendo o primeiro contato com o sistema operacional
-<command>GNU/Linux</command>, <!-- ]]> --> 
-<!-- [ %INTERMEDIARIO [ --> <emphasis>Intermediários</emphasis> que já
-conhecem o básico sobre o funcionamento deste sistema operacional e já estão
-acostumados com os comandos, execução de programas e diretórios, <!-- ]]> -->
-<!-- [ %AVANCADO [ --> <emphasis>Avançados</emphasis> que já dominam grande parte do sistema
-operacional e procuram aprender mais sobre os seus detalhes e configurações
-especiais <!-- ]]> --> ou com referência de consulta rápida.  Uma versão que abrange um
-diferente nível de aprendizado ou mais completa pode ser baixada de <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.guiafoca.org">Página Oficial do guia Foca GNU/Linux</link>.
+O Guia Foca foi lançado pela primeira vez em 12 de Novembro de 1999.  
+A versão que está lendo contém o(s) nível(is) de aprendizdo (Iniciante, Intermediario, Avançado): 
+
+<itemizedlist>
+ <listitem userlevel='inic' ><para>Iniciante</para></listitem>
+ <listitem userlevel='inter' ><para>Intermediário</para></listitem>
+ <listitem userlevel='avanc' ><para>Avançado</para></listitem>
+</itemizedlist>
 </para>
 <para>
-A versão que esta lendo agora foi gerada com as seguintes opções:
+   A versão que esta lendo agora foi gerada com as seguintes opções:
+    <itemizedlist>
+    <listitem condition="descricaod"><para>Descrição detalhada de comandos</para></listitem>
+    <listitem condition="opcoes"><para>Opções usadas em comandos e programas</para></listitem>
+    <listitem condition="obs"><para>Observações sobre comandos e configurações</para></listitem>
+    <listitem condition="exemplos"><para>Exemplos para a melhor compreensão do assunto discutido.</para></listitem>
+    <listitem condition="construcao"><para>Partes em contruçao.</para></listitem>
+    </itemizedlist>
 </para>
-<itemizedlist>
- <!-- [ %DESCRICAOD [ --> <listitem><para>Descrição detalhada de comandos</para></listitem> <!-- ]]> -->
- <!-- [ %OPCOES [ --> <listitem><para>Opções usadas em comandos e programas</para></listitem> <!-- ]]> -->
- <!-- [ %OBS [ --> <listitem><para>Observações sobre comandos e configurações</para></listitem> <!-- ]]> -->
- <!-- [ %EXEMPLO [ --> <listitem><para>Exemplos para a melhor compreensão do assunto discutido.</para></listitem> <!-- ]]> -->
- <!-- [ %CONSTRUCAO [ --> <listitem><para>Partes em contruçao.</para></listitem>  <!-- ]]> -->
-</itemizedlist>
 <para>
-e contém o(s) nível(is) de aprendizado (Iniciante, Intermediário e Avançado):
-</para>
+A versão que está lendo tem o objetivo de servir como referência a usuários: 
 <itemizedlist>
- <!-- [ %INICIANTE [ --> <listitem><para>Iniciante</para></listitem> <!-- ]]> -->
- <!-- [ %INTERMEDIARIO [ --> <listitem><para>Intermediário</para></listitem> <!-- ]]> -->
- <!-- [ %AVANCADO [ --> <listitem><para>Avançado</para></listitem> <!-- ]]> -->
+    <listitem userlevel='inic' >
+        <para><emphasis>Iniciante</emphasis> - e que estão tendo o primeiro contato com o sistema operacional
+        <command>GNU/Linux</command>
+       </para>
+    </listitem>
+    
+    <listitem userlevel='inter' 
+    ><para><emphasis>Intermediário</emphasis> - que já
+        conhecem o básico sobre o funcionamento deste sistema operacional e já estão
+        acostumados com os comandos, execução de programas e diretórios.
+     </para>
+    </listitem>
+    <listitem userlevel='avanc' ><para><emphasis>Avançado</emphasis> - que já dominam grande parte do sistema
+        operacional e procuram aprender mais sobre os seus detalhes e configurações
+        especiais.
+    </para> 
+    </listitem>
+    
 </itemizedlist>
+</para>
+<para>
+Uma versão que abrange um diferente nível de aprendizado ou mais completa pode ser baixada de 
+<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.guiafoca.org">Página Oficial do guia Foca GNU/Linux</link>.
+</para>
 <para>
 O <emphasis>Foca GNU/Linux</emphasis> é atualizado frequentemente, por este
-motivo recomendo que assine um dos canais de comunicação para ser informado de
+motivo recomendo que assine um dos canais de comunicação (ou todos :-))para ser informado de
 novas versões:
 </para>
 <itemizedlist>
 <listitem>
 <para>
-Assinar o Twitter do focalinux <email>@focalinux</email>
+Siga o Guia Foca no Twitter <email>@focalinux</email>
 </para>
 </listitem>
 <listitem>
 <para>
-Assinar o RSS presente na página do guia e atualizações.
+Assinar o RSS presente na página do guia, e avisos de atualizações.
 </para>
 </listitem>
+<listitem>
+ <para>
+ Siga a página do @guiafoca no Facebook: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.facebook.com/focalinux">Página do Guia Foca no Facebook</link>
+ </para>
+</listitem>
+    
 <listitem>
 <para>
 A ficha do aviso de atualizações na página web em <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.guiafoca.org">Página Oficial do guia Foca GNU/Linux</link> no
-fim da página principal.  Após preencher a ficha do aviso de atualizações, eu
-te enviarei um e-mail sobre o lançamento de novas versões do guia e o que foi
-modificado, desta forma você poderá decidir em copia-la caso a nova versão
-contém modificações que considera importantes.
+fim da página principal.  Após preencher a ficha do aviso de atualizações, você será
+notificado sobre novidades do Guia Foca.
 </para>
 </listitem>
 </itemizedlist>
 <para>
-Versões diferentes deste guia podem ser geradas a partir do código fonte SGML
+Versões diferentes deste guia podem ser geradas a partir do código fonte XML
 ou obtidas através da home page principal (para detalhes veja <xref linkend="apend-homepage"/>).
 </para>
 </section>
@@ -71,18 +91,16 @@ ou obtidas através da home page principal (para detalhes veja <xref linkend="ap
 
 <section xml:id="apend-gdl"><info><title>Guia do Linux</title></info>
 <para>
-O <emphasis>Guia do Linux</emphasis> é uma versão hospedada na <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://pt.wikibooks.org/wiki/Guia_do_Linux/Capa">WikiLivros</link> e
-totalmente baseado no Guia Foca GNU/Linux versão 6.40, contendo os níveis
+O <emphasis>Guia do Linux</emphasis> é uma versão fork do guia 
+Foca Linux 6.40 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://pt.wikibooks.org/wiki/Guia_do_Linux/Capa">WikiLivros</link> e
 <emphasis>Iniciante</emphasis>, <emphasis>Intermediário</emphasis> e
 <emphasis>Avançado</emphasis>.  Ele foi portado para WikiLivros graças ao
-dedicado trabalho de Raylton P.  Souza e outros colaboradores.
+dedicado trabalho de Raylton P. Souza e outros colaboradores.
 </para>
 <para>
-A motivação principal para o lançamento de uma versão derivada do guia Foca
-GNU/Linux com o nome <emphasis>Guia do Linux</emphasis>, foram as duas fontes
-de desenvolvimento, que com o tempo gera conteúdo diferente do guia oficial
-(natural em ambientes de desenvolvimentos com múltiplos autores), causando
-confusão dos leitores.
+A versão <emphasis>Guia do Linux</emphasis> atualmente encontra-se desatualizada, requerendo o trabalho
+de voluntários para se igualar em conteúdo com o <emphasis>Guia Foca</emphasis>, pois os mesmos
+possui em conteúdos não sincronizados automaticamente. 
 </para>
 <para>
 Acesse e confira mais este excelente lançamento: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://pt.wikibooks.org/wiki/Guia_do_Linux/Capa">Wikibook do Guia do
@@ -208,6 +226,19 @@ Se quiser receber notificações de novas versões, use uma das formas a seguir:
 </para>
 <itemizedlist>
 <listitem>
+ <para>
+  Siga a página do @guiafoca no Facebook: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.facebook.com/focalinux">Página do Guia Foca no Facebook</link>
+ </para>
+</listitem>
+
+<listitem>
+ <para>
+A ficha do aviso de atualizações na página web em <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.guiafoca.org">Página Oficial do guia Foca GNU/Linux</link> no
+fim da página principal.  Após preencher a ficha do aviso de atualizações, você será
+notificado sobre novidades do Guia Foca.
+ </para>
+</listitem>
+<listitem>
 <para>
 por E-Mail: envie uma mensagem para <email>gleydson@guiafoca.org</email>
 pedindo para ser incluído na lista de atualizações do guia ou preencha o
@@ -231,7 +262,8 @@ atualizações e novidades.
 
 <section xml:id="apend-colaboradores"><info><title>Colaboradores do Guia</title></info>
 <para>
-Entre as principais colaborações até a versão atual, posso citar as seguintes:
+Entre as principais colaborações até a versão atual, posso citar as seguintes
+(classificação cronológica):
 </para>
 <itemizedlist>
 <listitem>
@@ -256,7 +288,7 @@ antiga hospedagem, na época do site metainfo.
 </listitem>
 <listitem>
 <para>
-<literal>Michelle Ribeiro <email>michelle@cipsga.org.br</email></literal> - Por
+<literal>Michelle Ribeiro <email>michellemazioli@gmail.com</email></literal> - Por
 dispensar parte de seu atencioso tempo enviando revisões e sugestões que estão
 melhorando bastante a qualidade do guia.  Entre eles detalhes que passaram
 despercebidos durante muito tempo no guia e página principal.
@@ -315,6 +347,15 @@ diversas atualizações para o nível Avançado, principalmente sobre o firewall
 iptables.
 </para>
 </listitem>
+<listitem>
+<para>
+<literal>Rafael Gomes (<email>@gomex</email>)</literal> - Muito a agradecer a ele, 
+mas em especial por me introduzir do jeito certo ao mundo DevOps, mostrando que a colaboração
+e espírito de comunidade se sobressaem acima de tudo e pelo incentivo a voltar
+a lançar atualizações do guia.
+</para>
+</listitem>
+    
 </itemizedlist>
 </section>
 

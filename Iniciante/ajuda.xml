@@ -2993,7 +2993,7 @@ do LILO.
 </variablelist>
 </section>
 
-<section userlevel='inter' ml:id="s43.8.2.6"><info><title>Plataformas não Intel (x86)</title></info>
+<section userlevel='inter' xml:id="s43.8.2.6"><info><title>Plataformas não Intel (x86)</title></info>
 <variablelist>
 <varlistentry>
 <term>Mac-Terminal</term>

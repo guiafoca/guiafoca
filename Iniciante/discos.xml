@@ -6,14 +6,12 @@ sistema <command>GNU/Linux</command> e como acessar seus discos de CD-ROM e
 partições <command>DOS</command>, <command>Windows 9X/XP/Vista/Seven/Oito/10</command>
 no <command>GNU/Linux</command>.
 </para>
-<!-- [ %INTERMEDIARIO [ -->
-<para>
+<para userlevel="inter" >
 Também será ensinado como formatar uma partição ou arquivo em formato
 <literal>EXT2</literal>, <literal>EXT3</literal>, <literal>reiserfs</literal>,
 <literal>xfs</literal> e usar a ferramenta <command>mkswap</command> (para
 criar uma partição ou arquivo de memória virtual).
 </para>
-<!-- ]]> -->
 
 <section xml:id="disc-particoes"><info><title>Partições</title></info>
 <para>
@@ -25,9 +23,8 @@ em uma ou mais partes para ser usado por um único sistema operacional ou até
 mesmo por diferentes arquiteturas (32 e 64 bits).
 </para>
 
-    <!-- [ %INTER-AVANC [ -->
 <!-- [ %DESCRICAOD [ -->
-<para>
+<para userlevel="inter" >
 Para gravar os dados, o disco rígido deve ser primeiro particionado (usando o
 <command>cfdisk</command>, <command>parted</command>,
 <command>diskdruid</command>, <command>fdisk</command>), escolher o tipo da
@@ -35,11 +32,11 @@ partição (<emphasis>Linux Native</emphasis>, <emphasis>Linux Swap</emphasis>,
 etc) e depois aquela partição deve ser formatada com o
 <command>mkfs.ext3</command> (veja <xref linkend="disc-ext3"/>).
 </para>
-<para>
+<para userlevel="inter" >
 Após criada e formatada, a partição será automaticamente identificada como um
-dispositivo no diretório <filename>/dev</filename> <!-- [ %INIC-INTER [ -->(veja <xref linkend="disc-id"/>) <!-- ]]> -->.  e deverá ser montada 
-<!-- [ %INIC-INTER [ --> (<xref linkend="disc-montagem"/>) <!-- ]]> --> para permitir seu uso no sistema. 
-<!-- ]]> -->
+dispositivo no diretório <filename>/dev</filename> 
+(veja <xref linkend="disc-id"/>) .  e deverá ser montada 
+(<xref linkend="disc-montagem"/>) para permitir seu uso no sistema. 
 </para>
 <para>
 Uma partição de disco não interfere em outras partições existentes, por este
@@ -111,7 +108,7 @@ documentação do <command>fdisk</command>, <command>cfdisk</command>,
 </para>
 </section>
 
-<section xml:id="disc-sistarq"><info><title>Sistema de Arquivos</title></info>
+<section userlevel="inter" xml:id="disc-sistarq"><info><title>Sistema de Arquivos</title></info>
 <para>
 É criado durante a "formatação" da partição de disco (quando se usa o comando
 <command>mkfs.ext3</command>).  Após a formatação toda a estrutura para
@@ -199,7 +196,7 @@ compactação nativa.
 </section>
 
 
-<section xml:id="disc-ext2"><info><title>Partição EXT2 (Linux Native)</title></info>
+<section userlevel="inter" xml:id="disc-ext2"><info><title>Partição EXT2 (Linux Native)</title></info>
 <para>
 A partição <literal>EXT2</literal> é o tipo usado para criar o sistema de
 arquivos <command>Linux Native</command> usado para armazenar o sistema de
@@ -232,7 +229,7 @@ tempo todo.
 </para>
 
 
-<section xml:id="disc-ext2-criando-p"><info><title>Criando um sistema de arquivos EXT2 em uma partição</title></info>
+<section userlevel="inter"  xml:id="disc-ext2-criando-p"><info><title>Criando um sistema de arquivos EXT2 em uma partição</title></info>
 <para>
 O utilitário usado para formatar uma partição <literal>EXT2</literal> é o
 <command>mkfs.ext2</command>.  Após terminar este passo, seu sistema de
@@ -252,8 +249,8 @@ disco, anote se for o caso.  <literal>sda</literal> normalmente é o primeiro
 disco rígido SATA, <literal>sdb</literal> é o segundo disco rígido SATA.
 Discos IDE normalmente são identificados por <literal>hda?</literal>,
 <literal>hdb?</literal>, etc.  
-<!-- [ %INIC-INTER [ --> Para detalhes sobre a identificação de discos,
-veja <xref linkend="disc-id"/>. <!-- ]]> -->
+Para detalhes sobre a identificação de discos,
+veja <xref linkend="disc-id"/>.
 </para>
 <para>
 Algumas opções são úteis ao <command>mkfs.ext2</command>:
@@ -286,11 +283,9 @@ para manutenção (por padrão reservado para o root, mas isto é alterável).
 Agora para acessar a partição deverá ser usado o comando: <literal>mount
 /dev/sda?  /mnt -t ext2</literal>
 </para>
-<!-- [ %INIC-INTER [ --> 
 <para>
 Para mais detalhes veja <xref linkend="disc-montagem"/>. 
 </para>
-<!-- ]]> -->
 <!-- [ %OBS [ --> 
 <para>
 Note que é possível criar um sistema de arquivos no disco rígido sem criar uma
@@ -313,7 +308,7 @@ a partição, isto pode ser feito no <command>tune2fs</command> com a opção
 </section>
 
 
-<section xml:id="disc-ext2-criando-a"><info><title>Criando um sistema de arquivos EXT2 em um arquivo</title></info>
+<section userlevel="inter" xml:id="disc-ext2-criando-a"><info><title>Criando um sistema de arquivos EXT2 em um arquivo</title></info>
 <para>
 É possível criar um sistema de arquivos EXT2 em um arquivo que poderá ser
 montado e acessado normalmente como se fosse uma partição normal.  Isto é
@@ -364,7 +359,7 @@ kernel</literal> para montar o sistema de arquivos.
 Confira se o sistema de arquivos <literal>EXT2</literal> em
 <filename>arquivo-ext2</filename> foi realmente montado no sistema de arquivos
 digitando <literal>df -T</literal>.  
-<!-- [ %INIC-INTER [ --> Para detalhes, veja <xref linkend="cmdv-df"/>. <!-- ]]> -->
+Para detalhes, veja <xref linkend="cmdv-df"/>. 
 </para>
 </listitem>
 </orderedlist>
@@ -405,7 +400,7 @@ sistema.  Pois cada um faz referência a um único arquivo.
 </section>
 
 
-<section xml:id="disc-journal"><info><title>Journaling</title></info>
+<section userlevel="inter" xml:id="disc-journal"><info><title>Journaling</title></info>
 <para>
 O sistema de journaling grava qualquer operação que será feita no disco em uma
 área especial chamada "journal", assim se acontecer algum problema durante
@@ -432,7 +427,7 @@ guia explica a utilização de journaling usando o sistema de arquivos
 </section>
 
 
-<section xml:id="disc-ext3"><info><title>Partição EXT3 (Linux Native)</title></info>
+<section userlevel="inter" xml:id="disc-ext3"><info><title>Partição EXT3 (Linux Native)</title></info>
 <para>
 O sistema de arquivos <emphasis>ext3</emphasis> faz parte da nova geração
 extended file system do <command>Linux</command>, sendo o padrão atual e tem
@@ -457,7 +452,8 @@ partição <emphasis>ext3</emphasis> com a <emphasis>ext2</emphasis> torna mais
 fácil a manutenção do sistema, já que todas as ferramentas para recuperação
 <emphasis>ext2</emphasis> funcionarão sem problemas.
 </para>
-<section xml:id="disc-ext3-criando-p"><info><title>Criando um sistema de arquivos EXT3 em uma partição</title></info>
+
+<section userlevel="inter" xml:id="disc-ext3-criando-p"><info><title>Criando um sistema de arquivos EXT3 em uma partição</title></info>
 <para>
 Para criar uma partição <emphasis>ext3</emphasis>, utilize o comando
 <command>mkfs.ext3</command> ou o <command>mkfs.ext2</command> junto com a
@@ -514,7 +510,7 @@ caso contrário a partição será montada como <emphasis>ext2</emphasis>.
 </section>
 
 
-<section xml:id="disc-ext3-criando-a"><info><title>Criando um sistema de arquivos EXT3 em um arquivo</title></info>
+<section userlevel="inter" xml:id="disc-ext3-criando-a"><info><title>Criando um sistema de arquivos EXT3 em um arquivo</title></info>
 <para>
 As instruções para criar um sistema de arquivos <literal>ext3</literal> em um
 arquivo não difere muito das instruções de <xref linkend="disc-ext2-criando-a"/>, apenas utilize a opção <emphasis>-j</emphasis>
@@ -523,7 +519,7 @@ ou <emphasis>-J [tamanho_em_mb]</emphasis> (como explicado em <xref linkend="dis
 </section>
 
 
-<section xml:id="disc-ext3-conv2-3"><info><title>Fazendo a conversão do sistema de arquivos EXT2 para EXT3</title></info>
+<section userlevel="inter" xml:id="disc-ext3-conv2-3"><info><title>Fazendo a conversão do sistema de arquivos EXT2 para EXT3</title></info>
 <para>
 Se você já possui um uma partição <emphasis>ext2</emphasis> e deseja
 converte-la para <emphasis>ext3</emphasis> isto poderá ser feito facilmente, de
@@ -572,7 +568,7 @@ contrário, a partição será montada como <emphasis>ext2</emphasis>.
 </section>
 
 
-<section xml:id="disc-ext3-conv3-2"><info><title>Convertendo de EXT3 para EXT2</title></info>
+<section userlevel="inter" xml:id="disc-ext3-conv3-2"><info><title>Convertendo de EXT3 para EXT2</title></info>
 <para>
 Remover o suporte a <emphasis>ext3</emphasis> de uma partição é simples, rápido
 e seguro.  Execute os seguintes passos:
@@ -612,7 +608,7 @@ agora poderá usar a partição como <emphasis>ext2</emphasis> normalmente
 </section>
 
 
-<section xml:id="disc-e2label"><info><title>Nomeando uma partição de disco ext2/ext3</title></info>
+<section userlevel="inter" xml:id="disc-e2label"><info><title>Nomeando uma partição de disco ext2/ext3</title></info>
 <para>
 O comando <command>e2label</command> é usado para esta função.
 </para>
@@ -657,7 +653,7 @@ Exemplo: <literal>e2label /dev/sda1 FocaLinux</literal>, <literal>e2label
 </section>
 
 
-<section xml:id="disc-mklost-found"><info><title>Criando o diretório especial <filename>lost+found</filename></title></info>
+<section userlevel="inter" xml:id="disc-mklost-found"><info><title>Criando o diretório especial <filename>lost+found</filename></title></info>
 <para>
 O utilitário <command>mklost+found</command> cria o diretório especial
 <filename>lost+found</filename> no diretório atual.  
@@ -684,7 +680,7 @@ Exemplo: <literal>cd /tmp;mklost+found;ls -a</literal>
 </section>
 
 
-<section xml:id="disc-dumpe2fs"><info><title>dumpe2fs</title></info>
+<section userlevel="inter" xml:id="disc-dumpe2fs"><info><title>dumpe2fs</title></info>
 <para>
 Mostra detalhes sobre uma partição <command>Linux</command>.
 </para>
@@ -730,7 +726,7 @@ Exemplo: <literal>dumpe2fs /dev/sda1</literal>, <literal>dumpe2fs -b
 </section>
 
 
-<section xml:id="disc-ext2xarquivo"><info><title>Partição EXT2 ou Arquivo?</title></info>
+<section userlevel="inter" xml:id="disc-ext2xarquivo"><info><title>Partição EXT2 ou Arquivo?</title></info>
 <para>
 Criar uma partição <literal>EXT2</literal> ou um arquivo usando o
 <literal>loop</literal>?  Abaixo estão algumas considerações:
@@ -788,7 +784,7 @@ menor.
 </section>
 
 
-<section xml:id="disc-reiserfs"><info><title>Sistema de arquivos reiserfs</title></info>
+<section userlevel="inter" xml:id="disc-reiserfs"><info><title>Sistema de arquivos reiserfs</title></info>
 <para>
 Este é um sistema de arquivos alternativo ao <emphasis>ext2/3/4</emphasis> que
 também possui suporte a journaling.  Entre suas principais características,
@@ -804,7 +800,7 @@ verificar este tipo de partição.
 </para>
 
 
-<section xml:id="disc-reiserfs-criando-p"><info><title>Criando um sistema de arquivos reiserfs em uma partição</title></info>
+<section userlevel="inter" xml:id="disc-reiserfs-criando-p"><info><title>Criando um sistema de arquivos reiserfs em uma partição</title></info>
 <para>
 Para criar uma partição <emphasis>reiserfs</emphasis>, primeiro instale o
 pacote <systemitem role="package">reiserfsprogs</systemitem> (<literal>apt-get
@@ -878,7 +874,7 @@ sistema de arquivos.
 </section>
 
 
-<section xml:id="disc-reiserfs-criando-a"><info><title>Criando um sistema de arquivos reiserfs em um arquivo</title></info>
+<section userlevel="inter" xml:id="disc-reiserfs-criando-a"><info><title>Criando um sistema de arquivos reiserfs em um arquivo</title></info>
 <para>
 O sistema de arquivos <command>reiserfs</command> também poderá ser criado em
 um arquivo, usando os mesmos benefícios descritos em <xref linkend="disc-ext2-criando-a"/>.  Para fazer isso execute os seguintes passos
@@ -966,7 +962,7 @@ sistema.  Pois cada um faz referência a um único arquivo.
 </section>
 
 
-<section xml:id="disc-swap"><info><title>Partição Linux Swap (Memória Virtual)</title></info>
+<section userlevel="inter" xml:id="disc-swap"><info><title>Partição Linux Swap (Memória Virtual)</title></info>
 <para>
 Este tipo de partição é usado para oferecer o suporte a <emphasis>memória
 virtual</emphasis> ao <command>GNU/Linux</command> em adição a
@@ -993,7 +989,7 @@ de arquivos <emphasis>Swap</emphasis> em um arquivo ao invés de uma partição
 </para>
 
 
-<section xml:id="disc-swap-criando-p"><info><title>Criando sistema de arquivos Swap em uma partição</title></info>
+<section userlevel="inter" xml:id="disc-swap-criando-p"><info><title>Criando sistema de arquivos Swap em uma partição</title></info>
 <para>
 O programa usado para formatar uma partição Swap é o <command>mkswap</command>.
 Seu uso é simples:
@@ -1050,7 +1046,7 @@ Caso precise desativar a partição Swap, use o comando: <literal>swapoff /dev/s
 </section>
 
 
-<section xml:id="disc-swap-criando-a"><info><title>Criando um sistema de arquivos Swap em um arquivo</title></info>
+<section userlevel="inter" xml:id="disc-swap-criando-a"><info><title>Criando um sistema de arquivos Swap em um arquivo</title></info>
 <para>
 Também é possível criar um arquivo que poderá ser usado como memória virtual.
 Veja passo a passo como fazer isso:
@@ -1114,7 +1110,7 @@ prioridade menor (usando a opção -p NUM com o comando
 </section>
 
 
-<section xml:id="disc-swap-swapxarquivo"><info><title>Partição Swap ou Arquivo?</title></info>
+<section userlevel="inter" xml:id="disc-swap-swapxarquivo"><info><title>Partição Swap ou Arquivo?</title></info>
 <para>
 Criar uma partição de Troca ou um arquivo de troca?  Abaixo algumas vantagens e
 desvantagens:
@@ -1161,7 +1157,7 @@ arquivo de troca desde sua inicialização.
 </section>
 
 
-<section xml:id="disc-proc"><info><title>O sistema de arquivos <filename>/proc</filename></title></info>
+<section userlevel="inter" xml:id="disc-proc"><info><title>O sistema de arquivos <filename>/proc</filename></title></info>
 <para>
 É o sistema de arquivos do Kernel do <command>GNU/Linux</command>.  Ele oferece
 um método de ler, gravar e modificar dinamicamente os parâmetros do kernel,
@@ -1340,7 +1336,7 @@ ocupa nenhum espaço no disco rígido.
 </section>
 
 
-<section xml:id="disc-lvm"><info><title>LVM - Logical Volume Manager</title></info>
+<section userlevel="inter" xml:id="disc-lvm"><info><title>LVM - Logical Volume Manager</title></info>
 <para>
 O <command>lvm</command> (<emphasis>Logical Volume Manager</emphasis>) faz a
 associação entre dispositivos/partições físicas (incluindo discos RAID, MO,
@@ -1433,7 +1429,7 @@ Exemplos: <filename>/dev/lvmdisk/usr</filename>,
 </itemizedlist>
 
 
-<section xml:id="disc-lvm-graph"><info><title>Representação gráfica do LVM</title></info>
+<section userlevel="inter" xml:id="disc-lvm-graph"><info><title>Representação gráfica do LVM</title></info>
 <para>
 Desenvolvi este desenho para representar a idéia de organização de um sistema
 LVM para o guia Foca GNU/Linux e apresentar a descrição prática da coisa:
@@ -1487,7 +1483,7 @@ grupo de volume devem ser iguais.
 </section>
 
 
-<section xml:id="disc-lvm-perf"><info><title>Performance do LVM</title></info>
+<section userlevel="inter" xml:id="disc-lvm-perf"><info><title>Performance do LVM</title></info>
 <para>
 Um sistema com LVM tem sua performance um pouco reduzida quanto ao acesso a
 disco, devido as camadas adicionais de acesso aos dados, sendo afetadas
@@ -1504,7 +1500,7 @@ adoção.
 </section>
 
 
-<section xml:id="disc-lvm-install"><info><title>Instalando LVM em seu sistema</title></info>
+<section userlevel="inter" xml:id="disc-lvm-install"><info><title>Instalando LVM em seu sistema</title></info>
 <para>
 Nesta seção não tenho a intenção de cobrir todos os detalhes técnicos da
 implantação do LVM, a idéia aqui é fornecer uma referência básica e prática
@@ -1529,7 +1525,7 @@ utilizará auto detecção para saber quais partições ele deve utilizar no
 <listitem>
 <para>
 Instale o pacote <systemitem role="package">lvm2</systemitem> e uma imagem de
-kernel 2.4 ou 2.6 que tenha suporte a LVM, ou compile seu próprio kernel (caso
+kernel 4.x ou 5.x que tenha suporte a LVM, ou compile seu próprio kernel (caso
 goste de máquinas turbinadas :-)
 </para>
 </listitem>
@@ -1621,7 +1617,7 @@ volume LVM, coloque o caminho completo do LVM ao invés do volume físico no
 </section>
 
 
-<section xml:id="disc-lvm-grow"><info><title>Aumentando o tamanho de um volume lógico</title></info>
+<section userlevel="inter" xml:id="disc-lvm-grow"><info><title>Aumentando o tamanho de um volume lógico</title></info>
 <para>
 O processo para aumentar o tamanho do volume lógico consiste em primeiro
 aumentar o tamanho do VG com o <command>lvextend</command> e depois ajustar o
@@ -1690,7 +1686,7 @@ sistema de arquivos deverá ser montado antes de ser modificado e incluido no
 </variablelist>
 </section>
 
-<section xml:id="disc-lvm-shrink"><info><title>Diminuindo um volume lógico</title></info>
+<section userlevel="inter" xml:id="disc-lvm-shrink"><info><title>Diminuindo um volume lógico</title></info>
 <para>
 Para diminuir o tamanho de um volume lógico, certifique-se de ter calculado o
 espaço corretamente para acomodar todos os dados que já existem na partição.  A
@@ -1740,17 +1736,16 @@ atual (12/2006).
 
 </section>
 
-    <!-- ]]> -->
 
 
-    <!-- [ %INIC-INTER [ -->
-<section xml:id="disc-formatando"><info><title>Formatando Pen-drives/Disquetes</title></info>
+<section userlevel="inic;inter" xml:id="disc-formatando"><info><title>Formatando Pen-drives/Disquetes</title></info>
 <para>
 As subseções seguintes explicarão maneiras de formatar seu pen-drive, memória
 flash, e outras tecnologias (incluindo disquetes) para serem usados no
 <command>GNU/Linux</command> e <command>DOS/Windows</command>.
 </para>
-<section xml:id="disc-formatando-l"><info><title>Formatando pen-drives para serem usados no Linux</title></info>
+
+<section userlevel="inic;inter" xml:id="disc-formatando-l"><info><title>Formatando pen-drives para serem usados no Linux</title></info>
 <para>
 Para formatar pen-drives para serem usados no <command>GNU/Linux</command> use
 o comando:
@@ -1791,7 +1786,7 @@ Exemplo: <literal>mkfs.ext2 -c /dev/sde1</literal>
 <!-- ]]> -->
 </section>
 
-<section xml:id="disc-formatando-d"><info><title>Formatando pen-drives compatíveis com o Windows</title></info>
+<section userlevel="inic;inter"  xml:id="disc-formatando-d"><info><title>Formatando pen-drives compatíveis com o Windows</title></info>
 <para>
 A formatação de pen-drives para serem usados no <command>Windows</command> é
 feita usando o comando <command>mkfs.msdos</command> que é geralmente incluído
@@ -1888,7 +1883,7 @@ terceiro dispositivo SCSI genérico, como FAT16 e cria o nome de volume
 </section>
 
 
-<section xml:id="disc-formatando-g"><info><title>Programas de Formatação Gráficos</title></info>
+<section userlevel="inic;inter" xml:id="disc-formatando-g"><info><title>Programas de Formatação Gráficos</title></info>
 <para>
 Além de programas de formatação em modo texto, existem outros para ambiente
 gráfico (X11) que permitem fazer a mesma tarefa.
@@ -1904,7 +1899,7 @@ selecionar a capacidade e formatação rápida do disco.
 </section>
 
 
-<section xml:id="disc-pontomontagem"><info><title>Pontos de Montagem</title></info>
+<section userlevel="inic;inter" xml:id="disc-pontomontagem"><info><title>Pontos de Montagem</title></info>
 <para>
 O <command>GNU/Linux</command> acessa as partições existente em seus discos
 rígidos e disquetes através de diretórios.  Os diretórios que são usados para
@@ -1966,7 +1961,7 @@ de identificação dos discos e pontos de montagem (como não acontece no
 </section>
 
 
-<section xml:id="disc-id"><info><title>Identificação de discos e partições em sistemas Linux</title></info>
+<section userlevel="inic;inter" xml:id="disc-id"><info><title>Identificação de discos e partições em sistemas Linux</title></info>
 <para>
 No <command>GNU/Linux</command>, os dispositivos existentes em seu computador
 (como discos rígidos, pen-drives, flash, disquetes,, tela, portas de
@@ -2087,7 +2082,7 @@ pois será necessário usar os parâmetros corretos para monta-los.
 </section>
 
 
-<section xml:id="disc-montagem"><info><title>Montando (acessando) uma partição de disco</title></info>
+<section userlevel="inic;inter" xml:id="disc-montagem"><info><title>Montando (acessando) uma partição de disco</title></info>
 <para>
 Você pode acessar uma partição de disco usando o comando
 <command>mount</command>.
@@ -2264,7 +2259,7 @@ Remontar a partição raíz como <emphasis>leitura/gravação</emphasis> (a opç
 </itemizedlist>
 <!-- ]]> -->
 
-<section xml:id="disc-fstab"><info><title>fstab</title></info>
+<section userlevel="inic;inter" xml:id="disc-fstab"><info><title>fstab</title></info>
 <para>
 O arquivo <filename>/etc/fstab</filename> permite que as partições do sistema
 sejam montadas facilmente especificando somente o dispositivo ou o ponto de
@@ -2393,7 +2388,7 @@ páginas de manual <filename>fstab</filename> e <command>mount</command>.
 
 </section>
 
-<section xml:id="disc-desmontagem"><info><title>Desmontando uma partição de disco</title></info>
+<section userlevel="inic;inter" xml:id="disc-desmontagem"><info><title>Desmontando uma partição de disco</title></info>
 <para>
 Utilize o comando <command>umount</command> para desmontar um sistema de
 arquivos que foi montado com o <command>mount</command>.  Você deve ter
@@ -2413,7 +2408,6 @@ Você pode tanto usar <literal>umount /dev/sda1</literal> como <literal>umount
 <command>sync</command> automaticamente no momento da desmontagem, para
 garantir que todos os dados ainda em memória RAM sejam salvos.
 </para> 
-<!-- ]]> -->
 </section>
 
 </chapter>

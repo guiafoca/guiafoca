@@ -8,8 +8,7 @@ possui suporte a página de código 860 (Portuguesa) e o conjunto de caracteres
 </para>
 
 
-	<!-- [ %INIC-INTER [ -->
-<section xml:id="cfg-acentuacao"><info><title>Acentuação</title></info>
+<section userlevel='inic;inter' xml:id="cfg-acentuacao"><info><title>Acentuação</title></info>
 <para>
 Permite que o <command>GNU/Linux</command> use a acentuação.  A acentuação do
 modo texto é independente do modo gráfico; você pode configurar tanto um como o

@@ -6,8 +6,7 @@ computador e do sistema operacional <command>Linux</command>.
 </para>
 
 
-	<!-- [ %INICIANTE [ -->
-<section xml:id="basico-hardsoft"><info><title>Hardware e Software</title></info>
+<section userlevel='inic' xml:id="basico-hardsoft"><info><title>Hardware e Software</title></info>
 <para>
 <emphasis>Hardware</emphasis> - Significa parte física do computador (disquete,
 pen-drive, impressoras, monitores, placa mãe, placa de fax, discos rígidos,
@@ -21,7 +20,7 @@ comandos, etc).
 </section>
 
 
-<section xml:id="basico-arquivo"><info><title>Arquivos</title></info>
+<section userlevel='inic' xml:id="basico-arquivo"><info><title>Arquivos</title></info>
 <para>
 É onde gravamos nossos dados.  Um arquivo pode conter um texto feito por nós,
 uma música, programa, planilha, etc.
@@ -103,7 +102,7 @@ facilmente o tipo de arquivo e que programa precisaremos usar para abri-lo.
 </section>
 
 
-<section xml:id="basico-arquivo-tamanho"><info><title>Tamanho de arquivos</title></info>
+<section userlevel='inic' xml:id="basico-arquivo-tamanho"><info><title>Tamanho de arquivos</title></info>
 <para>
 A unidade de medida padrão nos computadores é o <literal>bit</literal>.  A um
 conjunto de 8 bits nós chamamos de <literal>byte</literal>.  Cada
@@ -148,7 +147,7 @@ Y	24	80	Yotta
 </section>
 
 
-<section xml:id="basico-arquivo-bintext"><info><title>Arquivo texto e binário</title></info>
+<section userlevel='inic' xml:id="basico-arquivo-bintext"><info><title>Arquivo texto e binário</title></info>
 <para>
 Quanto ao tipo, um arquivo pode ser de texto ou binário:
 </para>
@@ -182,7 +181,7 @@ máquina.
 </section>
 
 
-<section xml:id="basico-diretorio"><info><title>Diretório</title></info>
+<section userlevel='inic' xml:id="basico-diretorio"><info><title>Diretório</title></info>
 <para>
 Diretório é o local utilizado para armazenar conjuntos arquivos para melhor
 organização e localização.  O diretório, como o arquivo, também é
@@ -204,7 +203,7 @@ comando <command>mkdir</command> (<xref linkend="comando-mkdir"/>).
 </para>
 
 
-<section xml:id="basico-diretorio-raiz"><info><title>Diretório Raíz</title></info>
+<section userlevel='inic' xml:id="basico-diretorio-raiz"><info><title>Diretório Raíz</title></info>
 <para>
 Este é o diretório principal do sistema.  Dentro dele estão todos os diretórios
 do sistema.  O diretório Raíz é representado por uma "<emphasis>/</emphasis>",
@@ -281,7 +280,7 @@ armazenado em cada diretório.
 </section>
 
 
-<section xml:id="basico-diretorio-atual"><info><title>Diretório atual</title></info>
+<section userlevel='inic' xml:id="basico-diretorio-atual"><info><title>Diretório atual</title></info>
 <para>
 É o diretório em que nos encontramos no momento.  Você pode digitar
 <literal>pwd</literal> (veja <xref linkend="comando-pwd"/>) para verificar qual
@@ -296,7 +295,7 @@ isto é desnecessário porque se não digitar nenhum diretório, o comando
 </section>
 
 
-<section xml:id="basico-diretorio-home"><info><title>Diretório home</title></info>
+<section userlevel='inic' xml:id="basico-diretorio-home"><info><title>Diretório home</title></info>
 <para>
 Também chamado de diretório de usuário.  Em sistemas
 <command>GNU/Linux</command> cada usuário (inclusive o root) possui seu próprio
@@ -322,7 +321,7 @@ for "joao" o seu diretório home será <filename>/home/j/joao</filename>.
 </para>
 </section>
 
-<section xml:id="basico-diretorio-superior"><info><title>Diretório Superior</title></info>
+<section userlevel='inic' xml:id="basico-diretorio-superior"><info><title>Diretório Superior</title></info>
 <para>
 O diretório superior (Upper Directory) é identificado por <literal>..</literal>
 (2 pontos).
@@ -336,7 +335,7 @@ arquivos/diretórios, etc.
 </section>
 
 
-<section xml:id="basico-diretorio-anterior"><info><title>Diretório Anterior</title></info>
+<section userlevel='inic' xml:id="basico-diretorio-anterior"><info><title>Diretório Anterior</title></info>
 <para>
 O diretório anterior é identificado por "-".  É útil para retornar ao último
 diretório usado.
@@ -349,7 +348,7 @@ Se estive no diretório <filename>/usr/local</filename> e digitar <literal>cd
 </section>
 
 
-<section xml:id="basico-diretorio-caminho"><info><title>Caminho na estrutura de diretórios</title></info>
+<section userlevel='inic' xml:id="basico-diretorio-caminho"><info><title>Caminho na estrutura de diretórios</title></info>
 <para>
 São os diretórios que teremos que percorrer até chegar no arquivo ou diretório
 que que procuramos.  Se desejar ver o arquivo <filename>/etc/hosts</filename>
@@ -405,7 +404,7 @@ operacional onde encontrar um arquivo na "árvore" de diretórios.
 
 
 <!-- [ %EXEMPLO [ -->
-<section xml:id="basico-diretorio-exemplo"><info><title>Exemplo de diretório</title></info>
+<section userlevel='inic' xml:id="basico-diretorio-exemplo"><info><title>Exemplo de diretório</title></info>
 <para>
 Um exemplo de diretório é o seu diretório de usuário, todos seus arquivos
 essenciais devem ser colocadas neste diretório.  Um diretório pode conter outro
@@ -436,7 +435,7 @@ sub-diretório de <filename>pub</filename>.
 <!-- ]]> -->
 
 
-<section xml:id="basico-diretorio-estrutura"><info><title>Estrutura básica de diretórios do Sistema Linux</title></info>
+<section userlevel='inic' xml:id="basico-diretorio-estrutura"><info><title>Estrutura básica de diretórios do Sistema Linux</title></info>
 <para>
 O sistema <command>GNU/Linux</command> possui a seguinte estrutura básica de
 diretórios organizados segundo o FHS (Filesystem Hierarchy Standard):
@@ -606,7 +605,7 @@ do sistema, e-mails, spool de impressora, cache, etc.
 </section>
 
 
-<section xml:id="basico-nomeando"><info><title>Nomeando Arquivos e Diretórios</title></info>
+<section userlevel='inic' xml:id="basico-nomeando"><info><title>Nomeando Arquivos e Diretórios</title></info>
 <para>
 No <command>GNU/Linux</command>, os arquivos e diretórios pode ter o tamanho de
 até <emphasis>255</emphasis> letras.  Você pode identifica-lo com uma extensão
@@ -634,7 +633,7 @@ para identifica-lo): <filename>TrabalhodeHistoria.txt</filename>.
 </section>
 
 
-<section xml:id="basico-comandos"><info><title>Comandos</title></info>
+<section userlevel='inic' xml:id="basico-comandos"><info><title>Comandos</title></info>
 <para>
 Comandos são ordens que passamos ao sistema operacional para executar uma
 determinada tarefa.
@@ -743,7 +742,7 @@ como parâmetro ao comando <literal>ls</literal>.
 <!-- ]]> -->
 
 
-<section xml:id="basico-comandos-internos"><info><title>Comandos Internos</title></info>
+<section userlevel='inic' xml:id="basico-comandos-internos"><info><title>Comandos Internos</title></info>
 <para>
 São comandos que estão localizados dentro do interpretador de comandos
 (normalmente o <command>Bash</command>) e não no disco.  Eles são carregados na
@@ -762,7 +761,7 @@ help</literal>
 
 </section>
 
-<section xml:id="basico-comandos-externos"><info><title>Comandos Externos</title></info>
+<section userlevel='inic' xml:id="basico-comandos-externos"><info><title>Comandos Externos</title></info>
 <para>
 São comandos que estão localizados no disco.  Os comandos são procurados no
 disco usando o ordem do <literal>PATH</literal> e executados assim que
@@ -773,7 +772,7 @@ Para detalhes veja <xref linkend="run-path"/>.
 </para>
 </section>
 
-<section xml:id="basico-avisocmd"><info><title>Aviso de comando (Prompt)</title></info>
+<section userlevel='inic' xml:id="basico-avisocmd"><info><title>Aviso de comando (Prompt)</title></info>
 <para>
 Aviso de comando (ou Prompt), é a linha mostrada na tela para
 <emphasis>digitação de comandos</emphasis> que serão passados ao
@@ -858,10 +857,8 @@ foi apagado na posição atual do cursor.
 </itemizedlist>
 </section>
 
-	<!-- ]]> -->
-	<!-- [ %AVANCADO [ -->
 
-<section xml:id="basico-monitlogs"><info><title>Monitorando os logs</title></info>
+<section userlevel='avanc' xml:id="basico-monitlogs"><info><title>Monitorando os logs</title></info>
 <para>
 Os arquivos e diretórios de logs residem em <filename>/var/log</filename> e
 registram tudo o que acontecem com o kernel, com os daemons e utilitários do
@@ -880,7 +877,7 @@ mais complicados).  <!-- [ %CAPJUNTOS [ --> Leia <xref linkend="log"/> para mais
 </para>
 
 
-<section xml:id="basico-delarquivos"><info><title>Destruindo arquivos/partições de forma segura</title></info>
+<section userlevel='avanc' xml:id="basico-delarquivos"><info><title>Destruindo arquivos/partições de forma segura</title></info>
 <para>
 Esta seção tem a intenção de conscientizar o administrador do uso devido de
 técnicas para garantir que dados sensíveis sejam apagados de forma um pouco
@@ -952,10 +949,8 @@ arquivos criptografado, estes procedimentos são quase desnecessários
 
 </section>
 
-	<!-- ]]> -->
 
-	<!-- [ %INIC-INTER [ -->
-<section xml:id="basico-interpcmd"><info><title>Interpretador de comandos</title></info>
+<section userlevel='inic;inter' xml:id="basico-interpcmd"><info><title>Interpretador de comandos</title></info>
 <para>
 Também conhecido como "shell".  É o programa responsável em interpretar as
 instruções enviadas pelo usuário e seus programas ao sistema operacional (o
@@ -1021,7 +1016,7 @@ Exemplo: <literal>ech</literal> (pressione <literal>TAB</literal>).
 </section>
 
 
-<section xml:id="basico-terminal"><info><title>Terminal Virtual (console)</title></info>
+<section userlevel='inic;inter' xml:id="basico-terminal"><info><title>Terminal Virtual (console)</title></info>
 <para>
 Terminal (ou console) é o teclado e tela conectados em seu computador.  O
 <command>GNU/Linux</command> faz uso de sua característica
@@ -1059,10 +1054,8 @@ terminal pressionando <literal>ALT</literal>+&lt;F1&gt;.
 </para>
 <!-- ]]> -->
 </section>
-	<!-- ]]> -->
 
-	<!-- [ %INICIANTE [ -->
-<section xml:id="basico-login"><info><title>Login</title></info>
+<section  userlevel='inic' xml:id="basico-login"><info><title>Login</title></info>
 <para>
 Login é a entrada no sistema quando você digita seu <emphasis>nome</emphasis> e
 <emphasis>senha</emphasis>.  Por enquanto vou manter o seu suspense sobre o que
@@ -1071,7 +1064,7 @@ Login é a entrada no sistema quando você digita seu <emphasis>nome</emphasis> 
 </section>
 
 
-<section xml:id="basico-logout"><info><title>Logout</title></info>
+<section userlevel='inic' xml:id="basico-logout"><info><title>Logout</title></info>
 <para>
 Logout é a saída do sistema.  A saída do sistema é feita pelos comandos
 <command>logout</command>, <command>exit</command>,
@@ -1079,10 +1072,9 @@ Logout é a saída do sistema.  A saída do sistema é feita pelos comandos
 ou desligado.
 </para>
 </section>
-	<!-- ]]> -->
 
 
-<section xml:id="basico-coringas"><info><title>coringas</title></info>
+<section userlevel='inic' xml:id="basico-coringas"><info><title>coringas</title></info>
 <para>
 coringas (ou referência global) é um recurso usado para especificar um ou mais
 arquivos ou diretórios do sistema de uma só vez.  Este é um recurso permite que
@@ -1168,7 +1160,7 @@ criação de diretórios.  Lembrando que os 4 tipos de coringas ("*", "?", "[]",
 "{}") podem ser usados juntos.  
 </para>
 
-<!-- [ %EXEMPLO [ -->
+<section condition='exemplos' xml:id="basico-coringas-ex"><info><title>Exemplo de coringas</title></info>
 <para>
 Para entender melhor vamos a prática:
 </para>
@@ -1258,7 +1250,7 @@ mover, renomear, e nas mais diversas partes do sistema.  Alias esta é uma
 característica do <command>GNU/Linux</command>: permitir que a mesma coisa
 possa ser feita com liberdade de várias maneiras diferentes.
 </para>
-<!-- ]]> -->
+</section>
 </section>
 
 </chapter>

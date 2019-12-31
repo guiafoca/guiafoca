@@ -3,12 +3,13 @@
 Bem vindo ao guia <emphasis>Foca GNU/Linux</emphasis>.  O nome
 <emphasis>FOCA</emphasis> significa <emphasis>FO</emphasis>nte de
 <emphasis>C</emphasis>onsulta e <emphasis>A</emphasis>prendizado.  Este guia
-está dividido em 3 níveis de aprendizado e versão que esta lendo agora contém:
+está dividido em 3 níveis de aprendizado e versão que esta lendo agora contém
+os níveis:
 </para>
 <itemizedlist>
-<!-- [ %INICIANTE [ --> <listitem><para>Iniciante</para></listitem> <!-- ]]> -->
-<!-- [ %INTERMEDIARIO [ --> <listitem><para>Intermediário</para></listitem> <!-- ]]> -->
-<!-- [ %AVANCADO [ --> <listitem><para>Avançado</para></listitem> <!-- ]]> -->
+<listitem userlevel='inic' ><para>Iniciante</para></listitem>
+<listitem userlevel='inter' ><para>Intermediário</para></listitem>
+<listitem userlevel='avanc' ><para>Avançado</para></listitem>
 
 </itemizedlist>
 <!-- [ %CAPJUNTOS [ -->
@@ -16,26 +17,26 @@ está dividido em 3 níveis de aprendizado e versão que esta lendo agora conté
 Entre o conteúdo do guia, você encontrará:
 </para>
 <itemizedlist>
-<!-- [ %INICIANTE [ -->
-<listitem>
+
+<listitem userlevel='inic' >
 <para>
 Textos explicativos falando sobre o sistema <command>Linux</command>, seus
 comandos, como manusear arquivos, diretórios, etc.
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='inic' >
 <para>
 Explicações iniciais sobre as partes básicas do computador e periféricos
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='inic' >
 <para>
 Comandos e Programas equivalentes entre o
 <command>DOS</command>/<command>Windows</command> e o
 <command>GNU/Linux</command>
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='inic' >
 <para>
 Todos os materiais contidos na versão iniciante são ideais para quem está tendo
 o primeiro contato com computadores e/ou com o <command>Linux</command>.  A
@@ -43,28 +44,27 @@ linguagem usada é simples com o objetivo de explicar claramente o funcionamento
 de cada comando e evitando, sempre que possível, termos técnicos
 </para>
 </listitem>
-<!-- ]]> -->
 
-<!-- [ %INTERMEDIARIO [ -->
-<listitem>
+
+<listitem userlevel='inter' >
 <para>
 Explicações necessárias para conhecer, operar, configurar, desenvolver,
 personalizar seu sistema Linux.
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='inter'>
 <para>
 Uma lista de aplicativos clientes para serem usados em seu sistema
 <command>GNU/Linux</command>, com suas características, equipamento mínimo
 requerido e espaço em disco recomendado para instalação.
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='inter'>
 <para>
 Particionamento de disco
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='inter'>
 <para>
 Criação de partições e arquivos contendo o sistema de arquivos
 <emphasis>ext2</emphasis>, <emphasis>ext3</emphasis>,
@@ -73,25 +73,25 @@ arquivos e diretórios) e swap (memória virtual) e as vantagens/desvantagens de
 se utilizar um arquivo ou partição para armazenamento de dados.
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='inter'>
 <para>
 Compilação de programas/kernel, com explicações sobre cada uma das opções
 ajudando-o a decidir sobre a inclusão ou não.
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='inter'>
 <para>
 Manipulação de módulos do kernel
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='inter'>
 <para>
 Explicações sobre hardwares (Interrupções, DMA, Jumpers, Jumperless,
 Plug-and-Play) e como configura-los no Linux, valores padrões e resolução de
 conflitos entre hardwares.
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='inter'>
 <para>
 Dicas de como avaliar e comprar bons hardwares para que seu computador tenha o
 melhor desempenho (também válido para <command>DOS</command>,
@@ -101,64 +101,64 @@ vezes mais caro que outras e o que a placa traz de especial para ter este
 diferencial.
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='inter'>
 <para>
 Como modificar facilmente o idioma usado em seu sistema (localização) para o
 modo texto e modo gráfico.
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='inter'>
 <para>
 Utilização de compactadores de arquivos
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='inter'>
 <para>
 Mais opções para os comandos existentes na versão
 <emphasis>Iniciante</emphasis> do guia e novos comandos.
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='inter'>
 <para>
 Conhecer os arquivos de configuração e arquivos básicos de segurança,
 entendendo para que eles servem e como usa-los.
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='inter'>
 <para>
 Dicas de como saber escolher bons periféricos para uso no
 <command>GNU/Linux</command> e outros sistemas operacionais
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='inter'>
 <para>
 Manutenção básica do computador (verificação do disco, desfragmentação) e
 manutenção automática feita através dos programas de e scripts configurados.
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='inter'>
 <para>
 Introdução a rede no Linux (com a configuração de dispositivos de rede, etc.).
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='inter'>
 <para>
 Configurações básicas de segurança de Rede
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='inter'>
 <para>
 Gerenciadores de inicialização (boot), o que são e como funcionam e como criar
 um arquivo de inicialização para inicializar o <command>GNU/Linux</command>
 pelo disco rígido ou mais de um Sistema Operacional.
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='inter'>
 <para>
 Criação de Memória virtual no disco rígido e em arquivo.
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='inter'>
 <para>
 Os materiais contidos na versão intermediário são ideais para quem já tem um
 conhecimento básico do sistema <command>GNU/Linux</command> mas que deseja se
@@ -167,88 +167,86 @@ funcionamento do <command>GNU/Linux</command>, como modifica-los e como estas
 modificações afetam o funcionamento do sistema.
 </para>
 </listitem>
-<!-- ]]> -->
 
-<!-- [ %AVANCADO [ -->
-<listitem>
+<listitem userlevel='avanc'>
 <para>
 Análise de logs do sistema GNU/Linux e aplicação para a solução de problemas
 (<xref linkend="log"/>).
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='avanc'>
 <para>
 Gerenciamento de contas de usuários, definição de período automático para troca
 de senha periódica, políticas de segurança, etc (<xref linkend="d-contas"/>).
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='avanc'>
 <para>
 Principais tipos de ataques para descoberta de senhas e alguns métodos de como
 evita-las (<xref linkend="d-contas-cms-senhas"/>).
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='avanc'>
 <para>
 Integrar máquinas <command>Windows</command> e <command>Linux</command> em uma
 mesma rede compartilhando dados entre si e impressão (<xref linkend="samba"/>).
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='avanc'>
 <para>
 Sistemas de proteção de senhas do sistema (<xref linkend="d-contas-segsenhas"/>).
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='avanc'>
 <para>
 Criptografia e segurança na transmissão de dados, usando exemplos práticos do
 uso de sniffers para entender o porque da uso de criptografia para transmissão
 segura de dados (<xref linkend="d-cripto"/>).
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='avanc'>
 <para>
 Uso de serviços alternativos criptográficos (<xref linkend="d-cripto-alt"/>).
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='avanc'>
 <para>
 Criptografia usando <command>gnupgp</command> (<xref linkend="d-cripto-gpg"/>).
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='avanc'>
 <para>
 Uso de sistema de arquivos criptográficos para armazenamento de dados (<xref linkend="d-cripto-criptofs"/>).
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='avanc'>
 <para>
 Otimização de performance na transferência de dados do disco rígido através de
 particionamento e <command>hdparm</command>, uso de spindles para criação de
 swap (<xref linkend="hard-perf"/>).
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='avanc'>
 <para>
 O que são descargas estáticas e a importância do aterramento da instalação
 elétrica do computador (dirigido a usuários domésticos e de pequenas
 instalações) (<xref linkend="hard-descestat"/>).
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='avanc'>
 <para>
 Maiores considerações a segurança de sistema e a problemas de segurança
 relativos a falhas de configuração (distribuída entre os capítulos de daemons e
 servidores).
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='avanc'>
 <para>
 Montagem de um servidor de publicação Web usando o <command>Apache</command>
 (<xref linkend="apache"/>).
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='avanc'>
 <para>
 Montagem de um firewall avançado para proteção do sistema (filtragem de
 pacotes) usando o <command>iptables</command>, redirecionamento de pacotes,
@@ -256,24 +254,24 @@ nat, bloqueio de tráfego P2P, masquerading, balanceamento de carga, marcação 
 pacotes, log, proteção contra port scans (<xref linkend="fw-iptables"/>).
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='avanc'>
 <para>
 Servidor de acesso para permitir o acesso a distância ao seu computador usando
 o <command>telnetd</command> (<xref linkend="telnet"/>).
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='avanc'>
 <para>
 Servidor de acesso para permitir o acesso a distância a seu computador com
 criptografia usando o <command>ssh</command> (<xref linkend="ssh"/>).
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='avanc'>
 <para>
 Servidor de identificação usando o <command>oidentd</command> (<xref linkend="ident"/>).
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='avanc'>
 <para>
 Montagem de um servidor pop3 para que suas estações de rede possam acessar o
 email na máquina servidor <command>Linux</command> usando programas como
@@ -282,30 +280,30 @@ email na máquina servidor <command>Linux</command> usando programas como
 protocolo <command>pop3</command> (<xref linkend="pop3"/>).
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='avanc'>
 <para>
 Restrições de acesso a instalação do computador, acesso a grupos do sistema,
 restrições de login usando <emphasis>PAM</emphasis> (<xref linkend="d-restr"/>).
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='avanc'>
 <para>
 Restrições de espaço usado em disco por usuários/grupos usando o sistema de
 quotas (<xref linkend="d-restr-quotas"/>).
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='avanc'>
 <para>
 Uso de grupos dos sistema para restrições de acesso (<xref linkend="d-restr-grupos"/>).
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='avanc'>
 <para>
 Restrições de acesso via hardware: BIOS, disquete, placa com boot via rede,
 LILO, disco rígido (<xref linkend="d-restr-hardware"/>).
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='avanc'>
 <para>
 Manipulações de variáveis no bash (<replaceable>TMOUT</replaceable>,
 <replaceable>PS1</replaceable>, <replaceable>PS2</replaceable>,
@@ -313,18 +311,17 @@ Manipulações de variáveis no bash (<replaceable>TMOUT</replaceable>,
 <replaceable>HISTORY</replaceable>, etc).
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='avanc'>
 <para>
 Montagem de shell básico restrito (<xref linkend="d-restr-bash-restricted"/>).
 </para>
 </listitem>
-<listitem>
+<listitem userlevel='avanc'>
 <para>
 Uso do <command>sudo</command> para dar privilégio de execução de programas
 como root a determinados usuários (<xref linkend="d-restr-sudo"/>).
 </para>
 </listitem>
-<!-- ]]> -->
 </itemizedlist>
 <!-- ]]> -->
 <para>
@@ -371,8 +368,8 @@ criptografia, etc.
 </para>
 
 
-	<!-- [ %AVANCADO [ -->
-<section xml:id="introducao-avisoADV"><info><title>Considerações sobre o nível Avançado</title></info>
+	
+<section  userlevel='avanc' xml:id="introducao-avisoADV"><info><title>Considerações sobre o nível Avançado</title></info>
 <para>
 Este guia foi compilado incluindo o nível <emphasis>Avançado</emphasis> do guia
 FOCA GNU/Linux, ele não tem a intenção de ser a única referencia na
@@ -390,10 +387,8 @@ tudo funcione corretamente.  Entretanto, na maioria dos casos, as explicações
 relacionadas a uma versão de um programa são válidas em uma nova versão.
 </para>
 </section>
-	<!-- ]]> -->
 
-	<!-- [ %INIC-INTER [ -->
-<section xml:id="introducao-palavras"><info><title>Antes de começar</title></info>
+<section  userlevel='inic;inter' xml:id="introducao-palavras"><info><title>Antes de começar</title></info>
 <para>
 Os capítulos <emphasis>Introdução</emphasis> e <emphasis>básico</emphasis>
 contém explicações teóricas sobre o computador, <command>GNU/Linux</command>,
@@ -534,20 +529,21 @@ Gleydson (<email>gleydson@guiafoca.org</email>).
 
 
 <section xml:id="introducao-requisitos"><info><title>Pré-requisitos para a utilização deste guia</title></info>
-<para>
-<!-- [ %INICIANTE [ -->
+<para userlevel='inic'>
 É assumido que você já tenha seu <command>GNU/Linux</command> instalado e
-funcionando. <!-- ]]> -->.
-<!-- [ %INTERMEDIARIO [ --> É assumido que você tenha entendido a função de boa parte dos
+funcionando. 
+</para>
+<para userlevel='inter'>
+É assumido que você tenha entendido a função de boa parte dos
 comandos que consta na versão iniciante do Foca Linux, arquivos e permissões de
 acesso.  Em resumo, que saiba decidir quando e qual(is) comando(s) deve usar em
 cada situação.
 </para>
-<para>
+<para userlevel='inter'>
 Caso não entenda as explicações da versão INTERMEDIÁRIO, recomendo que faça a
 leitura da versão INICIANTE do Foca Linux que pode ser encontrada em <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.guiafoca.org">http://www.guiafoca.org</link>.
-<!-- ]]> -->
-<!-- [ %AVANCADO [ -->
+</para>
+<para userlevel='avanc'>
 É assumido que você ja tenha experiência na configuração de sistemas <command>Linux</command>,
 conheça boa parte dos comandos e sua utilização, tenha noções de rede e saiba
 como procurar documentação para complementar o que vem aprendendo.  Enfim,
@@ -555,7 +551,7 @@ requer que se tiver interesse em se aprofundar em determinada área, que utilize
 os métodos de busca de documentação sugeridos no guia para complementação do
 aprendizado.  O guia não contém todos os materiais para que a pessoa se torne
 um <literal>expert</literal> no assunto, mas contém as referências para
-documentações mais específicas sobre determinadas áreas do sistema. <!-- ]]> -->
+documentações mais específicas sobre determinadas áreas do sistema. 
 </para>
 <para>
 Este guia não cobre a instalação do sistema.  Para detalhes sobre instalação,
@@ -565,8 +561,7 @@ consulte a documentação que acompanha sua distribuição
 </section>
 
 
-	<!-- [ %INICIANTE [ -->
-<section xml:id="introducao-so"><info><title>Sistema Operacional</title></info>
+<section userlevel='inic' xml:id="introducao-so"><info><title>Sistema Operacional</title></info>
 <para>
 O <emphasis>Sistema Operacional</emphasis> é o conjunto de programas que fazem
 a interface do usuário e seus programas com o computador.  Ele é responsável
@@ -581,7 +576,6 @@ operacional), poderá ser construído de acordo com a configuração do seu
 computador e dos periféricos que possui.
 </para>
 </section>
-	<!-- ]]> -->
 
 
 <section xml:id="introducao-linux"><info><title>O Linux</title></info>
@@ -621,6 +615,22 @@ será usado:
 <literal>2.6.x</literal> - Computador 486 DX com no mínimo 8MB
 </para>
 </listitem>
+<listitem>
+<para>
+<literal>3.x.x</literal> - Computador 586 com no mínimo 16MB
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>4.x.x</literal> - Computador 586 com no mínimo 32MB
+</para>
+</listitem>
+<listitem>
+<para>
+<literal>5.x.x</literal> - Computador 686 com no mínimo 32MB
+</para>
+</listitem>
+			
 </itemizedlist>
 <para>
 Para espaço em disco é requerido 500MB para uma instalação básica usando modo
@@ -665,9 +675,10 @@ pode se inscrever em uma lista de discussão e relatar sua dúvida ou alguma
 falha, e sua mensagem será vista por centenas de usuários na Internet e algum
 irá te ajudar ou avisará as pessoas responsáveis sobre a falha encontrada para
 devida correção.
-<!-- [ %INIC-INTER [ --> Para detalhes, veja <xref linkend="ajuda-listas"/>. <!-- ]]> -->
 </para>
-
+<para userlevel='inic;inter' >
+Para detalhes, veja <xref linkend="ajuda-listas"/>.
+</para>
 
 <section xml:id="introducao-linux-carac"><info><title>Algumas Características do Linux</title></info>
 <itemizedlist>
@@ -729,7 +740,7 @@ Proteção entre processos executados na memória RAM
 </listitem>
 <listitem>
 <para>
-Suporte a mais de 63 terminais virtuais (consoles)
+Suporte a mais de 256 terminais virtuais (consoles)
 </para>
 </listitem>
 <listitem>
@@ -750,7 +761,7 @@ de 6Kb para a Placa de rede NE 2000, por exemplo)
 <listitem>
 <para>
 Suporte nativo a rede e tecnologias avançadas como: balanceamento de carga, ips
-alias, failover, vlans, bridge, trunking, OSPF, BGP.
+alias, failover, vlans, bridge, trunking, OSPF, BGP, MPLS.
 </para>
 </listitem>
 <listitem>
@@ -763,29 +774,32 @@ hardware (queima do processador, placa mãe, etc.).
 </listitem>
 <listitem>
 <para>
-Não precisa de um processador potente para funcionar.  O sistema roda bem em
-computadores 386Sx 25 com 4MB de memória RAM (sem rodar o sistema gráfico X,
-que é recomendado 32MB de RAM).  Já pensou no seu desempenho em um Pentium,
-Xeon, ou Athlon?  ;-)
+Excepcional em escalabilidade desde computadores extreamemente simples,dispositivos móveis
+(sistema Android utiliza kernel Linux), Raspberry PI, sistemas embarcados, geladeiras 
+inteligentes, carros com centrais inteligentes, etc.  até sistemas de clusters
+em núvem gigantescos (como Amazon, Digital Ocean, entre maiores datacenters
+utilizados em núvens no mundo).
 </para>
 </listitem>
 <listitem>
 <para>
-Suporte nativo a múltiplas CPUs, assim processadores como Dual Core, Core Duo,
-Athlon Duo, Quad Core tem seu poder de processamento integralmente aproveitado,
+Suporte nativo a múltiplas CPUs e multi threads, assim processadores como Dual Core, Core Duo,
+Athlon Duo, Quad Core, XEON, i3-i9 tem seu poder de processamento integralmente aproveitado,
 tanto em 32 ou 64 bits.
 </para>
 </listitem>
 <listitem>
 <para>
-Suporte nativo a dispositivos SATA, PATA, Fiber Channel
+Suporte nativo a dispositivos SSD, SATA, PATA, Fiber Channel
 </para>
 </listitem>
 <listitem>
 <para>
 Suporte nativo a virtualização, onde o <command>Linux</command> se destaca como
 plataforma preferida para execução de múltiplos sistemas operacionais com
-performance e segurança.
+performance e segurança. Nuvens como Amazon, Digital Ocean utilizam nativamente
+KVM para execucução de plataformas, assim como o sistema CGROUPs para execução 
+de containers.
 </para>
 </listitem>
 <listitem>
@@ -793,14 +807,14 @@ performance e segurança.
 O crescimento e novas versões do sistema não provocam lentidão, pelo contrário,
 a cada nova versão os desenvolvedores procuram buscar maior compatibilidade,
 acrescentar recursos úteis e melhor desempenho do sistema (como o que aconteceu
-na passagem do kernel 2.0.x para 2.2.x, da 2.2.x para a 2.4.x e da 2.4.x para a
-2.6.x).
+na passagem do kernel 2.0.x para 2.2.x, da 2.2.x para a 2.4.x, da 3 para a 4.x.x,
+da 4.x.x para a 5.x.x)
 </para>
 </listitem>
 <listitem>
 <para>
 O <command>GNU/Linux</command> é distribuido livremente e licenciado de acordo
-com os termos da GPL.
+com os termos da GPLv2.
 </para>
 </listitem>
 <listitem>
@@ -811,11 +825,11 @@ NTFS, SunOS, Amiga, Atari, Mac,</command> etc.
 </listitem>
 <listitem>
 <para>
-O LINUX NÃO É VULNERÁVEL A VÍRUS!  Devido a separação de privilégios entre
-processos e respeitadas as recomendações padrão de política de segurança e uso
-de contas privilegiadas (como a de root, como veremos adiante), programas como
-vírus tornam-se inúteis pois tem sua ação limitada pelas restrições de acesso
-do sistema de arquivos e execução.
+O LINUX POSSUI MECANISMOS DE HARDENING AVANÇADOS CONTRA VÍRUS E MALWARES!  Devido 
+a separação de privilégios entre processos e respeitadas as recomendações padrão 
+de política de segurança e uso de contas privilegiadas (como a de root, como 
+veremos adiante), programas como vírus tornam-se inúteis pois tem sua ação 
+limitada pelas restrições de acesso do sistema de arquivos e execução.
 </para>
 <para>
 Qualquer programa (nocivo ou não) poderá alterar partes do sistema que possui
@@ -980,8 +994,7 @@ PLENA CERTEZA DE SEU FUNCIONAMENTO.
 
 </section>
 
-	<!-- [ %INICIANTE [ -->
-<section xml:id="introducao-distrib"><info><title>Distribuições do Linux</title></info>
+<section userlevel="inic" xml:id="introducao-distrib"><info><title>Distribuições do Linux</title></info>
 <para>
 Só o kernel <command>GNU/Linux</command> não é suficiente para se ter uma
 sistema funcional, mas é o principal.
@@ -1020,6 +1033,7 @@ Segue abaixo as características de algumas distribuições seguidas do site
 principal e endereço para download:
 </para>
 <variablelist>
+
 <varlistentry>
 <term><emphasis>Debian</emphasis></term>
 <listitem>
@@ -1029,14 +1043,14 @@ Distribuição desenvolvida e atualizada através do esforço de voluntários
 espalhados ao redor do mundo, seguindo o estilo de desenvolvimento
 <command>GNU/Linux</command>.  Por este motivo, foi adotada como a distribuição
 oficial do projeto <emphasis>GNU</emphasis>.  Possui suporte a língua
-Portuguesa, é a única que tem suporte a 14 arquiteturas diferentes (i386, IA64,
-AMD64, Alpha, Sparc, PowerPc, Macintosh, Arm, etc.) e aproximadamente 15
-sub-arquiteturas.  A instalação da distribuição pode ser feita tanto através de
-Disquetes, CD-ROM, Tftp, Ftp, NFS ou através da combinação de vários destes em
-cada etapa de instalação.
+Portuguesa, é a única que tem suporte a 9 arquiteturas diferentes (AMD64, i386, ARMEL,
+ARMHF, MIPS,MIPSEL,MIPS64el, etc.) e aproximadamente 15
+arquitetura não suportadas oficialmente.  A instalação da distribuição pode ser feita tanto através de
+flash disks, CD-ROM, Tftp, Ftp, NFS, imagem Docker ou através da combinação de 
+vários destes em cada etapa de instalação.
 </para>
 <para>
-Acompanha mais de 25000 programas distribuídos em forma de pacotes cada um
+Acompanha mais de 59000 programas distribuídos em forma de pacotes cada um
 destes programas são mantidos e testados pela pessoa ou grupo responsável por
 seu empacotamento.  Os pacotes são divididos em diretórios de acordo com sua
 categoria e gerenciados através de um avançado sistema de gerenciamento de
@@ -1074,7 +1088,7 @@ enxuta.
 <para>
 Existe um time de desenvolvedores com a tarefa específica de monitorar
 atualizações de segurança em serviços (apache, sendmail, e todos os outros
-25000 pacotes) que possam comprometer o servidor, deixando-o vulnerável a
+59000 pacotes) que possam comprometer o servidor, deixando-o vulnerável a
 ataques.  Assim que uma falha é descoberta, é enviado uma alerta (DSA - Debian
 Security Alert) e disponibilizada uma atualização para correção das diversas
 versões da <command>Debian</command>.  Isto é geralmente feito em menos de 48
@@ -1095,6 +1109,7 @@ para download.
 </para>
 </listitem>
 </varlistentry>
+
 <varlistentry>
 <term><emphasis>Ubuntu</emphasis></term>
 <listitem>
@@ -1111,6 +1126,7 @@ e execução através de Live CD.
 </para>
 </listitem>
 </varlistentry>
+
 <varlistentry>
 <term><emphasis>Slackware</emphasis></term>
 <listitem>
@@ -1140,6 +1156,7 @@ mais "velho", ou seja programadores, administradores, etc.
 </para>
 </listitem>
 </varlistentry>
+
 <varlistentry>
 <term><emphasis>SuSE</emphasis></term>
 <listitem>
@@ -1159,7 +1176,7 @@ feita via CD-ROM ou CD-DVD (é a primeira distribuição com instalação atrav�
 DVD).
 </para>
 <para>
-Uma média de 2000 programas acompanham a versão 10 distribuídos em 6 CD-ROMs.
+Uma média de 2000 programas acompanham a versão 10 distribuídos em 6 DVDs.
 O sistema de gerenciamento de pacotes é o RPM padronizado.  A seleção de
 pacotes durante a instalação pode ser feita através da seleção do perfil de
 máquina (developer, estação kde, gráficos, estação gnome, servidor de rede,
@@ -1178,6 +1195,7 @@ de registro.
 </para>
 </listitem>
 </varlistentry>
+
 <varlistentry>
 <term><emphasis>Red Hat Enterprise Linux</emphasis></term>
 <listitem>
@@ -1193,6 +1211,7 @@ dólares (a versão workstation) até 1499 dólares (advanced server).
 </para>
 </listitem>
 </varlistentry>
+
 <varlistentry>
 <term><emphasis>Fedora</emphasis></term>
 <listitem>
@@ -1228,32 +1247,16 @@ download dos 4 CDs através do site oficial.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry>
-<term><emphasis>Mandriva</emphasis></term>
-<listitem>
-<para>
-<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.mandriva.com/">http://www.mandriva.com/</link></literal> -
-Fusão da distribuição francesa <literal>Mandrake</literal> com a distribuição
-brasileira <literal>Conectiva</literal> contendo as características de
-instalação semi-automática através de DVD.  Boa auto-detecção de periféricos,
-inclusive web-cams.
-</para>
-<para>
-<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.mandriva.com/">http://www.mandriva.com/</link></literal> -
-Download da distribuição.
-</para>
-</listitem>
-</varlistentry>
+
 </variablelist>
 <para>
 Para contato com os grupos de usuários que utilizam estas distribuições, veja
 <xref linkend="ajuda-listas"/>.
 </para>
 </section>
-	<!-- ]]> -->
 
-	<!-- [ %INIC-INTER [ -->
-<section xml:id="introducao-software-livre"><info><title>Software Livre</title></info>
+	
+<section userlevel="inic;inter" xml:id="introducao-software-livre"><info><title>Software Livre</title></info>
 <para>
 (tradução do texto <literal>Linux e o Sistema GNU</literal> de <literal>Richard
 Stallman</literal> obtido no site do CIPSGA: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.cipsga.org.br/">http://www.cipsga.org.br/</link>).  O projeto
@@ -1379,10 +1382,8 @@ GNU/Linux (GNU/Linux system)", em vez de "sistema Linux", quando você escreve
 sobre ou menciona este sistema.
 </para>
 </section>
-	<!-- ]]> -->
 
-	<!-- [ %INICIANTE [ -->
-<section xml:id="introducao-processamento"><info><title>Processamento de Dados</title></info>
+<section userlevel="inic" xml:id="introducao-processamento"><info><title>Processamento de Dados</title></info>
 <para>
 <emphasis>Processamento de Dados</emphasis> é o envio de dados ao computador
 que serão processados e terão um resultado de saída útil.
@@ -1392,7 +1393,7 @@ Veja também <xref linkend="introducao-disp-e-s"/>.
 </para>
 </section>
 
-<section xml:id="introducao-computador"><info><title>O Computador</title></info>
+<section userlevel="inic" xml:id="introducao-computador"><info><title>O Computador</title></info>
 <para>
 É uma máquina eletrônica que processa e armazena os dados e pode executar
 diversos programas para realizar uma série de tarefas e assim atender a
@@ -1401,7 +1402,7 @@ apenas executa as instruções dos programas que foram escritos pelo programador
 </para>
 </section>
 
-<section xml:id="introducao-conhecendo"><info><title>Conhecendo o Computador</title></info>
+<section userlevel="inic" xml:id="introducao-conhecendo"><info><title>Conhecendo o Computador</title></info>
 <para>
 Esta explica para que serve cada botão do painel do computador e monitor de
 vídeo.  Se você já sabe para que cada um serve, recomendo pular esta parte, é o
@@ -1412,7 +1413,8 @@ Todo computador possuem funções que são usados em outros tipos e modelos.  Vo
 pode ter um modelo de computador e um amigo seu outro tipo e mesmo tendo
 aparência diferente, terão as mesmas funções.
 </para>
-<section xml:id="introducao-conhecendo-tipo"><info><title>Tipos de Gabinete</title></info>
+
+<section userlevel="inic" xml:id="introducao-conhecendo-tipo"><info><title>Tipos de Gabinete</title></info>
 <para>
 Quanto ao tipo, o gabinete pode ser <emphasis>Desktop</emphasis>,
 <emphasis>Mini-torre</emphasis> e <emphasis>Torre</emphasis>.
@@ -1454,7 +1456,7 @@ usado em servidores de rede e placas que requerem uma melhor refrigeração.
 </section>
 
 
-<section xml:id="introducao-conhecendo-painel"><info><title>Painel Frontal</title></info>
+<section userlevel="inic" xml:id="introducao-conhecendo-painel"><info><title>Painel Frontal</title></info>
 <para>
 O painel frontal do computador tem os botões que usamos para ligar, desligar, e
 acompanhar o funcionamento do computador.  Abaixo o significado de cada um:
@@ -1549,7 +1551,7 @@ usado.
 </section>
 
 
-<section xml:id="introducao-conhecendo-monitor"><info><title>Monitor de Vídeo</title></info>
+<section userlevel="inic" xml:id="introducao-conhecendo-monitor"><info><title>Monitor de Vídeo</title></info>
 <para>
 O monitor de vídeo se divide em dois tipos:
 </para>
@@ -1633,14 +1635,15 @@ Excelente qualidade gráfica, também capaz de operar corretamente em modo texto
 </section>
 
 
-<section xml:id="introducao-placamae"><info><title>Placa Mãe</title></info>
+<section userlevel="inic" xml:id="introducao-placamae"><info><title>Placa Mãe</title></info>
 <para>
 É a placa principal do sistema onde estão localizados o Processador, Memória
 RAM, Memória Cache, BIOS, CMOS, RTC, etc.  A placa mãe possui encaixes onde são
 inseridas placas de extensão (para aumentar as funções do computador).  Estes
 encaixes são chamados de "<literal>SLOTS</literal>".
 </para>
-<section xml:id="introducao-placamae-outros"><info><title>Alguns componentes da placa mãe</title></info>
+
+<section userlevel="inic" xml:id="introducao-placamae-outros"><info><title>Alguns componentes da placa mãe</title></info>
 <para>
 Abaixo a descrição de alguns tipos de componentes eletrônicos que estão
 presentes na placa mãe.  Não se preocupe se não entender o que eles significam
@@ -1748,7 +1751,7 @@ residente na BIOS.
 </section>
 
 
-<section xml:id="introducao-memoria"><info><title>Memória do Computador</title></info>
+<section userlevel="inic" xml:id="introducao-memoria"><info><title>Memória do Computador</title></info>
 <para>
 A memória é a parte do computador que permitem o armazenamento de dados.  A
 memória é dividida em dois tipos: Principal e Auxiliar.  Normalmente quando
@@ -1758,7 +1761,7 @@ Veja abaixo as descrições de <emphasis>Memória Principal</emphasis> e
 </para>
 
 
-<section xml:id="introducao-memoria-principal"><info><title>Memória Principal</title></info>
+<section userlevel="inic" xml:id="introducao-memoria-principal"><info><title>Memória Principal</title></info>
 <para>
 É um tipo de memória eletrônica que depende de uma fonte de energia para manter
 os dados armazenados e perde os dados quando a fonte de energia é desligada.  A
@@ -1781,7 +1784,7 @@ esse motivo é necessário o uso de uma memória auxiliar (veja <xref linkend="i
 </section>
 
 
-<section xml:id="introducao-memoria-auxiliar"><info><title>Memória Auxiliar</title></info>
+<section userlevel="inic" xml:id="introducao-memoria-auxiliar"><info><title>Memória Auxiliar</title></info>
 <para>
 São dispositivos que NÃO dependem de uma fonte de energia para manter os dados
 armazenados, os dados não são perdidos quando a fonte de energia é desligada.
@@ -1819,7 +1822,7 @@ Principal</emphasis>.
 </section>
 
 
-<section xml:id="introducao-discos"><info><title>Discos</title></info>
+<section userlevel="inic" xml:id="introducao-discos"><info><title>Discos</title></info>
 <para>
 Os discos são memórias de armazenamento Auxiliares.  Entre os vários tipos de
 discos existentes, posso citar os Flexíveis, Rígidos, Pen-drives, SSD e CDs.
@@ -1827,7 +1830,7 @@ Veja as explicações sobre cada um deles abaixo.
 </para>
 
 
-<section xml:id="introducao-discos-flexiveis"><info><title>Discos Flexíveis</title></info>
+<section userlevel="inic" xml:id="introducao-discos-flexiveis"><info><title>Discos Flexíveis</title></info>
 <para>
 São discos usados para armazenar e transportar pequenas quantidades de dados.
 Este tipo de disco é normalmente encontrado no tamanho 3 1/2 (1.44MB) polegadas
@@ -1849,7 +1852,7 @@ são discos flexíveis.
 </section>
 
 
-<section xml:id="introducao-discos-rigidos"><info><title>Disco Rígido</title></info>
+<section userlevel="inic" xml:id="introducao-discos-rigidos"><info><title>Disco Rígido</title></info>
 <para>
 É um disco localizado dentro do computador.  É fabricado com discos de metal
 recompostos por material magnético onde os dados são gravados através de
@@ -1870,7 +1873,7 @@ dados e alta velocidade no acesso aos dados.
 </section>
 
 
-<section xml:id="introducao-discos-cd"><info><title>CD/DVD/BluRay</title></info>
+<section userlevel="inic" xml:id="introducao-discos-cd"><info><title>CD/DVD/BluRay</title></info>
 <para>
 É um tipo de disco que permite o armazenamento de dados através de um
 <emphasis>compact disc</emphasis> e os dados são lidos através de uma lente
@@ -1912,7 +1915,7 @@ unidades próprias para este tipo de disco.
 </section>
 
 
-<section xml:id="introducao-cuidados"><info><title>Cuidados Básicos com o Computador</title></info>
+<section userlevel="inic" xml:id="introducao-cuidados"><info><title>Cuidados Básicos com o Computador</title></info>
 <para>
 Abaixo uma lista de cuidados básicos para garantir uma melhor conservação e
 funcionamento de seu computador.
@@ -1980,7 +1983,7 @@ sistemas de arquivos <command>GNU/Linux</command>.  Para detalhes veja <xref lin
 </section>
 
 
-<section xml:id="introducao-disp-e-s"><info><title>Dispositivos de Entrada e Saída</title></info>
+<section userlevel="inic" xml:id="introducao-disp-e-s"><info><title>Dispositivos de Entrada e Saída</title></info>
 <itemizedlist>
 <listitem>
 <para>
@@ -2008,7 +2011,7 @@ O dispositivo de saída padrão (stdout) em sistemas <command>GNU/Linux</command
 </section>
 
 
-<section xml:id="introducao-ligando"><info><title>Ligando o computador</title></info>
+<section userlevel="inic" xml:id="introducao-ligando"><info><title>Ligando o computador</title></info>
 <para>
 Para ligar o computador pressione o botão <emphasis>POWER</emphasis> ou
 <emphasis>I/O</emphasis> localizado em seu painel frontal do micro.
@@ -2041,7 +2044,7 @@ que seja inserido um disquete contendo o Sistema Operacional para partida.
 </section>
 
 
-<section xml:id="introducao-desligando"><info><title>Desligando o computador</title></info>
+<section userlevel="inic" xml:id="introducao-desligando"><info><title>Desligando o computador</title></info>
 <para>
 Para desligar o computador primeiro digite (como root): <literal>"shutdown -h
 now"</literal>, <literal>"halt"</literal> ou <literal>"poweroff"</literal>, o
@@ -2066,7 +2069,7 @@ desligamento do computador.
 </section>
 
 
-<section xml:id="introducao-reiniciando"><info><title>Reiniciando o computador</title></info>
+<section userlevel="inic" xml:id="introducao-reiniciando"><info><title>Reiniciando o computador</title></info>
 <para>
 Reiniciar quer dizer iniciar novamente o sistema.  Não é recomendável desligar
 e ligar constantemente o computador pelo botão <literal>ON/OFF</literal>, por

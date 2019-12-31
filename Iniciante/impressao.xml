@@ -543,13 +543,13 @@ Pos Script (gs), a impressora passará a usar esta resolução.
 </section>
 
 
-	<!-- [ %AVANCADO [ -->
-<section xml:id="impr-remota"><info><title>Impressão remota</title></info>
+<section userlevel='avanc' xml:id="impr-remota"><info><title>Impressão remota</title></info>
 <para>
 Aqui será explicado como fazer seu sistema <command>Linux</command> atuar como
 um servidor de impressão para outras máquinas de sua rede.
 </para>
-<section xml:id="impr-remota-perm"><info><title>Dando permissão para impresão remota via lpd/lprng</title></info>
+
+<section userlevel='avanc' xml:id="impr-remota-perm"><info><title>Dando permissão para impresão remota via lpd/lprng</title></info>
 <para>
 As máquinas autorizadas a usar a impressora local deverão ter seus nomes
 incluídos no arquivo <filename>/etc/hosts.lpd</filename> (para o daemon
@@ -573,7 +573,7 @@ para entender o funcionamento de suas opções ou a página de manual do
 </section>
 
 
-<section xml:id="impr-remota-rlpr"><info><title>Impressão via rlpr</title></info>
+<section userlevel='avanc' xml:id="impr-remota-rlpr"><info><title>Impressão via rlpr</title></info>
 <para>
 O <command>rlpr</command> redireciona a impressão diretamente ao servidor de
 impressão.  Sua vantagem é que a impressão é feita diretamente sem a
@@ -597,7 +597,7 @@ imprimir na impressora remota, uma mensagem será mostrada.
 </section>
 
 
-<section xml:id="impr-remota-printacap"><info><title>Impressão via printcap</title></info>
+<section userlevel='avanc' xml:id="impr-remota-printacap"><info><title>Impressão via printcap</title></info>
 <para>
 Através deste método, a impressão será tratada através do spool remoto
 (<command>lpd</command> ou <command>lprng</command>) e enviada ao servidor de
@@ -658,6 +658,5 @@ impressão toda vez que modificar o arquivo <filename>/etc/printcap</filename>.
 </section>
 
 </section>
-<!-- ]]> -->
 
 </chapter>

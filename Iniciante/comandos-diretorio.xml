@@ -445,6 +445,7 @@ seu aviso de comandos não mostre isso).
 </para>
 </section>
 
+
 <section xml:id="comando-mkdir"><info><title>mkdir</title></info>
 <para>
 Cria um diretório no sistema.  

@@ -15,7 +15,7 @@ Estilo de tagas de marcação usada no Guia Foca XML:
 - Aviso de observação, atenção, etc - <emphasis>
 - Nome de variável                  - <replaceable>
   
-Copyleft 1999-2019, Gleydson Mazioli da Silva <gleydson@guiafoca.org>
+Copyleft 1999-2020, Gleydson Mazioli da Silva <gleydson@guiafoca.org>
 -->
 
 <!-- Definições de entities dinâmicas usadas no Foca Linux -->
@@ -115,7 +115,6 @@ url="http://twitter.com/guiafoca">@guiafoca</ulink>.
 
 
 &introducao;
-<!--
 &basico;
 &hardware; 
 &migrando;
@@ -131,10 +130,7 @@ url="http://twitter.com/guiafoca">@guiafoca</ulink>.
 &permissoes; 
 &redir; 
 &rede;
-
--->
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="Avancado/conf-rede/CFGRede-INDEX.xml"/> 
-<!--
 &kernel;
 &log;
 &compactadores;
@@ -149,15 +145,11 @@ url="http://twitter.com/guiafoca">@guiafoca</ulink>.
 &etc;
 &internet;
 &x11;
--->
 
 <!-- Inicio de capitulos apenas do Avancado -->
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="Avancado/iptables-firewall/iptables-INDEX.xml"/> 
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="Avancado/gerenc-contas/contas-INDEX.xml"/> 
-<!--
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="Avancado/apache/apache-INDEX.xml"/> 
--->
-
 <!-- 
   &s-bind1; 
   &s-dhcp1; 
@@ -168,16 +160,12 @@ url="http://twitter.com/guiafoca">@guiafoca</ulink>.
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="Avancado/pop3/pop3-INDEX.xml"/> 
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="Avancado/cvs/cvs-INDEX.xml"/> 
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="Avancado/samba/samba-INDEX.xml"/> 
-
-<!--  &s-cvs1; &s-cvs2; &s-cvs3; &s-cvs4; &s-cvs5; &s-cvs6; -->
-<!--  &s-samba1; &s-samba2; &s-samba3; &s-samba4; &s-samba5; &s-samba6; &s-samba7;  -->
-<!--  &s-samba8; &s-samba9; &s-samba10; &s-samba11; &s-samba12; &s-samba13; -->
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="Avancado/restr-seguranca/restricoes-INDEX.xml"/> 
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="Avancado/criptografia/cripto-INDEX.xml"/>  
  <!-- Fim de capitulos apenas do Avancado -->
-<!--
+
 &aplicativos;
 &ajuda;
 &apendice;
--->
+
 </book>

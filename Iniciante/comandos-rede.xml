@@ -461,8 +461,8 @@ possam se comunicar com você.
 </para>
 </section>
 
-	<!-- [ %INTER-AVANC [ -->
-<section xml:id="cmdn-ping"><info><title>ping</title></info>
+
+<section userlevel='inter' xml:id="cmdn-ping"><info><title>ping</title></info>
 <para>
 Verifica se um computador está disponível na rede.  
 <!-- [ %DESCRICAOD [ --> Este comando é muito
@@ -551,7 +551,7 @@ www.debian.org</literal>.
 </section>
 
 
-<section xml:id="cmdn-rlogin"><info><title>rlogin</title></info>
+<section userlevel='inter' xml:id="cmdn-rlogin"><info><title>rlogin</title></info>
 <para>
 Executa um login em uma máquina local ou remota.
 </para>
@@ -591,7 +591,7 @@ semelhante ao telnet).  Para executar comandos não interativamente veja <xref l
 </section>
 
 
-<section xml:id="cmdn-rsh"><info><title>rsh</title></info>
+<section userlevel='inter' xml:id="cmdn-rsh"><info><title>rsh</title></info>
 <para>
 Executa um comando em um computador local ou remoto.
 </para>
@@ -638,7 +638,7 @@ shell interativo veja <xref linkend="cmdn-telnet"/> e <xref linkend="cmdn-rlogin
 </section>
 
 
-<section xml:id="cmdn-w"><info><title>w</title></info>
+<section userlevel='inter' xml:id="cmdn-w"><info><title>w</title></info>
 <para>
 Mostra quem está conectado no sistema e o que cada um está fazendo.
 </para>
@@ -691,7 +691,7 @@ Mostra ou oculta o campo <emphasis>FROM</emphasis> na listagem.
 </section>
 
 
-<section xml:id="cmdn-traceroute"><info><title>traceroute</title></info>
+<section userlevel='inter' xml:id="cmdn-traceroute"><info><title>traceroute</title></info>
 <para>
 Mostra o caminho percorrido por um pacote para chegar ao seu destino.  
 <!-- [ %DESCRICAOD [ --> Este comando mostra na tela o caminho percorrido entre 
@@ -797,7 +797,7 @@ www.guiafoca.org</literal>.
 </section>
 
 
-<section xml:id="cmdn-netstat"><info><title>netstat</title></info>
+<section userlevel='inter' xml:id="cmdn-netstat"><info><title>netstat</title></info>
 <para>
 Mostra conexões de rede, tabela de roteamento, estatísticas de interfaces,
 conexões masquerade, e mensagens.
@@ -884,7 +884,7 @@ Exemplos: <literal>netstat -n</literal>, <literal>netstat -lt</literal>,
 </section>
 
 
-<section xml:id="cmdv-wall"><info><title>wall</title></info>
+<section userlevel='inter' xml:id="cmdv-wall"><info><title>wall</title></info>
 <para>
 Envia uma mensagem a todos os usuários do sistema.  
 <!-- [ %DESCRICAOD [ --> Este comando faz a leitura de um arquivo ou entrada 
@@ -899,7 +899,6 @@ conectados.  Somente o usuário root pode utilizar este comando. <!-- ]]> -->
 Exemplos: <literal>wall /tmp/mensagem.txt</literal>, <literal>echo Teste de
 mensagem enviada a todos os usuários conectados ao sistema|wall</literal>.
 </para>
-<!-- ]]> -->
 </section>
 
 </chapter>

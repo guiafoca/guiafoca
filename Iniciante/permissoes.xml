@@ -124,14 +124,14 @@ gravação.
 <literal>x</literal> - Permite executar um arquivo (caso seja um programa
 executável).  Caso seja um diretório, permite que seja acessado através do
 comando <command>cd</command> 
-<!-- [ %INIC-INTER [ --> (veja <xref linkend="comando-cd"/> para detalhes) <!-- ]]> -->.
+(veja <xref linkend="comando-cd"/> para detalhes).
 </para>
 </listitem>
 </itemizedlist>
 <para>
 As permissões de acesso a um arquivo/diretório podem ser visualizadas com o uso
 do comando <literal>ls -la</literal>.  
-<!-- [ %INIC-INTER [ --> Para maiores detalhes veja <xref linkend="comando-ls"/>. <!-- ]]> -->  
+Para maiores detalhes veja <xref linkend="comando-ls"/>.
 As 3 letras (rwx) são agrupadas da seguinte forma:
 </para>
 <screen>
@@ -640,7 +640,7 @@ nenhuma permissão de acesso (<literal>x</literal>).
 
 <section xml:id="perm-root"><info><title>A conta root</title></info>
 <para>
-<emphasis>Esta seção foi retirada do Manual de Instalação da Debian</emphasis>.
+<emphasis>Esta seção foi baseada no Manual de Instalação da Debian</emphasis>.
 </para>
 <para>
 A conta root é também chamada de <emphasis>super usuário</emphasis>, este é um
@@ -648,12 +648,16 @@ login que não possui restrições de segurança.  A conta root somente deve ser
 usada para fazer a administração do sistema, e usada o menor tempo possível.
 </para>
 <para>
-Qualquer senha que criar deverá conter de 6 a 8 caracteres (em sistemas usando
-crypto) ou até frases inteiras (caso esteja usando MD5, que garante maior
-segurança), e também poderá conter letras maiúsculas e minúsculas, e também
-caracteres de pontuação.  Tenha um cuidado especial quando escolher sua senha
-root, porque ela é a conta mais poderosa.  Evite palavras de dicionário ou o
-uso de qualquer outros dados pessoais que podem ser adivinhados.
+Qualquer senha que criar deverá conter no mínimo 10 caracteres (pois tamanho
+menor do que 10 é facilmente quebrado usando brute force com o puder computacional
+existente atulamente, sendo que o ideal é utilizar frases senhas, contendo letras
+maísculas e minúsculas, caracteres especiais, números e pontuação.  Tenha um cuidado 
+especial quando escolher sua senha root, porque ela é a conta mais poderosa.  Evite 
+palavras de dicionário ou o uso de qualquer outros dados pessoais que podem ser adivinhados.
+</para>
+<para>
+Em distribuições <command>Linux</command> mais modernas, o acesso via usuário root é 
+automaticamente negado em sessões iniciadas via acesso remoto <command>ssh</command>.
 </para>
 <para>
 Se qualquer um lhe pedir senha root, seja extremamente cuidadoso.  Você
