@@ -1,5 +1,5 @@
-<!-- Converted by db4-upgrade version 1.0 -->
-<chapter userlevel='inic;inter' xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="ajuda"><info><title>Como obter ajuda</title></info>
+
+<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="ajuda"><info><title>Como obter ajuda</title></info>
 <para>
 Dúvidas são comuns durante o aprendizado e uso do <command>Linux</command> e existem
 várias maneiras de se obter ajuda e encontrar a resposta para algum problema.
@@ -16,10 +16,12 @@ a pena conhece-las.
 As <emphasis>páginas de manual</emphasis> acompanham quase todos os programas
 <command>GNU/Linux</command>. Elas trazem uma descrição básica do
 comando/programa e detalhes sobre o funcionamento de opção.  
-<!-- [ %DESCRICAOD [ --> É mais comum fazer a visualização de uma página de manual
-em modo texto, com rolagem vertical, em geral com a aparência de arquivos
+</para>
+<para condition='descricaod'>
+É mais comum fazer a visualização de uma página de manual em modo texto, com 
+rolagem vertical, em geral com a aparência de arquivos
 visualizados com os comandos <command>less</command> e <command>more</command>.  
-Também documenta parâmetros usados em alguns arquivos de configuração. <!-- ]]> -->
+Também documenta parâmetros usados em alguns arquivos de configuração. 
 </para>
 <para>
 A utilização da página de manual é simples, digite:
@@ -104,7 +106,6 @@ exemplo: <filename>/tmp/ls</filename>).
 </para>
 </listitem>
 </itemizedlist>
-<!-- [ %INTER-AVANC [ --> 
 <para>
 Cada seção da página de manual contém explicações sobre uma determinada parte
 do sistema.  As seções são organizadas em diretórios separados e localizadas no
@@ -186,7 +187,6 @@ Texto Negrito - Deve ser digitado exatamente como é mostrado
 </para>
 </listitem>
 </itemizedlist>
-<!-- ]]> -->
 <!-- [ %EXEMPLO [ --> 
 <para>
 Exemplo, <literal>man ls</literal>, <literal>man 5 hosts_access</literal>.
@@ -203,11 +203,11 @@ outras info pages relacionadas com o tópico estudado.
 Se pressionarmos &lt;Enter&gt; em cima 
 de uma palavra destacada, a <command>infopages</command> nos levará a seção 
 correspondente.  
-<!-- [ %DESCRICAOD [ --> 
-A <emphasis>info
-pages</emphasis> é útil quando sabemos o nome do comando e queremos saber para
+</para>
+<para condition='descricaod'>
+A <emphasis>info pages</emphasis> é útil quando sabemos o nome do comando e queremos saber para
 o que ele serve.  Assim como o <command>man</command>, também traz explicações 
-detalhadas sobre uso, opções e comandos. <!-- ]]> -->
+detalhadas sobre uso, opções e comandos. 
 </para>
 <para>
 Para usar a info pages, digite:
@@ -268,11 +268,9 @@ Existem muitos outras teclas de navegação úteis na info pages, mas estas são
 mais usadas.  Para mais detalhes, entre no programa <command>info</command> e
 pressione <literal>?</literal>.
 </para>
-<!-- [ %EXEMPLO [ --> 
-<para>
+<para condition='exemplos'>
 Exemplo, <literal>info cvs</literal>.
 </para>
-<!-- ]]> -->
 </section>
 
 
@@ -280,10 +278,12 @@ Exemplo, <literal>info cvs</literal>.
 <para>
 Ajuda rápida, sendo útil para sabermos quais opções podem ser usadas com o
 comando/programa.  
-<!-- [ %DESCRICAOD [ --> Quase todos os comandos/programas
+</para>
+<para condition='descricaod'>
+Quase todos os comandos/programas
 <command>GNU/Linux</command> oferecem este recurso útil para consultas
 rápidas (e quando não precisamos dos detalhes das páginas de manual).  Deve 
-quando se sabe o nome do programa. <!-- ]]> -->
+quando se sabe o nome do programa. 
  Para acionar a <emphasis>ajuda on line</emphasis>, digite:
 </para>
 <para>
@@ -294,8 +294,8 @@ quando se sabe o nome do programa. <!-- ]]> -->
 <emphasis>comando</emphasis> - é o comando/programa que desejamos ter uma
 explicação rápida.
 </para> <!-- ]]> -->
-<!-- [ %OBS [ --> 
-<para>
+
+<para condition='obs'>
 O Help on Line não funciona com comandos internos (embutidos no Bash), devendo 
 ser usado o comando <literal>man builtins</literal> ou o <literal>help comando</literal>
 para obter ajuda.
@@ -428,8 +428,8 @@ Caso tenha optado por instalar o pacote de HOWTO's de sua distribuição
 <filename>/usr/doc/how-to</filename>
 </para>
 
-    <!-- [ %INTER-AVANC [ -->
-<section xml:id="ajuda-howto-listagem"><info><title>Listagem de HOWTO's</title></info>
+
+<section userlevel='inter' xml:id="ajuda-howto-listagem"><info><title>Listagem de HOWTO's</title></info>
 <para>
 Esta seção tem a intenção de facilitar a localização de um documento que trata
 do assunto desejado ou te despertar a curiosidade sobre alguns assuntos do
@@ -437,7 +437,8 @@ SO-GNU/Linux através da descrição contida nos documentos.  Segue abaixo uma
 listagem de HOWTO's do projeto LDP organizadas por sub-seções com a descrição
 do assunto que cada um deles aborda.
 </para>
-<section xml:id="s43.8.1.1"><info><title>Introdução ao Sistema / Instalação / Configurações / Kernel</title></info>
+
+<section userlevel='inter' xml:id="s43.8.1.1"><info><title>Introdução ao Sistema / Instalação / Configurações / Kernel</title></info>
 <variablelist>
 <varlistentry>
 <term>Access-HOWTO</term>
@@ -614,7 +615,7 @@ melhorar a autenticação de seu sistema.
 </variablelist>
 </section>
 
-<section xml:id="s43.8.1.2"><info><title>Adaptação do <command>GNU/Linux</command> para idiomas específicos</title></info>
+<section userlevel='inter' xml:id="s43.8.1.2"><info><title>Adaptação do <command>GNU/Linux</command> para idiomas específicos</title></info>
 <variablelist>
 <varlistentry>
 <term>Belarusian-HOWTO</term>
@@ -775,7 +776,7 @@ Configurando o GNU/Linux para o idioma Turco.
 </variablelist>
 </section>
 
-<section xml:id="s43.8.1.3"><info><title>Discos / Sistemas de Arquivos / Desempenho</title></info>
+<section userlevel='inter' xml:id="s43.8.1.3"><info><title>Discos / Sistemas de Arquivos / Desempenho</title></info>
 <variablelist>
 <varlistentry>
 <term>Filesystems-HOWTO</term>
@@ -879,7 +880,7 @@ coexistência com os dados DOS existentes, compartilhando a mesma partição.
 </variablelist>
 </section>
 
-<section xml:id="s43.8.1.4"><info><title>Escrita de Documentação / Editores</title></info>
+<section userlevel='inter' xml:id="s43.8.1.4"><info><title>Escrita de Documentação / Editores</title></info>
 <variablelist>
 <varlistentry>
 <term>C-editing-with-VIM-HOWTO</term>
@@ -956,7 +957,7 @@ programador aumenta de 2 a 3 vezes com um editor colorido como Vim.
 </variablelist>
 </section>
 
-<section xml:id="s43.8.1.5"><info><title>Hardware</title></info>
+<section userlevel='inter' xml:id="s43.8.1.5"><info><title>Hardware</title></info>
 <variablelist>
 <varlistentry>
 <term>3Dfx-HOWTO</term>
@@ -1172,7 +1173,7 @@ Este documento contém detalhes sobre a configuração de Winmodems no
 </variablelist>
 </section>
 
-<section xml:id="s43.8.1.6"><info><title>Software</title></info>
+<section userlevel='inter' xml:id="s43.8.1.6"><info><title>Software</title></info>
 <variablelist>
 <varlistentry>
 <term>AI-Alife-HOWTO</term>
@@ -1289,7 +1290,7 @@ de lançamento.
 </variablelist>
 </section>
 
-<section xml:id="s43.8.1.7"><info><title>Plataformas não Intel (x86)</title></info>
+<section userlevel='inter' xml:id="s43.8.1.7"><info><title>Plataformas não Intel (x86)</title></info>
 <variablelist>
 <varlistentry>
 <term>Alpha-HOWTO</term>
@@ -1335,7 +1336,7 @@ o Unix Compaq Tru64 (também conhecido com Digital Unix e OSF/1) e OpenVMS.
 </variablelist>
 </section>
 
-<section xml:id="s43.8.1.8"><info><title>Programação / Compiladores / Banco de Dados</title></info>
+<section userlevel='inter' xml:id="s43.8.1.8"><info><title>Programação / Compiladores / Banco de Dados</title></info>
 <variablelist>
 <varlistentry>
 <term>Assembly-HOWTO</term>
@@ -1501,7 +1502,7 @@ nenhum comandos específicos de aplicativo.
 </variablelist>
 </section>
 
-<section xml:id="s43.8.1.9"><info><title>Computação Paralela / Clusters</title></info>
+<section userlevel='inter' xml:id="s43.8.1.9"><info><title>Computação Paralela / Clusters</title></info>
 <variablelist>
 <varlistentry>
 <term>Beowulf-HOWTO</term>
@@ -1549,7 +1550,7 @@ com as configurações SMP sob o <command>GNU/Linux</command>.
 </variablelist>
 </section>
 
-<section xml:id="s43.8.1.10"><info><title>Configuração de Teclado / Vídeo / Console</title></info>
+<section userlevel='inter' xml:id="s43.8.1.10"><info><title>Configuração de Teclado / Vídeo / Console</title></info>
 <variablelist>
 <varlistentry>
 <term>Font-HOWTO</term>
@@ -1603,7 +1604,7 @@ codificação de texto baseada no UTF-8.  -
 </variablelist>
 </section>
 
-<section xml:id="s43.8.1.11"><info><title>Ambiente Gráfico</title></info>
+<section userlevel='inter' xml:id="s43.8.1.11"><info><title>Ambiente Gráfico</title></info>
 <variablelist>
 <varlistentry>
 <term>MGR-HOWTO</term>
@@ -1667,7 +1668,7 @@ multimídia com as extensões Xinerama.
 </variablelist>
 </section>
 
-<section xml:id="s43.8.1.12"><info><title>Suporte ao Sistema / Grupos de Usuários / Listas de Discussão</title></info>
+<section userlevel='inter' xml:id="s43.8.1.12"><info><title>Suporte ao Sistema / Grupos de Usuários / Listas de Discussão</title></info>
 <variablelist>
 <varlistentry>
 <term>Consultants-HOWTO</term>
@@ -1700,7 +1701,7 @@ Este documento descreve como fundar, manter e organizar um grupo de usuários
 </variablelist>
 </section>
 
-<section xml:id="s43.8.1.13"><info><title>Migração / Convivência com Outras Plataformas</title></info>
+<section userlevel='inter' xml:id="s43.8.1.13"><info><title>Migração / Convivência com Outras Plataformas</title></info>
 <variablelist>
 <varlistentry>
 <term>DOS-Win-to-Linux-HOWTO</term>
@@ -1727,7 +1728,7 @@ comparação passo a passo de comandos e ferramentas existentes.
 </variablelist>
 </section>
 
-<section xml:id="s43.8.1.14"><info><title>Tarefas Específicas</title></info>
+<section userlevel='inter' xml:id="s43.8.1.14"><info><title>Tarefas Específicas</title></info>
 <variablelist>
 <varlistentry>
 <term>Astronomy-HOWTO</term>
@@ -1978,7 +1979,7 @@ VMEbus.
 </variablelist>
 </section>
 
-<section xml:id="s43.8.1.15"><info><title>Rede / Administração / Firewall / Proxy / Segurança</title></info>
+<section userlevel='inter' xml:id="s43.8.1.15"><info><title>Rede / Administração / Firewall / Proxy / Segurança</title></info>
 <variablelist>
 <varlistentry>
 <term>AX25-HOWTO</term>
@@ -2549,7 +2550,7 @@ um cache de conteúdo agressivo que o ajuda a fazer um trabalho eficiente.
 </variablelist>
 </section>
 
-<section xml:id="s43.8.1.16"><info><title>Outros</title></info>
+<section userlevel='inter' xml:id="s43.8.1.16"><info><title>Outros</title></info>
 <variablelist>
 <varlistentry>
 <term>Benchmarking-HOWTO</term>
@@ -2607,12 +2608,13 @@ pacotes de softwares, mas incluem valores ao produtos existentes.
 
 </section>
 
-<section xml:id="ajuda-howto-listagem-m"><info><title>Listagem de Mini-HOWTO's</title></info>
+<section userlevel='inter' xml:id="ajuda-howto-listagem-m"><info><title>Listagem de Mini-HOWTO's</title></info>
 <para>
 Segue abaixo uma listagem de Mini-HOWTO's do projeto LDP organizados por
 sub-seções com a descrição do assunto que cada um deles aborda.
 </para>
-<section xml:id="s43.8.2.1"><info><title>Introdução ao Sistema / Instalação / Configuração / Kernel</title></info>
+
+<section userlevel='inter' xml:id="s43.8.2.1"><info><title>Introdução ao Sistema / Instalação / Configuração / Kernel</title></info>
 <variablelist>
 <varlistentry>
 <term>Alsa-sound</term>
@@ -2747,7 +2749,7 @@ Explica a instalação do <command>GNU/Linux</command> em computadores Sony VAIO
 </variablelist>
 </section>
 
-<section xml:id="s43.8.2.2"><info><title>Discos / Sistema de Arquivos / Desempenho</title></info>
+<section userlevel='inter' xml:id="s43.8.2.2"><info><title>Discos / Sistema de Arquivos / Desempenho</title></info>
 <variablelist>
 <varlistentry>
 <term>Automount</term>
@@ -2848,7 +2850,7 @@ unidade de ZIP drive Iomega com o <command>GNU/Linux</command>.
 </variablelist>
 </section>
 
-<section xml:id="s43.8.2.3"><info><title>Escrita de Documentação / Editores</title></info>
+<section userlevel='inter' xml:id="s43.8.2.3"><info><title>Escrita de Documentação / Editores</title></info>
 <variablelist>
 <varlistentry>
 <term>DocBook-Install</term>
@@ -2880,7 +2882,7 @@ Descreve o que deve ter em mente quando estiver escrevendo documentação on-lin
 </variablelist>
 </section>
 
-<section xml:id="s43.8.2.4"><info><title>Hardware</title></info>
+<section userlevel='inter' xml:id="s43.8.2.4"><info><title>Hardware</title></info>
 <variablelist>
 <varlistentry>
 <term>3-Button-Mouse</term>
@@ -2949,7 +2951,7 @@ Este documento descreve a programação de portas I/O de hardware.
 </variablelist>
 </section>
 
-<section xml:id="s43.8.2.5"><info><title>Software</title></info>
+<section userlevel='inter' xml:id="s43.8.2.5"><info><title>Software</title></info>
 <variablelist>
 <varlistentry>
 <term>ADSM-Backup</term>
@@ -2991,7 +2993,7 @@ do LILO.
 </variablelist>
 </section>
 
-<section xml:id="s43.8.2.6"><info><title>Plataformas não Intel (x86)</title></info>
+<section userlevel='inter' ml:id="s43.8.2.6"><info><title>Plataformas não Intel (x86)</title></info>
 <variablelist>
 <varlistentry>
 <term>Mac-Terminal</term>
@@ -3020,7 +3022,7 @@ interfaces gráficas com o usuário (GUIs) sob o <command>GNU/Linux</command>.
 </variablelist>
 </section>
 
-<section xml:id="s43.8.2.8"><info><title>Configuração de Teclado / Video / Console</title></info>
+<section userlevel='inter' xml:id="s43.8.2.8"><info><title>Configuração de Teclado / Video / Console</title></info>
 <variablelist>
 <varlistentry>
 <term>Intkeyb</term>
@@ -3034,7 +3036,7 @@ de teclados.
 </variablelist>
 </section>
 
-<section xml:id="s43.8.2.9"><info><title>Ambiente Gráfico</title></info>
+<section userlevel='inter' xml:id="s43.8.2.9"><info><title>Ambiente Gráfico</title></info>
 <variablelist>
 <varlistentry>
 <term>3D-Modelling</term>
@@ -3133,7 +3135,7 @@ Explica como usar seqüências de escape para alterar dinamicamente os títulos 
 </variablelist>
 </section>
 
-<section xml:id="s43.8.2.10"><info><title>Migração/Convivência com outras plataformas</title></info>
+<section userlevel='inter' xml:id="s43.8.2.10"><info><title>Migração/Convivência com outras plataformas</title></info>
 <variablelist>
 <varlistentry>
 <term>Linux+DOS+Win95+OS2</term>
@@ -3206,7 +3208,7 @@ Linux.
 </variablelist>
 </section>
 
-<section xml:id="s43.8.2.11"><info><title>Tarefas Específicas</title></info>
+<section userlevel='inter' xml:id="s43.8.2.11"><info><title>Tarefas Específicas</title></info>
 <variablelist>
 <varlistentry>
 <term>Backup-With-MSDOS</term>
@@ -3541,7 +3543,7 @@ Descreve como configurar um call-back usando um sistema
 </variablelist>
 </section>
 
-<section xml:id="s43.8.2.12"><info><title>Rede / Administração / Firewall / Segurança</title></info>
+<section userlevel='inter' xml:id="s43.8.2.12"><info><title>Rede / Administração / Firewall / Segurança</title></info>
 <variablelist>
 <varlistentry>
 <term>ADSL</term>
@@ -3892,7 +3894,7 @@ Ensina como configurar uma Virtual Protected Network no
 </variablelist>
 </section>
 
-<section xml:id="s43.8.2.13"><info><title>Outros</title></info>
+<section userlevel='inter' xml:id="s43.8.2.13"><info><title>Outros</title></info>
 <variablelist>
 <varlistentry>
 <term>Advocacy</term>
@@ -3930,7 +3932,6 @@ empresas comerciais para convence-las a portar seus programas para o
 
 </section>
 
-    <!-- ]]> -->
     
 
 <section xml:id="ajuda-docs"><info><title>Documentação de Programas</title></info>
@@ -3962,8 +3963,8 @@ documentação principal do programa em
 </para>
 </section>
 
-    <!-- [ %INTER-AVANC [ -->
-<section xml:id="ajuda-rfcs"><info><title>RFC's</title></info>
+
+<section userlevel='inter;avanc' xml:id="ajuda-rfcs"><info><title>RFC's</title></info>
 <para>
 São textos que contém normas para a padronização dos serviços e protocolos da
 Internet (como a porta padrão de operação, comandos que devem ser utilizados,
@@ -4531,13 +4532,14 @@ Remote Network Monitoring Management Information Base.  S.  Waldbusser.  Maio
 </varlistentry>
 </variablelist>
 </section>
-    <!-- ]]> -->
+
 
 <section xml:id="ajuda-internet"><info><title>Internet</title></info>
 <para>
 Certamente o melhor suporte ao <command>GNU/Linux</command> é via Internet,
 veja abaixo alguns locais úteis de onde pode obter ajuda ou se atualizar.
 </para>
+
 <section xml:id="ajuda-paginas"><info><title>Páginas Internet de Referência</title></info>
 <para>
 Existem boas páginas Internet Nacionais e Internacionais sobre o
@@ -5053,7 +5055,7 @@ mal uso dele.
 </itemizedlist>
 </section>
 
-<section xml:id="ajuda-netiqueta-icq"><info><title>ICQ/MSN/Gtalk/Skype</title></info>
+<section xml:id="ajuda-netiqueta-rtmsg"><info><title>Telegram/Whatsapp/Messenger/Gtalk/Skype</title></info>
 <para>
 Ferramentas de mensagens instantâneas são eficientes, alertando a presença
 on-line do usuário, auxiliando na redução de custos, etc.  Este documento
