@@ -104,7 +104,7 @@ COM4           /dev/ttyS3
 </listitem>
 <listitem>
 <para>
-Os recursos multiusuário lhe permite acessar o sistema de qualquer lugar sem
+Os recursos multiusuário lhe permitem acessar o sistema de qualquer lugar sem
 instalar nenhum driver, ou programa gigante, apenas através de conexões TCP/IP,
 como a Internet.  Também é possível acessar o sistema localmente com vários
 usuários (cada um executando tarefas completamente independente dos outros)
@@ -512,9 +512,9 @@ IIS, Pers. Web Server Apache             O apache é o servidor WEB mais
 Exchange, NT Mail     Postfix, Sendmail  72% da base de servidores de 
                       Exim, Qmail        emails no mundo atualmente roda
                                          em software livre. Os mais recomendados
-					 são o Postfix e o qmail, devido a 
-					 segurança, velocidade e integridade
-					 de mensagem
+					                               são o Postfix e o qmail, devido a 
+					                               segurança, velocidade e integridade
+					                               de mensagem
 Wingate, MS Proxy     Squid, Apache,     A migração de um servidor proxy
                       ip masquerade,     para Linux requer o uso de 
                       nat, diald,        vários programas separados para 
@@ -551,12 +551,10 @@ MS Winsock            Sem equivalente    O Linux tem suporte nativo a
                                          via fax-modem e outras redes tcp/ip. 
 AVG, Viruscan,        Clamavis, AVG      Os maiores fabricantes de anti-virus
 norton, F-PROT, CPAV. F-Prot, ViruScan   disponibilizam versões para Linux, 
-                                         com o objetivo principal de remoção 
-					 de vírus em servidores de E-mail ou 
-					 servidores de arquivos, com o objetivo
-					 de não contaminar os vulneráveis 
-					 sistemas Windows, servindo como uma 
-					 efetiva barreira de defesa na rede.
+                                         que podem ser instaladas em servidores
+                                         de E-Mail, servidores de arquivos, 
+                                         aumentando o nível de proteção dos 
+                                         usuários.
 </screen>
 </section>
 

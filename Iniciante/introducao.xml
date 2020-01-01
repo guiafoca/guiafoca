@@ -1,9 +1,9 @@
 <chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="intro"><info><title>Introdução</title></info>
 <para>
-Bem vindo ao guia <emphasis>Foca GNU/Linux</emphasis>.  O nome
+Bem vindo ao Guia <emphasis>Foca Linux</emphasis>.  O nome
 <emphasis>FOCA</emphasis> significa <emphasis>FO</emphasis>nte de
 <emphasis>C</emphasis>onsulta e <emphasis>A</emphasis>prendizado.  Este guia
-está dividido em 3 níveis de aprendizado e versão que esta lendo agora contém
+está dividido em 3 níveis de aprendizado e versão que está lendo agora contém
 os níveis:
 </para>
 <itemizedlist>
@@ -353,14 +353,14 @@ guia Foca Linux, disponível na WikiLivros com o nome
 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://pt.wikibooks.org/wiki/Guia_do_Linux/Capa">WikiLivro do Guia do Linux</link>).  
 </para>
 <para>
-Tenho recebido elegios de pessoas do Brasil (e de paises de fora também)
+Tenho recebido elegios de pessoas do Brasil (e também de outros países)
 elogiando o trabalho e a qualidade da documentação.  Agradeço a todos pelo
 apoio, tenham certeza que este trabalho é desenvolvido pensando em repassar um
 pouco do conhecimento que adquiri ao começar o uso do Linux.
 </para>
 <para>
 Também venho recebendo muitos e-mails de pessoas que passaram na prova LPI
-nível 1 e 2 após estudar usando o guia Foca GNU/Linux.  Fico bastante feliz por
+nível 1, 2 e 3 após estudar usando o guia Foca GNU/Linux.  Fico bastante feliz por
 saber disso, pois nunca tive a intenção de tornar o guia uma referência livre
 para estudo da LPI e hoje é usado para estudo desta difícil certificação que
 aborda comandos, serviços, configurações, segurança, empacotamento,
@@ -404,7 +404,7 @@ comandos e programas <command>DOS/Windows</command> e
 <para>
 Para quem está começando, muita teoria pode atrapalhar o aprendizado, é mais
 produtivo ver na prática o que o computador faz e depois porque ele faz isto.
-Mesmo assim, recomendo ler estes capítulos pois seu conteúdo pode ser útil...
+Mesmo assim, recomendo ler estes capítulos pois seu conteúdo pode ser útil.
 </para>
 <para>
 Coloquei abaixo algumas dicas para um bom começo:

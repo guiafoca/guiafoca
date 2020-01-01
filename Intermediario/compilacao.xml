@@ -6,6 +6,7 @@ compilar programas e principalmente o Kernel do <command>GNU/Linux</command>
 com o objetivo de personaliza-lo de acordo com os dispositivos usados em seu
 computador e/ou os recursos que planeja utilizar.
 </para>
+
 <section xml:id="compil-descricao"><info><title>O que é compilação?</title></info>
 <para>
 É a transformação de um programa em código fonte (programa escrito pelo

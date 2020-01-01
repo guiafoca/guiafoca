@@ -607,7 +607,7 @@ do sistema, e-mails, spool de impressora, cache, etc.
 
 <section userlevel='inic' xml:id="basico-nomeando"><info><title>Nomeando Arquivos e Diretórios</title></info>
 <para>
-No <command>GNU/Linux</command>, os arquivos e diretórios pode ter o tamanho de
+No <command>GNU/Linux</command>, os arquivos e diretórios podem ter o tamanho de
 até <emphasis>255</emphasis> letras.  Você pode identifica-lo com uma extensão
 (um conjunto de letras separadas do nome do arquivo por um ".").
 </para>

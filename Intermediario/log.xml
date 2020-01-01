@@ -16,6 +16,7 @@ log e por este motivo estes são organizados em sub-diretórios (a mesma técnic
 é usada nos arquivos de configuração em <filename>/etc</filename>, conforme a
 padrão FHS atual).
 </para>
+
 <section xml:id="s18.1"><info><title>Formato do arquivo de log</title></info>
 <para>
 Um arquivo de log é normalmente composto pelos seguintes campos:
@@ -57,6 +58,7 @@ tipo de mensagem é controlado pelo arquivo de configuração
 <filename>/etc/syslog.conf</filename> através de
 <emphasis>facilidades</emphasis> e <emphasis>níveis</emphasis> (veja <xref linkend="log-syslogd-exemplo"/> para detalhes).
 </para>
+
 <section xml:id="log-syslogd"><info><title>syslogd</title></info>
 <para>
 Este daemon controla o registro de logs do sistema.
@@ -165,6 +167,7 @@ operando em primeiro plano e mostrará as mensagens no terminal atual.
 Na distribuição <command>Debian</command>, o daemon <command>syslogd</command>
 é iniciado através do script <filename>/etc/init.d/sysklogd</filename>.
 </para>
+
 <section xml:id="log-syslogd-exemplo"><info><title>Arquivo de configuração <filename>syslog.conf</filename></title></info>
 <para>
 O arquivo de configuração <filename>/etc/syslog.conf</filename> possui o

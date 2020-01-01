@@ -11,6 +11,7 @@ A utilização de arquivos compactados é método útil principalmente para redu
 o consumo de espaço em disco ou permitir grandes quantidades de texto serem
 transferidas para outro computador através de disquetes.
 </para>
+
 <section xml:id="cpctd-oque"><info><title>O que fazem os compactadores/descompactadores?</title></info>
 <para>
 Compactadores são programas que diminuem o tamanho de um arquivo (ou arquivos)
@@ -79,6 +80,7 @@ para compactação de músicas, arquivos binários, imagens, textos.
 </para>
 </listitem>
 </itemizedlist>
+
 <section xml:id="cpctd-tipos"><info><title>Tipos de compactação</title></info>
 <para>
 Existem basicamente dois tipos de compactação, a compactação <emphasis>sem

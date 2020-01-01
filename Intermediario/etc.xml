@@ -8,6 +8,7 @@ arquivos estão disponíveis por padrão na instalação básica do
 capítulo.  Não serão descritos aqui arquivos de configuração específicos de
 servidores ou daemons (com exceção do <command>inetd</command>).
 </para>
+
 <section xml:id="etc-alternatives"><info><title>Diretório <filename>/etc/alternatives</filename></title></info>
 <para>
 Este diretório contém links para diversos aplicativos padrões utilizados pelo

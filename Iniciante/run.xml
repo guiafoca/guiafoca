@@ -435,7 +435,7 @@ pelo comando <command>jobs</command>.
 <para>
 Permite fazer um programa rodando em segundo plano ou parado, rodar em primeiro
 plano.  Você deve usar o comando <command>jobs</command> para pegar o número do
-processo rodando em segundo plano ou interrompida, este número será passado ao
+processo rodando em segundo plano ou interrompido, este número será passado ao
 comando <command>fg</command> para ativa-lo em primeiro plano.
 </para>
 <para>
@@ -1264,7 +1264,7 @@ Usa o conjunto de caracteres Unicode para o desenho da árvore.
 <section xml:id="run-fechando"><info><title>Fechando um programa quando não se sabe como sair</title></info>
 <para>
 Muitas vezes quando se esta iniciando no <command>GNU/Linux</command> você pode
-executar um programa e talvez não saber como fecha-lo.  Este capítulo do guia
+executar um programa e talvez não saiba como fecha-lo.  Este capítulo do guia
 pretende ajuda-lo a resolver este tipo de problema.
 </para>
 <para>

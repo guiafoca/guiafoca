@@ -1764,7 +1764,7 @@ deseje formatar um disquete, especifique o dispositivo
 Note que o nome de dispositivo que é conectado varia de acordo com o sistema e
 quantidade de discos rígidos que sua máquina possui portanto tenha
 <emphasis>ATENCÃO</emphasis> para não formatar o dispositivo incorreto (que
-pode ser justamente seu disco disco rígido principal).  Para maior segurança,
+pode ser justamente seu disco rígido principal).  Para maior segurança,
 ao identificar o pen-drive, digite <literal>dmesg</literal> ao conectar o
 pen-drive para visualizar o dispositivo correto ou fique atento as mensagens do
 console que mostrará o dispositivo que foi associado ao pen-drive.
@@ -1964,7 +1964,7 @@ de identificação dos discos e pontos de montagem (como não acontece no
 <section userlevel="inic;inter" xml:id="disc-id"><info><title>Identificação de discos e partições em sistemas Linux</title></info>
 <para>
 No <command>GNU/Linux</command>, os dispositivos existentes em seu computador
-(como discos rígidos, pen-drives, flash, disquetes,, tela, portas de
+(como discos rígidos, pen-drives, flash, storages remotas, disquetes, tela, portas de
 impressora, modem, etc) são identificados por um arquivo referente a este
 dispositivo no diretório <filename>/dev</filename>.
 </para>
@@ -2203,8 +2203,8 @@ Existem muitas outras opções que podem ser usadas com o comando
 <command>mount</command>, mas aqui procurei somente mostrar o básico para
 "montar" seus discos e partições no <command>GNU/Linux</command> (para mais
 opções, veja a página de manual do <literal>mount</literal>).  Caso você
-digitar <literal>mount</literal> sem parâmetros, serão mostrados os sistemas de
-arquivos atualmente montados no sistema.  Esta mesma listagem pode ser vista em
+digitar <literal>mount</literal> sem parâmetros, serão mostrados que sistemas de
+arquivos estão atualmente montados no sistema.  Esta mesma listagem pode ser vista em
 <filename>/etc/mtab</filename>.  
 
 <!-- [ %EXEMPLO [ --> 

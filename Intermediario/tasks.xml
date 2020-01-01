@@ -5,6 +5,7 @@ Este capítulo explica como realizar tarefas específicas no sistema, como grava
 um CD, assistir filmes, etc.  Ele também contém nomes de programas recomendados
 tanto em modo texto como modo gráfico.
 </para>
+
 <section xml:id="tasks-cdwriting"><info><title>Gravando CDs e DVDs no Linux</title></info>
 <para>
 A gravação de CDs no <command>Linux</command> pode ser feita através dos
@@ -16,6 +17,7 @@ Primeiro instale o <command>cdrecord</command>, <command>mkisofs</command>,
 <command>dvd+rw-tools</command> e <command>cdda2wav</command> em sua máquina
 (<literal>apt-get install cdrecord dvd+rw-tools mkisofs cdda2wav</literal>).
 </para>
+
 <section xml:id="tasks-cdwriting-data"><info><title>Gravando CDs / DVDs de dados</title></info>
 <para>
 O processo de gravação de um CD/DVD de dados é feito em 2 etapas: primeiro é

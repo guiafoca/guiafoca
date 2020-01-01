@@ -4618,51 +4618,6 @@ os interessados estão convidados a participar do projeto!
 </listitem>
 <listitem>
 <para>
-<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.br-linux.org/">http://www.br-linux.org/</link></literal> -
-Boletim diário com as noticias mais recentes sobre
-<command>GNU/Linux</command>, testes, redes, descrição/configuração/ avaliação
-de programas, entrevistas, downloads, dica do dia, mecanismo de busca no site,
-links, etc.  Em Português.
-</para>
-<para>
-Responsável pela página: Augusto Campos <email>brain@matrix.com.br</email>
-endereço: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.br-linux.org/">http://www.br-linux.org/</link>.
-</para>
-</listitem>
-<listitem>
-<para>
-<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.olinux.com.br/">http://www.olinux.com.br/</link></literal> -
-Trata o <command>GNU/Linux</command> com o foco jornalístico e tem a intenção
-de prover informações eficazes e esclarecedoras capazes de instruir, reciclar e
-tornar acessível aos usuários o conhecimento e aprofundamento de temas
-relacionados a plataforma <command>GNU/Linux</command>.
-</para>
-<para>
-Publicação diária de Artigos que são feitos para que o usuário possa resolver
-problemas e tirar dúvidas deste sistema.  Assuntos diversos sobre programas,
-serviços e utilitários.  Também conta com seções de programação, jogos,
-segurança e entrevistas com personalidades do cenário <emphasis>software
-livre/código aberto</emphasis>.  Atualização diária.
-</para>
-<para>
-Responsável pela página: Linux Solutions
-<email>baptista@linuxsolutions.com.br</email> endereço: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.olinux.com.br/">http://www.olinux.com.br/</link>.
-</para>
-</listitem>
-<listitem>
-<para>
-<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.linuxsecurity.com.br/">http://www.linuxsecurity.com.br/</link></literal>
-- Boletins de segurança, publicações de textos nacionais, traduções de sites
-especializados em segurança, programas relacionados com criptografia e
-segurança no ambiente <command>Linux</command>.  A página requer um navegador
-com suporte a Java.
-</para>
-<para>
-Endereço: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.linuxsecurity.com.br/">http://www.linuxsecurity.com.br/</link>.
-</para>
-</listitem>
-<listitem>
-<para>
 <literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.tldp.org/">http://www.tldp.org/</link></literal> - Projeto de
 documentação do <command>GNU/Linux</command> no Brasil.  Toda a documentação
 traduzida para o Português do Brasil pode ser encontrada lá.
@@ -4670,19 +4625,6 @@ traduzida para o Português do Brasil pode ser encontrada lá.
 <para>
 Responsável pela página: <email>ricardo@conectiva.com.br</email> endereço:
 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.tldp.org/">http://www.tldp.org/</link>.
-</para>
-</listitem>
-<listitem>
-<para>
-<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.noticiaslinux.com.br/">http://www.noticiaslinux.com.br/</link></literal>
--
-</para>
-<para>
-Notícias diárias sobre GNU/Linux e Software Livre no site, por e-mail ou RSS.
-</para>
-<para>
-Responsável pela página: <email>deivison@noticiaslinux.com.br</email> endereço:
-<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.noticiaslinux.com.br/">http://www.noticiaslinux.com.br/</link>
 </para>
 </listitem>
 <listitem>
@@ -4695,48 +4637,6 @@ distribuições, hardwares, softwares, downloads, etc.
 </para>
 <para>
 Responsável pela página: <email>webmaster@linux.org</email> endereço: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.linux.org/">http://www.linux.org/</link>.
-</para>
-</listitem>
-<listitem>
-<para>
-<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://counter.li.org/">http://counter.li.org/</link></literal> - Este é
-um serviço que tem o objetivo de contar os usuários, máquinas, grupos de
-usuários <command>Linux</command> existentes ao redor do mundo.  Te encorajo a
-se registrar neste site e indica-lo aos seus amigos, é de <emphasis role="strong">graça</emphasis>, você estará contribuindo para o aumento das
-estatísticas do número de usuários no mundo, país, sua cidade, etc.
-</para>
-<para>
-O site também conta com um sistema de estatísticas de usuários, máquinas e
-grupos de usuários espalhados ao redor do mundo.  Você pode saber em poucos
-segundos a quantidade de usuários Linux em seu país, cidade, etc.
-</para>
-<para>
-Responsável pela página: Harald T.  Alvestrand
-<email>harald@alvestrand.no</email> endereço: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://counter.li.org/">http://counter.li.org/</link>.
-</para>
-</listitem>
-<listitem>
-<para>
-<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://metalab.unc.edu/">http://metalab.unc.edu/</link></literal> - O
-ponto de referência mais tradicional de softwares <command>GNU/Linux</command>
-do mundo.  Você pode encontrar desde dicas, documentação (todos os How-Tos) até
-diversas distribuições <command>GNU/Linux</command>.
-</para>
-<para>
-Responsável pelo site: <email>webmaster@sunsite.unc.edu</email> endereço:
-<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://metalab.unc.edu/">http://metalab.unc.edu/</link>.
-</para>
-</listitem>
-<listitem>
-<para>
-<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.themes.org/">http://www.themes.org/</link></literal> - Neste
-site você encontra milhares de temas divididos em categorias para os mais
-diversos gerenciadores de janelas no <command>GNU/Linux</command>.  O site é
-muito pesado, por causa das fotos, é recomendável um bom fax-modem ou muita
-paciência.
-</para>
-<para>
-Responsável pela página: <email>webmaster@themes.org</email> endereço: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.themes.org/">http://www.themes.org/</link>.
 </para>
 </listitem>
 <listitem>
@@ -4897,7 +4797,7 @@ em listas de discussão.
 
 <section xml:id="ajuda-netiqueta"><info><title>Netiqueta</title></info>
 <para>
-São recomendações que tem como objetivo facilitar a para comunicação através
+São recomendações que tem como objetivo facilitar a comunicação através
 dos recursos de uma rede.  O nome <emphasis>Netiqueta</emphasis> vem de
 "Etiqueta de Rede" (<emphasis>Net Etiquete</emphasis>).  O material desta seção
 foi escrito com base nos anos de observação que tive via internet e também com
@@ -4919,7 +4819,7 @@ pessoa do outro lado da linha existe).
 <para>
 Apesar do modo que as frases são escritas expressarem o jeito que a outra
 pessoa está do outro lado da linha e seu tom de comunicação no decorrer da
-conversar, existem algumas coisas que não podem ser totalmente expressadas
+conversa, existem algumas coisas que não podem ser totalmente expressadas
 através da Internet, como por exemplo a expressão da "face" das pessoas.  Para
 isto foram criados símbolos chamados <emphasis>smileys</emphasis> que expressam
 a face da outra pessoa em determinado momento, e dependendo do sentido da
@@ -5033,7 +4933,7 @@ mostrados corretamente em todos os sistemas.
 <listitem>
 <para>
 Utilize sempre uma assinatura no final da mensagem para identificar você e
-principalmente seu endereço de e-mail.  Em alguns cliente de e-mail, o campo
+principalmente seu endereço de e-mail.  Em alguns clientes de e-mail, o campo
 <literal>Reply-to</literal> é bagunçado, e em e-mails redirecionados o endereço
 de resposta é excluído.  A assinatura facilita encontrar o remetente da
 mensagem.  Tente manter a assinatura em um tamanho de no máximo 4 linhas.
@@ -5059,8 +4959,8 @@ mal uso dele.
 <para>
 Ferramentas de mensagens instantâneas são eficientes, alertando a presença
 on-line do usuário, auxiliando na redução de custos, etc.  Este documento
-inclui algumas recomendações etiqueta para melhor os usuários aproveitarem
-melhor ferramentas de comunicaçao que seguem o padrão IM:
+inclui algumas recomendações etiqueta para os usuários aproveitarem
+melhor as ferramentas de comunicação que seguem o padrão IM:
 </para>
 <itemizedlist>
 <listitem>

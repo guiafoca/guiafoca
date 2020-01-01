@@ -4,6 +4,7 @@
 Este capítulo descreve em detalhes o que é o kernel, módulos, sua configuração
 e programas relacionados.
 </para>
+
 <section xml:id="kern-kernel"><info><title>O Kernel</title></info>
 <para>
 É a peça central do sistema operacional (o <command>Linux</command>), é ele que

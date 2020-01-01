@@ -5,6 +5,7 @@ Este capítulo ensina a operação básica do programa de manipulação de pacot
 <command>Debian</command>, a instalação, remoção, consulta e checagem de
 arquivos <filename>.deb</filename>.
 </para>
+
 <section xml:id="dpkg-introducao"><info><title>dpkg</title></info>
 <para>
 O <command>dpkg</command> (Debian Package) é o programa responsável pelo
@@ -19,6 +20,7 @@ ou o <command>apt</command> (veja <xref linkend="dpkg-apt"/>).
 <command>Debian</command> e desenvolvedores para fins de instalação, manutenção
 e construção de pacotes.
 </para>
+
 <section xml:id="dpkg-pacotes"><info><title>Pacotes</title></info>
 <para>
 Pacotes <command>Debian</command> são programas colocados dentro de um arquivo
@@ -281,6 +283,7 @@ usadas em sua execução ou configuradas no arquivo
 básicas com o <command>apt</command>, portanto se desejar maiores detalhes
 sobre suas opções, veja a página de manual <filename>apt-get</filename>.
 </para>
+
 <section xml:id="s21.2.1"><info><title>O arquivo <filename>/etc/apt/sources.list</filename></title></info>
 <para>
 Este arquivo contém os locais onde o <command>apt</command> encontrará os
@@ -379,6 +382,7 @@ ele será baixado da primeira encontrada no arquivo.  Ë recomendável colocar
 primeiro repositórios locais ou mais perto de você, como recomendado nesta
 seção.
 </para>
+
 <section xml:id="s21.2.1.1"><info><title>Endereços de servidores e mirrors nacionais da <command>Debian</command></title></info>
 <para>
 Segue abaixo uma relação de servidores que podem ser colocados em seu arquivo

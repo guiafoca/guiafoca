@@ -5,6 +5,7 @@ Este capítulo descreve como fazer a manutenção de seu sistema de arquivos e o
 programas de manutenção automática que são executados periodicamente pelo
 sistema.
 </para>
+
 <section xml:id="manut-checagem"><info><title>Checagem dos sistemas de arquivos</title></info>
 <para>
 A checagem do sistema de arquivos permite verificar se toda a estrutura para
@@ -49,6 +50,7 @@ de arquivos raíz (que não pode ser desmontado enquanto o sistema estiver sendo
 executado) você precisará inicializar através de um disquete e executar o
 <command>fsck.ext2</command>.
 </para>
+
 <section xml:id="manut-checagem-ext2"><info><title>fsck.ext2</title></info>
 <para>
 Este utilitário permite verificar erros em sistemas de arquivos

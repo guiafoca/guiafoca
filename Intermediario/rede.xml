@@ -10,6 +10,7 @@ Parte deste capítulo, uns 70% pelo menos, é baseado no documento NET3-4-HOWTO.
 (seria perda de tempo reescrever este assunto pois existe um material desta
 qualidade já disponível).
 </para>
+
 <section xml:id="rede-oque"><info><title>O que é uma rede</title></info>
 <para>
 Rede é a conexão de duas ou mais máquinas com o objetivo de compartilhar
@@ -133,6 +134,7 @@ endereço broadcast.  Na prática não importa muito se usar este endereço, mas
 você deve ter certeza que todo computador na rede esteja configurado para
 escutar o mesmo <emphasis>endereço broadcast</emphasis>.
 </para>
+
 <section xml:id="rede-ip-classes"><info><title>Classes de Rede IP</title></info>
 <para>
 Por razões administrativas após algum pouco tempo no desenvolvimento do
@@ -358,6 +360,7 @@ para para dispositivos de encapsulamento DLCI e FRAD.
 Para maiores detalhes sobre as interfaces acima, consulte o documento
 <emphasis>NET3-4-HOWTO</emphasis>.
 </para>
+
 <section xml:id="rede-interfaces-lo"><info><title>A interface loopback</title></info>
 <para>
 A interface <emphasis>loopback</emphasis> é um tipo especial de interface que
@@ -466,6 +469,7 @@ Se o campo <emphasis>gateway</emphasis> estiver preenchido, então o datagrama �
 direcionado para aquele computador pela interface especificada, caso contrário
 o endereço de destino é assumido sendo uma rede suportada pela interface.
 </para>
+
 <section xml:id="rede-rota-c"><info><title>Configurando uma rota no Linux</title></info>
 <para>
 A configuração da rota é feita através da ferramenta <command>route</command>.
@@ -559,6 +563,7 @@ com o endereço IP (alguns usuários simplesmente não sabem que isto existe...)
 Se desejar mais detalhes sobre <emphasis>DNS</emphasis>, veja o documento
 DNS-HOWTO.
 </para>
+
 <section xml:id="rede-dns-oque"><info><title>O que é um nome?</title></info>
 <para>
 Você deve estar acostumado com o uso dos nomes de computadores na Internet, mas
@@ -908,6 +913,7 @@ O arquivo padrão responsável pelo mapeamento do nome dos serviços e das porta
 mais utilizadas é o <filename>/etc/services</filename> (para detalhes sobre o
 seu formato, veja a <xref linkend="rede-outros-services"/>).
 </para>
+
 <section xml:id="rede-servicos-daemon"><info><title>Serviços iniciados como Daemons de rede</title></info>
 <para>
 Serviços de rede iniciados como <emphasis>daemons</emphasis> ficam residente o
@@ -960,6 +966,7 @@ recomendável escolher <emphasis>inetd</emphasis> se o serviço não for
 solicitado freqüentemente (como é o caso de servidores <literal>ftp</literal>,
 <literal>telnet</literal>, <literal>talk</literal>, etc).
 </para>
+
 <section xml:id="rede-servicos-inetd-c"><info><title>/etc/inetd.conf</title></info>
 <para>
 O arquivo <filename>/etc/inetd.conf</filename> é um arquivo de configuração
@@ -1143,6 +1150,7 @@ smtp		stream	tcp	nowait.60	mail	/usr/sbin/exim exim -bs
 
 </section>
 
+
 <section xml:id="rede-seg"><info><title>Segurança da Rede e controle de Acesso</title></info>
 <para>
 Deixe-me iniciar esta seção lhe alertando que a segurança da rede em sua
@@ -1167,6 +1175,7 @@ Bons candidatos são serviços tais como: <literal>shell</literal>,
 Existem todos os tipos de mecanismos de segurança e controle de acesso, eu
 descreverei os mais importantes deles.
 </para>
+
 <section xml:id="rede-seg-ftpusers"><info><title>/etc/ftpusers</title></info>
 <para>
 O arquivo <filename>/etc/ftpusers</filename> é um mecanismo simples que lhe
@@ -1226,6 +1235,7 @@ Eu descreverei cada um destes arquivos separadamente.
 Para uma descrição completa desta facilidade, você deve verificar a página de
 manual apropriada (hosts_access (5) é um bom ponto de partida).
 </para>
+
 <section xml:id="rede-seg-tcpd-a"><info><title>/etc/hosts.allow</title></info>
 <para>
 O arquivo <filename>/etc/hosts.allow</filename> é um arquivo de configuração do

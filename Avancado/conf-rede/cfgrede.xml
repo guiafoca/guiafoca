@@ -1,5 +1,5 @@
 <!-- Converted by db4-upgrade version 1.0 -->
-<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="cfgrede"><info><title>Configurações especiais de Rede</title></info>
+<chapter userlevel='inter;avanc' xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="cfgrede"><info><title>Configurações especiais de Rede</title></info>
 <para>
 Este capítulo descreve alguns tipos de configurações que podem ser feitas em
 rede utilizando os recursos disponíveis do <command>Linux</command>.  Aqui não
@@ -7,6 +7,7 @@ estão todas as aplicações, pois o sistema é bastante flexível e o próprio 
 de desenvolvimento do kernel não demonstrou limitações quanto as formas de se
 construir uma rede :-)
 </para>
+
 <section xml:id="cfgrede-ipalias"><info><title>IP Alias</title></info>
 <para>
 Este recurso permite configurar uma interface de rede para responder por um ou

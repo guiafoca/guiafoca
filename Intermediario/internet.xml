@@ -4,7 +4,9 @@
 Este capítulo descreve como configurar seu sistema para se conectar a Internet,
 navegar, enviar/receber mensagens, etc.
 </para>
+
 <section xml:id="inter-conectando"><info><title>Conectando-se a Internet</title></info>
+
 <section xml:id="inter-conectando-adsl"><info><title>Conectando através de ADSL</title></info>
 <para>
 A conexão através de banda larga em sistemas <command>Debian</command> é
@@ -344,6 +346,7 @@ Para mais detalhes sobre outras opções específicas de outros protocolos,
 checagem de mensagens, criptografia, etc, veja a página de manual do
 <command>fetchmail</command>.
 </para>
+
 <section xml:id="inter-procmail"><info><title>Processamento de mensagens através do procmail</title></info>
 <para>
 O processamento de mensagens pode ser usado para inúmeras finalidades, dentre

@@ -4,6 +4,7 @@
 Este capítulo ensina como personalizar algumas características de seu sistema
 <command>GNU/Linux</command>.
 </para>
+
 <section xml:id="pers-varamb"><info><title>Variáveis de Ambientes</title></info>
 <para>
 É um método simples e prático que permite a especificação de opções de
