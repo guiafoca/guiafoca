@@ -207,7 +207,7 @@ Manual de Instalação da <emphasis>Debian GNU/Linux</emphasis> - Os capítulos
 contendo materiais extraídos do manual de instalação da Debian são muito úteis
 e explicativos, seria desnecessário reescrever um material como este.  O texto
 é claro e didaticamente organizado, o documento aborda detalhes técnicos úteis
-sobre hardwares em geral e o Linux ausentes nos manuais de outras distribuições
+sobre hardware em geral e o Linux ausentes nos manuais de outras distribuições
 Linux.
 </para>
 </listitem>
@@ -300,7 +300,8 @@ E também por cuidar do fonte do guia ;-)
 <listitem>
 <para>
 <literal>Augusto Campos <email>brain@matrix.com.br</email></literal> -
-Descrição sobre a distribuição <command>Suse</command> 
+Descrição sobre a distribuição <command>Suse</command> e constantes divulgações
+do guia no antigo site <emphasis>br-linux.org</emphasis>
 </para>
 </listitem>
 <listitem>
@@ -355,7 +356,14 @@ e espírito de comunidade se sobressaem acima de tudo e pelo incentivo a voltar
 a lançar atualizações do guia.
 </para>
 </listitem>
-    
+<listitem>
+    <para>
+<literal>Andrea González</literal> - Dedicou horas revisando todo o conteúdo do guia Iniciante,
+o que mais impressionou foi o nível de detalhamento das correções e sugestões enviadas. Algumas
+passaram batidas por anos (talvez desde o inicio do guia).
+    </para>
+</listitem>
+
 </itemizedlist>
 </section>
 
@@ -408,44 +416,70 @@ saber mais sobre o PGP, recomendo um excelente documento encontrado na seção
 </para>
 <screen>
 -----BEGIN PGP PUBLIC KEY BLOCK-----
-Version: GnuPG v1.0.6 (GNU/Linux)
-Comment: For info see http://www.gnupg.org
 
-mQGiBDl7WYgRBACsQNtIozvf8XId+xEpF2D1x7nqgFdJyn1QA2VzXg0/OZ9DewXj
-qr7ChEIoyyzAmxBSubE/jdtkAb9+2LsE9+OXgzJvBc4luYpv+HG2IXlMPujI9drO
-ubLlK6xqPiakBgqBTS74rp/ZEEAGQsr0sug7b8nsXHMk+spyGkjsU8pPWwCgltai
-4vfmBDMZMqBYvUoksVxbaKcD/ApAMghgE53KAAKFtwXI0o7K1DJmdZBufCvGDbEB
-Y3MVS4BI+aXxoP5zQpEmQ5+lYOZ8RjPL9pNUJa9nOQtjf7Kiw/41BPDtlZXCeRR5
-OcQTit0lYRCLGam7FZ22uliwh0h/3lpf4olMff3qeLqv1DECbo8Qsdn6yxynLihE
-OA9kA/9K1sqiIl/+gXM3/Sjz8EcrwQNklV3MoaETbDmukbXcOEUjdqfFr1xARM5W
-8SKoVrWO5y1oa1e9XcQuK6g8c7KeJsK/GEWYiRwX2X2AqdBC2ZzVfJSmgpguZJHn
-ltMdYZhPwZaCsNPdQSlem3UrGupL0pbpT7PqkvyAHBH2itB9X7RKR2xleWRzb24g
-TWF6aW9saSBkYSBTaWx2YSAoQ2hhdmUgUEdQIFBlc3NvYWwpIDxnbGV5ZHNvbkBl
-c2NlbHNhbmV0LmNvbS5icj6IVgQTEQIAFgUCOXtZiAQLCgQDAxUDAgMWAgECF4AA
-CgkQpWvD35hbooFdwgCfQijPTW5VH+Cep1HIBvyuw9uMg7wAoI/RYW0tkjjnhrgH
-8+Zqx6AgGlQ/iEYEEBECAAYFAjnlrPAACgkQoUSye+uc2tWZPgCfVgR4lbd8XPBm
-bjPupLzB3EYAPI8AoJomkfsgz+NuUZy1mD6pI1Ptc/fDiEYEEBECAAYFAjm4FfUA
-CgkQco65AkzGCoF34gCgsVcH4b3s6kfCtjD7iMMhkubnDnUAoL2UiorB3Z/m3f9A
-RZiRMhQUclMRiEYEEBECAAYFAjm4ITAACgkQt1anjIgqbEupXgCg1/NjvT562Hgt
-/ft5JETOf3yOFywAn1SmK3unyhMU5GU9d49MNM3fNgBtiEYEEBECAAYFAjnFWrYA
-CgkQORwuc54x+1t8VQCeMZTCla98rrI60EnlkAvb9AaScm4AnA4V795vcVlr3ix9
-f6fcl5YGamKciEYEEBECAAYFAjvSF6sACgkQUZATEoypqPVQ7wCbBTRiSGGMzMTd
-KJotfRKf5aoUAr0AoIAX0oE5XEEFm7Ea0IQqG91T9TvXtDtHbGV5ZHNvbiBNYXpp
-b2xpIGRhIFNpbHZhIChEZXZlbG9wZXIpIDxnbGV5ZHNvbkBkZWJpYW4ub3JnPohX
-BBMRAgAXBQI7BR7fBQsHCgMEAxUDAgMWAgECF4AACgkQpWvD35hbooESRACcCliY
-yxR02KEBYs8cxKav9L0wlzwAn2Z9DWAbqi9Mv4fqPqZ7mViSMRbeiEYEEBECAAYF
-AjsauX0ACgkQt1anjIgqbEvBEACffJxYfK22YPQ8ZkcjIc85BCiPLuUAnRq1EE9i
-ukdUHPUo0vzHBeiN355miEYEEBECAAYFAjxEY28ACgkQGERS+iaKCE2fgwCeNGNV
-Mpa1EWgXF+Hj15gidVjaVCAAn187X6eATJAVzspveNSf/Ny1iuFnuQENBDl7WasQ
-BACxhBiSFOGa8tv7MOn0XVa6WCViBuQs9QJx2ZnMrx/KssRHMsNXnps+i+zVENqr
-1Lz5zPpP7eWgrUy6B7/V9R4LV8nwHC1lZrR/1xyJ6G5j9RLSbYInZCLIAFUMlAar
-iTThMhvXM+Pf7SXPj+ivrP9EYPSLxqTs1K/dWAbrDK/QiwADBQP9Hgc3EOw+7luB
-/bXWssQp70bF9yvZLCGOgIE/rZIbOXumXkPlV7FTDgv+h47Bgcj2KDPEM98LUyxG
-GcJAmrC9gWH7mYEUFNn1bGD+qHRwJ7+xj45NXBJDOBbHzTDS8QhacCRGW1CvRVgP
-8ycPDOv/hmGfAJEzqzUkSO1uBcPmmXSIRgQYEQIABgUCOXtZqwAKCRCla8PfmFui
-gQHnAJ4kDKHKvG9s9OjGV6RvszTDGE51igCcCZn0rO/Si0ek97bTCIusQzJF/pA=
-=bvnT
+mQINBF4NBqoBEAC//7HIpbF21OOrrFMBOISNNMvntdeEO4Ea4YmGF2epEQYWh+aC
+8eOAP0+XrjTyZV0b4V6Q9vcTd2xw2qChHHVcp2jbVjlxjaTFTGNM8rAU1/2iFFPn
+vJ29svh653MexpCzL/iDrI6F9mB+t1pQN7RwjnHRFiBcEk57SwjqIQzFHdk0W78V
+ihmhNR/+wVTufy7noTfTB8MYHO3eLIzy66Ck/xQLFS+liPsXymZ5UFbbK8r43AOK
+x987tnr1xL1sUMxjKPwMW/WtZTu21SoQmhEweOou0U2KedMX608/UyDQ6f1zyDXz
+d8MUqNKDOI7RRJTn3fLAKhXASnQCbIC5nrA6HmUAsCrvg51ErE8aXvyHZaO8cRhs
+2yb3Gn2/RL/mNmDxHpSmJ+iFK5ELGGqhIL7cUfvrOyPOsVt5ufEa7Poc94vBRJiv
+awp178zkIefR7hOeTKRCbr0a7/7UvXc0nJ2crpWTG0/iFT6O7gHHH/COb7X/61Pn
+Oefv9wxkc365iBIFN3Pg0fO4tXKHs3tUH2xhfc9/qXdVgJpme0wvJbZAzHG6piJo
+0H17eijz/MWpf4o6PTJPpc9r6qBKmh9pezKnnBxNmrqgg9jms+CObWsziM7/tP22
+i4Ywz17RTgd7j6EbCa3Vr6SL4HSLGcxikXpYJEFF1ZXxH+nn0y/jfZf0awARAQAB
+tExHbGV5ZHNvbiBNYXppb2xpIGRhIFNpbHZhIChDaGF2ZSBNYXN0ZXIgUGVzc29h
+bCkgPGdsZXlkc29ubWF6aW9saUBnbWFpbC5jb20+iQJNBBMBCgA3FiEEhdKAjm/j
+o+PVj5Eq+T22P0ZikksFAl4NBqoCGwEECwkKBAUVCgkIAwUWAgMBAAIeAQIXgAAK
+CRD5PbY/RmKSS7LxD/9aDxE8JSAKRgUrCjRMeCXTaCOryhQAZSl/V0HzTwrzSTeC
+IHJfa1Vq7NoEE5shvttwrOIMK0UnjT8fXKJYnfCtjbQsFtnOd+mGsgh3H9/r1DhA
+TqHrBXOUb4oxrLLyB8n11gAET+yLEYkPnrX2wyaFHpQTyJbrUsY6Nibs69eaZljY
+4OtWx/eg8RiEX/GHh9SoM8BxXgxoJSLnOU+c0/QZeEoxVX1oZXE1E6lgRe9Kvv7r
+6HiGC1lrauul5SZbSBQgJK+a0I96HK329C9+utDjSKrTuu7C1SmcCWbNjC0/Xxcs
+SXcalMU3oj0/O+SgOxSypahjlxgYHYP1d36IhKsgqSHc8znORz0sprCtuGiMgjxm
+2ENOikf0EM/FkICIS91fCfrumEm5CBrFXS0hokPh6GUFWGfhGJGAEoyi7591VKcv
+254j0SytPDJzML1ETZydaIfS+3y+gxOibDo2Fn0sQ2mpFt3m8x2sAWVq/fhB5KwN
+KdnFYPFwfUmerOPEXh2yamaOXEC7xMkl58x6vjTnE9uh6SlCpAqxBbrVJGMTPBTQ
+jWv5Hbq4ux/zuraQbAnKBdhwggHD8sxkyqwxBLunR0PK9weT/lVeam9O5uBJXLoZ
+xfOmhBL38PZmNkKEmKUHA+JvebBdFmQxLit8DqTVS7FhaAdR2QX9cfTHw/EvI7kC
+DQReDQoeARAAwcQqN7oGokcrmL87uqiaEq0jpLLOfmcEUneqyE8i5ek2k4EvbUHs
+8y3UIKfsAGzGvM5lLmZzQnYiUutiRZjYvVVZpImMY48Ss+8ilVw6HttjhJhwOOwn
+2ZX8NED39gkdNY3XimtzyjS1DpsmixpilCRZLC103L8UzpH7kJHPSUvF/9wqLV6O
+n9BGj7wa7EueTqsctKof7JEUFYMmdh1KRqQktoSu+ukRN5XQoH/vOqgkUP2BsPFN
+m2pLZYFRFcL5dOZeeSzRWvOUwtdG8zHCQab7Ku6AYXih/qbBpzTX2Yiy5NnW/Ezg
+6cjErC8OFOAumvtoV5xwPH2csv4aI3YapsRZ8xoNv+00TFgGBGm9w5CiRkriU9AR
+nxnkIFDDO/C0Cb7dG/+MpJSLV03tNlXVxBhbG0UZa/1IupdtW+0uKv58PP7Nwsvw
+1c6/Ejr9S63paJTv56jGyWasUIOpZXk23iqpxyHwmX3MIOey3H/qXRhgzdJreXlW
+ywnaI0bZTybsLAHrE9KwukCS2mSi1PKOyGVhj/pDdA0w17sUFakFtipj60HswJjN
+8ssqs85n6js3/nyGky02bNJEahFmQrCbTWQ3C4Wdn9h1wXpwM+KXLaBf5xjMX/rD
+z/3M3b69Y2tsJoYhpW4B3u23Fuusg891GkvPvm0bKXerfVDONg7E4xMAEQEAAYkE
+cgQYAQoAJhYhBIXSgI5v46Pj1Y+RKvk9tj9GYpJLBQJeDQoeAhsuBQku/geAAkAJ
+EPk9tj9GYpJLwXQgBBkBCgAdFiEEuRHBS7LV8V4bMGoAghcsoyjAH2cFAl4NCh4A
+CgkQghcsoyjAH2dLBg//fkh8JWdEXvd2M6RrU9V5mYLMXrzp5sCXnfjTKTLo8u3C
+Soe02kTPHW2cBOzS6DL/fzUw0JTqEWXJUC3RLYmlcJ6+nx8cjH/AljaW8FZ6VMaV
+BmQh36AtoNBp58Rl7RT+2qXjq1gqhNu7XaUwQHrYkhxSow3NueO7m3ZpGuWYyiGJ
+ESbYw2sooBD5iHMLkYIjFQdsRKivurpF82JmD3mfif+eivINNNsI0c54Ls5ElM9a
+P4KjLxkkXk+bTutzGG8JWq8FNYo+oVTTdZ1jb3TiulEVyKRum8FNZymEW6DADVF8
+cAohyq94UUPbRErU7c43z5DOVcV95kDhFE/RzBEau4ry3Udz6KzFMSUMn23sY/bu
+uGEugrxvTQcuoVfuNElsvivkhNEHDlTafD35PW4jVoqZAVMOkpM/ZF+pSt0Gt5We
+sOoG3BVCB9tltjanY+PChySh1TKJzkk1lzIVp9PfTfUL/HZhsNxok/CjTr9dYzcL
+G5jKkU5Gjp+1o2s4JNK1DtURX1ifJ5Gb2DN5pA2mGHgKBPxKbnXopjbZ9kJtGrul
+lMRJ7QA68z3WmUUnELaoUSPINs1Al3eNzuH+8Y/CCKFxp+LLh0Hz8UL8nBEBIe+Q
+aARrOY9TklZIx8JUqZWbI0n2rLrFyDXEeqcYbUdb9poy233Ucul/zE48i7n2bJw8
+EBAAidlDMFSZbRjLvUIEoUfpqN9eKhmGMsmk/j7qi8qSrvZAg8Yev7nd7scuOjEo
+H2b/q73MKDuEAZss6NkEEbfE4mKKczoGUkTIUKdFArzoL1Lgd1Mmvq0M2rt34q81
+8qo0CNkR34HkYcIGcUoLsrl93WPTvk7P3GKQnP6MEKOigfezII3+1GzspG929J03
+ayDmzCUz7hkNp/CjXD1DM+PmIqWWORbpAyYnBOLSfZVOwW31xHykZcm20UknZvt7
+HHaHrxEs0grt4NmfX7Z0Z17RLfB88FoPPNbXVS1L/wjEvaIvPNURpfEArtCFl0tA
+iQ0nA5ia7acluQc1CybLmCMfHuhlRHz9ZWS+l84On+o0pFGySzll2uq6XZnGHnlY
+OEuV72g7hGNh78rUOJSM0WeZ1LaJ9iQqHSb1AbKgfJ1lKQIy7css25YQKe4MjC3/
+Gahdr6njOovwALKyGB2YYTVACjdp8YCMFMMoJdb9RJsbTcAkoRMbpL2rS9T63dtM
+Z1ufMuR4bYhhGGpAtHNJ2DlQFzMn/V3W7bUT3Im4MnCelFeuWBBZkuZZEVgW7ce2
+l2k1Ftw9QjnLCNkJE10gKZqOzR9sHBdiORB0DTF0F++dzdQq1ugcjPvfcSL5Nx5a
+70+F0YKM9onTVYfkr0N8uK3CQOECp6LFbIuy/pk6Ue/XQeo=
+=DkuQ
 -----END PGP PUBLIC KEY BLOCK-----
+  
 </screen>
 </section>
 
