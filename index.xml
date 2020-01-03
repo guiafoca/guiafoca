@@ -22,7 +22,7 @@ Copyleft 1999-2020, Gleydson Mazioli da Silva <gleydson@guiafoca.org>
 <!ENTITY % dinamic    SYSTEM "dinamicas.ent" > %dinamic;
 <!ENTITY % definicoes SYSTEM "padroes.ent"   > %definicoes;
 <!ENTITY % urldata    SYSTEM "urls.ent"      > %urldata;
-<!ENTITY % userlevel  SYSTEM "userlevel.ent" > %userlevel;
+<!ENTITY % versao     SYSTEM "versao.ent"    > %versao;
 
 <!-- Arquivos separados contendo o texto do Documento -->
 <!--                Versão Iniciante                       -->
@@ -81,8 +81,17 @@ Copyleft 1999-2020, Gleydson Mazioli da Silva <gleydson@guiafoca.org>
 
 <title>Guia Foca Linux</title>
 <titleabbrev>focalinux</titleabbrev>
+<subtitle>
+       
+    <inlinemediaobject>
+      <imageobject condition="web">
+        <imagedata fileref="images/src/png/foca-highres.png" format="PNG"/>
+      </imageobject>
+    </inlinemediaobject>
+</subtitle>
 
 <bookinfo>
+
     <legalnotice>
     <para>
 Permission is granted to copy, distribute and/or modify this document under the
@@ -92,11 +101,11 @@ Software Foundation; A copy of the license is included in the section entitled
     </para>
     </legalnotice>
 
-    <author><firstname>Gleydson</firstname> <surname>Mazioli da Silva</surname><email>gleydson@guiafoca.org</email></author>
-    <releaseinfo>Versão &VERSAO; - &DATADOC;</releaseinfo>
-    <copyright><year>1999-&ULTIMOANO; -</year><holder>Gleydson Mazioli da Silva</holder></copyright>
+<author><firstname>Gleydson</firstname> <surname>Mazioli da Silva</surname><email>gleydson@guiafoca.org</email></author>
+<releaseinfo>Versão &VERSAO; - &DATADOC;</releaseinfo>
+<copyright><year>1999-&ULTIMOANO; -</year><holder>Gleydson Mazioli da Silva</holder></copyright>
 
-    <pubdate>&DATADOC;</pubdate>
+<pubdate>&DATADOC;</pubdate>
 
 <abstract>
 <para>

@@ -5,40 +5,13 @@ cópia do guia. Eles serão usados na hora da geração do documento marcando
 as seções para inclusão (INCLUDE) ou remoção (IGNORE) na versão final. 
 Pelo menos uma deve ser incluída! 
 -->
-
-<!-- Conteúdo da versão que será gerada -->
-<!ENTITY % DESCRICAOD     "INCLUDE">
-<!ENTITY % OPCOES         "INCLUDE">
-<!ENTITY % EXEMPLO        "INCLUDE">
-<!ENTITY % OBS            "INCLUDE">
-
-
-<!--
-Estas entities abaixo nao sao mais usadas. Na versao antiga do guia 
-era usada para geração de conteúdo usando sessões marcadas do debiandoc-sgml
-
-as versões INICIANTE/INTERMEDIARIO ou INTERMEDIARIO/AVANCADO do guia e 
-utilizarao as entities "INIC-INTER" e "INTER-AVANC". 
-
-<![ %INICIANTE [     <!ENTITY % INIC-INTER   "INCLUDE"> ]]>
-<![ %INTERMEDIARIO [ <!ENTITY % INIC-INTER   "INCLUDE"> ]]>
-                     <!ENTITY % INIC-INTER   "IGNORE">
-
-<![ %INTERMEDIARIO [ <!ENTITY % INTER-AVANC  "INCLUDE"> ]]>
-<![ %AVANCADO [      <!ENTITY % INTER-AVANC  "INCLUDE"> ]]>
-                     <!ENTITY % INTER-AVANC  "IGNORE">
--->
-
-<!-- Indica se as partes em construção serão ou não incluídas -->
-<!ENTITY % CONSTRUCAO    "IGNORE">
-
 <!-- Indica se os dados/capítulos referentes a distribuição serão incluídos -->
 <!-- dependendo das condições acima. Escolha somente uma! -->
 <!ENTITY % DEBIAN        "INCLUDE">
 
 <!-- Número de pacotes da distribução Debian -->
-<!ENTITY DEBNUMPACKAGES "43000">
+<!ENTITY DEBNUMPACKAGES "59000">
 
 <!-- Dados variáveis -->
-<!ENTITY ULTIMOANO "2016">
+<!ENTITY ULTIMOANO "2020">
 

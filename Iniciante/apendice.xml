@@ -64,6 +64,11 @@ Siga o Guia Foca no Twitter <email>@focalinux</email>
 </para>
 </listitem>
 <listitem>
+    <para>
+    Siga os avisos do Guia Foca no Telegram: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://t.me/guiafocaAvisos">Avisos de Atualização do Guia Foca no Telegram</link>
+    </para>
+   </listitem>
+<listitem>
 <para>
 Assinar o RSS presente na página do guia, e avisos de atualizações.
 </para>
@@ -85,26 +90,6 @@ notificado sobre novidades do Guia Foca.
 <para>
 Versões diferentes deste guia podem ser geradas a partir do código fonte XML
 ou obtidas através da home page principal (para detalhes veja <xref linkend="apend-homepage"/>).
-</para>
-</section>
-
-
-<section xml:id="apend-gdl"><info><title>Guia do Linux</title></info>
-<para>
-O <emphasis>Guia do Linux</emphasis> é uma versão fork do guia 
-Foca Linux 6.40 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://pt.wikibooks.org/wiki/Guia_do_Linux/Capa">WikiLivros</link> e
-<emphasis>Iniciante</emphasis>, <emphasis>Intermediário</emphasis> e
-<emphasis>Avançado</emphasis>.  Ele foi portado para WikiLivros graças ao
-dedicado trabalho de Raylton P. Souza e outros colaboradores.
-</para>
-<para>
-A versão <emphasis>Guia do Linux</emphasis> atualmente encontra-se desatualizada, requerendo o trabalho
-de voluntários para se igualar em conteúdo com o <emphasis>Guia Foca</emphasis>, pois os mesmos
-possui em conteúdos não sincronizados automaticamente. 
-</para>
-<para>
-Acesse e confira mais este excelente lançamento: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://pt.wikibooks.org/wiki/Guia_do_Linux/Capa">Wikibook do Guia do
-Linux</link>.
 </para>
 </section>
 
@@ -229,6 +214,12 @@ Se quiser receber notificações de novas versões, use uma das formas a seguir:
  <para>
   Siga a página do @guiafoca no Facebook: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.facebook.com/focalinux">Página do Guia Foca no Facebook</link>
  </para>
+</listitem>
+
+<listitem>
+    <para>
+    Siga os avisos do Guia Foca no Telegram: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://t.me/guiafocaAvisos">Avisos de Atualização do Guia Foca no Telegram</link>
+    </para>
 </listitem>
 
 <listitem>
@@ -400,6 +391,25 @@ crescimento do guia.  Sugestões são bem vindas e podem ser enviadas para
 </para>
 </section>
 
+<section xml:id="apend-gdl"><info><title>Guia do Linux</title></info>
+    <para>
+    O <emphasis>Guia do Linux</emphasis> é uma versão fork do guia 
+    Foca Linux 6.40 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://pt.wikibooks.org/wiki/Guia_do_Linux/Capa">WikiLivros</link> e
+    <emphasis>Iniciante</emphasis>, <emphasis>Intermediário</emphasis> e
+    <emphasis>Avançado</emphasis>.  Ele foi portado para WikiLivros graças ao
+    dedicado trabalho de Raylton P. Souza e outros colaboradores.
+    </para>
+    <para>
+    A versão <emphasis>Guia do Linux</emphasis> atualmente encontra-se desatualizada, requerendo o trabalho
+    de voluntários para se igualar em conteúdo com o <emphasis>Guia Foca</emphasis>, pois os mesmos
+    possui em conteúdos não sincronizados automaticamente. 
+    </para>
+    <para>
+    Acesse e confira mais este excelente lançamento: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://pt.wikibooks.org/wiki/Guia_do_Linux/Capa">Wikibook do Guia do
+    Linux</link>.
+    </para>
+    </section>
+    
 
 <section xml:id="apend-pgp"><info><title>Chave Pública PGP</title></info>
 <para>
