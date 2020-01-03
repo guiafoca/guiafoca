@@ -54,14 +54,14 @@ personalizar seu sistema Linux.
 </listitem>
 <listitem userlevel='inter'>
 <para>
-Uma lista de aplicativos clientes para serem usados em seu sistema
+Uma lista de aplicativos para serem usados em seu sistema
 <command>GNU/Linux</command>, com suas características, equipamento mínimo
 requerido e espaço em disco recomendado para instalação.
 </para>
 </listitem>
 <listitem userlevel='inter'>
 <para>
-Particionamento de disco
+Aprender como particionar discos
 </para>
 </listitem>
 <listitem userlevel='inter'>
@@ -86,16 +86,15 @@ Manipulação de módulos do kernel
 </listitem>
 <listitem userlevel='inter'>
 <para>
-Explicações sobre hardwares (Interrupções, DMA, Jumpers, Jumperless,
-Plug-and-Play) e como configura-los no Linux, valores padrões e resolução de
-conflitos entre hardwares.
+Explicações sobre hardwares (dispositivo, Interrupções, DMA) e como configura-los no Linux, 
+valores padrões e resolução de conflitos entre hardwares.
 </para>
 </listitem>
 <listitem userlevel='inter'>
 <para>
 Dicas de como avaliar e comprar bons hardwares para que seu computador tenha o
-melhor desempenho (também válido para <command>DOS</command>,
-<command>Windows</command> e outras plataformas).  Desta maneira você saberá
+melhor desempenho (também válido para outras plataformas como <command>Windows</command> 
+e <command>MacOS</command>).  Você também entenderá
 porque alguns dispositivos de boa qualidade, como placas de rede, custam até 3
 vezes mais caro que outras e o que a placa traz de especial para ter este
 diferencial.
@@ -347,19 +346,13 @@ guia e o que foi modificado, desta forma você poderá decidir em copia-la caso 
 nova versão contenha modificações que considera importantes.
 </para>
 <para>
-Além das versões acima, existe também uma versão alternativa baseada no 
-guia Foca Linux, disponível na WikiLivros com o nome 
-<emphasis>Guia do Linux</emphasis> (disponível em 
-<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://pt.wikibooks.org/wiki/Guia_do_Linux/Capa">WikiLivro do Guia do Linux</link>).  
-</para>
-<para>
 Tenho recebido elegios de pessoas do Brasil (e também de outros países)
 elogiando o trabalho e a qualidade da documentação.  Agradeço a todos pelo
 apoio, tenham certeza que este trabalho é desenvolvido pensando em repassar um
 pouco do conhecimento que adquiri ao começar o uso do Linux.
 </para>
 <para>
-Também venho recebendo muitos e-mails de pessoas que passaram na prova LPI
+Também recebo e-mails de pessoas comemorando a aprovação na prova LPI
 nível 1, 2 e 3 após estudar usando o guia Foca GNU/Linux.  Fico bastante feliz por
 saber disso, pois nunca tive a intenção de tornar o guia uma referência livre
 para estudo da LPI e hoje é usado para estudo desta difícil certificação que
@@ -633,7 +626,7 @@ será usado:
 			
 </itemizedlist>
 <para>
-Para espaço em disco é requerido 500MB para uma instalação básica usando modo
+Para espaço em disco é requerido 900MB para uma instalação básica usando modo
 texto com suporte a rede.  Claro que não é considerada a execução de ambiente
 gráfico ou serviços de rede em produção, que neste caso é exigido mais memória
 RAM e espaço em disco para armazenamento de dados de programas e usuários.
@@ -695,15 +688,14 @@ qualidade de sistemas comerciais existentes
 </listitem>
 <listitem>
 <para>
-Também recebe apoio de grandes empresas como IBM, Sun, HP, etc.  para seu
+Também recebe apoio de grandes empresas como IBM, Sun, RedHat, Intel, HP, etc.  para seu
 desenvolvimento
 </para>
 </listitem>
 <listitem>
 <para>
 Convivem sem nenhum tipo de conflito com outros sistemas operacionais (com o
-<command>DOS</command>, <command>Windows</command>, <command>OS/2</command>) no
-mesmo computador.
+<command>Windows</command>, <command>OS/2</command>) no mesmo computador.
 </para>
 </listitem>
 <listitem>
@@ -856,8 +848,9 @@ Internet, a velocidade de transmissão é 10% maior.
 Executa outros sistemas operacionais como <emphasis>Windows</emphasis>,
 <emphasis>MacOS</emphasis>, <emphasis>DOS</emphasis> ou outro sistema
 <command>Linux</command> através de consagrados sistemas de virtualização como
-<command>Xen</command>, <command>vmware</command>, ou emulação como o
-<command>DOSEMU</command>, <command>QEMU</command>, <command>WINE</command>.
+<command>KVM</command>, </command><command>Xen</command>, <command>vmware</command>
+<command>VirtualBox</command>, ou emulação como o <command>DOSEMU</command>, 
+<command>QEMU</command>, <command>WINE</command>.
 </para>
 </listitem>
 <listitem>
@@ -869,6 +862,12 @@ exceto no caso de dispositivos muito novos que não tenham o suporte ainda
 adicionado no sistema.
 </para>
 </listitem>
+<listitem>
+	<para>
+	Suporte a fiber channel.
+	</para>
+</listitem>
+
 <listitem>
 <para>
 Suporte a rede via rádio amador.
@@ -897,7 +896,7 @@ Integração com gerenciamento de energia ACPI e APM
 </listitem>
 <listitem>
 <para>
-Dispositivos de rede Wireless.  Tanto com criptografia WEB e WPA PSK
+Dispositivos de rede Wireless.  Tanto com criptografia WEB e WPA2/3 PSK
 </para>
 </listitem>
 <listitem>
