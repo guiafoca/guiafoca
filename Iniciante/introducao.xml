@@ -848,7 +848,7 @@ Internet, a velocidade de transmissão é 10% maior.
 Executa outros sistemas operacionais como <emphasis>Windows</emphasis>,
 <emphasis>MacOS</emphasis>, <emphasis>DOS</emphasis> ou outro sistema
 <command>Linux</command> através de consagrados sistemas de virtualização como
-<command>KVM</command>, </command><command>Xen</command>, <command>vmware</command>
+<command>KVM</command>, <command>Xen</command>, <command>vmware</command>
 <command>VirtualBox</command>, ou emulação como o <command>DOSEMU</command>, 
 <command>QEMU</command>, <command>WINE</command>.
 </para>
