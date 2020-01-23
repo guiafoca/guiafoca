@@ -140,7 +140,7 @@ Brasileiro.
 </para>
 <para>
 E-mail: E-mail: <email>gleydson@guiafoca.org</email>, Twitter:
-<ulink url="@gleydsonmazioli">@gleydsonmazioli</ulink>.
+<emphasis>@gleydsonmazioli</emphasis>.
 </para>
 </section>
 
@@ -298,7 +298,7 @@ do guia no antigo site <emphasis>br-linux.org</emphasis>
 </listitem>
 <listitem>
     <para>
-    <literal>Helio Loureiro <email>https://www.facebook.com/helio.loureiro</email></literal> -
+    <literal>Helio Loureiro <ulink>https://www.facebook.com/helio.loureiro</ulink></literal> -
     Grande Hacker BSD/Linux evangelizador do Guia Foca em todas as mídias sociais, desde seu surgimento. 
     </para>
 </listitem>
