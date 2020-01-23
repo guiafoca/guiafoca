@@ -60,7 +60,7 @@ novas versões:
 <itemizedlist>
 <listitem>
 <para>
-Siga o Guia Foca no Twitter <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="@guiafoca">@guiafoca</link>
+Siga o Guia Foca no Twitter <emphasis>@guiafoca</emphasis></link>
 </para>
 </listitem>
 <listitem>
@@ -341,7 +341,7 @@ a comunidade Open Source.
 </listitem>
 <listitem>
  <para>
-    <literal>Alessandro de Oliveira Faria (aka CABELO) <email>https://www.vivaolinux.com.br/~cabelo</email></literal> -
+    <literal>Alessandro de Oliveira Faria (aka CABELO) <ulink>https://www.vivaolinux.com.br/~cabelo</ulink></literal> -
     O cara é fantástico, faz projetos avançados onde ninguém mais pensaria em fazer, especializado em programação
     C/C++ experiente em sistemas de biometria, visão computacional e redes neurais. Ele criou o formato e-PUB do
     Guia Foca e o disponibilizou numa época que não havia possibilidade de gera-lo automaticamente no 
@@ -358,19 +358,19 @@ iptables.
 </listitem>
 <listitem>
 <para>
-<literal>Rafael Gomes (<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="@gomex">Twitter @gomex</link>)
+<literal>Rafael Gomes (<emphasis>Twitter @gomex</emphasis>)
 </literal> - Muito a agradecer a ele, 
 mas em especial por me introduzir do jeito certo ao mundo DevOps, mostrando que a colaboração
 e espírito de comunidade se sobressaem acima de tudo e pelo incentivo a voltar
 a lançar atualizações do guia de forma colaborativa no github. Gomex (como é popularmente 
 chamado) mantém um guia referencia Docker na Internet: 
-<email>https://github.com/gomex/docker-para-desenvolvedores</email>. Merece uma visita para 
+<ulink>https://github.com/gomex/docker-para-desenvolvedores</ulink>. Merece uma visita para 
 conhecer o conteúdo, extrema qualidade para quem deseja se aprofundar no <command>Docker</command>.
 </para>
 </listitem>
 <listitem>
  <para>
-<literal>Jeferson Fernando Noronha (<email>https://www.youtube.com/user/linuxtipscanal</email>)</literal> - 
+<literal>Jeferson Fernando Noronha (<ulink>https://www.youtube.com/user/linuxtipscanal</ulink>)</literal> - 
 Pela divulgação do Guia Foca no canal LinuxTips (YouTube). O 
 trabalho que o Jeferson realiza é extraordinário, mantendo a tradicional filosofia do Software
 Livre em uma época de desenvolvimento ágil, nuvem e orquestradores. Vários cursos e videos gratuitos no canal 
