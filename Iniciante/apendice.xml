@@ -60,7 +60,7 @@ novas versões:
 <itemizedlist>
 <listitem>
 <para>
-Siga o Guia Foca no Twitter <email>@focalinux</email>
+Siga o Guia Foca no Twitter <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="@guiafoca">@guiafoca</link>
 </para>
 </listitem>
 <listitem>
@@ -140,7 +140,7 @@ Brasileiro.
 </para>
 <para>
 E-mail: E-mail: <email>gleydson@guiafoca.org</email>, Twitter:
-<email>@gleydsonmazioli</email>.
+<ulink url="@gleydsonmazioli">@gleydsonmazioli</ulink>.
 </para>
 </section>
 
@@ -288,12 +288,19 @@ despercebidos durante muito tempo no guia e página principal.
 E também por cuidar do fonte do guia ;-)
 </para>
 </listitem>
+
 <listitem>
 <para>
 <literal>Augusto Campos <email>brain@matrix.com.br</email></literal> -
 Descrição sobre a distribuição <command>Suse</command> e constantes divulgações
 do guia no antigo site <emphasis>br-linux.org</emphasis>
 </para>
+</listitem>
+<listitem>
+    <para>
+    <literal>Helio Loureiro <email>https://www.facebook.com/helio.loureiro</email></literal> -
+    Grande Hacker BSD/Linux evangelizador do Guia Foca em todas as mídias sociais, desde seu surgimento. 
+    </para>
 </listitem>
 <listitem>
 <para>
@@ -328,10 +335,20 @@ estão sendo muito úteis tanto para mim quanto no desenvolvimento do guia.
 <literal>Gustavo Noronha <email>dockov@zaz.com.br</email></literal> - Vem
 enviando freqüentes correções, contribuições construtivas ao desenvolvimento
 além de apoio ao desenvolvimento do guia .  Vale a pena destaca-lo por sua
-atual dedicação junto a distribuição Debian/GNU, sua tradução e a comunidade
-Open Source.
+atual dedicação junto a distribuição Debian/GNU, tradução da distribuição e 
+a comunidade Open Source.
 </para>
 </listitem>
+<listitem>
+ <para>
+    <literal>Alessandro de Oliveira Faria (aka CABELO) <email>https://www.vivaolinux.com.br/~cabelo</email></literal> -
+    O cara é fantástico, faz projetos avançados onde ninguém mais pensaria em fazer, especializado em programação
+    C/C++ experiente em sistemas de biometria, visão computacional e redes neurais. Ele criou o formato e-PUB do
+    Guia Foca e o disponibilizou numa época que não havia possibilidade de gera-lo automaticamente no 
+    ciclo de release automático do guia.
+ </para>
+</listitem>
+
 <listitem>
 <para>
 <literal>Pedro Zorzenon Neto <email>pzn@debian.org</email></literal> - Envio de
@@ -341,12 +358,27 @@ iptables.
 </listitem>
 <listitem>
 <para>
-<literal>Rafael Gomes (<email>@gomex</email>)</literal> - Muito a agradecer a ele, 
+<literal>Rafael Gomes (<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="@gomex">Twitter @gomex</link>)
+</literal> - Muito a agradecer a ele, 
 mas em especial por me introduzir do jeito certo ao mundo DevOps, mostrando que a colaboração
 e espírito de comunidade se sobressaem acima de tudo e pelo incentivo a voltar
-a lançar atualizações do guia.
+a lançar atualizações do guia de forma colaborativa no github. Gomex (como é popularmente 
+chamado) mantém um guia referencia Docker na Internet: 
+<email>https://github.com/gomex/docker-para-desenvolvedores</email>. Merece uma visita para 
+conhecer o conteúdo, extrema qualidade para quem deseja se aprofundar no <command>Docker</command>.
 </para>
 </listitem>
+<listitem>
+ <para>
+<literal>Jeferson Fernando Noronha (<email>https://www.youtube.com/user/linuxtipscanal</email>)</literal> - 
+Pela divulgação do Guia Foca no canal LinuxTips (YouTube). O 
+trabalho que o Jeferson realiza é extraordinário, mantendo a tradicional filosofia do Software
+Livre em uma época de desenvolvimento ágil, nuvem e orquestradores. Vários cursos e videos gratuitos no canal 
+com qualidade de conteúdo que não se encontra em qualquer outro canal de YouTube. Conteúdo merece ser 
+acessado pelos leitores do Guia Foca.
+ </para>
+</listitem>
+    
 <listitem>
     <para>
 <literal>Andrea González</literal> - Dedicou horas revisando todo o conteúdo do guia Iniciante,
