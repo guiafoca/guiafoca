@@ -351,20 +351,20 @@ Se estive no diretório <filename>/usr/local</filename> e digitar <literal>cd
 <section userlevel='inic' xml:id="basico-diretorio-caminho"><info><title>Caminho na estrutura de diretórios</title></info>
 <para>
 São os diretórios que teremos que percorrer até chegar no arquivo ou diretório
-que que procuramos.  Se desejar ver o arquivo <filename>/etc/hosts</filename>
+que que procuramos.  Se desejar ver o arquivo <filename>GPL</filename>
 você tem duas opções:
 </para>
 <orderedlist numeration="arabic">
 <listitem>
 <para>
-Mudar o diretório padrão para <filename>/etc</filename> com o comando
-<literal>cd /etc</literal> e usar o comando <literal>cat hosts</literal>
+Mudar o diretório padrão para <filename>/usr/doc/copyright</filename> com o comando
+<literal>cd /etc</literal> e usar o comando <literal>cat GPL</literal>
 </para>
 </listitem>
 <listitem>
 <para>
 Usar o comando <command>"cat"</command> especificando o caminho completo na
-estrutura de diretórios e o nome de arquivo: <literal>cat /etc/hosts</literal>.
+estrutura de diretórios e o nome de arquivo: <literal>cat /usr/doc/copyright/GPL</literal>.
 </para>
 </listitem>
 </orderedlist>
