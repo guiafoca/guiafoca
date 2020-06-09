@@ -1,6 +1,6 @@
 <chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="intro"><info><title>Introdução</title></info>
 <para>
-Bem vindo ao Guia <emphasis>Foca GNU/Linux</emphasis>. O nome
+Bem vindo ao Guia <emphasis>Foca Linux</emphasis>. O nome
 <emphasis>FOCA</emphasis> significa <emphasis>FO</emphasis>nte de
 <emphasis>C</emphasis>onsulta e <emphasis>A</emphasis>prendizado. Este guia
 está dividido em 3 níveis de aprendizado e você está lendo agora a(s) versão(ões):
@@ -328,7 +328,7 @@ Para melhor organização, dividi o guia em 3 versões:
 <emphasis>Avançado</emphasis>. Sendo que a versão
 <emphasis>Iniciante</emphasis> é voltada para o usuário que não tem
 <literal>nenhuma</literal> experiência no <command>GNU/Linux</command>. A
-última versão deste guia pode ser encontrada em: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.guiafoca.org">Página Oficial do Guia Foca GNU/Linux</link>.
+última versão deste guia pode ser encontrada em: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.guiafoca.org">Página Oficial do Guia Foca Linux</link>.
 </para>
 <para>
 Caso tenha alguma sugestão, correção ou crítica para a melhoria deste guia,
@@ -336,7 +336,7 @@ preencha o formulário de sugestões disponíveis na página oficial do guia ou
 envie um e-mail para <email>gleydson@guiafoca.org</email>.
 </para>
 <para>
-O <emphasis>Foca GNU/Linux</emphasis> é atualizado frequentemente, por este
+O <emphasis>Foca Linux</emphasis> é atualizado frequentemente, por este
 motivo recomendo que preencha a ficha do aviso de atualizações na <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.guiafoca.org">página oficial do Guia Foca
 GNU/Linux</link> no fim da página principal. Após preencher a ficha do aviso
 de atualizações, você receberá um e-mail sobre o lançamento de novas versões do
@@ -351,7 +351,7 @@ pouco do conhecimento que adquiri ao começar o uso do Linux.
 </para>
 <para>
 Também recebo e-mails de pessoas comemorando a aprovação na prova LPI
-nível 1, 2 e 3 após estudar usando o Guia Foca GNU/Linux. Fico bastante feliz por
+nível 1, 2 e 3 após estudar usando o Guia Foca Linux. Fico bastante feliz por
 saber disso, pois nunca tive a intenção de tornar o guia uma referência livre
 para estudo da LPI e hoje ele é usado para estudo desta difícil certificação que
 aborda comandos, serviços, configurações, segurança, empacotamento,
