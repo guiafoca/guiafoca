@@ -32,7 +32,7 @@ Explicações iniciais sobre as partes básicas do computador e periféricos
 <listitem userlevel='inic' >
 <para>
 Comandos e Programas equivalentes entre o
-/<command>Windows</command> e o
+<command>DOS</command>/<command>Windows</command> e o
 <command>GNU/Linux</command>
 </para>
 </listitem>
@@ -86,14 +86,14 @@ Manipulação de módulos do kernel
 </listitem>
 <listitem userlevel='inter'>
 <para>
-Explicações sobre hardwares (dispositivo, Interrupções, DMA) e como configura-los no Linux,
+Explicações sobre hardwares (dispositivo, Interrupções, DMA) e como configura-los no Linux, 
 valores padrões e resolução de conflitos entre hardwares.
 </para>
 </listitem>
 <listitem userlevel='inter'>
 <para>
 Dicas de como avaliar e comprar bons hardwares para que seu computador tenha o
-melhor desempenho (também válido para outras plataformas como <command>Windows</command>
+melhor desempenho (também válido para outras plataformas como <command>Windows</command> 
 e <command>MacOS</command>).  Você também entenderá
 porque alguns dispositivos de boa qualidade, como placas de rede, custam até 3
 vezes mais caro que outras e o que a placa traz de especial para ter este
@@ -361,7 +361,7 @@ criptografia, etc.
 </para>
 
 
-
+	
 <section  userlevel='avanc' xml:id="introducao-avisoADV"><info><title>Considerações sobre o nível Avançado</title></info>
 <para>
 Este guia foi compilado incluindo o nível <emphasis>Avançado</emphasis> do guia
@@ -524,7 +524,7 @@ Gleydson (<email>gleydson@guiafoca.org</email>).
 <section xml:id="introducao-requisitos"><info><title>Pré-requisitos para a utilização deste guia</title></info>
 <para userlevel='inic'>
 É assumido que você já tenha seu <command>GNU/Linux</command> instalado e
-funcionando.
+funcionando. 
 </para>
 <para userlevel='inter'>
 É assumido que você tenha entendido a função de boa parte dos
@@ -544,7 +544,7 @@ requer que se tiver interesse em se aprofundar em determinada área, que utilize
 os métodos de busca de documentação sugeridos no guia para complementação do
 aprendizado.  O guia não contém todos os materiais para que a pessoa se torne
 um <literal>expert</literal> no assunto, mas contém as referências para
-documentações mais específicas sobre determinadas áreas do sistema.
+documentações mais específicas sobre determinadas áreas do sistema. 
 </para>
 <para>
 Este guia não cobre a instalação do sistema.  Para detalhes sobre instalação,
@@ -623,7 +623,7 @@ será usado:
 <literal>5.x.x</literal> - Computador 686 com no mínimo 32MB
 </para>
 </listitem>
-
+			
 </itemizedlist>
 <para>
 Para espaço em disco é requerido 900MB para uma instalação básica usando modo
@@ -767,7 +767,7 @@ hardware (queima do processador, placa mãe, etc.).
 <listitem>
 <para>
 Excepcional em escalabilidade desde computadores extreamemente simples,dispositivos móveis
-(sistema Android utiliza kernel Linux), Raspberry PI, sistemas embarcados, geladeiras
+(sistema Android utiliza kernel Linux), Raspberry PI, sistemas embarcados, geladeiras 
 inteligentes, carros com centrais inteligentes, etc.  até sistemas de clusters
 em núvem gigantescos (como Amazon, Digital Ocean, entre maiores datacenters
 utilizados em núvens no mundo).
@@ -790,7 +790,7 @@ Suporte nativo a dispositivos SSD, SATA, PATA, Fiber Channel
 Suporte nativo a virtualização, onde o <command>Linux</command> se destaca como
 plataforma preferida para execução de múltiplos sistemas operacionais com
 performance e segurança. Nuvens como Amazon, Digital Ocean utilizam nativamente
-KVM para execucução de plataformas, assim como o sistema CGROUPs para execução
+KVM para execucução de plataformas, assim como o sistema CGROUPs para execução 
 de containers.
 </para>
 </listitem>
@@ -817,10 +817,10 @@ NTFS, SunOS, Amiga, Atari, Mac,</command> etc.
 </listitem>
 <listitem>
 <para>
-O LINUX POSSUI MECANISMOS DE HARDENING AVANÇADOS CONTRA VÍRUS E MALWARES!  Devido
-a separação de privilégios entre processos e respeitadas as recomendações padrão
-de política de segurança e uso de contas privilegiadas (como a de root, como
-veremos adiante), programas como vírus tornam-se inúteis pois tem sua ação
+O LINUX POSSUI MECANISMOS DE HARDENING AVANÇADOS CONTRA VÍRUS E MALWARES!  Devido 
+a separação de privilégios entre processos e respeitadas as recomendações padrão 
+de política de segurança e uso de contas privilegiadas (como a de root, como 
+veremos adiante), programas como vírus tornam-se inúteis pois tem sua ação 
 limitada pelas restrições de acesso do sistema de arquivos e execução.
 </para>
 <para>
@@ -849,7 +849,7 @@ Executa outros sistemas operacionais como <emphasis>Windows</emphasis>,
 <emphasis>MacOS</emphasis>, <emphasis>DOS</emphasis> ou outro sistema
 <command>Linux</command> através de consagrados sistemas de virtualização como
 <command>KVM</command>, <command>Xen</command>, <command>vmware</command>
-<command>VirtualBox</command>, ou emulação como o <command>DOSEMU</command>,
+<command>VirtualBox</command>, ou emulação como o <command>DOSEMU</command>, 
 <command>QEMU</command>, <command>WINE</command>.
 </para>
 </listitem>
@@ -1045,7 +1045,7 @@ oficial do projeto <emphasis>GNU</emphasis>.  Possui suporte a língua
 Portuguesa, é a única que tem suporte a 9 arquiteturas diferentes (AMD64, i386, ARMEL,
 ARMHF, MIPS,MIPSEL,MIPS64el, etc.) e aproximadamente 15
 arquitetura não suportadas oficialmente.  A instalação da distribuição pode ser feita tanto através de
-flash disks, CD-ROM, Tftp, Ftp, NFS, imagem Docker ou através da combinação de
+flash disks, CD-ROM, Tftp, Ftp, NFS, imagem Docker ou através da combinação de 
 vários destes em cada etapa de instalação.
 </para>
 <para>
@@ -1254,7 +1254,7 @@ Para contato com os grupos de usuários que utilizam estas distribuições, veja
 </para>
 </section>
 
-
+	
 <section userlevel="inic;inter" xml:id="introducao-software-livre"><info><title>Software Livre</title></info>
 <para>
 (tradução do texto <literal>Linux e o Sistema GNU</literal> de <literal>Richard
