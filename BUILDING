@@ -1,0 +1,16 @@
+Se você quer compilar manualmente o Guia Foca, a primeira coisa que precisa fazer é 
+baixar o docbook-xml e instalar em sua máquina (em variantes usando deb). 
+
+Em seguida, precisará aplicar o comando de pre-processamento como o seguinte:
+
+$ xsltproc --output guiafoca-out.xml --xinclude --stringparam profile.userlevel "inic" --stringparam profile.condition "web;obs;descricaod;capjuntos;debian" --stringparam profile.role "strong" --stringparam body.font.family Helvetica --stringparam body.font.master 11  /usr/share/xml/docbook/stylesheet/docbook-xsl/profiling/profile.xsl index.xml
+
+E em seguida o comando para gerar o formato de saída HTML:
+
+$ xsltproc --output index.html /usr/share/xml/docbook/stylesheet/docbook-xsl/profiling/profile.xsl guiafoca-out.xml
+
+Outros formatos podem ser gerados a partir do fonte, basta consultar a documentação
+de autoria de livros do Docbook para maiores detalhes:
+
+
+http://docbook.org
