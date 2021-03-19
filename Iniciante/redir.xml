@@ -2,7 +2,7 @@
 <chapter userlevel='inic;inter' xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="redir"><info><title>Redirecionamentos e Pipe</title></info>
 <para>
 Esta seção explica o funcionamento dos recursos de direcionamento de entrada e
-saída do sistema <command>GNU/Linux</command>.
+saída do sistema <command>Linux</command>.
 </para>
 
 
@@ -145,8 +145,9 @@ um arquivo.  Este comando deve ser usado com o pipe "|".
 </para>
 <!-- [ %EXEMPLO [ -->
 <para>
-Exemplo: <literal>ls -la | tee listagem.txt</literal>, a saída do comando será
-mostrada normalmente na tela e ao mesmo tempo gravada no arquivo
+Exemplo: <literal>ls -la | tee listagem.txt</literal>, 
+a saída do comando será mostrada normalmente na tela e ao mesmo tempo gravada 
+no arquivo
 <filename>listagem.txt</filename>.
 </para>
 <!-- ]]> -->
