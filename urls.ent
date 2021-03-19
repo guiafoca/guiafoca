@@ -84,7 +84,7 @@ E-Mail: gleydson@guiafoca.org
 <!ENTITY url-grub-www             "http://www.gnu.org/software/grub/">
 <!ENTITY url-cdcontrol-www        "http://cdcontrol.sourceforge.net/">
 <!ENTITY url-mplayer-www          "http://mplayer.sourceforge.net/">
-<!ENTITY url-bladeenc-www         "http://bladeenc.mp3.no/">
+<!ENTITY url-bladeenc-www         "http://www.guiafoca.org">
 <!ENTITY url-rfc-791              "http://www.rfc-editor.org/rfc/rfc791.txt">
 <!ENTITY url-rfc-792              "http://www.rfc-editor.org/rfc/rfc792.txt">
 <!ENTITY url-rfc-793              "http://www.rfc-editor.org/rfc/rfc793.txt">
@@ -93,5 +93,5 @@ E-Mail: gleydson@guiafoca.org
 
 <!-- Endereços de servidores FTP diversos citados no guia -->
 <!ENTITY url-kernel-ftp          "ftp://ftp.kernel.org/">
-<!ENTITY url-ldp-ftp             "ftp://metalab.unc.edu/pub/Linux/docs/HOWTO/">
+<!ENTITY url-ldp-ftp             "https://tldp.org/HOWTO/HOWTO-INDEX/howtos.html">
 
