@@ -20,28 +20,28 @@ Entre o conteúdo do guia, você encontrará:
 
 <listitem userlevel='inic' >
 <para>
-Textos explicativos falando sobre o sistema <command>Linux</command>, seus
-comandos, como manusear arquivos, diretórios, etc.
+Textos explicativos falando sobre o sistema <command>GNU/Linux</command>, seus
+comandos, como manusear arquivos, diretórios, etc.;
 </para>
 </listitem>
 <listitem userlevel='inic' >
 <para>
-Explicações iniciais sobre as partes básicas do computador e periféricos
+Explicações iniciais sobre as partes básicas do computador e periféricos;
 </para>
 </listitem>
 <listitem userlevel='inic' >
 <para>
 Comandos e Programas equivalentes entre o
 <command>DOS</command>/<command>Windows</command> e o
-<command>GNU/Linux</command>
+<command>GNU/Linux</command>;
 </para>
 </listitem>
 <listitem userlevel='inic' >
 <para>
 Todos os materiais contidos na versão iniciante são ideais para quem está tendo
-o primeiro contato com computadores e/ou com o <command>Linux</command>.  A
+o primeiro contato com computadores e/ou com o <command>GNU/Linux</command>.  A
 linguagem usada é simples com o objetivo de explicar claramente o funcionamento
-de cada comando e evitando, sempre que possível, termos técnicos
+de cada comando e evitando, sempre que possível, termos técnicos;
 </para>
 </listitem>
 
@@ -49,7 +49,7 @@ de cada comando e evitando, sempre que possível, termos técnicos
 <listitem userlevel='inter' >
 <para>
 Explicações necessárias para conhecer, operar, configurar, desenvolver,
-personalizar seu sistema Linux.
+personalizar seu sistema GNU/Linux.
 </para>
 </listitem>
 <listitem userlevel='inter'>
@@ -86,14 +86,14 @@ Manipulação de módulos do kernel
 </listitem>
 <listitem userlevel='inter'>
 <para>
-Explicações sobre hardwares (dispositivo, Interrupções, DMA) e como configura-los no Linux, 
+Explicações sobre hardwares (dispositivo, Interrupções, DMA) e como configura-los no Linux,
 valores padrões e resolução de conflitos entre hardwares.
 </para>
 </listitem>
 <listitem userlevel='inter'>
 <para>
 Dicas de como avaliar e comprar bons hardwares para que seu computador tenha o
-melhor desempenho (também válido para outras plataformas como <command>Windows</command> 
+melhor desempenho (também válido para outras plataformas como <command>Windows</command>
 e <command>MacOS</command>).  Você também entenderá
 porque alguns dispositivos de boa qualidade, como placas de rede, custam até 3
 vezes mais caro que outras e o que a placa traz de especial para ter este
@@ -346,22 +346,22 @@ guia e o que foi modificado, desta forma você poderá decidir em copia-la caso 
 nova versão contenha modificações que considera importantes.
 </para>
 <para>
-Tenho recebido elegios de pessoas do Brasil (e também de outros países)
+Tenho recebido elogios de pessoas do Brasil (e também de outros países),
 elogiando o trabalho e a qualidade da documentação.  Agradeço a todos pelo
 apoio, tenham certeza que este trabalho é desenvolvido pensando em repassar um
-pouco do conhecimento que adquiri ao começar o uso do Linux.
+pouco do conhecimento que adquiri ao começar o uso do GNU/Linux.
 </para>
 <para>
-Também recebo e-mails de pessoas comemorando a aprovação na prova LPI
+Também recebo e-mails de pessoas comemorando a aprovação na prova LPIC
 nível 1, 2 e 3 após estudar usando o guia Foca GNU/Linux.  Fico bastante feliz por
 saber disso, pois nunca tive a intenção de tornar o guia uma referência livre
-para estudo da LPI e hoje é usado para estudo desta difícil certificação que
+para estudo da LPIC e hoje é usado para o estudo desta difícil certificação que
 aborda comandos, serviços, configurações, segurança, empacotamento,
 criptografia, etc.
 </para>
 
 
-	
+
 <section  userlevel='avanc' xml:id="introducao-avisoADV"><info><title>Considerações sobre o nível Avançado</title></info>
 <para>
 Este guia foi compilado incluindo o nível <emphasis>Avançado</emphasis> do guia
@@ -385,7 +385,7 @@ relacionadas a uma versão de um programa são válidas em uma nova versão.
 <para>
 Os capítulos <emphasis>Introdução</emphasis> e <emphasis>básico</emphasis>
 contém explicações teóricas sobre o computador, <command>GNU/Linux</command>,
-etc., você pode pular este capítulos caso já conheça estas explicações ou se
+etc., você pode pular estes capítulos caso já conheça estas explicações ou se
 desejar partir para a prática e quiser vê-los mais tarde, se lhe interessar.
 </para>
 <para>
@@ -406,14 +406,14 @@ Coloquei abaixo algumas dicas para um bom começo:
 <listitem>
 <para>
 Recomendo que faça a leitura deste guia e pratique imediatamente o que
-aprendeu.  Isto facilita o entendimento do programa/comando/configuração.
+aprendeu.  Isto facilita o entendimento do programa/comando/configuração;
 </para>
 </listitem>
 <listitem>
 <para>
 É preciso ter interesse em aprender, se você tiver vontade em aprender algo,
 você terá menos dificuldade do que em algo que não gosta e está se obrigando a
-aprender.
+aprender;
 </para>
 </listitem>
 <listitem>
@@ -421,14 +421,14 @@ aprender.
 Decorar não adianta, pelo contrário, só atrapalha no aprendizado.  Você precisa
 entender o que o comando faz, deste modo você estará estimulando e
 desenvolvendo sua interpretação, e entenderá melhor o assunto (talvez até me de
-uma força para melhorar o guia ;-)
+uma força para melhorar o guia ;-) );
 </para>
 </listitem>
 <listitem>
 <para>
 Curiosidade também é importante.  Você talvez possa estar procurando um comando
 que mostre os arquivos que contém um certo texto, e isto fará você chegar até o
-comando <command>grep</command>, depois você conhecerá suas opções, etc.
+comando <command>grep</command>, depois você conhecerá suas opções, etc.;
 </para>
 </listitem>
 <listitem>
@@ -436,16 +436,16 @@ comando <command>grep</command>, depois você conhecerá suas opções, etc.
 Não desanime vendo outras pessoas que sabem mais que você, lembre-se que
 ninguém nasce sabendo :-).  Uma pessoa pode ter mais experiência em um assunto
 no sistema como compilação de programas, configuração, etc., e você pode ter
-mais interesse em redes.
+mais interesse em redes;
 </para>
 </listitem>
 <listitem>
 <para>
-Ninguém pode saber tudo da noite para o dia, não procure saber TUDO sobre o
+Ninguém aprende tudo da noite para o dia, não procure saber TUDO sobre o
 sistema de uma só vez, senão não entenderá NADA.  Caso tenha dúvidas sobre o
 sistema, procure ler novamente a seção do guia, e caso ainda não tenha
 entendido procure ajuda nas página de manual (veja <xref linkend="ajuda-man"/>), ou nas listas de discussão (veja <xref linkend="ajuda-listas"/>) ou me envie uma mensagem
-<email>gleydson@guiafoca.org</email>.
+<email>gleydson@guiafoca.org</email>;
 </para>
 </listitem>
 <listitem>
@@ -454,7 +454,7 @@ Certamente você buscará documentos na Internet que falem sobre algum assunto
 que este guia ainda não explica.  Muito cuidado!  O
 <command>GNU/Linux</command> é um sistema que cresce muito rapidamente, a cada
 semana uma nova versão é lançada, novos recursos são adicionados, seria
-maravilhoso se a documentação fosse atualizada com a mesma freqüência.
+maravilhoso se a documentação fosse atualizada com a mesma freqüência;
 </para>
 <para>
 Infelizmente a atualização da documentação não segue o mesmo ritmo
@@ -524,7 +524,7 @@ Gleydson (<email>gleydson@guiafoca.org</email>).
 <section xml:id="introducao-requisitos"><info><title>Pré-requisitos para a utilização deste guia</title></info>
 <para userlevel='inic'>
 É assumido que você já tenha seu <command>GNU/Linux</command> instalado e
-funcionando. 
+funcionando.
 </para>
 <para userlevel='inter'>
 É assumido que você tenha entendido a função de boa parte dos
@@ -544,7 +544,7 @@ requer que se tiver interesse em se aprofundar em determinada área, que utilize
 os métodos de busca de documentação sugeridos no guia para complementação do
 aprendizado.  O guia não contém todos os materiais para que a pessoa se torne
 um <literal>expert</literal> no assunto, mas contém as referências para
-documentações mais específicas sobre determinadas áreas do sistema. 
+documentações mais específicas sobre determinadas áreas do sistema.
 </para>
 <para>
 Este guia não cobre a instalação do sistema.  Para detalhes sobre instalação,
@@ -556,25 +556,25 @@ consulte a documentação que acompanha sua distribuição
 
 <section userlevel='inic' xml:id="introducao-so"><info><title>Sistema Operacional</title></info>
 <para>
-O <emphasis>Sistema Operacional</emphasis> é o conjunto de programas que fazem
+O <emphasis>Sistema Operacional</emphasis> é o conjunto de programas que faz
 a interface do usuário e seus programas com o computador.  Ele é responsável
 pelo gerenciamento de recursos e periféricos (como memória, discos, arquivos,
 impressoras, CD-ROMs, etc.), interpretação de mensagens e a execução de
 programas.
 </para>
 <para>
-No <command>Linux</command> o Kernel mais o conjunto de ferramentas GNU compõem
-o Sistema Operacional.  O kernel (que é a base principal de um sistema
+No <command>GNU/Linux</command> o Kernel (Linux) mais o conjunto de ferramentas GNU compõem
+o Sistema Operacional.  O kernel Linux (que é a base principal de um sistema
 operacional), poderá ser construído de acordo com a configuração do seu
 computador e dos periféricos que possui.
 </para>
 </section>
 
 
-<section xml:id="introducao-linux"><info><title>O Linux</title></info>
+<section xml:id="introducao-linux"><info><title>O GNU/Linux</title></info>
 <para>
-O <command>Linux</command> é um sistema operacional criado em 1991 por
-<emphasis>Linus Torvalds</emphasis> na universidade de Helsinki na Finlândia.
+O <command>GNU/Linux</command> é um sistema operacional composto por bibliotecas GNU criada pelo Projeto GNU de Richard Stallman,
+juntamente com o Kernel criado em 1991 por <emphasis>Linus Torvalds</emphasis> na universidade de Helsinki na Finlândia.
 É um sistema Operacional de código aberto distribuído gratuitamente pela
 Internet.  Seu código fonte é liberado como <emphasis>Free Software</emphasis>
 (software livre), sob licença GPL, o aviso de copyright do kernel feito por
@@ -582,14 +582,14 @@ Linus descreve detalhadamente isto e mesmo ele não pode fechar o sistema para
 que seja usado apenas comercialmente.
 </para>
 <para>
-Isto quer dizer que você não precisa pagar nada para usar o Linux, e não é
+Isto quer dizer que você não precisa pagar nada para usar o GNU/Linux, e não é
 crime fazer cópias para instalar em outros computadores, nós inclusive
 incentivamos você a fazer isto.  Ser um sistema de código aberto pode explicar
 a performance, estabilidade e velocidade em que novos recursos são adicionados
 ao sistema.
 </para>
 <para>
-O requisito mínimo para rodar o <command>Linux</command> depende do kernel que
+O requisito mínimo para rodar o <command>GNU/Linux</command> depende do kernel que
 será usado:
 </para>
 <itemizedlist>
@@ -623,7 +623,7 @@ será usado:
 <literal>5.x.x</literal> - Computador 686 com no mínimo 32MB
 </para>
 </listitem>
-			
+
 </itemizedlist>
 <para>
 Para espaço em disco é requerido 900MB para uma instalação básica usando modo
@@ -634,7 +634,7 @@ RAM e espaço em disco para armazenamento de dados de programas e usuários.
 <para>
 O sistema segue o padrão <emphasis>POSIX</emphasis> que é o mesmo usado por
 sistemas <emphasis>UNIX</emphasis> e suas variantes.  Assim, aprendendo o
-<command>Linux</command> você não encontrará muita dificuldade em operar um
+<command>GNU/Linux</command> você não encontrará muita dificuldade em operar um
 sistema do tipo <command>UNIX, FreeBSD, HPUX, SunOS,</command> etc., bastando
 apenas aprender alguns detalhes encontrados em cada sistema.
 </para>
@@ -654,10 +654,10 @@ micros em funcionamento e pretendem investir em avanços tecnológicos com as
 máquinas que possui.
 </para>
 <para>
-O <command>Linux</command> é desenvolvido por milhares de pessoas espalhadas
+O <command>GNU/Linux</command> é desenvolvido por milhares de pessoas espalhadas
 pelo mundo, cada uma fazendo sua contribuição ou mantendo alguma parte do
-kernel gratuitamente.  <emphasis>Linus Torvalds</emphasis> ainda trabalha em
-seu desenvolvimento e na coordenação dos grupos de trabalho do kernel.
+kernel e das bibliotecas GNU gratuitamente.  <emphasis>Linus Torvalds</emphasis> ainda trabalha no
+desenvolvimento e na coordenação dos grupos de trabalho do kernel.
 </para>
 <para>
 O suporte ao sistema também se destaca como sendo o mais eficiente e rápido do
@@ -673,73 +673,75 @@ devida correção.
 Para detalhes, veja <xref linkend="ajuda-listas"/>.
 </para>
 
-<section xml:id="introducao-linux-carac"><info><title>Algumas Características do Linux</title></info>
+<section xml:id="introducao-linux-carac"><info><title>Algumas Características do GNU/Linux</title></info>
 <itemizedlist>
 <listitem>
 <para>
 É livre e desenvolvido voluntariamente por programadores experientes, hackers,
 e contribuidores espalhados ao redor do mundo que tem como objetivo a
-contribuição para a melhoria e crescimento deste sistema operacional.
+contribuição para a melhoria e crescimento deste sistema operacional;
 </para>
+</listitem>
+<listitem>
 <para>
 Muitos deles estavam cansados do excesso de propaganda (Marketing) e baixa
-qualidade de sistemas comerciais existentes
+qualidade de sistemas comerciais existentes;
 </para>
 </listitem>
 <listitem>
 <para>
 Também recebe apoio de grandes empresas como IBM, Sun, RedHat, Intel, HP, etc.  para seu
-desenvolvimento
+desenvolvimento;
 </para>
 </listitem>
 <listitem>
 <para>
 Convivem sem nenhum tipo de conflito com outros sistemas operacionais (com o
-<command>Windows</command>, <command>OS/2</command>) no mesmo computador.
+<command>Windows</command>, <command>OS/2</command>) no mesmo computador;
 </para>
 </listitem>
 <listitem>
 <para>
-Multitarefa real
+Multitarefa real;
 </para>
 </listitem>
 <listitem>
 <para>
-Multiusuário
+Multiusuário;
 </para>
 </listitem>
 <listitem>
 <para>
-Suporte a nomes extensos de arquivos e diretórios (255 caracteres)
+Suporte a nomes extensos de arquivos e diretórios (255 caracteres);
 </para>
 </listitem>
 <listitem>
 <para>
 Conectividade com outros tipos de plataformas como <emphasis>Apple, Sun,
-Macintosh, Sparc, Alpha, PowerPc, ARM, Unix, Windows, DOS, etc</emphasis>.
+Macintosh, Sparc, Alpha, PowerPc, ARM, Unix, Windows, DOS, etc</emphasis>;
 </para>
 </listitem>
 <listitem>
 <para>
 Utiliza permissões de acesso a arquivos, diretórios e programas em execução na
-memória RAM.
+memória RAM;
 </para>
 </listitem>
 <listitem>
 <para>
-Proteção entre processos executados na memória RAM
+Proteção entre processos executados na memória RAM;
 </para>
 </listitem>
 <listitem>
 <para>
-Suporte a mais de 256 terminais virtuais (consoles)
+Suporte a mais de 256 terminais virtuais (consoles);
 </para>
 </listitem>
 <listitem>
 <para>
-Modularização - O <command>Linux</command> somente carrega para a memória o que
+Modularização - O <command>GNU/Linux</command> somente carrega para a memória o que
 é usado durante o processamento, liberando totalmente a memória assim que o
-programa/dispositivo é finalizado
+programa/dispositivo é finalizado;
 </para>
 </listitem>
 <listitem>
@@ -747,13 +749,13 @@ programa/dispositivo é finalizado
 Devido a modularização, os drivers dos periféricos e recursos do sistema podem
 ser carregados e removidos completamente da memória RAM a qualquer momento.  Os
 drivers (módulos) ocupam pouco espaço quando carregados na memória RAM (cerca
-de 6Kb para a Placa de rede NE 2000, por exemplo)
+de 6Kb para a Placa de rede NE 2000, por exemplo);
 </para>
 </listitem>
 <listitem>
 <para>
 Suporte nativo a rede e tecnologias avançadas como: balanceamento de carga, ips
-alias, failover, vlans, bridge, trunking, OSPF, BGP, MPLS.
+alias, failover, vlans, bridge, trunking, OSPF, BGP, MPLS;
 </para>
 </listitem>
 <listitem>
@@ -761,37 +763,37 @@ alias, failover, vlans, bridge, trunking, OSPF, BGP, MPLS.
 Não há a necessidade de se reiniciar o sistema após a modificar a configuração
 de qualquer periférico ou parâmetros de rede.  Somente é necessário reiniciar o
 sistema no caso de uma instalação interna de um novo periférico, falha em algum
-hardware (queima do processador, placa mãe, etc.).
+hardware (queima do processador, placa mãe, etc.);
 </para>
 </listitem>
 <listitem>
 <para>
 Excepcional em escalabilidade desde computadores extreamemente simples,dispositivos móveis
-(sistema Android utiliza kernel Linux), Raspberry PI, sistemas embarcados, geladeiras 
+(sistema Android utiliza kernel Linux), Raspberry PI, sistemas embarcados, geladeiras
 inteligentes, carros com centrais inteligentes, etc.  até sistemas de clusters
 em núvem gigantescos (como Amazon, Digital Ocean, entre maiores datacenters
-utilizados em núvens no mundo).
+utilizados em núvens no mundo);
 </para>
 </listitem>
 <listitem>
 <para>
 Suporte nativo a múltiplas CPUs e multi threads, assim processadores como Dual Core, Core Duo,
 Athlon Duo, Quad Core, XEON, i3-i9 tem seu poder de processamento integralmente aproveitado,
-tanto em 32 ou 64 bits.
+tanto em 32 ou 64 bits;
 </para>
 </listitem>
 <listitem>
 <para>
-Suporte nativo a dispositivos SSD, SATA, PATA, Fiber Channel
+Suporte nativo a dispositivos SSD, SATA, PATA, Fiber Channel;
 </para>
 </listitem>
 <listitem>
 <para>
-Suporte nativo a virtualização, onde o <command>Linux</command> se destaca como
+Suporte nativo a virtualização, onde o <command>GNU/Linux</command> se destaca como
 plataforma preferida para execução de múltiplos sistemas operacionais com
 performance e segurança. Nuvens como Amazon, Digital Ocean utilizam nativamente
-KVM para execucução de plataformas, assim como o sistema CGROUPs para execução 
-de containers.
+KVM para execucução de plataformas, assim como o sistema CGROUPs para execução
+de containers;
 </para>
 </listitem>
 <listitem>
@@ -800,39 +802,39 @@ O crescimento e novas versões do sistema não provocam lentidão, pelo contrár
 a cada nova versão os desenvolvedores procuram buscar maior compatibilidade,
 acrescentar recursos úteis e melhor desempenho do sistema (como o que aconteceu
 na passagem do kernel 2.0.x para 2.2.x, da 2.2.x para a 2.4.x, da 3 para a 4.x.x,
-da 4.x.x para a 5.x.x)
+da 4.x.x para a 5.x.x);
 </para>
 </listitem>
 <listitem>
 <para>
 O <command>GNU/Linux</command> é distribuido livremente e licenciado de acordo
-com os termos da GPLv2.
+com os termos da GPLv2;
 </para>
 </listitem>
 <listitem>
 <para>
 Acessa corretamente discos formatados pelo <command>DOS, Windows, Novell, OS/2,
-NTFS, SunOS, Amiga, Atari, Mac,</command> etc.
+NTFS, SunOS, Amiga, Atari, Mac,</command> etc.;
 </para>
 </listitem>
 <listitem>
 <para>
-O LINUX POSSUI MECANISMOS DE HARDENING AVANÇADOS CONTRA VÍRUS E MALWARES!  Devido 
-a separação de privilégios entre processos e respeitadas as recomendações padrão 
-de política de segurança e uso de contas privilegiadas (como a de root, como 
-veremos adiante), programas como vírus tornam-se inúteis pois tem sua ação 
-limitada pelas restrições de acesso do sistema de arquivos e execução.
+O GNU/LINUX POSSUI MECANISMOS DE HARDENING AVANÇADOS CONTRA VÍRUS E MALWARES!  Devido
+a separação de privilégios entre processos e respeitadas as recomendações padrão
+de política de segurança e uso de contas privilegiadas (como a de root, como
+veremos adiante), programas como vírus tornam-se inúteis pois tem sua ação
+limitada pelas restrições de acesso do sistema de arquivos e execução;
 </para>
 <para>
 Qualquer programa (nocivo ou não) poderá alterar partes do sistema que possui
 permissões (será abordado como alterar permissões e tornar seu sistema mais
 restrito no decorrer do guia).  Frequentemente são criados exploits que tentam
-se aproveitar de falhas existentes em sistemas desatualizados e usa-las para
+se aproveitar de falhas existentes em sistemas desatualizados e usá-las para
 causar danos.  <emphasis>Erroneamente</emphasis> este tipo de ataque é
 classificado como vírus por pessoas mal informadas e são resolvidas com
 sistemas bem mantidos.  Em geral, usando uma boa distribuição que tenha um
 eficiente sistema de atualização e bem configurado, você terá 99.9% de sua
-tranquilidade.
+tranquilidade;
 </para>
 </listitem>
 <listitem>
@@ -840,17 +842,17 @@ tranquilidade.
 Rede TCP/IP mais rápida que no Windows e tem sua pilha constantemente
 melhorada.  O <command>GNU/Linux</command> tem suporte nativo a redes TCP/IP e
 não depende de uma camada intermediária como o WinSock.  Em acessos via modem a
-Internet, a velocidade de transmissão é 10% maior.
+Internet, a velocidade de transmissão é 10% maior;
 </para>
 </listitem>
 <listitem>
 <para>
 Executa outros sistemas operacionais como <emphasis>Windows</emphasis>,
 <emphasis>MacOS</emphasis>, <emphasis>DOS</emphasis> ou outro sistema
-<command>Linux</command> através de consagrados sistemas de virtualização como
+<command>GNU/Linux</command> através de consagrados sistemas de virtualização como
 <command>KVM</command>, <command>Xen</command>, <command>vmware</command>
-<command>VirtualBox</command>, ou emulação como o <command>DOSEMU</command>, 
-<command>QEMU</command>, <command>WINE</command>.
+<command>VirtualBox</command>, ou emulação como o <command>DOSEMU</command>,
+<command>QEMU</command>, <command>WINE</command>;
 </para>
 </listitem>
 <listitem>
@@ -859,77 +861,77 @@ Suporte completo e nativo a diversos dispositivos de comunicação via
 infravermelho, Bluetooth, Firewire, USB.  Basta conectar e o seu dispositivo é
 automaticamente reconhecido.  Raramente são necessários drivers externos,
 exceto no caso de dispositivos muito novos que não tenham o suporte ainda
-adicionado no sistema.
+adicionado no sistema;
 </para>
 </listitem>
 <listitem>
 	<para>
-	Suporte a fiber channel.
+	Suporte a fiber channel;
 	</para>
 </listitem>
 
 <listitem>
 <para>
-Suporte a rede via rádio amador.
+Suporte a rede via rádio amador;
 </para>
 </listitem>
 <listitem>
 <para>
-Suporte a dispositivos Plug-and-Play.
+Suporte a dispositivos Plug-and-Play;
 </para>
 </listitem>
 <listitem>
 <para>
 Suporte nativo a pen drivers, dispositivos de armazenamento e cartões de
-memória.
+memória;
 </para>
 </listitem>
 <listitem>
 <para>
-Suporte nativo a dispositivos I2C
+Suporte nativo a dispositivos I2C;
 </para>
 </listitem>
 <listitem>
 <para>
-Integração com gerenciamento de energia ACPI e APM
+Integração com gerenciamento de energia ACPI e APM;
 </para>
 </listitem>
 <listitem>
 <para>
-Dispositivos de rede Wireless.  Tanto com criptografia WEB e WPA2/3 PSK
+Dispositivos de rede Wireless.  Tanto com criptografia WEB e WPA2/3 PSK;
 </para>
 </listitem>
 <listitem>
 <para>
 Vários tipos de firewalls avançados de alta qualidade na detecção de tráfego
 indesejável, dando ao administrador uma excelente ferramenta de proteção e
-controle de sua rede.
+controle de sua rede;
 </para>
 </listitem>
 <listitem>
 <para>
-Roteamento estático e dinâmico de pacotes.
+Roteamento estático e dinâmico de pacotes;
 </para>
 </listitem>
 <listitem>
 <para>
-Ponte entre Redes, proxy arp
+Ponte entre Redes, proxy arp;
 </para>
 </listitem>
 <listitem>
 <para>
-Proxy Tradicional e Transparente.
+Proxy Tradicional e Transparente;
 </para>
 </listitem>
 <listitem>
 <para>
 Possui recursos para atender a mais de um endereço IP na mesma placa de rede,
 sendo muito útil para situações de manutenção em servidores de redes ou para a
-emulação de "múltiplos computadores".
+emulação de "múltiplos computadores";
 </para>
 <para>
 O servidor WEB e FTP podem estar localizados no mesmo computador, mas o usuário
-que se conecta tem a impressão que a rede possui servidores diferentes.
+que se conecta tem a impressão que a rede possui servidores diferentes;
 </para>
 </listitem>
 <listitem>
@@ -938,7 +940,7 @@ Os sistemas de arquivos usados pelo <command>GNU/Linux</command>
 (<literal>Ext2</literal>, <literal>Ext3</literal>, <literal>reiserfs</literal>,
 <literal>xfs</literal>, <literal>jfs</literal>) organiza os arquivos de forma
 inteligente evitando a fragmentação e fazendo-o um poderoso sistema para
-aplicações multi-usuárias exigentes e gravações intensivas.
+aplicações multi-usuárias exigentes e gravações intensivas;
 </para>
 </listitem>
 <listitem>
@@ -946,42 +948,42 @@ aplicações multi-usuárias exigentes e gravações intensivas.
 Permite a montagem de um servidor de publicação Web, E-mail, News, etc.  com um
 baixo custo e alta performance.  O melhor servidor Web do mercado, o
 <command>Apache</command>, é distribuído gratuitamente junto com a maioria das
-distribuições Linux.  O mesmo acontece com o <command>Sendmail</command>.
+distribuições GNU/Linux.  O mesmo acontece com o <command>Sendmail</command>.
 </para>
 </listitem>
 <listitem>
 <para>
 Por ser um sistema operacional de código aberto, você pode ver o que o código
-fonte (instruções digitadadas pelo programador) faz e adapta-lo as suas
+fonte (instruções digitadadas pelo programador) faz e adaptá-lo as suas
 necessidades ou de sua empresa.  Esta característica é uma segurança a mais
 para empresas sérias e outros que não querem ter seus dados roubados (você não
 sabe o que um sistema sem código fonte faz na realidade enquanto esta
-processando o programa).
+processando o programa);
 </para>
 </listitem>
 <listitem>
 <para>
 Suporte a diversos dispositivos e periféricos disponíveis no mercado, tanto os
-novos como obsoletos.
+novos como obsoletos;
 </para>
 </listitem>
 <listitem>
 <para>
 Pode ser executado em 16 arquiteturas diferentes (Intel, Macintosh, Alpha, Arm,
-etc.) e diversas outras sub-arquiteturas.
+etc.) e diversas outras sub-arquiteturas;
 </para>
 </listitem>
 <listitem>
 <para>
 Empresas especializadas e consultores especializados no suporte ao sistema
-espalhados por todo o mundo.
+espalhados por todo o mundo;
 </para>
 </listitem>
 <listitem>
 <para>
 Entre muitas outras características que você descobrirá durante o uso do
 sistema (além de poder criar outras, caso seja um administrador avançado ou
-desenvolvedor).
+desenvolvedor);
 </para>
 </listitem>
 </itemizedlist>
@@ -993,14 +995,14 @@ PLENA CERTEZA DE SEU FUNCIONAMENTO.
 
 </section>
 
-<section userlevel="inic" xml:id="introducao-distrib"><info><title>Distribuições do Linux</title></info>
+<section userlevel="inic" xml:id="introducao-distrib"><info><title>Distribuições do GNU/Linux</title></info>
 <para>
-Só o kernel <command>GNU/Linux</command> não é suficiente para se ter uma
-sistema funcional, mas é o principal.
+Só o kernel e as bibliotecas GNU <command>GNU/Linux</command> não é suficiente para se ter uma
+sistema funcional, mas são os principais componentes.
 </para>
 <para>
 Existem grupos de pessoas, empresas e organizações que decidem "distribuir" o
-Linux junto com outros aplicativos (como por exemplo <command>editores
+GNU/Linux junto com outros aplicativos (como por exemplo <command>editores
 gráficos, planilhas, bancos de dados, ambientes de programação, formatação de
 documentos, firewalls, etc</command>).
 </para>
@@ -1012,9 +1014,8 @@ A escolha de uma distribuição é pessoal e depende das necessidades de cada um
 </para>
 <para>
 Algumas distribuições bastante conhecidas são: <emphasis>Ubuntu, Debian,
-Slackware, Red Hat, Gentoo, Suse</emphasis> todas usando o SO Linux como kernel
-principal (a <command>Debian</command> é uma distribuição independente de
-kernel e pode ser executada sob outros kernels, como o GNU hurd ou o kernel
+Slackware, Red Hat, Gentoo, Suse</emphasis> todas usando o SO GNU/Linux (a <command>Debian</command>
+é uma distribuição independente de kernel e pode ser executada sob outros kernels, como o GNU hurd ou o kernel
 BSD).
 </para>
 <para>
@@ -1045,7 +1046,7 @@ oficial do projeto <emphasis>GNU</emphasis>.  Possui suporte a língua
 Portuguesa, é a única que tem suporte a 9 arquiteturas diferentes (AMD64, i386, ARMEL,
 ARMHF, MIPS,MIPSEL,MIPS64el, etc.) e aproximadamente 15
 arquitetura não suportadas oficialmente.  A instalação da distribuição pode ser feita tanto através de
-flash disks, CD-ROM, Tftp, Ftp, NFS, imagem Docker ou através da combinação de 
+flash disks, CD-ROM, Tftp, Ftp, NFS, imagem Docker ou através da combinação de
 vários destes em cada etapa de instalação.
 </para>
 <para>
@@ -1116,11 +1117,11 @@ para download.
 <literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.ubuntu.com/">http://www.ubuntu.com/</link></literal> -
 Variante da distribuição Debian voltada a interação mais amigável com o usuário
 final e facilidade de instalação.  Atualmente é a melhor para usuários que tem
-o primeiro contato com o Linux.  Conta tanto com a instalação do sistema em HD
+o primeiro contato com o GNU/Linux.  Conta tanto com a instalação do sistema em HD
 e execução através de Live CD.
 </para>
 <para>
-<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.ubuntu.com/getubuntu/download/">http://www.ubuntu.com/getubuntu/download/</link></literal>
+<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://releases.ubuntu.com/">http://releases.ubuntu.com/</link></literal>
 - Endereço para download do Ubuntu.
 </para>
 </listitem>
@@ -1139,7 +1140,7 @@ simplicidade, facilidade de uso e com isso flexibilidade e poder.
 </para>
 <para>
 Desde a primeira versão lançada em Abril de 1993, o Projeto <command>Slackware
-Linux</command> tem buscado produzir a distribuição <command>Linux</command>
+Linux</command> tem buscado produzir a distribuição <command>GNU/Linux</command>
 mais <literal>UNIX-like</literal>, ou seja, mais parecida com UNIX.  O
 Slackware segue os padrões Linux como o Linux File System Standard, que é um
 padrão de organização de diretórios e arquivos para as distribuições.
@@ -1150,21 +1151,21 @@ usuário iniciante, o <command>Slackware</command> é o melhor para o usuário
 mais "velho", ou seja programadores, administradores, etc.
 </para>
 <para>
-<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="ftp://ftp.slackwarebrasil.org/linux/slackware/">ftp://ftp.slackwarebrasil.org/linux/slackware/</link></literal>
+<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://mirrors.slackware.com/slackware/slackware-iso/">https://mirrors.slackware.com/slackware/slackware-iso/</link></literal>
 - Ftp da distribuição Slackware.
 </para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term><emphasis>SuSE</emphasis></term>
+<term><emphasis>OpenSuSE</emphasis></term>
 <listitem>
 <para>
-<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.suse.com/">http://www.suse.com/</link></literal> -
+<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.opensuse.org/">https://www.opensuse.org/</link></literal> -
 Distribuição comercial Alemã com a coordenação sendo feita através dos
 processos administrativos dos desenvolvedores e de seu braço norte-americano.
-O foco da Suse é o usuário com conhecimento técnico no Linux (programador,
-administrador de rede, etc.) e não o usuário iniciante no Linux.
+O foco da Suse é o usuário com conhecimento técnico no GNU/Linux (programador,
+administrador de rede, etc.) e não o usuário iniciante no GNU/Linux.
 Preferencialmente a administração deve ser feita usando o
 <command>Yast</command>, mas também pode ser feita manualmente através de
 alteração dos arquivos de configuração.
@@ -1183,14 +1184,14 @@ etc.) ou através da seleção individual de pacotes.
 </para>
 <para>
 A atualização da distribuição pode ser feita através do CD-ROM de uma nova
-versão ou baixando pacotes de <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="ftp://ftp.suse.com/">ftp://ftp.suse.com/</link>.  Usuários registrados
+versão ou baixando pacotes de <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://software.opensuse.org/">https://software.opensuse.org/</link>.  Usuários registrados
 ganham direito a suporte de instalação via e-mail.  A base de dados de suporte
 também é excelente e está disponível na web para qualquer usuário independente
 de registro.
 </para>
 <para>
-<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="ftp://ftp.suse.com/">ftp://ftp.suse.com/</link></literal>
-- Ftp da distribuição SuSE.
+<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://ftp.opensuse.org/pub/opensuse/">http://ftp.opensuse.org/pub/opensuse/</link></literal>
+-  da distribuição SuSE.
 </para>
 </listitem>
 </varlistentry>
@@ -1215,7 +1216,7 @@ dólares (a versão workstation) até 1499 dólares (advanced server).
 <term><emphasis>Fedora</emphasis></term>
 <listitem>
 <para>
-<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://fedora.redhat.com/">http://fedora.redhat.com/</link></literal> - O
+<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://fedoraproject.org/">https://fedoraproject.org/</link></literal> - O
 Fedora Linux é a distribuição de desenvolvimento aberto patrocinada pela RedHat
 e pela comunidade, originada em 2002 e baseada em versão da antiga linha de
 produtos RedHat Linux.  Esta distribuição não é suportada pela Red Hat como
@@ -1241,7 +1242,7 @@ quiser obte-lo terá de procurar distribuidores independentes ou fazer o
 download dos 4 CDs através do site oficial.
 </para>
 <para>
-<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://download.fedora.redhat.com/pub/fedora/linux/core/2/i386/iso/">http://download.fedora.redhat.com/pub/fedora/linux/core/2/i386/iso/</link></literal>
+<literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://getfedora.org/">https://getfedora.org/</link></literal>
 - Download da distribuição Fedora.
 </para>
 </listitem>
@@ -1254,11 +1255,11 @@ Para contato com os grupos de usuários que utilizam estas distribuições, veja
 </para>
 </section>
 
-	
+
 <section userlevel="inic;inter" xml:id="introducao-software-livre"><info><title>Software Livre</title></info>
 <para>
 (tradução do texto <literal>Linux e o Sistema GNU</literal> de <literal>Richard
-Stallman</literal> obtido no site do CIPSGA: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.cipsga.org.br/">http://www.cipsga.org.br/</link>).  O projeto
+		Stallman</literal> obtido no site do CIPSGA: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.cipsga.org.br/">http://www.cipsga.org.br/</link>).  O projeto
 <emphasis>GNU</emphasis> começou em 1983 com o objetivo de desenvolver um
 sistema operacional Unix-like totalmente livre.  <literal>Livre</literal> se
 refere à liberdade, e não ao preço; significa que você está livre para
@@ -1494,7 +1495,7 @@ LOCK</literal>).
 <para>
 É recomendado se pressionar as teclas &lt;CTRL&gt; &lt;ALT&gt; &lt;DEL&gt; para
 reiniciar o computador e o botão <emphasis>RESET</emphasis> somente em último
-caso, pois o &lt;CTRL&gt; &lt;ALT&gt; &lt;DEL&gt; avisa ao Linux que o usuário
+caso, pois o &lt;CTRL&gt; &lt;ALT&gt; &lt;DEL&gt; avisa ao GNU/Linux que o usuário
 pediu para o sistema ser reiniciado assim ele poderá salvar os arquivos, fechar
 programas e tomar outras providências antes de resetar o computador.
 </para>
@@ -2032,7 +2033,7 @@ para iniciar o sistema operacional.
 No <command>GNU/Linux</command>, o setor de boot normalmente é criado por um
 gerenciador de inicialização (um programa que permite escolher qual sistema
 operacional será iniciado).  Deste modo podemos usar mais de um sistema
-operacional no mesmo computador (como o DOS e Linux).  Os gerenciadores de
+operacional no mesmo computador (como o DOS e GNU/Linux).  Os gerenciadores de
 inicialização mais usados em sistemas <command>GNU/Linux</command> na
 plataforma Intel X86 são o <command>GRUB</command> e o <command>LILO</command>.
 </para>
