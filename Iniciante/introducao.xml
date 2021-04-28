@@ -420,7 +420,7 @@ aprender.
 <para>
 Decorar não adianta, pelo contrário, só atrapalha no aprendizado.  Você precisa
 entender o que o comando faz, deste modo você estará estimulando e
-desenvolvendo sua interpretação, e entenderá melhor o assunto (talvez até me de
+desenvolvendo sua interpretação, e entenderá melhor o assunto (talvez até me dê
 uma força para melhorar o guia ;-)
 </para>
 </listitem>
@@ -575,7 +575,7 @@ computador e dos periféricos que possui.
 <para>
 O <command>Linux</command> é um sistema operacional criado em 1991 por
 <emphasis>Linus Torvalds</emphasis> na universidade de Helsinki na Finlândia.
-É um sistema Operacional de código aberto distribuído gratuitamente pela
+É um sistema operacional de código aberto distribuído gratuitamente pela
 Internet.  Seu código fonte é liberado como <emphasis>Free Software</emphasis>
 (software livre), sob licença GPL, o aviso de copyright do kernel feito por
 Linus descreve detalhadamente isto e mesmo ele não pode fechar o sistema para
@@ -766,11 +766,11 @@ hardware (queima do processador, placa mãe, etc.).
 </listitem>
 <listitem>
 <para>
-Excepcional em escalabilidade desde computadores extreamemente simples,dispositivos móveis
+Excepcional em escalabilidade desde computadores extremamente simples, dispositivos móveis
 (sistema Android utiliza kernel Linux), Raspberry PI, sistemas embarcados, geladeiras 
 inteligentes, carros com centrais inteligentes, etc.  até sistemas de clusters
-em núvem gigantescos (como Amazon, Digital Ocean, entre maiores datacenters
-utilizados em núvens no mundo).
+em nuvem gigantescos (como Amazon, Digital Ocean, entre maiores datacenters
+utilizados em nuvens no mundo).
 </para>
 </listitem>
 <listitem>
@@ -952,10 +952,10 @@ distribuições Linux.  O mesmo acontece com o <command>Sendmail</command>.
 <listitem>
 <para>
 Por ser um sistema operacional de código aberto, você pode ver o que o código
-fonte (instruções digitadadas pelo programador) faz e adapta-lo as suas
+fonte (instruções digitadas pelo programador) faz e adapta-lo as suas
 necessidades ou de sua empresa.  Esta característica é uma segurança a mais
 para empresas sérias e outros que não querem ter seus dados roubados (você não
-sabe o que um sistema sem código fonte faz na realidade enquanto esta
+sabe o que um sistema sem código fonte faz na realidade enquanto está
 processando o programa).
 </para>
 </listitem>
@@ -986,7 +986,7 @@ desenvolvedor).
 </listitem>
 </itemizedlist>
 <para>
-TODOS OS ÍTENS DESCRITOS ACIMA SÃO VERDADEIROS E TESTADOS PARA QUE TIVESSE
+TODOS OS ITENS DESCRITOS ACIMA SÃO VERDADEIROS E TESTADOS PARA QUE TIVESSE
 PLENA CERTEZA DE SEU FUNCIONAMENTO.
 </para>
 </section>
@@ -1044,7 +1044,7 @@ espalhados ao redor do mundo, seguindo o estilo de desenvolvimento
 oficial do projeto <emphasis>GNU</emphasis>.  Possui suporte a língua
 Portuguesa, é a única que tem suporte a 9 arquiteturas diferentes (AMD64, i386, ARMEL,
 ARMHF, MIPS,MIPSEL,MIPS64el, etc.) e aproximadamente 15
-arquitetura não suportadas oficialmente.  A instalação da distribuição pode ser feita tanto através de
+arquiteturas não suportadas oficialmente.  A instalação da distribuição pode ser feita tanto através de
 flash disks, CD-ROM, Tftp, Ftp, NFS, imagem Docker ou através da combinação de 
 vários destes em cada etapa de instalação.
 </para>
@@ -1231,7 +1231,7 @@ instalar e utilizar, inclui tradução para portugês do Brasil e suporte às
 plataformas Intel e 64 bits.
 </para>
 <para>
-Por basear-se no RedHat.  o Fedora conta com um o <command>up2date</command>,
+Por basear-se no RedHat, o Fedora conta com um o <command>up2date</command>,
 um software para manter o sistema atualizado e utiliza pacotes de programas no
 formato RPM, um dos mais comuns.
 </para>
