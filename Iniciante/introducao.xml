@@ -182,7 +182,7 @@ de senha periódica, políticas de segurança, etc (<xref linkend="d-contas"/>).
 <listitem userlevel='avanc'>
 <para>
 Principais tipos de ataques para descoberta de senhas e alguns métodos de como
-evita-las (<xref linkend="d-contas-cms-senhas"/>).
+evitá-las (<xref linkend="d-contas-cms-senhas"/>).
 </para>
 </listitem>
 <listitem userlevel='avanc'>
@@ -454,7 +454,7 @@ Certamente você buscará documentos na Internet que falem sobre algum assunto
 que este guia ainda não explica.  Muito cuidado!  O
 <command>GNU/Linux</command> é um sistema que cresce muito rapidamente, a cada
 semana uma nova versão é lançada, novos recursos são adicionados, seria
-maravilhoso se a documentação fosse atualizada com a mesma freqüência.
+maravilhoso se a documentação fosse atualizada com a mesma frequência.
 </para>
 <para>
 Infelizmente a atualização da documentação não segue o mesmo ritmo
@@ -827,7 +827,7 @@ limitada pelas restrições de acesso do sistema de arquivos e execução.
 Qualquer programa (nocivo ou não) poderá alterar partes do sistema que possui
 permissões (será abordado como alterar permissões e tornar seu sistema mais
 restrito no decorrer do guia).  Frequentemente são criados exploits que tentam
-se aproveitar de falhas existentes em sistemas desatualizados e usa-las para
+se aproveitar de falhas existentes em sistemas desatualizados e usques para
 causar danos.  <emphasis>Erroneamente</emphasis> este tipo de ataque é
 classificado como vírus por pessoas mal informadas e são resolvidas com
 sistemas bem mantidos.  Em geral, usando uma boa distribuição que tenha um
@@ -1231,13 +1231,13 @@ instalar e utilizar, inclui tradução para portugês do Brasil e suporte às
 plataformas Intel e 64 bits.
 </para>
 <para>
-Por basear-se no RedHat.  o Fedora conta com um o <command>up2date</command>,
+Por basear-se no RedHat,  o Fedora conta com um o <command>up2date</command>,
 um software para manter o sistema atualizado e utiliza pacotes de programas no
 formato RPM, um dos mais comuns.
 </para>
 <para>
 O Fedora não é distribuído oficialmente através de mídias ou CDs, se você
-quiser obtê-lo terá de procurar distribuidores independentes ou fazer o
+quiser obtê-lo terá de procurar distribuídores independentes ou fazer o
 download dos 4 CDs através do site oficial.
 </para>
 <para>
@@ -1311,7 +1311,7 @@ um sistema funcional.  Foi um sistema GNU variante, baseado no kernel do
 </para>
 <para>
 Ironicamente, a popularidade destes sistemas desmerece nosso método de
-comunicar a idéia GNU para as pessoas que usam GNU.  Estes sistemas são
+comunicar a ideia GNU para as pessoas que usam GNU.  Estes sistemas são
 praticamente iguais ao sistema GNU -- a principal diferença é a escolha do
 kernel.  Porém as pessoas normalmente os chamam de "sistemas Linux (Linux
 systems)".  A primeira impressão que se tem é a de que um "sistema Linux" soa
@@ -1327,7 +1327,7 @@ veio do projeto GNU.  Daí a maioria dos usuários não saber estas coisas.
 </para>
 <para>
 Como os seres humanos tendem a corrigir as suas primeiras impressões menos do
-que as informações subseqüentes tentam dizer-lhes, estes usuários que depois
+que as informações subsequentes tentam dizer-lhes, estes usuários que depois
 aprendem sobre a relação entre estes sistemas e o projeto GNU ainda geralmente
 o subestimam.
 </para>
@@ -1678,7 +1678,7 @@ memória <emphasis>RAM</emphasis>.
 </listitem>
 <listitem>
 <para>
-<literal>CO-PROCESSADOR</literal> - Ajuda o processador principal a processar
+<literal>CO-PROCESSADOR</literal> - Ajuda o Processador principal a processar
 as instruções matemáticas.  É normalmente embutido no processador principal em
 computadores a partir do <emphasis>486 DX2-66</emphasis>.  Em processadores
 Pentium e superiores, o co-processador é sempre embutido no processador.
