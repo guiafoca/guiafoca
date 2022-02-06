@@ -332,21 +332,21 @@ Para melhor organização, dividi o guia em 3 versões:
 última versão deste guia pode ser encontrada em: <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.guiafoca.org">Página Oficial do guia Foca GNU/Linux</link>.
 </para>
 <para>
-Caso tiver alguma sugestão, correção, crítica para a melhoria deste guia,
-preencha o formuário de sugestões disponíveis na página oficial do guia ou
+Caso tenha alguma sugestão, correção, crítica para a melhoria deste guia,
+preencha o formulário de sugestões disponível na página oficial do guia ou
 envie um e-mail para <email>gleydson@guiafoca.org</email>.
 </para>
 <para>
-O <emphasis>Foca GNU/Linux</emphasis> é atualizado freqüentemente, por este
+O <emphasis>Foca GNU/Linux</emphasis> é atualizado frequentemente, por este
 motivo recomendo que preencha a ficha do aviso de atualizações na página web em
 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.guiafoca.org">Página Oficial do guia Foca
 GNU/Linux</link> no fim da página principal.  Após preencher a ficha do aviso
 de atualizações, você receberá um e-mail sobre o lançamento de novas versões do
-guia e o que foi modificado, desta forma você poderá decidir em copia-la caso a
+guia e o que foi modificado, desta forma você poderá decidir em copiá-la caso a
 nova versão contenha modificações que considera importantes.
 </para>
 <para>
-Tenho recebido elegios de pessoas do Brasil (e também de outros países)
+Tenho recebido mensagens de pessoas do Brasil (e também de outros países)
 elogiando o trabalho e a qualidade da documentação.  Agradeço a todos pelo
 apoio, tenham certeza que este trabalho é desenvolvido pensando em repassar um
 pouco do conhecimento que adquiri ao começar o uso do Linux.
@@ -420,7 +420,7 @@ aprender.
 <para>
 Decorar não adianta, pelo contrário, só atrapalha no aprendizado.  Você precisa
 entender o que o comando faz, deste modo você estará estimulando e
-desenvolvendo sua interpretação, e entenderá melhor o assunto (talvez até me de
+desenvolvendo sua interpretação, e entenderá melhor o assunto (talvez até me dê
 uma força para melhorar o guia ;-)
 </para>
 </listitem>
@@ -461,7 +461,7 @@ Infelizmente a atualização da documentação não segue o mesmo ritmo
 (principalmente aqui no Brasil).  É comum você encontrar na Internet documentos
 da época quando o kernel estava na versão 2.2.30, 2.4.8, 2.6.28, etc.  Estes
 documentos são úteis para pessoas que por algum motivo necessitam operar com
-versões antigas do Kernel Linux, mas pode trazer problemas ou causar má
+versões antigas do Kernel Linux, mas podem trazer problemas ou causar má
 impressão do <command>GNU/Linux</command> em outras pessoas.
 </para>
 <para>
@@ -547,7 +547,7 @@ um <literal>expert</literal> no assunto, mas contém as referências para
 documentações mais específicas sobre determinadas áreas do sistema. 
 </para>
 <para>
-Este guia não cobre a instalação do sistema.  Para detalhes sobre instalação,
+Este guia não cobre a instalação do sistema.  Para detalhes sobre a instalação,
 consulte a documentação que acompanha sua distribuição
 <command>GNU/Linux</command>.
 </para>
@@ -651,7 +651,7 @@ BluRay e outros tipos de dispositivos de última geração e mais antigos (a
 maioria deles já ultrapassados e sendo completamente suportados pelo sistema
 operacional).  Este é um ponto forte para empresas que desejam manter seus
 micros em funcionamento e pretendem investir em avanços tecnológicos com as
-máquinas que possui.
+máquinas que possuem.
 </para>
 <para>
 O <command>Linux</command> é desenvolvido por milhares de pessoas espalhadas
@@ -665,9 +665,9 @@ que qualquer programa comercial disponível no mercado.  Existem milhares de
 consultores e empresas especializadas no suporte e treinamento espalhados ao
 redor do mundo.  Outra opção de suporte é através da comunidade Linux; você
 pode se inscrever em uma lista de discussão e relatar sua dúvida ou alguma
-falha, e sua mensagem será vista por centenas de usuários na Internet e algum
+falha, e sua mensagem será vista por centenas de usuários na Internet e alguém
 irá te ajudar ou avisará as pessoas responsáveis sobre a falha encontrada para
-devida correção.
+a devida correção.
 </para>
 <para userlevel='inic;inter' >
 Para detalhes, veja <xref linkend="ajuda-listas"/>.
@@ -766,11 +766,11 @@ hardware (queima do processador, placa mãe, etc.).
 </listitem>
 <listitem>
 <para>
-Excepcional em escalabilidade desde computadores extreamemente simples,dispositivos móveis
+Excepcional em escalabilidade desde computadores extremamente simples,dispositivos móveis
 (sistema Android utiliza kernel Linux), Raspberry PI, sistemas embarcados, geladeiras 
 inteligentes, carros com centrais inteligentes, etc.  até sistemas de clusters
-em núvem gigantescos (como Amazon, Digital Ocean, entre maiores datacenters
-utilizados em núvens no mundo).
+em nuvem gigantescos (como Amazon, Digital Ocean, entre maiores datacenters
+utilizados em nuvens no mundo).
 </para>
 </listitem>
 <listitem>
@@ -790,7 +790,7 @@ Suporte nativo a dispositivos SSD, SATA, PATA, Fiber Channel
 Suporte nativo a virtualização, onde o <command>Linux</command> se destaca como
 plataforma preferida para execução de múltiplos sistemas operacionais com
 performance e segurança. Nuvens como Amazon, Digital Ocean utilizam nativamente
-KVM para execucução de plataformas, assim como o sistema CGROUPs para execução 
+KVM para execução de plataformas, assim como o sistema CGROUPs para execução 
 de containers.
 </para>
 </listitem>
@@ -805,7 +805,7 @@ da 4.x.x para a 5.x.x)
 </listitem>
 <listitem>
 <para>
-O <command>GNU/Linux</command> é distribuido livremente e licenciado de acordo
+O <command>GNU/Linux</command> é distribuído livremente e licenciado de acordo
 com os termos da GPLv2.
 </para>
 </listitem>
@@ -936,7 +936,7 @@ que se conecta tem a impressão que a rede possui servidores diferentes.
 <para>
 Os sistemas de arquivos usados pelo <command>GNU/Linux</command>
 (<literal>Ext2</literal>, <literal>Ext3</literal>, <literal>reiserfs</literal>,
-<literal>xfs</literal>, <literal>jfs</literal>) organiza os arquivos de forma
+<literal>xfs</literal>, <literal>jfs</literal>) organizam os arquivos de forma
 inteligente evitando a fragmentação e fazendo-o um poderoso sistema para
 aplicações multi-usuárias exigentes e gravações intensivas.
 </para>
@@ -952,10 +952,10 @@ distribuições Linux.  O mesmo acontece com o <command>Sendmail</command>.
 <listitem>
 <para>
 Por ser um sistema operacional de código aberto, você pode ver o que o código
-fonte (instruções digitadadas pelo programador) faz e adapta-lo as suas
+fonte (instruções digitadas pelo programador) faz e adaptá-lo às suas
 necessidades ou de sua empresa.  Esta característica é uma segurança a mais
 para empresas sérias e outros que não querem ter seus dados roubados (você não
-sabe o que um sistema sem código fonte faz na realidade enquanto esta
+sabe o que um sistema sem código fonte faz na realidade enquanto está
 processando o programa).
 </para>
 </listitem>
@@ -1068,10 +1068,10 @@ determinados desenvolvedores das mais diversas partes do mundo.
 <para>
 São feitos extensivos testes antes do lançamento de cada versão para atingir um
 alto grau de confiabilidade.  As falhas encontradas nos pacotes podem ser
-relatados através de um <emphasis>sistema de tratamento de falhas</emphasis>
+relatadas através de um <emphasis>sistema de tratamento de falhas</emphasis>
 que encaminha a falha encontrada diretamente ao responsável para avaliação e
 correção.  Qualquer um pode receber a lista de falhas ou sugestões sobre a
-distribuição cadastrando-se em uma das lista de discussão que tratam
+distribuição cadastrando-se em uma das listas de discussão que tratam
 especificamente da solução de falhas encontradas na distribuição (disponível na
 página principal da distribuição).
 </para>
@@ -1098,7 +1098,7 @@ seguro e atualizado.
 </para>
 <para>
 O suporte ao usuário e desenvolvimento da distribuição são feitos através de
-listas de discussões e canais IRC.  Existem uma lista de consultores
+listas de discussões e canais IRC.  Existe uma lista de consultores
 habilitados a dar suporte e assistência a sistemas Debian ao redor do mundo na
 área consultores do site principal da distribuição.
 </para>
@@ -1115,7 +1115,7 @@ para download.
 <para>
 <literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.ubuntu.com/">http://www.ubuntu.com/</link></literal> -
 Variante da distribuição Debian voltada a interação mais amigável com o usuário
-final e facilidade de instalação.  Atualmente é a melhor para usuários que tem
+final e facilidade de instalação.  Atualmente é a melhor para usuários que têm
 o primeiro contato com o Linux.  Conta tanto com a instalação do sistema em HD
 e execução através de Live CD.
 </para>
@@ -1170,7 +1170,7 @@ Preferencialmente a administração deve ser feita usando o
 alteração dos arquivos de configuração.
 </para>
 <para>
-Possui suporte as arquiteturas Intel x86 e Alpha.  Sua instalação pode ser
+Possui suporte às arquiteturas Intel x86 e Alpha.  Sua instalação pode ser
 feita via CD-ROM ou CD-DVD (é a primeira distribuição com instalação através de
 DVD).
 </para>
@@ -1201,7 +1201,7 @@ de registro.
 <para>
 <literal><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.redhat.com/">http://www.redhat.com/</link></literal> -
 Distribuição comercial suportada pela Red Hat e voltada a servidores de grandes
-e medias empresas.  Também conta com uma certificação chamada RHCE específica
+e médias empresas.  Também conta com uma certificação chamada RHCE específica
 desta distro.
 </para>
 <para>
@@ -1225,7 +1225,7 @@ devendo obter suporte através da comunidade ou outros meios.
 <para>
 A distribuição <literal>Fedora</literal> dá prioridade ao uso do computador
 como estação de trabalho.  Além de contar com uma ampla gama de ferramentas de
-escritório possui funções de servidor e aplicativos para produtividade e
+escritório, possui funções de servidor e aplicativos para produtividade e
 desenvolvimento de softwares.  Considerado um dos sistemas mais fáceis de
 instalar e utilizar, inclui tradução para portugês do Brasil e suporte às
 plataformas Intel e 64 bits.
@@ -1236,8 +1236,8 @@ um software para manter o sistema atualizado e utiliza pacotes de programas no
 formato RPM, um dos mais comuns.
 </para>
 <para>
-O Fedora não é distribuido oficialmente através de mídias ou CDs, se você
-quiser obte-lo terá de procurar distribuidores independentes ou fazer o
+O Fedora não é distribuído oficialmente através de mídias ou CDs, se você
+quiser obtê-lo terá de procurar distribuidores independentes ou fazer o
 download dos 4 CDs através do site oficial.
 </para>
 <para>
@@ -1278,20 +1278,20 @@ categorias reunidas.
 </para>
 <para>
 O projeto GNU não é somente desenvolvimento e distribuição de alguns softwares
-livres úteis.  O coração do projeto GNU é uma idéia: que software deve ser
+livres úteis.  O coração do projeto GNU é uma ideia: que software deve ser
 <emphasis>livre</emphasis>, e que a liberdade do usuário vale a pena ser
 defendida.  Se as pessoas têm liberdade mas não a apreciam conscientemente, não
 irão mantê-la por muito tempo.  Se queremos que a liberdade dure, precisamos
 chamar a atenção das pessoas para a liberdade que elas têm em programas livres.
 </para>
 <para>
-O método do projeto GNU é que programas livres e a idéia da liberdade dos
+O método do projeto GNU é que programas livres e a ideia da liberdade dos
 usuários ajudam-se mutuamente.  Nós desenvolvemos software GNU, e conforme as
 pessoas encontrem programas GNU ou o sistema GNU e comecem a usá-los, elas
-também pensam sobre a filosofia GNU.  O software mostra que a idéia funciona na
-prática.  Algumas destas pessoas acabam concordando com a idéia, e então
-escrevem mais programas livres.  Então, o software carrega a idéia, dissemina a
-idéia e cresce da idéia.
+também pensam sobre a filosofia GNU.  O software mostra que a ideia funciona na
+prática.  Algumas destas pessoas acabam concordando com a ideia, e então
+escrevem mais programas livres.  Então, o software carrega a ideia, dissemina a
+ideia e cresce da ideia.
 </para>
 <para>
 Em 1992, nós encontramos ou criamos todos os componentes principais do sistema
@@ -1329,13 +1329,13 @@ veio do projeto GNU.  Daí a maioria dos usuários não saber estas coisas.
 Como os seres humanos tendem a corrigir as suas primeiras impressões menos do
 que as informações subseqüentes tentam dizer-lhes, estes usuários que depois
 aprendem sobre a relação entre estes sistemas e o projeto GNU ainda geralmente
-o subestima.
+o subestimam.
 </para>
 <para>
 Isto faz com que muitos usuários se identifiquem como uma comunidade separada
 de "usuários de Linux", distinta da comunidade de usuários GNU.  Eles usam
 todos os softwares GNU; de fato, eles usam quase todo o sistema GNU; mas eles
-não pensam neles como usuários GNU, e freqüentemente não pensam que a filosofia
+não pensam neles como usuários GNU, e frequentemente não pensam que a filosofia
 GNU está relacionada a eles.
 </para>
 <para>
@@ -1344,7 +1344,7 @@ manutenção de programas.  Normalmente quando usuários mudam um programa GNU
 para fazer ele funcionar melhor em um sistema específico, eles mandam a mudança
 para o mantenedor do programa; então eles trabalham com o mantenedor explicando
 a mudança, perguntando por ela, e às vezes reescrevendo-a para manter a
-coerência e mantenebilidade do pacote, para ter o patch instalado.
+coerência e mantenabilidade do pacote, para ter o patch instalado.
 </para>
 <para>
 Mas as pessoas que pensam nelas como "usuários Linux" tendem a lançar uma
@@ -1355,7 +1355,7 @@ torna muito mais difícil de atingir.
 </para>
 <para>
 Como deve o projeto GNU lidar com este problema?  O que nós devemos fazer agora
-para disseminar a idéia de que a liberdade para os usuários de computador é
+para disseminar a ideia de que a liberdade para os usuários de computador é
 importante?
 </para>
 <para>
@@ -1367,7 +1367,7 @@ ter uma variedade de software livres, faz sentido pensar sobre encorajar outras
 pessoas a escrever mais software livre, em vez de software proprietário.
 </para>
 <para>
-Nós não devemos aceitar a idéia de duas comunidades separadas para GNU e Linux.
+Nós não devemos aceitar a ideia de duas comunidades separadas para GNU e Linux.
 Ao contrário, devemos disseminar o entendimento de que "sistemas Linux" são
 variantes do sistema GNU, e que os usuários destes sistemas são tanto usuários
 GNU como usuários Linux (usuários do kernel do Linux).  Usuários que têm
@@ -1403,12 +1403,12 @@ apenas executa as instruções dos programas que foram escritos pelo programador
 
 <section userlevel="inic" xml:id="introducao-conhecendo"><info><title>Conhecendo o Computador</title></info>
 <para>
-Esta explica para que serve cada botão do painel do computador e monitor de
+Esta seção explica para que serve cada botão do painel do computador e monitor de
 vídeo.  Se você já sabe para que cada um serve, recomendo pular esta parte, é o
 BE-A-BA.  :-)
 </para>
 <para>
-Todo computador possuem funções que são usados em outros tipos e modelos.  Você
+Todo computador possui funções que são usadas em outros tipos e modelos.  Você
 pode ter um modelo de computador e um amigo seu outro tipo e mesmo tendo
 aparência diferente, terão as mesmas funções.
 </para>
@@ -1488,7 +1488,7 @@ Reinicia o computador.  Quando o computador é reiniciado, uma nova partida é
 feita (é como se nós ligássemos novamente o computador).  Este botão é um dos
 mais usados por usuários <command>Windows</command> dentre os botões
 localizados no painel do microcomputador.  No <command>GNU/Linux</command> é
-raramente usado (com menos freqüência que a tecla <literal>SCROLL
+raramente usado (com menos frequência que a tecla <literal>SCROLL
 LOCK</literal>).
 </para>
 <para>
@@ -1524,7 +1524,7 @@ que emite luz fria.
 <term>LED TURBO</term>
 <listitem>
 <para>
-Led (normalmente amarelo) no painel do computador.  Quando esta aceso, indica
+Led (normalmente amarelo) no painel do computador.  Quando está aceso, indica
 que a chave turbo está ligada e o computador funcionando a toda velocidade.
 </para>
 <para>
@@ -1538,11 +1538,11 @@ no gabinete do micro, encontra-se desligada.
 <listitem>
 <para>
 Led (normalmente vermelho) no painel do computador.  Acende quando o disco
-rígido (ou discos) do computador esta sendo usado.
+rígido (ou discos) do computador está sendo usado.
 </para>
 <para>
-Também acende quando uma unidade de CD-ROM está conectada na placa mãe e for
-usado.
+Também acende quando uma unidade de CD-ROM está conectada à placa mãe e for
+usada.
 </para>
 </listitem>
 </varlistentry>
@@ -1577,7 +1577,7 @@ Quanto ao padrão do monitor, existem diversos:
 Capacidade de mostrar 4 cores simultâneas em modo gráfico.  Uma das primeiras
 usadas em computadores PCs, com baixa qualidade de imagem, poucos programas
 funcionavam em telas CGA, quase todos em modo texto.  Ficou muito conhecida
-como "tela verde" embora existem modelos CGA preto e branco.
+como "tela verde" embora existam modelos CGA preto e branco.
 </para>
 </listitem>
 </varlistentry>
@@ -1586,7 +1586,7 @@ como "tela verde" embora existem modelos CGA preto e branco.
 <listitem>
 <para>
 Semelhante ao CGA.  Pode mostrar 2 cores simultâneas em modo gráfico.  A
-diferença é que apresenta uma melhor qualidade para a exibição de gráficos mas
+diferença é que apresenta uma melhor qualidade para a exibição de gráficos, mas
 por outro lado, uma grande variedade de programas para monitores CGA não
 funcionam com monitores Hércules por causa de seu modo de vídeo.  Também é
 conhecido por sua imagem <literal>amarela</literal>.
@@ -1604,7 +1604,7 @@ monocromático para trabalhar como <emphasis>CGA</emphasis>.
 Capacidade de mostrar 16 cores simultâneas em modo gráfico.  Razoável melhora
 da qualidade gráfica, mais programas rodavam neste tipo de tela.  Ficou mais
 conhecida após o lançamento dos computadores 286, mas no Brasil ficou pouco
-conhecida pois logo em seguida foi lançada o padrão VGA.
+conhecida pois logo em seguida foi lançado o padrão VGA.
 </para>
 </listitem>
 </varlistentry>
@@ -1672,14 +1672,14 @@ executado pelo processador.
 <listitem>
 <para>
 <literal>PROCESSADOR</literal> - É a parte do computador responsável pelo
-processamentos das instruções matemáticas/lógicas e programas carregados na
+processamento das instruções matemáticas/lógicas e programas carregados na
 memória <emphasis>RAM</emphasis>.
 </para>
 </listitem>
 <listitem>
 <para>
-<literal>CO-PROCESSADOR</literal> - Ajuda o Processador principal a processar
-as instruções matemáticas.  É normalmente embutido no Processador principal em
+<literal>CO-PROCESSADOR</literal> - Ajuda o processador principal a processar
+as instruções matemáticas.  É normalmente embutido no processador principal em
 computadores a partir do <emphasis>486 DX2-66</emphasis>.  Em processadores
 Pentium e superiores, o co-processador é sempre embutido no processador.
 </para>
@@ -1696,14 +1696,14 @@ embutida na placa mãe ou encaixada externamente através de módulos L2.
 <para>
 <literal>BIOS</literal> - É a memória <emphasis>ROM</emphasis> que contém as
 instruções básicas para a inicialização do computador, reconhecimento e
-ativação dos periféricos conectados a placa mãe.  As <emphasis>BIOS</emphasis>
+ativação dos periféricos conectados à placa mãe.  As <emphasis>BIOS</emphasis>
 mais modernas (a partir do 286) também trazem um programa que é usado para
 configurar o computador modificando os valores localizados na
 <emphasis>CMOS</emphasis>.
 </para>
 <para>
 As placas controladoras SCSI possuem sua própria <emphasis>BIOS</emphasis> que
-identificam automaticamente os periféricos conectados a ela.  Os seguintes
+identifica automaticamente os periféricos conectados a ela.  Os seguintes
 tipos de chips podem ser usados para gravar a <emphasis>BIOS</emphasis>:
 </para>
 <itemizedlist>
@@ -1752,7 +1752,7 @@ residente na BIOS.
 
 <section userlevel="inic" xml:id="introducao-memoria"><info><title>Memória do Computador</title></info>
 <para>
-A memória é a parte do computador que permitem o armazenamento de dados.  A
+A memória é a parte do computador que permite o armazenamento de dados.  A
 memória é dividida em dois tipos: Principal e Auxiliar.  Normalmente quando
 alguém fala em "memória de computador" está se referindo a memória "Principal".
 Veja abaixo as descrições de <emphasis>Memória Principal</emphasis> e
@@ -1794,7 +1794,7 @@ dados.  Existem também modelos chamados disco de estado sólido (SSD), os dados
 são armazenados em chips eletrônicos ao invés de mecanismos mecânicos.
 </para>
 <para>
-Um exemplo de dispositivos de armazenamento auxiliar são os pen drives,
+Um exemplo de dispositivos de armazenamento auxiliar são os pendrives,
 disquetes, cartões SD, discos rígidos, unidades de fita, Zip Drives,
 DVD/CD/BluRay, etc.
 </para>
@@ -1802,11 +1802,11 @@ DVD/CD/BluRay, etc.
 A <emphasis>Memória Auxiliar</emphasis> resolve o problema da perda de dados
 causado pela <emphasis>Memória Principal</emphasis> quando o computador é
 desligado, desta forma podemos ler nossos arquivos e programas da
-<emphasis>memória Auxiliar</emphasis> e copia-los para a <emphasis>Memória
+<emphasis>memória Auxiliar</emphasis> e copiá-los para a <emphasis>Memória
 Principal</emphasis> (memória RAM) para que possam ser novamente usados.
 </para>
 <para>
-Um exemplo simples é de quando estiver editando um texto e precisar salva-lo, o
+Um exemplo simples é de quando estiver editando um texto e precisar salvá-lo, o
 que você faz é simplesmente salvar os dados da memória <emphasis>RAM</emphasis>
 que estão sendo editados para o disco rígido, desta forma você estará guardando
 seu documento na <emphasis>Memória Auxiliar</emphasis>.
@@ -1835,7 +1835,7 @@ São discos usados para armazenar e transportar pequenas quantidades de dados.
 Este tipo de disco é normalmente encontrado no tamanho 3 1/2 (1.44MB) polegadas
 e 5 1/4 polegadas (360Kb ou 1.2MB).  Hoje os discos de 3 1/2 são os mais
 utilizados por terem uma melhor proteção por causa de sua capa plástica rígida,
-maior capacidade e o menor tamanho o que facilita seu transporte.
+maior capacidade e o menor tamanho, o que facilita seu transporte.
 </para>
 <para>
 Os disquetes são inseridos em um compartimento chamado de "<literal>Unidade de
@@ -1844,7 +1844,7 @@ do disquete.
 </para>
 <para>
 Sua característica é a baixa capacidade de armazenamento e baixa velocidade no
-acesso aos dados mas podem ser usados para transportar os dados de um
+acesso aos dados, mas podem ser usados para transportar os dados de um
 computador a outro com grande facilidade.  Os disquetes de computador comuns
 são discos flexíveis.
 </para>
@@ -1855,7 +1855,7 @@ são discos flexíveis.
 <para>
 É um disco localizado dentro do computador.  É fabricado com discos de metal
 recompostos por material magnético onde os dados são gravados através de
-cabeças e revestido externamente por uma proteção metálica que é preso ao
+cabeças e revestido externamente por uma proteção metálica que é presa ao
 gabinete do computador por parafusos.  Também é chamado de HD (Hard Disk) ou
 Winchester.  É nele que normalmente gravamos e executamos nossos programas mais
 usados.
@@ -1922,7 +1922,7 @@ funcionamento de seu computador.
 <itemizedlist>
 <listitem>
 <para>
-Não deixe seu computador em locais expostos a umidade ou sol.  O mesmo se
+Não deixe seu computador em locais expostos à umidade ou sol.  O mesmo se
 aplica a mídias como pen-drives, gavetas de HD, cartões de memória etc.
 </para>
 </listitem>
@@ -1931,7 +1931,7 @@ aplica a mídias como pen-drives, gavetas de HD, cartões de memória etc.
 Limpe o Gabinete e o Monitor com um pano levemente umedecido em água com sabão
 neutro ou solução de limpeza apropriada para micros.  Não use Álcool,
 querosene, acetona ou qualquer outro tipo de produto abrasivo.  O uso de um
-destes podem estragar o gabinete de seu computador e se um destes produtos
+destes pode estragar o gabinete de seu computador e se um destes produtos
 atingir a parte interna pode causar problemas nas placas ou até um incêndio!
 </para>
 </listitem>
@@ -1972,9 +1972,9 @@ Não coloque objetos dentro da unidade de disquetes.
 <listitem>
 <para>
 Antes de desligar seu computador, utilize o comando <literal>"shutdown -h
-now"</literal> (ou seus sinonimos, como <literal>"halt"</literal>,
+now"</literal> (ou seus sinônimos, como <literal>"halt"</literal>,
 <literal>poweroff</literal>) para desligar corretamente o computador.  Este
-comando finaliza adequadamente os programas, salva os dados, desmontar os
+comando finaliza adequadamente os programas, salva os dados e desmonta os
 sistemas de arquivos <command>GNU/Linux</command>.  Para detalhes veja <xref linkend="introducao-desligando"/>.
 </para>
 </listitem>
@@ -1998,7 +1998,7 @@ O dispositivo de entrada padrão (stdin) em sistemas
 <listitem>
 <para>
 <literal>Saída</literal> - Permite a comunicação do computador com o usuário.
-São dispositivos que permitem o usuário visualizar o resultado do processamento
+São dispositivos que permitem ao usuário visualizar o resultado do processamento
 enviado ao computador.  Exemplos: Monitor, Impressora, Plotter, som.
 </para>
 <para>
@@ -2061,7 +2061,7 @@ sistema de arquivos de seu disco rígido devido a programas abertos e dados
 ainda não gravados no disco.
 </para>
 <para>
-Salve seus trabalhos para não correr o risco de perde-los durante o
+Salve seus trabalhos para não correr o risco de perdê-los durante o
 desligamento do computador.
 </para>
 <!-- ]]> -->
@@ -2072,7 +2072,7 @@ desligamento do computador.
 <para>
 Reiniciar quer dizer iniciar novamente o sistema.  Não é recomendável desligar
 e ligar constantemente o computador pelo botão <literal>ON/OFF</literal>, por
-este motivo existe recursos para reiniciar o sistema sem desligar o computador.
+este motivo existem recursos para reiniciar o sistema sem desligar o computador.
 No <command>GNU/Linux</command> você pode usar o comando
 <literal>reboot</literal>, <literal>shutdown -r now</literal> e também
 pressionar simultaneamente as teclas &lt;CTRL&gt; &lt;ALT&gt; &lt;DEL&gt; para
@@ -2085,7 +2085,7 @@ Observações:
 <itemizedlist>
 <listitem>
 <para>
-Salve seus trabalhos para não correr o risco de perde-los durante a
+Salve seus trabalhos para não correr o risco de perdê-los durante a
 reinicialização do sistema.
 </para>
 </listitem>
