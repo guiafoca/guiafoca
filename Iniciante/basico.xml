@@ -27,17 +27,17 @@ uma música, programa, planilha, etc.
 </para>
 <para>
 Cada arquivo deve ser identificado por um <literal>nome</literal>, assim ele
-pode ser encontrado facilmente quando desejar usa-lo.  Se estiver fazendo um
-trabalho de história, nada melhor que salva-lo com o nome
+pode ser encontrado facilmente quando desejar usá-lo.  Se estiver fazendo um
+trabalho de história, nada melhor que salvá-lo com o nome
 <filename>historia</filename>.  Um arquivo pode ser binário ou texto (para
 detalhes veja <xref linkend="basico-arquivo-bintext"/>).
 </para>
 <para>
-O <command>GNU/Linux</command> é <emphasis>Case Sensitive</emphasis> ou seja,
+O <command>GNU/Linux</command> é <emphasis>Case Sensitive</emphasis>, ou seja,
 ele diferencia letras <emphasis>maiúsculas</emphasis> e
 <emphasis>minúsculas</emphasis> nos arquivos.  O arquivo
 <filename>historia</filename> é completamente diferente de
-<filename>Historia</filename>.  Esta regra também é válido para os
+<filename>Historia</filename>.  Esta regra também é válida para os
 <emphasis>comandos</emphasis> e <emphasis>diretórios</emphasis>.  Prefira,
 sempre que possível, usar letras minúsculas para identificar seus arquivos,
 pois quase todos os comandos do sistema estão em
@@ -45,7 +45,7 @@ pois quase todos os comandos do sistema estão em
 </para>
 <para>
 Um arquivo oculto no <command>GNU/Linux</command> é identificado por um "."  no
-inicio do nome (por exemplo, <filename>.bashrc</filename>).  Arquivos ocultos
+início do nome (por exemplo, <filename>.bashrc</filename>).  Arquivos ocultos
 não aparecem em listagens normais de diretórios, deve ser usado o comando
 <literal>ls -a</literal> para também listar arquivos ocultos.
 </para>
@@ -90,7 +90,7 @@ Internet (formato Hypertexto).
 A extensão de um arquivo também ajuda a saber o que precisamos fazer para
 abri-lo.  Por exemplo, o arquivo <filename>relatório.txt</filename> é um texto
 simples e podemos ver seu conteúdo através do comando <xref linkend="comandos-cat"/>, já o arquivo <filename>index.html</filename> contém
-uma página de Internet e precisaremos de um navegador para poder visualiza-lo
+uma página de Internet e precisaremos de um navegador para poder visualizá-lo
 (como o <command>lynx</command>, <command>Firefox</command> ou o
 <command>Konqueror</command>).
 </para>
@@ -114,8 +114,8 @@ Espaços em branco e novas linhas também ocupam bytes.
 </para>
 <para>
 Além do byte existem as medidas Kbytes, Mbytes, Gbytes.  Os prefixos K (quilo),
-M (mega), G (giga), T (tera) etc.  vêem da matemática.  O "K" significa
-multiplicar por 10^3, o "M" por 10^6, e assim por diante.  Esta letras servem
+M (mega), G (giga), T (tera) etc.  vêm da matemática.  O "K" significa
+multiplicar por 10^3, o "M" por 10^6, e assim por diante.  Estas letras servem
 para facilitar a leitura em arquivos de grande tamanho.  Um arquivo de 1K é a
 mesma coisa de um arquivo de 1024 bytes.  Uma forma que pode inicialmente lhe
 ajudar a lembrar: K vem de Kilo que é igual a 1000 - 1Kilo é igual a 1000
@@ -207,15 +207,15 @@ comando <command>mkdir</command> (<xref linkend="comando-mkdir"/>).
 <para>
 Este é o diretório principal do sistema.  Dentro dele estão todos os diretórios
 do sistema.  O diretório Raíz é representado por uma "<emphasis>/</emphasis>",
-assim se você digitar o comando <literal>cd /</literal> você estará acessando
+assim, se você digitar o comando <literal>cd /</literal> você estará acessando
 este diretório.
 </para>
 <para>
 Nele estão localizados outros diretórios como o <filename>/bin, /sbin, /usr,
 /usr/local, /mnt, /tmp, /var, /home,</filename> etc.  Estes são chamados de
-<emphasis>sub-diretórios</emphasis> pois estão dentro do diretório
+<emphasis>subdiretórios</emphasis> pois estão dentro do diretório
 "<filename>/</filename>".  A estrutura de <emphasis>diretórios</emphasis> e
-<emphasis>sub-diretórios</emphasis> pode ser identificada da seguinte maneira:
+<emphasis>subdiretórios</emphasis> pode ser identificada da seguinte maneira:
 </para>
 <itemizedlist>
 <listitem>
@@ -288,7 +288,7 @@ armazenado em cada diretório.
 </para>
 <para>
 O diretório atual também é identificado por um "."  (ponto).  O comando comando
-<literal>ls .</literal> pode ser usado para listar seus arquivos (é claro que
+<literal>ls.</literal> pode ser usado para listar seus arquivos (é claro que
 isto é desnecessário porque se não digitar nenhum diretório, o comando
 <command>ls</command> listará o conteúdo do diretório atual).
 </para>
@@ -327,7 +327,7 @@ O diretório superior (Upper Directory) é identificado por <literal>..</literal
 (2 pontos).
 </para>
 <para>
-Caso estiver no diretório <filename>/usr/local</filename> e quiser listar os
+Caso esteja no diretório <filename>/usr/local</filename> e quiser listar os
 arquivos do diretório <filename>/usr</filename> você pode digitar, <literal>ls
 ..</literal> Este recurso também pode ser usado para copiar, mover
 arquivos/diretórios, etc.
@@ -341,7 +341,7 @@ O diretório anterior é identificado por "-".  É útil para retornar ao últim
 diretório usado.
 </para>
 <para>
-Se estive no diretório <filename>/usr/local</filename> e digitar <literal>cd
+Se estiver no diretório <filename>/usr/local</filename> e digitar <literal>cd
 /lib</literal>, você pode retornar facilmente para o diretório
 <filename>/usr/local</filename> usando <literal>cd -</literal>.
 </para>
@@ -351,7 +351,7 @@ Se estive no diretório <filename>/usr/local</filename> e digitar <literal>cd
 <section userlevel='inic' xml:id="basico-diretorio-caminho"><info><title>Caminho na estrutura de diretórios</title></info>
 <para>
 São os diretórios que teremos que percorrer até chegar no arquivo ou diretório
-que que procuramos.  Se desejar ver o arquivo <filename>/etc/hosts</filename>
+que procuramos.  Se desejar ver o arquivo <filename>/etc/hosts</filename>
 você tem duas opções:
 </para>
 <orderedlist numeration="arabic">
@@ -407,7 +407,7 @@ operacional onde encontrar um arquivo na "árvore" de diretórios.
 <section userlevel='inic' xml:id="basico-diretorio-exemplo"><info><title>Exemplo de diretório</title></info>
 <para>
 Um exemplo de diretório é o seu diretório de usuário, todos seus arquivos
-essenciais devem ser colocadas neste diretório.  Um diretório pode conter outro
+essenciais devem ser colocados neste diretório.  Um diretório pode conter outro
 diretório, isto é útil quando temos muitos arquivos e queremos melhorar sua
 organização.  Abaixo um exemplo de uma empresa que precisa controlar os
 arquivos de Pedidos que emite para as fábricas:
@@ -427,7 +427,7 @@ cliente "João" do mês 01/2009.
 </para>
 <para>
 Você deve ter reparado que usei a palavra <emphasis>sub-diretório</emphasis>
-para mes01-1999, mes02-2009 e mes01-2010, porque que eles estão dentro do
+para mes01-1999, mes02-2009 e mes01-2010, porque eles estão dentro do
 diretório vendas.  Da mesma forma, <filename>vendas</filename> é um
 sub-diretório de <filename>pub</filename>.
 </para>
@@ -445,7 +445,7 @@ diretórios organizados segundo o FHS (Filesystem Hierarchy Standard):
 <term><filename>/bin</filename></term>
 <listitem>
 <para>
-Contém arquivos programas do sistema que são usados com freqüência pelos
+Contém arquivos programas do sistema que são usados com frequência pelos
 usuários.
 </para>
 </listitem>
@@ -585,7 +585,7 @@ Diretório para armazenamento de arquivos temporários criados por programas.
 <term><filename>/usr</filename></term>
 <listitem>
 <para>
-Contém maior parte de seus programas.  Normalmente acessível somente como
+Contém a maior parte de seus programas.  Normalmente acessível somente como
 leitura.
 </para>
 </listitem>
@@ -594,7 +594,7 @@ leitura.
 <term><filename>/var</filename></term>
 <listitem>
 <para>
-Contém maior parte dos arquivos que são gravados com freqüência pelos programas
+Contém maior parte dos arquivos que são gravados com frequência pelos programas
 do sistema, e-mails, spool de impressora, cache, etc.
 </para>
 </listitem>
@@ -608,7 +608,7 @@ do sistema, e-mails, spool de impressora, cache, etc.
 <section userlevel='inic' xml:id="basico-nomeando"><info><title>Nomeando Arquivos e Diretórios</title></info>
 <para>
 No <command>GNU/Linux</command>, os arquivos e diretórios podem ter o tamanho de
-até <emphasis>255</emphasis> letras.  Você pode identifica-lo com uma extensão
+até <emphasis>255</emphasis> letras.  Você pode identificá-lo com uma extensão
 (um conjunto de letras separadas do nome do arquivo por um ".").
 </para>
 <para>
@@ -625,10 +625,10 @@ facilmente caso fosse gravado com o nome <filename>trabalho.text</filename> ou
 <filename>trabalho.txt</filename>.  Também é permitido gravar o arquivo com o
 nome <filename>Trabalho de Historia.txt</filename> mas não é recomendado gravar
 nomes de arquivos e diretórios com espaços.  Porque será necessário colocar o
-nome do arquivo entre "aspas" para acessa-lo (por exemplo, <literal>cat
+nome do arquivo entre "aspas" para acessá-lo (por exemplo, <literal>cat
 "Trabalho de Historia.txt"</literal>).  Ao invés de usar espaços, prefira
 <emphasis>capitalizar</emphasis> o arquivo (usar letras maiúsculas e minúsculas
-para identifica-lo): <filename>TrabalhodeHistoria.txt</filename>.
+para identificá-lo): <filename>TrabalhodeHistoria.txt</filename>.
 </para>
 </section>
 
@@ -750,7 +750,7 @@ memória RAM do computador junto com o interpretador de comandos.
 </para>
 <para>
 Quando executa um comando, o interpretador de comandos verifica primeiro se ele
-é um <emphasis>Comando Interno</emphasis> caso não seja é verificado se é um
+é um <emphasis>Comando Interno.</emphasis> Caso não seja, é verificado se é um
 <emphasis>Comando Externo</emphasis>.
 </para>
 <para>
@@ -764,7 +764,7 @@ help</literal>
 <section userlevel='inic' xml:id="basico-comandos-externos"><info><title>Comandos Externos</title></info>
 <para>
 São comandos que estão localizados no disco.  Os comandos são procurados no
-disco usando o ordem do <literal>PATH</literal> e executados assim que
+disco usando a ordem do <literal>PATH</literal> e executados assim que
 encontrados.
 </para>
 <para>
@@ -801,24 +801,24 @@ para cima.
 </para>
 <para>
 Abaixo algumas dicas sobre a edição da linha de comandos (não é necessário se
-preocupar em decora-los):
+preocupar em decorá-los):
 </para>
 <itemizedlist>
 <listitem>
 <para>
-Pressione a tecla <literal>Back Space</literal> ("<emphasis role="strong">&lt;--</emphasis>") para apagar um caracter à esquerda do cursor.
+Pressione a tecla <literal>Backspace</literal> ("<emphasis role="strong">&lt;--</emphasis>") para apagar um caracter à esquerda do cursor.
 </para>
 </listitem>
 <listitem>
 <para>
-Pressione a tecla <literal>Del</literal> para apagar o caracter acima do
+Pressione a tecla <literal>Del</literal> para apagar o carácter acima do
 cursor.
 </para>
 </listitem>
 <listitem>
 <para>
 Pressione <literal>CTRL</literal>+<literal>A</literal> para mover o cursor para
-o inicio da linha de comandos.
+o início da linha de comandos.
 </para>
 </listitem>
 <listitem>
@@ -894,7 +894,7 @@ arquivos e do esquema de particionamento, ou seja, são permitidas pelo SO.
 <para>
 Vou um pouco mais além: O disco rígido é uma mídia magnética e opera de forma
 mecânica para ler/gravar dados.  Quando um arquivo é apagado, seja por qualquer
-motivo, ainda é possível recupera-lo.  O que permite isto é porque o HD nem
+motivo, ainda é possível recuperá-lo.  O que permite isto é porque o HD nem
 sempre tem a precisão de gravar <emphasis role="strong">exatamente</emphasis>
 no mesmo lugar (pois a cabeça é movida mecanicamente), gravando em trilhas
 microscópicamente vizinhas a anterior.  Então a imagem do arquivo que foi
@@ -955,7 +955,7 @@ arquivos criptografado, estes procedimentos são quase desnecessários
 Também conhecido como "shell".  É o programa responsável em interpretar as
 instruções enviadas pelo usuário e seus programas ao sistema operacional (o
 kernel).  
-<!-- [ %DESCRICAOD [ --> Ele que executa comandos lidos do dispositivo de entrada padrão
+<!-- [ %DESCRICAOD [ --> É ele que executa comandos lidos do dispositivo de entrada padrão
 (teclado) ou de um arquivo executável.  É a principal ligação entre o usuário,
 os programas e o kernel.  O <command>GNU/Linux</command> possui diversos tipos
 de interpretadores de comandos, entre eles posso destacar o <command>bash, ash,
@@ -1074,12 +1074,12 @@ ou desligado.
 </section>
 
 
-<section userlevel='inic' xml:id="basico-coringas"><info><title>coringas</title></info>
+<section userlevel='inic' xml:id="basico-curingas"><info><title>Curingas</title></info>
 <para>
-coringas (ou referência global) é um recurso usado para especificar um ou mais
-arquivos ou diretórios do sistema de uma só vez.  Este é um recurso permite que
+Curingas (ou referência global) é um recurso usado para especificar um ou mais
+arquivos ou diretórios do sistema de uma só vez.  Este é um recurso que permite que
 você faça a filtragem do que será listado, copiado, apagado, etc.  São usados 4
-tipos de coringas no <command>GNU/Linux</command>:
+tipos de curingas no <command>GNU/Linux</command>:
 </para>
 <itemizedlist>
 <listitem>
@@ -1140,13 +1140,13 @@ de um arquivo/diretório.
 <itemizedlist>
 <listitem>
 <para>
-<literal>X{ab,01}</literal> - Faz referência a seqüencia de caracteres
+<literal>X{ab,01}</literal> - Faz referência a sequência de caracteres
 <literal>Xab</literal> ou <literal>X01</literal>
 </para>
 </listitem>
 <listitem>
 <para>
-<literal>X{a-z,10}</literal> Faz referencia a seqüencia de caracteres
+<literal>X{a-z,10}</literal> Faz referencia a sequência de caracteres
 X<literal>a-z</literal> e <literal>X10</literal>.
 </para>
 </listitem>
@@ -1156,22 +1156,22 @@ X<literal>a-z</literal> e <literal>X10</literal>.
 <para>
 O que diferencia este método de expansão dos demais é que a existência do
 arquivo/diretório é opcional para geração do resultado.  Isto é útil para a
-criação de diretórios.  Lembrando que os 4 tipos de coringas ("*", "?", "[]",
+criação de diretórios.  Lembrando que os 4 tipos de curingas ("*", "?", "[]",
 "{}") podem ser usados juntos.  
 </para>
 
-<section condition='exemplos' xml:id="basico-coringas-ex"><info><title>Exemplo de coringas</title></info>
+<section condition='exemplos' xml:id="basico-curingas-ex"><info><title>Exemplo de curingas</title></info>
 <para>
 Para entender melhor vamos a prática:
 </para>
 <para>
-Vamos dizer que tenha 5 arquivo no diretório <filename>/usr/teste</filename>:
+Vamos dizer que tenha 5 arquivos no diretório <filename>/usr/teste</filename>:
 <filename>teste1.txt, teste2.txt, teste3.txt, teste4.new,
 teste5.new</filename>.
 </para>
 <para>
 Caso deseje listar <emphasis role="strong">todos</emphasis> os arquivos do
-diretório <filename>/usr/teste</filename> você pode usar o coringa "*" para
+diretório <filename>/usr/teste</filename> você pode usar o curinga "*" para
 especificar todos os arquivos do diretório:
 </para>
 <para>
@@ -1181,7 +1181,7 @@ especificar todos os arquivos do diretório:
 <para>
 Não tem muito sentido usar o comando <command>ls</command> com "*" porque todos
 os arquivos serão listados se o <command>ls</command> for usado sem nenhum
-Coringa.
+curinga.
 </para>
 <para>
 Agora para listar todos os arquivos <filename>teste1.txt, teste2.txt,
@@ -1199,7 +1199,7 @@ começam com qualquer nome e terminam com <filename>.txt</filename>.
 <para>
 Usando o comando <literal>ls teste?.txt</literal>, que pega todos os arquivos
 que começam com o nome <filename>teste</filename>, tenham qualquer caracter no
-lugar do coringa <literal>?</literal> e terminem com <filename>.txt</filename>.
+lugar do curinga <literal>?</literal> e terminem com <filename>.txt</filename>.
 Com o exemplo acima <literal>teste*.txt</literal> também faria a mesma coisa,
 mas se também tivéssemos um arquivo chamado <filename>teste10.txt</filename>
 este também seria listado.
@@ -1211,7 +1211,7 @@ Usando o comando <literal>ls teste[1-3].txt</literal>, que pega todos os
 arquivos que começam com o nome <filename>teste</filename>, tenham qualquer
 caracter entre o número 1-3 no lugar da 6a letra e terminem com
 <filename>.txt</filename>.  Neste caso se obtém uma filtragem mais exata, pois
-o coringa <emphasis>?</emphasis> especifica qualquer caracter naquela posição e
+o curinga <emphasis>?</emphasis> especifica qualquer caracter naquela posição e
 [] especifica números, letras ou intervalo que será usado.
 </para>
 </listitem>
@@ -1230,7 +1230,7 @@ Agora para listar somente <filename>teste4.new</filename> e
 <listitem>
 <para>
 <literal>ls teste?.new</literal> que lista todos os arquivos que começam com
-<filename>teste</filename>, contenham qualquer caracter na posição do coringa
+<filename>teste</filename>, contenham qualquer caracter na posição do curinga
 <emphasis>?</emphasis> e terminem com <filename>.new</filename>.
 </para>
 </listitem>
@@ -1245,8 +1245,8 @@ terminem com qualquer extensão.
 <para>
 Existem muitas outras formas de se fazer a mesma coisa, isto depende do gosto
 de cada um.  O que pretendi fazer aqui foi mostrar como especificar mais de um
-arquivo de uma só vez.  O uso de coringas será útil ao copiar arquivos, apagar,
-mover, renomear, e nas mais diversas partes do sistema.  Alias esta é uma
+arquivo de uma só vez.  O uso de curingas será útil ao copiar arquivos, apagar,
+mover, renomear, e nas mais diversas partes do sistema.  Aliás esta é uma
 característica do <command>GNU/Linux</command>: permitir que a mesma coisa
 possa ser feita com liberdade de várias maneiras diferentes.
 </para>
