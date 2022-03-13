@@ -470,7 +470,7 @@ especificação de portas no <command>iptables</command> sendo separados por
 </para>
 <screen>
 # Bloqueia qualquer pacote ICMP maior que 30Kb
-iptables -A INPUT -i eth0 -m length --length 30000: -j DROP
+iptables -A INPUT -i eth0 -p icmp -m length --length 30000: -j DROP
 
 # Bloqueia qualquer pacote com o tamanho entre 20 e 2000 bytes
 iptables -A INPUT -i eth0 -m length --length 20:2000 -j DROP
